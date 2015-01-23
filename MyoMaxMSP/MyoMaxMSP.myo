@@ -1,0 +1,286 @@
+-- This script is able to comyunicate to Pure Data the Myo Armband data.
+-- The script has been created by Balandino Di Donato. Please visit his official website: www.balandinodidonato.com.
+
+-- This is free and unencumbered software released into the public domain.
+-- Anyone is free to copy, modify, publish, use, compile, sell, or
+-- distribute this software, either in source code form or as a compiled
+-- binary, for any purpose, commercial or non-commercial, and by any
+-- means.
+
+-- In jurisdictions that recognize copyright laws, the author or authors
+-- of this software dedicate any and all copyright interest in the
+-- software to the public domain. We make this dedication for the benefit
+-- of the public at large and to the detriment of our heirs and
+-- successors. We intend this dedication to be an overt act of
+-- relinquishment in perpetuity of all present and future rights to this
+-- software under copyright law.
+
+-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+-- EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+-- MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+-- IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+-- OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+-- ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+-- OTHER DEALINGS IN THE SOFTWARE.
+
+-- For more information, please refer to <http://unlicense.org/>
+
+scriptId = 'com.balandinodidonato.MaxMSP' -- define the script ID
+scriptTitle = "MyoMaxMSP" -- define the script title
+scriptDetailsUrl = ""                                                                               
+
+            noteAccelerationX = 1 -- PureData will receive the Accelaration X value trough the module [ctlin 1]
+            noteAccelerationY = 2 -- PureData will receive the Accelaration Y value trough the module [ctlin 2]
+            noteAccelerationZ = 3 -- PureData will receive the Accelaration Z value trough the module [ctlin 3]
+            noteGyroX = 4 -- PureData will receive the Gyro X value trough the module [ctlin 4]
+            noteGyroY = 5 -- PureData will receive the Gyro Y value trough the module [ctlin 5]
+            noteGyroZ = 6 -- PureData will receive the Gyro Z value trough the module [ctlin 6]
+            noteOrientationX = 7 -- PureData will receive the Orientation X value trough the module [ctlin 7]
+            noteOrientationY = 8 -- PureData will receive the Orientation Y value trough the module [ctlin 8]
+            noteOrientationZ = 9 -- PureData will receive the Orientation Z value trough the module [ctlin 9]
+            noteYaw = 10 -- PureData will receive the Yaw value trough the module [ctlin 10]
+            notePitch = 11 -- PureData will receive the Pitch value trough the module [ctlin 11]
+            noteRoll = 12 -- PureData will receive the Roll value trough the module [ctlin 12]
+            noteRest = 13 -- PureData will receive the Rest triger trough the module [ctlin 13]
+            noteFist = 14 -- PureData will receive the Fist triger trough the module [ctlin 14]
+            noteWaveIn = 15 -- PureData will receive the waveIn triger trough the module [ctlin 15]
+            noteWaveOut = 16 -- PureData will receive the waveOut triger trough the module [ctlin 16]
+            noteFingersSpread = 17 -- PureData will receive the fingerSpread triger trough the module [ctlin 17]
+            noteDoubleTap = 18 -- PureData will receive the doubleTap triger trough the module [ctlin 18]
+            noteUnknown = 19 -- PureData will receive the doubleTap triger trough the module [ctlin 19]
+
+           rest = math.floor(0)
+           velocityRest = math.floor(0)
+           fist = math.floor(0)
+           velocityFist = math.floor(0)
+           waveIn = math.floor(0)
+           velocityWaveIn = math.floor(0)
+           waveOut = math.floor(0)
+           velocityWaveOut = math.floor(0)
+           fingersSpread = math.floor(0)
+           velocityFingersSpread = math.floor(0)
+           doubleTap = math.floor(0)
+           velocityDoubleTap = math.floor(0)
+           unknown = math.floor(0)
+           velocityUnknown = math.floor(0)
+
+function onPoseEdge(pose, edge) -- Pose trigger
+    myo.debug("onPoseEdge: " .. pose .. ", " .. edge) -- print out, debug function
+        if pose == "rest" then
+           rest = math.floor(1)
+           velocityRest = math.floor(127)
+           fist = math.floor(0)
+           velocityFist = math.floor(0)
+           waveIn = math.floor(0)
+           velocityWaveIn = math.floor(0)
+           waveOut = math.floor(0)
+           velocityWaveOut = math.floor(0)
+           fingersSpread = math.floor(0)
+           velocityFingersSpread = math.floor(0)
+           doubleTap = math.floor(0)
+           velocityDoubleTap = math.floor(0)
+           unknown = math.floor(0)
+           velocityUnknown = math.floor(0)
+           myo.vibrate("short") -- let the myo vibrate to send a feedback to the user
+        
+        elseif pose == "fist" then
+           rest = math.floor(0)
+           velocityRest = math.floor(0)
+           fist = math.floor(1)
+           velocityFist = math.floor(127)
+           waveIn = math.floor(0)
+           velocityWaveIn = math.floor(0)
+           waveOut = math.floor(0)
+           velocityWaveOut = math.floor(0)
+           fingersSpread = math.floor(0)
+           velocityFingersSpread = math.floor(0)
+           doubleTap = math.floor(0)
+           velocityDoubleTap = math.floor(0)
+           unknown = math.floor(0)
+           velocityUnknown = math.floor(0)
+        
+           myo.vibrate("short") -- let the myo vibrate to send a feedback to the user 
+        
+        elseif pose == "waveIn" then
+           rest = math.floor(0)
+           velocityRest = math.floor(0)
+           fist = math.floor(0)
+           velocityFist = math.floor(0)
+           waveIn = math.floor(1)
+           velocityWaveIn = math.floor(127)
+           waveOut = math.floor(0)
+           velocityWaveOut = math.floor(0)
+           fingersSpread = math.floor(0)
+           velocityFingersSpread = math.floor(0)
+           doubleTap = math.floor(0)
+           velocityDoubleTap = math.floor(0)
+           unknown = math.floor(0)
+           velocityUnknown = math.floor(0)
+        
+           myo.vibrate("short") -- let the myo vibrate to send a feedback to the user
+        
+        elseif pose == "waveOut" then
+           rest = math.floor(0)
+           velocityRest = math.floor(0)
+           fist = math.floor(0)
+           velocityFist = math.floor(0)
+           waveIn = math.floor(0)
+           velocityWaveIn = math.floor(0)
+           waveOut = math.floor(1)
+           velocityWaveOut = math.floor(127)
+           fingersSpread = math.floor(0)
+           velocityFingersSpread = math.floor(0)
+           doubleTap = math.floor(0)
+           velocityDoubleTap = math.floor(0)
+           unknown = math.floor(0)
+           velocityUnknown = math.floor(0)
+        
+           myo.vibrate("short") -- let the myo vibrate to send a feedback to the user
+        
+        elseif pose == "fingersSpread" then
+           rest = math.floor(0)
+           velocityRest = math.floor(0)
+           fist = math.floor(0)
+           velocityFist = math.floor(0)
+           waveIn = math.floor(0)
+           velocityWaveIn = math.floor(0)
+           waveOut = math.floor(0)
+           velocityWaveOut = math.floor(0)
+           fingersSpread = math.floor(1)
+           velocityFingersSpread = math.floor(127)
+           doubleTap = math.floor(0)
+           velocityDoubleTap = math.floor(0)
+           unknown = math.floor(0)
+           velocityUnknown = math.floor(0)
+        
+           myo.vibrate("short") -- let the myo vibrate to send a feedback to the user
+        
+        elseif pose == "doubleTap" then
+           rest = math.floor(0)
+           velocityRest = math.floor(0)
+           fist = math.floor(0)
+           velocityFist = math.floor(0)
+           waveIn = math.floor(0)
+           velocityWaveIn = math.floor(0)
+           waveOut = math.floor(0)
+           velocityWaveOut = math.floor(0)
+           fingersSpread = math.floor(0)
+           velocityFingersSpread = math.floor(0)
+           doubleTap = math.floor(1)
+           velocityDoubleTap = math.floor(127)
+           unknown = math.floor(0)
+           velocityUnknown = math.floor(0)
+        
+           myo.vibrate("short") -- let the myo vibrate to send a feedback to the user
+        
+        elseif pose == "unknown" then
+           rest = math.floor(0)
+           velocityRest = math.floor(0)
+           fist = math.floor(0)
+           velocityFist = math.floor(0)
+           waveIn = math.floor(0)
+           velocityWaveIn = math.floor(0)
+           waveOut = math.floor(0)
+           velocityWaveOut = math.floor(0)
+           fingersSpread = math.floor(0)
+           velocityFingersSpread = math.floor(0)
+           doubleTap = math.floor(0)
+           velocityDoubleTap = math.floor(0)
+           unknown = math.floor(1)
+           velocityUnknown = math.floor(127)
+        
+           myo.vibrate("short") -- let the myo vibrate to send a feedback to the user
+     end
+end --                                                                                                                                                                                                                                                                                                                                                                                  
+function sendMidiValues() -- sendMidiValue() send MIDI values to IntegraLive --      
+    accelerationX, accelerationY, accelerationZ  = myo.getAccel() -- Get the acceleration of Myo in the world reference frame in units of g. World reference frame values are such that the X and Y axes are parallel to the ground while the Z axis faces up, perpendicular to the ground. Returns: Acceleration of Myo in the world reference frame. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getAccel().                                                                                         
+    direction = myo.getXDirection() -- Provides the orientation of Myo on the wearer's arm. The value represents the direction in which the positive X axis of Myo's coordinate system faces. Returns "towardWrist" if Myo's positive X axis is facing the wearer's wrist, "towardElbow" if Myo's positive X axis is facing the wearer's elbow, "unknown" if unknown.                                                                                                                                                
+    gyroX, gyroY, gyroZ = myo.getGyro() -- Get the angular velocity of Myo about its axes, in radians / second. Returns: Angular velocity of Myo about its X, Y and Z axes. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getGyro().                                                                                        
+    yaw = myo.getYaw() -- Get an angular value for Myo's orientation about its Z axis. Positive yaw indicates rotation to the wearer's right. Returns Myo "yaw" value, in radians.                                                                                     
+    orientationX, orientationY, orientationZ = myo.getOrientationWorld() -- Get a unit vector representing the direction Myo is facing in the world reference frame. X and Y axes are parallel to the ground, while the Z axis faces up, perpendicular to the ground. Returns Unit vector representing Myo's orientation. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getOrientationWorld().                                                                                                             
+     pitch = myo.getPitch() -- Get an angular value for Myo's orientation about its Y axis. Positive pitch indicates the wearer moving their arm upwards, away from the ground. Returns: Myo "pitch" value, in radians.                                                                                              
+    roll = myo.getRoll() -- Get an angular value for Myo's orientation about its X axis, i.e. the wearer's arm. Positive roll indicates clockwise rotation (from the point of view of the wearer). Returns Myo "roll" value, in radians.                                                                                                                                                                                         Resize Myo data values into MIDI value to control the velocity of the MIDI controlChange                           
+    velocityAccelerationX =  math.floor((accelerationX/3)*127)
+    velocityAccelerationY = math.floor((accelerationY/3)*127)
+    velocityAccelerationZ = math.floor((accelerationZ/3)*127)
+    velocityGyroX = math.floor((gyroX/2000)*127)
+    velocityGyroY = math.floor((gyroY/2000)*127)
+    velocityGyroZ = math.floor((gyroZ/2000)*127)
+    velocityOrientationX = math.floor(((orientationX+1)*0.5)*127)
+    velocityOrientationY = math.floor(((orientationY+1)*0.5)*127)
+    velocityOrientationZ = math.floor(((orientationZ+1)*0.5)*127)
+    velocityYaw = math.floor(((yaw+3.14)/6.28)*127)
+    velocityPitch = math.floor(((pitch+1.5)*42.33333333333333))
+    velocityRoll = math.floor(((roll+3.14)/6.28)*127)
+        
+    -- Generation of MIDI message 
+    myo.midi(0, "controlChange", noteAccelerationX, velocityAccelerationX)
+    myo.midi(0, "controlChange", noteAccelerationY, velocityAccelerationY)
+    myo.midi(0, "controlChange", noteAccelerationZ, velocityAccelerationZ)
+    myo.midi(0, "controlChange", noteGyroX, velocityGyroX)
+    myo.midi(0, "controlChange", noteGyroY, velocityGyroY)
+    myo.midi(0, "controlChange", noteGyroZ, velocityGyroZ)
+    myo.midi(0, "controlChange", noteYaw, velocityYaw)
+    myo.midi(0, "controlChange", noteOrientationX, velocityOrientationX)
+    myo.midi(0, "controlChange", noteOrientationY, velocityOrientationY)
+    myo.midi(0, "controlChange", noteOrientationZ, velocityOrientationZ)
+    myo.midi(0, "controlChange", notePitch, velocityPitch)
+    myo.midi(0, "controlChange", noteRoll, velocityRoll)
+    myo.midi(0, "controlChange", noteRest, velocityRest) 
+    myo.midi(0, "controlChange", noteRest, velocityRest)  
+    myo.midi(0, "controlChange", noteFist, velocityFist)  
+    myo.midi(0, "controlChange", noteWaveIn, velocityWaveIn)
+    myo.midi(0, "controlChange", noteWaveOut, velocityWaveOut)
+    myo.midi(0, "controlChange", noteFingersSpread, velocityFingersSpread)
+    myo.midi(0, "controlChange", noteDoubleTap, velocityDoubleTap)
+    myo.midi(0, "controlChange", noteUnknown, velocityUnknown)
+
+    
+    -- print out, debug function
+    myo.debug("" .. noteAccelerationX .. " - Accel X:  " .. accelerationX .. " - MIDI: " .. velocityAccelerationX)
+    myo.debug("" .. noteAccelerationY .. "  - Accel Y:  " .. accelerationY .. " - MIDI: " .. velocityAccelerationY)
+    myo.debug("" .. noteAccelerationZ .. "  - Accel Z:  " .. accelerationZ .. " - MIDI: " .. velocityAccelerationZ)
+    myo.debug("" .. noteGyroX .. " - GyroX X:  " .. gyroX .. " - MIDI: " .. velocityGyroX)
+    myo.debug("" .. noteGyroY .. " - GyroX Y:  " .. gyroY .. " - MIDI: " .. velocityGyroY)
+    myo.debug("" .. noteGyroZ .. "  - GyroX Z:  " .. gyroZ .. " - MIDI: " .. velocityGyroZ)
+    myo.debug("" .. noteOrientationX .. " - Orient X: " .. orientationX .. " - MIDI: " .. velocityOrientationX)
+    myo.debug("" .. noteOrientationY .. " - Orient Y: " .. orientationY .. " - MIDI: " .. velocityOrientationY)
+    myo.debug("" .. noteOrientationZ .. " - Orient Z: " .. orientationZ .. " - MIDI: " .. velocityOrientationZ)
+    myo.debug("" .. noteYaw .. " - Yaw:      " .. yaw .. " - MIDI: " .. velocityYaw)
+    myo.debug("" .. notePitch .. " - Pitch:   " .. pitch .. " - MIDI: " .. velocityPitch) 
+    myo.debug("" .. noteRoll .. " - Roll:    " .. roll .. "  - MIDI: " .. velocityRoll) -- print out, debug function
+    myo.debug("" .. noteRest .. " - Rest:    " .. rest .. "  - MIDI: " .. velocityRest) -- print out, debug function    
+    myo.debug("" .. noteFist .. " - Fist:    " .. fist .. "  - MIDI: " .. velocityFist) -- print out, debug function    
+    myo.debug("" .. noteWaveIn .. " - Wave In:    " .. waveIn .. "  - MIDI: " .. velocityWaveIn) -- print out, debug function    
+    myo.debug("" .. noteWaveOut .. " - Wave Out:    " .. waveOut .. "  - MIDI: " .. velocityWaveOut) -- print out, debug function    
+    myo.debug("" .. noteFingersSpread .. " - Fingers Spread:    " .. fingersSpread .. "  - MIDI: " .. velocityFingersSpread) -- print out, debug function  
+    myo.debug("" .. noteDoubleTap .. " - Double Tap:    " .. doubleTap .. "  - MIDI: " .. velocityDoubleTap) -- print out, debug function  
+    myo.debug("" .. noteUnknown .. " - Unknown:    " .. unknown .. "  - MIDI: " .. velocityUnknown) -- print out, debug function  
+
+end --                                                                                                                                                                                                                                                                                                                 
+function onPeriodic() -- call the function sendMidiValues every 10 milliseconds
+    sendMidiValues()
+end --                                                                                                                                                                                                                                                                                                                                                                                  
+function onForegroundWindowChange(app, title)     -- Here we decide if we want to control the new active app.
+    local wantActive = false
+    activeApp = ""
+    if platform == "MacOS" then -- if the used platform is MacOS and the selected application is IntegraLive then active app and send data to it.
+                myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
+
+        if app == "com.cycling74.Max" then
+            myo.unlock("hold")
+            wantActive = true
+            activeApp = "Pd"
+            myo.debug("/n /n Max/MSP 7 has been hooked! /n /n Rorck'n'Roll! /n /n")
+        
+        end
+    else 
+        myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
+        myo.debug("Please, click into a Max/MSP Window")
+        myo.lock()
+    end
+    return wantActive
+end --                                                                                                                                                                                                                                                                                                                               
+function activeAppName()     -- Return the active app name determined in onForegroundWindowChange.
+    return activeApp
+end
