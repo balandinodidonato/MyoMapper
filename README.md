@@ -34,7 +34,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org/> 
 
 ##Connectors##
-This library of connector include connectors for:
+MyoMusic include connectors for:
 
 - [Integra Live](http://integralive.org)
 - [Pure data (Pd)]((http://puredata.info))
