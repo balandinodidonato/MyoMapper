@@ -285,6 +285,6 @@ function onForegroundWindowChange(app, title)     -- Here we decide if we want t
     end
     return wantActive
 end --                                                                                                                                                                                                                                                                                                                               
-function activeAppName()     -- Return the active app name determined in onForegroundWindowChange
+function activeAppName()     -- Return the active app name determined in onForegroundWindowChange.
     return activeApp
 end
