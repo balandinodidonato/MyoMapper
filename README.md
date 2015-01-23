@@ -33,5 +33,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/> 
 
-##MyoPd##
-This script aims to communicate the gestural data generated using the [Myo Armband](https://www.thalmic.com/en/myo/)  to [Pure Data (Pd)](http://puredata.info).
+##Connectors##
+This library of connector include connectors for:
+
+- [Integra Live](http://integralive.org)
+- [Pure data (Pd)]((http://puredata.info))
+- [Max/MSP](https://cycling74.com/products/max/)
