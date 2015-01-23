@@ -37,5 +37,5 @@ For more information, please refer to <http://unlicense.org/>
 MyoMusic include connectors for:
 
 - [Integra Live](http://integralive.org)
-- [Pure data (Pd)]((http://puredata.info))
+- [Pure data (Pd)](http://puredata.info)
 - [Max/MSP](https://cycling74.com/products/max/)
