@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# MyoMusic
-=======
 # MyoMusic #
 
 MyoMusic is a collection of Myo connectors which want allows Myo users to interact with their favourite music application.
@@ -38,4 +35,3 @@ For more information, please refer to <http://unlicense.org/>
 
 ##MyoPd##
 This script aims to communicate the gestural data generated using the [Myo Armband](https://www.thalmic.com/en/myo/)  to [Pure Data (Pd)](http://puredata.info).
->>>>>>> refs/heads/Release-0.1
