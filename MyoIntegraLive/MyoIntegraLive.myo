@@ -136,11 +136,6 @@ function onForegroundWindowChange(app, title)     -- Here we decide if we want t
             wantActive = true
             activeApp = "Pd"
             myo.debug("/n /n Integra Live has been hooked! /n /n Rorck'n'Roll! /n /n")
-        elseif app == "io.brackets.appshell" then
-            myo.unlock("hold")
-            wantActive = true
-            activeApp = "Pd"
-            myo.debug("/n /n Integra Live has been hooked! /n /n Rorck'n'Roll! /n /n")
         end
     else 
         myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
