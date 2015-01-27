@@ -35,23 +35,23 @@ function onPoseEdge(pose, edge) -- Pose trigger
             velocityPose = {0, 127, 0, 0, 0, 0, 0}
         
         elseif pose == "waveIn" then
-            Pose = {0, 0, 1, 0, 0, 0, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
-            velocityPose = {0, 0, 1, 0, 0, 0, 0}
+            Pose = {0, 0, 1, 0, 0, 0, 0}
+            velocityPose = {0, 0, 127, 0, 0, 0, 0}
         
         elseif pose == "waveOut" then
-            Pose = {0, 0, 0, 1, 0, 0, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
-            velocityPose = {0, 0, 127, 0, 0, 0, 0}
+            Pose = {0, 0, 0, 1, 0, 0, 0}
+            velocityPose = {0, 0, 0, 127, 0, 0, 0}
                 
         elseif pose == "fingersSpread" then
-            Pose = {0, 0, 0, 0, 1, 0, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
+            Pose = {0, 0, 0, 0, 1, 0, 0}
             velocityPose = {0, 0, 0, 0, 127, 0, 0}
                 
         elseif pose == "doubleTap" then
-            Pose = {0, 0, 0, 0, 0, 1, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
+            Pose = {0, 0, 0, 0, 0, 1, 0}
             velocityPose = {0, 0, 0, 0, 127, 0, 0}
                 
         elseif pose == "unknown" then
-            Pose = {0, 0, 0, 0, 0, 0, 1} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
+            Pose = {0, 0, 0, 0, 0, 0, 1}
             velocityPose = {0, 0, 0, 0, 0, 0, 127}
          end
 end
