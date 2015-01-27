@@ -15,10 +15,10 @@ scriptId = 'com.balandinodidonato.MaxMSP' -- define the script ID
 scriptTitle = "MyoMaxMSP" -- define the script title
 scriptDetailsUrl = ""    
 
-    noteAccelleration = {1, 2, 3} -- PureData will receive the Accelaration X, Y, Z values trough the objects [ctlin 1], [ctlin 2] and [ctlin 3]
-    noteGyro = {4, 5, 6} -- PureData will receive the Gyro X, Y, Z values trough the objects [ctlin 4], [ctlin 5] and [ctlin 6]
-    noteOrientation = {7, 8, 9} -- PureData will receive the Orientation X, Y, Z values trough the objects [ctlin 7], [ctlin 8] and [ctlin 9]
-    noteYawPitchRoll = {10, 11, 12} -- PureData will receive the Yaw, Pitch and Roll values trough the objects [ctlin 10], [ctlin 11] and [ctlin 12]
+    noteAccelleration = {1, 2, 3} -- Max/MSP will receive the Accelaration X, Y, Z values trough the objects [ctlin 1], [ctlin 2] and [ctlin 3]
+    noteGyro = {4, 5, 6} -- Max/MSP will receive the Gyro X, Y, Z values trough the objects [ctlin 4], [ctlin 5] and [ctlin 6]
+    noteOrientation = {7, 8, 9} -- Max/MSP  will receive the Orientation X, Y, Z values trough the objects [ctlin 7], [ctlin 8] and [ctlin 9]
+    noteYawPitchRoll = {10, 11, 12} -- Max/MSP will receive the Yaw, Pitch and Roll values trough the objects [ctlin 10], [ctlin 11] and [ctlin 12]
     notePose = {13, 14, 15, 16, 17, 18, 19} -- Pure data will receive the pose values trough the objects [ctlin 13], [ctlin 14], [ctlin 4], [ctlin 15], [ctlin 16], [ctlin 17], [ctlin 18] and [ctlin 19].
 
     Pose = {0, 0, 0, 0, 0, 0, 0} -- Triggered pose: rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
@@ -35,23 +35,23 @@ function onPoseEdge(pose, edge) -- Pose trigger
             velocityPose = {0, 127, 0, 0, 0, 0, 0}
         
         elseif pose == "waveIn" then
-            Pose = {0, 0, 1, 0, 0, 0, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
-            velocityPose = {0, 0, 1, 0, 0, 0, 0}
+            Pose = {0, 0, 1, 0, 0, 0, 0}
+            velocityPose = {0, 0, 127, 0, 0, 0, 0}
         
         elseif pose == "waveOut" then
-            Pose = {0, 0, 0, 1, 0, 0, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
-            velocityPose = {0, 0, 127, 0, 0, 0, 0}
+            Pose = {0, 0, 0, 1, 0, 0, 0}
+            velocityPose = {0, 0, 0, 127, 0, 0, 0}
                 
         elseif pose == "fingersSpread" then
-            Pose = {0, 0, 0, 0, 1, 0, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
+            Pose = {0, 0, 0, 0, 1, 0, 0}
             velocityPose = {0, 0, 0, 0, 127, 0, 0}
                 
         elseif pose == "doubleTap" then
-            Pose = {0, 0, 0, 0, 0, 1, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
+            Pose = {0, 0, 0, 0, 0, 1, 0}
             velocityPose = {0, 0, 0, 0, 127, 0, 0}
                 
         elseif pose == "unknown" then
-            Pose = {0, 0, 0, 0, 0, 0, 1} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
+            Pose = {0, 0, 0, 0, 0, 0, 1}
             velocityPose = {0, 0, 0, 0, 0, 0, 127}
          end
 end
@@ -129,7 +129,7 @@ end
 function onForegroundWindowChange(app, title)     -- Here we decide if we want to control the new active app.
     local wantActive = false
     activeApp = ""
-    if platform == "MacOS" then -- if the used platform is MacOS and the selected application is IntegraLive then active app and send data to it.
+    if platform == "MacOS" or platform == "Windows" then
         myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
         if app == "com.cycling74.Max" then
             myo.unlock("hold")
@@ -145,6 +145,6 @@ function onForegroundWindowChange(app, title)     -- Here we decide if we want t
     return wantActive
 end
 
-function activeAppName()     -- Return the active app name determined in onForegroundWindowChange.
+function activeAppName() -- Return the active app name determined in onForegroundWindowChange.
     return activeApp
 end

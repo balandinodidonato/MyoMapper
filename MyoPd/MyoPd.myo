@@ -35,23 +35,23 @@ function onPoseEdge(pose, edge) -- Pose trigger
             velocityPose = {0, 127, 0, 0, 0, 0, 0}
         
         elseif pose == "waveIn" then
-            Pose = {0, 0, 1, 0, 0, 0, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
-            velocityPose = {0, 0, 1, 0, 0, 0, 0}
+            Pose = {0, 0, 1, 0, 0, 0, 0}
+            velocityPose = {0, 0, 127, 0, 0, 0, 0}
         
         elseif pose == "waveOut" then
-            Pose = {0, 0, 0, 1, 0, 0, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
-            velocityPose = {0, 0, 127, 0, 0, 0, 0}
+            Pose = {0, 0, 0, 1, 0, 0, 0}
+            velocityPose = {0, 0, 0, 127, 0, 0, 0}
                 
         elseif pose == "fingersSpread" then
-            Pose = {0, 0, 0, 0, 1, 0, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
+            Pose = {0, 0, 0, 0, 1, 0, 0}
             velocityPose = {0, 0, 0, 0, 127, 0, 0}
                 
         elseif pose == "doubleTap" then
-            Pose = {0, 0, 0, 0, 0, 1, 0} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
+            Pose = {0, 0, 0, 0, 0, 1, 0}
             velocityPose = {0, 0, 0, 0, 127, 0, 0}
                 
         elseif pose == "unknown" then
-            Pose = {0, 0, 0, 0, 0, 0, 1} -- rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
+            Pose = {0, 0, 0, 0, 0, 0, 1}
             velocityPose = {0, 0, 0, 0, 0, 0, 127}
          end
 end
@@ -129,7 +129,7 @@ end
 function onForegroundWindowChange(app, title)     -- Here we decide if we want to control the new active app.
     local wantActive = false
     activeApp = ""
-    if platform == "MacOS" then -- if the used platform is MacOS and the selected application is IntegraLive then active app and send data to it.
+    if platform == "MacOS" or platform == "Windows" then
         myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
         if app == "org.puredata" then
             myo.unlock("hold")
