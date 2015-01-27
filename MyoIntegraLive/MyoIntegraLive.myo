@@ -15,11 +15,11 @@ scriptId = 'com.balandinodidonato.IntegraLive' -- define the script ID
 scriptTitle = "MyoIntegraLive" -- define the script title
 scriptDetailsUrl = ""    
 
-    noteAccelleration = {1, 2, 3} -- PureData will receive the Accelaration X, Y, Z values trough the objects [ctlin 1], [ctlin 2] and [ctlin 3]
-    noteGyro = {4, 5, 6} -- PureData will receive the Gyro X, Y, Z values trough the objects [ctlin 4], [ctlin 5] and [ctlin 6]
-    noteOrientation = {7, 8, 9} -- PureData will receive the Orientation X, Y, Z values trough the objects [ctlin 7], [ctlin 8] and [ctlin 9]
-    noteYawPitchRoll = {10, 11, 12} -- PureData will receive the Yaw, Pitch and Roll values trough the objects [ctlin 10], [ctlin 11] and [ctlin 12]
-    notePose = {13, 14, 15, 16, 17, 18, 19} -- Pure data will receive the pose values trough the objects [ctlin 13], [ctlin 14], [ctlin 4], [ctlin 15], [ctlin 16], [ctlin 17], [ctlin 18] and [ctlin 19].
+    noteAccelleration = {1, 2, 3} -- Integra Live will receive the Accelaration X, Y, Z values trough the objects 1, 2 and 3.
+    noteGyro = {4, 5, 6} -- Integra Live will receive the Gyro X, Y, Z values trough the MIDI note 4, 5, and 6.
+    noteOrientation = {7, 8, 9} -- Integra Live will receive the Orientation X, Y, Z values trough the MIDI note 7, 8 and 9.
+    noteYawPitchRoll = {10, 11, 12} -- Integra Live will receive the Yaw, Pitch and Roll values trough the MIDI note 10, 11 and 12.
+    notePose = {13, 14, 15, 16, 17, 18, 19} -- Integra Live will receive the pose values trough the MIDI note 13, 14, 15, 16, 17, 18 and 19.
 
     Pose = {0, 0, 0, 0, 0, 0, 0} -- Triggered pose: rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
     velocityPose = {0, 0, 0, 0, 0, 0, 0} -- Pose value scaled in MIDI values.
@@ -129,7 +129,7 @@ end
 function onForegroundWindowChange(app, title)     -- Here we decide if we want to control the new active app.
     local wantActive = false
     activeApp = ""
-    if platform == "MacOS" then -- if the used platform is MacOS and the selected application is IntegraLive then active app and send data to it.
+    if platform == "MacOS" or platform == "Windows" then
         myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
         if app == "org.integralive.IntegraLive" then
             myo.unlock("hold")

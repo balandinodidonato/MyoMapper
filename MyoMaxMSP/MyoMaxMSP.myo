@@ -129,7 +129,7 @@ end
 function onForegroundWindowChange(app, title)     -- Here we decide if we want to control the new active app.
     local wantActive = false
     activeApp = ""
-    if platform == "MacOS" then -- if the used platform is MacOS and the selected application is IntegraLive then active app and send data to it.
+    if platform == "MacOS" or platform == "Windows" then
         myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
         if app == "com.cycling74.Max" then
             myo.unlock("hold")
