@@ -1,0 +1,150 @@
+#N canvas 0 23 1112 851 24;
+#X obj -562 239 ctlin 3;
+#X obj -576 198 ctlin 2;
+#X obj -589 158 ctlin 1;
+#X obj -586 472 hsl 256 30 0 127 0 0 empty empty Accelleration_X 60
+16 0 15 -1 -262144 -4034 201 1;
+#X obj -573 538 hsl 256 30 0 127 0 0 empty empty Accelleration_Y 60
+16 0 15 -1 -262144 -4034 402 1;
+#X obj -559 608 hsl 256 30 0 127 0 0 empty empty Accelleration_Z 60
+16 0 15 -1 -262144 -4034 8835 1;
+#X obj -316 472 hsl 256 30 0 127 0 0 empty empty Gyro_X 60 16 0 15
+-1 -262144 -4034 0 1;
+#X obj -303 538 hsl 256 30 0 127 0 0 empty empty Gyro_Y 60 16 0 15
+-1 -262144 -4034 0 1;
+#X obj -289 608 hsl 256 30 0 127 0 0 empty empty Gyro_Y 60 16 0 15
+-1 -262144 -4034 0 1;
+#X obj -319 158 ctlin 4;
+#X obj -306 198 ctlin 5;
+#X obj -292 239 ctlin 6;
+#X obj -46 472 hsl 256 30 0 127 0 0 empty empty Orientation_X 60 16
+0 15 -1 -262144 -4034 25299 1;
+#X obj -33 538 hsl 256 30 0 127 0 0 empty empty Orientation_Y 60 16
+0 15 -1 -262144 -4034 12650 1;
+#X obj -19 608 hsl 256 30 0 127 0 0 empty empty Orientation_Z 60 16
+0 15 -1 -262144 -4034 13051 1;
+#X obj 224 472 hsl 256 30 0 127 0 0 empty empty Yaw 60 16 0 15 -1 -262144
+-4034 12248 1;
+#X obj 237 538 hsl 256 30 0 127 0 0 empty empty Pitch 60 16 0 15 -1
+-262144 -4034 12850 1;
+#X obj 251 608 hsl 256 30 0 127 0 0 empty empty Roll 60 16 0 15 -1
+-262144 -4034 12850 1;
+#X obj -49 158 ctlin 7;
+#X obj -36 198 ctlin 8;
+#X obj -22 239 ctlin 9;
+#X obj 221 158 ctlin 10;
+#X obj 234 198 ctlin 11;
+#X obj 248 239 ctlin 12;
+#X obj -549 286 ctlin 13;
+#N canvas 0 22 407 200 rest 1;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 102 \; pose_rcv label Pose:Rest;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore -549 325 pd rest;
+#X obj -539 376 ctlin 14;
+#X obj -279 286 ctlin 15;
+#N canvas 0 22 335 181 fist 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 102 \; pose_rcv label Pose:Fist;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore -539 415 pd fist;
+#N canvas 63 46 387 182 waveIn 0;
+#X obj -18 21 inlet;
+#X obj -18 57 sel 127;
+#X msg -18 92 \; pose_rcv label Pose:Wave_In;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore -279 325 pd waveIn;
+#X obj -259 366 ctlin 16;
+#X obj -9 286 ctlin 17;
+#X obj 0 376 ctlin 18;
+#X obj 268 286 ctlin 19;
+#N canvas 0 23 387 184 Unknown 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 103 \; pose_rcv label Pose:Unknown;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 268 325 pd Unknown;
+#N canvas 0 23 449 171 doubleTap 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 102 \; pose_rcv label Pose:Double_Tap;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 0 415 pd doubleTap;
+#N canvas 0 22 413 261 waveOut 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X obj 17 101 t b b;
+#X msg 17 136 \; pose_rcv label Pose:Wave_Out;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X restore -259 405 pd waveOut;
+#X text -590 99 To know more about it \, please visit: www.balandinodidonato.com
+;
+#X text -591 -1 "dataIn" is a patch able to receive MIDI data from
+the Thalmic Myo Armband.;
+#X text -163 795 Balandino Di Donato - 2015;
+#X text -590 37 This patch has been developed by Balandino Di Donato
+as a part of his Research \, conducted at the Integra Lab of the Birmingham
+Conservatoire (Birmingham City University).;
+#X floatatom -115 503 5 0 0 0 - - -;
+#X floatatom -386 503 5 0 0 0 - - -;
+#X floatatom -373 568 5 0 0 0 - - -;
+#X floatatom -359 638 5 0 0 0 - - -;
+#X floatatom -103 568 5 0 0 0 - - -;
+#X floatatom -89 639 5 0 0 0 - - -;
+#X floatatom 155 503 5 0 0 0 - - -;
+#X floatatom 167 568 5 0 0 0 - - -;
+#X floatatom 181 639 5 0 0 0 - - -;
+#X floatatom 425 503 5 0 0 0 - - -;
+#X floatatom 437 568 5 0 0 0 - - -;
+#X floatatom 451 639 5 0 0 0 - - -;
+#X text -154 822 www.balandinodidonato.com;
+#N canvas 0 22 469 174 fingersSpread 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 102 \; pose_rcv label Pose:Fingers_Spread;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore -9 325 pd fingersSpread;
+#X obj -157 698 cnv 15 300 60 pose_snd pose_rcv Pose:Fingers_Spread
+5 30 0 25 -1 -4034 0;
+#X connect 0 0 5 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 42 0;
+#X connect 4 0 43 0;
+#X connect 5 0 44 0;
+#X connect 6 0 41 0;
+#X connect 7 0 45 0;
+#X connect 8 0 46 0;
+#X connect 9 0 6 0;
+#X connect 10 0 7 0;
+#X connect 11 0 8 0;
+#X connect 12 0 47 0;
+#X connect 13 0 48 0;
+#X connect 14 0 49 0;
+#X connect 15 0 50 0;
+#X connect 16 0 51 0;
+#X connect 17 0 52 0;
+#X connect 18 0 12 0;
+#X connect 19 0 13 0;
+#X connect 20 0 14 0;
+#X connect 21 0 15 0;
+#X connect 22 0 16 0;
+#X connect 23 0 17 0;
+#X connect 24 0 25 0;
+#X connect 26 0 28 0;
+#X connect 27 0 29 0;
+#X connect 30 0 36 0;
+#X connect 31 0 54 0;
+#X connect 32 0 35 0;
+#X connect 33 0 34 0;
+#X coords 0 652 1 651 85 60 0;
