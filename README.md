@@ -34,7 +34,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org/> 
 
 ##Connectors##
-MyoMusic include connectors for:
+Curently MyoMusic include MyoToMIDI only. 
+
+However in the next release it will include dedicated connectors for:
 
 - [Integra Live](http://integralive.org)
 - [Pure data (Pd)](http://puredata.info)
