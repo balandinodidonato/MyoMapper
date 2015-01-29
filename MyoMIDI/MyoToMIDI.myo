@@ -11,8 +11,8 @@
 
 -- For more information, please refer to <http://unlicense.org/>
 
-scriptId = 'com.balandinodidonato.Pd' -- define the script ID
-scriptTitle = "MyoPd" -- define the script title
+scriptId = 'com.balandinodidonato.MyoToMIDI' -- define the script ID
+scriptTitle = "MyoToMIDI" -- define the script title
 scriptDetailsUrl = ""    
 
 note = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 13, 14, 15, 16, 17, 18, 19}
@@ -70,7 +70,7 @@ function sendMidiValues() -- sendMidiValue() send MIDI values to IntegraLive --
         velocity[i+3] = math.floor((EMUdata[i+3]/2000)*127)
         velocity[i+6] = math.floor(((EMUdata[i+6]+1)*0.5)*127)        
     end
-    m
+    
     velocity[10] = math.floor(((EMUdata[10]+3.14)/6.28)*127)
     velocity[11] = math.floor(((EMUdata[11]+1.5)*42.33333333333333))
     velocity[12] = math.floor(((EMUdata[12]+3.14)/6.28)*127)
