@@ -15,88 +15,71 @@ scriptId = 'com.balandinodidonato.Pd' -- define the script ID
 scriptTitle = "MyoPd" -- define the script title
 scriptDetailsUrl = ""    
 
-    noteAcceleration = {1, 2, 3} -- PureData will receive the Accelaration X, Y, Z values trough the objects [ctlin 1], [ctlin 2] and [ctlin 3]
-    noteGyro = {4, 5, 6} -- PureData will receive the Gyro X, Y, Z values trough the objects [ctlin 4], [ctlin 5] and [ctlin 6]
-    noteOrientation = {7, 8, 9} -- PureData will receive the Orientation X, Y, Z values trough the objects [ctlin 7], [ctlin 8] and [ctlin 9]
-    noteYawPitchRoll = {10, 11, 12} -- PureData will receive the Yaw, Pitch and Roll values trough the objects [ctlin 10], [ctlin 11] and [ctlin 12]
-    notePose = {13, 14, 15, 16, 17, 18, 19} -- Pure data will receive the pose values trough the objects [ctlin 13], [ctlin 14], [ctlin 4], [ctlin 15], [ctlin 16], [ctlin 17], [ctlin 18] and [ctlin 19].
-
-    Pose = {0, 0, 0, 0, 0, 0, 0} -- Triggered pose: rest, fist, waveIn, waveOut, fingersSpread, doubleTap, 
-    velocityPose = {0, 0, 0, 0, 0, 0, 0} -- Pose value scaled in MIDI values.
+note = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 13, 14, 15, 16, 17, 18, 19}
+velocity = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 function onPoseEdge(pose, edge) -- Pose trigger
     myo.debug("onPoseEdge: " .. pose .. ", " .. edge) -- print out, debug function  
     if pose == "rest" then
-          Pose = {1, 0, 0, 0, 0, 0, 0}
-          velocityPose = {127, 0, 0, 0, 0, 0, 0}
-        
+            for i = 12, 19 do
+                if i==13 then velocity[i]=127 else velocity[i]=0 end
+            end
         elseif pose == "fist" then
-            Pose = {0, 1, 0, 0, 0, 0, 0} 
-            velocityPose = {0, 127, 0, 0, 0, 0, 0}
-        
+            for i = 12, 19 do
+                if i==14 then velocity[i]=127 else velocity[i]=0 end
+            end        
         elseif pose == "waveIn" then
-            Pose = {0, 0, 1, 0, 0, 0, 0}
-            velocityPose = {0, 0, 127, 0, 0, 0, 0}
-        
+            for i = 12, 19 do
+                if i==15 then velocity[i]=127 else velocity[i]=0 end
+            end        
         elseif pose == "waveOut" then
-            Pose = {0, 0, 0, 1, 0, 0, 0}
-            velocityPose = {0, 0, 0, 127, 0, 0, 0}
-                
+            for i = 12, 19 do
+                if i==16 then velocity[i]=127 else velocity[i]=0 end
+            end                 
         elseif pose == "fingersSpread" then
-            Pose = {0, 0, 0, 0, 1, 0, 0}
-            velocityPose = {0, 0, 0, 0, 127, 0, 0}
-                
+            for i = 12, 19 do
+                if i==17 then velocity[i]=127 else velocity[i]=0 end
+            end                 
         elseif pose == "doubleTap" then
-            Pose = {0, 0, 0, 0, 0, 1, 0}
-            velocityPose = {0, 0, 0, 0, 127, 0, 0}
-                
+            for i = 12, 19 do
+                if i==18 then velocity[i]=127 else velocity[i]=0 end
+            end                 
         elseif pose == "unknown" then
-            Pose = {0, 0, 0, 0, 0, 0, 1}
-            velocityPose = {0, 0, 0, 0, 0, 0, 127}
-         end
+            for i = 12, 19 do
+                if i==19 then velocity[i]=127 else velocity[i]=0 end
+            end 
+        end
 end
 
+    EMUdata = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+
 function sendMidiValues() -- sendMidiValue() send MIDI values to IntegraLive --      
-    acceleration = {}
-    acceleration[1], acceleration[2], acceleration[3]  = myo.getAccel() -- Get the acceleration of Myo in the world reference frame in units of g. World reference frame values are such that the X and Y axes are parallel to the ground while the Z axis faces up, perpendicular to the ground. Returns: Acceleration of Myo in the world reference frame. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getAccel().                                                                                         
+
+    EMUdata[1], EMUdata[2], EMUdata[3]  = myo.getAccel() -- Get the acceleration of Myo in the world reference frame in units of g. World reference frame values are such that the X and Y axes are parallel to the ground while the Z axis faces up, perpendicular to the ground. Returns: Acceleration of Myo in the world reference frame. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getAccel().                                                                                         
     direction = myo.getXDirection() -- Provides the orientation of Myo on the wearer's arm. The value represents the direction in which the positive X axis of Myo's coordinate system faces. Returns "towardWrist" if Myo's positive X axis is facing the wearer's wrist, "towardElbow" if Myo's positive X axis is facing the wearer's elbow, "unknown" if unknown.                                                                                                                               
-    gyro = {}
-    gyro[1], gyro[2], gyro[3] = myo.getGyro() -- Get the angular velocity of Myo about its axes, in radians / second. Returns: Angular velocity of Myo about its X, Y and Z axes. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getGyro().                                                                                        
-    orientation = {}
-    orientation[1], orientation[2], orientation[3] = myo.getOrientationWorld() -- Get a unit vector representing the direction Myo is facing in the world reference frame. X and Y axes are parallel to the ground, while the Z axis faces up, perpendicular to the ground. Returns Unit vector representing Myo's orientation. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getOrientationWorld().                                                                                                             
-    yaw = myo.getYaw() -- Get an angular value for Myo's orientation about its Z axis. Positive yaw indicates rotation to the wearer's right. Returns Myo "yaw" value, in radians.                                                                                                                                                  
-    pitch = myo.getPitch() -- Get an angular value for Myo's orientation about its Y axis. Positive pitch indicates the wearer moving their arm upwards, away from the ground. Returns: Myo "pitch" value, in radians.                                                                                                                                                          
-    roll = myo.getRoll() -- Get an angular value for Myo's orientation about its X axis, i.e. the wearer's arm. Positive roll indicates clockwise rotation (from the point of view of the wearer). Returns Myo "roll" value, in radians.                                                                                         
+    EMUdata[4], EMUdata[5], EMUdata[6] = myo.getGyro() -- Get the angular velocity of Myo about its axes, in radians / second. Returns: Angular velocity of Myo about its X, Y and Z axes. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getGyro().                                                                                        
+    EMUdata[7], EMUdata[7], EMUdata[9] = myo.getOrientationWorld() -- Get a unit vector representing the direction Myo is facing in the world reference frame. X and Y axes are parallel to the ground, while the Z axis faces up, perpendicular to the ground. Returns Unit vector representing Myo's orientation. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getOrientationWorld().                                                                                                             
+    EMUdata[10] = myo.getYaw() -- Get an angular value for Myo's orientation about its Z axis. Positive yaw indicates rotation to the wearer's right. Returns Myo "yaw" value, in radians.                                                                                                                                                  
+    EMUdata[11] = myo.getPitch() -- Get an angular value for Myo's orientation about its Y axis. Positive pitch indicates the wearer moving their arm upwards, away from the ground. Returns: Myo "pitch" value, in radians.                                                                                                                                                          
+    EMUdata[12] = myo.getRoll() -- Get an angular value for Myo's orientation about its X axis, i.e. the wearer's arm. Positive roll indicates clockwise rotation (from the point of view of the wearer). Returns Myo "roll" value, in radians.                                                                                         
     
-    -- Resize Myo data values into MIDI value to control the velocity of the MIDI controlChange                           
-    velocityAcceleration = {0, 0, 0}
-    velocityGyro  = {0, 0, 0}
-    velocityOrientation = {0, 0, 0}
-    yawPitchRoll = {0, 0, 0}
-    
+    -- Resize Myo data values into MIDI value to control the velocity of the MIDI controlChange                               
     for i = 1, 3 do 
-        velocityAcceleration[i] = math.floor((acceleration[i]/3)*127)
-        velocityGyro[i] = math.floor((gyro[i]/2000)*127)
-        velocityOrientation[i] = math.floor(((orientation[i]+1)*0.5)*127)
+        velocity[i] = math.floor((EMUdata[i]/3)*127)
+        velocity[i+3] = math.floor((EMUdata[i+3]/2000)*127)
+        velocity[i+6] = math.floor(((EMUdata[i+6]+1)*0.5)*127)        
     end
     
-    yawPitchRoll[1] = math.floor(((yaw+3.14)/6.28)*127)
-    yawPitchRoll[2] = math.floor(((pitch+1.5)*42.33333333333333))
-    yawPitchRoll[3] = math.floor(((roll+3.14)/6.28)*127)
-    
-    velocityYawPitchRoll = {yawPitchRoll[1], yawPitchRoll[2], yawPitchRoll[3]}
+    velocity[10] = math.floor(((EMUdata[10]+3.14)/6.28)*127)
+    velocity[11] = math.floor(((EMUdata[11]+1.5)*42.33333333333333))
+    velocity[12] = math.floor(((EMUdata[12]+3.14)/6.28)*127)
    
     -- Generation of MIDI message 
-    for i = 1, 3 do 
-        myo.midi(0, "controlChange", noteAcceleration[i], velocityAcceleration[i])
-        myo.midi(0, "controlChange", noteGyro[i], velocityGyro[i])
-        myo.midi(0, "controlChange", noteOrientation[i], velocityOrientation[i])
-        myo.midi(0, "controlChange", noteYawPitchRoll[i], velocityYawPitchRoll[i])
+    for i = 1, 19 do 
+        myo.midi(0, "controlChange", note[i], velocity[i])
     end
     
-    for i = 1, 6 do 
-        myo.midi(0, "controlChange", notePose[i], velocityPose[i])
-    end    
 end
 
 function onPeriodic() -- call the function sendMidiValues every 10 milliseconds
