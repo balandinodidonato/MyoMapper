@@ -31,7 +31,6 @@ function ExtractionEMUdata()
 end
 
 function onPoseEdge(pose, edge) -- Pose trigger
-    myo.debug("onPoseEdge: " .. pose .. ", " .. edge) -- print out, debug function  
     if pose == "rest" then
             for i = 12, 19 do
                 if i==13 then velocity[i]=127 else velocity[i]=0 end
@@ -88,7 +87,6 @@ end
 
 function onForegroundWindowChange(app, title)     -- Here we decide if we want to control the new active app.
     local wantActive = true
-    activeApp = ""
     myo.unlock("hold")
     return wantActive
 end
