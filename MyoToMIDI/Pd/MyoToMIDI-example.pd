@@ -1,0 +1,150 @@
+#N canvas 0 23 1112 851 24;
+#X obj -562 259 ctlin 3;
+#X obj -576 218 ctlin 2;
+#X obj -589 178 ctlin 1;
+#X obj -586 492 hsl 256 30 0 127 0 0 empty empty Acceleration_X 60
+16 0 15 -1 -262144 -4034 0 1;
+#X obj -573 558 hsl 256 30 0 127 0 0 empty empty Acceleration_Y 60
+16 0 15 -1 -262144 -4034 0 1;
+#X obj -559 628 hsl 256 30 0 127 0 0 empty empty Acceleration_Z 60
+16 0 15 -1 -262144 -4034 0 1;
+#X obj -316 492 hsl 256 30 0 127 0 0 empty empty Gyro_X 60 16 0 15
+-1 -262144 -4034 0 1;
+#X obj -303 558 hsl 256 30 0 127 0 0 empty empty Gyro_Y 60 16 0 15
+-1 -262144 -4034 0 1;
+#X obj -289 628 hsl 256 30 0 127 0 0 empty empty Gyro_Y 60 16 0 15
+-1 -262144 -4034 0 1;
+#X obj -319 178 ctlin 4;
+#X obj -306 218 ctlin 5;
+#X obj -292 259 ctlin 6;
+#X obj -46 492 hsl 256 30 0 127 0 0 empty empty Orientation_X 60 16
+0 15 -1 -262144 -4034 25500 1;
+#X obj -33 558 hsl 256 30 0 127 0 0 empty empty Orientation_Y 60 16
+0 15 -1 -262144 -4034 12650 1;
+#X obj -19 628 hsl 256 30 0 127 0 0 empty empty Orientation_Z 60 16
+0 15 -1 -262144 -4034 12650 1;
+#X obj 224 492 hsl 256 30 0 127 0 0 empty empty Yaw 60 16 0 15 -1 -262144
+-4034 12650 1;
+#X obj 237 558 hsl 256 30 0 127 0 0 empty empty Pitch 60 16 0 15 -1
+-262144 -4034 12650 1;
+#X obj 251 628 hsl 256 30 0 127 0 0 empty empty Roll 60 16 0 15 -1
+-262144 -4034 12650 1;
+#X obj -49 178 ctlin 7;
+#X obj -36 218 ctlin 8;
+#X obj -22 259 ctlin 9;
+#X obj 221 178 ctlin 10;
+#X obj 234 218 ctlin 11;
+#X obj 248 259 ctlin 12;
+#X obj -549 306 ctlin 13;
+#N canvas 0 22 407 200 rest 1;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 102 \; pose_rcv label Pose:Rest;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore -549 345 pd rest;
+#X obj -539 396 ctlin 14;
+#X obj -279 306 ctlin 15;
+#N canvas 0 22 335 181 fist 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 102 \; pose_rcv label Pose:Fist;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore -539 435 pd fist;
+#N canvas 63 46 387 182 waveIn 0;
+#X obj -18 21 inlet;
+#X obj -18 57 sel 127;
+#X msg -18 92 \; pose_rcv label Pose:Wave_In;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore -279 345 pd waveIn;
+#X obj -259 386 ctlin 16;
+#X obj -9 306 ctlin 17;
+#X obj 0 396 ctlin 18;
+#X obj 268 306 ctlin 19;
+#N canvas 0 23 387 184 Unknown 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 103 \; pose_rcv label Pose:Unknown;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 268 345 pd Unknown;
+#N canvas 0 23 449 171 doubleTap 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 102 \; pose_rcv label Pose:Double_Tap;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 0 435 pd doubleTap;
+#N canvas 0 22 413 261 waveOut 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X obj 17 101 t b b;
+#X msg 17 136 \; pose_rcv label Pose:Wave_Out;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X restore -259 425 pd waveOut;
+#X text -590 119 To know more about it \, please visit: www.balandinodidonato.com
+;
+#X text -591 -1 "dataIn" is a patch able to receive MIDI data from
+the Thalmic Myo Armband.;
+#X text -163 780 Balandino Di Donato - 2015;
+#X text -590 47 This patch has been developed by Balandino Di Donato
+as a part of his Research \, conducted at the Integra Lab of the Birmingham
+Conservatoire (Birmingham City University).;
+#X floatatom -115 523 5 0 0 0 - - -;
+#X floatatom -386 523 5 0 0 0 - - -;
+#X floatatom -373 588 5 0 0 0 - - -;
+#X floatatom -359 658 5 0 0 0 - - -;
+#X floatatom -103 588 5 0 0 0 - - -;
+#X floatatom -89 659 5 0 0 0 - - -;
+#X floatatom 155 523 5 0 0 0 - - -;
+#X floatatom 167 588 5 0 0 0 - - -;
+#X floatatom 181 659 5 0 0 0 - - -;
+#X floatatom 425 523 5 0 0 0 - - -;
+#X floatatom 437 588 5 0 0 0 - - -;
+#X floatatom 451 659 5 0 0 0 - - -;
+#X text -154 807 www.balandinodidonato.com;
+#N canvas 0 22 469 174 fingersSpread 0;
+#X obj 17 31 inlet;
+#X obj 17 67 sel 127;
+#X msg 17 102 \; pose_rcv label Pose:Fingers_Spread;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore -9 345 pd fingersSpread;
+#X obj -157 718 cnv 15 300 60 pose_snd pose_rcv Pose:Unknown 5 30 0
+25 -1 -4034 0;
+#X connect 0 0 5 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 42 0;
+#X connect 4 0 43 0;
+#X connect 5 0 44 0;
+#X connect 6 0 41 0;
+#X connect 7 0 45 0;
+#X connect 8 0 46 0;
+#X connect 9 0 6 0;
+#X connect 10 0 7 0;
+#X connect 11 0 8 0;
+#X connect 12 0 47 0;
+#X connect 13 0 48 0;
+#X connect 14 0 49 0;
+#X connect 15 0 50 0;
+#X connect 16 0 51 0;
+#X connect 17 0 52 0;
+#X connect 18 0 12 0;
+#X connect 19 0 13 0;
+#X connect 20 0 14 0;
+#X connect 21 0 15 0;
+#X connect 22 0 16 0;
+#X connect 23 0 17 0;
+#X connect 24 0 25 0;
+#X connect 26 0 28 0;
+#X connect 27 0 29 0;
+#X connect 30 0 36 0;
+#X connect 31 0 54 0;
+#X connect 32 0 35 0;
+#X connect 33 0 34 0;
+#X coords 0 652 1 651 85 60 0;
