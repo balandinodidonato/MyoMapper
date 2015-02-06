@@ -1,5 +1,5 @@
--- This script is able to comyunicate to Integra Live the Myo Armband data.
--- The script has been created by Balandino Di Donato. Please visit his official website: www.balandinodidonato.com.
+-- This script has been developed by Balandino Di Donato, in order to favourite the connetion between integra live and other musical application which are able to receive MIDI messages.
+-- Please visit his official website: www.balandinodidonato.com.
 
 -- This is free and unencumbered software released into the public domain.
 -- Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
