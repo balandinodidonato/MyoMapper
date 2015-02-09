@@ -69,9 +69,9 @@ function generationMIDImessages () -- Resize Myo data values into MIDI value to 
         velocity[i+6] = math.floor(((EMUdata[i+6]+1)*0.5)*127)        
     end
     
-    velocity[10] = math.floor(((EMUdata[10]+3.14)/6.28)*127)
-    velocity[11] = math.floor(((EMUdata[11]+1.5)*42.33333333333333))
-    velocity[12] = math.floor(((EMUdata[12]+3.14)/6.28)*127)
+    velocity[10] = math.floor(((EMUdata[10]+3.141592653589793)/6.28318530717959)*127)
+    velocity[11] = math.floor(((EMUdata[11]+1.5707963267949)*42.33333333333333))
+    velocity[12] = math.floor(((EMUdata[12]+3.141592653589793)/6.28318530717959)*127)
    
     for i = 1, 19 do -- Generation of MIDI message
         myo.midi(0, "controlChange", note[i], velocity[i])
