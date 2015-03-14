@@ -15,19 +15,19 @@ scriptId = 'com.balandinodidonato.MyoToMIDI' -- define the script ID
 scriptTitle = "MyoToMIDI" -- define the script title
 scriptDetailsUrl = "" 
 
-EMUdata = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+IMUdata = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 note = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 13, 14, 15, 16, 17, 18, 19}
 velocity = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
-function ExtractionEMUdata()   
-    EMUdata[1], EMUdata[2], EMUdata[3]  = myo.getAccel() -- Get the acceleration of Myo in the world reference frame in units of g. World reference frame values are such that the X and Y axes are parallel to the ground while the Z axis faces up, perpendicular to the ground. Returns: Acceleration of Myo in the world reference frame. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getAccel().                                                                                         
+function ExtractionIMUdata()   
+    IMUdata[1], IMUdata[2], IMUdata[3]  = myo.getAccel() -- Get the acceleration of Myo in the world reference frame in units of g. World reference frame values are such that the X and Y axes are parallel to the ground while the Z axis faces up, perpendicular to the ground. Returns: Acceleration of Myo in the world reference frame. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getAccel().                                                                                         
     direction = myo.getXDirection() -- Provides the orientation of Myo on the wearer's arm. The value represents the direction in which the positive X axis of Myo's coordinate system faces. Returns "towardWrist" if Myo's positive X axis is facing the wearer's wrist, "towardElbow" if Myo's positive X axis is facing the wearer's elbow, "unknown" if unknown.                                                                                                                               
-    EMUdata[4], EMUdata[5], EMUdata[6] = myo.getGyro() -- Get the angular velocity of Myo about its axes, in radians / second. Returns: Angular velocity of Myo about its X, Y and Z axes. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getGyro().                                                                                        
-    EMUdata[7], EMUdata[8], EMUdata[9] = myo.getOrientationWorld() -- Get a unit vector representing the direction Myo is facing in the world reference frame. X and Y axes are parallel to the ground, while the Z axis faces up, perpendicular to the ground. Returns Unit vector representing Myo's orientation. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getOrientationWorld().                                                                                                             
-    EMUdata[10] = myo.getYaw() -- Get an angular value for Myo's orientation about its Z axis. Positive yaw indicates rotation to the wearer's right. Returns Myo "yaw" value, in radians.                                                                                                                                                  
-    EMUdata[11] = myo.getPitch() -- Get an angular value for Myo's orientation about its Y axis. Positive pitch indicates the wearer moving their arm upwards, away from the ground. Returns: Myo "pitch" value, in radians.                                                                                                                                                          
-    EMUdata[12] = myo.getRoll() -- Get an angular value for Myo's orientation about its X axis, i.e. the wearer's arm. Positive roll indicates clockwise rotation (from the point of view of the wearer). Returns Myo "roll" value, in radians.                                                                            
+    IMUdata[4], IMUdata[5], IMUdata[6] = myo.getGyro() -- Get the angular velocity of Myo about its axes, in radians / second. Returns: Angular velocity of Myo about its X, Y and Z axes. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getGyro().                                                                                        
+    IMUdata[7], IMUdata[8], IMUdata[9] = myo.getOrientationWorld() -- Get a unit vector representing the direction Myo is facing in the world reference frame. X and Y axes are parallel to the ground, while the Z axis faces up, perpendicular to the ground. Returns Unit vector representing Myo's orientation. (Returns 3 values). Delimit return values as follows: x,y,z = myo.getOrientationWorld().                                                                                                             
+    IMUdata[10] = myo.getYaw() -- Get an angular value for Myo's orientation about its Z axis. Positive yaw indicates rotation to the wearer's right. Returns Myo "yaw" value, in radians.                                                                                                                                                  
+    IMUdata[11] = myo.getPitch() -- Get an angular value for Myo's orientation about its Y axis. Positive pitch indicates the wearer moving their arm upwards, away from the ground. Returns: Myo "pitch" value, in radians.                                                                                                                                                          
+    IMUdata[12] = myo.getRoll() -- Get an angular value for Myo's orientation about its X axis, i.e. the wearer's arm. Positive roll indicates clockwise rotation (from the point of view of the wearer). Returns Myo "roll" value, in radians.                                                                            
 end
 
 function onPoseEdge(pose, edge) -- Pose trigger
@@ -64,14 +64,14 @@ end
 
 function generationMIDImessages () -- Resize Myo data values into MIDI value to control the velocity of the MIDI controlChange                               
     for i = 1, 3 do 
-        velocity[i] = math.floor((EMUdata[i]/3)*127)
-        velocity[i+3] = math.floor((EMUdata[i+3]/2000)*127)
-        velocity[i+6] = math.floor(((EMUdata[i+6]+1)*0.5)*127)        
+        velocity[i] = math.floor((IMUdata[i]/3)*127)
+        velocity[i+3] = math.floor((IMUdata[i+3]/2000)*127)
+        velocity[i+6] = math.floor(((IMUdata[i+6]+1)*0.5)*127)        
     end
     
-    velocity[10] = math.floor(((EMUdata[10]+3.141592653589793)/6.28318530717959)*127)
-    velocity[11] = math.floor(((EMUdata[11]+1.5707963267949)*42.33333333333333))
-    velocity[12] = math.floor(((EMUdata[12]+3.141592653589793)/6.28318530717959)*127)
+    velocity[10] = math.floor(((IMUdata[10]+3.141592653589793)/6.28318530717959)*127)
+    velocity[11] = math.floor(((IMUdata[11]+1.5707963267949)*42.33333333333333))
+    velocity[12] = math.floor(((IMUdata[12]+3.141592653589793)/6.28318530717959)*127)
    
     for i = 1, 19 do -- Generation of MIDI message
         myo.midi(0, "controlChange", note[i], velocity[i])
@@ -79,7 +79,7 @@ function generationMIDImessages () -- Resize Myo data values into MIDI value to 
 end
 
 function onPeriodic() -- call the function sendMidiValues every 10 milliseconds
-    ExtractionEMUdata()
+    ExtractionIMUdata()
     generationMIDImessages()
 end
 
