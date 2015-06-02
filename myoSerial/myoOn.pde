@@ -5,7 +5,7 @@ int orZ = 0;
 
 int posX = 0;
 int posY = 0;
-int posZ = 0:
+int posZ = 0;
 
 
 void myoOn(Myo.Event event, Device myo, long timestamp) {
@@ -44,12 +44,12 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
   else if (pose == "WAVE_IN"){
         posX = 64;
         posY = 64;
-        posZ = 64:
+        posZ = 64;
         }
    else if (pose == "WAVE_OUT"){
         posX = 191;
         posY = 191;
-        posZ = 191:
+        posZ = 191;
         }
    else if (pose == "FINGERS_SPREAD"){
         posX = orX;
@@ -122,7 +122,7 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
       int avg = 0;
       int emgSum = 0;
 
-      for (i=0, i<8; i++) emgSum = EMG[i]+emgSum;
+      for (int i=0; i<8; i++) {emgSum = EMG[i] + emgSum;}
       avg = int(emgSum/8);
       println("Intesity: "+avg);
       // the value sum will gives the intensity value

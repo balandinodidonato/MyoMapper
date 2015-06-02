@@ -5,7 +5,7 @@ MidiBus myBus; // The MidiBus
 Myo myo; // Myo Device
 ArrayList<ArrayList<Integer>> sensors;
 int[] emg = new int[8];
-float[] EMG = new float[8];
+int[] EMG = new int[8];
 
 void setup() {
   size(1000, 860);
@@ -80,8 +80,6 @@ void myoOnEmg(Device myo, long timestamp, int[] data) {
   // println("Sketch: myoOnEmg");
   // int[] data <- 8 values from -128 to 127
   
-
-   
   synchronized (this){
     
    PVector orientation = myo.getOrientation();
