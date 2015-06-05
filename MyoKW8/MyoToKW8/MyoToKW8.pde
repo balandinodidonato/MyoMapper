@@ -31,17 +31,29 @@ void setup() {
   sensors = new ArrayList<ArrayList<Integer>>();
   for(int i=0; i<34; i++){
     sensors.add(new ArrayList<Integer>()); 
-  }
   
+  }
   oscP5 = new OscP5(this,12000);
   myRemoteLocation = new NetAddress("127.0.0.1",5432);
-}
+  
+  
+  circleColor = color(0,255,0);
+  rectColor = color(0,255,0);
+  circleX = width-(circleSize/2+10);
+  circleY = circleSize-5;
+  rectX = width-(rectSize+circleSize+20);
+  rectY = rectSize/2-5;
+  ellipseMode(CENTER);
+  
+  
+} 
 
 void draw() {
 
 
   background(222,222,222);
    textSize(30);
+   fill(255);
    text("EMG 1", 10, 25);
    text("EMG 2", 10, 75);
    text("EMG 3", 10, 125);
@@ -73,48 +85,13 @@ void draw() {
       } 
     }
   } 
-}
-
-// ----------------------------------------------------------
-
-void myoOnEmg(Device myo, long timestamp, int[] data) {
-  // println("Sketch: myoOnEmg");
-  // int[] data <- 8 values from -128 to 1272
-  
-
-   
-  synchronized (this){
-    
-   PVector orientation = myo.getOrientation();
-   PVector acceleration = myo.getAccelerometer();
-   PVector gyro = myo.getGyroscope();
-
-   //   println("orientation" + acceleration.x + " " + acceleration.y + " " + acceleration.z);
-   int[] imu = new int [9];
-   imu[0] = (int) map(orientation.x, 0., 1., 0, 50);
-   imu[1] = (int) map(orientation.y, 0., 1., 0, 50);
-   imu[2] = (int) map(orientation.z, 0., 1., 0, 50);
-   imu[3] = (int) map(acceleration.x, 0., 6.28318, 0, 50);
-   imu[4] = (int) map(acceleration.y, 0., 6.28318, 0, 50);
-   imu[5] = (int) map(acceleration.z, 0., 6.28318, 0, 50);
-   imu[6] = (int) map(gyro.x, 0., 1000., 0, 50);
-   imu[7] = (int) map(gyro.y, 0., 1000., 0, 50);
-   imu[8] = (int) map(gyro.z, 0., 1000., 0, 50);
-   
-  for(int i=8; i<17; i++){
-    sensors.get(i).add(imu[i-8]);}
-    
-    for(int i = 0; i<8; i++){
-      sensors.get(i).add((int) map(data[i], -128, 127, 0, 50)); // [-128 - 127]
-       
-  }
-   
-    while(sensors.get(0).size() > width){
-      for(ArrayList<Integer> sensor : sensors){
-        sensor.remove(0);
-      }
-    }
-  }
   
   
+  //------- BUTTONS ------
+  update(mouseX, mouseY);
+  fill(rectColor);
+  stroke(0);
+  rect(rectX, rectY, rectSize, rectSize);
+  fill(circleColor);
+  ellipse(circleX, circleY, circleSize, circleSize);
 }
