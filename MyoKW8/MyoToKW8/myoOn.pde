@@ -43,8 +43,8 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
      PVector orientation = myo.getOrientation();
    
     OscMessage orient = new OscMessage("/orientation");
-    pan = int(orientation.z*255);
-    tilt = int(orientation.y*255);
+    pan = abs(int(orientation.z*255)-reversePan);
+    tilt = abs(int(orientation.y*255)-reverseTilt);
     orient.add(pan);
     orient.add(tilt);
     oscP5.send(orient, myRemoteLocation);

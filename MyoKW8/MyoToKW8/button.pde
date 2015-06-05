@@ -6,45 +6,48 @@
  * the background. 
  */
  
-int rectX, rectY;      // Position of square button
-int circleX, circleY;  // Position of circle button
-int rectSize = 90;     // Diameter of rect
-int circleSize = 93;   // Diameter of circle
-color rectColor, circleColor, baseColor;
-color rectHighlight, circleHighlight;
-color currentColor;
-boolean rectOver = false;
-boolean circleOver = false;
-boolean centerYaw = true;
-boolean centerPitch = true;
-
+int rectX1, rectY1;      // Position of square button
+int circleX1, circleY1;  // Position of circle button
+int rectSize1 = 90;     // Diameter of rect
+int circleSize1 = 93;   // Diameter of circle
+color rectColor1, circleColor1, baseColor1;
+boolean rectOver1 = false;
+boolean circleOver1 = false;
+boolean reverseYaw = true;
+boolean reversePitch = true;
+int reversePan = 0;
+int reverseTilt = 0;
 
 
 void update(int x, int y) {
-  if ( overCircle(circleX, circleY, circleSize) ) {
-    circleOver = true;
-    rectOver = false;
-  } else if ( overRect(rectX, rectY, rectSize, rectSize) ) {
-    rectOver = true;
-    circleOver = false;
+  if ( overCircle(circleX1, circleY1, circleSize1) ) {
+    circleOver1 = true;
+    rectOver1 = false;
+  } else if ( overRect(rectX1, rectY1, rectSize1, rectSize1) ) {
+    rectOver1 = true;
+    circleOver1 = false;
   } else {
-    circleOver = rectOver = false;
+    circleOver1 = rectOver1 = false;
   }
 }
 
 void mousePressed() {
-  if ((rectOver)&&(centerYaw)) {
-     rectColor = color(255, 0, 0);
-     centerYaw = false;  }
- else if ((rectOver)&&(!centerYaw)) {
-     rectColor = color(0, 255, 0);
-     centerYaw = true;  }
-  else if((circleOver)&&(centerPitch)) {
-     circleColor = color(255, 0, 0);  
-     centerPitch = false;}
-  else if((circleOver)&&(!centerPitch)){
-      circleColor = color(0, 255, 0); 
-      centerPitch = true;      }
+  if ((rectOver1)&&(reverseYaw)) {
+     rectColor1 = color(255, 0, 0);
+     reverseYaw = false;  
+     reversePan=255;}
+ else if ((rectOver1)&&(!reverseYaw)) {
+     rectColor1 = color(0, 255, 0);
+     reverseYaw = true;
+     reversePan=0;}
+  else if((circleOver1)&&(reversePitch)) {
+     circleColor1 = color(255, 0, 0);  
+     reversePitch = false;
+     reverseTilt=255;}
+  else if((circleOver1)&&(!reversePitch)){
+      circleColor1 = color(0, 255, 0); 
+      reversePitch = true;
+      reverseTilt=0;}
 }
 
 boolean overRect(int x, int y, int width, int height)  {
