@@ -28,19 +28,19 @@ void setup() {
   myRemoteLocation = new NetAddress("127.0.0.1",5432);
   
   
-  circleColor1 = color(0,255,0);
-  rectColor1 = color(0,255,0);
-  circleX1 = width-(circleSize1/2+10);
-  circleY1 = circleSize1-5;
-  rectX1 = width-(rectSize1+circleSize1+20);
-  rectY1 = rectSize1/2-5;
+  colorRevPitch = color(0,255,0);
+  colorRevYaw = color(0,255,0);
+  rectRevPitchX = width-(SizeRevPitch+10);
+  rectRevPitchY = SizeRevPitch-5;
+  rectRevYawX = width-(SizeRevYaw+SizeRevPitch+20);
+  rectRevYawY = SizeRevYaw-5;
 
   circleColor2 = color(0);
-  rectColor2 = color(0);
-  circleX2 = width-(circleSize1/2+10);
-  circleY2 = circleSize1*2+10;
-  rectX2 = width-(rectSize1+circleSize1+20);
-  rectY2 = rectSize1*2-28;
+  colorCentYaw  = color(0);
+  circleX2 = width-(SizeRevPitch+10);
+  circleY2 = SizeRevPitch*2+10;
+  rectX2 = width-(SizeRevYaw*2+20);
+  rectY2 = SizeRevYaw*2+10;
 
   
 } 
@@ -52,15 +52,15 @@ void draw() {
    
     //------- BUTTONS ------
   update(mouseX, mouseY);
- fill(rectColor1);
-  rect(rectX1, rectY1, rectSize1, rectSize1);
-  fill(circleColor1);
-  ellipse(circleX1, circleY1, circleSize1, circleSize1);
+ fill(colorRevYaw);
+  rect(rectRevYawX, rectRevYawY, SizeRevYaw, SizeRevYaw);
+  fill(colorRevPitch);
+  rect(rectRevPitchX, rectRevPitchY, SizeRevPitch, SizeRevPitch);
   
-  fill(rectColor2);
+  fill(colorCentYaw );
   rect(rectX2, rectY2, rectSize2, rectSize2);
   fill(circleColor2);
-  ellipse(circleX2, circleY2, circleSize2, circleSize2);
+  rect(circleX2, circleY2, circleSize2, circleSize2);
    
    
    textSize(30);

@@ -41,21 +41,19 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     break;
  
   case ORIENTATION:
+   OscMessage orient = new OscMessage("/orientation");
     // println("myoOn ORIENTATION");
      PVector orientation = myo.getOrientation();
  
-   orY = orientation.y; // orientation.y (pitch) original value
-   orZ = orientation.z; // orientation.z (yaw) original value
+    orY = orientation.y; // orientation.y (pitch) original value
+    orZ = orientation.z; // orientation.z (yaw) original value
    
-    ORY = orY-((ORy+0.5)-1);
-    ORZ = orZ-((ORz+0.5)-1);
+    ORY = orY-((ORy+0.5)-1); // centering
+    ORZ = orZ-((ORz+0.5)-1); // centering
     
-    OscMessage orient = new OscMessage("/orientation");
-    pan = int(ORZ*255);
-    pan = abs(pan-(pan*reversePan));
-    
-    tilt = int(ORY*255);
-    tilt = abs(int(orientation.y*255)-reverseTilt);
+    pan = int(abs(ORZ-reversePan)*255); // reverse + scale
+    tilt = int(abs(ORY-reverseTilt)*255); //reverse + scale
+   
     orient.add(pan);
     orient.add(tilt);
     oscP5.send(orient, myRemoteLocation);
