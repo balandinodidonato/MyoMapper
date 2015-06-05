@@ -13,8 +13,8 @@ void myoOnEmg(Device myo, long timestamp, int[] data) {
    //   println("orientation" + acceleration.x + " " + acceleration.y + " " + acceleration.z);
    int[] imu = new int [9];
    imu[0] = (int) map(orientation.x, 0., 1., 0, 50);
-   imu[1] = (int) map(orientation.y, 0., 1., 0, 50);
-   imu[2] = (int) map(orientation.z, 0., 1., 0, 50);
+   imu[1] = int(abs(ORY-reverseTilt)*50);
+   imu[2] = int(abs(ORZ-reversePan)*50);
    imu[3] = (int) map(acceleration.x, 0., 6.28318, 0, 50);
    imu[4] = (int) map(acceleration.y, 0., 6.28318, 0, 50);
    imu[5] = (int) map(acceleration.z, 0., 6.28318, 0, 50);

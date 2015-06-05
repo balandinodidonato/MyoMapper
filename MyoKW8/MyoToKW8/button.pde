@@ -60,15 +60,15 @@ void mousePressed() {
   if ((rectOver1)&&(reverseYaw)) {
      rectColor1 = color(255, 0, 0);
      reverseYaw = false;  
-     reversePan=255;}
+     reversePan=1;} //reverse pan/yaw
  else if ((rectOver1)&&(!reverseYaw)) {
      rectColor1 = color(0, 255, 0);
      reverseYaw = true;
-     reversePan=0;}
+     reversePan=0;} //reverse tilt/pitch
   else if((circleOver1)&&(reversePitch)) {
      circleColor1 = color(255, 0, 0);  
      reversePitch = false;
-     reverseTilt=255;}
+     reverseTilt=1;}
   else if((circleOver1)&&(!reversePitch)){
       circleColor1 = color(0, 255, 0); 
       reversePitch = true;
@@ -76,9 +76,11 @@ void mousePressed() {
  
  
   else if (rectOver2) {
-    println("11111111");}
+   ORz = orZ;
+  }
  else if (circleOver2) {
-   println("22222222");}
+      ORy = orY;
+ }
 }
 
 boolean overRect1(int x, int y, int width, int height)  {

@@ -13,7 +13,6 @@ String pose;
 
 void setup() {
   size(1000, 900);
-  background(0.5);
 
   myo = new Myo(this);
   myo.withEmg();
@@ -42,7 +41,6 @@ void setup() {
   circleY2 = circleSize1*2+10;
   rectX2 = width-(rectSize1+circleSize1+20);
   rectY2 = rectSize1*2-28;
-  ellipseMode(CENTER);  
 
   
 } 
@@ -50,7 +48,21 @@ void setup() {
 void draw() {
 
 
-  background(222,222,222);
+   background(222,222,222);
+   
+    //------- BUTTONS ------
+  update(mouseX, mouseY);
+ fill(rectColor1);
+  rect(rectX1, rectY1, rectSize1, rectSize1);
+  fill(circleColor1);
+  ellipse(circleX1, circleY1, circleSize1, circleSize1);
+  
+  fill(rectColor2);
+  rect(rectX2, rectY2, rectSize2, rectSize2);
+  fill(circleColor2);
+  ellipse(circleX2, circleY2, circleSize2, circleSize2);
+   
+   
    textSize(30);
    fill(255);
    text("EMG 1", 10, 25);
@@ -71,7 +83,7 @@ void draw() {
    text("GYRO Y", 10, 775);
    text("GYRO Z", 10, 825);
    text("POSE: "+pose, 10, 875); 
-  
+   noFill();
   synchronized (this){
     for(int i=0; i<17; i++){
       if(!sensors.get(i).isEmpty()){
@@ -84,18 +96,4 @@ void draw() {
     }
   } 
   
-  
-  //------- BUTTONS ------
-  update(mouseX, mouseY);
-  fill(rectColor1);
-  stroke(0);
-  rect(rectX1, rectY1, rectSize1, rectSize1);
-  fill(circleColor1);
-  ellipse(circleX1, circleY1, circleSize1, circleSize1);
-  
-  fill(rectColor2);
-  stroke(0);
-  rect(rectX2, rectY2, rectSize2, rectSize2);
-  fill(circleColor2);
-  ellipse(circleX2, circleY2, circleSize2, circleSize2);
 }

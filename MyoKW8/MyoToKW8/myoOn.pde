@@ -4,6 +4,8 @@ int[] EMG = new int[8];
 int pan = 0;
 int tilt = 0;
 int intesity = 0;
+float orY, ORy, ORY;
+float orZ, ORz, ORZ;
 
 void myoOn(Myo.Event event, Device myo, long timestamp) {
   
@@ -41,9 +43,18 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
   case ORIENTATION:
     // println("myoOn ORIENTATION");
      PVector orientation = myo.getOrientation();
+ 
+   orY = orientation.y; // orientation.y (pitch) original value
+   orZ = orientation.z; // orientation.z (yaw) original value
    
+    ORY = orY-((ORy+0.5)-1);
+    ORZ = orZ-((ORz+0.5)-1);
+    
     OscMessage orient = new OscMessage("/orientation");
-    pan = abs(int(orientation.z*255)-reversePan);
+    pan = int(ORZ*255);
+    pan = abs(pan-(pan*reversePan));
+    
+    tilt = int(ORY*255);
     tilt = abs(int(orientation.y*255)-reverseTilt);
     orient.add(pan);
     orient.add(tilt);
@@ -83,7 +94,7 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
   case EMG:  
       int intensity = 0;
       int emgSum = 0;
-      int emg[] = myo.getEmg();
+      int emg[] = myo.getEmg(); // array of EMG data
      
  //     OscMessage Emg = new OscMessage("/emg0");
       OscMessage emgAvg = new OscMessage("/intesity");
