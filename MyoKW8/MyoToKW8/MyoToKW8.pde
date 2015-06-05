@@ -35,7 +35,15 @@ void setup() {
   circleY1 = circleSize1-5;
   rectX1 = width-(rectSize1+circleSize1+20);
   rectY1 = rectSize1/2-5;
+
+  circleColor2 = color(0);
+  rectColor2 = color(0);
+  circleX2 = width-(circleSize1/2+10);
+  circleY2 = circleSize1*2+10;
+  rectX2 = width-(rectSize1+circleSize1+20);
+  rectY2 = rectSize1*2-28;
   ellipseMode(CENTER);  
+
   
 } 
 
@@ -84,4 +92,10 @@ void draw() {
   rect(rectX1, rectY1, rectSize1, rectSize1);
   fill(circleColor1);
   ellipse(circleX1, circleY1, circleSize1, circleSize1);
+  
+  fill(rectColor2);
+  stroke(0);
+  rect(rectX2, rectY2, rectSize2, rectSize2);
+  fill(circleColor2);
+  ellipse(circleX2, circleY2, circleSize2, circleSize2);
 }

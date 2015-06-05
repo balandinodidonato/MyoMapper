@@ -48,14 +48,14 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     orient.add(pan);
     orient.add(tilt);
     oscP5.send(orient, myRemoteLocation);
-    println("PAN: "+pan);
-    println("TILT: "+tilt);
+//    println("PAN: "+pan);
+//    println("TILT: "+tilt);
     break;
  
   case ACCELEROMETER:
     // println("myoOn ACCELEROMETER");
       PVector acceleration = myo.getAccelerometer();
-   println("acceleration" + acceleration.x + " " + acceleration.y + " " + acceleration.z);
+//   println("acceleration" + acceleration.x + " " + acceleration.y + " " + acceleration.z);
 /*      OscMessage accelerometer = new OscMessage("/acceleration0");
     accelerometer.add(acceleration.x);
     accelerometer.add(acceleration.y);
@@ -97,7 +97,7 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
       intensity = emgSum/8; // average calculation
       emgAvg.add(intensity);
     
-      println("Intesity: "+intensity);
+ //     println("Intesity: "+intensity);
 
   //    oscP5.send(Emg, myRemoteLocation);
       oscP5.send(emgAvg, myRemoteLocation);
