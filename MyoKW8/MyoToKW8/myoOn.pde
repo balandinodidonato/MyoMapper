@@ -1,9 +1,10 @@
 int[] EMG = new int[8];
 
 // ----------------------------------------------------------
-int pan = 0;
-int tilt = 0;
+int yaw, pitch, roll = 0;
 int intesity = 0;
+
+float orX, ORx, ORX;
 float orY, ORy, ORY;
 float orZ, ORz, ORZ;
 
@@ -44,21 +45,24 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
    OscMessage orient = new OscMessage("/orientation");
     // println("myoOn ORIENTATION");
      PVector orientation = myo.getOrientation();
- 
+    orX = orientation.x; // orientation.y (roll) original value
     orY = orientation.y; // orientation.y (pitch) original value
     orZ = orientation.z; // orientation.z (yaw) original value
-   
+    
+    ORX = orX-((ORx+0.5)-1); // centering
     ORY = orY-((ORy+0.5)-1); // centering
     ORZ = orZ-((ORz+0.5)-1); // centering
     
-    pan = int(abs(ORZ-reverseYaw)*255); // reverse + scale
-    tilt = int(abs(ORY-reversePitch)*255); //reverse + scale
+    yaw = int(abs(ORZ-reverseYaw)*255); // reverse + scale
+    pitch = int(abs(ORY-reversePitch)*255); //reverse + scale
+    roll = int(abs(ORX-reverseRoll)*255); // reverse + scale
    
-    orient.add(pan);
-    orient.add(tilt);
+    orient.add(yaw);
+    orient.add(pitch);
+    orient.add(roll);
     oscP5.send(orient, myRemoteLocation);
-//    println("PAN: "+pan);
-//    println("TILT: "+tilt);
+//    println("PAN: "+yaw);
+//    println("TILT: "+pitch);
     break;
  
   case ACCELEROMETER:
