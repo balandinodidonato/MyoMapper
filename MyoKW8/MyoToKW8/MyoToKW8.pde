@@ -76,13 +76,18 @@ integralogo = loadImage("blue-integra.png"); //
   centRollButton = new Bng(centRollBngX, centRollBngY, centRollBngSize);
   
 //Bang settings
+   integralogo.resize(integralogo.width/2,integralogo.height/2);
 
   
 } 
 
+
+
+
 void draw() {
-   background(222,222,222); //background color
-   image(integralogo, width/2, height/2); // display integra logo
+   background(0); //background color
+   image(integralogo, width-integralogo.width, 0); // display integra logo
+
    noFill();
  
    synchronized (this){
@@ -124,7 +129,7 @@ if (centYawButton.status){ORz=orZ;}
    
  // ---   LABELS -------
    textSize(30);
-   fill(#245993);
+   fill(#ffb600);
    
    // title
       
@@ -157,6 +162,7 @@ if (centYawButton.status){ORz=orZ;}
    text("REV", revYawTglX-revYawTglSize-20, revYawTglY+(revYawTglSize/2));
    text("CENT", revYawTglX-revYawTglSize-20, centYawBngY+(centYawBngSize/1.5));
    noFill();
+
 
   
 }

@@ -4,9 +4,9 @@ int[] EMG = new int[8];
 int yaw, pitch, roll = 0;
 int intesity = 0;
 
-float orX, ORx, ORX;
-float orY, ORy, ORY;
-float orZ, ORz, ORZ;
+float orX, ORx, ORX = 0;
+float orY, ORy, ORY = 0;
+float orZ, ORz, ORZ = 0;
 
 void myoOn(Myo.Event event, Device myo, long timestamp) {
   
@@ -49,9 +49,9 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     orY = orientation.y; // orientation.y (pitch) original value
     orZ = orientation.z; // orientation.z (yaw) original value
     
-    ORX = orX-((ORx+0.5)-1); // centering
-    ORY = orY-((ORy+0.5)-1); // centering
-    ORZ = orZ-((ORz+0.5)-1); // centering
+    ORX = orX-((ORx-0.5)+1); // centering
+    ORY = orY-((ORy-0.5)+1); // centering
+    ORZ = abs(orZ-((ORz-0.5)+1)); // centering
     
     roll = int(abs(ORX-reverseRoll)*255); // reverse + scale
     pitch = int(abs(ORY-reversePitch)*255); //reverse + scale

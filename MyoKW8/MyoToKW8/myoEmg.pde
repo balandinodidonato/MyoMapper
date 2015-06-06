@@ -5,7 +5,7 @@ void myoOnEmg(Device myo, long timestamp, int[] data) {
 
    
   synchronized (this){
-    
+       stroke(255);
    PVector orientation = myo.getOrientation();
    PVector acceleration = myo.getAccelerometer();
    PVector gyro = myo.getGyroscope();
