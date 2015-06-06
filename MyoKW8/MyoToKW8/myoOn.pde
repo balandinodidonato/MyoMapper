@@ -51,8 +51,8 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     ORY = orY-((ORy+0.5)-1); // centering
     ORZ = orZ-((ORz+0.5)-1); // centering
     
-    pan = int(abs(ORZ-reversePan)*255); // reverse + scale
-    tilt = int(abs(ORY-reverseTilt)*255); //reverse + scale
+    pan = int(abs(ORZ-reverseYaw)*255); // reverse + scale
+    tilt = int(abs(ORY-reversePitch)*255); //reverse + scale
    
     orient.add(pan);
     orient.add(tilt);
