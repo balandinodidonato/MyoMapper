@@ -1,4 +1,7 @@
 
+// integra Logo
+PImage integralogo;
+
 // osc
 import oscP5.*;
 import netP5.*;
@@ -30,7 +33,9 @@ int centPitchBngX, centPitchBngY, centPitchBngSize, centrePitch = 0; // Centre P
 int centRollBngX, centRollBngY, centRollBngSize, centreRoll = 0; // Centre Roll bng
 
 void setup() {
-  size(1000, 900); //window size
+  size(1000, 850); //window size
+
+integralogo = loadImage("blue-integra.png"); // 
 
 // Myo settingd
   myo = new Myo(this);
@@ -49,22 +54,22 @@ void setup() {
   int centering= 100;
  
  // Tgl settings
-  revYawTglX = width/2;
+  revYawTglX = width/2-100;
   revYawTglSize = revPitchTglSize = revRollTglSize = 70;
   revPitchTglX = revYawTglX + revYawTglSize +30;
   revRollTglX = revPitchTglX + revPitchTglSize +30;
-  revYawTglY = revPitchTglY = revRollTglY = 50;
+  revYawTglY = revPitchTglY = revRollTglY = 100;
  
   revYawButton = new Tgl(revYawTglX, revYawTglY, revYawTglSize);
   revPitchButton = new Tgl(revPitchTglX, revPitchTglY, revPitchTglSize);
   revRollButton = new Tgl(revRollTglX, revRollTglY, revRollTglSize);
 
  // Bng settings
-  centYawBngX = width/2;
+  centYawBngX = revYawTglX;
   centYawBngSize = centPitchBngSize = centRollBngSize = 70;
   centPitchBngX = centYawBngX + centYawBngSize +30;
   centRollBngX = centPitchBngX + centPitchBngSize +30;
-  centYawBngY = centPitchBngY = centRollBngY = revYawTglY*2+30;
+  centYawBngY = centPitchBngY = centRollBngY = revYawTglY+revYawTglSize+10;
 
   centYawButton = new Bng(centYawBngX, centYawBngY, centYawBngSize);
   centPitchButton = new Bng(centPitchBngX, centPitchBngY, centPitchBngSize);
@@ -76,8 +81,8 @@ void setup() {
 } 
 
 void draw() {
-
    background(222,222,222); //background color
+   image(integralogo, width/2, height/2); // display integra logo
    noFill();
  
    synchronized (this){
@@ -114,37 +119,41 @@ if (revRollButton.status){reverseRoll=1;}
 else if (!revRollButton.status){reverseRoll=0;}
 
 if (centRollButton.status){ORx=orX;}
-if (centPitchButton.status){ORy=orX;}
-if (centYawButton.status){ORz=orX;}
+if (centPitchButton.status){ORy=orY;}
+if (centYawButton.status){ORz=orZ;}
    
  // ---   LABELS -------
    textSize(30);
-   fill(255);
+   fill(#245993);
    
+   // title
+      
    // graph
-   text("EMG 1", 10, 25);
-   text("EMG 2", 10, 75);
-   text("EMG 3", 10, 125);
-   text("EMG 4", 10, 175);
-   text("EMG 5", 10, 225);
-   text("EMG 6", 10, 275);
-   text("EMG 7", 10, 325);
-   text("EMG 8", 10, 375);
-   text("ROLL", 10, 425);
-   text("PITCH", 10, 475);
-   text("YAW", 10, 525);
-   text("ACCELLERATION X", 10, 575);
-   text("ACCELLERATION Y", 10, 625);
-   text("ACCELLERATION Z", 10, 675);
-   text("GYRO X", 10, 725);
-   text("GYRO Y", 10, 775);
-   text("GYRO Z", 10, 825);
-   text("POSE: "+pose, 10, 875); 
+   text("EMG 1", 10, 35);
+   text("EMG 2", 10, 85);
+   text("EMG 3", 10, 135);
+   text("EMG 4", 10, 185);
+   text("EMG 5", 10, 235);
+   text("EMG 6", 10, 285);
+   text("EMG 7", 10, 335);
+   text("EMG 8", 10, 385);
+   text("ROLL", 10, 435);
+   text("PITCH", 10, 485);
+   text("YAW", 10, 535);
+   text("ACCELLERATION X", 10, 585);
+   text("ACCELLERATION Y", 10, 635);
+   text("ACCELLERATION Z", 10, 685);
+   text("GYRO X", 10, 735);
+   text("GYRO Y", 10, 785);
+   text("GYRO Z", 10, 835);
+   text("POSE: "+pose, revYawTglX-revYawTglSize-20, 300); 
    
-   // buttons
-   text("YAW", revYawTglX, revYawTglY-10);
-   text("PITCH", revPitchTglX-7, revPitchTglY-10);
-   text("ROLL", revRollTglX, revRollTglY-10);
+   // control pannel
+   // data control
+   text("------ DATA CONTROL ------", revYawTglX-110, revYawTglY-70);
+   text("YAW", revYawTglX, revYawTglY-20);
+   text("PITCH", revPitchTglX-7, revPitchTglY-20);
+   text("ROLL", revRollTglX, revRollTglY-20);
    text("REV", revYawTglX-revYawTglSize-20, revYawTglY+(revYawTglSize/2));
    text("CENT", revYawTglX-revYawTglSize-20, centYawBngY+(centYawBngSize/1.5));
    noFill();

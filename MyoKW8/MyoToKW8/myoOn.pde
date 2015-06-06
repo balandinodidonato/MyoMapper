@@ -53,16 +53,17 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     ORY = orY-((ORy+0.5)-1); // centering
     ORZ = orZ-((ORz+0.5)-1); // centering
     
-    yaw = int(abs(ORZ-reverseYaw)*255); // reverse + scale
-    pitch = int(abs(ORY-reversePitch)*255); //reverse + scale
     roll = int(abs(ORX-reverseRoll)*255); // reverse + scale
+    pitch = int(abs(ORY-reversePitch)*255); //reverse + scale
+    yaw = int(abs(ORZ-reverseYaw)*255); // reverse + scale
+    
+   
    
     orient.add(yaw);
     orient.add(pitch);
     orient.add(roll);
+    
     oscP5.send(orient, myRemoteLocation);
-//    println("PAN: "+yaw);
-//    println("TILT: "+pitch);
     break;
  
   case ACCELEROMETER:

@@ -15,12 +15,12 @@ void myoOnEmg(Device myo, long timestamp, int[] data) {
    imu[0] = (int) map(orientation.x, 0., 1., 0, 50);
    imu[1] = int(abs(ORY-reversePitch)*50);
    imu[2] = int(abs(ORZ-reverseYaw)*50);
-   imu[3] = (int) map(acceleration.x, 0., 6.28318, 0, 50);
-   imu[4] = (int) map(acceleration.y, 0., 6.28318, 0, 50);
-   imu[5] = (int) map(acceleration.z, 0., 6.28318, 0, 50);
-   imu[6] = (int) map(gyro.x, 0., 1000., 0, 50);
-   imu[7] = (int) map(gyro.y, 0., 1000., 0, 50);
-   imu[8] = (int) map(gyro.z, 0., 1000., 0, 50);
+   imu[3] = (int) map((acceleration.x/2)+3.141592653589793, 0., 6.28318, 0, 50);
+   imu[4] = (int) map((acceleration.y/2)+3.141592653589793, 0., 6.28318, 0, 50);
+   imu[5] = (int) map((acceleration.z/2)+3.141592653589793, 0., 6.28318, 0, 50);
+   imu[6] = (int) map((gyro.x/2)+500, 0., 1000., 0, 50);
+   imu[7] = (int) map((gyro.y/2)+500, 0., 1000., 0, 50);
+   imu[8] = (int) map((gyro.z/2)+500, 0., 1000., 0, 50);
    
   for(int i=8; i<17; i++){
     sensors.get(i).add(imu[i-8]);}
