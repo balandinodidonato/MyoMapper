@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 17.0, 79.0, 490.0, 658.0 ],
+		"rect" : [ 34.0, 79.0, 490.0, 658.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -314,21 +314,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 270.5, 132.0, 141.0, 20.0 ],
+					"patching_rect" : [ 270.5, 90.0, 141.0, 20.0 ],
 					"style" : "",
 					"text" : "print all OSC messages."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-10",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 228.0, 132.0, 34.0, 22.0 ],
-					"style" : "",
-					"text" : "print"
 				}
 
 			}
@@ -1272,9 +1260,9 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 70.0, 132.0, 145.0, 22.0 ],
+					"patching_rect" : [ 70.0, 132.0, 159.0, 22.0 ],
 					"style" : "",
-					"text" : "route /orientation /intesity"
+					"text" : "route /orientationS /emgAvg"
 				}
 
 			}
@@ -1347,15 +1335,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-19", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-2", 1 ]
 				}
 
 			}
