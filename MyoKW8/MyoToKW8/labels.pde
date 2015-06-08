@@ -1,7 +1,17 @@
 void labels(){
+   noStroke();
+   fill(#ffb600);   
 
+   textSize(35);
+  text("MyoToKW8", width/2+cons.width/3,40);
+
+   textSize(15);
+   text("MyoToKW8 is an appliation which allows the user to drive a K-Array KW8", width-cons.width, 80);
+   text("speakers, using the Myo Armband and the K-Array KW8 manager.", width-cons.width, 95);
+
+   noFill();
    textSize(30);
-   fill(#ffb600);
+   
    
    // title
       
@@ -27,7 +37,9 @@ void labels(){
    // control pannel
    // data control
    
-   text("- DATA CONTROL -", revYawTglX-revYawTglSize+20, revYawTglY-70);
+   textSize(25);
+
+   text("- -  DATA CONTROL  - - ", revYawTglX-revYawTglSize+20, revYawTglY-50);
    textSize(20);
    text("YAW", revYawTglX, revYawTglY-20);
    text("PITCH", revPitchTglX-7, revPitchTglY-20);
@@ -38,4 +50,6 @@ void labels(){
    text("POSE: "+pose, revYawTglX-revYawTglSize-20, centRollBngY+centRollBngSize+350); 
 
    noFill();
+   
+   
 }

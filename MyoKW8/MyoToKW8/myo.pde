@@ -16,10 +16,13 @@ void myoSetup(){
   }
 }
 
+
+
 void emgGraphs(){
   
-     noFill();
- 
+   noFill();
+   stroke(255);
+
    synchronized (this){
     for(int i=0; i<17; i++){
       if(!sensors.get(i).isEmpty()){

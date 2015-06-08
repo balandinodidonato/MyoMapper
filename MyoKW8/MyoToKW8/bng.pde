@@ -3,7 +3,7 @@ class Bng{
   int x = 0;
   int y = 0;
   int circleSize = 10;
-  int Cbutton = color(50);
+  int Cbutton = color(100);
   float size = 1;
   boolean circleOver = false;  
   boolean status = false;  // init button status
@@ -17,10 +17,15 @@ class Bng{
     
   }
   
+  
+  
 void display(){
+  noStroke();
   fill(Cbutton);
   ellipse(x, y, circleSize, circleSize);
 }
+  
+  
   
 void run(){
   
@@ -43,6 +48,8 @@ void run(){
     mouse = 0;
 }  
 
+
+
 void update() {  // test the position of the mouse over the button
   if ( overCircle(x, y, circleSize) ) 
     { circleOver = true; 
@@ -53,6 +60,8 @@ void update() {  // test the position of the mouse over the button
      // println("overCircle = "+circleOver);
      }
 } 
+
+
 
 boolean overCircle(int x, int y, int diameter) {
   float disX = x - mouseX;
@@ -65,5 +74,4 @@ boolean overCircle(int x, int y, int diameter) {
 }
 
 
-//----- end class
 }

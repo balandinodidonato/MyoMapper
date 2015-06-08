@@ -5,7 +5,7 @@ void myoOnEmg(Device myo, long timestamp, int[] data) {
 
    
   synchronized (this){
-       stroke(255);
+
    PVector orientation = myo.getOrientation();
    PVector acceleration = myo.getAccelerometer();
    PVector gyro = myo.getGyroscope();
@@ -24,14 +24,16 @@ void myoOnEmg(Device myo, long timestamp, int[] data) {
    
   for(int i=8; i<17; i++){
     sensors.get(i).add(imu[i-8]);}
-    
+
     for(int i = 0; i<8; i++){
       sensors.get(i).add((int) map(data[i], -128, 127, 0, 50)); // [-128 - 127]
        
   }
    
     while(sensors.get(0).size() > width/2){
+
       for(ArrayList<Integer> sensor : sensors){
+
         sensor.remove(0);
       }
     }

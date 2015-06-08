@@ -19,8 +19,8 @@ Slider(int posX, int posY, int Width, int Height){
 
 
 void display(){
-
-  fill(50, 50, 255); // colour background
+  noStroke();
+  fill(#245993); // colour background
   rect(x0Bg, y0Bg, x1Bg, y1Bg); // background
   fill(100); // colour slider
   rect(x0slider, y0slider, x1slider, y1slider); // slider

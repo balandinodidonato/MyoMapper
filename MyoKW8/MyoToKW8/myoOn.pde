@@ -42,7 +42,9 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     break;
  
   case ORIENTATION:
+   OscMessage orientS = new OscMessage("/orientationS");
    OscMessage orient = new OscMessage("/orientation");
+
     // println("myoOn ORIENTATION");
      PVector orientation = myo.getOrientation();
      
@@ -79,11 +81,18 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     pitch = int(abs(ORY-reversePitch)*255); // reverse + scale
     yaw = int(abs(ORZ-reverseYaw)*255); // reverse + scale
       
-    orient.add(yaw);
-    orient.add(pitch);
-    orient.add(roll);
-    
-    oscP5.send(orient, myRemoteLocation);
+    orientS.add(yaw);
+    orientS.add(pitch);
+    orientS.add(roll);
+
+    orientS.add(orientation.x);
+    orientS.add(orientation.y);
+    orientS.add(orientation.z);
+ 
+    oscP5.send(orient, myRemoteLocation);   
+    oscP5.send(orientS, myRemoteLocation);
+
+
     break;
  
   case ACCELEROMETER:
