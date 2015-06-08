@@ -6,8 +6,10 @@ void labels(){
   text("MyoToKW8", width/2+cons.width/3,40);
 
    textSize(15);
-   text("MyoToKW8 is an appliation which allows the user to drive a K-Array KW8", width-cons.width, 80);
-   text("speakers, using the Myo Armband and the K-Array KW8 manager.", width-cons.width, 95);
+   text("MyoToKW8 is an appliation which allows the user to drive a K-Array KW8", width-cons.width, 65);
+   text("speakers, using the Myo Armband and the K-Array KW8 manager.", width-cons.width, 85);
+   text("This application Myo Data trough OSC at the port 5432.", width-cons.width, 105);
+
 
    noFill();
    textSize(30);
