@@ -41,7 +41,7 @@ void run(){
          mouse++;  
      }
      else {status = false;
-           Cbutton = color(50);}
+           Cbutton = color(100);}
      
    }
    else if((!mousePressed)&&(circleOver))
