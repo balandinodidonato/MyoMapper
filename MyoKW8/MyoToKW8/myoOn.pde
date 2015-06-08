@@ -1,12 +1,12 @@
 int[] EMG = new int[8];
 
-// ----------------------------------------------------------
-int yaw, pitch, roll = 0;
+int yaw, pitch, roll;
 int intesity = 0;
 
 float orX, ORx, ORX = 0;
 float orY, ORy, ORY = 0;
 float orZ, ORz, ORZ = 0;
+int intensity = 0;
 
 void myoOn(Myo.Event event, Device myo, long timestamp) {
   
@@ -45,20 +45,40 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
    OscMessage orient = new OscMessage("/orientation");
     // println("myoOn ORIENTATION");
      PVector orientation = myo.getOrientation();
+     
     orX = orientation.x; // orientation.y (roll) original value
     orY = orientation.y; // orientation.y (pitch) original value
     orZ = orientation.z; // orientation.z (yaw) original value
+   
+    ORZ = ORz-(orZ-0.5); // centering YAW
+    ORY = ORy-(orY-0.5); // centering PITCH
+    ORX = ORx-(orX-0.5); // centering ROLL
+
+    println(ORz);
+    println(ORX);
+    /* 
+    ORZ = orZ-ORz-0.5; // centering YAW
+    ORY = orY-ORY-0.5; // centering PITCH
+    ORX = orX-ORX-0.5; // centering ROLL
+
+   */ 
+    if(ORZ<0) {ORZ = 1+ORZ;}
+    else if (ORZ>1) {ORZ = 1-ORZ;}
+    else  {ORZ = ORZ;}
     
-    ORX = orX-((ORx-0.5)+1); // centering
-    ORY = orY-((ORy-0.5)+1); // centering
-    ORZ = abs(orZ-((ORz-0.5)+1)); // centering
+    if(ORY<0) {ORY = 1+ORY;}
+    else if (ORY>1) {ORY = 1-ORY;}
+    else  {ORY = ORY;}
+    
+    if(ORX<0) {ORX = 1+ORX;}
+    else if (ORX>1) {ORX = 1-ORX;}
+    else  {ORX = ORX;}  
+    
     
     roll = int(abs(ORX-reverseRoll)*255); // reverse + scale
-    pitch = int(abs(ORY-reversePitch)*255); //reverse + scale
+    pitch = int(abs(ORY-reversePitch)*255); // reverse + scale
     yaw = int(abs(ORZ-reverseYaw)*255); // reverse + scale
-    
-   
-   
+      
     orient.add(yaw);
     orient.add(pitch);
     orient.add(roll);
@@ -95,26 +115,28 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     break;
  
   case EMG:  
-      int intensity = 0;
       int emgSum = 0;
       int emg[] = myo.getEmg(); // array of EMG data
      
  //     OscMessage Emg = new OscMessage("/emg0");
-      OscMessage emgAvg = new OscMessage("/intesity");
-      
+      OscMessage emgAvg = new OscMessage("/emgAvg");
+      OscMessage Emg = new OscMessage("/emg");
+
       for(int i=0; i<8; i++){
       EMG[i]= abs(emg[i])+127; // rescale EMG data
       emgSum = EMG[i] + emgSum; // EMG sum for avg calculation
-  //    Emg.add(EMG[i]);  // add emg value to /emg0 message
+      emg[i] = abs(emg[i]);  // add emg value to /emg0 message
       }
      
-      intensity = emgSum/8; // average calculation
+      intensity = abs(emgSum/8-reverseEmg); // average calculation
       emgAvg.add(intensity);
+      Emg.add(emg);
     
  //     println("Intesity: "+intensity);
 
   //    oscP5.send(Emg, myRemoteLocation);
       oscP5.send(emgAvg, myRemoteLocation);
+      oscP5.send(Emg, myRemoteLocation);
 
     break;
   }

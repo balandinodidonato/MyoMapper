@@ -30,7 +30,7 @@ void myoOnEmg(Device myo, long timestamp, int[] data) {
        
   }
    
-    while(sensors.get(0).size() > width){
+    while(sensors.get(0).size() > width/2){
       for(ArrayList<Integer> sensor : sensors){
         sensor.remove(0);
       }
