@@ -12,7 +12,7 @@ void labels(){
 
 
    noFill();
-   textSize(30);
+   textSize(28);
    
    
    // title
@@ -26,15 +26,15 @@ void labels(){
    text("EMG 6", 10, 285);
    text("EMG 7", 10, 335);
    text("EMG 8", 10, 385);
-   text("ROLL", 10, 435);
+   text("YAW", 10, 435);
    text("PITCH", 10, 485);
-   text("YAW", 10, 535);
+   text("ROLL", 10, 535);
    text("ACC X", 10, 585);
    text("ACC Y", 10, 635);
    text("ACC Z", 10, 685);
-   text("GYRO X", 10, 735);
-   text("GYRO Y", 10, 785);
-   text("GYRO Z", 10, 835);
+   text("GYR X", 10, 735);
+   text("GYR Y", 10, 785);
+   text("GYR Z", 10, 835);
    
    // control pannel
    // data control
@@ -49,7 +49,12 @@ void labels(){
    text("EMG", revEmgTglX, revRollTglY-20);
    text("REV", revYawTglX-revYawTglSize-20, revYawTglY+(revYawTglSize/2));
    text("CENT", revYawTglX-revYawTglSize-20, centYawBngY+(centYawBngSize/1.5));
-   text("POSE: "+pose, revYawTglX-revYawTglSize-20, centRollBngY+centRollBngSize+350); 
+   textSize(28);
+   text("POSE: "+pose, revYawTglX-revYawTglSize-60, centRollBngY+centRollBngSize+350); 
+
+   textSize(15);
+   
+   
 
    noFill();
    

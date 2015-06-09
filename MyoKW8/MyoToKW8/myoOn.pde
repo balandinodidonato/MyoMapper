@@ -8,6 +8,11 @@ float orY, ORy, ORY = 0;
 float orZ, ORz, ORZ = 0;
 int intensity = 0;
 
+int accSx, accSy, accSz = 0;
+int gyroSx, gyroSy, gyroSz = 0;
+
+int poseOSC, poseOSCs = 0;
+
 void myoOn(Myo.Event event, Device myo, long timestamp) {
   
   switch(event) {
@@ -35,10 +40,12 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     break;
   case POSE:
     println("myoOn POSE");
-//    OscMessage Pose = new OscMessage("/pose");
+    OscMessage Pose = new OscMessage("/pose");
+    
     pose = myo.getPose();
-//    Pose.add(myo.getPose());
-//    oscP5.send(Pose, myRemoteLocation);
+    
+    Pose.add(poseOSC);
+    oscP5.send(Pose, myRemoteLocation);
     break;
  
   case ORIENTATION:
@@ -80,7 +87,7 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     roll = int(abs(ORX-reverseRoll)*255); // reverse + scale
     pitch = int(abs(ORY-reversePitch)*255); // reverse + scale
     yaw = int(abs(ORZ-reverseYaw)*255); // reverse + scale
-      
+    
     orientS.add(yaw);
     orientS.add(pitch);
     orientS.add(roll);
@@ -99,24 +106,48 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     // println("myoOn ACCELEROMETER");
       PVector acceleration = myo.getAccelerometer();
 //   println("acceleration" + acceleration.x + " " + acceleration.y + " " + acceleration.z);
-/*      OscMessage accelerometer = new OscMessage("/acceleration0");
-    accelerometer.add(acceleration.x);
-    accelerometer.add(acceleration.y);
-    accelerometer.add(acceleration.z);
-   oscP5.send(accelerometer, myRemoteLocation); 
-*/
+      OscMessage acc = new OscMessage("/acc");
+      OscMessage accSer = new OscMessage("/accS");
+
+    accSx= int(acceleration.x*40.58451048843329); // scale acceleration.x (0-2PI) -> serial value (0-255)
+    accSy= int(acceleration.y*40.58451048843329); // scale acceleration.x (0-2PI) -> serial value (0-255)
+    accSz= int(acceleration.z*40.58451048843329); // scale acceleration.x (0-2PI) -> serial value (0-255)
+ 
+    acc.add(acceleration.x); //  0-2PI
+    acc.add(acceleration.y); //  0-2PI
+    acc.add(acceleration.z); //  0-2PI
+ 
+    accSer.add(accSx); // 0-255
+    accSer.add(accSy); // 0-255
+    accSer.add(accSz); // 0-255
+        
+   oscP5.send(acc, myRemoteLocation); 
+   oscP5.send(accSer, myRemoteLocation); 
+
     break;
  
   case GYROSCOPE:
     // println("myoOn GYROSCOPE");
       PVector gyro = myo.getGyroscope();
-/*    println("acceleration" + acceleration.x + " " + acceleration.y + " " + acceleration.z);
-    OscMessage gyroscope = new OscMessage("/gyro0");
-    gyroscope.add(gyro.x);
-    gyroscope.add(gyro.y);
-    gyroscope.add(gyro.z);
-    oscP5.send(gyroscope, myRemoteLocation); 
- */
+  //  println("acceleration" + acceleration.x + " " + acceleration.y + " " + acceleration.z);
+    OscMessage Gyro = new OscMessage("/gyro");
+    OscMessage gyroSer = new OscMessage("/gyroS");
+
+    gyroSx = int(gyro.x*0.255);
+    gyroSy = int(gyro.y*0.255);
+    gyroSz = int(gyro.z*0.255);
+
+    Gyro.add(gyro.x);
+    Gyro.add(gyro.y);
+    Gyro.add(gyro.z);
+    
+    gyroSer.add(gyroSx);
+    gyroSer.add(gyroSy);
+    gyroSer.add(gyroSz);
+    
+    oscP5.send(Gyro, myRemoteLocation); 
+    oscP5.send(gyroSer, myRemoteLocation); 
+
     break;
  
   case RSSI:
