@@ -41,11 +41,35 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
   case POSE:
     println("myoOn POSE");
     OscMessage Pose = new OscMessage("/pose");
-    
+    OscMessage poseI = new OscMessage("/poseI");
+    OscMessage poseS = new OscMessage("/poseS");
+
     pose = myo.getPose();
     
-    Pose.add(poseOSC);
+    if ((pose=="REST")||(pose=="UNCKNOWN")) poseOSC = 0;
+    else if (pose=="FIST") poseOSC = 1;
+    else if (pose=="FINGERS_SPREAD") poseOSC = 2;
+    else if (pose=="WAVE_IN") poseOSC = 3;
+    else if (pose=="WAVE_OUT") poseOSC = 4;
+    else if (pose=="DOUBLE_TAP") poseOSC = 5;
+    
+    poseOSCs = poseOSC*51; // scale poseI values into serial values
+    // 0 = rest and uncknown
+    // 51 = FIST
+    // 102 = FINGERS_SPREAD
+    // 153 = WAVE_IN
+    // 204 = WAVE_OUT
+    // 255 = DOUBLE_TAP
+    
+    Pose.add(pose);
+    poseI.add(poseOSC);
+    poseS.add(poseOSCs);
+
+
     oscP5.send(Pose, myRemoteLocation);
+    oscP5.send(poseI, myRemoteLocation);
+    oscP5.send(poseS, myRemoteLocation);
+
     break;
  
   case ORIENTATION:
