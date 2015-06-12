@@ -5,10 +5,10 @@ import controlP5.*;
 
 void setup() {
   size(1000, 850); //window size
-  logoSetup(); 
-  myoSetup();
-  setUpMIDI();
-  toggles();  
+  logoSetup();
+  myoSetup(); 
+  toggles();
+  setUpMIDI();  
   bangs();
   oscSetup(); 
   rescale();

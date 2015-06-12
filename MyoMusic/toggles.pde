@@ -74,6 +74,7 @@ void toggles(){
      .setPosition(nbMIDIportX,nbMIDIportY)
      .setSize(tglXsize,tglYsize)
      .setValue(3)
+     .setScrollSensitivity(2)
      .setMin(0)
      .setMax(16)
      ;
@@ -81,7 +82,8 @@ void toggles(){
   cp5.addNumberbox("midiChannel")
      .setPosition(nbMIDIchX,nbMIDIchY)
      .setSize(tglXsize,tglYsize)
-     .setValue(0)
+     .setValue(1)
+     .setScrollSensitivity(2)
      .setMin(0)
      .setMax(16)
      ;
@@ -124,8 +126,8 @@ void midiPort(int value) {
   setUpMIDI();
   }
 
-void midiChannel(int Value) { 
-  chMIDI = Value;
+void midiChannel(int Mch) { 
+  chMIDI = Mch;
   }
 
 
