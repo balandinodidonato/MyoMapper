@@ -16,8 +16,6 @@ void myoSetup(){
   }
 }
 
-
-
 void emgGraphs(){
   
    noFill();

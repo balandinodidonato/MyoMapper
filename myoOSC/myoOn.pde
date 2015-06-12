@@ -103,9 +103,9 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     else if (ORX>1) {ORX = 1-ORX;}
     else  {ORX = ORX;}  
     
-  roll = abs(ORX-reverseRoll); // reverse + scale
-  pitch = abs(ORY-reversePitch); // reverse + scale
-  yaw = abs(ORZ-reverseYaw); // reverse + scale
+    roll = abs(ORX-reverseRoll); // reverse + scale
+    pitch = abs(ORY-reversePitch); // reverse + scale
+    yaw = abs(ORZ-reverseYaw); // reverse + scale
     
     roll = map(roll, 0, 1, rMin, rMax);
     pitch = map(pitch, 0, 1, pMin, pMax);

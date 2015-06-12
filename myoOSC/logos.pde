@@ -21,6 +21,6 @@ void logoSetup(){
 void logoRun(){
   
    image(integralogo, width-integralogo.width-10, 0); // display integra logo
-   image(cons, width-cons.width, height-cons.height); // display integra logo
+   image(cons, width-cons.width, height-cons.height-height/30); // display integra logo
 
 }

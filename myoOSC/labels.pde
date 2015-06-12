@@ -39,19 +39,14 @@ void labels(){
    
    textSize(25);
 
-//   text("- -  DATA CONTROL  - - ", revYawTglX-revYawTglSize+20, revYawTglY-50);
    textSize(20);
- //  text("YAW", tglYawX, tglYawY-(tglYsize));
- //  text("PITCH", tglPitchX, tglYawY-(tglYsize));
- //  text("ROLL", tglRollX, tglYawY-(tglYsize));
- //  text("EMG", tglEmgX, tglYawY-(tglYsize));
-  // text("REV", revYawTglX-revYawTglSize-20, revYawTglY+(revYawTglSize/2));
-  // text("CENT", revYawTglX-revYawTglSize-20, centYawBngY+(centYawBngSize/1.5));
    textSize(28);
-  // text("POSE: "+pose, revYawTglX-revYawTglSize-60, centRollBngY+centRollBngSize+350); 
-
-   textSize(15);
+   text("POSE: "+pose, width-cons.width,height-cons.height-height/22); 
    
+   fill(#1D4383);
+   textSize(15);
+   text("Balandino Di Donato 2015", width-cons.width/1.55,height-height/100); 
+
    
 
    noFill();
