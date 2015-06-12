@@ -4,7 +4,7 @@ int bangSize;
 int bngYawX, bngPitchX, bngRollX;
 int bngYawY, bngPitchY, bngRollY;
 
-void BANGBANG(){
+void bangs(){
       
     cp5 = new ControlP5(this);
 

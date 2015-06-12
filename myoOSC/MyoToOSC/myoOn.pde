@@ -7,7 +7,9 @@ int intesity = 0;
 float orX, ORx, ORX = 0;
 float orY, ORy, ORY = 0;
 float orZ, ORz, ORZ = 0;
-float intensity = 0;
+
+float intensity  = 0;
+int intensityS = 0;
 
 int accSx, accSy, accSz = 0;
 int gyroSx, gyroSy, gyroSz = 0;
@@ -17,8 +19,8 @@ int poseOSC, poseOSCs = 0;
 float yMin, yMax = 0;
 float pMin, pMax = 0;
 float rMin, rMax = 0;
-float emgMin, emgMax = 0;
-
+float emgMin  = 0;
+float emgMax = 1;
 void myoOn(Myo.Event event, Device myo, long timestamp) {
   
   switch(event) {
@@ -179,31 +181,32 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     break;
  
   case EMG:  
-      float emgSum = 0;
       int emg[] = myo.getEmg(); // array of EMG data
-     
- //     OscMessage Emg = new OscMessage("/emg0");
-      OscMessage emgAvg = new OscMessage("/emgAvg");
+      
       OscMessage Emg = new OscMessage("/emg");
+      OscMessage emgAvg = new OscMessage("/emgAvg");   
+      OscMessage emgAvgS = new OscMessage("/emgAvgs");   
+
+      float emgSum = 0;
 
       for(int i=0; i<8; i++){
-      
-        
-      EMG[i]= map(abs(EMG[i]), 0., 128., emgMin, emgMax);
-      
-      emgSum = EMG[i] + emgSum; // EMG sum for avg calculation
-      emg[i] = abs(emg[i]);  // add emg value to /emg0 message
-      }
-     
-      intensity = abs(emgSum/8-reverseEmg); // average calculation
-      emgAvg.add(intensity);
-      Emg.add(emg);
-    
- //     println("Intesity: "+intensity);
 
-  //    oscP5.send(Emg, myRemoteLocation);
-      oscP5.send(emgAvg, myRemoteLocation);
+      emg[i] = abs(emg[i]);  // add emg value to /emg0 message
+      EMG[i] = abs(reverseEmg-emg[i]);
+      EMG[i] = map(EMG[i], 0, 128, emgMin, emgMax);
+      emgSum = EMG[i]+emgSum; // EMG sum for avg calculation    
+    }
+     
+      intensity = emgSum/8; // average calculation
+      intensityS = int(intensity*255);
+      
+      Emg.add(emg);
+      emgAvg.add(intensity);
+      emgAvgS.add(intensityS);
+      
       oscP5.send(Emg, myRemoteLocation);
+      oscP5.send(emgAvg, myRemoteLocation);
+      oscP5.send(emgAvgS, myRemoteLocation);
 
     break;
   }

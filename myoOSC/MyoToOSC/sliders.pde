@@ -1,104 +1,45 @@
-import controlP5.*;
-ControlP5 cp5;
+void sliders(){
+  cp5 = new ControlP5(this);
 
-Range rYaw;
-Range rPitch;
-Range rRoll;
-Range avgEMG;
+  yMin = rYaw.getLowValue();
+  yMax = rYaw.getHighValue();
 
-
-int sYawX, sPitchX, sRollX, sEmgX;
-int sYawXsize, sPitchXsize, sRollXsize, sEmgXsize;
-int sYawY, sPitchY, sRollY, sEmgY;
-int sYawYsize, sPitchYsize, sRollYsize, sEmgYsize;
-
-int rYawX, rPitchX, rRollX, rEmgX;
-int rYawXsize, rPitchXsize, rRollXsize, rEmgXsize;
-int rYawY, rPitchY, rRollY, rEmgY;
-int rYawYsize, rPitchYsize, rRollYsize, rEmgYsize;
-
-void sliders() {
+  pMin = rPitch.getLowValue();
+  pMax = rPitch.getHighValue();
   
-  rYawXsize = rPitchXsize = rRollXsize = rEmgXsize = sYawXsize = sPitchXsize = sRollXsize = sEmgXsize = width/3; // X size sliders
-  rYawYsize = rPitchYsize = rRollYsize = rEmgYsize = sYawYsize = sPitchYsize = sRollYsize = sEmgYsize = height/21;  // Y Size
-  sYawX = sPitchX = sRollX = sEmgX = rYawX = rPitchX = rRollX = rEmgX = width/2+20; // x margins
-  
-  sYawY = height/3;
-  sPitchY = sYawY+(sYawYsize*3);
-  sRollY = sYawY+(sYawYsize*6);
-  sEmgY = sYawY+(sYawYsize*9);
-  
-  rYawY = sYawY+sYawYsize;
-  rPitchY = sPitchY+rYawYsize;
-  rRollY = sRollY+rYawYsize;
-  rEmgY = sEmgY+rEmgYsize;
+  rMin = rRoll.getLowValue();
+  rMax = rRoll.getHighValue();
+
+  emgMin = avgEMG.getLowValue();
+  emgMax = avgEMG.getHighValue();
 
 
-   cp5 = new ControlP5(this);
+  cp5.addSlider("yawSlider")
+              .setPosition(sYawX, sYawY)
+              .setSize(sYawXsize,sYawYsize)
+              .setRange(0,1)
+              .setValue(yaw);
+              ;
 
-  rYaw = cp5.addRange("Range Yaw")
-             // disable broadcasting since setRange and setRangeValues will trigger an event
-             .setBroadcast(false) 
-             .setPosition(rYawX, rYawY)
-             .setSize(rYawXsize, rYawYsize)
-             .setHandleSize(20)
-             .setRange(-2,2)
-             .setRangeValues(0,2)
-             // after the initialization we turn broadcast back on again
-             .setBroadcast(true)
-             .setColorForeground(color(255,40))
-             .setColorBackground(color(255,40)) 
-             .setHighValue(1)
-             .setLowValue(0)
-             ;
+  cp5.addSlider("pitchSlider")
+     .setPosition(sPitchX, sPitchY)
+     .setSize(sPitchXsize,sPitchYsize)
+     .setRange(0,1)
+     .setValue(pitch);
+     ;
+     
+  cp5.addSlider("rollSlider")
+     .setPosition(sRollX, sRollY)
+     .setSize(sRollXsize,sRollYsize)
+     .setRange(0,1)
+     .setValue(roll);
+     ;     
+
+  cp5.addSlider("emgSlider")
+     .setPosition(sEmgX, sEmgY)
+     .setSize(sEmgXsize,sEmgYsize)
+     .setRange(0,1)
+     .setValue(intensity);
+     ; 
  
-   rPitch = cp5.addRange("Range Pitch")
-             // disable broadcasting since setRange and setRangeValues will trigger an event
-             .setBroadcast(false) 
-             .setPosition(rPitchX, rPitchY)
-             .setSize(rPitchXsize,rPitchYsize)
-             .setHandleSize(20)
-             .setRange(-2,2)
-             .setRangeValues(0,2)
-             // after the initialization we turn broadcast back on again
-             .setBroadcast(true)
-             .setColorForeground(color(255,40))
-             .setColorBackground(color(255,40))  
-             .setHighValue(1)
-             .setLowValue(0)
-             ;
-             
-    rRoll = cp5.addRange("Range Roll")
-             // disable broadcasting since setRange and setRangeValues will trigger an event
-             .setBroadcast(false) 
-             .setPosition(rRollX, rRollY)
-             .setSize(rRollXsize,rRollYsize)
-             .setHandleSize(20)
-             .setRange(-2,2)
-             .setRangeValues(-2,2)
-             // after the initialization we turn broadcast back on again
-             .setBroadcast(true)
-             .setColorForeground(color(255,40))
-             .setColorBackground(color(255,40))  
-             .setHighValue(1)
-             .setLowValue(0)
-             ; 
-    
-        avgEMG = cp5.addRange("Range EMG")
-             // disable broadcasting since setRange and setRangeValues will trigger an event
-             .setBroadcast(false) 
-             .setPosition(rEmgX, rEmgY)
-             .setSize(rEmgXsize, rEmgYsize)
-             .setHandleSize(20)
-             .setRange(-2,2)
-             .setRangeValues(0,2)
-             // after the initialization we turn broadcast back on again
-             .setBroadcast(true)
-             .setColorForeground(color(255,40))
-             .setColorBackground(color(255,40))  
-             .setHighValue(1)
-             .setLowValue(0)
-             ;  
-                  
-  noStroke();  
 }

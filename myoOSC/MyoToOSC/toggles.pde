@@ -55,21 +55,21 @@ void toggles(){
 }
 
 void revYaw(boolean theFlag) {
-  if(theFlag==true) {reverseYaw =1;}
+  if(theFlag==false) {reverseYaw =1;}
   else {reverseYaw=0;}
 }
 
 void revPitch(boolean theFlag) {
-  if(theFlag==true) {reversePitch =1;}
+  if(theFlag==false) {reversePitch =1;}
   else {reversePitch=0;}
 }
 
 void revRoll(boolean theFlag) {
-  if(theFlag==true) {reverseRoll =1;}
+  if(theFlag==false) {reverseRoll =1;}
   else {reverseRoll=0;}
 }
 
 void revEmg(boolean theFlag) {
-  if(theFlag==true) {reverseEmg =1;}
-  else {reverseEmg=0;}
+  if(theFlag==false) {reverseEmg = 128;}
+  else {reverseEmg = 0;}
 }
