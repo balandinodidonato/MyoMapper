@@ -51,9 +51,22 @@ void reverseOrientation(){
 
 //this function RESCALE the orientation Myo Data
 void scaleOrientation(){
-    roll = map(roll, 0, 1, rMin, rMax);
-    pitch = map(pitch, 0, 1, pMin, pMax);
-    yaw = map(yaw, 0, 1, yMin, yMax);
+  
+  yMin = rYaw.getLowValue();
+  yMax = rYaw.getHighValue();
+
+  pMin = rPitch.getLowValue();
+  pMax = rPitch.getHighValue();
+  
+  rMin = rRoll.getLowValue();
+  rMax = rRoll.getHighValue();
+
+  emgMin = avgEMG.getLowValue();
+  emgMax = avgEMG.getHighValue();
+  
+  roll = map(roll, 0, 1, rMin, rMax);
+  pitch = map(pitch, 0, 1, pMin, pMax);
+  yaw = map(yaw, 0, 1, yMin, yMax);
     
    roll = max(roll, 0);
    roll = min(roll, 1);     

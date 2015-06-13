@@ -1,3 +1,6 @@
+PImage integralogo;
+PImage cons;
+
 void logoSetup(){
    integralogo = loadImage("blue-integra.png"); //
   cons = loadImage("cons.png"); //

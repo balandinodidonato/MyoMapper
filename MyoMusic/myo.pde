@@ -1,7 +1,7 @@
 import de.voidplus.myo.*;
 Myo myo;
-ArrayList<ArrayList<Integer>> sensors;
 
+ArrayList<ArrayList<Integer>> sensors;
 
 void myoSetup(){
 

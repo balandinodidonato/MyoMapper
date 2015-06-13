@@ -1,3 +1,6 @@
+import controlP5.*;
+ControlP5 cp5;
+
 int tglXsize = 60;
 int tglYsize = 30;
 
