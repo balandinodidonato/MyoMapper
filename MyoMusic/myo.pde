@@ -1,7 +1,6 @@
 import de.voidplus.myo.*;
 Myo myo;
 ArrayList<ArrayList<Integer>> sensors;
-String pose;
 
 
 void myoSetup(){
@@ -14,23 +13,4 @@ void myoSetup(){
   for(int i=0; i<34; i++){
     sensors.add(new ArrayList<Integer>()); 
   }
-}
-
-void emgGraphs(){
-  
-   noFill();
-   stroke(255);
-
-   synchronized (this){
-    for(int i=0; i<17; i++){
-      if(!sensors.get(i).isEmpty()){
-        beginShape();
-        for(int j=100; j<sensors.get(i).size(); j++){
-          vertex(j, sensors.get(i).get(j)+(i*50));
-        }
-        endShape();
-      } 
-    }
-  }
-  
 }

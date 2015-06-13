@@ -73,8 +73,8 @@ void toggles(){
   cp5.addNumberbox("midiPort")
      .setPosition(nbMIDIportX,nbMIDIportY)
      .setSize(tglXsize,tglYsize)
-     .setValue(3)
-     .setScrollSensitivity(2)
+     .setValue(1)
+     .setScrollSensitivity(0.5)
      .setMin(0)
      .setMax(16)
      ;
@@ -83,7 +83,7 @@ void toggles(){
      .setPosition(nbMIDIchX,nbMIDIchY)
      .setSize(tglXsize,tglYsize)
      .setValue(1)
-     .setScrollSensitivity(2)
+     .setScrollSensitivity(0.5)
      .setMin(0)
      .setMax(16)
      ;

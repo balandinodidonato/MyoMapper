@@ -4,7 +4,7 @@ MidiBus myBus; // The MidiBus
 
 boolean MIDI = false;
 
-int portMIDI = 3;
+int portMIDI = 1;
 int chMIDI = 1;
 
 void setUpMIDI(){
