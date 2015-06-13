@@ -93,7 +93,6 @@ if(MIDI){
     pitchS = int(pitch*255);
     yawS = int(yaw*255);
     
-    
     OscMessage orient = new OscMessage("/orientation");
     OscMessage orientS = new OscMessage("/orientationS");
    

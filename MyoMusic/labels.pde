@@ -1,60 +1,53 @@
-
-
-
 void labels(){
    noStroke();
-      
 
-   textSize(35);
+   textSize(width/24.285714286);
    fill(#1D4383);
   text("MyoMusic", width/2+width/8,height/18);
 
-   //textSize(15);
-  // text("MyoToOSC send Myo Data at the port 5432.", sYawX, height/20+height/30);
-
-
    fill(#1D4383);
-   textSize(28);
    
    
-   // title
+   
+      int pippo = 30;
+      int labeX = width/150;
+      int labelXFactor = int(height/17.6);
+      int marginY = int(height/17.2);
+      int[] labelY = new int[17];
       
-   // graph
-   text("EMG 1", 10, 35);
-   text("EMG 2", 10, 85);
-   text("EMG 3", 10, 135);
-   text("EMG 4", 10, 185);
-   text("EMG 5", 10, 235);
-   text("EMG 6", 10, 285);
-   text("EMG 7", 10, 335);
-   text("EMG 8", 10, 385);
-   text("YAW", 10, 435);
-   text("PITCH", 10, 485);
-   text("ROLL", 10, 535);
-   text("ACC X", 10, 585);
-   text("ACC Y", 10, 635);
-   text("ACC Z", 10, 685);
-   text("GYR X", 10, 735);
-   text("GYR Y", 10, 785);
-   text("GYR Z", 10, 835);
+      for(int i=0; i<17; i++){
+      labelY[i]= marginY+(labelXFactor*i);
+      }
+      
+      int labelTextSize = int(width/33);
    
-   // control pannel
-   // data control
-   
-   textSize(25);
+   textSize(labelTextSize);
 
-   textSize(20);
-   textSize(28);
+   text("EMG 1", labeX, labelY[0]);
+   text("EMG 2", labeX, labelY[1]);
+   text("EMG 3", labeX, labelY[2]);
+   text("EMG 4", labeX, labelY[3]);
+   text("EMG 5", labeX, labelY[4]);
+   text("EMG 6", labeX, labelY[5]);
+   text("EMG 7", labeX, labelY[6]);
+   text("EMG 8", labeX, labelY[7]);
+   text("YAW", labeX, labelY[8]);
+   text("PITCH", labeX, labelY[9]);
+   text("ROLL", labeX, labelY[10]);
+   text("ACC X", labeX, labelY[11]);
+   text("ACC Y", labeX, labelY[12]);
+   text("ACC Z", labeX, labelY[13]);
+   text("GYR X", labeX, labelY[14]);
+   text("GYR Y", labeX, labelY[15]);
+   text("GYR Z", labeX, labelY[16]);
+   
    text("POSE: "+pose, rEmgX,rEmgY+rEmgYsize*2); 
    text("STATE: "+connectionState+" - "+syncState, rEmgX,rEmgY+rEmgYsize*3); 
 
    fill(#1D4383);
-   textSize(15);
+   textSize(width/56.666666667);
    text("Balandino Di Donato - 2015", width-cons.width/1.3,height-height/30); 
    text("www.balandinodidonato.com", width-cons.width/1.3,height-height/100);
    
-
-   noFill();
-   
-   
+   noFill();  
 }

@@ -1,4 +1,4 @@
-int emg[];
+
 String connectionState, syncState;
 PVector orientation, acceleration, gyro; 
 
@@ -57,9 +57,10 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     break;
  
   case EMG: 
-     emg = myo.getEmg();
+     emg = myo.getEmg(); 
      emgAvgSend();  
      emgSend();
+     
     break;
   }
 }

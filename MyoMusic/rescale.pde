@@ -1,9 +1,7 @@
-
 Range rYaw;
 Range rPitch;
 Range rRoll;
 Range avgEMG;
-
 
 int sYawX, sPitchX, sRollX, sEmgX;
 int sYawXsize, sPitchXsize, sRollXsize, sEmgXsize;

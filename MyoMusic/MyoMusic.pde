@@ -13,7 +13,7 @@ void setup() {
 void draw() {
   background(0); //background color
   logoRun();
-  emgGraphs();
   updateSliders();
   labels();
+  emgGraphs();
 }
