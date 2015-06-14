@@ -30,7 +30,7 @@ void rescale() {
   rEmgY = sEmgY+rEmgYsize;
 
 
-   cp5 = new ControlP5(this);
+  // cp5 = new ControlP5(this);
 
   rYaw = cp5.addRange("Range Yaw")
              // disable broadcasting since setRange and setRangeValues will trigger an event

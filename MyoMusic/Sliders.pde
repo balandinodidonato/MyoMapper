@@ -4,7 +4,7 @@ Slider rollSlider;
 Slider emgSlider;
 
 void setupSliders(){
-  cp5 = new ControlP5(this);
+ // cp5 = new ControlP5(this);
 
   yawSlider = cp5.addSlider("yawSlider")
               .setPosition(sYawX, sYawY)
@@ -37,4 +37,13 @@ void setupSliders(){
 
      ; 
  
+}
+
+void updateSliders(){
+
+  yawSlider.setValue(yaw);
+  pitchSlider.setValue(pitch);
+  rollSlider.setValue(roll);
+  emgSlider.setValue(intensity);
+  
 }

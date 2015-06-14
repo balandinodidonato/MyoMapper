@@ -1,6 +1,3 @@
-import controlP5.*;
-ControlP5 cp5;
-
 Toggle revYawTgl;
 Toggle revPitchTgl;
 Toggle revRollTgl;
@@ -25,7 +22,6 @@ float reverseYaw, reversePitch, reverseRoll, reverseEmg = 0;
 
 void toggles(){
   
- cp5 = new ControlP5(this);
     
  tglYawX = width/2+40;  
  
@@ -83,63 +79,70 @@ void toggles(){
      .setMode(ControlP5.SWITCH)
      ;
 
-  MIDIPortNb = cp5.addNumberbox("midiPort")
+  MIDIPortNb = cp5.addNumberbox("MIDI_PORT")
      .setPosition(nbMIDIportX,nbMIDIportY)
      .setSize(tglXsize,tglYsize)
      .setValue(1)
      .setScrollSensitivity(0.5)
+     .setMultiplier(1)
      .setMin(0)
-     .setMax(16)
+     .setMax(10)
      ;
      
-  MIDIchannelNb = cp5.addNumberbox("midiChannel")
+  MIDIchannelNb = cp5.addNumberbox("MIDI_CH")
      .setPosition(nbMIDIchX,nbMIDIchY)
      .setSize(tglXsize,tglYsize)
      .setValue(1)
      .setScrollSensitivity(0.5)
+     .setMultiplier(1)
      .setMin(0)
      .setMax(16)
      ;
 
 }
 
-void revYaw() {
-  reverseYaw = 1-revYawTgl.getValue();
+//void revYaw() {
+ // reverseYaw = 1-revYawTgl.getValue();
+//}
+
+void revYaw(boolean theFlag) {
+  if(!theFlag) reverseYaw = 1;
+   else  reverseYaw = 0;
+  println(reverseYaw);
 }
 
-void revPitch() {
-  reversePitch = 1-revPitchTgl.getValue();
-
+void revPitch(boolean theFlag) {
+  if(!theFlag) reversePitch = 1;
+  else  reverseYaw = 0;
 }
 
-void revRoll() {
-  reverseRoll = 1-revRollTgl.getValue();
-
+void revRoll(boolean theFlag) {
+  if(!theFlag) reverseRoll = 1;
+  else  reverseRoll = 0;
 }
 
-void revEmg() {
-  reverseEmg = 1-revEmgTgl.getValue();
-
+void revEmg(boolean theFlag) {
+  if(!theFlag) reverseEmg = 1;
+  else  reverseEmg = 0;
 }
-
 
 void OSC(boolean theFlag) {
-  if(theFlag==true) {OpenSoundControl = false;}
+  if(theFlag) {OpenSoundControl = false;}
   else {OpenSoundControl = true;}
 }
 
 void MIDI(boolean theFlag) {
-  if(theFlag==true) {MIDI = false;}
+  if(theFlag) {MIDI = false;}
   else {MIDI = true;}
 }
 
-void midiPort(int value) { 
+void MIDI_PORT(int value) { 
   portMIDI = value;
   setUpMIDI();
   }
 
-void midiChannel(int Mch) { 
-  chMIDI = Mch;
+void MIDI_CH(int value) { 
+  chMIDI = value;
   }
 
 

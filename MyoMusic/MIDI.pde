@@ -8,8 +8,6 @@ int portMIDI = 1;
 int chMIDI = 1;
 
 void setUpMIDI(){
+myBus.list();
 myBus = new MidiBus(this, 2, portMIDI);
 }
-
-
-

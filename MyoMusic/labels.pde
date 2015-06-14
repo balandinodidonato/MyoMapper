@@ -22,7 +22,6 @@ void labels(){
       int labelTextSize = int(width/33);
    
    textSize(labelTextSize);
-
    text("EMG 1", labeX, labelY[0]);
    text("EMG 2", labeX, labelY[1]);
    text("EMG 3", labeX, labelY[2]);
