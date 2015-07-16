@@ -1,43 +1,44 @@
 # MyoMusic #
+MyoMusic, is a tool to convert and rescale raw data from the Myo and to send them to musical applications through OSC and MIDI protocoll.
 
-MyoMusic is a collection of Myo connectors which want allows Myo users to interact with their favourite music application.
- 
-It has been developed by [Balandino Di Donato](http://balandinodidonato.com) as a part of his research work at the [Integra Lab](http://www.bcu.ac.uk/conservatoire/research/research-funded-projects/integra-lab).
+It has been developed using Processing and the [myo-processing library](https://github.com/nok/myo-processing).
 
-Please visit his website to know more about it: [www.balandinodidonato.com](http://balandinodidonato.com)
+Please visit [www.balandinodidonato.com](http://balandinodidonato.com) and the Vimeo album: [https://vimeo.com/album/3313801](https://vimeo.com/album/3313801) to see  examples of MyoMusic's use.
+
+##Build Process##
+
+- Clone the repository
+- Download Processing from here: [https://processing.org/download/](https://processing.org/download/)
+- Open the MyoMusic.pde file
+- Navigate to the top bar and select `File -> Export Application`
+- Select the Platform which you will be working on
+- Click on `Export`
+
+Job Done!!!
+
+##How to use it##
+
+- Connect your Myo armband
+- Once it the connection is stable launch MyoMusic
+
 
 ## License ##
+Copyright (c)  2015 - Balandino Di Donato
 
-This is free and unencumbered software released into the public domain.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-For more information, please refer to <http://unlicense.org/> 
-
-##Connectors##
-Curently MyoMusic include MyoToMIDI only. 
-
-However in the next release it will include dedicated connectors for:
-
-- [Integra Live](http://integralive.org)
-- [Pure data (Pd)](http://puredata.info)
-- [Max/MSP](https://cycling74.com/products/max/)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
