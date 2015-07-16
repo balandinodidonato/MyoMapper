@@ -27,7 +27,7 @@ Open the MyoMusic.pde file
 
 `open MyoMusic/MyoMusic.pde`
 
-Once the Processing Skatch came up
+Once the Processing Sketch came up
 
 Navigate to the top bar and select `File -> Export Application`
 
@@ -60,7 +60,7 @@ To change **cc value** of the single Myo value, you need to open the relative pd
 
 Eg.
 
-To change cc values of Myo accelleration values you have to open the `myoAcceleration.pde` file
+To change cc values of Myo acceleration values you have to open the `myoAcceleration.pde` file
 
 `open <path>/<to>/MyoMusic/MyoMusic/myoAcceleration.pde`
 
