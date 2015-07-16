@@ -5,7 +5,7 @@ It has been developed using Processing and the [myo-processing library](https://
 
 Please visit [www.balandinodidonato.com](http://balandinodidonato.com) and the Vimeo album: [https://vimeo.com/album/3313801](https://vimeo.com/album/3313801) to see  examples of MyoMusic's use.
 
-##Build Process##
+##Build System##
 
 - Clone the repository
 - Download Processing from here: [https://processing.org/download/](https://processing.org/download/)
@@ -19,7 +19,14 @@ Job Done!!!
 ##How to use it##
 
 - Connect your Myo armband
-- Once it the connection is stable launch MyoMusic
+- Once it the connection is stable launch MyoMusic and it is ready to go!
+
+### How to Change the OSC Port ###
+Unfortunately there is no GUI command yet, (I promised to myself to insert this feature in) however it is still possible to do it. All you need to do is:
+
+`open <path>/<to>/MyoMusic/MyoMusic/osc.pde`
+
+then edit the IP and Port address with the one you need.
 
 
 ## License ##
