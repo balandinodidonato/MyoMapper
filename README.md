@@ -66,13 +66,12 @@ To change cc values of Myo accelleration values you have to open the `myoAcceler
 
 and then edit the function to send MIDI data at the line 19.
 
-|MIDI ch| cc | value  |
-|       |    |        |
-myBus.sendControllerChange(chMIDI, 4, rollMIDI);
-myBus.sendControllerChange(chMIDI, 5, pitchMIDI);
-myBus.sendControllerChange(chMIDI, 6, yawMIDI);
-
-
+                            |MIDI ch| cc | value  |
+                            |       |    |        |
+    myBus.sendControllerChange(chMIDI, 4, rollMIDI);
+    myBus.sendControllerChange(chMIDI, 5, pitchMIDI);
+    myBus.sendControllerChange(chMIDI, 6, yawMIDI);
+    
 
 ## License ##
 Copyright (c)  2015 - Balandino Di Donato
