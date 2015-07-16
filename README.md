@@ -1,49 +1,4 @@
 # MyoMusic #
-<<<<<<< HEAD
-MyoMusic, is a tool to convert and rescale raw data from the Myo and to send them to musical applications through OSC and MIDI protocoll.
-
-It has been developed using Processing and the [myo-processing library](https://github.com/nok/myo-processing).
-
-Please visit [www.balandinodidonato.com](http://balandinodidonato.com) and the Vimeo album: [https://vimeo.com/album/3313801](https://vimeo.com/album/3313801) to see  examples of MyoMusic's use.
-
-##Build System##
-
-- Clone the repository
-- Download Processing from here: [https://processing.org/download/](https://processing.org/download/)
-- Open the MyoMusic.pde file
-- Navigate to the top bar and select `File -> Export Application`
-- Select the Platform which you will be working on
-- Click on `Export`
-
-Job Done!!!
-
-##How to use it##
-
-- Connect your Myo armband
-- Once it the connection is stable launch MyoMusic and it is ready to go!
-
-### How to Change the OSC Port ###
-Unfortunately there is no GUI command yet, (I promised to myself to insert this feature in) however it is still possible to do it. All you need to do is:
-
-`open <path>/<to>/MyoMusic/MyoMusic/osc.pde`
-
-then edit the IP and Port address with the one you need.
-
-
-## License ##
-Copyright (c)  2015 - Balandino Di Donato
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-=======
 MyoMusic, is a tool to convert and rescale raw data from the Myo and to send them to musical applications (Eg. [Integra Live](http://www.integralive.org), [Pd](https://puredata.info), [Max/MSP](https://cycling74.com/products/max/)) through OSC and/or MIDI protocol.
 
 It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
@@ -53,9 +8,9 @@ MyoMusic's demos are available [here](https://vimeo.com/album/3313801).
 
 - [Processing](https://processing.org/download/)
 - The following libraries for Processing:
-	- [The midibus](http://www.smallbutdigital.com/themidibus.php)
-	- [ControlP5](http://www.sojamo.de/libraries/controlP5/)
-	- [Myo For Processing](https://github.com/nok/myo-processing)
+- [The midibus](http://www.smallbutdigital.com/themidibus.php)
+- [ControlP5](http://www.sojamo.de/libraries/controlP5/)
+- [Myo For Processing](https://github.com/nok/myo-processing)
 
 ##Build System##
 Create a folder called MyoMusic.
@@ -83,7 +38,7 @@ Navigate to the top bar and select `File -> Export Application`
 
 - Launch [Myo Connect](https://developer.thalmic.com/downloads)
 - Install `unlock.myo`  script (`path/to/MyoMusic/script/unlock.myo`) to do so:
- 	`Myo Connect -> Application Manager -> +Add -> Select unlock.myo`
+`Myo Connect -> Application Manager -> +Add -> Select unlock.myo`
 - Connect your Myo armband
 - Verify that the connection is stable and Myo Connect is receiving data
 - Launch MyoMusic
@@ -111,12 +66,12 @@ To change cc values of Myo accelleration values you have to open the `myoAcceler
 
 and then edit the function to send MIDI data at the line 19.
 
-                              |MIDI ch| cc | value  |
-                              |       |    |        |
-     myBus.sendControllerChange(chMIDI, 4, rollMIDI);
-     myBus.sendControllerChange(chMIDI, 5, pitchMIDI);
-     myBus.sendControllerChange(chMIDI, 6, yawMIDI);
-    
+|MIDI ch| cc | value  |
+|       |    |        |
+myBus.sendControllerChange(chMIDI, 4, rollMIDI);
+myBus.sendControllerChange(chMIDI, 5, pitchMIDI);
+myBus.sendControllerChange(chMIDI, 6, yawMIDI);
+
 
 
 ## License ##
@@ -132,7 +87,6 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
->>>>>>> development
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
