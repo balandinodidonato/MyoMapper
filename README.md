@@ -1,8 +1,9 @@
 # MyoMusic #
-MyoMusic, is a tool to convert and rescale raw data from the Myo and to send them to musical applications through OSC and MIDI protocoll.
+MyoMusic, is a tool to convert and rescale raw data from the Myo and to send them to musical applications (Eg. [Integra Live](http://www.integralive.org), [Pd](https://puredata.info), [Max/MSP](https://cycling74.com/products/max/)) through OSC and/or MIDI protocol.
 
-Please visit [www.balandinodidonato.com](http://balandinodidonato.com) and the Vimeo album: [https://vimeo.com/album/3313801](https://vimeo.com/album/3313801) to see  examples of MyoMusic's use.
+It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
 
+MyoMusic's demos are available [here](https://vimeo.com/album/3313801). 
 ## Requirements ##
 
 - [Processing](https://processing.org/download/)
@@ -36,8 +37,8 @@ Navigate to the top bar and select `File -> Export Application`
 ##How to use it##
 
 - Launch [Myo Connect](https://developer.thalmic.com/downloads)
-- Install `unlock.myo`  script (`path/to/MyoMusic/script/unlock.myo`)
-`Myo Connect -> Application Manager -> +Add -> Select unlock.myo`
+- Install `unlock.myo`  script (`path/to/MyoMusic/script/unlock.myo`) to do so:
+ 	`Myo Connect -> Application Manager -> +Add -> Select unlock.myo`
 - Connect your Myo armband
 - Verify that the connection is stable and Myo Connect is receiving data
 - Launch MyoMusic
