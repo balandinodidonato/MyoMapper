@@ -108,12 +108,11 @@ void toggles(){
 void revYaw(boolean theFlag) {
   if(!theFlag) reverseYaw = 1;
    else  reverseYaw = 0;
-  println(reverseYaw);
 }
 
 void revPitch(boolean theFlag) {
   if(!theFlag) reversePitch = 1;
-  else  reverseYaw = 0;
+  else  reversePitch = 0;
 }
 
 void revRoll(boolean theFlag) {
