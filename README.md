@@ -1,9 +1,9 @@
-# MyoMusic #
-MyoMusic, is a tool to convert and rescale raw data from the Myo and to send them to musical applications (Eg. [Integra Live](http://www.integralive.org), [Pd](https://puredata.info), [Max/MSP](https://cycling74.com/products/max/)) through OSC and/or MIDI protocol.
+# Myo2OSC #
+Myo2OSC, is a tool to convert and rescale raw data from the Myo and to send them to musical applications (Eg. [Integra Live](http://www.integralive.org), [Pd](https://puredata.info), [Max/MSP](https://cycling74.com/products/max/)) through OSC and/or MIDI protocol.
 
 It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
 
-MyoMusic's demos are available [here](https://vimeo.com/album/3313801). 
+Myo2OSC demos are available [here](https://vimeo.com/album/3313801). 
 ## Requirements ##
 
 - [Processing](https://processing.org/download/)
@@ -13,19 +13,19 @@ MyoMusic's demos are available [here](https://vimeo.com/album/3313801).
 - [Myo For Processing](https://github.com/nok/myo-processing)
 
 ##Build System##
-Create a folder called MyoMusic.
+Create a folder called Myo2OSC.
 
-Open a Terminal and change your directory to the MyoMusic Folder
+Open a Terminal and change your directory to the Myo2OSC Folder
 
-`cd <path>/<to>/MyoMusic`
+`cd <path>/<to>/Myo2OSC`
 
 Clone the repository
 
-`git clone https://github.com/balandinodidonato/MyoMusic`
+`git clone https://github.com/balandinodidonato/Myo2OSC`
 
-Open the MyoMusic.pde file
+Open the Myo2OSC.pde file
 
-`open MyoMusic/MyoMusic.pde`
+`open Myo2OSC/Myo2OSC.pde`
 
 Once the Processing Sketch came up
 
@@ -37,21 +37,21 @@ Navigate to the top bar and select `File -> Export Application`
 ##How to use it##
 
 - Launch [Myo Connect](https://developer.thalmic.com/downloads)
-- Install `unlock.myo`  script (`path/to/MyoMusic/script/unlock.myo`) to do so:
+- Install `unlock.myo`  script (`path/to/Myo2OSC/script/unlock.myo`) to do so:
 `Myo Connect -> Application Manager -> +Add -> Select unlock.myo`
 - Connect your Myo armband
 - Verify that the connection is stable and Myo Connect is receiving data
-- Launch MyoMusic
+- Launch Myo2OSC
 
 ### How to change the OSC Port ###
 Unfortunately there is no GUI command yet, (I promised to myself to insert this feature in) however it is still possible to do it. All you need to do is:
 
 Open the osc.pde file
-`open <path>/<to>/MyoMusic/MyoMusic/osc.pde`
+`open <path>/<to>/Myo2OSC/Myo2OSC/osc.pde`
 
 Edit the IP and Port address with the one you need.
 Save the osc.pde file
-Build again MyoMusic. It is advisable to run it first from Processing using the top right corner button in order to check the OSC communication.
+Build again Myo2OSC. It is advisable to run it first from Processing using the top right corner button in order to check the OSC communication.
 
 ### How to Change MIDI  channel and cc value###
 In order to change **MIDI channel** to which send MIDI data it is easily doable through the GUI.
@@ -62,7 +62,7 @@ Eg.
 
 To change cc values of Myo acceleration values you have to open the `myoAcceleration.pde` file
 
-`open <path>/<to>/MyoMusic/MyoMusic/myoAcceleration.pde`
+`open <path>/<to>/Myo2OSC/Myo2OSC/myoAcceleration.pde`
 
 and then edit the function to send MIDI data at the line 19.
 
