@@ -3,7 +3,7 @@ void labels(){
 
    textSize(width/24.285714286);
    fill(#1D4383);
-  text("MyoMusic", width/2+width/8,height/18);
+  text("MyoMapper", width/2+width/8,height/18);
 
    fill(#1D4383);
    

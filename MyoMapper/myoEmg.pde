@@ -63,7 +63,7 @@ void emgGraphs(){
       if(!sensors.get(i).isEmpty()){
         beginShape();
         for(int j=100; j<sensors.get(i).size(); j++){
-          vertex(j, sensors.get(i).get(j)+(i*49));
+          vertex(j, sensors.get(i).get(j)+(i*(int(windowY/17))));
         }
         endShape();
       } 
