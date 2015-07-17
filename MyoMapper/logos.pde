@@ -4,9 +4,10 @@ PImage cons;
 void logoSetup(){
    integralogo = loadImage("blue-integra.png"); //
   cons = loadImage("cons.png"); //
-  int resizeConsFactor = int(width/154.54545455);
+  int resizeConsFactor = int(width/160);
+  int resizeLabFactor = int(width/200);
   cons.resize(int(cons.width/resizeConsFactor),int(cons.height/resizeConsFactor));
-  integralogo.resize(int(integralogo.width/3.5),int(integralogo.height/3.5));
+  integralogo.resize(int(integralogo.width/resizeLabFactor),int(integralogo.height/resizeLabFactor));
 
 
   for (int i = 0;i<cons.width;i++) {// pour image d'origine allant de 0 à la fin de la fenetre ( abscisse)
