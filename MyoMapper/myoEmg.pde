@@ -37,7 +37,7 @@ void myoOnEmg(Device myo, long timestamp, int[] data) {
     sensors.get(i).add(imu[i-8]);}
 
   for(int i=0; i<8; i++){
-    sensors.get(i).add(int(abs(emg[i])*(-0.3125)+49));
+    sensors.get(i).add(int(abs(emg[i])*(-0.3125)+int(windowX/17)));
 
    //for(int i = 0; i<8; i++){
      // sensors.get(i).add(int((data[i]+128)*0.1960784314)); // [-128 - 127]
@@ -63,7 +63,7 @@ void emgGraphs(){
       if(!sensors.get(i).isEmpty()){
         beginShape();
         for(int j=100; j<sensors.get(i).size(); j++){
-          vertex(j, sensors.get(i).get(j)+(i*49));
+          vertex(j, sensors.get(i).get(j)+(i*(int(windowY/17))));
         }
         endShape();
       } 

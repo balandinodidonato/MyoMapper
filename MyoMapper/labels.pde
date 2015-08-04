@@ -45,8 +45,8 @@ void labels(){
 
    fill(#1D4383);
    textSize(width/56.666666667);
-   text("Balandino Di Donato - 2015", width-cons.width/1.3,height-height/30); 
-   text("www.balandinodidonato.com", width-cons.width/1.3,height-height/100);
+   text("Balandino Di Donato - 2015", width-cons.width/1.15, height-height/40); 
+   text("www.balandinodidonato.com", width-cons.width/1.15, height-height/120);
    
    noFill();  
 }
