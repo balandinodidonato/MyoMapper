@@ -2,7 +2,7 @@
 String connectionState, syncState;
 PVector orientation, acceleration, gyro; 
 
-void myoOn(Myo.Event event, Device myo, long timestamp) {
+void myoOn(Myo.Event event, Myo myo, long timestamp) {
   
   switch(event) {
   case PAIR:
