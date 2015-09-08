@@ -35,7 +35,7 @@ void bangs(){
 
 public void controlEvent(ControlEvent theEvent) {
 
-  if (theEvent.controller().id() == 2) ORx=orX;
-  else if (theEvent.controller().id() == 1) ORy=orY;
-  else if (theEvent.controller().id() == 0) ORz=orZ;
+  if (theEvent.controller().getId() == 2) ORx=orX;
+  else if (theEvent.controller().getId() == 1) ORy=orY;
+  else if (theEvent.controller().getId() == 0) ORz=orZ;
 }
