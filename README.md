@@ -7,9 +7,10 @@ MyoMapper demos are available [here](https://vimeo.com/album/3313801).
 ## Requirements ##
 
 - [Processing](https://processing.org/download/)
-- The following libraries for Processing:
+- Libraries for Processing:
 - [The midibus](http://www.smallbutdigital.com/themidibus.php)
 - [ControlP5](http://www.sojamo.de/libraries/controlP5/)
+- [oscP5](http://www.sojamo.de/libraries/oscP5/)
 - [Myo For Processing](https://github.com/nok/myo-processing)
 
 ##Build System##
