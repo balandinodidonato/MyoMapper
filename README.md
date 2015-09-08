@@ -8,10 +8,10 @@ MyoMapper demos are available [here](https://vimeo.com/album/3313801).
 
 - [Processing 3.0](https://processing.org/download/)
 - Libraries for Processing:
-- [The midibus](http://www.smallbutdigital.com/themidibus.php)
-- [ControlP5](http://www.sojamo.de/libraries/controlP5/)
-- [oscP5](http://www.sojamo.de/libraries/oscP5/)
-- [Myo For Processing](https://github.com/nok/myo-processing)
+  - [The midibus](http://www.smallbutdigital.com/themidibus.php)
+  - [ControlP5](http://www.sojamo.de/libraries/controlP5/)
+  - [oscP5](http://www.sojamo.de/libraries/oscP5/)
+  - [Myo For Processing](https://github.com/nok/myo-processing)
 
 ##Build System##
 Create a folder called MyoMapper.
