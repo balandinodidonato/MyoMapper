@@ -11,7 +11,7 @@ float intensity = 0;
 int intensityS = 0;
 
 
-void myoOnEmg(Device myo, long timestamp, int[] data) {
+void myoOnEmg(Myo myo, long timestamp, int[] data) {
   // println("Sketch: myoOnEmg");
   // int[] data <- 8 values from -128 to 1272
    
