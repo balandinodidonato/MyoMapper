@@ -44,6 +44,7 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
  
   case ACCELEROMETER:
     acceleration = myo.getAccelerometer();
+    scaleAcceleration();
     sendAcceleration();
     break;
  
