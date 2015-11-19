@@ -11,7 +11,7 @@ float intensity = 0;
 int intensityS = 0;
 
 
-void myoOnEmg(Myo myo, long timestamp, int[] data) {
+void myoOnEmg(Device myo, long timestamp, int[] data) {
   // println("Sketch: myoOnEmg");
   // int[] data <- 8 values from -128 to 1272
    
@@ -87,21 +87,24 @@ void emgAvgSend(){
       intensity = emgSum/8; // average calculation
       intensity = max(intensity, 0);
       intensity = min(intensity, 1); 
+     }
 }
 
+
 void emgSend(){
+  
 if (MIDI) { 
   intensityMIDI = int(intensity*127);
       for(int i=0; i<8; i++){
         emgMIDI[i] = int(EMG[i]*127);
         myBus.sendControllerChange(chMIDI, 11+i, emgMIDI[i]);}
-  myBus.sendControllerChange(chMIDI, 10, intensityMIDI);
+        myBus.sendControllerChange(chMIDI, 10, intensityMIDI);
         }
      
    if(OpenSoundControl){  
     
      OscMessage Emg = new OscMessage("/emg");
-     OscMessage Emg = new OscMessage("/emgAvg"); 
+     OscMessage emgAvg = new OscMessage("/emgAvg"); 
      
      Emg.add(emg);
      emgAvg.add(intensity);

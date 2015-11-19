@@ -8,7 +8,8 @@ void convertPose(){
     else if (pose=="WAVE_IN") poseInt = 3;
     else if (pose=="WAVE_OUT") poseInt = 4;
     else if (pose=="DOUBLE_TAP") poseInt = 5;
-}   else if (pose=="REST") poseInt = 6;
+   else if (pose=="REST") poseInt = 6;
+}
 
 void sendPose(){
   
