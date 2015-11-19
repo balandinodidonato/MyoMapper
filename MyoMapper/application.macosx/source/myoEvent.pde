@@ -2,7 +2,7 @@
 String connectionState, syncState;
 PVector orientation, acceleration, gyro; 
 
-void myoOn(Myo.Event event, Myo myo, long timestamp) {
+void myoOn(Myo.Event event, Device myo, long timestamp) {
   
   switch(event) {
   case PAIR:
@@ -44,6 +44,7 @@ void myoOn(Myo.Event event, Myo myo, long timestamp) {
  
   case ACCELEROMETER:
     acceleration = myo.getAccelerometer();
+    scaleAcceleration();
     sendAcceleration();
     break;
  
