@@ -83,33 +83,38 @@ void emgAvgSend(){
       EMG[i] = abs(reverseEmg-emg[i]);
       EMG[i] = map(EMG[i], 0, 128, emgMin, emgMax);
       emgSum = EMG[i]+emgSum; // EMG sum for avg calculation    
+   
+      if (MIDI){
+        emgMIDI[i] = int(EMG[i]*127);
+        myBus.sendControllerChange(chMIDI, 11+i, emgMIDI[i]);}
+  }
      
       intensity = emgSum/8; // average calculation
       intensity = max(intensity, 0);
       intensity = min(intensity, 1); 
-     }
 }
 
-
 void emgSend(){
-  
-if (MIDI) { 
-  intensityMIDI = int(intensity*127);
-      for(int i=0; i<8; i++){
-        emgMIDI[i] = int(EMG[i]*127);
-        myBus.sendControllerChange(chMIDI, 11+i, emgMIDI[i]);}
-        myBus.sendControllerChange(chMIDI, 10, intensityMIDI);
-        }
+if (MIDI) {
+      intensityMIDI = int(intensity*127);
+      myBus.sendControllerChange(chMIDI, 10, intensityMIDI); // Send a 
+      
+      }
      
    if(OpenSoundControl){  
     
      OscMessage Emg = new OscMessage("/emg");
-     OscMessage emgAvg = new OscMessage("/emgAvg"); 
+     OscMessage emgAvg = new OscMessage("/emgAvg");   
+     OscMessage emgAvgS = new OscMessage("/emgAvgs");  
      
-     Emg.add(emg);
-     emgAvg.add(intensity);
+      intensityS = int(intensity*255);
+     
+      Emg.add(emg);
+      emgAvg.add(intensity);
+      emgAvgS.add(intensityS);
       
-      oscP5.send(Emg, myRemoteLocation);  
+      oscP5.send(Emg, myRemoteLocation);
       oscP5.send(emgAvg, myRemoteLocation);
+      oscP5.send(emgAvgS, myRemoteLocation);
    }
 }
