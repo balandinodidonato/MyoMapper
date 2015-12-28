@@ -16,27 +16,20 @@ if(MIDI){
      accYMIDI = int(acceleration.y/(2*PI)*127);
      accZMIDI = int(acceleration.z/(2*PI)*127);
      
-     myBus.sendControllerChange(chMIDI, 4, rollMIDI); // Send a Midi noteOn
-     myBus.sendControllerChange(chMIDI, 5, pitchMIDI); // Send a Midi noteOn
-     myBus.sendControllerChange(chMIDI, 6, yawMIDI); // Send a Midi noteOn
-     
+     myBus.sendControllerChange(chMIDI, 4, accMIDI);
+     myBus.sendControllerChange(chMIDI, 5, accMIDI);
+     myBus.sendControllerChange(chMIDI, 6, accMIDI);
 
     }
     
 if(OpenSoundControl){  
     OscMessage acc = new OscMessage("/acc");
-    OscMessage accS = new OscMessage("/accS");
    
     acc.add(acceleration.x); //  0-2PI
     acc.add(acceleration.y); //  0-2PI
     acc.add(acceleration.z); //  0-2PI
- 
-    accS.add(accSx); // 0-255
-    accS.add(accSy); // 0-255
-    accS.add(accSz); // 0-255
         
    oscP5.send(acc, myRemoteLocation); 
-   oscP5.send(accS, myRemoteLocation); 
 }
 }
 
