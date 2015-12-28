@@ -91,23 +91,13 @@ if(MIDI){
      }
      
  if(OpenSoundControl){ 
-    rollS = int(roll*255);
-    pitchS = int(pitch*255);
-    yawS = int(yaw*255);
-    
     OscMessage orient = new OscMessage("/orientation");
-    OscMessage orientS = new OscMessage("/orientationS");
    
     orient.add(yaw);
     orient.add(pitch);
     orient.add(roll);
-    
-    orientS.add(yawS);
-    orientS.add(pitchS);
-    orientS.add(rollS);
- 
+
     oscP5.send(orient, myRemoteLocation);   
-    oscP5.send(orientS, myRemoteLocation);
  }
 
 }

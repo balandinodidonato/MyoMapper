@@ -23,24 +23,14 @@ void sendPose(){
      v101 = WAVE_OUT
      127 = DOUBLE_TAP
    */
-   
 
    }  
    
    if(OpenSoundControl){ 
     OscMessage Pose = new OscMessage("/pose");
     
-    poseS = poseInt*51; // scale poseI values into serial values
-    // 0 = rest and uncknown
-    // 51 = FIST
-    // 102 = FINGERS_SPREAD
-    // 153 = WAVE_IN
-    // 204 = WAVE_OUT
-    // 255 = DOUBLE_TAP
-    
     Pose.add(pose);
     Pose.add(poseInt);
-    Pose.add(poseS);
 
     oscP5.send(Pose, myRemoteLocation);
  }
