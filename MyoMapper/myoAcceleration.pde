@@ -16,9 +16,9 @@ if(MIDI){
      accYMIDI = int(acceleration.y/(2*PI)*127);
      accZMIDI = int(acceleration.z/(2*PI)*127);
      
-     myBus.sendControllerChange(chMIDI, 4, accMIDI);
-     myBus.sendControllerChange(chMIDI, 5, accMIDI);
-     myBus.sendControllerChange(chMIDI, 6, accMIDI);
+     myBus.sendControllerChange(chMIDI, 4, accXMIDI);
+     myBus.sendControllerChange(chMIDI, 5, accYMIDI);
+     myBus.sendControllerChange(chMIDI, 6, accZMIDI);
 
     }
     
