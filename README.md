@@ -3,11 +3,8 @@ MyoMapper, is a tool to convert and rescale raw data from the Myo and to send th
 
 It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
 
-<<<<<<< HEAD
-MyoMapper demos are available [here](https://vimeo.com/album/3313801). 
-=======
-MyoMusic's demos are available [here](https://vimeo.com/album/3313801).
->>>>>>> development
+MyoMapper demos are available [here](https://vimeo.com/album/3313801).
+
 ## Requirements ##
 
 - [Processing 3.0](https://processing.org/download/)
@@ -71,14 +68,15 @@ To change cc values of Myo acceleration values you have to open the `myoAccelera
 
 and then edit the function to send MIDI data at the line 19.
 
-<<<<<<< HEAD
+
                             |MIDI ch| cc | value  |
                             |       |    |        |
     myBus.sendControllerChange(chMIDI, 4, rollMIDI);
     myBus.sendControllerChange(chMIDI, 5, pitchMIDI);
     myBus.sendControllerChange(chMIDI, 6, yawMIDI);
-    
-=======
+
+
+
                               |MIDI ch| cc | value  |
                               |       |    |        |
      myBus.sendControllerChange(chMIDI, 4, rollMIDI);
@@ -152,7 +150,6 @@ Help:
 | /pose        | `WAVE_OUT`, 4          | Pose: Wave Out               |
 | /pose        | `DOUBLE_TAP`, 5        | Pose: Double Tap             |
 | /pose        | `REST`, 6              | Pose: Rest                   |
->>>>>>> development
 
 ## License ##
 Copyright (c)  2015 - Balandino Di Donato
