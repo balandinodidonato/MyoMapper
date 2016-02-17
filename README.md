@@ -1,42 +1,13 @@
-# MyoMapper #
+# MyoMapper
 MyoMapper, is a tool to convert and rescale raw data from the Myo and to send them to musical applications (Eg. [Integra Live](http://www.integralive.org), [Pd](https://puredata.info), [Max/MSP](https://cycling74.com/products/max/)) through OSC and/or MIDI protocol.
 
 It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
 
 MyoMapper demos are available [here](https://vimeo.com/album/3313801).
 
-## Requirements ##
+[**DOWNLOAD the MyoMapper for OSX and Windows**](https://sourceforge.net/projects/myomapper/)
 
-- [Processing 2.2.1](https://processing.org/download/)
-- Libraries for Processing:
-  - [The midibus](http://www.smallbutdigital.com/themidibus.php)
-  - [ControlP5](http://www.sojamo.de/libraries/controlP5/)
-  - [oscP5](http://www.sojamo.de/libraries/oscP5/)
-  - [Myo For Processing](https://github.com/nok/myo-processing)
-
-##Build System##
-Create a folder called MyoMapper.
-
-Open a Terminal and change your directory to the MyoMapper Folder
-
-`cd <path>/<to>/MyoMapper`
-
-Clone the repository
-
-`git clone https://github.com/balandinodidonato/MyoMapper`
-
-Open the MyoMapper.pde file
-
-`open MyoMapper/MyoMapper.pde`
-
-Once the Processing Sketch came up
-
-Navigate to the top bar and select `File -> Export Application`
-
-- Select the Platform which you will be working on
-- Click on `Export`
-
-##How to use it##
+## How to use it
 
 - Launch [Myo Connect](https://developer.thalmic.com/downloads)
 - Install `unlock.myo`  script (`path/to/MyoMapper/script/unlock.myo`) to do so:
@@ -83,7 +54,7 @@ and then edit the function to send MIDI data at the line 19.
      myBus.sendControllerChange(chMIDI, 5, pitchMIDI);
      myBus.sendControllerChange(chMIDI, 6, yawMIDI);
 
-##MIDI and OSC default values ##
+##MIDI and OSC default values
 
 **N.B.:**
 
@@ -93,7 +64,7 @@ and then edit the function to send MIDI data at the line 19.
 
 - Some of the Velocity and OSC values might change after the range adjustment made through the UI.
 
-###MIDI###
+###MIDI
 
 Midi port can be changed through the user interface once you have built the application.
 
@@ -127,7 +98,7 @@ In the table below you can find the correspondence between cc value and Myo para
 | 20       | 106      | Pose: Double Tap     |
 | 20       | 127      | Pose: REST           |
 
-###OSC###
+### OSC
 
 OSC port can be changed through the sketch *osc.pde* and editing the following code line:
 
@@ -150,6 +121,40 @@ Help:
 | /pose        | `WAVE_OUT`, 4          | Pose: Wave Out               |
 | /pose        | `DOUBLE_TAP`, 5        | Pose: Double Tap             |
 | /pose        | `REST`, 6              | Pose: Rest                   |
+
+## To build
+
+### Requirements
+
+- [Processing 2.2.1](https://processing.org/download/)
+- Libraries for Processing:
+  - [The midibus](http://www.smallbutdigital.com/themidibus.php)
+  - [ControlP5](http://www.sojamo.de/libraries/controlP5/)
+  - [oscP5](http://www.sojamo.de/libraries/oscP5/)
+  - [Myo For Processing](https://github.com/nok/myo-processing)
+
+### Build process
+
+Create a folder called MyoMapper.
+
+Open a Terminal and change your directory to the MyoMapper Folder
+
+`cd <path>/<to>/MyoMapper`
+
+Clone the repository
+
+`git clone https://github.com/balandinodidonato/MyoMapper`
+
+Open the MyoMapper.pde file
+
+`open MyoMapper/MyoMapper.pde`
+
+Once the Processing Sketch came up
+
+Navigate to the top bar and select `File -> Export Application`
+
+- Select the Platform which you will be working on
+- Click on `Export`
 
 ## License ##
 Copyright (c)  2015 - Balandino Di Donato
