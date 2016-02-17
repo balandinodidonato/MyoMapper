@@ -1,1 +1,5 @@
 .DS_Store
+MyoMapper/application.macosx
+MyoMapper/application.windows32
+MyoMapper/application.windows64
+MyoMapper/MyoMapper.windows64.zip
