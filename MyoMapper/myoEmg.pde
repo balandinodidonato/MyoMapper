@@ -77,11 +77,11 @@ void emgAvgSend(){
       float emgSum = 0;
 
     for(int i=0; i<8; i++){
-     emg[i] = abs(emg[i]);
+   //  emg[i] = abs(emg[i]);
 
         // add emg value to /emg0 message
       EMG[i] = abs(reverseEmg-emg[i]);
-      EMG[i] = map(EMG[i], 0, 128, emgMin, emgMax);
+      EMG[i] = map(EMG[i], -128, 128, emgMin, emgMax);
       emgSum = EMG[i]+emgSum; // EMG sum for avg calculation    
    
       if (MIDI){
@@ -112,7 +112,6 @@ if (MIDI) {
       Emg.add(emg);
       emgAvg.add(intensity);
       emgAvgS.add(intensityS);
-      
       oscP5.send(Emg, myRemoteLocation);
       oscP5.send(emgAvg, myRemoteLocation);
       oscP5.send(emgAvgS, myRemoteLocation);

@@ -22,11 +22,18 @@ void setup() {
 } 
 
 void draw() {
-  
   background(0); //background color
   logoRun();
   updateSliders();
   labels();
   emgGraphs();
-
+  
+  //-------
+  sendPose();
+  sendOrientation();
+  sendAcceleration();
+  sendGyro();
+  emgAvgSend();  
+  emgSend();
+     
 }

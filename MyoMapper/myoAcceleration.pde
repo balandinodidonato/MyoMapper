@@ -28,7 +28,6 @@ if(OpenSoundControl){
     acc.add(acceleration.x); //  0-2PI
     acc.add(acceleration.y); //  0-2PI
     acc.add(acceleration.z); //  0-2PI
-        
    oscP5.send(acc, myRemoteLocation); 
 }
 }

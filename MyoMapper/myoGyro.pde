@@ -22,7 +22,6 @@ if(OpenSoundControl){
     Gyro.add(gyro.x);
     Gyro.add(gyro.y);
     Gyro.add(gyro.z);
-    
     oscP5.send(Gyro, myRemoteLocation);
  }
 }

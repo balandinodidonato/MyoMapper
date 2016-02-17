@@ -29,7 +29,7 @@ void sendPose(){
    if(OpenSoundControl){ 
     OscMessage Pose = new OscMessage("/pose");
     
-    Pose.add(pose);
+  //  Pose.add(pose);
     Pose.add(poseInt);
 
     oscP5.send(Pose, myRemoteLocation);
