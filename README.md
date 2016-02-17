@@ -16,17 +16,45 @@ MyoMapper demos are available [here](https://vimeo.com/album/3313801).
 - Verify that the connection is stable and Myo Connect is receiving data
 - Launch MyoMapper
 
-### How to change the OSC Port ###
+## OSC Communication
+
+MyoMapper sends OSC messages at the **port 5432**.
+
 Unfortunately there is no GUI command yet, (I promised to myself to insert this feature in) however it is still possible to do it. All you need to do is:
 
 Open the osc.pde file
 `open <path>/<to>/MyoMapper/MyoMapper/osc.pde`
 
-Edit the IP and Port address with the one you need.
+Editi the following code line:
+
+`myRemoteLocation = new NetAddress("127.0.0.1",5432); // IP address and Port`
+
 Save the osc.pde file
 Build again MyoMapper. It is advisable to run it first from Processing using the top right corner button in order to check the OSC communication.
 
-### How to Change MIDI  channel and cc value###
+### OSC mapping
+
+| OSC tag      | Value                  | Myo parameter                |
+| :---:        | :---:                  | :---:                        |
+| /orientation | 0-1, 0-1, 0-1          | Yaw, Pitch, Roll             |
+| /acc         | 0-1000, 0-1000, 0-1000 | Acc X, Acc Y, Acc Z          |
+| /gyro        | 0-2PI, 0-2PI, 0-2PI    | Gyro X, Gyro Y, Gyro Z       |
+| /emgAvg      | 0-1                    | EMG average                  |
+| /emg         | 0-1, 0-1, 0-1, ... 0-1 | EMG 1, EMG 2, EMG 3 ... EMG 8|
+| /pose        | `UNCKNOWN`, 0          | Pose: Unknown                |
+| /pose        | `FIST`, 1              |  Pose: Fist                  |
+| /pose        | `FINGERS_SPREAD`, 2    | Pose: Fingers Spread         |
+| /pose        | `WAVE_IN`, 3           | Pose: Wave In                |
+| /pose        | `WAVE_OUT`, 4          | Pose: Wave Out               |
+| /pose        | `DOUBLE_TAP`, 5        | Pose: Double Tap             |
+| /pose        | `REST`, 6              | Pose: Rest                   |
+
+
+
+## MIDI Communication
+
+The **MIDI port** can be changed through the user interface once you have built the application.
+
 In order to change **MIDI channel** to which send MIDI data it is easily doable through the GUI.
 
 To change **cc value** of the single Myo value, you need to open the relative pde file and edit the parameters of the functions which send MIDI data.
@@ -54,21 +82,7 @@ and then edit the function to send MIDI data at the line 19.
      myBus.sendControllerChange(chMIDI, 5, pitchMIDI);
      myBus.sendControllerChange(chMIDI, 6, yawMIDI);
 
-##MIDI and OSC default values
-
-**N.B.:**
-
-- EMG pad enumeration has been established by Thalmic Lab, please see image below, or visit the flowing page: [https://developer.thalmic.com/forums/topic/255/](https://developer.thalmic.com/forums/topic/255/).***
-
-![EMG pad enumumeration](http://i59.tinypic.com/1zyez3r.jpg "EMG pad enumumeration")
-
-- Some of the Velocity and OSC values might change after the range adjustment made through the UI.
-
-###MIDI
-
-Midi port can be changed through the user interface once you have built the application.
-
-In the table below you can find the correspondence between cc value and Myo parameters.
+### MIDI mapping
 
 | cc value | Velocity | Myo parameter        |
 | :---:    | :---:    | :---:                |
@@ -98,29 +112,13 @@ In the table below you can find the correspondence between cc value and Myo para
 | 20       | 106      | Pose: Double Tap     |
 | 20       | 127      | Pose: REST           |
 
-### OSC
+---
 
-OSC port can be changed through the sketch *osc.pde* and editing the following code line:
+**N.B.:**
 
-`myRemoteLocation = new NetAddress("127.0.0.1",5432); // IP address and Port`
+- EMG pad enumeration has been established by Thalmic Lab, please see image below, or visit the flowing page: [https://developer.thalmic.com/forums/topic/255/](https://developer.thalmic.com/forums/topic/255/).***
 
-Help:
-`myRemoteLocation = new NetAddress("Address",Port); // IP address and Port`
-
-| OSC tag      | Value                  | Myo parameter                |
-| :---:        | :---:                  | :---:                        |
-| /orientation | 0-1, 0-1, 0-1          | Yaw, Pitch, Roll             |
-| /acc         | 0-1000, 0-1000, 0-1000 | Acc X, Acc Y, Acc Z          |
-| /gyro        | 0-2PI, 0-2PI, 0-2PI    | Gyro X, Gyro Y, Gyro Z       |
-| /emgAvg      | 0-1                    | EMG average                  |
-| /emg         | 0-1, 0-1, 0-1, ... 0-1 | EMG 1, EMG 2, EMG 3 ... EMG 8|
-| /pose        | `UNCKNOWN`, 0          | Pose: Unknown                |
-| /pose        | `FIST`, 1              |  Pose: Fist                  |
-| /pose        | `FINGERS_SPREAD`, 2    | Pose: Fingers Spread         |
-| /pose        | `WAVE_IN`, 3           | Pose: Wave In                |
-| /pose        | `WAVE_OUT`, 4          | Pose: Wave Out               |
-| /pose        | `DOUBLE_TAP`, 5        | Pose: Double Tap             |
-| /pose        | `REST`, 6              | Pose: Rest                   |
+![EMG pad enumumeration](http://i59.tinypic.com/1zyez3r.jpg "EMG pad enumumeration")
 
 ## To build
 
@@ -156,8 +154,9 @@ Navigate to the top bar and select `File -> Export Application`
 - Select the Platform which you will be working on
 - Click on `Export`
 
-## License ##
-Copyright (c)  2015 - Balandino Di Donato
+## License
+
+Copyright (c)  2016 - Balandino Di Donato
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
