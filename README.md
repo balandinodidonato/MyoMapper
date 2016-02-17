@@ -5,7 +5,7 @@ It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com)
 
 MyoMapper demos are available [here](https://vimeo.com/album/3313801).
 
-[**DOWNLOAD the MyoMapper for OSX and Windows**](https://sourceforge.net/projects/myomapper/)
+[**DOWNLOAD MyoMapper for OSX or Windows**](https://sourceforge.net/projects/myomapper/)
 
 ## How to use it
 
