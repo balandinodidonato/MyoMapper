@@ -119,6 +119,7 @@ and then edit the function to send MIDI data at the line 19.
 - EMG pad enumeration has been established by Thalmic Lab, please see image below, or visit the flowing page: [https://developer.thalmic.com/forums/topic/255/](https://developer.thalmic.com/forums/topic/255/).***
 
 ![EMG pad enumumeration](http://i59.tinypic.com/1zyez3r.jpg "EMG pad enumumeration")
+
 Source immage: Arief, Z., Sulistijono, I. A., & Ardiansyah, R. A. (2015, September). *Comparison of five time series EMG features extractions using Myo Armband.* In Electronics Symposium (IES), 2015 International (pp. 11-14). IEEE. Chicago.
 
 
