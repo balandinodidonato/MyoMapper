@@ -1,9 +1,11 @@
 
 String connectionState, syncState;
 PVector orientation, acceleration, gyro; 
+int[] emg = new int[8];
+
 
 void myoOn(Myo.Event event, Device myo, long timestamp) {
-  
+
   switch(event) {
   case PAIR:
     println("Myo PAIR");
@@ -27,39 +29,40 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     println("myoOn ARM_UNSYNC");
     break;
   case POSE:
-   
+   if(poseOnOff){
     pose = myo.getPose(); 
     convertPose();
-    sendPose();
+   }
     break;
  
   case ORIENTATION:
+  if (orientOnOff){
     orientation = myo.getOrientation();
     extractionOrientation();
     centerOrientation();
     reverseOrientation();
     scaleOrientation();
-    sendOrientation();
+  }
     break;
  
+ 
   case ACCELEROMETER:
+  if(accOnOff){
     acceleration = myo.getAccelerometer();
-    sendAcceleration();
+    scaleAcceleration();
+  }
     break;
  
   case GYROSCOPE:
-    gyro = myo.getGyroscope();
-    sendGyro();
+    if(gyroOnOff)gyro = myo.getGyroscope();
     break;
  
   case RSSI:
     break;
  
-  case EMG: 
-     emg = myo.getEmg(); 
-     emgAvgSend();  
-     emgSend();
-     
+  case EMG:
+ if(emgOnOff) emg = myo.getEmg(); 
     break;
+  
   }
 }

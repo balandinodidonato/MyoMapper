@@ -1,6 +1,5 @@
 int gyroXMIDI, gyroYMIDI, gyroZMIDI; //cc7, cc8, cc9
-int gyroSx, gyroSy, gyroSz = 0;
-
+boolean gyroOnOff = true;
 
 void sendGyro(){
   if(MIDI){   
@@ -15,13 +14,11 @@ void sendGyro(){
 
 if(OpenSoundControl){
 
-
     OscMessage Gyro = new OscMessage("/gyro");
    
     Gyro.add(gyro.x);
     Gyro.add(gyro.y);
     Gyro.add(gyro.z);
-    
-    oscP5.send(Gyro, myRemoteLocation);  
+    oscP5.send(Gyro, myRemoteLocation);
  }
 }

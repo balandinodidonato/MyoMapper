@@ -4,14 +4,21 @@ Toggle revRollTgl;
 Toggle revEmgTgl;
 Toggle OSCTgl;
 Toggle MIDITgl;
+Toggle emg01Tgl;
+Toggle gyro01Tgl;
+Toggle orientation01Tgl;
+Toggle acc01Tgl;
+Toggle pose01Tgl;
+
+
 Numberbox MIDIPortNb;
 Numberbox MIDIchannelNb;
 
 int tglXsize = 60;
 int tglYsize = 30;
 
-int tglYawY, tglPitchY, tglRollY, tglEmgY;
-int tglYawX, tglPitchX, tglRollX, tglEmgX;
+int tglYawY, tglPitchY, tglRollY, tglEmgY, tglemgY, tglorientationOnOffY, tglgyroOnOffY, tglaccOnOffY, tglposeOnOffY;
+int tglYawX, tglPitchX, tglRollX, tglEmgX, tglemgX, tglorientationOnOffX, tglgyroOnOffX, tglaccOnOffX, tglposeOnOffX;
 
 int revYawTglX, revYawTglY, tglOSCY, tglMIDIY, nbMIDIportY = 0; // Reverse Yaw tgl
 int revPitchTglX = 0; // Pitch tgl
@@ -22,21 +29,63 @@ float reverseYaw, reversePitch, reverseRoll, reverseEmg = 0;
 
 void toggles(){
   
-    
- tglYawX = width/2+40;  
+ tglYawX = (width/2)+40;  
  
- tglOSCY = tglMIDIY = nbMIDIportY = nbMIDIchY = height/11;
- tglYawY = tglPitchY = tglRollY = tglEmgY = int(height/6.5);
+ tglOSCY = tglMIDIY = nbMIDIportY = nbMIDIchY = tglemgY = height/12;
+ tglYawY = tglPitchY = tglRollY = tglEmgY = int(height/7);
+ tglemgY = height/3;
+ tglorientationOnOffY = tglemgY + int(tglYsize*1.5);
+ tglaccOnOffY = tglorientationOnOffY + int(tglYsize*1.5);
+ tglgyroOnOffY = tglaccOnOffY + int(tglYsize*1.5);
+ tglposeOnOffY = tglgyroOnOffY + int(tglYsize*1.5);
 
-  tglPitchX = tglYawX + tglXsize*2;
-  tglRollX = tglPitchX + tglXsize*2;
-  tglEmgX = tglRollX + tglXsize*2;
+  tglPitchX = tglYawX + int(tglXsize*1.5);
+  tglRollX = tglPitchX + int(tglXsize*1.5);
+  tglemgX = tglRollX + int(tglXsize*1.5);
+  tglEmgX = tglRollX + int(tglXsize*1.5);
   tglOSCX = tglYawX;
   tglMIDIX = tglPitchX;
   nbMIDIportX = tglRollX;
   nbMIDIchX = tglEmgX;
+  tglemgX = tglorientationOnOffX = tglgyroOnOffX = tglaccOnOffX = tglposeOnOffX = nbMIDIchX + int(tglXsize*2);
   
    // create a toggle and change the default look to a (on/off) switch look
+ pose01Tgl = cp5.addToggle("POSE")
+     .setPosition(tglposeOnOffX,tglposeOnOffY)
+     .setSize(tglXsize,tglYsize)
+     .setValue(false)
+     .setMode(ControlP5.SWITCH)
+     ;
+ 
+ acc01Tgl = cp5.addToggle("ACC")
+     .setPosition(tglaccOnOffX,tglaccOnOffY)
+     .setSize(tglXsize,tglYsize)
+     .setValue(false)
+     .setMode(ControlP5.SWITCH)
+     ;
+
+ gyro01Tgl = cp5.addToggle("GYRO")
+     .setPosition(tglgyroOnOffX,tglgyroOnOffY)
+     .setSize(tglXsize,tglYsize)
+     .setValue(false)
+     .setMode(ControlP5.SWITCH)
+     ;
+ 
+ orientation01Tgl = cp5.addToggle("ORIENT")
+     .setPosition(tglorientationOnOffX,tglorientationOnOffY)
+     .setSize(tglXsize,tglYsize)
+     .setValue(false)
+     .setMode(ControlP5.SWITCH)
+     ;
+
+ emg01Tgl = cp5.addToggle("EMG")
+     .setPosition(tglemgX,tglemgY)
+     .setSize(tglXsize,tglYsize)
+     .setValue(false)
+     .setMode(ControlP5.SWITCH)
+     ;
+
+
  revYawTgl = cp5.addToggle("revYaw")
      .setPosition(tglYawX,tglYawY)
      .setSize(tglXsize,tglYsize)
@@ -78,6 +127,7 @@ void toggles(){
      .setValue(true)
      .setMode(ControlP5.SWITCH)
      ;
+     
 
   MIDIPortNb = cp5.addNumberbox("MIDI_PORT")
      .setPosition(nbMIDIportX,nbMIDIportY)
@@ -101,10 +151,6 @@ void toggles(){
 
 }
 
-//void revYaw() {
- // reverseYaw = 1-revYawTgl.getValue();
-//}
-
 void revYaw(boolean theFlag) {
   if(!theFlag) reverseYaw = 1;
    else  reverseYaw = 0;
@@ -123,6 +169,31 @@ void revRoll(boolean theFlag) {
 void revEmg(boolean theFlag) {
   if(!theFlag) reverseEmg = 1;
   else  reverseEmg = 0;
+}
+
+void POSE(boolean theFlag) {
+  if(theFlag) {poseOnOff = false;}
+  else {poseOnOff = true;}
+}
+
+void ACC(boolean theFlag) {
+  if(theFlag) {accOnOff = false;}
+  else {accOnOff = true;}
+}
+
+void ORIENT(boolean theFlag) {
+  if(theFlag) {orientOnOff = false;}
+  else {orientOnOff = true;}
+}
+
+void GYRO(boolean theFlag) {
+  if(theFlag) {gyroOnOff = false;}
+  else {gyroOnOff = true;}
+}
+
+void EMG(boolean theFlag) {
+  if(theFlag) {emgOnOff = false;}
+  else {emgOnOff = true;}
 }
 
 void OSC(boolean theFlag) {

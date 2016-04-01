@@ -7,16 +7,13 @@ void labels(){
 
    fill(#1D4383);
    
-   
-   
-      int pippo = 30;
       int labeX = width/150;
       int labelXFactor = int(height/17.6);
       int marginY = int(height/17.2);
       int[] labelY = new int[17];
       
       for(int i=0; i<17; i++){
-      labelY[i]= marginY+(labelXFactor*i);
+      labelY[i]= (windowY/17)*(i+1);
       }
       
       int labelTextSize = int(width/33);
@@ -45,8 +42,8 @@ void labels(){
 
    fill(#1D4383);
    textSize(width/56.666666667);
-   text("Balandino Di Donato - 2015", width-cons.width/1.15, height-height/40); 
-   text("www.balandinodidonato.com", width-cons.width/1.15, height-height/120);
+   text("Balandino Di Donato - 2016", width/1.6, height-height/40); 
+   text("www.balandinodidonato.com",  width/1.61, height-height/300);
    
    noFill();  
 }

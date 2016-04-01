@@ -40,10 +40,8 @@ void setupSliders(){
 }
 
 void updateSliders(){
-
-  yawSlider.setValue(yaw);
-  pitchSlider.setValue(pitch);
-  rollSlider.setValue(roll);
-  emgSlider.setValue(intensity);
-  
+    yawSlider.setValue(yaw);
+    pitchSlider.setValue(pitch);
+    rollSlider.setValue(roll);
+    emgSlider.setValue(intensity);
 }

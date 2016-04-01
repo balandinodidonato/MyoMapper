@@ -15,9 +15,9 @@ int rYawYsize, rPitchYsize, rRollYsize, rEmgYsize;
 
 void rescale() {
   
-  rYawXsize = rPitchXsize = rRollXsize = rEmgXsize = sYawXsize = sPitchXsize = sRollXsize = sEmgXsize = width/3; // X size sliders
+  rYawXsize = rPitchXsize = rRollXsize = rEmgXsize = sYawXsize = sPitchXsize = sRollXsize = sEmgXsize = width/4; // X size sliders
   rYawYsize = rPitchYsize = rRollYsize = rEmgYsize = sYawYsize = sPitchYsize = sRollYsize = sEmgYsize = height/25;  // Y Size
-  sYawX = sPitchX = sRollX = sEmgX = rYawX = rPitchX = rRollX = rEmgX = width/2+20; // x margins
+  sYawX = sPitchX = sRollX = sEmgX = rYawX = rPitchX = rRollX = rEmgX = tglYawX; // x margins
   
   sYawY = height/3;
   sPitchY = sYawY+(sYawYsize*3);
