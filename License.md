@@ -1,8 +1,3 @@
-#MyoPd#
-This script aims to communicate the gestural data generated using the [Myo Armband](https://www.thalmic.com/en/myo/) to audio softwares trough the MIDI Protocol.
-It has been developed by [Balandino Di Donato](http://balandinodidonato.com) as a part of his research work at the [Integra Lab](http://www.bcu.ac.uk/conservatoire/research/research-funded-projects/integra-lab).
-Please visit his website to know more about it: [www.balandinodidonato.com](http://balandinodidonato.com)
-
 ## License ##
 
 This is free and unencumbered software released into the public domain.
@@ -28,4 +23,4 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <http://unlicense.org/> 
+For more information, please refer to <http://unlicense.org/>
