@@ -9,31 +9,30 @@ void setup() {
   
   cp5 = new ControlP5(this);
   
-  windowX = int(displayWidth/1.3);
-  windowY = displayHeight-int(displayHeight/10);
-  size(windowX, windowY); //window size
+  size(int(displayWidth*0.7), int(displayHeight*0.9)); //window size
   
   myoSetup(); 
+  setUpMIDI();
   toggles();
-  setUpMIDI();  
   bangs();
   oscSetup(); 
   rescale();
   setupSliders(); 
- 
 } 
 
 void draw() {
-  background(0); //background color
+  background(0);
+  
   if(poseOnOff)sendPose();
   if(orientOnOff)sendOrientation();
   if(accOnOff)sendAcceleration();
   if(gyroOnOff)sendGyro();
-  if(emgOnOff)emgSend();
-  
-  if(orientOnOff)updateSliders();
+  if(mavOnOff)MAV();
+  emgSend();
   labels();
-  analysis();
-
-   
+  updateSliders();
+  if(waveformOnOff){
+    analysis();
+    labelsAnalysis();
+  }
 }

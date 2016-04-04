@@ -61,8 +61,8 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     break;
  
   case EMG:
- if(emgOnOff) emg = myo.getEmg(); 
-    break;
+   if(emgOnOff||mavOnOff) emg = myo.getEmg(); 
+   break;
   
   }
 }

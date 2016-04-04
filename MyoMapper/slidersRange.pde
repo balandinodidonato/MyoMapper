@@ -15,11 +15,11 @@ int rYawYsize, rPitchYsize, rRollYsize, rEmgYsize;
 
 void rescale() {
   
-  rYawXsize = rPitchXsize = rRollXsize = rEmgXsize = sYawXsize = sPitchXsize = sRollXsize = sEmgXsize = width/4; // X size sliders
-  rYawYsize = rPitchYsize = rRollYsize = rEmgYsize = sYawYsize = sPitchYsize = sRollYsize = sEmgYsize = height/25;  // Y Size
+  rYawXsize = rPitchXsize = rRollXsize = rEmgXsize = sYawXsize = sPitchXsize = sRollXsize = sEmgXsize = int(width*0.3); // X size sliders
+  rYawYsize = rPitchYsize = rRollYsize = rEmgYsize = sYawYsize = sPitchYsize = sRollYsize = sEmgYsize = int(height*0.04);  // Y Size
   sYawX = sPitchX = sRollX = sEmgX = rYawX = rPitchX = rRollX = rEmgX = tglYawX; // x margins
   
-  sYawY = height/3;
+  sYawY = tglemgY;
   sPitchY = sYawY+(sYawYsize*3);
   sRollY = sYawY+(sYawYsize*6);
   sEmgY = sYawY+(sYawYsize*9);
@@ -28,9 +28,6 @@ void rescale() {
   rPitchY = sPitchY+rYawYsize;
   rRollY = sRollY+rYawYsize;
   rEmgY = sEmgY+rEmgYsize;
-
-
-  // cp5 = new ControlP5(this);
 
   rYaw = cp5.addRange("Range Yaw")
              // disable broadcasting since setRange and setRangeValues will trigger an event
@@ -80,7 +77,7 @@ void rescale() {
              .setLowValue(0)
              ; 
     
-        avgEMG = cp5.addRange("Range EMG")
+        avgEMG = cp5.addRange("Range MAV")
              // disable broadcasting since setRange and setRangeValues will trigger an event
              .setBroadcast(false) 
              .setPosition(rEmgX, rEmgY)

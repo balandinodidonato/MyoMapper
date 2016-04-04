@@ -9,47 +9,64 @@ Toggle gyro01Tgl;
 Toggle orientation01Tgl;
 Toggle acc01Tgl;
 Toggle pose01Tgl;
-
+Toggle mav01Tgl;
+Toggle waveform01Tgl;
 
 Numberbox MIDIPortNb;
 Numberbox MIDIchannelNb;
 
-int tglXsize = 60;
-int tglYsize = 30;
+int tglXsize = int(width*4);
+int tglYsize = int(width*2);
 
-int tglYawY, tglPitchY, tglRollY, tglEmgY, tglemgY, tglorientationOnOffY, tglgyroOnOffY, tglaccOnOffY, tglposeOnOffY;
-int tglYawX, tglPitchX, tglRollX, tglEmgX, tglemgX, tglorientationOnOffX, tglgyroOnOffX, tglaccOnOffX, tglposeOnOffX;
+int tglYawY, tglPitchY, tglRollY, tglEmgY, tglemgY, tglorientationOnOffY, tglgyroOnOffY, tglaccOnOffY, tglposeOnOffY, tglmavOnOffY, tglwaveformOnOffY;
+int tglYawX, tglPitchX, tglRollX, tglEmgX, tglemgX, tglorientationOnOffX, tglgyroOnOffX, tglaccOnOffX, tglposeOnOffX, tglmavOnOffX, tglwaveformOnOffX;
 
 int revYawTglX, revYawTglY, tglOSCY, tglMIDIY, nbMIDIportY = 0; // Reverse Yaw tgl
 int revPitchTglX = 0; // Pitch tgl
 int revRollTglX = 0; // Pitch tgl
 int revEmgTglX = 0; // Pitch tgl
 int tglMIDIX, tglOSCX, nbMIDIportX, nbMIDIchX, nbMIDIchY = 0;
-float reverseYaw, reversePitch, reverseRoll, reverseEmg = 0;
+float reverseYaw, reversePitch, reverseRoll, reverseMAV = 0;
+
+int distanceXtoggles, distanceYtoggles;
 
 void toggles(){
-  
- tglYawX = (width/2)+40;  
- 
- tglOSCY = tglMIDIY = nbMIDIportY = nbMIDIchY = tglemgY = height/12;
- tglYawY = tglPitchY = tglRollY = tglEmgY = int(height/7);
- tglemgY = height/3;
- tglorientationOnOffY = tglemgY + int(tglYsize*1.5);
- tglaccOnOffY = tglorientationOnOffY + int(tglYsize*1.5);
- tglgyroOnOffY = tglaccOnOffY + int(tglYsize*1.5);
- tglposeOnOffY = tglgyroOnOffY + int(tglYsize*1.5);
 
-  tglPitchX = tglYawX + int(tglXsize*1.5);
-  tglRollX = tglPitchX + int(tglXsize*1.5);
-  tglemgX = tglRollX + int(tglXsize*1.5);
-  tglEmgX = tglRollX + int(tglXsize*1.5);
-  tglOSCX = tglYawX;
-  tglMIDIX = tglPitchX;
-  nbMIDIportX = tglRollX;
-  nbMIDIchX = tglEmgX;
-  tglemgX = tglorientationOnOffX = tglgyroOnOffX = tglaccOnOffX = tglposeOnOffX = nbMIDIchX + int(tglXsize*2);
+ tglXsize = int(width*0.06);
+ tglYsize = int(height*0.035);
+ distanceXtoggles = int(tglXsize*1.5);
+ distanceYtoggles = int(tglYsize*2.5);
+ 
+ tglOSCY = tglMIDIY = nbMIDIportY = nbMIDIchY = tglemgY = tglwaveformOnOffY = int(height*0.08333333333);
+ tglYawY = tglPitchY = tglRollY = tglEmgY = tglOSCY + distanceYtoggles;
+ 
+ tglYawX = int(width*0.5)+int(width*0.03);
+ tglPitchX = tglYawX + distanceXtoggles;
+ tglRollX = tglPitchX + distanceXtoggles;
+ tglemgX = tglRollX + distanceXtoggles;
+ tglEmgX = tglRollX + distanceXtoggles;
+ tglOSCX = tglYawX;
+ tglMIDIX = tglPitchX;
+ nbMIDIportX = tglRollX;
+ nbMIDIchX = tglEmgX;
+   
+ tglemgX = tglorientationOnOffX = tglgyroOnOffX = tglaccOnOffX = tglposeOnOffX = tglmavOnOffX = tglwaveformOnOffX = int(width*0.92);
+
+ tglemgY = int(height*0.4);
+ tglmavOnOffY =  tglemgY + distanceYtoggles;
+ tglorientationOnOffY = tglmavOnOffY + distanceYtoggles;
+ tglaccOnOffY = tglorientationOnOffY + distanceYtoggles;
+ tglgyroOnOffY = tglaccOnOffY + distanceYtoggles;
+ tglposeOnOffY = tglgyroOnOffY + distanceYtoggles;
   
    // create a toggle and change the default look to a (on/off) switch look
+ waveform01Tgl = cp5.addToggle("WAVEFORM")
+     .setPosition(tglwaveformOnOffX,tglwaveformOnOffY)
+     .setSize(tglXsize,tglYsize)
+     .setValue(false)
+     .setMode(ControlP5.SWITCH)
+     ;
+
  pose01Tgl = cp5.addToggle("POSE")
      .setPosition(tglposeOnOffX,tglposeOnOffY)
      .setSize(tglXsize,tglYsize)
@@ -85,6 +102,12 @@ void toggles(){
      .setMode(ControlP5.SWITCH)
      ;
 
+ mav01Tgl = cp5.addToggle("MAV")
+     .setPosition(tglmavOnOffX,tglmavOnOffY)
+     .setSize(tglXsize,tglYsize)
+     .setValue(false)
+     .setMode(ControlP5.SWITCH)
+     ;
 
  revYawTgl = cp5.addToggle("revYaw")
      .setPosition(tglYawX,tglYawY)
@@ -107,7 +130,7 @@ void toggles(){
      .setMode(ControlP5.SWITCH)
      ;
   
- revEmgTgl = cp5.addToggle("revEmg")
+ revEmgTgl = cp5.addToggle("revMAV")
      .setPosition(tglEmgX,tglEmgY)
      .setSize(tglXsize,tglYsize)
      .setValue(true)
@@ -166,9 +189,14 @@ void revRoll(boolean theFlag) {
   else  reverseRoll = 0;
 }
 
-void revEmg(boolean theFlag) {
-  if(!theFlag) reverseEmg = 1;
-  else  reverseEmg = 0;
+void revMAV(boolean theFlag) {
+  if(!theFlag) reverseMAV = 1;
+  else  reverseMAV = 0;
+}
+
+void WAVEFORM(boolean theFlag) {
+  if(theFlag) {waveformOnOff = false;}
+  else {waveformOnOff = true;}
 }
 
 void POSE(boolean theFlag) {
@@ -196,6 +224,11 @@ void EMG(boolean theFlag) {
   else {emgOnOff = true;}
 }
 
+void MAV(boolean theFlag) {
+  if(theFlag) {mavOnOff = false;}
+  else {mavOnOff = true;}
+}
+
 void OSC(boolean theFlag) {
   if(theFlag) {OpenSoundControl = false;}
   else {OpenSoundControl = true;}
@@ -214,5 +247,3 @@ void MIDI_PORT(int value) {
 void MIDI_CH(int value) { 
   chMIDI = value;
   }
-
-
