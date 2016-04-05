@@ -28,6 +28,11 @@ MyoMapper demos are available [here](http://developerblog.myo.com/exploring-live
 
 On the left side we have a visual representation of all Myo's data and on the right controls to manage them.
 
+Myo data visualisation can be enabled or disabled by the toggle on the top right of the window.
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Waveform.png" width="80" alt="MyoMapper-EMG"/>
+
+
 The first portion of graph desctibes the 8 EMG signals.
 
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-EMG.png" width="300" alt="MyoMapper-EMG"/>
@@ -52,18 +57,24 @@ The first line of controls is composed by a OSC and MIDI toggle to respectively 
 
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-OSC-MIDI.png" width="300" alt="MyoMapper-OSC-MIDI"/>
 
+You have also the possibility to choose which data to send to the third application by enabling or disabling the toggles on the right side
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-DataMapping.png" height="300" alt="MyoMapper-DataMapping"/>
+
 Below it, four toggles to reverse the yaw, pitch, roll and MAV value.
 
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Rev.png" width="300" alt="MyoMapper-Gyro"/>
 
-The four bang above the sliders set the yaw, pitch, roll values at 0.5.
+The four bang, above the sliders, set the yaw, pitch, roll values at 0.5.
 
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Centr.png" width="300" alt="MyoMapper-Centr"/>
 
-The four sliders are an additional representation of the yaw, pitch and roll value in order to enhance 
+The blue sliders are an additional representation of the yaw, pitch and roll value in order to enhance the visual feedback of the orientation data and to rescale them
+through grey sliders. The grey sliders' edges are to establish the minimum and maximum value, into which the value has to be rescale. Moreover, the established range of value, through the slider's edge, can be transposed into a different range by moving the slider from the centre.
 
-<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Rescale.png" width="300" alt="MyoMapper-Centr"/>
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Rescale.png" width="300" alt="MyoMapper-Rescale"/>
 
+The labels just below the sliders indicate the pose of the hand and the status of the Myo connection.
 
 ## OSC Communication
 
