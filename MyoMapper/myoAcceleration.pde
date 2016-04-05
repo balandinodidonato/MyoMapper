@@ -8,28 +8,26 @@ void scaleAcceleration(){
     accSz= int(acceleration.z*40.58451048843329); // scale acceleration.x (0-2PI) -> serial value (0-255)
 }
 
-
-
 void sendAcceleration(){
   
-if(MIDI){   
-     accXMIDI = int(acceleration.x*0.00125318852828); // /(2*PI)*127
-     accYMIDI = int(acceleration.y*0.00125318852828); // /(2*PI)*127
-     accZMIDI = int(acceleration.z*0.00125318852828); // /(2*PI)*127
-     
-     myBus.sendControllerChange(chMIDI, 4, accXMIDI);
-     myBus.sendControllerChange(chMIDI, 5, accYMIDI);
-     myBus.sendControllerChange(chMIDI, 6, accZMIDI);
+  if(MIDI){   
+    accXMIDI = int(acceleration.x*0.00125318852828); // /(2*PI)*127
+    accYMIDI = int(acceleration.y*0.00125318852828); // /(2*PI)*127
+    accZMIDI = int(acceleration.z*0.00125318852828); // /(2*PI)*127
+       
+    myBus.sendControllerChange(chMIDI, 4, accXMIDI);
+    myBus.sendControllerChange(chMIDI, 5, accYMIDI);
+    myBus.sendControllerChange(chMIDI, 6, accZMIDI);
     }
+      
+  if(OpenSoundControl){  
+    OscMessage acc = new OscMessage("/acc");
+     
+    acc.add(acceleration.x);
+    acc.add(acceleration.y);
+    acc.add(acceleration.z);
     
-if(OpenSoundControl){  
-  OscMessage acc = new OscMessage("/acc");
-   
-  acc.add(acceleration.x);
-  acc.add(acceleration.y);
-  acc.add(acceleration.z);
-  
-  oscP5.send(acc, myRemoteLocation); 
-  }
+    oscP5.send(acc, myRemoteLocation); 
+    }
 }
 

@@ -9,7 +9,7 @@ void setup() {
   
   cp5 = new ControlP5(this);
   
-  size(int(displayWidth*0.7), int(displayHeight*0.9)); //window size
+  size(int(displayWidth*0.8), int(displayHeight*0.9)); //window size
   
   myoSetup(); 
   setUpMIDI();
@@ -29,10 +29,10 @@ void draw() {
   if(gyroOnOff)sendGyro();
   if(mavOnOff)MAV();
   emgSend();
-  labels();
   updateSliders();
+  labels();
   if(waveformOnOff){
-    analysis();
     labelsAnalysis();
+    analysis();
   }
 }

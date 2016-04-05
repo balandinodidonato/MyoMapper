@@ -4,8 +4,7 @@ Slider rollSlider;
 Slider mavSlider;
 
 void setupSliders(){
- // cp5 = new ControlP5(this);
-
+ 
   yawSlider = cp5.addSlider("Yaw")
               .setPosition(sYawX, sYawY)
               .setSize(sYawXsize,sYawYsize)
@@ -34,16 +33,14 @@ void setupSliders(){
      .setSize(sEmgXsize,sEmgYsize)
      .setRange(0,1)
       .setSliderMode(Slider.FLEXIBLE)
-
      ; 
- 
 }
 
 void updateSliders(){
-    if(orientOnOff){
-      yawSlider.setValue(yaw);
-      pitchSlider.setValue(pitch);
-      rollSlider.setValue(roll);
-      }
-    if(mavOnOff)mavSlider.setValue(mav);
-  }
+  if(orientOnOff){
+    yawSlider.setValue(yaw);
+    pitchSlider.setValue(pitch);
+    rollSlider.setValue(roll);
+    }
+  if(mavOnOff)mavSlider.setValue(mav);
+}

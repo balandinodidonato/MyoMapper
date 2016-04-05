@@ -10,6 +10,7 @@ boolean emgOnOff = true;
 boolean mavOnOff = true;
   
 void MAV(){
+  
   emgMin = avgEMG.getLowValue();
   emgMax = avgEMG.getHighValue();
   
@@ -22,43 +23,39 @@ void MAV(){
     EMG[i] = map(EMG[i], 0, 128, emgMin, emgMax);
     emgSum = EMG[i]+emgSum; // EMG sum for avg calculation    
     }
+    
   mav = emgSum*0.125;
   mav = max(mav, 0);
   mav = min(mav, 1); 
-  
-  }    
-
+}    
 
 void emgSend(){
   
 if (MIDI) {
-  
-      if(mavOnOff){
-      mavMIDI = int(mav*127);
-      myBus.sendControllerChange(chMIDI, 10, mavMIDI); // Send a 
-      }
-      
-      if(emgOnOff){
-      for (int i=0; 1<8; i++){
-         myBus.sendControllerChange(chMIDI, 11+i, emgMIDI[i]);
-        }
-      }
+  if(mavOnOff){
+    mavMIDI = int(mav*127);
+    myBus.sendControllerChange(chMIDI, 10, mavMIDI);
+    }
+  if(emgOnOff){
+    for (int i=0; 1<8; i++){
+      myBus.sendControllerChange(chMIDI, 11+i, emgMIDI[i]); 
+    }  
+  }
 }
-     
 
 if(OpenSoundControl){  
-     if(emgOnOff){
-     OscMessage Emg = new OscMessage("/emg");     
-     Emg.add(emg);
-     oscP5.send(Emg, myRemoteLocation);
-     }
+  if(emgOnOff){
+    OscMessage Emg = new OscMessage("/emg");     
+    Emg.add(emg);
+    oscP5.send(Emg, myRemoteLocation);
+    }
      
-     if(mavOnOff){
-      OscMessage emgMAV = new OscMessage("/emgMAV");   
-      emgMAV.add(mav);
-      oscP5.send(emgMAV, myRemoteLocation);
-      }   
-   }
+  if(mavOnOff){
+    OscMessage emgMAV = new OscMessage("/emgMav");   
+    emgMAV.add(mav);
+    oscP5.send(emgMAV, myRemoteLocation);
+    }   
+  }
 }
 
 

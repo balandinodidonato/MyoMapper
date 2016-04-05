@@ -32,107 +32,107 @@ int distanceXtoggles, distanceYtoggles;
 
 void toggles(){
 
- tglXsize = int(width*0.06);
- tglYsize = int(height*0.035);
- distanceXtoggles = int(tglXsize*1.5);
- distanceYtoggles = int(tglYsize*2.5);
+  tglXsize = int(width*0.06);
+  tglYsize = int(height*0.035);
+  distanceXtoggles = int(tglXsize*1.5);
+  distanceYtoggles = int(tglYsize*2.25);
  
- tglOSCY = tglMIDIY = nbMIDIportY = nbMIDIchY = tglemgY = tglwaveformOnOffY = int(height*0.08333333333);
- tglYawY = tglPitchY = tglRollY = tglEmgY = tglOSCY + distanceYtoggles;
+  tglOSCY = tglMIDIY = nbMIDIportY = nbMIDIchY = tglemgY = tglwaveformOnOffY = int(height*0.09);
+  tglYawY = tglPitchY = tglRollY = tglEmgY = tglOSCY + distanceYtoggles;
  
- tglYawX = int(width*0.5)+int(width*0.03);
- tglPitchX = tglYawX + distanceXtoggles;
- tglRollX = tglPitchX + distanceXtoggles;
- tglemgX = tglRollX + distanceXtoggles;
- tglEmgX = tglRollX + distanceXtoggles;
- tglOSCX = tglYawX;
- tglMIDIX = tglPitchX;
- nbMIDIportX = tglRollX;
- nbMIDIchX = tglEmgX;
+  tglYawX = int(width*0.5)+int(width*0.03);
+  tglPitchX = tglYawX + distanceXtoggles;
+  tglRollX = tglPitchX + distanceXtoggles;
+  tglemgX = tglRollX + distanceXtoggles;
+  tglEmgX = tglRollX + distanceXtoggles;
+  tglOSCX = tglYawX;
+  tglMIDIX = tglPitchX;
+  nbMIDIportX = tglRollX;
+  nbMIDIchX = tglEmgX;
    
- tglemgX = tglorientationOnOffX = tglgyroOnOffX = tglaccOnOffX = tglposeOnOffX = tglmavOnOffX = tglwaveformOnOffX = int(width*0.92);
+  tglemgX = tglorientationOnOffX = tglgyroOnOffX = tglaccOnOffX = tglposeOnOffX = tglmavOnOffX = tglwaveformOnOffX = int(width*0.92);
 
- tglemgY = int(height*0.4);
- tglmavOnOffY =  tglemgY + distanceYtoggles;
- tglorientationOnOffY = tglmavOnOffY + distanceYtoggles;
- tglaccOnOffY = tglorientationOnOffY + distanceYtoggles;
- tglgyroOnOffY = tglaccOnOffY + distanceYtoggles;
- tglposeOnOffY = tglgyroOnOffY + distanceYtoggles;
+  tglemgY = int(height*0.42);
+  tglmavOnOffY =  tglemgY + distanceYtoggles;
+  tglorientationOnOffY = tglmavOnOffY + distanceYtoggles;
+  tglaccOnOffY = tglorientationOnOffY + distanceYtoggles;
+  tglgyroOnOffY = tglaccOnOffY + distanceYtoggles;
+  tglposeOnOffY = tglgyroOnOffY + distanceYtoggles;
   
    // create a toggle and change the default look to a (on/off) switch look
- waveform01Tgl = cp5.addToggle("WAVEFORM")
-     .setPosition(tglwaveformOnOffX,tglwaveformOnOffY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(false)
-     .setMode(ControlP5.SWITCH)
-     ;
+  waveform01Tgl = cp5.addToggle("WAVEFORM")
+    .setPosition(tglwaveformOnOffX,tglwaveformOnOffY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(false)
+    .setMode(ControlP5.SWITCH)
+    ;
 
- pose01Tgl = cp5.addToggle("POSE")
-     .setPosition(tglposeOnOffX,tglposeOnOffY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(false)
-     .setMode(ControlP5.SWITCH)
-     ;
+  pose01Tgl = cp5.addToggle("POSE")
+    .setPosition(tglposeOnOffX,tglposeOnOffY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(false)
+    .setMode(ControlP5.SWITCH)
+    ;
  
- acc01Tgl = cp5.addToggle("ACC")
-     .setPosition(tglaccOnOffX,tglaccOnOffY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(false)
-     .setMode(ControlP5.SWITCH)
-     ;
+  acc01Tgl = cp5.addToggle("ACC")
+    .setPosition(tglaccOnOffX,tglaccOnOffY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(false)
+    .setMode(ControlP5.SWITCH)
+    ;
 
- gyro01Tgl = cp5.addToggle("GYRO")
-     .setPosition(tglgyroOnOffX,tglgyroOnOffY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(false)
-     .setMode(ControlP5.SWITCH)
-     ;
+  gyro01Tgl = cp5.addToggle("GYRO")
+    .setPosition(tglgyroOnOffX,tglgyroOnOffY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(false)
+    .setMode(ControlP5.SWITCH)
+    ;
  
- orientation01Tgl = cp5.addToggle("ORIENT")
-     .setPosition(tglorientationOnOffX,tglorientationOnOffY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(false)
-     .setMode(ControlP5.SWITCH)
-     ;
+  orientation01Tgl = cp5.addToggle("ORIENT")
+    .setPosition(tglorientationOnOffX,tglorientationOnOffY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(false)
+    .setMode(ControlP5.SWITCH)
+    ;
 
- emg01Tgl = cp5.addToggle("EMG")
-     .setPosition(tglemgX,tglemgY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(false)
-     .setMode(ControlP5.SWITCH)
-     ;
+  emg01Tgl = cp5.addToggle("EMG")
+    .setPosition(tglemgX,tglemgY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(false)
+    .setMode(ControlP5.SWITCH)
+    ;
 
- mav01Tgl = cp5.addToggle("MAV")
-     .setPosition(tglmavOnOffX,tglmavOnOffY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(false)
-     .setMode(ControlP5.SWITCH)
-     ;
+  mav01Tgl = cp5.addToggle("MAV")
+    .setPosition(tglmavOnOffX,tglmavOnOffY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(false)
+    .setMode(ControlP5.SWITCH)
+    ;
 
- revYawTgl = cp5.addToggle("revYaw")
-     .setPosition(tglYawX,tglYawY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(true)
-     .setMode(ControlP5.SWITCH)
-     ;
+  revYawTgl = cp5.addToggle("revYaw")
+    .setPosition(tglYawX,tglYawY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(true)
+    .setMode(ControlP5.SWITCH)
+    ;
 
- revPitchTgl = cp5.addToggle("revPitch")
-     .setPosition(tglPitchX,tglPitchY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(true)
-     .setMode(ControlP5.SWITCH)
-     ;
+  revPitchTgl = cp5.addToggle("revPitch")
+    .setPosition(tglPitchX,tglPitchY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(true)
+    .setMode(ControlP5.SWITCH)
+    ;
      
- revRollTgl = cp5.addToggle("revRoll")
-     .setPosition(tglRollX,tglRollY)
-     .setSize(tglXsize,tglYsize)
-     .setValue(true)
-     .setMode(ControlP5.SWITCH)
-     ;
+  revRollTgl = cp5.addToggle("revRoll")
+    .setPosition(tglRollX,tglRollY)
+    .setSize(tglXsize,tglYsize)
+    .setValue(true)
+    .setMode(ControlP5.SWITCH)
+    ;
   
- revEmgTgl = cp5.addToggle("revMAV")
-     .setPosition(tglEmgX,tglEmgY)
-     .setSize(tglXsize,tglYsize)
+  revEmgTgl = cp5.addToggle("revMAV")
+    .setPosition(tglEmgX,tglEmgY)
+    .setSize(tglXsize,tglYsize)
      .setValue(true)
      .setMode(ControlP5.SWITCH)
      ;
@@ -149,8 +149,7 @@ void toggles(){
      .setSize(tglXsize,tglYsize)
      .setValue(true)
      .setMode(ControlP5.SWITCH)
-     ;
-     
+     ; 
 
   MIDIPortNb = cp5.addNumberbox("MIDI_PORT")
      .setPosition(nbMIDIportX,nbMIDIportY)
