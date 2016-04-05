@@ -4,20 +4,21 @@ ControlP5 cp5;
 
 int windowX, windowY = 0;
 void setup() {
+  
+  frameRate(24);
+  
   cp5 = new ControlP5(this);
   
-  windowX = int(displayWidth/1.5);
-  windowY = displayHeight-int(displayHeight/10);
-  size(windowX, windowY); //window size
+  size(int(displayWidth*0.8), int(displayHeight*0.9)); //window size
   
-  logoSetup();
   myoSetup(); 
+  setUpMIDI();
   toggles();
-  setUpMIDI();  
   bangs();
   oscSetup(); 
   rescale();
   setupSliders(); 
+<<<<<<< HEAD
  
 } 
 
@@ -36,4 +37,24 @@ void draw() {
   emgAvgSend();  
   emgSend();
      
+=======
+} 
+
+void draw() {
+  background(0);
+  
+  if(emgOnOff)EmgSend();
+  if(mavOnOff)MAV();
+  if(orientOnOff)Orientation();
+  if(accOnOff)Acceleration();
+  if(gyroOnOff)Gyro();
+  if(poseOnOff)Pose();
+
+  updateSliders();
+  labels();
+  if(waveformOnOff){
+    labelsAnalysis();
+    analysis();
+    }
+>>>>>>> development
 }

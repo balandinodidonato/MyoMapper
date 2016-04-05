@@ -1,5 +1,11 @@
 int poseInt, poseS, poseMIDI= 0;
-String pose;
+String pose = "";
+boolean poseOnOff=true;
+
+void Pose(){
+  convertPose();
+  sendPose();
+}
 
 void convertPose(){
    if ((pose=="REST")||(pose=="UNCKNOWN")) poseInt = 0;
@@ -12,6 +18,7 @@ void convertPose(){
 
 void sendPose(){
   
+<<<<<<< HEAD
    if(MIDI){
    poseMIDI = int(poseInt*25.4); 
    myBus.sendControllerChange(chMIDI, 20, poseMIDI);
@@ -24,14 +31,30 @@ void sendPose(){
      127 = DOUBLE_TAP
    */
 
+=======
+  if(MIDI){
+    poseMIDI = int(poseInt*25.4); 
+    myBus.sendControllerChange(chMIDI, 20, poseMIDI);
+    /*cc20 send pose messages
+      v0 = UNCKNOWN
+      v25 = FIST
+      v50 = FINGERS_SPREAD
+      v76 = WAVE_IN
+      v101 = WAVE_OUT
+      127 = DOUBLE_TAP
+    */
+>>>>>>> development
    }  
    
-   if(OpenSoundControl){ 
+  if(OpenSoundControl){
     OscMessage Pose = new OscMessage("/pose");
+<<<<<<< HEAD
     
   //  Pose.add(pose);
+=======
+    Pose.add(pose);
+>>>>>>> development
     Pose.add(poseInt);
-
     oscP5.send(Pose, myRemoteLocation);
- }
+    }
 }
