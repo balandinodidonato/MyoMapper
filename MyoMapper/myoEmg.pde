@@ -26,36 +26,35 @@ void MAV(){
     
   mav = emgSum*0.125;
   mav = max(mav, 0);
-  mav = min(mav, 1); 
-}    
-
-void emgSend(){
-  
-if (MIDI) {
-  if(mavOnOff){
+  mav = min(mav, 1);
+ 
+  if (MIDI) { 
     mavMIDI = int(mav*127);
     myBus.sendControllerChange(chMIDI, 10, mavMIDI);
-    }
-  if(emgOnOff){
-    for (int i=0; 1<8; i++){
-      myBus.sendControllerChange(chMIDI, 11+i, emgMIDI[i]); 
-    }  
-  }
-}
-
-if(OpenSoundControl){  
-  if(emgOnOff){
-    OscMessage Emg = new OscMessage("/emg");     
-    Emg.add(emg);
-    oscP5.send(Emg, myRemoteLocation);
-    }
-     
-  if(mavOnOff){
+    } 
+    
+  if(OpenSoundControl){
     OscMessage emgMAV = new OscMessage("/emgMav");   
     emgMAV.add(mav);
     oscP5.send(emgMAV, myRemoteLocation);
-    }   
-  }
+    }
+} 
+
+void EmgSend(){
+  
+  if(MIDI) {
+    for (int i=0; 1<8; i++){
+      myBus.sendControllerChange(chMIDI, 11+i, emgMIDI[i]); 
+      }  
+    }
+
+  if(OpenSoundControl){  
+    if(emgOnOff){
+      OscMessage Emg = new OscMessage("/emg");     
+      Emg.add(emg);
+      oscP5.send(Emg, myRemoteLocation);
+      } 
+    }
 }
 
 

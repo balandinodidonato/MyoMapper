@@ -43,17 +43,12 @@ void myoOn(Myo.Event event, Device myo, long timestamp) {
     case ORIENTATION:
     if (orientOnOff){
       orientation = myo.getOrientation();
-      extractionOrientation();
-      centerOrientation();
-      reverseOrientation();
-      scaleOrientation();
       }
     break;
    
     case ACCELEROMETER:
     if(accOnOff){
       acceleration = myo.getAccelerometer();
-      scaleAcceleration();
       }
     break;
    

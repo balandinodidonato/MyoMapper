@@ -2,6 +2,11 @@ int poseInt, poseS, poseMIDI= 0;
 String pose = "";
 boolean poseOnOff=true;
 
+void Pose(){
+  convertPose();
+  sendPose();
+}
+
 void convertPose(){
    if ((pose=="REST")||(pose=="UNCKNOWN")) poseInt = 0;
     else if (pose=="FIST") poseInt = 1;

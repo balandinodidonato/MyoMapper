@@ -23,16 +23,17 @@ void setup() {
 void draw() {
   background(0);
   
-  if(poseOnOff)sendPose();
-  if(orientOnOff)sendOrientation();
-  if(accOnOff)sendAcceleration();
-  if(gyroOnOff)sendGyro();
+  if(emgOnOff)EmgSend();
   if(mavOnOff)MAV();
-  emgSend();
+  if(orientOnOff)Orientation();
+  if(accOnOff)Acceleration();
+  if(gyroOnOff)Gyro();
+  if(poseOnOff)Pose();
+
   updateSliders();
   labels();
   if(waveformOnOff){
     labelsAnalysis();
     analysis();
-  }
+    }
 }

@@ -1,7 +1,7 @@
 int gyroXMIDI, gyroYMIDI, gyroZMIDI; //cc7, cc8, cc9
 boolean gyroOnOff = true;
 
-void sendGyro(){
+void Gyro(){
   if(MIDI){   
     gyroXMIDI = int(gyro.x*0.127);
     gyroYMIDI = int(gyro.y*0.127);

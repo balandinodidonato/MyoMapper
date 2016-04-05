@@ -13,10 +13,16 @@ int yawMIDI, pitchMIDI, rollMIDI; //cc1, cc2, cc3
 
 boolean orientOnOff = true;
 
-void extractionOrientation(){
+void Orientation(){
+  
   orX = orientation.x; // orientation.y (roll) original value
   orY = orientation.y; // orientation.y (pitch) original value
   orZ = orientation.z; // orientation.z (yaw) original value
+  
+  centerOrientation();
+  reverseOrientation();
+  scaleOrientation();
+  sendOrientation();
 }
 
 //this function CENTER the orientation Myo Data

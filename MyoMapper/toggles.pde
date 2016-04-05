@@ -50,7 +50,7 @@ void toggles(){
   nbMIDIportX = tglRollX;
   nbMIDIchX = tglEmgX;
    
-  tglemgX = tglorientationOnOffX = tglgyroOnOffX = tglaccOnOffX = tglposeOnOffX = tglmavOnOffX = tglwaveformOnOffX = int(width*0.92);
+  tglemgX = tglorientationOnOffX = tglgyroOnOffX = tglaccOnOffX = tglposeOnOffX = tglmavOnOffX = tglwaveformOnOffX = int(width*0.91);
 
   tglemgY = int(height*0.42);
   tglmavOnOffY =  tglemgY + distanceYtoggles;
