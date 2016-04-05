@@ -3,18 +3,51 @@ MyoMapper, is a tool to convert and rescale raw data from the Myo and to send th
 
 It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
 
-MyoMapper demos are available [here](https://vimeo.com/album/3313801).
+MyoMapper demos are available [here](http://developerblog.myo.com/exploring-live-sound-spatialisation-using-gestural-control/) and [here](https://vimeo.com/album/3313801).
 
 [**DOWNLOAD MyoMapper for OSX or Windows**](https://github.com/balandinodidonato/MyoMapper/releases/tag/1)
 
-## How to use it
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" height="300" alt="MyoMapper-EMG" />
 
+
+## Getting started
+
+### Set up MyoMapper
+- Download MyoConnect for [Windows](https://s3.amazonaws.com/thalmicdownloads/windows/1.0.1/Myo+Connect+Installer.exe) or [Mac](https://s3.amazonaws.com/thalmicdownloads/mac/1.0.1/MyoConnect.dmg)
 - Launch [Myo Connect](https://developer.thalmic.com/downloads)
-- Install `unlock.myo`  script (`path/to/MyoMapper/script/unlock.myo`) to do so:
-`Myo Connect -> Application Manager -> +Add -> Select unlock.myo`
+- Install `unlock.myo`. to do so:
+  - Save [unlock.myo  script](https://raw.githubusercontent.com/balandinodidonato/MyoMapper/master/script/unlockMyo.myo) as text by `Right Click -> Save As` or `CTRL+S` on Windows or `CMD+S` on Mac.
+  - Rename it as `unlock.myo`.
+  - From the MyoConnect: `Application Manager -> +Add -> select unlock.myo`
+  - It is not mandatory, yet it is better if you disable off all others scrips.
 - Connect your Myo armband
 - Verify that the connection is stable and Myo Connect is receiving data
 - Launch MyoMapper
+
+### MyoMapper
+
+On the left side we have a visual representation of all Myo's data and on the right controls to process, extract and send data to third applications through the OSC and/or MIDI protocol.
+
+The first portion of graph desctibes the 8 EMG signals.
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-EMG.png" width="300" alt="MyoMapper-EMG"/>
+
+Following, the representation of the 8 EMG data' mean absolute value.
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-MAV.png" width="300" alt="MyoMapper-MAV"/>
+
+Just below the merged values of yaw (red line), pitch (green line) and roll value (blue line).
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-YPR.png" width="300" alt="MyoMapper-YPR"/>
+
+Similarly, have been represented the acceleration and gyro data.
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Acc.png" width="300" alt="MyoMapper-Acc"/>
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Gyro.png" width="300" alt="MyoMapper-Gyro"/>
+
+On the right side of the Myo Mapper instead we see
+
 
 ## OSC Communication
 
@@ -34,21 +67,18 @@ Build again MyoMapper. It is advisable to run it first from Processing using the
 
 ### OSC mapping
 
-| OSC tag      | Value                  | Myo parameter                |
-| :---:        | :---:                  | :---:                        |
-| /orientation | 0-1, 0-1, 0-1          | Yaw, Pitch, Roll             |
-| /acc         | 0-1000, 0-1000, 0-1000 | Acc X, Acc Y, Acc Z          |
-| /gyro        | 0-2PI, 0-2PI, 0-2PI    | Gyro X, Gyro Y, Gyro Z       |
-| /emgAvg      | 0-1                    | EMG average                  |
-| /emg         | 0-1, 0-1, 0-1, ... 0-1 | EMG 1, EMG 2, EMG 3 ... EMG 8|
-| /pose        | `UNCKNOWN`, 0          | Pose: Unknown                |
-| /pose        | `FIST`, 1              |  Pose: Fist                  |
-| /pose        | `FINGERS_SPREAD`, 2    | Pose: Fingers Spread         |
-| /pose        | `WAVE_IN`, 3           | Pose: Wave In                |
-| /pose        | `WAVE_OUT`, 4          | Pose: Wave Out               |
-| /pose        | `DOUBLE_TAP`, 5        | Pose: Double Tap             |
-| /pose        | `REST`, 6              | Pose: Rest                   |
+| Myo parameter            | OSC tag      |n. velues | range velue/s |
+| :---:                    | :---:        | :---:    | :---:         |
+| EMG 1, EMG 2, ..., EMG 8 | /emg         |8         | -128 - 127    |
+| EMG MAV (See note below) | /emgMav      |1         | 0. - 1.       |
+| Yaw, Pitch, Roll         | /orientation |3         | 0. - 1.       |
+| Acc X, Y, Z              | /acc         |3         | 0 - 1000      |
+| Gyro X, Y, Z             | /gyro        |3         | 0. - 2PI      |
+| Pose                     | /pose        |2         | "pose", 1 - 6 |
 
+#### EMG MAV
+In MyoMapper the EMG's mean absolute value (MAV) is calculated through the following formula from (Arief et al. 2015).
+![MAV (Arief et al. 2015)](https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MAV.png)
 
 
 ## MIDI Communication
