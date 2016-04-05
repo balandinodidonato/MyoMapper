@@ -26,7 +26,7 @@ MyoMapper demos are available [here](http://developerblog.myo.com/exploring-live
 
 ### MyoMapper
 
-On the left side we have a visual representation of all Myo's data and on the right controls to process, extract and send data to third applications through the OSC and/or MIDI protocol.
+On the left side we have a visual representation of all Myo's data and on the right controls to manage them.
 
 The first portion of graph desctibes the 8 EMG signals.
 
@@ -42,11 +42,27 @@ Just below the merged values of yaw (red line), pitch (green line) and roll valu
 
 Similarly, have been represented the acceleration and gyro data.
 
-<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Acc.png" width="300" alt="MyoMapper-Acc"/>
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Acc.png" width="300" alt="MyoMapper-Gyro"/>
 
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Gyro.png" width="300" alt="MyoMapper-Gyro"/>
 
-On the right side of the Myo Mapper instead we see
+On the right side of the MyoMapper, there are all to manage Myo's data.
+
+The first line of controls is composed by a OSC and MIDI toggle to respectively allow or not MyoMapper to send OSC and MIDI messages to third applications. The number box just next to the MIDI toggle are to set up the MIDI port and channel.
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-OSC-MIDI.png" width="300" alt="MyoMapper-OSC-MIDI"/>
+
+Below it, four toggles to reverse the yaw, pitch, roll and MAV value.
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Rev.png" width="300" alt="MyoMapper-Gyro"/>
+
+The four bang above the sliders set the yaw, pitch, roll values at 0.5.
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Centr.png" width="300" alt="MyoMapper-Centr"/>
+
+The four sliders are an additional representation of the yaw, pitch and roll value in order to enhance 
+
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper-Rescale.png" width="300" alt="MyoMapper-Centr"/>
 
 
 ## OSC Communication
@@ -77,7 +93,8 @@ Build again MyoMapper. It is advisable to run it first from Processing using the
 | Pose                     | /pose        |2         | "pose", 1 - 6 |
 
 #### EMG MAV
-In MyoMapper the EMG's mean absolute value (MAV) is calculated through the following formula from (Arief et al. 2015).
+In MyoMapper the EMG's mean absolute value (MAV) is calculated through the following formula from [(Arief et al. 2015)](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=7380805&tag=1).
+
 ![MAV (Arief et al. 2015)](https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MAV.png)
 
 
