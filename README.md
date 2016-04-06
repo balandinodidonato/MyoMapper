@@ -1,7 +1,7 @@
 # MyoMapper
 MyoMapper is an <a href="https://opensource.org/">open-source</a> <a href="https://www.myo.com/">Myo</a> to <a href="http://opensoundcontrol.org/">OSC</a> and <a href="https://www.midi.org/">MIDI</a> bridge to send data to third audio softwares (Eg. <a href="http://www.integralive.org/">Integra Live</a>, <a href="https://puredata.info/">Pd</a>, <a href="https://cycling74.com/products/max/">Max</a>).
 
-<a href="https://github.com/balandinodidonato/MyoMapper/releases"><strong>DOWNLOAD MyoMapper</strong> </a> or also HACK IT by editing the <a href="https://github.com/balandinodidonato/MyoMapper">source code</a>. Full details about MyoMapper can be found at through the [**wiki page**](https://github.com/balandinodidonato/MyoMapper/wiki).
+<a href="https://github.com/balandinodidonato/MyoMapper/releases"><strong>DOWNLOAD MyoMapper</strong> </a> or also HACK IT by editing the <a href="https://github.com/balandinodidonato/MyoMapper">source code</a>. Full details about MyoMapper can be found through the [**WIKI PAGE**](https://github.com/balandinodidonato/MyoMapper/wiki).
 
 Of course do not forget to film your performance realised with MyoMapper and show me what did realise with it.
 
