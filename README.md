@@ -1,15 +1,14 @@
 # MyoMapper
 MyoMapper is an <a href="https://opensource.org/">open-source</a> <a href="https://www.myo.com/">Myo</a> to <a href="http://opensoundcontrol.org/">OSC</a> and <a href="https://www.midi.org/">MIDI</a> bridge to send data to third audio softwares (Eg. <a href="http://www.integralive.org/">Integra Live</a>, <a href="https://puredata.info/">Pd</a>, <a href="https://cycling74.com/products/max/">Max</a>).
 
-<a href="https://github.com/balandinodidonato/MyoMapper/releases"><strong>DOWNLOAD MyoMapper</strong> </a> or also HACK IT by editing the <a href="https://github.com/balandinodidonato/MyoMapper">source code</a>. All the documentation can be found <a href="https://github.com/balandinodidonato/MyoMapper/wiki">here</a>.
+<a href="https://github.com/balandinodidonato/MyoMapper/releases"><strong>DOWNLOAD MyoMapper</strong> </a> or also HACK IT by editing the <a href="https://github.com/balandinodidonato/MyoMapper">source code</a>. Full details about MyoMapper can be found at through the [**wiki page**](https://github.com/balandinodidonato/MyoMapper/wiki).
 
 Of course do not forget to film your performance realised with MyoMapper and show me what did realise with it.
 
-Myo Mapper has been developed as a part of <a href="http://www.balandinodidonato.com/">Balandino's</a> research conducted at <a href="http://www.integra.io/lab">Integra Lab</a>.
-
-[**FULL DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
-
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
+
+
+MyoMapper is developed by <a href="http://www.balandinodidonato.com/">Balandino Di Donato</a> at <a href="http://www.integra.io">Integra Lab</a>.
 
 
 ## License
