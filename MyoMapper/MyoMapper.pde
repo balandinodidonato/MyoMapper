@@ -18,26 +18,6 @@ void setup() {
   oscSetup(); 
   rescale();
   setupSliders(); 
-<<<<<<< HEAD
- 
-} 
-
-void draw() {
-  background(0); //background color
-  logoRun();
-  updateSliders();
-  labels();
-  emgGraphs();
-  
-  //-------
-  sendPose();
-  sendOrientation();
-  sendAcceleration();
-  sendGyro();
-  emgAvgSend();  
-  emgSend();
-     
-=======
 } 
 
 void draw() {
@@ -56,5 +36,4 @@ void draw() {
     labelsAnalysis();
     analysis();
     }
->>>>>>> development
 }

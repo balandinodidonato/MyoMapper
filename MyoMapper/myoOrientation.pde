@@ -82,21 +82,6 @@ void scaleOrientation(){
 
 void sendOrientation(){
 
-<<<<<<< HEAD
-if(MIDI){
-     rollMIDI = int(roll*127);
-     pitchMIDI = int(pitch*127);
-     yawMIDI = int(yaw*127);
-  
-     myBus.sendControllerChange(chMIDI, 1, yawMIDI); // Send a Midi noteOn
-     myBus.sendControllerChange(chMIDI, 2, pitchMIDI); // Send a Midi noteOn
-     myBus.sendControllerChange(chMIDI, 3, rollMIDI); // Send a Midi noteOn
-     
-
-     }
-     
- if(OpenSoundControl){ 
-=======
   if(MIDI){
     rollMIDI = int(roll*127);
     pitchMIDI = int(pitch*127);
@@ -108,21 +93,13 @@ if(MIDI){
     }
      
   if(OpenSoundControl){ 
->>>>>>> development
     OscMessage orient = new OscMessage("/orientation");
      
     orient.add(yaw);
     orient.add(pitch);
     orient.add(roll);
-<<<<<<< HEAD
-
-    oscP5.send(orient, myRemoteLocation);   
- }
-
-=======
   
     oscP5.send(orient, myRemoteLocation);   
     }
->>>>>>> development
 }
 

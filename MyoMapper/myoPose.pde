@@ -18,20 +18,6 @@ void convertPose(){
 
 void sendPose(){
   
-<<<<<<< HEAD
-   if(MIDI){
-   poseMIDI = int(poseInt*25.4); 
-   myBus.sendControllerChange(chMIDI, 20, poseMIDI);
-   /*cc20 send pose messages
-     v0 = UNCKNOWN
-     v25 = FIST
-     v50 = FINGERS_SPREAD
-     v76 = WAVE_IN
-     v101 = WAVE_OUT
-     127 = DOUBLE_TAP
-   */
-
-=======
   if(MIDI){
     poseMIDI = int(poseInt*25.4); 
     myBus.sendControllerChange(chMIDI, 20, poseMIDI);
@@ -43,17 +29,11 @@ void sendPose(){
       v101 = WAVE_OUT
       127 = DOUBLE_TAP
     */
->>>>>>> development
    }  
    
   if(OpenSoundControl){
     OscMessage Pose = new OscMessage("/pose");
-<<<<<<< HEAD
-    
-  //  Pose.add(pose);
-=======
     Pose.add(pose);
->>>>>>> development
     Pose.add(poseInt);
     oscP5.send(Pose, myRemoteLocation);
     }
