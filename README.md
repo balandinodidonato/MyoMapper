@@ -3,8 +3,6 @@ MyoMapper is an <a href="https://opensource.org/">open-source</a> <a href="https
 
 <a href="https://github.com/balandinodidonato/MyoMapper/releases"><strong>DOWNLOAD MyoMapper</strong> </a> or also HACK IT by editing the <a href="https://github.com/balandinodidonato/MyoMapper">source code</a>. Full details about MyoMapper can be found through the [**WIKI PAGE**](https://github.com/balandinodidonato/MyoMapper/wiki).
 
-Of course do not forget to film your performance realised with MyoMapper and show me what did realise with it.
-
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
 
 
