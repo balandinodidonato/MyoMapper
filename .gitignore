@@ -3,6 +3,7 @@ MyoMapper/application.macosx
 MyoMapper/application.windows32
 MyoMapper/application.windows64
 <<<<<<< HEAD
+<<<<<<< HEAD
 MyoMapper/MyoMapper.windows64.zip
 =======
 >>>>>>> development
@@ -12,3 +13,11 @@ MyoMapper/MyoMapper-Win32
 MyoMapper/MyoMapper-Win32.zip
 MyoMapper/MyoMapper-Win64
 MyoMapper/MyoMapper-Win64.zip
+=======
+MyoMapper-Mac
+MyoMapper-Mac.zip
+MyoMapper-Win32
+MyoMapper-Win32.zip
+MyoMapper-Win64
+MyoMapper-Win64.zip
+>>>>>>> development
