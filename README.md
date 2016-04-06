@@ -3,8 +3,12 @@ MyoMapper is an open-source application to manage and send [Myo](https://www.m
 
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
 
+[Download MyoMapper](https://github.com/balandinodidonato/MyoMapper/releases) or hack it by editing the available <a href="https://github.com/balandinodidonato/MyoMapper">source code</a>. All the documentation can be found <a href="https://github.com/balandinodidonato/MyoMapper/wiki">here</a>.
 
-MyoMapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com/) at [Integra Lab](http://www.integra.io).
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
+
+
+MyoMapper is developed by <a href="http://www.balandinodidonato.com/">Balandino Di Donato</a> at <a href="http://www.integra.io">Integra Lab</a>.
 
 
 ## License
