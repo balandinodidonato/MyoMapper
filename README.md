@@ -7,11 +7,10 @@ Of course do not forget to film your performance realised with MyoMapper and s
 
 Myo Mapper has been developed as a part of <a href="http://www.balandinodidonato.com/">Balandino's</a> research conducted at <a href="http://www.integra.io/lab">Integra Lab</a>.
 
+[**FULL DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
+
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
 
-<a href="http://www.integra.io/lab">Integra Lab</a>
-
-[**FULL DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
 
 ## License
 
