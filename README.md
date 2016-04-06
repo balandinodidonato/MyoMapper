@@ -1,8 +1,6 @@
 # MyoMapper
 MyoMapper is an open-source application to manage and send [Myo](https://www.myo.com/) data to any audio and visual software (eg. [Integra Live](http://www.integralive.org/), [Pd](https://puredata.info/), [Max](https://cycling74.com/products/max/), [Ableton](https://www.ableton.com/en/), [Logic](http://www.apple.com/uk/logic-pro/), [ProTools](https://www.avid.com/en/pro-tools), [Processing](ttps://processing.org/), [Arcaos](https://www.arkaos.net/)) able to receive [OSC](http://opensoundcontrol.org/) and [MIDI](https://www.midi.org/) messages.
 
-<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
-
 [Download MyoMapper](https://github.com/balandinodidonato/MyoMapper/releases) or hack it by editing the available <a href="https://github.com/balandinodidonato/MyoMapper">source code</a>. All the documentation can be found <a href="https://github.com/balandinodidonato/MyoMapper/wiki">here</a>.
 
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
