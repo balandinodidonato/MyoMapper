@@ -1,12 +1,10 @@
 # MyoMapper
-MyoMapper is an <a href="https://opensource.org/">open-source</a> <a href="https://www.myo.com/">Myo</a> to <a href="http://opensoundcontrol.org/">OSC</a> and <a href="https://www.midi.org/">MIDI</a> bridge to send data to third audio softwares (Eg. <a href="http://www.integralive.org/">Integra Live</a>, <a href="https://puredata.info/">Pd</a>, <a href="https://cycling74.com/products/max/">Max</a>).
-
-<a href="https://github.com/balandinodidonato/MyoMapper/releases"><strong>DOWNLOAD MyoMapper</strong> </a> or also HACK IT by editing the <a href="https://github.com/balandinodidonato/MyoMapper">source code</a>. Full details about MyoMapper can be found through the [**WIKI PAGE**](https://github.com/balandinodidonato/MyoMapper/wiki).
+MyoMapper is an open-source application to manage and send [Myo](https://www.myo.com/) data to any audio and visual software (eg. [Integra Live](http://www.integralive.org/), [Pd](https://puredata.info/), [Max](https://cycling74.com/products/max/), [Ableton](https://www.ableton.com/en/), [Logic](http://www.apple.com/uk/logic-pro/), [ProTools](https://www.avid.com/en/pro-tools), [Processing](ttps://processing.org/), [Arcaos](https://www.arkaos.net/)) able to receive [OSC](http://opensoundcontrol.org/) and [MIDI](https://www.midi.org/) messages.
 
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
 
 
-MyoMapper is developed by <a href="http://www.balandinodidonato.com/">Balandino Di Donato</a> at <a href="http://www.integra.io">Integra Lab</a>.
+MyoMapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com/) at [Integra Lab](http://www.integra.io).
 
 
 ## License
