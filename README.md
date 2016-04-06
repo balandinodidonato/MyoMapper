@@ -7,7 +7,7 @@ MyoMapper demos are available [here](http://developerblog.myo.com/exploring-live
 
 [**DOWNLOAD MyoMapper for OSX or Windows**](https://github.com/balandinodidonato/MyoMapper/releases/tag/1)
 
-<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" height="300" alt="MyoMapper-EMG" />
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
 
 
 ## Getting started
