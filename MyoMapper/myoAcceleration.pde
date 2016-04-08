@@ -1,17 +1,16 @@
 int accSx, accSy, accSz = 0;
-int accXMIDI, accYMIDI, accZMIDI; //cc4, cc5, cc6
+int[] accMIDI = new int[3];
+
 boolean accOnOff=true;
 
 void Acceleration(){
   
   if(MIDI){   
-    accXMIDI = int(acceleration.x*0.00125318852828); // /(2*PI)*127
-    accYMIDI = int(acceleration.y*0.00125318852828); // /(2*PI)*127
-    accZMIDI = int(acceleration.z*0.00125318852828); // /(2*PI)*127
+    accMIDI[0] = int(acceleration.x*0.00125318852828); // /(2*PI)*127
+    accMIDI[1] = int(acceleration.y*0.00125318852828); // /(2*PI)*127
+    accMIDI[2] = int(acceleration.z*0.00125318852828); // /(2*PI)*127
        
-    myBus.sendControllerChange(chMIDI, 4, accXMIDI);
-    myBus.sendControllerChange(chMIDI, 5, accYMIDI);
-    myBus.sendControllerChange(chMIDI, 6, accZMIDI);
+    for(int i=0; i<3; i++) myBus.sendControllerChange(chMIDI, 13+i, accMIDI[i]);
     }
       
   if(OpenSoundControl){  
