@@ -1,21 +1,21 @@
 #N canvas 579 28 433 503 10;
 #X text 125 470 Balandino Di Donato - 2016;
-#N canvas 456 43 822 786 OSC-PAN 0;
+#N canvas 456 43 822 786 OSC-PAN 1;
 #X obj 16 463 *~;
 #X obj 66 463 *~;
 #X floatatom 81 369 5 0 0 0 - - -, f 5;
 #X obj 81 347 r yaw;
 #X msg 81 388 \$1 24;
-#X obj 81 432 -~ 1;
+#X obj 31 437 -~ 1;
 #X obj 16 746 dac~;
 #X obj 167 428 tgl 30 0 empty empty AUDIO 2 -6 0 10 -262144 -1 -1 1
 1;
 #X obj 161 482 vsl 20 70 0 1 0 0 empty empty Gain -2 -10 0 10 -262144
 -1 -1 5175 1;
 #X obj 189 482 vsl 10 70 0 127 0 0 empty empty L 2 -10 0 10 -262144
--1 -1 1289 1;
+-1 -1 2666 1;
 #X obj 199 482 vsl 10 70 0 127 0 0 empty empty R 2 -10 0 10 -262144
--1 -1 3949 1;
+-1 -1 3636 1;
 #X obj 16 625 *~;
 #X obj 66 625 *~;
 #X msg 131 575 \$1 24;
@@ -108,7 +108,7 @@
 #X connect 2 0 4 0;
 #X connect 3 0 2 0;
 #X connect 4 0 25 0;
-#X connect 5 0 1 1;
+#X connect 5 0 0 1;
 #X connect 7 0 31 0;
 #X connect 8 0 13 0;
 #X connect 11 0 17 0;
@@ -137,7 +137,7 @@
 #X connect 24 0 11 1;
 #X connect 24 0 12 1;
 #X connect 25 0 5 0;
-#X connect 25 0 0 1;
+#X connect 25 0 1 1;
 #X connect 27 0 34 1;
 #X connect 27 0 35 1;
 #X connect 28 0 27 0;

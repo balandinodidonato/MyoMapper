@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 59.0, 104.0, 459.0, 606.0 ],
+		"rect" : [ 59.0, 104.0, 461.0, 606.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -56,7 +56,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 96.0, 204.0, 61.0, 22.0 ],
+					"patching_rect" : [ 96.0, 208.0, 61.0, 22.0 ],
 					"style" : "",
 					"text" : "port 5432"
 				}
@@ -65,12 +65,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-1",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 163.0, 204.0, 297.0, 20.0 ],
+					"patching_rect" : [ 160.0, 209.0, 296.0, 33.0 ],
 					"style" : "",
-					"text" : "<-- Edit this message to change the PORT NUMBER"
+					"text" : "<-- Edit this message to change the PORT NUMBER.\n      Defaut port 5432"
 				}
 
 			}
@@ -95,7 +96,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 8.0, 46.0, 400.0, 127.0 ],
+					"patching_rect" : [ 8.0, 46.0, 444.0, 127.0 ],
 					"style" : "",
 					"text" : "A simple example of how you can control 8 oscilators' frequency, aplitude and stereo panning using the Myo amrband and MyoMapper.\n\nInstructions:\n - Launch Myo Connect\n - Launch MyoMapper\n - Turn on MyoReceiver\n - Turn on audio\n - ENJOY IT!"
 				}
@@ -108,7 +109,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 74.0, 552.0, 252.0, 33.0 ],
+					"patching_rect" : [ 104.0, 553.0, 252.0, 33.0 ],
 					"style" : "",
 					"text" : "           Balandino Di Donato - 2016\nwww.balandinodidonato.com/myomapper"
 				}
@@ -122,7 +123,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "", "float", "list" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 32.0, 331.0, 48.0, 136.0 ],
+					"patching_rect" : [ 32.0, 328.0, 107.0, 135.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~",
@@ -146,7 +147,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 32.0, 485.0, 45.0, 45.0 ],
+					"patching_rect" : [ 32.0, 485.0, 41.0, 41.0 ],
 					"style" : ""
 				}
 
@@ -168,7 +169,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 136.0, 79.0, 846.0, 750.0 ],
+						"rect" : [ 136.0, 79.0, 977.0, 772.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -197,6 +198,58 @@
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "signal" ],
+									"patching_rect" : [ 459.0, 629.0, 40.75, 22.0 ],
+									"style" : "",
+									"text" : "*~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 45.5, 457.0, 151.0, 33.0 ],
+									"style" : "",
+									"text" : "The yaw value controls the stereo panning."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 120.0, 34.0, 228.0, 33.0 ],
+									"style" : "",
+									"text" : "The pitch value controls the  fundamental frequency of the armonic osc-bank."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-1",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 787.0, 212.0, 160.0, 33.0 ],
+									"style" : "",
+									"text" : "EMG controls the ampltitude of each oscilators."
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-133",
 									"linecount" : 2,
 									"maxclass" : "comment",
@@ -215,7 +268,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 402.75, 668.0, 30.0, 30.0 ],
+									"patching_rect" : [ 459.0, 664.0, 30.0, 30.0 ],
 									"style" : ""
 								}
 
@@ -227,7 +280,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 326.25, 668.0, 30.0, 30.0 ],
+									"patching_rect" : [ 268.25, 668.0, 30.0, 30.0 ],
 									"style" : ""
 								}
 
@@ -447,7 +500,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 475.0, 571.0, 35.0, 22.0 ],
+									"patching_rect" : [ 290.0, 594.0, 35.0, 22.0 ],
 									"style" : "",
 									"text" : "-~ 1."
 								}
@@ -460,7 +513,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "bang" ],
-									"patching_rect" : [ 475.0, 541.0, 36.0, 22.0 ],
+									"patching_rect" : [ 214.5, 515.0, 36.0, 22.0 ],
 									"style" : "",
 									"text" : "line~"
 								}
@@ -473,7 +526,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 475.0, 513.0, 41.0, 22.0 ],
+									"patching_rect" : [ 214.5, 487.0, 41.0, 22.0 ],
 									"style" : "",
 									"text" : "$1 24"
 								}
@@ -486,22 +539,9 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 475.0, 483.0, 39.0, 22.0 ],
+									"patching_rect" : [ 214.5, 457.0, 39.0, 22.0 ],
 									"style" : "",
 									"text" : "r yaw"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-92",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 402.75, 629.0, 29.5, 22.0 ],
-									"style" : "",
-									"text" : "*~"
 								}
 
 							}
@@ -512,7 +552,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 326.25, 629.0, 29.5, 22.0 ],
+									"patching_rect" : [ 268.25, 629.0, 40.75, 22.0 ],
 									"style" : "",
 									"text" : "*~"
 								}
@@ -525,7 +565,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 360.25, 482.0, 42.0, 22.0 ],
+									"patching_rect" : [ 362.5, 457.0, 42.0, 22.0 ],
 									"style" : "",
 									"text" : "*~ 0.1"
 								}
@@ -1318,6 +1358,7 @@
 									"destination" : [ "obj-87", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 61.5, 422.0, 372.0, 422.0 ],
 									"source" : [ "obj-19", 0 ]
 								}
 
@@ -1381,6 +1422,7 @@
 									"destination" : [ "obj-87", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 151.5, 422.0, 372.0, 422.0 ],
 									"source" : [ "obj-26", 0 ]
 								}
 
@@ -1408,6 +1450,7 @@
 									"destination" : [ "obj-43", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 61.5, 115.0, 151.5, 115.0 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1417,6 +1460,7 @@
 									"destination" : [ "obj-44", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 61.5, 115.0, 241.5, 115.0 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1426,6 +1470,7 @@
 									"destination" : [ "obj-50", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 61.5, 115.0, 331.5, 115.0 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1435,6 +1480,7 @@
 									"destination" : [ "obj-56", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 61.5, 115.0, 421.5, 115.0 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1444,6 +1490,7 @@
 									"destination" : [ "obj-62", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 61.5, 115.0, 511.5, 115.0 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1453,6 +1500,7 @@
 									"destination" : [ "obj-68", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 61.5, 115.0, 601.5, 115.0 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1462,6 +1510,7 @@
 									"destination" : [ "obj-74", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 61.5, 115.0, 691.5, 115.0 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1525,6 +1574,7 @@
 									"destination" : [ "obj-87", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 241.5, 422.0, 372.0, 422.0 ],
 									"source" : [ "obj-48", 0 ]
 								}
 
@@ -1579,6 +1629,7 @@
 									"destination" : [ "obj-87", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 331.5, 422.0, 372.0, 422.0 ],
 									"source" : [ "obj-54", 0 ]
 								}
 
@@ -1630,9 +1681,19 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-132", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-87", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 421.5, 422.0, 372.0, 422.0 ],
 									"source" : [ "obj-60", 0 ]
 								}
 
@@ -1687,6 +1748,7 @@
 									"destination" : [ "obj-87", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 511.5, 422.0, 372.0, 422.0 ],
 									"source" : [ "obj-66", 0 ]
 								}
 
@@ -1741,6 +1803,7 @@
 									"destination" : [ "obj-87", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 601.5, 422.0, 372.0, 422.0 ],
 									"source" : [ "obj-72", 0 ]
 								}
 
@@ -1795,6 +1858,7 @@
 									"destination" : [ "obj-87", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 691.5, 422.0, 372.0, 422.0 ],
 									"source" : [ "obj-78", 0 ]
 								}
 
@@ -1819,18 +1883,20 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-91", 0 ],
+									"destination" : [ "obj-6", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 372.0, 553.5, 468.5, 553.5 ],
 									"source" : [ "obj-87", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-92", 0 ],
+									"destination" : [ "obj-91", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 372.0, 553.5, 277.75, 553.5 ],
 									"source" : [ "obj-87", 0 ]
 								}
 
@@ -1846,15 +1912,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-132", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-92", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-95", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -1864,9 +1921,10 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-91", 1 ],
+									"destination" : [ "obj-6", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 224.0, 574.5, 490.25, 574.5 ],
 									"source" : [ "obj-94", 0 ]
 								}
 
@@ -1876,6 +1934,7 @@
 									"destination" : [ "obj-96", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"midpoints" : [ 224.0, 574.0, 299.5, 574.0 ],
 									"source" : [ "obj-94", 0 ]
 								}
 
@@ -1891,7 +1950,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-92", 1 ],
+									"destination" : [ "obj-91", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-96", 0 ]
@@ -1901,7 +1960,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 32.0, 289.0, 74.0, 22.0 ],
+					"patching_rect" : [ 32.0, 290.0, 107.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1911,7 +1970,7 @@
 					}
 ,
 					"style" : "",
-					"text" : "p OSC-PAN"
+					"text" : "p stereo-osc-bank"
 				}
 
 			}
