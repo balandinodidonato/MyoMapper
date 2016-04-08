@@ -2,7 +2,7 @@
 MyoMapper is an [open-source](https://opensource.org/) application to manage and send [Myo](https://www.myo.com/) data to any audio and visual software able to receive [OSC](http://opensoundcontrol.org/) and [MIDI](https://www.midi.org/) messages.
 With MyoMapper you can also send Myo data to any hardware with embedded MIDI connection through a MIDI I/O interface.
 
-[Download MyoMapper](https://github.com/balandinodidonato/MyoMapper/releases) and get started with [examples](https://github.com/balandinodidonato/MyoMapper/tree/master/examples) for [Pd](https://puredata.info/) and [Max](https://cycling74.com/products/max/).
+[Download MyoMapper](https://github.com/balandinodidonato/MyoMapper/releases) and get started with [examples](https://github.com/balandinodidonato/MyoMapper/releases/download/1.3/MyoMapper-Examples.zip) for [Pd](https://puredata.info/) and [Max](https://cycling74.com/products/max/).
 
 [**DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
 
