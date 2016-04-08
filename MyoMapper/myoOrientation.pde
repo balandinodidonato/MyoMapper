@@ -94,7 +94,9 @@ void sendOrientation(){
      
   if(OpenSoundControl){ 
     OscMessage orient = new OscMessage("/orientation");
-    for(int i=0; i<3; i++) orient.add(orientMIDI[i]);
+    orient.add(yaw);
+    orient.add(pitch);
+    orient.add(roll);
     oscP5.send(orient, myRemoteLocation);   
     }
 }
