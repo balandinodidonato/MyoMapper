@@ -20,7 +20,7 @@ void sendPose(){
   
   if(MIDI){
     poseMIDI = int(poseInt*25.4); 
-    myBus.sendControllerChange(chMIDI, 20, poseMIDI);
+    myBus.sendControllerChange(chMIDI, 19, poseMIDI);
     /*cc20 send pose messages
       v0 = REST
       v25 = FIST
