@@ -10,10 +10,10 @@
 \contentsline {subsection}{\numberline {3.7}OSC and MIDI control}{9}{subsection.3.7}
 \contentsline {subsection}{\numberline {3.8}Myo data elaboration}{10}{subsection.3.8}
 \contentsline {subsection}{\numberline {3.9}Pose and Myo status}{12}{subsection.3.9}
-\contentsline {section}{\numberline {4}OSC and MIDI}{13}{section.4}
-\contentsline {subsection}{\numberline {4.1}OSC connection}{13}{subsection.4.1}
+\contentsline {section}{\numberline {4}OSC and MIDI}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}OSC connection}{12}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}OSC Mapping}{13}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}MIDI connection}{14}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}MIDI mapping}{15}{subsection.4.4}
-\contentsline {section}{\numberline {5}Build Myo Mapper}{16}{section.5}
-\contentsline {section}{\numberline {6}Interactive performance with Myo and Myo Mapper}{17}{section.6}
+\contentsline {subsection}{\numberline {4.3}MIDI connection}{13}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}MIDI mapping}{14}{subsection.4.4}
+\contentsline {section}{\numberline {5}Build Myo Mapper}{15}{section.5}
+\contentsline {section}{\numberline {6}Interactive performance with Myo and Myo Mapper}{16}{section.6}
