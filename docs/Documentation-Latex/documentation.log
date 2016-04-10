@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.21)  9 APR 2016 01:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.21)  10 APR 2016 20:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -356,27 +356,27 @@ Package: listings 2014/09/06 1.5e (Carsten Heinz)
 (./documentation.aux)
 \openout1 = `documentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 20.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    ... okay on input line 20.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -407,7 +407,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 14.
+Package hyperref Info: Link coloring OFF on input line 20.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -417,9 +417,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count124
 )
-LaTeX Info: Redefining \ref on input line 14.
-LaTeX Info: Redefining \pageref on input line 14.
-LaTeX Info: Redefining \nameref on input line 14.
+LaTeX Info: Redefining \ref on input line 20.
+LaTeX Info: Redefining \pageref on input line 20.
+LaTeX Info: Redefining \nameref on input line 20.
 
 (./documentation.out) (./documentation.out)
 \@outlinefile=\write3
@@ -427,30 +427,13 @@ LaTeX Info: Redefining \nameref on input line 14.
 
 \c@lstlisting=\count125
 
-</Users/balandinodidonato/git-repositories/MyoMapper/docs/logo.png, id=80, 433.
-43933pt x 433.43933pt>
-File: /Users/balandinodidonato/git-repositories/MyoMapper/docs/logo.png Graphic
- file (type png)
-
-<use /Users/balandinodidonato/git-repositories/MyoMapper/docs/logo.png>
-Package pdftex.def Info: /Users/balandinodidonato/git-repositories/MyoMapper/do
-cs/logo.png used on input line 18.
+<../logo.png, id=80, 433.43933pt x 433.43933pt>
+File: ../logo.png Graphic file (type png)
+ <use ../logo.png>
+Package pdftex.def Info: ../logo.png used on input line 23.
 (pdftex.def)             Requested size: 272.99881pt x 272.99547pt.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.23 \thispagestyle
-                   {empty}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 LaTeX Font Info:    Try loading font information for U+msa on input line 23.
+
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -460,43 +443,41 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} </Users/
-balandinodidonato/git-repositories/MyoMapper/docs/logo.png>] (./documentation.t
-oc)
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../logo
+.png>]
+(./documentation.toc)
 \tf@toc=\write4
 \openout4 = `documentation.toc'.
 
- [2]
-Underfull \hbox (badness 10000) in paragraph at lines 36--40
+ [2] <../integra.png, id=118, 684.156pt x 182.6022pt>
+File: ../integra.png Graphic file (type png)
 
- []
+<use ../integra.png>
+Package pdftex.def Info: ../integra.png used on input line 34.
+(pdftex.def)             Requested size: 94.97736pt x 25.35095pt.
+ <../cons.png, id=119, 1091.5179pt x 108.8868pt>
+File: ../cons.png Graphic file (type png)
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--40
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--40
-
- []
-
-[3] <../MyoMapper.png, id=134, 1155.81813pt x 833.61438pt>
+<use ../cons.png>
+Package pdftex.def Info: ../cons.png used on input line 34.
+(pdftex.def)             Requested size: 254.12505pt x 25.35095pt.
+ [3 <../integra.png> <../cons.png>]
+<../MyoMapper.png, id=138, 1155.81813pt x 833.61438pt>
 File: ../MyoMapper.png Graphic file (type png)
-
-<use ../MyoMapper.png>
-Package pdftex.def Info: ../MyoMapper.png used on input line 47.
+ <use ../MyoMapper.png>
+Package pdftex.def Info: ../MyoMapper.png used on input line 52.
 (pdftex.def)             Requested size: 390.0pt x 281.27547pt.
- [4 <../MyoMapper.png>]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 62.
+
+[4 <../MyoMapper.png>]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 68.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 62.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 68.
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--69
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
 [][][]\OT1/cmr/m/n/10 Adding new con-nec-tors, []$\OT1/cmtt/m/n/10 https : / / 
 support . getmyo . com / hc / en-[]us / articles /
  []
@@ -504,151 +485,142 @@ support . getmyo . com / hc / en-[]us / articles /
 [5]
 File: ../MyoMapper.png Graphic file (type png)
  <use ../MyoMapper.png>
-Package pdftex.def Info: ../MyoMapper.png used on input line 78.
+Package pdftex.def Info: ../MyoMapper.png used on input line 85.
 (pdftex.def)             Requested size: 390.0pt x 281.27547pt.
 
-<../MyoMapper-Waveform.png, id=162, 91.34125pt x 59.72313pt>
+<../MyoMapper-Waveform.png, id=166, 91.34125pt x 59.72313pt>
 File: ../MyoMapper-Waveform.png Graphic file (type png)
 
 <use ../MyoMapper-Waveform.png>
-Package pdftex.def Info: ../MyoMapper-Waveform.png used on input line 88.
+Package pdftex.def Info: ../MyoMapper-Waveform.png used on input line 95.
 (pdftex.def)             Requested size: 39.00238pt x 25.50182pt.
 
-<../MyoMapper-EMG.png, id=163, 592.71437pt x 356.83313pt>
+<../MyoMapper-EMG.png, id=167, 592.71437pt x 356.83313pt>
 File: ../MyoMapper-EMG.png Graphic file (type png)
 
 <use ../MyoMapper-EMG.png>
-Package pdftex.def Info: ../MyoMapper-EMG.png used on input line 98.
+Package pdftex.def Info: ../MyoMapper-EMG.png used on input line 105.
 (pdftex.def)             Requested size: 234.00238pt x 140.87402pt.
  [6 <../MyoMapper-Waveform.png>]
-<../EMG-myo-pad-enumeration.png, id=173, 327.2225pt x 305.14pt>
+<../EMG-myo-pad-enumeration.png, id=177, 327.2225pt x 305.14pt>
 File: ../EMG-myo-pad-enumeration.png Graphic file (type png)
 
 <use ../EMG-myo-pad-enumeration.png>
-Package pdftex.def Info: ../EMG-myo-pad-enumeration.png used on input line 107.
+Package pdftex.def Info: ../EMG-myo-pad-enumeration.png used on input line 114.
 
 (pdftex.def)             Requested size: 155.99762pt x 145.46913pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
-
- []
-
-[7 <../MyoMapper-EMG.png> <../EMG-myo-pad-enumeration.png>]
-<../MyoMapper-MAV.png, id=186, 593.21625pt x 48.68187pt>
+ [7 <../MyoMapper-EMG.png> <../EMG-myo-pad-enumeration.png>] <../MyoMapper-MAV.
+png, id=190, 593.21625pt x 48.68187pt>
 File: ../MyoMapper-MAV.png Graphic file (type png)
 
 <use ../MyoMapper-MAV.png>
-Package pdftex.def Info: ../MyoMapper-MAV.png used on input line 121.
+Package pdftex.def Info: ../MyoMapper-MAV.png used on input line 129.
 (pdftex.def)             Requested size: 234.00238pt x 19.20349pt.
 
-<../MyoMapper-YPR.png, id=187, 592.2125pt x 128.98187pt>
+<../MyoMapper-YPR.png, id=191, 592.2125pt x 128.98187pt>
 File: ../MyoMapper-YPR.png Graphic file (type png)
 
 <use ../MyoMapper-YPR.png>
-Package pdftex.def Info: ../MyoMapper-YPR.png used on input line 131.
+Package pdftex.def Info: ../MyoMapper-YPR.png used on input line 139.
 (pdftex.def)             Requested size: 234.00238pt x 50.964pt.
 
-<../MyoMapper-Acc.png, id=188, 586.69188pt x 121.45375pt>
+<../MyoMapper-Acc.png, id=192, 586.69188pt x 121.45375pt>
 File: ../MyoMapper-Acc.png Graphic file (type png)
 
 <use ../MyoMapper-Acc.png>
-Package pdftex.def Info: ../MyoMapper-Acc.png used on input line 141.
+Package pdftex.def Info: ../MyoMapper-Acc.png used on input line 149.
 (pdftex.def)             Requested size: 234.00238pt x 48.44164pt.
 
-<../MyoMapper-Gyro.png, id=189, 590.70688pt x 117.94063pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8 <../MyoMapper-MAV.png> <../MyoMapper-YPR.png>]
+<../MyoMapper-Gyro.png, id=207, 590.70688pt x 117.94063pt>
 File: ../MyoMapper-Gyro.png Graphic file (type png)
 
 <use ../MyoMapper-Gyro.png>
-Package pdftex.def Info: ../MyoMapper-Gyro.png used on input line 151.
+Package pdftex.def Info: ../MyoMapper-Gyro.png used on input line 159.
 (pdftex.def)             Requested size: 234.00238pt x 46.7201pt.
- [8 <../MyoMapper-MAV.png> <../MyoMapper-YPR.png> <../MyoMapper-Acc.png>]
-<../MyoMapper-OSC-MIDI.png, id=208, 393.47pt x 56.71187pt>
+
+<../MyoMapper-OSC-MIDI.png, id=210, 393.47pt x 56.71187pt>
 File: ../MyoMapper-OSC-MIDI.png Graphic file (type png)
 
 <use ../MyoMapper-OSC-MIDI.png>
-Package pdftex.def Info: ../MyoMapper-OSC-MIDI.png used on input line 164.
+Package pdftex.def Info: ../MyoMapper-OSC-MIDI.png used on input line 174.
 (pdftex.def)             Requested size: 234.00238pt x 33.7271pt.
 
-<../MyoMapper-DataMapping.png, id=209, 117.43875pt x 399.99437pt>
+<../MyoMapper-DataMapping.png, id=211, 117.43875pt x 399.99437pt>
 File: ../MyoMapper-DataMapping.png Graphic file (type png)
 
 <use ../MyoMapper-DataMapping.png>
-Package pdftex.def Info: ../MyoMapper-DataMapping.png used on input line 171.
+Package pdftex.def Info: ../MyoMapper-DataMapping.png used on input line 181.
 (pdftex.def)             Requested size: 68.70407pt x 234.00238pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../MyoMapper-Rev.png, id=210, 393.47pt x 53.70062pt>
+[9 <../MyoMapper-Acc.png> <../MyoMapper-Gyro.png> <../MyoMapper-OSC-MIDI.png>]
+<../MyoMapper-Rev.png, id=223, 393.47pt x 53.70062pt>
 File: ../MyoMapper-Rev.png Graphic file (type png)
 
 <use ../MyoMapper-Rev.png>
-Package pdftex.def Info: ../MyoMapper-Rev.png used on input line 185.
+Package pdftex.def Info: ../MyoMapper-Rev.png used on input line 195.
 (pdftex.def)             Requested size: 234.00238pt x 31.93628pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../MyoMapper-Centr.png, id=211, 288.07625pt x 95.35625pt>
+<../MyoMapper-Centr.png, id=224, 288.07625pt x 95.35625pt>
 File: ../MyoMapper-Centr.png Graphic file (type png)
 
 <use ../MyoMapper-Centr.png>
-Package pdftex.def Info: ../MyoMapper-Centr.png used on input line 195.
+Package pdftex.def Info: ../MyoMapper-Centr.png used on input line 205.
 (pdftex.def)             Requested size: 234.00238pt x 77.45929pt.
- [9 <../MyoMapper-Gyro.png> <../MyoMapper-OSC-MIDI.png>] [10 <../MyoMapper-Data
-Mapping.png> <../MyoMapper-Rev.png> <../MyoMapper-Centr.png>] <../MyoMapper-Res
-cale.png, id=235, 411.5375pt x 393.97188pt>
+ [10 <../MyoMapper-DataMapping.png> <../MyoMapper-Rev.png>] <../MyoMapper-Resca
+le.png, id=234, 411.5375pt x 393.97188pt>
 File: ../MyoMapper-Rescale.png Graphic file (type png)
 
 <use ../MyoMapper-Rescale.png>
-Package pdftex.def Info: ../MyoMapper-Rescale.png used on input line 205.
+Package pdftex.def Info: ../MyoMapper-Rescale.png used on input line 215.
 (pdftex.def)             Requested size: 234.00238pt x 224.01323pt.
 
-<../MyoMapper-Pose-Status.png, id=236, 368.37625pt x 68.255pt>
+<../MyoMapper-Pose-Status.png, id=235, 368.37625pt x 68.255pt>
 File: ../MyoMapper-Pose-Status.png Graphic file (type png)
 
 <use ../MyoMapper-Pose-Status.png>
-Package pdftex.def Info: ../MyoMapper-Pose-Status.png used on input line 215.
+Package pdftex.def Info: ../MyoMapper-Pose-Status.png used on input line 225.
 (pdftex.def)             Requested size: 234.00238pt x 43.35706pt.
- [11 <../MyoMapper-Rescale.png> <../MyoMapper-Pose-Status.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 240--249
+ [11 <../MyoMapper-Centr.png> <../MyoMapper-Rescale.png>] [12 <../MyoMapper-Pos
+e-Status.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 250--259
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--249
+Underfull \hbox (badness 10000) in paragraph at lines 250--259
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
-
+[13] [14] [15] [16]
+Overfull \hbox (2.58981pt too wide) in paragraph at lines 341--341
+[]\OT1/cmr/bx/n/17.28 Interactive per-for-mance with Myo and Myo
  []
 
-[12] [13] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
-
- []
-
-[15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 336.
- [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 336.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 349.
+[17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 349.
  (./documentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 336.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 336.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 349.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 349.
 Package rerunfilecheck Info: File `documentation.out' has not changed.
-(rerunfilecheck)             Checksum: 718F0A0E173A6B67C1C334685636878A;1129.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 336.
+(rerunfilecheck)             Checksum: 5A3202B0EAFBAABA9C15A88D0E0383BE;1132.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 349.
  ) 
 Here is how much of TeX's memory you used:
- 7946 strings out of 493089
- 115886 string characters out of 6134842
- 197673 words of memory out of 5000000
- 11248 multiletter control sequences out of 15000+600000
+ 7959 strings out of 493089
+ 115813 string characters out of 6134842
+ 199697 words of memory out of 5000000
+ 11256 multiletter control sequences out of 15000+600000
  14415 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,8n,32p,1004b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,8n,32p,1006b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -666,10 +638,10 @@ ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
 015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/201
 5/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on documentation.pdf (16 pages, 652413 bytes).
+Output written on documentation.pdf (17 pages, 1025722 bytes).
 PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
- 294 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 228 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 238 words of extra memory for PDF output out of 10000 (max. 10000000)
 

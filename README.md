@@ -1,14 +1,34 @@
+<<<<<<< Updated upstream
 # MyoMapper
 MyoMapper is an [open-source](https://opensource.org/) application to manage and send [Myo](https://www.myo.com/) data to any audio and visual software able to receive [OSC](http://opensoundcontrol.org/) and [MIDI](https://www.midi.org/) messages.
 With MyoMapper you can also send Myo data to any hardware with embedded MIDI connection through a MIDI I/O interface.
 
+<<<<<<< 9a844b4ea9deb90dbf24eb7cdc3b2b811631b8ce
 [Download MyoMapper](https://github.com/balandinodidonato/MyoMapper/releases) and get started with [examples](https://github.com/balandinodidonato/MyoMapper/releases/download/1.3/MyoMapper-Examples.zip) for [Pd](https://puredata.info/) and [Max](https://cycling74.com/products/max/).
+=======
+It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
+=======
+# Myo Mapper
+Myo Mapper is an [open-source](https://opensource.org/) application to manage and send [Myo](https://www.myo.com/) data to any audio and visual software able to receive [OSC](http://opensoundcontrol.org/) and [MIDI](https://www.midi.org/) messages.
+With Myo Mapper you can also send Myo data to any hardware with embedded MIDI connection through a MIDI I/O interface.
+
+[Download Myo Mapper](https://github.com/balandinodidonato/MyoMapper/releases) and get started with [examples](https://github.com/balandinodidonato/MyoMapper/releases/download/1.3/MyoMapper-Examples.zip) for [Pd](https://puredata.info/) and [Max](https://cycling74.com/products/max/).
+>>>>>>> Stashed changes
+>>>>>>> New documentation change of name MyoMapper -> Myo Mapper
 
 [**DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
 
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" width="600" alt="MyoMapper-EMG" />
 
+<<<<<<< 9a844b4ea9deb90dbf24eb7cdc3b2b811631b8ce
 MyoMapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com/) at [Integra Lab](http://www.integra.io).
+=======
+<<<<<<< Updated upstream
+<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/documentatation/docs/MyoMapper.png" height="300" alt="MyoMapper-EMG" />
+=======
+Myo Mapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com/) at [Integra Lab](http://www.integra.io).
+>>>>>>> Stashed changes
+>>>>>>> New documentation change of name MyoMapper -> Myo Mapper
 
 
 ## License
