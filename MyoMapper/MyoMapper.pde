@@ -15,7 +15,6 @@ void setup() {
   oscSetup(); 
   rescale();
   setupSliders();
-// setupOrientation(); 
 } 
 
 void draw() {
