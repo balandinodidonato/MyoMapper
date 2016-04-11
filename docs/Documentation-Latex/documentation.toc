@@ -1,19 +1,19 @@
 \contentsline {section}{\numberline {1}Introduction}{4}{section.1}
-\contentsline {section}{\numberline {2}Install MyoMapper}{5}{section.2}
+\contentsline {section}{\numberline {2}Install Myo Mapper}{5}{section.2}
 \contentsline {section}{\numberline {3}GUI}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}Myo data visualisation}{6}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}EMGs}{7}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}MAV}{7}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}MAV}{8}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Orientation}{8}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}Acceleration}{8}{subsection.3.5}
 \contentsline {subsection}{\numberline {3.6}Gyro}{9}{subsection.3.6}
 \contentsline {subsection}{\numberline {3.7}OSC and MIDI control}{9}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Myo data elaboration}{9}{subsection.3.8}
-\contentsline {subsection}{\numberline {3.9}Pose and Myo status}{11}{subsection.3.9}
+\contentsline {subsection}{\numberline {3.8}Myo data elaboration}{10}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.9}Pose and Myo status}{12}{subsection.3.9}
 \contentsline {section}{\numberline {4}OSC and MIDI}{12}{section.4}
 \contentsline {subsection}{\numberline {4.1}OSC connection}{12}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}OSC Mapping}{12}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}OSC Mapping}{13}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}MIDI connection}{13}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}MIDI mapping}{14}{subsection.4.4}
-\contentsline {section}{\numberline {5}Build MyoMapper}{15}{section.5}
-\contentsline {section}{\numberline {6}Interactive performance with Myo and MyoMapper}{16}{section.6}
+\contentsline {section}{\numberline {5}Build Myo Mapper}{15}{section.5}
+\contentsline {section}{\numberline {6}Interactive performance with Myo and Myo Mapper}{16}{section.6}
