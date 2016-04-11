@@ -6,7 +6,6 @@ int[] labelY = new int[18];
 int graphLabelsTextSize;
 
 void labels(){
-
   graphLabelsTextSize = int(height*0.033);
   int textXheader = int(width*0.615);
   int textXfooter1 = int(textXheader+(textXheader*0.05));
@@ -14,7 +13,6 @@ void labels(){
 
   textSize(graphLabelsTextSize*2);
   fill(#1D4383);
-
   text("Myo Mapper", textXheader,height*0.06);
   
   textSize(graphLabelsTextSize);
@@ -86,5 +84,4 @@ void labelsAnalysis(){
     
   noFill();
   noStroke();
-
 }

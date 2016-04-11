@@ -1,15 +1,18 @@
-int gyroXMIDI, gyroYMIDI, gyroZMIDI; //cc7, cc8, cc9
 boolean gyroOnOff = true;
+int[] gyroMIDI = new int[3];
+float[] giro = new float[3];
 
 void Gyro(){
-  if(MIDI){   
-    gyroXMIDI = int(gyro.x*0.127);
-    gyroYMIDI = int(gyro.y*0.127);
-    gyroYMIDI = int(gyro.z*0.127);
-       
-    myBus.sendControllerChange(chMIDI, 7, rollMIDI); // Send a Midi noteOn
-    myBus.sendControllerChange(chMIDI, 8, pitchMIDI); // Send a Midi noteOn
-    myBus.sendControllerChange(chMIDI, 9, yawMIDI); // Send a Midi noteOn
+  
+  giro[0]=gyro.x;
+  giro[1]=gyro.y;
+  giro[2]=gyro.z;
+  
+  if(MIDI){ 
+    for(int i=0; i<3; i++){  
+      gyroMIDI[i] = int(giro[i]*0.127);
+      myBus.sendControllerChange(chMIDI, 16+i, gyroMIDI[i]);
+      }
     }
 
   if(OpenSoundControl){

@@ -26,11 +26,13 @@ int revPitchTglX = 0; // Pitch tgl
 int revRollTglX = 0; // Pitch tgl
 int revEmgTglX = 0; // Pitch tgl
 int tglMIDIX, tglOSCX, nbMIDIportX, nbMIDIchX, nbMIDIchY = 0;
-float reverseYaw, reversePitch, reverseRoll, reverseMAV = 0;
+boolean reverseMAV, reverseYaw, reversePitch, reverseRoll = false;
 
 int distanceXtoggles, distanceYtoggles;
 
 void toggles(){
+
+   cp5 = new ControlP5(this);
 
   tglXsize = int(width*0.06);
   tglYsize = int(height*0.035);
@@ -102,7 +104,7 @@ void toggles(){
     .setMode(ControlP5.SWITCH)
     ;
 
-  mav01Tgl = cp5.addToggle("MAV")
+  mav01Tgl = cp5.addToggle("MAV_")
     .setPosition(tglmavOnOffX,tglmavOnOffY)
     .setSize(tglXsize,tglYsize)
     .setValue(false)
@@ -174,23 +176,19 @@ void toggles(){
 }
 
 void revYaw(boolean theFlag) {
-  if(!theFlag) reverseYaw = 1;
-   else  reverseYaw = 0;
+  reverseYaw = theFlag;
 }
 
 void revPitch(boolean theFlag) {
-  if(!theFlag) reversePitch = 1;
-  else  reversePitch = 0;
+  reversePitch = theFlag;
 }
 
 void revRoll(boolean theFlag) {
-  if(!theFlag) reverseRoll = 1;
-  else  reverseRoll = 0;
+  reverseRoll = theFlag;
 }
 
 void revMAV(boolean theFlag) {
-  if(!theFlag) reverseMAV = 1;
-  else  reverseMAV = 0;
+  reverseMAV = theFlag;
 }
 
 void WAVEFORM(boolean theFlag) {

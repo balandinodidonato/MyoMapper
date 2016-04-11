@@ -20,8 +20,8 @@ void Orientation(){
   orZ = orientation.z; // orientation.z (yaw) original value
   
   centerOrientation();
-  reverseOrientation();
   scaleOrientation();
+  reverseOrientation();
   sendOrientation();
 }
 
@@ -44,33 +44,19 @@ void centerOrientation (){
   else  {ORX = ORX;}  
 }
 
-
-
-//this function REVERSE the orientation Myo Data
-void reverseOrientation(){
- 
-  roll = abs(ORX-reverseRoll); // reverse + scale
-  pitch = abs(ORY-reversePitch); // reverse + scale
-  yaw = abs(ORZ-reverseYaw); // reverse + scale 
-
-}
-
 //this function RESCALE the orientation Myo Data
 void scaleOrientation(){
   
   yMin = rYaw.getLowValue();
   yMax = rYaw.getHighValue();
-
   pMin = rPitch.getLowValue();
   pMax = rPitch.getHighValue();
-  
   rMin = rRoll.getLowValue();
   rMax = rRoll.getHighValue();
-
   
-  roll = map(roll, 0, 1, rMin, rMax);
-  pitch = map(pitch, 0, 1, pMin, pMax);
-  yaw = map(yaw, 0, 1, yMin, yMax);
+  roll = map(ORX, 0, 1, rMin, rMax);
+  pitch = map(ORY, 0, 1, pMin, pMax);
+  yaw = map(ORZ, 0, 1, yMin, yMax);
     
    roll = max(roll, 0);
    roll = min(roll, 1);     
@@ -80,6 +66,12 @@ void scaleOrientation(){
    yaw = min(yaw, 1);
 }
 
+void reverseOrientation(){
+  if(reverseYaw) yaw = abs(1-yaw);
+  if(reversePitch) pitch = abs(1-pitch);
+  if(reverseRoll) roll = abs(1-roll);
+}
+
 void sendOrientation(){
 
   if(MIDI){
@@ -87,9 +79,9 @@ void sendOrientation(){
     pitchMIDI = int(pitch*127);
     yawMIDI = int(yaw*127);
     
-    myBus.sendControllerChange(chMIDI, 1, yawMIDI); // Send a Midi noteOn
-    myBus.sendControllerChange(chMIDI, 2, pitchMIDI); // Send a Midi noteOn
-    myBus.sendControllerChange(chMIDI, 3, rollMIDI); // Send a Midi noteOn
+    myBus.sendControllerChange(chMIDI, 10, yawMIDI);
+    myBus.sendControllerChange(chMIDI, 11, pitchMIDI);
+    myBus.sendControllerChange(chMIDI, 12, rollMIDI);
     }
      
   if(OpenSoundControl){ 

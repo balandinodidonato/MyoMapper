@@ -5,10 +5,7 @@ ControlP5 cp5;
 int windowX, windowY = 0;
 void setup() {
   
-  frameRate(24);
-  
-  cp5 = new ControlP5(this);
-  
+  frameRate(24);  
   size(int(displayWidth*0.8), int(displayHeight*0.9)); //window size
   
   myoSetup(); 
@@ -17,13 +14,14 @@ void setup() {
   bangs();
   oscSetup(); 
   rescale();
-  setupSliders(); 
+  setupSliders();
+// setupOrientation(); 
 } 
 
 void draw() {
   background(0);
   
-  if(emgOnOff)EmgSend();
+  if(emgOnOff)EMG();
   if(mavOnOff)MAV();
   if(orientOnOff)Orientation();
   if(accOnOff)Acceleration();

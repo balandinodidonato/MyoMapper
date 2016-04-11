@@ -2,7 +2,7 @@ float[] EMG = new float[8];
 float emgMin  = 0;
 float emgMax = 1;
 int mavMIDI; //cc10
-int[] emgMIDI = new int[8]; //cc11, cc12, cc13, cc14, cc15, cc16, cc17, cc18
+int[] emgMIDI = new int[8]; //cc1, cc2, cc3, cc4, cc5, cc6, cc7, cc8
 float mav = 0;  
 float emgSum;
 
@@ -10,27 +10,24 @@ boolean emgOnOff = true;
 boolean mavOnOff = true;
   
 void MAV(){
-  
+  emgSum = 0;
   emgMin = avgEMG.getLowValue();
   emgMax = avgEMG.getHighValue();
-  
-  emgSum = 0;
 
   for(int i=0; i<8; i++){
-    emg[i] = abs(emg[i]);
-
-    EMG[i] = abs(reverseMAV-emg[i]);
-    EMG[i] = map(EMG[i], 0, 128, emgMin, emgMax);
-    emgSum = EMG[i]+emgSum; // EMG sum for avg calculation    
+    emgSum = abs(emg[i])+emgSum;  
     }
-    
   mav = emgSum*0.125;
-  mav = max(mav, 0);
+  mav = map(mav, 0, 128, emgMin, emgMax);
+  
+  if(!reverseMAV) mav = abs(1-mav);
+ 
   mav = min(mav, 1);
+  mav = max(mav, 0);
  
   if (MIDI) { 
     mavMIDI = int(mav*127);
-    myBus.sendControllerChange(chMIDI, 10, mavMIDI);
+    myBus.sendControllerChange(chMIDI, 9, mavMIDI);
     } 
     
   if(OpenSoundControl){
@@ -40,11 +37,12 @@ void MAV(){
     }
 } 
 
-void EmgSend(){
+void EMG(){
   
   if(MIDI) {
-    for (int i=0; 1<8; i++){
-      myBus.sendControllerChange(chMIDI, 11+i, emgMIDI[i]); 
+    for (int i=0; i<8; i++){
+      emgMIDI[i]= abs(emg[i]);
+      myBus.sendControllerChange(chMIDI, i+1, emgMIDI[i]); 
       }  
     }
 
