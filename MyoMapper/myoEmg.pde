@@ -2,7 +2,7 @@ float[] EMG = new float[8];
 float emgMin  = 0;
 float emgMax = 1;
 int mavMIDI; //cc10
-int[] emgMIDI = new int[8]; //cc1, cc2, cc3, cc4, cc5, cc6, cc7, cc8
+int[] emgMIDI = new int[8];
 float mav = 0;  
 float emgSum;
 
@@ -14,19 +14,19 @@ void MAV(){
   emgMin = avgEMG.getLowValue();
   emgMax = avgEMG.getHighValue();
   
+  // MAV
   emgSum = 0;
-
   for(int i=0; i<8; i++){
-    emg[i] = abs(emg[i]);
-
-    EMG[i] = abs(reverseMAV-emg[i]);
-    EMG[i] = map(EMG[i], 0, 128, emgMin, emgMax);
-    emgSum = EMG[i]+emgSum; // EMG sum for avg calculation    
-    }
-    
+    emgSum = abs(emg[i])+emgSum; //   
+    }  
   mav = emgSum*0.125;
+
+  mav = map(mav, 0, 128, emgMin, emgMax);
+
   mav = max(mav, 0);
   mav = min(mav, 1);
+
+  if(reverseMAV)mav = 1-mav;
  
   if (MIDI) { 
     mavMIDI = int(mav*127);

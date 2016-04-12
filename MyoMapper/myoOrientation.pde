@@ -22,12 +22,11 @@ void Orientation(){
   orZ = orientation.z; // orientation.z (yaw) original value
   
   centerOrientation();
-  reverseOrientation();
   scaleOrientation();
+  reverseOrientation();
   sendOrientation();
 }
 
-//this function CENTER the orientation Myo Data
 void centerOrientation (){
   ORZ = ORz-(orZ-0.5); // centering YAW
   ORY = ORy-(orY-0.5); // centering PITCH
@@ -46,18 +45,6 @@ void centerOrientation (){
   else  {ORX = ORX;}  
 }
 
-
-
-//this function REVERSE the orientation Myo Data
-void reverseOrientation(){
- 
-  roll = abs(ORX-reverseRoll); // reverse + scale
-  pitch = abs(ORY-reversePitch); // reverse + scale
-  yaw = abs(ORZ-reverseYaw); // reverse + scale 
-
-}
-
-//this function RESCALE the orientation Myo Data
 void scaleOrientation(){
   
   yMin = rYaw.getLowValue();
@@ -70,9 +57,9 @@ void scaleOrientation(){
   rMax = rRoll.getHighValue();
 
   
-  roll = map(roll, 0, 1, rMin, rMax);
-  pitch = map(pitch, 0, 1, pMin, pMax);
-  yaw = map(yaw, 0, 1, yMin, yMax);
+  roll = map(ORX, 0, 1, rMin, rMax);
+  pitch = map(ORY, 0, 1, pMin, pMax);
+  yaw = map(ORZ, 0, 1, yMin, yMax);
     
    roll = max(roll, 0);
    roll = min(roll, 1);     
@@ -80,6 +67,12 @@ void scaleOrientation(){
    pitch = min(pitch, 1);
    yaw = max(yaw, 0);
    yaw = min(yaw, 1);
+}
+
+void reverseOrientation(){
+  if(reverseRoll) roll = abs(1-roll);
+  if(reversePitch) pitch = abs(1-pitch);
+  if(reverseYaw) yaw = abs(1-yaw);
 }
 
 void sendOrientation(){

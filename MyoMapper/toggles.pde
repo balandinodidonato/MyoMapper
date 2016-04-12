@@ -26,7 +26,7 @@ int revPitchTglX = 0; // Pitch tgl
 int revRollTglX = 0; // Pitch tgl
 int revEmgTglX = 0; // Pitch tgl
 int tglMIDIX, tglOSCX, nbMIDIportX, nbMIDIchX, nbMIDIchY = 0;
-float reverseYaw, reversePitch, reverseRoll, reverseMAV = 0;
+boolean reverseYaw, reversePitch, reverseRoll, reverseMAV = true;
 
 int distanceXtoggles, distanceYtoggles;
 
@@ -170,72 +170,58 @@ void toggles(){
      .setMin(0)
      .setMax(16)
      ;
-
 }
 
 void revYaw(boolean theFlag) {
-  if(!theFlag) reverseYaw = 1;
-   else  reverseYaw = 0;
+   reverseYaw = !theFlag;
 }
 
 void revPitch(boolean theFlag) {
-  if(!theFlag) reversePitch = 1;
-  else  reversePitch = 0;
+  reversePitch = !theFlag;
 }
 
 void revRoll(boolean theFlag) {
-  if(!theFlag) reverseRoll = 1;
-  else  reverseRoll = 0;
+  reverseRoll = !theFlag;
 }
 
 void revMAV(boolean theFlag) {
-  if(!theFlag) reverseMAV = 1;
-  else  reverseMAV = 0;
+  reverseMAV = !theFlag;
 }
 
 void WAVEFORM(boolean theFlag) {
-  if(theFlag) {waveformOnOff = false;}
-  else {waveformOnOff = true;}
+  waveformOnOff = !theFlag;
 }
 
 void POSE(boolean theFlag) {
-  if(theFlag) {poseOnOff = false;}
-  else {poseOnOff = true;}
+  poseOnOff = !theFlag;
 }
 
 void ACC(boolean theFlag) {
-  if(theFlag) {accOnOff = false;}
-  else {accOnOff = true;}
+  accOnOff = !theFlag;
 }
 
 void ORIENT(boolean theFlag) {
-  if(theFlag) {orientOnOff = false;}
-  else {orientOnOff = true;}
+  orientOnOff = !theFlag;
 }
 
 void GYRO(boolean theFlag) {
-  if(theFlag) {gyroOnOff = false;}
-  else {gyroOnOff = true;}
+  gyroOnOff = !theFlag;
 }
 
 void EMG(boolean theFlag) {
-  if(theFlag) {emgOnOff = false;}
-  else {emgOnOff = true;}
+  emgOnOff = !theFlag;
 }
 
 void MAV(boolean theFlag) {
-  if(theFlag) {mavOnOff = false;}
-  else {mavOnOff = true;}
+  mavOnOff = !theFlag;
 }
 
 void OSC(boolean theFlag) {
-  if(theFlag) {OpenSoundControl = false;}
-  else {OpenSoundControl = true;}
+  OpenSoundControl = !theFlag;
 }
 
 void MIDI(boolean theFlag) {
-  if(theFlag) {MIDI = false;}
-  else {MIDI = true;}
+   MIDI = !theFlag;
 }
 
 void MIDI_PORT(int value) { 
