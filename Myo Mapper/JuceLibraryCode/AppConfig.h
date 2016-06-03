@@ -11,8 +11,8 @@
 
 */
 
-#ifndef __JUCE_APPCONFIG_L0QRVK__
-#define __JUCE_APPCONFIG_L0QRVK__
+#ifndef __JUCE_APPCONFIG_M7UYPJ__
+#define __JUCE_APPCONFIG_M7UYPJ__
 
 //==============================================================================
 // [BEGIN_USER_CODE_SECTION]
@@ -212,4 +212,4 @@
 #endif
 
 
-#endif  // __JUCE_APPCONFIG_L0QRVK__
+#endif  // __JUCE_APPCONFIG_M7UYPJ__

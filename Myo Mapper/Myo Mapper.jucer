@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="l0QRVK" name="Myo Mapper" projectType="guiapp" version="2.0.0"
+<JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.yourcompany.MyoMapper" includeBinaryInAppConfig="1"
               jucerVersion="4.2.1" companyName="Integra Lab" companyWebsite="http://integra.io/"
-              companyEmail="contact@integra.io">
-  <MAINGROUP id="igXSQW" name="Myo Mapper">
-    <GROUP id="{81C6FD75-8B88-862F-AEC8-25C5FBB59EC7}" name="Source">
-      <FILE id="mfd4f0" name="MainComponent.cpp" compile="1" resource="0"
+              companyEmail="contact@integra.io ">
+  <MAINGROUP id="G7OLDm" name="Myo Mapper">
+    <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
+      <FILE id="cIws7N" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
-      <FILE id="a6l8LE" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="GMCDEn" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="DMBXcB" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

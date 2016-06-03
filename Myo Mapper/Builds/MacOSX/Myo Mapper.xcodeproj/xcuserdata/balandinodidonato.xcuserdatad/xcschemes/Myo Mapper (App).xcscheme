@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88A545664FDBD33C2DB5D39C"
+               BlueprintIdentifier = "16D9E24D9D1B08C0B67EDE4A"
                BuildableName = "Myo Mapper.app"
                BlueprintName = "Myo Mapper (App)"
                ReferencedContainer = "container:Myo Mapper.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "88A545664FDBD33C2DB5D39C"
+            BlueprintIdentifier = "16D9E24D9D1B08C0B67EDE4A"
             BuildableName = "Myo Mapper.app"
             BlueprintName = "Myo Mapper (App)"
             ReferencedContainer = "container:Myo Mapper.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "88A545664FDBD33C2DB5D39C"
+            BlueprintIdentifier = "16D9E24D9D1B08C0B67EDE4A"
             BuildableName = "Myo Mapper.app"
             BlueprintName = "Myo Mapper (App)"
             ReferencedContainer = "container:Myo Mapper.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "88A545664FDBD33C2DB5D39C"
+            BlueprintIdentifier = "16D9E24D9D1B08C0B67EDE4A"
             BuildableName = "Myo Mapper.app"
             BlueprintName = "Myo Mapper (App)"
             ReferencedContainer = "container:Myo Mapper.xcodeproj">
