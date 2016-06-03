@@ -3392,7 +3392,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0440;
-				ORGANIZATIONNAME = "Integra Lab";
+				ORGANIZATIONNAME = "Balandino Di Donato";
 				TargetAttributes = {
 					16D9E24D9D1B08C0B67EDE4A = {
 						DevelopmentTeam = U72L943KVY;
