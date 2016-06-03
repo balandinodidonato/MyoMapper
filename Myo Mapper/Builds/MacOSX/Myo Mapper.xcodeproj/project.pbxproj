@@ -15,6 +15,7 @@
 		2459B843417FA4D50BAFB009 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F94C9417F836ACA10793FF /* AudioToolbox.framework */; };
 		2EB10FB755DD1A15A11BE0EF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB45A6D1A87A9EACA35FAA3E /* CoreAudio.framework */; };
 		329F26E51D01062600B073CF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 329F26E41D01062600B073CF /* Images.xcassets */; };
+		329F26EA1D010E1900B073CF /* MyoSDK in Frameworks */ = {isa = PBXBuildFile; fileRef = 329F26E61D01099400B073CF /* MyoSDK */; };
 		348C2B76AF430AD1AD1A35A9 /* juce_audio_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1B67D05CCB30CC7E69F8B /* juce_audio_basics.mm */; };
 		3964F13953AD4535AB282055 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A21682825C42EBA8C1466AB /* QTKit.framework */; };
 		3BF6C1C0ABAB4AD541632F68 /* juce_audio_processors.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2CF1C94BB5F0028C59D2EF1 /* juce_audio_processors.mm */; };
@@ -1212,6 +1213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				329F26EA1D010E1900B073CF /* MyoSDK in Frameworks */,
 				8DC5AF16AECAF756D0B8EBAC /* Accelerate.framework in Frameworks */,
 				2459B843417FA4D50BAFB009 /* AudioToolbox.framework in Frameworks */,
 				D6B1435E336D3D5A66FCF16B /* Carbon.framework in Frameworks */,
