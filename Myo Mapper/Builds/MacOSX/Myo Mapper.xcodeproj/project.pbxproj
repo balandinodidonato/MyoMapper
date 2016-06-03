@@ -252,6 +252,8 @@
 		31D89FEF0B21655558892CE0 /* codec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = codec.h; path = ../../../../../JUCE/modules/juce_audio_formats/codecs/oggvorbis/codec.h; sourceTree = SOURCE_ROOT; };
 		32283827396C37C9CC46E0AF /* juce_ChangeListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ChangeListener.h; path = ../../../../../JUCE/modules/juce_events/broadcasters/juce_ChangeListener.h; sourceTree = SOURCE_ROOT; };
 		329F26E41D01062600B073CF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Myo Mapper (App)/Images.xcassets"; sourceTree = "<group>"; };
+		329F26E61D01099400B073CF /* MyoSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MyoSDK; path = ../../../../PhD/software/Vocalise/MyoSDK; sourceTree = "<group>"; };
+		329F26E81D0109F000B073CF /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myo.framework; path = ../../../../PhD/software/Vocalise/MyoSDK/myo.framework; sourceTree = "<group>"; };
 		32BFC435204269140AB9C81A /* inffixed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = inffixed.h; path = ../../../../../JUCE/modules/juce_core/zip/zlib/inffixed.h; sourceTree = SOURCE_ROOT; };
 		3396088305A66DAA81827FD4 /* juce_ScopedPointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ScopedPointer.h; path = ../../../../../JUCE/modules/juce_core/memory/juce_ScopedPointer.h; sourceTree = SOURCE_ROOT; };
 		33A41A1D908BB1656A25B505 /* juce_linux_JackAudio.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_linux_JackAudio.cpp; path = ../../../../../JUCE/modules/juce_audio_devices/native/juce_linux_JackAudio.cpp; sourceTree = SOURCE_ROOT; };
@@ -2756,6 +2758,8 @@
 		A8B8923DE26E7730A43A9AFD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				329F26E81D0109F000B073CF /* myo.framework */,
+				329F26E61D01099400B073CF /* MyoSDK */,
 				5AEF37BEF8F1146A13192382 /* Accelerate.framework */,
 				F3F94C9417F836ACA10793FF /* AudioToolbox.framework */,
 				175332EA85B1F4026F148E47 /* Carbon.framework */,

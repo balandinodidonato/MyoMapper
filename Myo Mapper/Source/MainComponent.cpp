@@ -1,18 +1,8 @@
-/*
-  ==============================================================================
-
-    This file was auto-generated!
-
-  ==============================================================================
-*/
-
 #include "MainComponent.h"
 
-
-//==============================================================================
 MainContentComponent::MainContentComponent()
 {
-    setSize (600, 400);
+    setSize(getParentWidth()*0.5, getParentHeight()*0.5);
 }
 
 MainContentComponent::~MainContentComponent()
@@ -25,7 +15,7 @@ void MainContentComponent::paint (Graphics& g)
 
     g.setFont (Font (16.0f));
     g.setColour (Colours::white);
-    g.drawText ("Hello World!", getLocalBounds(), Justification::centred, true);
+    g.drawText ("Myo Mapper", getLocalBounds(), Justification::centred, true);
 }
 
 void MainContentComponent::resized()
