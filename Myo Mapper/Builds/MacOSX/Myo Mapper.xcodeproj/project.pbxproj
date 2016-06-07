@@ -571,6 +571,7 @@
 		75251A9BBAF554DBE1127329 /* juce_ThreadLocalValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ThreadLocalValue.h; path = ../../../../../JUCE/modules/juce_core/threads/juce_ThreadLocalValue.h; sourceTree = SOURCE_ROOT; };
 		7529D00415F84AC66E0F2782 /* juce_ZipFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ZipFile.h; path = ../../../../../JUCE/modules/juce_core/zip/juce_ZipFile.h; sourceTree = SOURCE_ROOT; };
 		7535C4385F1CFBA849A0D19E /* juce_AudioFormatWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_AudioFormatWriter.h; path = ../../../../../JUCE/modules/juce_audio_formats/format/juce_AudioFormatWriter.h; sourceTree = SOURCE_ROOT; };
+		755F0E6E649D4CFC106BBC5C /* mmSliderBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mmSliderBar.h; path = ../../Source/mmSliderBar.h; sourceTree = SOURCE_ROOT; };
 		759D1A06EBC51E98AE33E3D9 /* juce_DrawablePath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_DrawablePath.h; path = ../../../../../JUCE/modules/juce_gui_basics/drawables/juce_DrawablePath.h; sourceTree = SOURCE_ROOT; };
 		7603362B8B290915F1E571E7 /* juce_FileSearchPathListComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_FileSearchPathListComponent.h; path = ../../../../../JUCE/modules/juce_gui_basics/filebrowser/juce_FileSearchPathListComponent.h; sourceTree = SOURCE_ROOT; };
 		7631860B15B8D57099B7D098 /* juce_mac_CoreGraphicsContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_mac_CoreGraphicsContext.h; path = ../../../../../JUCE/modules/juce_graphics/native/juce_mac_CoreGraphicsContext.h; sourceTree = SOURCE_ROOT; };
@@ -1562,6 +1563,7 @@
 				FB92A91114FF1450F33E3909 /* MainComponent.h */,
 				1731244C2B6240A6ECBA87E8 /* mmOrientation.h */,
 				13B8AD1452960CAC259B16B4 /* mmSlider.h */,
+				755F0E6E649D4CFC106BBC5C /* mmSliderBar.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -3474,6 +3476,7 @@
 				);
 				INFOPLIST_FILE = "Info-App.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyoMapper;
 				SDKROOT_ppc = macosx10.5;
@@ -3506,6 +3509,7 @@
 				);
 				INFOPLIST_FILE = "Info-App.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyoMapper;
 				SDKROOT_ppc = macosx10.5;

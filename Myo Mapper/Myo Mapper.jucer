@@ -9,7 +9,8 @@
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="JMmUom" name="mmOrientation.h" compile="0" resource="0" file="Source/mmOrientation.h"/>
-      <FILE id="Ygr3l6" name="mmSlider.h" compile="0" resource="0" file="Source/mmSlider.h"/>
+      <FILE id="d8DRsK" name="mmSlider.h" compile="0" resource="0" file="Source/mmSlider.h"/>
+      <FILE id="gSQOhR" name="mmSliderBar.h" compile="0" resource="0" file="Source/mmSliderBar.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
