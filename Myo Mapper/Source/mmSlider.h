@@ -21,7 +21,7 @@ class mmSlider    : public Component
 public:
     mmSlider()
     {
-
+        
     }
 
     ~mmSlider()
@@ -30,33 +30,31 @@ public:
 
     void paint (Graphics& g) override
     {
-        /* This demo code just fills the component's background and
-           draws some placeholder text to get you started.
-
-           You should replace everything in this method with your own
-           drawing code..
-        */
-
-        g.fillAll (Colours::white);   // clear the background
-
-        g.setColour (Colours::grey);
-        g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-        g.setColour (Colours::lightblue);
-        g.setFont (14.0f);
-        g.drawText ("mmSlider", getLocalBounds(),
-                    Justification::centred, true);   // draw some placeholder text
+        g.setColour (Colours::black);   // clear the background
+        
+        g.fillRect (0, getHeight()*0.5, getWidth(), getHeight()*0.5);   // draw an outline around the component
+        
+        g.setColour (Colours::red); // set color pointer
+        g.drawLine(getWidth()*0.5, getHeight()*0.5, getWidth()*0.5, getHeight(), 4); // draw pointer
+        
+        g.setFont (Font (getHeight()*0.5)); // set font label
+        g.setColour (Colours::white); // set color label
+        g.drawText (label, getLocalBounds(), Justification::centredTop, true); // draw label
+    }
+    
+    void setLabel(const String Label) // initialise label
+    {
+        label = Label;
     }
 
     void resized() override
     {
-        // This method is where you should set the bounds of any child
-        // components that your component contains..
 
     }
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (mmSlider)
+    String label = "";
 };
 
 

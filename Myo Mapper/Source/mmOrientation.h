@@ -23,6 +23,7 @@ public:
     mmOrientation()
     {
         addAndMakeVisible(yawSlider);
+
     }
 
     ~mmOrientation()
@@ -45,12 +46,14 @@ public:
 
     void resized() override
     {
+        yawSlider.setLabel("Yaw");
         yawSlider.setBounds(getWidth()*0.1, getHeight()*0.1, getWidth()*0.8, getHeight()*0.1);
     }
 
 private:
     mmSlider yawSlider;
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (mmOrientation)
+
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (mmOrientation)
 };
 
 
