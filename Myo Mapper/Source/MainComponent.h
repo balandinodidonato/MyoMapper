@@ -1,19 +1,50 @@
+/*
+  ==============================================================================
+
+    MainComponent.h
+    Created: 7 Jun 2016 1:14:39pm
+    Author:  Balandino Di Donato
+
+  ==============================================================================
+*/
+
 #ifndef MAINCOMPONENT_H_INCLUDED
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class MainContentComponent   : public Component
+//==============================================================================
+/*
+*/
+class MainComponent    : public Component
 {
 public:
-    MainContentComponent();
-    ~MainContentComponent();
+    MainComponent()
+    {
+        setSize(getParentWidth()*0.5, getParentHeight()*0.5);
+    }
 
-    void paint (Graphics&);
-    void resized();
+    ~MainComponent()
+    {
+    }
+
+    void paint (Graphics& g) override
+    {
+
+
+        g.fillAll (Colours::black);
+        g.setFont (Font (16.0f));
+        g.setColour (Colours::white);
+        g.drawText ("Myo Mapper", getLocalBounds(), Justification::centred, true);
+    }
+
+    void resized() override
+    {
+
+    }
 
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
 
 
