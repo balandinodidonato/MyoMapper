@@ -33,10 +33,7 @@ public:
         
         addAndMakeVisible(reverse);
         reverse.addListener (this);
-
-        
         reverse.setButtonText("Reverse");
-        
     }
 
     ~Rescale()
@@ -53,16 +50,26 @@ public:
 
         g.setColour (Colours::lightblue);
         g.setFont (getHeight()*0.2);
-        g.drawText ("Value", getLocalBounds(),
+        g.drawText ("Myo Data", getLocalBounds(),
                     Justification::centredTop, true);   // draw some placeholder text
+        
+        // Centre incoming value
+        input = slider.getValue(); // in this case I'm using the slider value for testing the implemented logic
+        centred = offset-(input-0.5); // input is the value to be centred
+        
+        if (centred<0) {centred = 1+centred;}
+        else if (centred>1) {centred = 1-centred;}
+        printf("Value: %f \n", centred);
+        // ----------
     }
     
     void  buttonClicked (Button* button) override
     {
         if (button == &centre)
         {
-            slider.setValue(0.5);
+            offset = input; // offset
         }
+        
         if (button == &reverse)
         {
             yawExample = slider.getValue();
@@ -85,7 +92,9 @@ private:
     Slider slider;
     Label label;
     ToggleButton reverse;
-    float yawExample = 0;
+    float yawExample = 0; // variables used for testing the logic
+    float input, offset, centred = 0;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };
 
