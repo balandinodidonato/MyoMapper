@@ -8,6 +8,8 @@
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="JMmUom" name="mmOrientation.h" compile="0" resource="0" file="Source/mmOrientation.h"/>
+      <FILE id="Ygr3l6" name="mmSlider.h" compile="0" resource="0" file="Source/mmSlider.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

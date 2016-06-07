@@ -12,6 +12,7 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "mmOrientation.h"
 
 //==============================================================================
 /*
@@ -22,6 +23,7 @@ public:
     MainComponent()
     {
         setSize(getParentWidth()*0.5, getParentHeight()*0.5);
+        addAndMakeVisible(orietationMapping);
     }
 
     ~MainComponent()
@@ -30,20 +32,16 @@ public:
 
     void paint (Graphics& g) override
     {
-
-
-        g.fillAll (Colours::black);
-        g.setFont (Font (16.0f));
-        g.setColour (Colours::white);
-        g.drawText ("Myo Mapper", getLocalBounds(), Justification::centred, true);
+        g.fillAll(Colours::lightgrey);
     }
 
     void resized() override
     {
-
+        orietationMapping.setBounds(getWidth()*0.1, getHeight()*0.25, getWidth()*0.8, getHeight()*0.65);
     }
 
 private:
+    mmOrientation orietationMapping;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
 
