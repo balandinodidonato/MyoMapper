@@ -41,6 +41,9 @@ public:
         addAndMakeVisible(reverse);
         reverse.addListener (this);
         reverse.setButtonText("Reverse");
+        
+        addAndMakeVisible(minLabel);
+        addAndMakeVisible(maxLabel);
     }
 
     ~Rescale()
@@ -61,15 +64,14 @@ public:
         
         // Centre incoming value
         input = mmSlider.getValue(); // in this case I'm using the slider value for testing the implemented logic
-        centred = 1-offset-(input-targetValue); // input is the value to be centred
-        
-        if (centred<0) {centred = 1+centred;}
-        else if (centred>1) {centred = 1-centred;}
-        
-        if (reverse.getToggleStateValue()==true)
-        { centred = std::abs(1-centred); }
+        centred = 1-(offset-(input-targetValue)); // input is the value to be centred
+        centred = std::abs(centred);
+    
+        if (reverse.getToggleStateValue()==true) // reverse centred value
+        { centred = 1-centred; }
         
         scaled = jmap(centred, minOutputValue, maxOutputValue); // Scale value within the new range
+        printf("Scaled Value: %f \n", scaled);
     }
     
     void  buttonClicked (Button* button) override
@@ -85,8 +87,10 @@ public:
     {
         if (slider == &mmSlider)
         {
-            maxOutputValue = mmSlider.getMaxValue();
             minOutputValue = mmSlider.getMinValue();
+            maxOutputValue = mmSlider.getMaxValue();
+            minLabel.setText("Min: "+String(minOutputValue), dontSendNotification);
+            maxLabel.setText("Max: "+String(maxOutputValue), dontSendNotification);
         }
     }
     
@@ -95,12 +99,16 @@ public:
         centre.setBounds (10, getHeight()*0.2, getWidth()*0.3, (getHeight()*0.5)-20);
         reverse.setBounds(getWidth()*0.3+15, getHeight()*0.2, getWidth()*0.2, (getHeight()*0.5)-20);
         mmSlider.setBounds(getWidth()*0.1, getHeight()*0.65, getWidth()*0.8, getHeight()*0.2);
+        minLabel.setBounds(getWidth()*0.5+15, getHeight()*0.2, getWidth()*0.2, (getHeight()*0.5)-20);
+        maxLabel.setBounds(getWidth()*0.75+15, getHeight()*0.2, getWidth()*0.2, (getHeight()*0.5)-20);
     }
 
 private:
     TextButton centre;
     Slider mmSlider;
     Label label;
+    Label minLabel;
+    Label maxLabel;
     ToggleButton reverse;
     
     float reversed = 0; // variables used for testing the logic
@@ -111,6 +119,8 @@ private:
     float maxOutputValue = 1.0;
     float minOutputValue = 0.0;
     float scaled = 0;
+    String minLabelText = "minLabelText";
+    String maxLabelText = "maxLabelText";
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };
