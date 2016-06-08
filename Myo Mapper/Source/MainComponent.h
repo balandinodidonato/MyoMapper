@@ -23,7 +23,7 @@ class MainComponent    : public Component
 public:
     MainComponent()
     {
-        setSize(getParentWidth()*0.5, getParentHeight()*0.5);
+        setSize(getParentWidth()*0.6, getParentHeight()*0.5);
         addAndMakeVisible(orientation);
     }
 

@@ -138,15 +138,15 @@ public:
     
     void resized() override
     {
-        centre.setBounds (10, getHeight()*0.2, getWidth()*0.3, getHeight()*0.3);
-        reverse.setBounds(getWidth()*0.3+15, getHeight()*0.2, getWidth()*0.13, getHeight()*0.3);
-        minSlider.setBounds(getWidth()*0.48+15, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
+        centre.setBounds (10, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
+        reverse.setBounds(getWidth()*0.2+15, getHeight()*0.2, getWidth()*0.18, getHeight()*0.3);
+        minSlider.setBounds(getWidth()*0.46+15, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
         maxSlider.setBounds(getWidth()*0.75+15, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
         
         mmSlider.setBounds(10, getHeight()*0.65, getWidth()*0.95, getHeight()*0.2);
         
-        minSliderLabel.setFont(getWidth()*0.025);
-        maxSliderLabel.setFont(getWidth()*0.025);
+        minSliderLabel.setFont(getWidth()*0.04);
+        maxSliderLabel.setFont(getWidth()*0.04);
     }
     
     void setLabelWidget (String LabelWidget)
