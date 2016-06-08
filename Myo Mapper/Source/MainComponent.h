@@ -20,6 +20,7 @@
 */
 class MainComponent    : public Component
 {
+    
 public:
     MainComponent()
     {

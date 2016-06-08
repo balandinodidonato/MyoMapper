@@ -1,5 +1,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
+#include "myo.hpp"
 
 
 //==============================================================================
@@ -16,31 +17,25 @@ public:
     //==============================================================================
     void initialise (const String& commandLine) override
     {
-        // This method is where you should put your application's initialisation code..
-
         mainWindow = new MainWindow (getApplicationName());
+        
+    
     }
 
     void shutdown() override
     {
-        // Add your application's shutdown code here..
-
         mainWindow = nullptr; // (deletes our window)
     }
 
     //==============================================================================
     void systemRequestedQuit() override
     {
-        // This is called when the app is being asked to quit: you can ignore this
-        // request and let the app carry on running, or call quit() to allow the app to close.
         quit();
     }
 
     void anotherInstanceStarted (const String& commandLine) override
     {
-        // When another instance of the app is launched while this one is running,
-        // this method is invoked, and the commandLine parameter tells you what
-        // the other instance's command-line arguments were.
+        // here is where we can put the option of opening another instance for a second myo
     }
 
     //==============================================================================

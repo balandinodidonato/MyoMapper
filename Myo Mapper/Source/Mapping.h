@@ -34,8 +34,6 @@ public:
 
     void paint (Graphics& g) override
     {
-
-
         g.fillAll (Colours::lightgrey);   // clear the background
 
         g.setColour (Colours::lightgrey);
@@ -49,7 +47,6 @@ public:
 
     void resized() override
     {
-        
         rescaleYaw.setBounds(getWidth()*0.01, getHeight()*0.07, getWidth()*0.98, getHeight()*0.21);
         rescalePitch.setBounds(getWidth()*0.01, getHeight()*0.30, getWidth()*0.98, getHeight()*0.21);
         rescaleRoll.setBounds(getWidth()*0.01, getHeight()*0.53, getWidth()*0.98, getHeight()*0.21);
@@ -61,8 +58,6 @@ private:
     Rescale rescalePitch;
     Rescale rescaleRoll;
     Rescale rescaleMav;
-
-
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Mapping)
 };
