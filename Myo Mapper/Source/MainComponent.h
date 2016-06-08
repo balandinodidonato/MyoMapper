@@ -12,7 +12,6 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "mmOrientation.h"
 #include "Mapping.h"
 
 //==============================================================================
@@ -39,7 +38,7 @@ public:
 
     void resized() override
     {
-        mapping.setBounds(getWidth()*0.1, getHeight()*0.1, getWidth()*0.8, getHeight()*0.8);
+        mapping.setBounds(getWidth()*0.1, getHeight()*0.2, getWidth()*0.8, getHeight()*0.8);
     }
 
 private:

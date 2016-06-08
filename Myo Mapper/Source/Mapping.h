@@ -1,12 +1,12 @@
 /*
-  ==============================================================================
-
-    mapping.h
-    Created: 7 Jun 2016 6:06:06pm
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
+ ==============================================================================
+ 
+ mapping.h
+ Created: 7 Jun 2016 6:06:06pm
+ Author:  Balandino Di Donato
+ 
+ ==============================================================================
+ */
 
 #ifndef MAPPING_H_INCLUDED
 #define MAPPING_H_INCLUDED
@@ -16,7 +16,7 @@
 
 //==============================================================================
 /*
-*/
+ */
 class Mapping    : public Component
 {
 public:
@@ -26,33 +26,43 @@ public:
         addAndMakeVisible(rescalePitch);
         addAndMakeVisible(rescaleRoll);
         addAndMakeVisible(rescaleMav);
+        rescaleYaw.setLabelWidget("Yaw");
+        rescalePitch.setLabelWidget("Pitch");
+        rescaleRoll.setLabelWidget("Roll");
+        rescaleMav.setLabelWidget("MAV");
     }
-
+    
     ~Mapping()
     {
     }
-
+    
     void paint (Graphics& g) override
     {
         g.fillAll (Colours::lightgrey);   // clear the background
-
+        
         g.setColour (Colours::lightgrey);
         g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
+        
         g.setColour (Colours::white);
         g.setFont (getHeight()*0.07);
         g.drawText ("MAPPING", getLocalBounds(),
                     Justification::centredTop, true);   // draw some placeholder text
+        printf("Yaw: %f\n", rescaleYaw.getValue());
     }
-
+    
     void resized() override
     {
         rescaleYaw.setBounds(getWidth()*0.01, getHeight()*0.07, getWidth()*0.98, getHeight()*0.21);
         rescalePitch.setBounds(getWidth()*0.01, getHeight()*0.30, getWidth()*0.98, getHeight()*0.21);
         rescaleRoll.setBounds(getWidth()*0.01, getHeight()*0.53, getWidth()*0.98, getHeight()*0.21);
         rescaleMav.setBounds(getWidth()*0.01, getHeight()*0.76, getWidth()*0.98, getHeight()*0.21);
+        
+        rescaleYaw.setValue(0.7);
+        rescalePitch.setValue(0.3);
+        rescaleRoll.setValue(0.1);
+        rescaleMav.setValue(0.2);
     }
-
+    
 private:
     Rescale rescaleYaw;
     Rescale rescalePitch;

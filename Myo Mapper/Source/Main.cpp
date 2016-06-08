@@ -1,7 +1,5 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
-#include "myo.hpp"
-
 
 //==============================================================================
 class MyoMapperApplication  : public JUCEApplication
