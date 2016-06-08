@@ -27,9 +27,9 @@ public:
     Rescale()
     {
         // specify here where to send OSC messages to: host URL and UDP port number
-        if (! sender.connect ("127.0.0.1", 9001))
+        if (! sender.connect ("127.0.0.1", OSCport))
             showConnectionErrorMessage ("Error: could not connect to UDP port 9001.");
-        
+
         addAndMakeVisible(centre);
         centre.setButtonText ("Centre");
         centre.addListener (this);
@@ -132,8 +132,7 @@ public:
             mmSlider.setMaxValue(maxOutputValue);
         }
         
-        if (! sender.send ("/Myo/"+labelWidget, (float) outValue))
-            showConnectionErrorMessage ("Error: could not send OSC message.");
+        if(enableOSCvalue) sender.send ("/Myo/"+labelWidget, (float) outValue);
         
         outValue = scaled;
     }
@@ -163,6 +162,18 @@ public:
     float getValue()
     {
         return outValue;
+    }
+    
+    void setOSCPort (int Port)
+    {
+        OSCport = Port;
+        // specify here where to send OSC messages to: host URL and UDP port number
+        sender.connect("127.0.0.1", OSCport);
+    }
+    
+    void enableOSC(bool EnableOSC)
+    {
+        enableOSCvalue = EnableOSC;
     }
 
 private:
@@ -196,6 +207,8 @@ private:
     float minOutputValue = 0.0;
     float scaled = 0;
     float input = 0;
+    int OSCport = 5432;
+    bool enableOSCvalue = true; // enable osc messages
     
     String labelWidget = "Myo Data";
     

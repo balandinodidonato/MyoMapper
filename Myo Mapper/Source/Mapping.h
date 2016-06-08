@@ -47,7 +47,6 @@ public:
         g.setFont (getHeight()*0.07);
         g.drawText ("MAPPING", getLocalBounds(),
                     Justification::centredTop, true);   // draw some placeholder text
-        printf("Yaw: %f\n", rescaleYaw.getValue());
     }
     
     void resized() override
