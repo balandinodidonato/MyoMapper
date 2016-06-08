@@ -201,6 +201,8 @@ private:
     Label minSliderLabel;
     Label maxSliderLabel;
     
+    OSCSender sender;
+    
     float reversed = 0; // variables used for testing the logic
     float centred = 0; // centred data init
     float offset = 1; // offset for centering myo data
@@ -214,8 +216,7 @@ private:
     
     String labelWidget = "Myo Data";
     
-    OSCSender sender;
-        
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };
 

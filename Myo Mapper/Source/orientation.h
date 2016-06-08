@@ -53,12 +53,18 @@ public:
         rescalePitch.setBounds(getWidth()*0.01, getHeight()*0.4, getWidth()*0.98, getHeight()*0.28);
         rescaleRoll.setBounds(getWidth()*0.01, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
         
-        rescaleYaw.setValue(0.7);
-        rescalePitch.setValue(0.3);
-        rescaleRoll.setValue(0.1);
+        
+    }
+    
+    void setValues (float Yaw, float Pitch, float Roll)
+    {
+        rescaleYaw.setValue(Yaw);
+        rescalePitch.setValue(Pitch);
+        rescaleRoll.setValue(Roll);
     }
     
 private:
+    
     Rescale rescaleYaw;
     Rescale rescalePitch;
     Rescale rescaleRoll;

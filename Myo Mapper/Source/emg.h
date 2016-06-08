@@ -13,6 +13,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "rescale.h"
+#include "emgS.h"
 
 //==============================================================================
 /*
@@ -24,7 +25,8 @@ public:
     {
         addAndMakeVisible(rescaleMav);
         rescaleMav.setLabelWidget("Mav");
-        
+        emgS.setLabelWidget("EMGs");
+        addAndMakeVisible(emgS);
     }
 
     ~Emg()
@@ -46,11 +48,16 @@ public:
 
     void resized() override
     {
+        emgS.setBounds(getWidth()*0.01, getHeight()*0.1, getWidth()*0.98, getHeight()*0.58);
         rescaleMav.setBounds(getWidth()*0.01, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
+        emgS.setValues(10, 20, 30, 40, 50, 60, 70, 80);
     }
 
 private:
+    String labelWidget = "Myo Data";
+    
     Rescale rescaleMav;
+    EmgS emgS;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Emg)
 };
