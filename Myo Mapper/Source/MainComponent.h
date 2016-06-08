@@ -13,6 +13,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "orientation.h"
+#include "emg.h"
 
 //==============================================================================
 /*
@@ -25,6 +26,7 @@ public:
     {
         setSize(getParentWidth()*0.6, getParentHeight()*0.5);
         addAndMakeVisible(orientation);
+        addAndMakeVisible(emg);
     }
 
     ~MainComponent()
@@ -39,10 +41,13 @@ public:
     void resized() override
     {
         orientation.setBounds(10, getHeight()*0.2, getWidth()*0.5, getHeight()*0.8);
+        emg.setBounds(getWidth()*0.5+20, getHeight()*0.2, getWidth()*0.5-30, getHeight()*0.8);
+        
     }
 
 private:
     Orientation orientation;
+    Emg emg;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
