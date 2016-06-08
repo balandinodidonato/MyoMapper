@@ -17,7 +17,8 @@
 /*
 */
 class Rescale    : public Component,
-                   public Button::Listener // [1]
+                   public Button::Listener,
+                   public Slider::Listener
 {
 public:
     Rescale()
@@ -26,10 +27,16 @@ public:
         centre.setButtonText ("Centre");
         centre.addListener (this);
         
-        addAndMakeVisible(slider);
+        addAndMakeVisible(mmSlider);
+        mmSlider.setSliderStyle(juce::Slider::ThreeValueHorizontal);
+        mmSlider.setRange(-1.0, 2.0);
+        mmSlider.setMinValue(0.0);
+        mmSlider.setMaxValue(1.0);
+        mmSlider.addListener (this);
+        
         addAndMakeVisible (label);
         label.setText ("Value", dontSendNotification);
-        label.attachToComponent (&slider, true);
+        label.attachToComponent (&mmSlider, true);
         
         addAndMakeVisible(reverse);
         reverse.addListener (this);
@@ -42,7 +49,6 @@ public:
 
     void paint (Graphics& g) override
     {
-
         g.fillAll (Colours::white);   // clear the background
 
         g.setColour (Colours::grey);
@@ -54,46 +60,57 @@ public:
                     Justification::centredTop, true);   // draw some placeholder text
         
         // Centre incoming value
-        input = slider.getValue(); // in this case I'm using the slider value for testing the implemented logic
-        centred = offset-(input-0.5); // input is the value to be centred
+        input = mmSlider.getValue(); // in this case I'm using the slider value for testing the implemented logic
+        centred = 1-offset-(input-targetValue); // input is the value to be centred
         
         if (centred<0) {centred = 1+centred;}
         else if (centred>1) {centred = 1-centred;}
-        printf("Value: %f \n", centred);
-        // ----------
+        
+        if (reverse.getToggleStateValue()==true)
+        { centred = std::abs(1-centred); }
+        
+        scaled = jmap(centred, minOutputValue, maxOutputValue); // Scale value within the new range
     }
     
     void  buttonClicked (Button* button) override
     {
         if (button == &centre)
         {
-            offset = input; // offset
-        }
-        
-        if (button == &reverse)
-        {
-            yawExample = slider.getValue();
-            yawExample = std::abs(1-yawExample);
-            slider.setValue(yawExample);
+            offset = input; // take the current myo value as offset to centre the data
+            targetValue = 0.5; // centre the myo data at half of the established range
         }
     }
-            
+ 
+    void sliderValueChanged (Slider* slider) override
+    {
+        if (slider == &mmSlider)
+        {
+            maxOutputValue = mmSlider.getMaxValue();
+            minOutputValue = mmSlider.getMinValue();
+        }
+    }
     
     void resized() override
     {
         centre.setBounds (10, getHeight()*0.2, getWidth()*0.3, (getHeight()*0.5)-20);
         reverse.setBounds(getWidth()*0.3+15, getHeight()*0.2, getWidth()*0.2, (getHeight()*0.5)-20);
-        slider.setRange(0, 1);
-        slider.setBounds(getWidth()*0.1, getHeight()*0.65, getWidth()*0.8, getHeight()*0.2);
+        mmSlider.setBounds(getWidth()*0.1, getHeight()*0.65, getWidth()*0.8, getHeight()*0.2);
     }
 
 private:
     TextButton centre;
-    Slider slider;
+    Slider mmSlider;
     Label label;
     ToggleButton reverse;
-    float yawExample = 0; // variables used for testing the logic
-    float input, offset, centred = 0;
+    
+    float reversed = 0; // variables used for testing the logic
+    float input = 0; // Myo data init to change into myo data
+    float centred = 0; // centred data init
+    float offset = 1; // offset for centering myo data
+    float targetValue = 0; // Target value to centre to
+    float maxOutputValue = 1.0;
+    float minOutputValue = 0.0;
+    float scaled = 0;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };
