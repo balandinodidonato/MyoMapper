@@ -12,7 +12,7 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Mapping.h"
+#include "orientation.h"
 
 //==============================================================================
 /*
@@ -24,7 +24,7 @@ public:
     MainComponent()
     {
         setSize(getParentWidth()*0.5, getParentHeight()*0.5);
-        addAndMakeVisible(mapping);
+        addAndMakeVisible(orientation);
     }
 
     ~MainComponent()
@@ -38,11 +38,11 @@ public:
 
     void resized() override
     {
-        mapping.setBounds(getWidth()*0.1, getHeight()*0.2, getWidth()*0.8, getHeight()*0.8);
+        orientation.setBounds(10, getHeight()*0.2, getWidth()*0.5, getHeight()*0.8);
     }
 
 private:
-    Mapping mapping;
+    Orientation orientation;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

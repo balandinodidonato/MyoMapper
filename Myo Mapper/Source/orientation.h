@@ -12,64 +12,59 @@
 #define MAPPING_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Rescale.h"
+#include "rescale.h"
 
 //==============================================================================
 /*
  */
-class Mapping    : public Component
+class Orientation   : public Component
 {
 public:
-    Mapping()
+    Orientation()
     {
         addAndMakeVisible(rescaleYaw);
         addAndMakeVisible(rescalePitch);
         addAndMakeVisible(rescaleRoll);
-        addAndMakeVisible(rescaleMav);
         rescaleYaw.setLabelWidget("Yaw");
         rescalePitch.setLabelWidget("Pitch");
         rescaleRoll.setLabelWidget("Roll");
-        rescaleMav.setLabelWidget("MAV");
     }
     
-    ~Mapping()
+    ~Orientation()
     {
     }
     
     void paint (Graphics& g) override
     {
-        g.fillAll (Colours::lightgrey);   // clear the background
+        g.fillAll(Colours::lightgrey);   // clear the background
         
-        g.setColour (Colours::lightgrey);
-        g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+        g.setColour(Colours::lightgrey);
+        g.drawRect(getLocalBounds(), 1);   // draw an outline around the component
         
-        g.setColour (Colours::white);
-        g.setFont (getHeight()*0.07);
-        g.drawText ("MAPPING", getLocalBounds(),
+        g.setColour(Colours::white);
+        g.setFont(getHeight()*0.07);
+        g.drawText("ORIENTATION", getLocalBounds(),
                     Justification::centredTop, true);   // draw some placeholder text
     }
     
     void resized() override
     {
-        rescaleYaw.setBounds(getWidth()*0.01, getHeight()*0.07, getWidth()*0.98, getHeight()*0.21);
-        rescalePitch.setBounds(getWidth()*0.01, getHeight()*0.30, getWidth()*0.98, getHeight()*0.21);
-        rescaleRoll.setBounds(getWidth()*0.01, getHeight()*0.53, getWidth()*0.98, getHeight()*0.21);
-        rescaleMav.setBounds(getWidth()*0.01, getHeight()*0.76, getWidth()*0.98, getHeight()*0.21);
+        rescaleYaw.setBounds(getWidth()*0.01, getHeight()*0.1, getWidth()*0.98, getHeight()*0.28);
+        rescalePitch.setBounds(getWidth()*0.01, getHeight()*0.4, getWidth()*0.98, getHeight()*0.28);
+        rescaleRoll.setBounds(getWidth()*0.01, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
         
         rescaleYaw.setValue(0.7);
         rescalePitch.setValue(0.3);
         rescaleRoll.setValue(0.1);
-        rescaleMav.setValue(0.2);
     }
     
 private:
     Rescale rescaleYaw;
     Rescale rescalePitch;
     Rescale rescaleRoll;
-    Rescale rescaleMav;
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Mapping)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Orientation)
 };
 
 
-#endif  // MAPPING_H_INCLUDED
+#endif  // ORIENTATION_H_INCLUDED

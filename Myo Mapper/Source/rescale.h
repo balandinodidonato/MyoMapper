@@ -54,7 +54,6 @@ public:
         minSlider.setSliderStyle(juce::Slider::IncDecButtons);
         addAndMakeVisible(minSlider);
 
-        
         minSliderLabel.setText ("Min", dontSendNotification);
         minSliderLabel.attachToComponent (&minSlider, true);
         addAndMakeVisible(minSliderLabel);
@@ -65,7 +64,7 @@ public:
         minSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
         maxSlider.setSliderStyle(juce::Slider::IncDecButtons);
         addAndMakeVisible(maxSlider);
-
+        
         maxSliderLabel.setText ("Max", dontSendNotification);
         maxSliderLabel.attachToComponent (&maxSlider, true);
         addAndMakeVisible(maxSliderLabel);
@@ -78,14 +77,14 @@ public:
 
     void paint (Graphics& g) override
     {
-        g.fillAll (Colours::white);   // clear the background
+        g.fillAll(Colours::white);   // clear the background
 
-        g.setColour (Colours::grey);
+        g.setColour(Colours::grey);
         g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
-        g.setColour (Colours::black);
-        g.setFont (getHeight()*0.2);
-        g.drawText (labelWidget, getLocalBounds(),
+        g.setColour(Colours::black);
+        g.setFont(getHeight()*0.2);
+        g.drawText(labelWidget, getLocalBounds(),
                     Justification::centredTop, true);   // draw some placeholder text
         
         // Centre incoming value
@@ -140,12 +139,14 @@ public:
     void resized() override
     {
         centre.setBounds (10, getHeight()*0.2, getWidth()*0.3, getHeight()*0.3);
-        reverse.setBounds(getWidth()*0.3+15, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
+        reverse.setBounds(getWidth()*0.3+15, getHeight()*0.2, getWidth()*0.13, getHeight()*0.3);
         minSlider.setBounds(getWidth()*0.48+15, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
         maxSlider.setBounds(getWidth()*0.75+15, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
         
-        mmSlider.setBounds(getWidth()*0.1, getHeight()*0.65, getWidth()*0.8, getHeight()*0.2);
-
+        mmSlider.setBounds(10, getHeight()*0.65, getWidth()*0.95, getHeight()*0.2);
+        
+        minSliderLabel.setFont(getWidth()*0.025);
+        maxSliderLabel.setFont(getWidth()*0.025);
     }
     
     void setLabelWidget (String LabelWidget)
@@ -167,6 +168,7 @@ public:
     void setOSCPort (int Port)
     {
         OSCport = Port;
+        
         // specify here where to send OSC messages to: host URL and UDP port number
         sender.connect("127.0.0.1", OSCport);
     }

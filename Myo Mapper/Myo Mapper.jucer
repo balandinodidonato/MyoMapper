@@ -9,6 +9,7 @@
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="cEBa54" name="mapping.h" compile="0" resource="0" file="Source/mapping.h"/>
+      <FILE id="DZJ9Nq" name="pippo.h" compile="0" resource="0" file="Source/pippo.h"/>
       <FILE id="Gzqd6E" name="rescale.h" compile="0" resource="0" file="Source/rescale.h"/>
     </GROUP>
   </MAINGROUP>
