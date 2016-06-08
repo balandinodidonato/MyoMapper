@@ -14,6 +14,7 @@
 		22FAA1E44B747AF1D15B3405 /* juce_cryptography.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9936D8FFEAFC6BBC0DB9D64E /* juce_cryptography.mm */; };
 		2459B843417FA4D50BAFB009 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F94C9417F836ACA10793FF /* AudioToolbox.framework */; };
 		2EB10FB755DD1A15A11BE0EF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB45A6D1A87A9EACA35FAA3E /* CoreAudio.framework */; };
+		32FFFAEE1D0825D20052080B /* myo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FFFAED1D0825D20052080B /* myo.framework */; };
 		348C2B76AF430AD1AD1A35A9 /* juce_audio_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CD1B67D05CCB30CC7E69F8B /* juce_audio_basics.mm */; };
 		3964F13953AD4535AB282055 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A21682825C42EBA8C1466AB /* QTKit.framework */; };
 		3BF6C1C0ABAB4AD541632F68 /* juce_audio_processors.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2CF1C94BB5F0028C59D2EF1 /* juce_audio_processors.mm */; };
@@ -250,6 +251,7 @@
 		31D89FEF0B21655558892CE0 /* codec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = codec.h; path = ../../../../../JUCE/modules/juce_audio_formats/codecs/oggvorbis/codec.h; sourceTree = SOURCE_ROOT; };
 		32283827396C37C9CC46E0AF /* juce_ChangeListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ChangeListener.h; path = ../../../../../JUCE/modules/juce_events/broadcasters/juce_ChangeListener.h; sourceTree = SOURCE_ROOT; };
 		32BFC435204269140AB9C81A /* inffixed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = inffixed.h; path = ../../../../../JUCE/modules/juce_core/zip/zlib/inffixed.h; sourceTree = SOURCE_ROOT; };
+		32FFFAED1D0825D20052080B /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = myo.framework; sourceTree = "<group>"; };
 		3396088305A66DAA81827FD4 /* juce_ScopedPointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ScopedPointer.h; path = ../../../../../JUCE/modules/juce_core/memory/juce_ScopedPointer.h; sourceTree = SOURCE_ROOT; };
 		33A41A1D908BB1656A25B505 /* juce_linux_JackAudio.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_linux_JackAudio.cpp; path = ../../../../../JUCE/modules/juce_audio_devices/native/juce_linux_JackAudio.cpp; sourceTree = SOURCE_ROOT; };
 		33DAF522BE8CC9E932A2A6B3 /* juce_CPlusPlusCodeTokeniser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_CPlusPlusCodeTokeniser.cpp; path = ../../../../../JUCE/modules/juce_gui_extra/code_editor/juce_CPlusPlusCodeTokeniser.cpp; sourceTree = SOURCE_ROOT; };
@@ -1220,6 +1222,7 @@
 				3964F13953AD4535AB282055 /* QTKit.framework in Frameworks */,
 				808C19E032283899C075FEFF /* QuartzCore.framework in Frameworks */,
 				11ABDD546FC02F5698E66D6D /* QuickTime.framework in Frameworks */,
+				32FFFAEE1D0825D20052080B /* myo.framework in Frameworks */,
 				6507943995181A90AF2AB700 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1445,6 +1448,7 @@
 			isa = PBXGroup;
 			children = (
 				41441FC2D162F780FA517D7C /* Myo Mapper */,
+				32FFFAEA1D0825190052080B /* Externals */,
 				964B5E97FBE24E0EA7E7E51A /* Juce Modules */,
 				EF9DA02E16751E3438391768 /* Juce Library Code */,
 				76EDF0D8D553D2782B5CF7AF /* Resources */,
@@ -1703,6 +1707,14 @@
 				AFF0BFD619CB41CE56F1526D /* res_books_uncoupled.h */,
 			);
 			name = uncoupled;
+			sourceTree = "<group>";
+		};
+		32FFFAEA1D0825190052080B /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				32FFFAED1D0825D20052080B /* myo.framework */,
+			);
+			name = Externals;
 			sourceTree = "<group>";
 		};
 		3AB1D30D649354423419D53D /* juce_gui_basics */ = {
@@ -3457,6 +3469,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3471,6 +3487,7 @@
 					../../JuceLibraryCode,
 					../../../../../JUCE/modules,
 					"$(inherited)",
+					"$(PROJECT_DIR)/myo.framework/Headers",
 				);
 				INFOPLIST_FILE = "Info-App.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3488,6 +3505,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3503,6 +3524,7 @@
 					../../JuceLibraryCode,
 					../../../../../JUCE/modules,
 					"$(inherited)",
+					"$(PROJECT_DIR)/myo.framework/Headers",
 				);
 				INFOPLIST_FILE = "Info-App.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
