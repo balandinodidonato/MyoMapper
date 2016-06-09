@@ -61,6 +61,11 @@ public:
         rescaleMav.setValue(emgS.getMav());
     }
     
+    void setOSCPort (int Port)
+    {
+        rescaleMav.setOSCPort(Port);
+    }
+    
 private:
     String labelWidget = "Myo Data";
     

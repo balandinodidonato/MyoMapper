@@ -43,13 +43,16 @@ public:
         orientation.setBounds(10, getHeight()*0.2, getWidth()*0.5, getHeight()*0.8);
         emg.setBounds(getWidth()*0.5+20, getHeight()*0.2, getWidth()*0.5-30, getHeight()*0.8);
         
-        orientation.setValues(0.1, 0.5, 0.8); // impor Orientation
+        orientation.setValues(0.1, 0.5, 0.8); // import Orientation
         
         for(int i=0; i<8; i++)
         {
             pippoPippo[i] = i*10;
         }
         emg.setValues(pippoPippo); // import emg
+        
+        orientation.setOSCPort(9001);
+        emg.setOSCPort(9001);
     }
 
 private:

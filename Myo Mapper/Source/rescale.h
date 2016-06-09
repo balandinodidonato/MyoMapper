@@ -129,8 +129,6 @@ public:
             mmSlider.setMaxValue(maxOutputValue);
         }
         
-        if(enableOSCvalue) sender.send ("/Myo/"+labelWidget, (float) outValue);
-        
         outValue = scaled;
     }
     
@@ -156,6 +154,7 @@ public:
     void setValue (float Value)
     {
         input = Value;
+        if(enableOSCvalue) sender.send ("/Myo/"+labelWidget, (float) outValue);
     }
     
     float getValue()

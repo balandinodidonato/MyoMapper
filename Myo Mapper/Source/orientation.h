@@ -63,6 +63,13 @@ public:
         rescaleRoll.setValue(Roll);
     }
     
+    void setOSCPort (int Port)
+    {
+        rescaleYaw.setOSCPort(Port);
+        rescaleRoll.setOSCPort(Port);
+        rescalePitch.setOSCPort(Port);
+    }
+    
 private:
     
     Rescale rescaleYaw;
