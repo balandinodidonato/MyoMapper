@@ -59,6 +59,7 @@ public:
     void setOSCPort (int Port)
     {
         rescaleMav.setOSCPort(Port);
+        emgS.setOSCPort(Port);
     }
     
 private:
