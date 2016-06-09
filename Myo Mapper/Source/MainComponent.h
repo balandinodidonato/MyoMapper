@@ -21,7 +21,8 @@
 //==============================================================================
 /*
 */
-class MainComponent    : public Component
+class MainComponent    : public Component,
+                         public Slider::Listener
 {
     
 public:
@@ -36,6 +37,18 @@ public:
         
         gyro.setWidgetLabel("Gyro");
         acc.setWidgetLabel("Acceleration");
+        
+        
+        oscPortSlider.setRange(0, 9999, 1);
+        oscPortSlider.setValue(5432);
+        oscPortSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
+        oscPortSlider.setSliderStyle(juce::Slider::IncDecButtons);
+        addAndMakeVisible(oscPortSlider);
+        
+        oscPortLabel.setText ("OSC Port", dontSendNotification);
+        oscPortLabel.attachToComponent (&oscPortSlider, true);
+        addAndMakeVisible(oscPortLabel);
+        oscPortSlider.addListener(this);
     }
 
     ~MainComponent()
@@ -50,11 +63,6 @@ public:
         orientation.setValues(testYaw, testPitch, testRoll); // <- sobstitute with (float) yaw, (float) pitch (float) roll values
         gyro.setValues(testGYRO); // int gyro[3] <- sobstitute with Gyro vector
         acc.setValues(testACC); // int acc[3] <- sobstitute with Acceleration vector
-        
-        orientation.setOSCPort(settingsPannel.getOSCPort());
-        emg.setOSCPort(settingsPannel.getOSCPort());
-        gyro.setOSCPort(settingsPannel.getOSCPort());
-        acc.setOSCPort(settingsPannel.getOSCPort());
     }
 
     void resized() override
@@ -64,14 +72,31 @@ public:
         gyro.setBounds(10, getHeight()*0.68, getWidth()*0.5, (getHeight()*0.3));
         acc.setBounds(getWidth()*0.5+20, getHeight()*0.68, getWidth()*0.47, (getHeight()*0.3));
         settingsPannel.setBounds(10, 10, getRight()-16, getHeight()*0.19-10);
+        
+        oscPortSlider.setBounds(getX()+100, getY()+50, getWidth()*0.15, getHeight()*0.03);
     }
-
+    
+    void sliderValueChanged (Slider* slider) override
+    {
+        if (slider == &oscPortSlider)
+        {
+            orientation.setOSCPort(oscPortSlider.getValue());
+            emg.setOSCPort(oscPortSlider.getValue());
+            gyro.setOSCPort(oscPortSlider.getValue());
+            acc.setOSCPort(oscPortSlider.getValue());
+        }
+    }
+    
 private:
     Orientation orientation;
     Emg emg;
     IMU gyro;
     IMU acc;
     Settings settingsPannel;
+    
+    String labelWidget = "Settings";
+    Label oscPortLabel;
+    Slider oscPortSlider;
     
     // ===== TEST data ====  TO DELETE ONCE THE MYO DATA ARE EXTRACTED
     int testEMG[8] = {10, 20, 30, 40, 50, 60, 70, 80};
@@ -81,7 +106,6 @@ private:
     float testPitch = 0.5;
     float testRoll = 0.8;
     // =================
-
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

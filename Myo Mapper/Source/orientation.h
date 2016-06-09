@@ -50,8 +50,6 @@ public:
         rescaleYaw.setBounds(getWidth()*0.012, getHeight()*0.1, getWidth()*0.98, getHeight()*0.28);
         rescalePitch.setBounds(getWidth()*0.012, getHeight()*0.4, getWidth()*0.98, getHeight()*0.28);
         rescaleRoll.setBounds(getWidth()*0.012, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
-        
-        
     }
     
     void setValues (float Yaw, float Pitch, float Roll)

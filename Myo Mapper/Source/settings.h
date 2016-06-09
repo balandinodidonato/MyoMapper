@@ -17,11 +17,11 @@
 /*
 */
 class Settings    : public Component//,
-                   // public Slider::Listener
+                  //  public Slider::Listener
 {
 public:
     Settings()
-    {
+    {   /*
         oscPortSlider.setRange(0, 9999, 1);
         oscPortSlider.setValue(5432);
         oscPortSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
@@ -31,7 +31,8 @@ public:
         oscPortLabel.setText ("OSC Port", dontSendNotification);
         oscPortLabel.attachToComponent (&oscPortSlider, true);
         addAndMakeVisible(oscPortLabel);
-   //     oscPortSlider.addListener(this); */
+        oscPortSlider.addListener(this);
+         */
     }
 
     ~Settings()
@@ -52,21 +53,21 @@ public:
         g.drawText(labelWidget, getLocalBounds(),
                    Justification::centredTop, true);   // draw some placeholder text
     }
-    
+            
     void resized() override
     {
-        oscPortSlider.setBounds(getX()+80, getY()+30, getWidth()*0.15, getHeight()*0.2);
+       // oscPortSlider.setBounds(getX()+80, getY()+30, getWidth()*0.15, getHeight()*0.2);
     }
     
     float getOSCPort()
     {
-        return int(oscPortSlider.getValue());
+       // return int(oscPortSlider.getValue());
     }
     
 private:
     String labelWidget = "Settings";
-    Label oscPortLabel;
-    Slider oscPortSlider;
+  /*  Label oscPortLabel;
+    Slider oscPortSlider; */
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Settings)
 };
