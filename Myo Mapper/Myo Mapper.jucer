@@ -2,13 +2,15 @@
 
 <JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.yourcompany.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.1" companyName="Integra Lab" companyWebsite="http://integra.io/"
+              jucerVersion="4.1.0" companyName="Integra Lab" companyWebsite="http://integra.io/"
               companyEmail="contact@integra.io ">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <FILE id="ON3coS" name="emgS.h" compile="0" resource="0" file="Source/emgS.h"/>
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="Vath7r" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
       <FILE id="cEBa54" name="orientation.h" compile="0" resource="0" file="Source/orientation.h"/>
       <FILE id="Gzqd6E" name="rescale.h" compile="0" resource="0" file="Source/rescale.h"/>
       <FILE id="DuDYqV" name="emg.h" compile="0" resource="0" file="Source/emg.h"/>
@@ -17,8 +19,10 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Myo Mapper"/>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Myo Mapper"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>

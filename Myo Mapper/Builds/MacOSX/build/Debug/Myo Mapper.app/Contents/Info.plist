@@ -4,8 +4,6 @@
 <dict>
 	<key>BuildMachineOSBuild</key>
 	<string>15F34</string>
-	<key>CFBundleDisplayName</key>
-	<string>Myo Mapper</string>
 	<key>CFBundleExecutable</key>
 	<string>Myo Mapper</string>
 	<key>CFBundleIdentifier</key>
