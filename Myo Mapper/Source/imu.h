@@ -22,7 +22,7 @@ public:
     IMU()
     {
         // specify here where to send OSC messages to: host URL and UDP port number
-        if (! sender.connect ("127.0.0.1", OSCport));
+        if (! sender.connect (hostAddress, OSCport));
 
         addAndMakeVisible(x);
         x.setSliderStyle(juce::Slider::LinearVertical);
@@ -105,10 +105,14 @@ public:
     
     void setOSCPort (int Port)
     {
-        OSCport = Port;
-        
-        // specify here where to send OSC messages to: host URL and UDP port number
-        sender.connect("127.0.0.1", OSCport);
+        oscPort = Port;
+        sender.connect(hostAddress, oscPort);
+    }
+    
+    void setOSChostAddress(String HostAddress)
+    {
+        hostAddress = HostAddress;
+        sender.connect(hostAddress, oscPort);
     }
     
     void enableOSC(bool EnableOSC)
@@ -131,6 +135,9 @@ private:
     
     int OSCport = 5432;
     bool enableOSCvalue = true;
+    
+    int oscPort;
+    String hostAddress;
     
     OSCSender sender;
     

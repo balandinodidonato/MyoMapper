@@ -24,7 +24,7 @@ public:
 
     EmgS()
     {
-        if (! sender.connect ("127.0.0.1", 5432))
+        if (! sender.connect (hostAddress, oscPort))
             showConnectionErrorMessage ("Error: could not connect to UDP port 9001.");
 
         addAndMakeVisible(emg0slider);
@@ -183,7 +183,14 @@ public:
     
     void setOSCPort (int Port)
     {
-        sender.connect("127.0.0.1", Port);
+        oscPort = Port;
+        sender.connect(hostAddress, oscPort);
+    }
+    
+    void setOSChostAddress(String HostAddress)
+    {
+        hostAddress = HostAddress;
+        sender.connect(hostAddress, oscPort);
     }
     
 private:
@@ -220,6 +227,9 @@ private:
     String labelWidget = "Myo Data";
     
     OSCSender sender;
+    
+    int oscPort;
+    String hostAddress;
     
     bool enableOSCvalue = true; // enable osc messages
     

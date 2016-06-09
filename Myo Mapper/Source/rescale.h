@@ -26,7 +26,7 @@ public:
     
     Rescale()
     {
-        sender.connect ("127.0.0.1", 5432);
+        sender.connect (hostAddress, oscPort);
 
         addAndMakeVisible(centre);
         centre.setButtonText ("Centre");
@@ -159,7 +159,14 @@ public:
     
     void setOSCPort (int Port)
     {
-        sender.connect("127.0.0.1", Port);
+        oscPort = Port;
+        sender.connect(hostAddress, oscPort);
+    }
+    
+    void setOSChostAddress(String HostAddress)
+    {
+        hostAddress = HostAddress;
+        sender.connect(hostAddress, oscPort);
     }
     
     void enableOSC(bool EnableOSC)
@@ -191,9 +198,11 @@ private:
     float minOutputValue = 0.0;
     float scaled = 0;
     float input = 0;
+    int oscPort;
+    String hostAddress;
     bool enableOSCvalue = true; // enable osc messages
     
-    String labelWidget = "Myo Data";
+    String labelWidget;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };

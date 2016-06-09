@@ -18,6 +18,7 @@
 /*
  */
 class Orientation   : public Component
+                        
 {
 public:
     Orientation()
@@ -65,6 +66,14 @@ public:
         rescaleRoll.setOSCPort(Port);
         rescalePitch.setOSCPort(Port);
     }
+    
+    void setHostAddress(String HostAddress)
+    {
+        rescaleYaw.setOSChostAddress(HostAddress);
+        rescalePitch.setOSChostAddress(HostAddress);
+        rescaleRoll.setOSChostAddress(HostAddress);
+    }
+    
     
     float getYaw()
     {

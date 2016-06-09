@@ -22,12 +22,19 @@
 /*
 */
 class MainComponent    : public Component,
-                         public Slider::Listener
+                         public Slider::Listener,
+                         public Label::Listener
 {
     
 public:
     MainComponent()
     {
+        // Set defoult OSC Port
+        orientation.setOSCPort(oscPortSlider.getValue());
+        emg.setOSCPort(oscPortSlider.getValue());
+        gyro.setOSCPort(oscPortSlider.getValue());
+        acc.setOSCPort(oscPortSlider.getValue());
+        
         setSize(getParentWidth()*0.6, getParentHeight()*0.5);
         addAndMakeVisible(orientation);
         addAndMakeVisible(emg);
@@ -49,6 +56,16 @@ public:
         oscPortLabel.attachToComponent (&oscPortSlider, true);
         addAndMakeVisible(oscPortLabel);
         oscPortSlider.addListener(this);
+        
+        hostAddressTitle.setText ("Host Address:", dontSendNotification);
+        addAndMakeVisible(hostAddressTitle);
+        
+        setHostAddress.setText (hostAddress, dontSendNotification);
+        orientation.setHostAddress(setHostAddress.getText());
+        setHostAddress.setEditable(true);
+        addAndMakeVisible(setHostAddress);
+        setHostAddress.addListener(this);
+        
     }
 
     ~MainComponent()
@@ -74,6 +91,9 @@ public:
         settingsPannel.setBounds(10, 10, getRight()-16, getHeight()*0.19-10);
         
         oscPortSlider.setBounds(getX()+100, getY()+50, getWidth()*0.15, getHeight()*0.03);
+        
+        hostAddressTitle.setBounds(getX()+30, getY()+100, getWidth()*0.2, getHeight()*0.03);
+        setHostAddress.setBounds(getX()+125, getY()+100, getWidth()*0.2, getHeight()*0.03);
     }
     
     void sliderValueChanged (Slider* slider) override
@@ -87,6 +107,17 @@ public:
         }
     }
     
+    void labelTextChanged (Label* labelThatHasChanged)override
+    {
+        if (labelThatHasChanged == &setHostAddress)
+        {
+            orientation.setHostAddress(setHostAddress.getText());
+            emg.setOSChostAddress(setHostAddress.getText());
+            gyro.setOSChostAddress(setHostAddress.getText());
+            acc.setOSChostAddress(setHostAddress.getText());
+        }
+    }
+    
 private:
     Orientation orientation;
     Emg emg;
@@ -97,6 +128,11 @@ private:
     String labelWidget = "Settings";
     Label oscPortLabel;
     Slider oscPortSlider;
+
+    Label hostAddressTitle;
+    Label setHostAddress;
+    
+    String hostAddress = "127.0.0.1";
     
     // ===== TEST data ====  TO DELETE ONCE THE MYO DATA ARE EXTRACTED
     int testEMG[8] = {10, 20, 30, 40, 50, 60, 70, 80};

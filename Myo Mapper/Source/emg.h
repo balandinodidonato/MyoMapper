@@ -62,6 +62,12 @@ public:
         emgS.setOSCPort(Port);
     }
     
+    void setOSChostAddress(String HostAddress)
+    {
+        rescaleMav.setOSChostAddress(HostAddress);
+        emgS.setOSChostAddress(HostAddress);
+    }
+    
     int* getEmg()
     {
         return emgS.getEMG();
@@ -77,6 +83,9 @@ private:
     
     Rescale rescaleMav;
     EmgS emgS;
+    
+    int oscPort;
+    String hostAddress;
     
     int EMGs[8];
 
