@@ -24,6 +24,8 @@ public:
 
     EmgS()
     {
+        if (! sender.connect ("127.0.0.1", OSCport));
+
         addAndMakeVisible(emg0slider);
         emg0slider.setSliderStyle(juce::Slider::LinearVertical);
         emg0slider.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, true, 35, 20);
@@ -118,21 +120,21 @@ public:
         emg6slider.setBounds(getWidth()*0.750, getHeight()*0.11, getWidth()*0.12, getHeight()*0.85);
         emg7slider.setBounds(getWidth()*0.875, getHeight()*0.11, getWidth()*0.12, getHeight()*0.85);
         
-        emg0sliderLabel.setBounds(getWidth()*0.008, getHeight()*0.74, getWidth()*0.12, getHeight()*0.1);
+        emg0sliderLabel.setBounds(emg0slider.getX(), emg0slider.getBottom()-48, emg0slider.getWidth()*0.5, getHeight()*0.1);
         emg0sliderLabel.setFont(getHeight()*0.1);
-        emg1sliderLabel.setBounds(getWidth()*0.123, getHeight()*0.74, getWidth()*0.12, getHeight()*0.1);
+        emg1sliderLabel.setBounds(emg1slider.getX(), emg1slider.getBottom()-48, emg1slider.getWidth()*0.5, getHeight()*0.1);
         emg1sliderLabel.setFont(getHeight()*0.1);
-        emg2sliderLabel.setBounds(getWidth()*0.23, getHeight()*0.74, getWidth()*0.12, getHeight()*0.1);
+        emg2sliderLabel.setBounds(emg2slider.getX(), emg2slider.getBottom()-48, emg2slider.getWidth()*0.5, getHeight()*0.1);
         emg2sliderLabel.setFont(getHeight()*0.1);
-        emg3sliderLabel.setBounds(getWidth()*0.373, getHeight()*0.74, getWidth()*0.12, getHeight()*0.1);
+        emg3sliderLabel.setBounds(emg3slider.getX(), emg3slider.getBottom()-48, emg3slider.getWidth()*0.5, getHeight()*0.1);
         emg3sliderLabel.setFont(getHeight()*0.1);
-        emg4sliderLabel.setBounds(getWidth()*0.48, getHeight()*0.74, getWidth()*0.12, getHeight()*0.1);
+        emg4sliderLabel.setBounds(emg4slider.getX(), emg4slider.getBottom()-48, emg4slider.getWidth()*0.5, getHeight()*0.1);
         emg4sliderLabel.setFont(getHeight()*0.1);
-        emg5sliderLabel.setBounds(getWidth()*0.623, getHeight()*0.74, getWidth()*0.12, getHeight()*0.1);
+        emg5sliderLabel.setBounds(emg5slider.getX(), emg5slider.getBottom()-48, emg5slider.getWidth()*0.5, getHeight()*0.1);
         emg5sliderLabel.setFont(getHeight()*0.1);
-        emg6sliderLabel.setBounds(getWidth()*0.748, getHeight()*0.74, getWidth()*0.12, getHeight()*0.1);
+        emg6sliderLabel.setBounds(emg6slider.getX(), emg6slider.getBottom()-48, emg6slider.getWidth()*0.5, getHeight()*0.1);
         emg6sliderLabel.setFont(getHeight()*0.1);
-        emg7sliderLabel.setBounds(getWidth()*0.873, getHeight()*0.74, getWidth()*0.12, getHeight()*0.1);
+        emg7sliderLabel.setBounds(emg7slider.getX(), emg7slider.getBottom()-48, emg7slider.getWidth()*0.5, getHeight()*0.1);
         emg7sliderLabel.setFont(getHeight()*0.1);
     }
     
@@ -164,12 +166,22 @@ public:
         emg5slider.setValue(emg[5]);
         emg6slider.setValue(emg[6]);
         emg7slider.setValue(emg[7]);
+        
+        sender.send ("/Myo/"+labelWidget, (int) emg[0], (int) emg[1], (int) emg[2], (int) emg[3], (int) emg[4], (int) emg[5], (int) emg[6], (int) emg[7]);
     }
     
     float getMav()
     {
         MAV = mav;
         return MAV;
+    }
+    
+    void setOSCPort (int Port)
+    {
+        OSCport = Port;
+        
+        // specify here where to send OSC messages to: host URL and UDP port number
+        sender.connect("127.0.0.1", OSCport);
     }
     
 private:
@@ -197,6 +209,9 @@ private:
     String labelWidget = "Myo Data";
     
     OSCSender sender;
+    
+    int OSCport = 5432;
+    bool enableOSCvalue = true; // enable osc messages
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EmgS)
 };

@@ -25,7 +25,7 @@ public:
     {
         addAndMakeVisible(rescaleMav);
         rescaleMav.setLabelWidget("Mav");
-        emgS.setLabelWidget("EMGs");
+        emgS.setLabelWidget("Emg");
         addAndMakeVisible(emgS);
     }
 
@@ -40,7 +40,7 @@ public:
         g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
         g.setColour(Colours::black);
         g.setFont(getHeight()*0.07);
-        g.drawText("EMG", getLocalBounds(),
+        g.drawText("Emg", getLocalBounds(),
                    Justification::centredTop, true);   // draw some placeholder text
     }
 

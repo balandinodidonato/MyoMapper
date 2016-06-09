@@ -84,16 +84,6 @@ public:
         g.setFont(getHeight()*0.2);
         g.drawText(labelWidget, getLocalBounds(),
                     Justification::centredTop, true);   // draw some placeholder text
-        
-        // Centre incoming value
-        centred = 1-(offset-(input-targetValue)); // input is the value to be centred
-        centred = std::abs(centred);
-        
-        if (reverse.getToggleStateValue()==true) // reverse centred value
-        { centred = 1-centred; }
-        
-        scaled = jmap(centred, minOutputValue, maxOutputValue); // Scale value within the new range
-        mmSlider.setValue(scaled);
     }
     
     void  buttonClicked (Button* button) override
@@ -126,8 +116,6 @@ public:
             maxOutputValue = maxSlider.getValue();
             mmSlider.setMaxValue(maxOutputValue);
         }
-        
-        outValue = scaled;
     }
     
     void resized() override
@@ -152,7 +140,18 @@ public:
     void setValue (float Value)
     {
         input = Value;
-        if(enableOSCvalue) sender.send ("/Myo/"+labelWidget, (float) outValue);
+        
+        // Centre incoming value
+        centred = 1-(offset-(input-targetValue)); // input is the value to be centred
+        centred = std::abs(centred);
+        
+        if (reverse.getToggleStateValue()==true) // reverse centred value
+        { centred = 1-centred; }
+        
+        scaled = jmap(centred, minOutputValue, maxOutputValue); // Scale value within the new range
+        mmSlider.setValue(scaled);
+        
+        if(enableOSCvalue) sender.send ("/Myo/"+labelWidget, (float) scaled);
     }
     
     float getValue()

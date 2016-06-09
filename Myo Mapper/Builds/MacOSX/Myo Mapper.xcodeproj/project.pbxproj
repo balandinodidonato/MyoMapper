@@ -256,6 +256,7 @@
 		31AA18A68D780E03950DBB3C /* juce_mac_WebBrowserComponent.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_mac_WebBrowserComponent.mm; path = ../../../../../JUCE/modules/juce_gui_extra/native/juce_mac_WebBrowserComponent.mm; sourceTree = SOURCE_ROOT; };
 		31B0691C45C606B5A98DDC73 /* juce_events.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_events.mm; path = ../../../../../JUCE/modules/juce_events/juce_events.mm; sourceTree = SOURCE_ROOT; };
 		31D89FEF0B21655558892CE0 /* codec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = codec.h; path = ../../../../../JUCE/modules/juce_audio_formats/codecs/oggvorbis/codec.h; sourceTree = SOURCE_ROOT; };
+		32084B3B1D09774700EA688B /* imu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imu.h; sourceTree = "<group>"; };
 		32283827396C37C9CC46E0AF /* juce_ChangeListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ChangeListener.h; path = ../../../../../JUCE/modules/juce_events/broadcasters/juce_ChangeListener.h; sourceTree = SOURCE_ROOT; };
 		32BFC435204269140AB9C81A /* inffixed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = inffixed.h; path = ../../../../../JUCE/modules/juce_core/zip/zlib/inffixed.h; sourceTree = SOURCE_ROOT; };
 		32FC91EC1D0972CD003B6BCD /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myo.framework; path = ../../../../../SDKs/MyoSDK/myo.framework; sourceTree = "<group>"; };
@@ -1591,6 +1592,7 @@
 				FB92A91114FF1450F33E3909 /* MainComponent.h */,
 				E843402C9F385A32413BB678 /* orientation.h */,
 				4E7D61CA41694257EBBC8C08 /* rescale.h */,
+				32084B3B1D09774700EA688B /* imu.h */,
 				0714B3E11C8C53CA7715C8D4 /* emg.h */,
 			);
 			name = Source;

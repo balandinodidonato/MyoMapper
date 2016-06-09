@@ -41,7 +41,7 @@ public:
         g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
         g.setColour(Colours::black);
         g.setFont(getHeight()*0.07);
-        g.drawText("ORIENTATION", getLocalBounds(),
+        g.drawText("Orientation", getLocalBounds(),
                     Justification::centredTop, true);   // draw some placeholder text
     }
     
