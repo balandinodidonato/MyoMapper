@@ -37,11 +37,9 @@ public:
     void paint (Graphics& g) override
     {
         g.fillAll(Colours::lightgrey);   // clear the background
-        
-        g.setColour(Colours::lightgrey);
-        g.drawRect(getLocalBounds(), 1);   // draw an outline around the component
-        
-        g.setColour(Colours::white);
+        g.setColour(Colours::grey);
+        g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
+        g.setColour(Colours::black);
         g.setFont(getHeight()*0.07);
         g.drawText("ORIENTATION", getLocalBounds(),
                     Justification::centredTop, true);   // draw some placeholder text
@@ -49,9 +47,9 @@ public:
     
     void resized() override
     {
-        rescaleYaw.setBounds(getWidth()*0.01, getHeight()*0.1, getWidth()*0.98, getHeight()*0.28);
-        rescalePitch.setBounds(getWidth()*0.01, getHeight()*0.4, getWidth()*0.98, getHeight()*0.28);
-        rescaleRoll.setBounds(getWidth()*0.01, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
+        rescaleYaw.setBounds(getWidth()*0.012, getHeight()*0.1, getWidth()*0.98, getHeight()*0.28);
+        rescalePitch.setBounds(getWidth()*0.012, getHeight()*0.4, getWidth()*0.98, getHeight()*0.28);
+        rescaleRoll.setBounds(getWidth()*0.012, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
         
         
     }

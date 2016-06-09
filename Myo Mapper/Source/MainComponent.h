@@ -40,8 +40,8 @@ public:
 
     void resized() override
     {
-        orientation.setBounds(10, getHeight()*0.2, getWidth()*0.5, getHeight()*0.8);
-        emg.setBounds(getWidth()*0.5+20, getHeight()*0.2, getWidth()*0.5-30, getHeight()*0.8);
+        orientation.setBounds(10, getHeight()*0.19, getWidth()*0.5, getHeight()*0.8);
+        emg.setBounds(getWidth()*0.5+20, getHeight()*0.19, getWidth()*0.5-30, getHeight()*0.8);
         
         // ===== TEST ====
         int testEMG[8];

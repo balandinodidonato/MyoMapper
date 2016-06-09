@@ -97,10 +97,9 @@ public:
     {
         addAndMakeVisible(emg0slider);
         
-        g.fillAll (Colours::white);   // clear the background
-
-        g.setColour (Colours::grey);
-        g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+        g.fillAll(Colours::white);   // clear the background
+        g.setColour(Colours::lightgrey);
+        g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 3, 3);
 
         g.setColour(Colours::black);
         g.setFont(getHeight()*0.1);

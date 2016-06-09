@@ -54,6 +54,7 @@ public:
             centreWithSize (getWidth(), getHeight());
             setVisible (true);
             setResizable(true, true);
+            setResizeLimits(getParentWidth()*0.6, getParentHeight()*0.6, getParentWidth(), getParentHeight());
         }
 
         void closeButtonPressed() override
