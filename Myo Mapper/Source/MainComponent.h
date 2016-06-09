@@ -14,6 +14,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "orientation.h"
 #include "emg.h"
+#include "myo/myo.hpp"
 
 //==============================================================================
 /*
@@ -43,16 +44,18 @@ public:
 
     void resized() override
     {
-        orientation.setBounds(10, getHeight()*0.19, getWidth()*0.5, getHeight()*0.8);
-        emg.setBounds(getWidth()*0.5+20, getHeight()*0.19, getWidth()*0.5-30, getHeight()*0.8);
+        orientation.setBounds(10, getHeight()*0.19, getWidth()*0.5, (getHeight()*0.5)-30);
+        emg.setBounds(getWidth()*0.5+20, getHeight()*0.19, getWidth()*0.5-30, (getHeight()*0.5)-30);
         
-        orientation.setOSCPort(9001);
-        emg.setOSCPort(9001);
+        orientation.setOSCPort(oscPort);
+        emg.setOSCPort(oscPort);
     }
 
 private:
     Orientation orientation;
     Emg emg;
+    
+    int oscPort = 9001;
     
     // ===== TEST data ====
     int testEMG[8] = {10, 20, 30, 40, 50, 60, 70, 80};

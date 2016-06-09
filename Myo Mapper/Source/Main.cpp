@@ -51,10 +51,10 @@ public:
             setUsingNativeTitleBar (true);
             setContentOwned (new MainComponent(), true);
 
-            centreWithSize (getWidth(), getHeight());
+            setCentrePosition(getWidth()*0.5, 0);
             setVisible (true);
             setResizable(true, true);
-            setResizeLimits(getParentWidth()*0.6, getParentHeight()*0.6, getParentWidth(), getParentHeight());
+            setResizeLimits(getParentWidth()*0.6, getParentHeight(), getParentWidth(), getParentHeight());
         }
 
         void closeButtonPressed() override
