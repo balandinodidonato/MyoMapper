@@ -22,6 +22,9 @@
 // [END_USER_CODE_SECTION]
 
 //==============================================================================
+#define JUCE_MODULE_AVAILABLE_juce_audio_basics         1
+#define JUCE_MODULE_AVAILABLE_juce_audio_devices        1
+#define JUCE_MODULE_AVAILABLE_juce_audio_formats        1
 #define JUCE_MODULE_AVAILABLE_juce_core                 1
 #define JUCE_MODULE_AVAILABLE_juce_data_structures      1
 #define JUCE_MODULE_AVAILABLE_juce_events               1
@@ -41,6 +44,68 @@
 #endif
 
 #define JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED 1
+
+//==============================================================================
+// juce_audio_devices flags:
+
+#ifndef    JUCE_ASIO
+ //#define JUCE_ASIO
+#endif
+
+#ifndef    JUCE_WASAPI
+ //#define JUCE_WASAPI
+#endif
+
+#ifndef    JUCE_WASAPI_EXCLUSIVE
+ //#define JUCE_WASAPI_EXCLUSIVE
+#endif
+
+#ifndef    JUCE_DIRECTSOUND
+ //#define JUCE_DIRECTSOUND
+#endif
+
+#ifndef    JUCE_ALSA
+ //#define JUCE_ALSA
+#endif
+
+#ifndef    JUCE_JACK
+ //#define JUCE_JACK
+#endif
+
+#ifndef    JUCE_USE_ANDROID_OPENSLES
+ //#define JUCE_USE_ANDROID_OPENSLES
+#endif
+
+#ifndef    JUCE_USE_CDREADER
+ //#define JUCE_USE_CDREADER
+#endif
+
+#ifndef    JUCE_USE_CDBURNER
+ //#define JUCE_USE_CDBURNER
+#endif
+
+//==============================================================================
+// juce_audio_formats flags:
+
+#ifndef    JUCE_USE_FLAC
+ //#define JUCE_USE_FLAC
+#endif
+
+#ifndef    JUCE_USE_OGGVORBIS
+ //#define JUCE_USE_OGGVORBIS
+#endif
+
+#ifndef    JUCE_USE_MP3AUDIOFORMAT
+ //#define JUCE_USE_MP3AUDIOFORMAT
+#endif
+
+#ifndef    JUCE_USE_LAME_AUDIO_FORMAT
+ //#define JUCE_USE_LAME_AUDIO_FORMAT
+#endif
+
+#ifndef    JUCE_USE_WINDOWS_MEDIA_FORMAT
+ //#define JUCE_USE_WINDOWS_MEDIA_FORMAT
+#endif
 
 //==============================================================================
 // juce_core flags:
