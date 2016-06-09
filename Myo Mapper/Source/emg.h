@@ -49,15 +49,12 @@ public:
     void resized() override
     {
         emgS.setBounds(getWidth()*0.01, getHeight()*0.1, getWidth()*0.98, getHeight()*0.58);
-        rescaleMav.setBounds(getWidth()*0.01, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
-        emgS.setValues(EMGs);
-        
-     //   rescaleMav.setValue(emgS.getMav());
+        rescaleMav.setBounds(getWidth()*0.01, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);        
     }
     
     void setValues(int EMG[8])
     {
-        for (int i=0; i<8; i++) EMGs[i] = EMG[i];
+        emgS.setValues(EMG);
         rescaleMav.setValue(emgS.getMav());
     }
     
