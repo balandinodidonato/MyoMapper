@@ -50,14 +50,25 @@ public:
     {
         emgS.setBounds(getWidth()*0.01, getHeight()*0.1, getWidth()*0.98, getHeight()*0.58);
         rescaleMav.setBounds(getWidth()*0.01, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
-        emgS.setValues(10, 20, 30, 40, 50, 60, 70, 80);
+        emgS.setValues(EMGs);
+        
+     //   rescaleMav.setValue(emgS.getMav());
     }
-
+    
+    void setValues(int EMG[8])
+    {
+        for (int i=0; i<8; i++) EMGs[i] = EMG[i];
+        rescaleMav.setValue(emgS.getMav());
+    }
+    
 private:
     String labelWidget = "Myo Data";
     
     Rescale rescaleMav;
     EmgS emgS;
+    
+    int EMGs[8];
+
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Emg)
 };

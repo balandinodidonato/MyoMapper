@@ -19,6 +19,9 @@
 class EmgS    : public Component
 {
 public:
+
+    float MAV = 0;
+
     EmgS()
     {
         addAndMakeVisible(emg0slider);
@@ -139,16 +142,35 @@ public:
         labelWidget = LabelWidget;
     }
     
-    void setValues (int Emg0, int Emg1, int Emg2, int Emg3, int Emg4, int Emg5,  int Emg6, int Emg7)
+    void setValues (int Emg[8])
     {
-        emg0slider.setValue(Emg0);
-        emg1slider.setValue(Emg1);
-        emg2slider.setValue(Emg2);
-        emg3slider.setValue(Emg3);
-        emg4slider.setValue(Emg4);
-        emg5slider.setValue(Emg5);
-        emg6slider.setValue(Emg6);
-        emg7slider.setValue(Emg7);
+        float emgSum = 0;
+        float emgScaled = 0;
+        
+        for (int i=0; i<8; i++)
+        {
+            emg[i] = abs(Emg[i]);
+            emgScaled = emg[i]*0.0078125;
+            emgSum = emgSum + emgScaled;
+        }
+        
+        mav = emgSum * 0.125;
+
+
+        emg0slider.setValue(emg[0]);
+        emg1slider.setValue(emg[1]);
+        emg2slider.setValue(emg[2]);
+        emg3slider.setValue(emg[3]);
+        emg4slider.setValue(emg[4]);
+        emg5slider.setValue(emg[5]);
+        emg6slider.setValue(emg[6]);
+        emg7slider.setValue(emg[7]);
+    }
+    
+    float getMav()
+    {
+        MAV = mav;
+        return MAV;
     }
     
 private:
@@ -169,6 +191,9 @@ private:
     Label emg5sliderLabel;
     Label emg6sliderLabel;
     Label emg7sliderLabel;
+    
+    int emg[8];
+    float mav = 0;
     
     String labelWidget = "Myo Data";
     

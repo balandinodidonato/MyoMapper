@@ -118,14 +118,12 @@ public:
         }
         
         else if (slider ==&minSlider)
-            ;
         {
             minOutputValue = minSlider.getValue();
             mmSlider.setMinValue(minOutputValue);
         }
         
         if (slider ==&maxSlider)
-            ;
         {
             maxOutputValue = maxSlider.getValue();
             mmSlider.setMaxValue(maxOutputValue);
