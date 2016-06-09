@@ -93,7 +93,7 @@ public:
         oscPortSlider.setBounds(getX()+100, getY()+50, getWidth()*0.15, getHeight()*0.03);
         
         hostAddressTitle.setBounds(getX()+30, getY()+100, getWidth()*0.2, getHeight()*0.03);
-        setHostAddress.setBounds(getX()+125, getY()+100, getWidth()*0.2, getHeight()*0.03);
+        setHostAddress.setBounds(getX()+125, getY()+100, getWidth()*0.14, getHeight()*0.03);
     }
     
     void sliderValueChanged (Slider* slider) override
