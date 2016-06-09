@@ -26,9 +26,7 @@ public:
     
     Rescale()
     {
-        // specify here where to send OSC messages to: host URL and UDP port number
-        if (! sender.connect ("127.0.0.1", OSCport))
-            showConnectionErrorMessage ("Error: could not connect to UDP port 9001.");
+        sender.connect ("127.0.0.1", 5432);
 
         addAndMakeVisible(centre);
         centre.setButtonText ("Centre");
@@ -149,22 +147,19 @@ public:
         { centred = 1-centred; }
         
         scaled = jmap(centred, minOutputValue, maxOutputValue); // Scale value within the new range
-        mmSlider.setValue(scaled);
-        
         if(enableOSCvalue) sender.send ("/Myo/"+labelWidget, (float) scaled);
+        
+        mmSlider.setValue(scaled);
     }
     
     float getValue()
     {
-        return outValue;
+        return scaled;
     }
     
     void setOSCPort (int Port)
     {
-        OSCport = Port;
-        
-        // specify here where to send OSC messages to: host URL and UDP port number
-        sender.connect("127.0.0.1", OSCport);
+        sender.connect("127.0.0.1", Port);
     }
     
     void enableOSC(bool EnableOSC)
@@ -173,15 +168,6 @@ public:
     }
 
 private:
-    
-    void showConnectionErrorMessage (const String& messageText)
-    {
-        AlertWindow::showMessageBoxAsync (
-                                          AlertWindow::WarningIcon,
-                                          "Connection error",
-                                          messageText,
-                                          "OK");
-    }
     
     TextButton centre;
     Slider mmSlider;
@@ -205,11 +191,9 @@ private:
     float minOutputValue = 0.0;
     float scaled = 0;
     float input = 0;
-    int OSCport = 5432;
     bool enableOSCvalue = true; // enable osc messages
     
     String labelWidget = "Myo Data";
-    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };

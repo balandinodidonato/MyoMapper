@@ -24,7 +24,8 @@ public:
 
     EmgS()
     {
-        if (! sender.connect ("127.0.0.1", OSCport));
+        if (! sender.connect ("127.0.0.1", 5432))
+            showConnectionErrorMessage ("Error: could not connect to UDP port 9001.");
 
         addAndMakeVisible(emg0slider);
         emg0slider.setSliderStyle(juce::Slider::LinearVertical);
@@ -157,7 +158,6 @@ public:
         
         mav = emgSum * 0.125;
 
-
         emg0slider.setValue(emg[0]);
         emg1slider.setValue(emg[1]);
         emg2slider.setValue(emg[2]);
@@ -176,15 +176,26 @@ public:
         return MAV;
     }
     
+    int* getEMG()
+    {
+        return emg;
+    }
+    
     void setOSCPort (int Port)
     {
-        OSCport = Port;
-        
-        // specify here where to send OSC messages to: host URL and UDP port number
-        sender.connect("127.0.0.1", OSCport);
+        sender.connect("127.0.0.1", Port);
     }
     
 private:
+    void showConnectionErrorMessage (const String& messageText)
+    {
+        AlertWindow::showMessageBoxAsync (
+                                          AlertWindow::WarningIcon,
+                                          "Connection error",
+                                          messageText,
+                                          "OK");
+    }
+    
     Slider emg0slider;
     Slider emg1slider;
     Slider emg2slider;
@@ -210,7 +221,6 @@ private:
     
     OSCSender sender;
     
-    int OSCport = 5432;
     bool enableOSCvalue = true; // enable osc messages
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EmgS)

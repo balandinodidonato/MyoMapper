@@ -62,6 +62,16 @@ public:
         emgS.setOSCPort(Port);
     }
     
+    int* getEmg()
+    {
+        return emgS.getEMG();
+    }
+    
+    float getMav()
+    {
+        return emgS.getMav();
+    }
+    
 private:
     String labelWidget = "Myo Data";
     

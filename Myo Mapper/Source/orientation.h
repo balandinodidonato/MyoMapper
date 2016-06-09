@@ -66,6 +66,21 @@ public:
         rescalePitch.setOSCPort(Port);
     }
     
+    float getYaw()
+    {
+        return rescaleYaw.getValue();
+    }
+    
+    float getPitch()
+    {
+        return rescalePitch.getValue();
+    }
+    
+    float getRoll()
+    {
+        return rescaleRoll.getValue();
+    }
+    
 private:
     
     Rescale rescaleYaw;
