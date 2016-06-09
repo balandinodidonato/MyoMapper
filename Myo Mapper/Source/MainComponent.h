@@ -48,7 +48,6 @@ public:
         emg.setValues(testEMG); // import emg <- sobstitute with EMG vector
         orientation.setValues(testYaw, testPitch, testRoll); // <- sobstitute with yaw, pitch roll values
         gyro.setValues(testGYRO);
-        acc.setValues(testACC);
     }
 
     void resized() override
