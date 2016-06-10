@@ -20,6 +20,7 @@ myo(nullptr)
 
 MyoManager::~MyoManager()
 {
+    stopPoll();
     disconnect();
 }
 
@@ -55,10 +56,33 @@ bool MyoManager::connect()
     return isConnected;
 }
 
-void MyoManager::update()
+void MyoManager::hiResTimerCallback()
 {
     if (!myo) return;
     hub->runOnce(50);
+    
+    if (tryEnterWrite())
+    {
+        myoData.yaw = listener.getYaw();
+        myoData.roll = listener.getRoll();
+        myoData.pitch = listener.getPitch();
+        
+        exitWrite();
+    }
+}
+
+MyoData MyoManager::getMyoData(bool &success) const
+{
+    MyoData dataCopy;
+    
+    if (tryEnterRead())
+    {
+        dataCopy = myoData;
+        success = true;
+        exitRead();
+    }
+    
+    return dataCopy;
 }
 
 void MyoManager::disconnect()
@@ -69,28 +93,19 @@ void MyoManager::disconnect()
     {
         return;
     }
+    stopPoll();
     // It's safe to call removeListener() for a not-added listener
     hub->removeListener(&listener);
     delete hub;
     hub = nullptr;
 }
 
-float MyoManager::getRoll() const
+void MyoManager::startPoll() 
 {
-    return listener.getRoll();
+    startTimer(50);
 }
 
-float MyoManager::getYaw() const
+void MyoManager::stopPoll()
 {
-    return listener.getYaw();
-}
-
-float MyoManager::getPitch() const
-{
-    return listener.getPitch();
-}
-
-int* MyoManager::getEmg()
-{
-    return listener.getEmg();
+    stopTimer();
 }

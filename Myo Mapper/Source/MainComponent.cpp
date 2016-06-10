@@ -55,6 +55,7 @@ hostAddress("127.0.0.1")
     setHostAddress.addListener(this);
     
     myoManager.connect();
+    myoManager.startPoll();
     
     startTimer(100);
 }
@@ -63,10 +64,8 @@ void MainComponent::paint(juce::Graphics &g)
 {
     g.fillAll(Colours::grey);
     
-    myoManager.update();
-    
-    orientation.setValues(myoManager.getYaw(), myoManager.getPitch(), myoManager.getRoll());
-    printf(" Rescaled: %f",myoManager.getPitch());
+//    orientation.setValues(myoManager.getYaw(), myoManager.getPitch(), myoManager.getRoll());
+//    printf(" Rescaled: %f",myoManager.getPitch());
     
 }
 
@@ -108,19 +107,16 @@ void MainComponent::labelTextChanged(juce::Label *labelThatHasChanged)
 
 void MainComponent::timerCallback()
 {
-    MyoData fakeMyoData = {
-        {10, 20, 30, 40, 50, 60, 70, 80},
-        {10, 50, 100},
-        {100, 50, 10},
-        0.1f,
-        0.2f,
-        0.3f
-    };
+    bool success = false;
+    MyoData myoData = myoManager.getMyoData(success);
     
-    emg.setValues(fakeMyoData.emg); // int emg[8] <- sobstitute with EMG vector
-    gyro.setValues(fakeMyoData.gyro); // int gyro[3] <- sobstitute with Gyro vector
-    acc.setValues(fakeMyoData.accel); // int acc[3] <- sobstitute with Acceleration vector
+    if (!success) return;
     
+    emg.setValues(myoData.emg);
+    gyro.setValues(myoData.gyro);
+    acc.setValues(myoData.accel);
+    
+    orientation.setValues(myoData.yaw, myoData.pitch, myoData.roll);
     
 }
 

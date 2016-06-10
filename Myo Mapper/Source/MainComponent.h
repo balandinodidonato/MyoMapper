@@ -58,7 +58,7 @@ private:
     Label setHostAddress;
     
     String hostAddress;
-    
+        
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
 

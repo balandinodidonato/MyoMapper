@@ -12,8 +12,9 @@
 #define MYOMANAGER_H_INCLUDED
 
 #include "MyoListener.h"
+#include "MyoData.h"
 
-class MyoManager
+class MyoManager : private HighResolutionTimer, private ReadWriteLock
 {
 public:
     MyoManager();
@@ -21,21 +22,23 @@ public:
     
     bool connect();
     void disconnect();
-    void update();
-    
-    float getRoll() const;
-    float getYaw() const;
-    float getPitch() const;
-    int* getEmg();
     bool isConnected() const;
     
-//    bool start();
-//    void stop();
+    void startPoll();
+    void stopPoll();
+    
+    MyoData getMyoData(bool &success) const;
 
 private:
+    
+    void hiResTimerCallback();
+    
     MyoListener listener;
+    MyoData myoData;
+    
     myo::Hub *hub;
     myo::Myo *myo;
+    
     
 };
 
