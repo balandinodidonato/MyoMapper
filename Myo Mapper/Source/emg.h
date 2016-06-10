@@ -31,7 +31,7 @@ public:
     void setValues(std::array<int, 8> &EMG);
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
-    int* getEmg();
+    std::array<int, 8> getEmg();
     float getMav();
     
 private:
@@ -41,7 +41,7 @@ private:
     EmgS emgS;
     int oscPort;
     String hostAddress;
-    int EMGs[8];
+    std::array<int, 8> EMGs;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Emg)
 };

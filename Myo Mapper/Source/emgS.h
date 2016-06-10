@@ -31,7 +31,7 @@ public:
     void setLabelWidget (String LabelWidget);
     void setValues(std::array<int, 8> &Emg);
     float getMav();
-    int* getEMG();
+    std::array<int, 8> getEMG();
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
     
@@ -56,7 +56,7 @@ private:
     Label emg6sliderLabel;
     Label emg7sliderLabel;
     
-    int emg[8];
+    std::array<int, 8> emg;
     float mav = 0;
     
     String labelWidget;

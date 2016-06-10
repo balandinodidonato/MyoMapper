@@ -56,7 +56,7 @@ void Emg::setOSChostAddress(juce::String HostAddress)
     emgS.setOSChostAddress(HostAddress);
 }
 
-int* Emg::getEmg()
+std::array<int, 8> Emg::getEmg()
 {
     return emgS.getEMG();
 }

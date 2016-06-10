@@ -162,8 +162,7 @@ float EmgS::getMav()
     MAV = mav;
     return MAV;
 }
-
-int* EmgS::getEMG()
+std::array<int, 8> EmgS::getEMG()
 {
     return emg;
 }
