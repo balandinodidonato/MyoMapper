@@ -6,14 +6,18 @@
               companyEmail="contact@integra.io ">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
-      <FILE id="ON3coS" name="emgS.h" compile="0" resource="0" file="Source/emgS.h"/>
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="Vath7r" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
+      <FILE id="ON3coS" name="emgS.h" compile="0" resource="0" file="Source/emgS.h"/>
+      <FILE id="N10LrA" name="emgS.cpp" compile="1" resource="0" file="Source/emgS.cpp"/>
       <FILE id="cEBa54" name="orientation.h" compile="0" resource="0" file="Source/orientation.h"/>
+      <FILE id="bkctpE" name="orientation.cpp" compile="1" resource="0" file="Source/orientation.cpp"/>
       <FILE id="Gzqd6E" name="rescale.h" compile="0" resource="0" file="Source/rescale.h"/>
+      <FILE id="q0Or2R" name="rescale.cpp" compile="1" resource="0" file="Source/rescale.cpp"/>
       <FILE id="DuDYqV" name="emg.h" compile="0" resource="0" file="Source/emg.h"/>
+      <FILE id="KlHUWG" name="emg.cpp" compile="1" resource="0" file="Source/emg.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
@@ -37,16 +41,10 @@
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>

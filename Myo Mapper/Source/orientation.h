@@ -21,74 +21,19 @@ class Orientation   : public Component
                         
 {
 public:
-    Orientation()
-    {
-        addAndMakeVisible(rescaleYaw);
-        addAndMakeVisible(rescalePitch);
-        addAndMakeVisible(rescaleRoll);
-        rescaleYaw.setLabelWidget("Yaw");
-        rescalePitch.setLabelWidget("Pitch");
-        rescaleRoll.setLabelWidget("Roll");
-    }
+    Orientation();
     
-    ~Orientation()
-    {
-    }
+    ~Orientation() {};
     
-    void paint (Graphics& g) override
-    {
-        g.fillAll(Colours::lightgrey);   // clear the background
-        g.setColour(Colours::grey);
-        g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
-        g.setColour(Colours::black);
-        g.setFont(getHeight()*0.07);
-        g.drawText("Orientation", getLocalBounds(),
-                    Justification::centredTop, true);   // draw some placeholder text
-    }
+    void paint (Graphics& g) override;
+    void resized() override;
+    void setValues (float Yaw, float Pitch, float Roll);
+    void setOSCPort (int Port);
+    void setHostAddress(String HostAddress);
     
-    void resized() override
-    {
-        rescaleYaw.setBounds(getWidth()*0.012, getHeight()*0.1, getWidth()*0.98, getHeight()*0.28);
-        rescalePitch.setBounds(getWidth()*0.012, getHeight()*0.4, getWidth()*0.98, getHeight()*0.28);
-        rescaleRoll.setBounds(getWidth()*0.012, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
-    }
-    
-    void setValues (float Yaw, float Pitch, float Roll)
-    {
-        rescaleYaw.setValue(Yaw);
-        rescalePitch.setValue(Pitch);
-        rescaleRoll.setValue(Roll);
-    }
-    
-    void setOSCPort (int Port)
-    {
-        rescaleYaw.setOSCPort(Port);
-        rescaleRoll.setOSCPort(Port);
-        rescalePitch.setOSCPort(Port);
-    }
-    
-    void setHostAddress(String HostAddress)
-    {
-        rescaleYaw.setOSChostAddress(HostAddress);
-        rescalePitch.setOSChostAddress(HostAddress);
-        rescaleRoll.setOSChostAddress(HostAddress);
-    }
-    
-    
-    float getYaw()
-    {
-        return rescaleYaw.getValue();
-    }
-    
-    float getPitch()
-    {
-        return rescalePitch.getValue();
-    }
-    
-    float getRoll()
-    {
-        return rescaleRoll.getValue();
-    }
+    float getYaw();
+    float getPitch();
+    float getRoll();
     
 private:
     
