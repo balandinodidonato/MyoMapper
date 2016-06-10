@@ -60,7 +60,7 @@ public:
         g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
         
         g.setColour(Colours::white);
-        g.fillRoundedRectangle(10, getHeight()*0.15, getWidth()*0.95, getHeight()*0.795, 5);
+        g.fillRoundedRectangle(10, getHeight()*0.15, getWidth()*0.92, getHeight()*0.795, 5);
         
         g.setColour(Colours::black);
         g.setFont(getHeight()*0.11);
@@ -70,9 +70,9 @@ public:
 
     void resized() override
     {
-        x.setBounds(getWidth()*0.09, getHeight()*0.2, getWidth()*0.3, getHeight()*0.7);
+        x.setBounds(10, getHeight()*0.2, getWidth()*0.3, getHeight()*0.7);
         y.setBounds(getWidth()*0.4, getHeight()*0.2, getWidth()*0.3, getHeight()*0.7);
-        z.setBounds(getWidth()*0.75, getHeight()*0.2, getWidth()*0.3, getHeight()*0.7);
+        z.setBounds(getWidth()*0.7, getHeight()*0.2, getWidth()*0.3, getHeight()*0.7);
         
         xLabel.setBounds(x.getX(), x.getBottom()-48, x.getWidth()*0.5, getHeight()*0.1);
         xLabel.setFont(getHeight()*0.1);
