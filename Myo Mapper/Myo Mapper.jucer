@@ -22,6 +22,8 @@
       <FILE id="q0Or2R" name="rescale.cpp" compile="1" resource="0" file="Source/rescale.cpp"/>
       <FILE id="DuDYqV" name="emg.h" compile="0" resource="0" file="Source/emg.h"/>
       <FILE id="KlHUWG" name="emg.cpp" compile="1" resource="0" file="Source/emg.cpp"/>
+      <FILE id="IDXW2H" name="imu.h" compile="0" resource="0" file="Source/imu.h"/>
+      <FILE id="Byv0Sm" name="imu.cpp" compile="1" resource="0" file="Source/imu.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
