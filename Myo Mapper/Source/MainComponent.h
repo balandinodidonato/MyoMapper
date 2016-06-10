@@ -11,12 +11,14 @@
 #ifndef MAINCOMPONENT_H_INCLUDED
 #define MAINCOMPONENT_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
 #include "orientation.h"
 #include "emg.h"
-#include "myo/myo.hpp"
 #include "imu.h"
 #include "settings.h"
+#include "MyoManager.h"
+
+#include "../JuceLibraryCode/JuceHeader.h"
+
 
 //==============================================================================
 /*
@@ -41,6 +43,7 @@ private:
     IMU gyro;
     IMU acc;
     Settings settingsPannel;
+    MyoManager myoManager;
     
     String labelWidget;
     Slider oscPortSlider;

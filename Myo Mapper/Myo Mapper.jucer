@@ -10,6 +10,10 @@
       <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="Vath7r" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
+      <FILE id="EKeAn0" name="MyoManager.h" compile="0" resource="0" file="Source/MyoManager.h"/>
+      <FILE id="POB1yB" name="MyoManager.cpp" compile="1" resource="0" file="Source/MyoManager.cpp"/>
+      <FILE id="D0Y8rk" name="MyoListener.h" compile="0" resource="0" file="Source/MyoListener.h"/>
+      <FILE id="hCEqvO" name="MyoListener.cpp" compile="1" resource="0" file="Source/MyoListener.cpp"/>
       <FILE id="ON3coS" name="emgS.h" compile="0" resource="0" file="Source/emgS.h"/>
       <FILE id="N10LrA" name="emgS.cpp" compile="1" resource="0" file="Source/emgS.cpp"/>
       <FILE id="cEBa54" name="orientation.h" compile="0" resource="0" file="Source/orientation.h"/>
