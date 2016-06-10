@@ -59,7 +59,7 @@ bool MyoManager::connect()
 void MyoManager::hiResTimerCallback()
 {
     if (!myo) return;
-    hub->runOnce(50);
+    hub->runOnce(10);
     
     if (tryEnterWrite())
     {
@@ -102,7 +102,7 @@ void MyoManager::disconnect()
 
 void MyoManager::startPoll() 
 {
-    startTimer(50);
+    startTimer(20);
 }
 
 void MyoManager::stopPoll()

@@ -57,7 +57,7 @@ hostAddress("127.0.0.1")
     myoManager.connect();
     myoManager.startPoll();
     
-    startTimer(100);
+    startTimer(25);
 }
 
 void MainComponent::paint(juce::Graphics &g)
