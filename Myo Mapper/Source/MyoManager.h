@@ -24,6 +24,9 @@ public:
     void update();
     
     float getRoll() const;
+    float getYaw() const;
+    float getPitch() const;
+    int* getEmg();
     bool isConnected() const;
     
 //    bool start();

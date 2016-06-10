@@ -46,9 +46,6 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
     yaw = atan2(2.0f * (quat.w() * quat.z() + quat.x() * quat.y()),
                       1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
     
-    
-    
-    
 //    // Convert the floating point angles in radians to a scale from 0 to 18.
 //    roll_w = static_cast<int>((roll + (float)M_PI)/(M_PI * 2.0f) * 18);
 //    pitch_w = static_cast<int>((pitch + (float)M_PI/2.0f)/M_PI * 18);
@@ -81,6 +78,13 @@ void MyoListener::onArmSync(myo::Myo* myo, uint64_t timestamp, myo::Arm arm, myo
 {
     onArm = true;
     whichArm = arm;
+}
+
+void MyoListener::onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg)
+{
+    for (int i = 0; i < 8; i++) {
+        emgSamples[i] = emg[i];
+    }
 }
 
 // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after
@@ -133,3 +137,17 @@ float MyoListener::getRoll() const
     return roll;
 }
 
+float MyoListener::getYaw() const
+{
+    return yaw;
+}
+
+float MyoListener::getPitch() const
+{
+    return pitch;
+}
+
+int* MyoListener::getEmg()
+{
+    return emgSamples;
+}

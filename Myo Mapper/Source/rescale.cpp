@@ -131,6 +131,8 @@ void Rescale::setValue(float Value)
 {
     input = Value;
     
+    input = (input+PI)/(2*PI);
+    
     // Centre incoming value
     centred = 1-(offset-(input-targetValue)); // input is the value to be centred
     centred = std::abs(centred);

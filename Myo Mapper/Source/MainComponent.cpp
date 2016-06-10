@@ -60,10 +60,10 @@ void MainComponent::paint(juce::Graphics &g)
     g.fillAll(Colours::grey);
     
     myoManager.update();
-    testRoll = myoManager.getRoll();
     
+    orientation.setValues(myoManager.getYaw(), myoManager.getPitch(), myoManager.getRoll());
+    printf(" Rescaled: %f",myoManager.getPitch());
     emg.setValues(testEMG); // int emg[8] <- sobstitute with EMG vector
-    orientation.setValues(testYaw, testPitch, testRoll); // <- sobstitute with (float) yaw, (float) pitch (float) roll values
     gyro.setValues(testGYRO); // int gyro[3] <- sobstitute with Gyro vector
     acc.setValues(testACC); // int acc[3] <- sobstitute with Acceleration vector
 }

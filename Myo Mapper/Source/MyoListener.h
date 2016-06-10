@@ -12,12 +12,16 @@
 #define MYOLISTENER_H_INCLUDED
 
 #include "myo/myo.hpp"
+#include "orientation.h"
 
 class MyoListener : public myo::DeviceListener
 {
 public:
     MyoListener();
     float getRoll() const;
+    float getPitch() const;
+    float getYaw() const;
+    int* getEmg();
     
 private:
     
@@ -30,6 +34,7 @@ private:
     void onUnlock(myo::Myo* myo, uint64_t timestamp);
     void onLock(myo::Myo* myo, uint64_t timestamp);
     void print();
+    void onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg);
 
     
     bool onArm;
@@ -38,6 +43,8 @@ private:
     float roll;
     float pitch;
     float yaw;
+    int emgSamples [8];
+    
     myo::Pose currentPose;
 };
 

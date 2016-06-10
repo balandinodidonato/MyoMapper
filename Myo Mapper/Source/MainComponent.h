@@ -37,8 +37,9 @@ public:
     void sliderValueChanged (Slider* slider) override;
     void labelTextChanged (Label* labelThatHasChanged) override;
     
-private:
     Orientation orientation;
+    
+private:
     Emg emg;
     IMU gyro;
     IMU acc;
@@ -58,9 +59,6 @@ private:
     int testEMG[8] = {10, 20, 30, 40, 50, 60, 70, 80};
     int testGYRO[3] = {10, 50, 100};
     int testACC[3] = {100, 50, 10};
-    float testYaw = 0.2;
-    float testPitch = 0.5;
-    float testRoll = 0.8;
     // =================
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)

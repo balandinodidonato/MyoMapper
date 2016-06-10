@@ -67,6 +67,7 @@ private:
     String hostAddress;
     bool enableOSCvalue;
     String labelWidget;
+    const long double PI = 3.141592653589793238L;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };

@@ -40,6 +40,7 @@ private:
     Rescale rescaleYaw;
     Rescale rescalePitch;
     Rescale rescaleRoll;
+
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Orientation)
 };

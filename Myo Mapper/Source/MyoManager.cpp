@@ -79,3 +79,18 @@ float MyoManager::getRoll() const
 {
     return listener.getRoll();
 }
+
+float MyoManager::getYaw() const
+{
+    return listener.getYaw();
+}
+
+float MyoManager::getPitch() const
+{
+    return listener.getPitch();
+}
+
+int* MyoManager::getEmg()
+{
+    return listener.getEmg();
+}
