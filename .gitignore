@@ -9,6 +9,9 @@ MyoMapper-Win32.zip
 MyoMapper-Win64
 MyoMapper-Win64.zip
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> develop
 Myo Mapper/Builds/MacOSX/build/Debug/Myo Mapper.app/Contents/Info.plist
 Myo Mapper/Builds/MacOSX/build/Debug/Myo Mapper.app/Contents/MacOS/Myo Mapper
 Myo Mapper/Builds/MacOSX/build/Debug/Myo Mapper.app/Contents/PkgInfo
@@ -16,6 +19,8 @@ Myo Mapper/Builds/MacOSX/build/Debug/Myo Mapper.app/Contents/Resources/RecentFil
 Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/project.xcworkspace/xcuserdata/balandinodidonato.xcuserdatad/UserInterfaceState.xcuserstate
 Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/xcuserdata/balandinodidonato.xcuserdatad/xcschemes/Myo Mapper (App).xcscheme
 Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/xcuserdata/balandinodidonato.xcuserdatad/xcschemes/xcschememanagement.plist
+<<<<<<< HEAD
+=======
 =======
 Myo Mapper/Builds/MacOSX/build/Debug/Myo Mapper.app/Contents/MacOS/Myo Mapper
 
@@ -43,3 +48,4 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 >>>>>>> release-2
+>>>>>>> develop
