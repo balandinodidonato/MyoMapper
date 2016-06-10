@@ -12,6 +12,7 @@
 #define EMGS_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include <array>
 
 //==============================================================================
 /*
@@ -28,7 +29,7 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void setLabelWidget (String LabelWidget);
-    void setValues (int Emg[8]);
+    void setValues(std::array<int, 8> &Emg);
     float getMav();
     int* getEMG();
     void setOSCPort (int Port);

@@ -15,6 +15,8 @@
 #include "rescale.h"
 #include "emgS.h"
 
+#include <array>
+
 //==============================================================================
 /*
 */
@@ -26,7 +28,7 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void setValues(int EMG[8]);
+    void setValues(std::array<int, 8> &EMG);
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
     int* getEmg();

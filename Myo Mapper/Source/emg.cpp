@@ -37,7 +37,7 @@ void Emg::resized()
     rescaleMav.setBounds(getWidth()*0.012, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
 }
 
-void Emg::setValues(int *EMG)
+void Emg::setValues(std::array<int, 8> &EMG)
 {
     emgS.setValues(EMG);
     rescaleMav.setValue(emgS.getMav());

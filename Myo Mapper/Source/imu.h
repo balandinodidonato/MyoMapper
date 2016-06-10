@@ -13,6 +13,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+#include <array>
+
 //==============================================================================
 /*
 */
@@ -26,7 +28,7 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void setWidgetLabel(String WidgetLabel);
-    void setValues(int ImuValues[3]);
+    void setValues(std::array<int, 3> &ImuValues);
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
     void enableOSC(bool EnableOSC);

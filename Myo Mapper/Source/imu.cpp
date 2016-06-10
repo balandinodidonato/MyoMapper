@@ -81,7 +81,7 @@ void IMU::setWidgetLabel(String WidgetLabel)
     labelWidget = WidgetLabel;
 }
 
-void IMU::setValues(int ImuValues[3])
+void IMU::setValues(std::array<int, 3> &ImuValues)
 {
     for(int i=0; i<3; i++)
     {
