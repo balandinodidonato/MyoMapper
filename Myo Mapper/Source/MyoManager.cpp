@@ -12,6 +12,7 @@
 
 MyoManager::MyoManager()
 :
+Thread("Myo Data Thread"),
 hub(nullptr),
 myo(nullptr)
 {
@@ -56,18 +57,22 @@ bool MyoManager::connect()
     return isConnected;
 }
 
-void MyoManager::hiResTimerCallback()
+void MyoManager::run()
 {
     if (!myo) return;
-    hub->runOnce(10);
     
-    if (tryEnterWrite())
+    while (!threadShouldExit())
     {
-        myoData.yaw = listener.getYaw();
-        myoData.roll = listener.getRoll();
-        myoData.pitch = listener.getPitch();
+        hub->runOnce(20);
         
-        exitWrite();
+        if (tryEnterWrite())
+        {
+            myoData.yaw = listener.getYaw();
+            myoData.roll = listener.getRoll();
+            myoData.pitch = listener.getPitch();
+            
+            exitWrite();
+        }
     }
 }
 
@@ -102,10 +107,10 @@ void MyoManager::disconnect()
 
 void MyoManager::startPoll() 
 {
-    startTimer(20);
+    startThread();
 }
 
 void MyoManager::stopPoll()
 {
-    stopTimer();
+    stopThread(1000);
 }

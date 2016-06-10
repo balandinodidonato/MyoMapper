@@ -14,7 +14,7 @@
 #include "MyoListener.h"
 #include "MyoData.h"
 
-class MyoManager : private HighResolutionTimer, private ReadWriteLock
+class MyoManager : private Thread, private ReadWriteLock
 {
 public:
     MyoManager();
@@ -31,8 +31,7 @@ public:
 
 private:
     
-    void hiResTimerCallback();
-    
+    void run() override;
     MyoListener listener;
     MyoData myoData;
     
