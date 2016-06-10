@@ -25,7 +25,8 @@
 */
 class MainComponent    : public Component,
                          public Slider::Listener,
-                         public Label::Listener
+                         public Label::Listener,
+                         private Timer
 {
     
 public:
@@ -40,6 +41,9 @@ public:
     Orientation orientation;
     
 private:
+    
+    void timerCallback() override;
+    
     Emg emg;
     IMU gyro;
     IMU acc;
@@ -54,12 +58,6 @@ private:
     Label setHostAddress;
     
     String hostAddress;
-    
-    // ===== TEST data ====  TO DELETE ONCE THE MYO DATA ARE EXTRACTED
-    int testEMG[8] = {10, 20, 30, 40, 50, 60, 70, 80};
-    int testGYRO[3] = {10, 50, 100};
-    int testACC[3] = {100, 50, 10};
-    // =================
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

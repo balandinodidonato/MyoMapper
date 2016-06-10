@@ -10,6 +10,8 @@
 
 #include "MainComponent.h"
 
+#include "MyoData.h"
+
 MainComponent::MainComponent()
 :
 labelWidget("Settings"),
@@ -53,6 +55,8 @@ hostAddress("127.0.0.1")
     setHostAddress.addListener(this);
     
     myoManager.connect();
+    
+    startTimer(100);
 }
 
 void MainComponent::paint(juce::Graphics &g)
@@ -63,9 +67,7 @@ void MainComponent::paint(juce::Graphics &g)
     
     orientation.setValues(myoManager.getYaw(), myoManager.getPitch(), myoManager.getRoll());
     printf(" Rescaled: %f",myoManager.getPitch());
-    emg.setValues(testEMG); // int emg[8] <- sobstitute with EMG vector
-    gyro.setValues(testGYRO); // int gyro[3] <- sobstitute with Gyro vector
-    acc.setValues(testACC); // int acc[3] <- sobstitute with Acceleration vector
+    
 }
 
 void MainComponent::resized()
@@ -104,6 +106,22 @@ void MainComponent::labelTextChanged(juce::Label *labelThatHasChanged)
     }
 }
 
-
+void MainComponent::timerCallback()
+{
+    MyoData fakeMyoData = {
+        {10, 20, 30, 40, 50, 60, 70, 80},
+        {10, 50, 100},
+        {100, 50, 10},
+        0.1f,
+        0.2f,
+        0.3f
+    };
+    
+    emg.setValues(fakeMyoData.emg); // int emg[8] <- sobstitute with EMG vector
+    gyro.setValues(fakeMyoData.gyro); // int gyro[3] <- sobstitute with Gyro vector
+    acc.setValues(fakeMyoData.accel); // int acc[3] <- sobstitute with Acceleration vector
+    
+    
+}
 
 
