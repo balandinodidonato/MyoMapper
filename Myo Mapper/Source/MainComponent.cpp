@@ -52,11 +52,15 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(setHostAddress);
     setHostAddress.addListener(this);
     
+    myoManager.connect();
 }
 
 void MainComponent::paint(juce::Graphics &g)
 {
     g.fillAll(Colours::grey);
+    
+    myoManager.update();
+    testRoll = myoManager.getRoll();
     
     emg.setValues(testEMG); // int emg[8] <- sobstitute with EMG vector
     orientation.setValues(testYaw, testPitch, testRoll); // <- sobstitute with (float) yaw, (float) pitch (float) roll values
