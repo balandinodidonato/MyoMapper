@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.yourcompany.MyoMapper" includeBinaryInAppConfig="1"
+              jucerVersion="4.2.1" companyName="Integra Lab" companyWebsite="http://integra.io/"
+              companyEmail="contact@integra.io ">
+  <MAINGROUP id="G7OLDm" name="Myo Mapper">
+    <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
+      <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="Vath7r" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="ON3coS" name="emgS.h" compile="0" resource="0" file="Source/emgS.h"/>
+      <FILE id="N10LrA" name="emgS.cpp" compile="1" resource="0" file="Source/emgS.cpp"/>
+      <FILE id="cEBa54" name="orientation.h" compile="0" resource="0" file="Source/orientation.h"/>
+      <FILE id="bkctpE" name="orientation.cpp" compile="1" resource="0" file="Source/orientation.cpp"/>
+      <FILE id="Gzqd6E" name="rescale.h" compile="0" resource="0" file="Source/rescale.h"/>
+      <FILE id="q0Or2R" name="rescale.cpp" compile="1" resource="0" file="Source/rescale.cpp"/>
+      <FILE id="DuDYqV" name="emg.h" compile="0" resource="0" file="Source/emg.h"/>
+      <FILE id="KlHUWG" name="emg.cpp" compile="1" resource="0" file="Source/emg.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="" extraLinkerFlags=""
+               extraCompilerFlags="-I/Users/jamie/Library/Frameworks/myo.framework/Versions/A/Headers&#10;"
+               extraFrameworks="myo">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;~/Library/Frameworks/&quot;"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Myo Mapper"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;~/Library/Frameworks/&quot;"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>
