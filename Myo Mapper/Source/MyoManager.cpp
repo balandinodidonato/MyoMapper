@@ -70,6 +70,7 @@ void MyoManager::run()
             myoData.yaw = listener.getYaw();
             myoData.roll = listener.getRoll();
             myoData.pitch = listener.getPitch();
+            myoData.emg = listener.getEmg();
             
             exitWrite();
         }

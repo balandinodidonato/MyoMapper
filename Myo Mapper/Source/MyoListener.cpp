@@ -147,7 +147,7 @@ float MyoListener::getPitch() const
     return pitch;
 }
 
-int* MyoListener::getEmg()
+std::array<int, 8> MyoListener::getEmg()
 {
     return emgSamples;
 }

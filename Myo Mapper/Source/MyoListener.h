@@ -14,6 +14,8 @@
 #include "myo/myo.hpp"
 #include "orientation.h"
 
+#include <array>
+
 class MyoListener : public myo::DeviceListener
 {
 public:
@@ -21,7 +23,7 @@ public:
     float getRoll() const;
     float getPitch() const;
     float getYaw() const;
-    int* getEmg();
+    std::array<int, 8> getEmg();
     
 private:
     
@@ -43,7 +45,7 @@ private:
     float roll;
     float pitch;
     float yaw;
-    int emgSamples [8];
+    std::array<int, 8> emgSamples;
     
     myo::Pose currentPose;
 };
