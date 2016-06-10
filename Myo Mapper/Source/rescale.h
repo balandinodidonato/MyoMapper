@@ -1,0 +1,75 @@
+/*
+  ==============================================================================
+
+    Rescale.h
+    Created: 7 Jun 2016 6:05:00pm
+    Author:  Balandino Di Donato
+
+  ==============================================================================
+*/
+
+#ifndef RESCALE_H_INCLUDED
+#define RESCALE_H_INCLUDED
+
+#include "../JuceLibraryCode/JuceHeader.h"
+
+//==============================================================================
+/*
+*/
+class Rescale    : public Component,
+                   public Button::Listener,
+                   public Slider::Listener
+{
+public:
+    
+    float outValue; // rescaled output
+    
+    Rescale();
+    ~Rescale() {};
+
+    void paint (Graphics& g) override;
+    void  buttonClicked (Button* button) override;
+    void sliderValueChanged (Slider* slider) override;
+    void resized() override;
+    
+    void setLabelWidget (String LabelWidget);
+    void setValue (float Value);
+    float getValue();
+    void setOSCPort (int Port);
+    void setOSChostAddress(String HostAddress);
+    void enableOSC(bool EnableOSC);
+
+private:
+    
+    TextButton centre;
+    Slider mmSlider;
+    Label mmSliderLabel;
+
+    ToggleButton reverse;
+    
+    Slider minSlider;
+    Slider maxSlider;
+    
+    Label minSliderLabel;
+    Label maxSliderLabel;
+    
+    OSCSender sender;
+    
+    float reversed;
+    float centred;
+    float offset;
+    float targetValue;
+    float maxOutputValue;
+    float minOutputValue;
+    float scaled;
+    float input;
+    int oscPort;
+    String hostAddress;
+    bool enableOSCvalue;
+    String labelWidget;
+    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
+};
+
+
+#endif  // RESCALE_H_INCLUDED
