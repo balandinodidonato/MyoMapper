@@ -234,6 +234,7 @@
 		409F12845CE7E85FA24EF7FE = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ModalComponentManager.h"; path = "../../../../../JUCE/modules/juce_gui_basics/components/juce_ModalComponentManager.h"; sourceTree = "SOURCE_ROOT"; };
 		40A7AEE27559C18635A92AB9 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Myo Mapper.app"; sourceTree = "BUILT_PRODUCTS_DIR"; };
 		40FDC46B73D943D11FE9990E = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Range.h"; path = "../../../../../JUCE/modules/juce_core/maths/juce_Range.h"; sourceTree = "SOURCE_ROOT"; };
+		4101C7A2C97BFDB8B078BCA4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyoData.h; path = ../../Source/MyoData.h; sourceTree = "SOURCE_ROOT"; };
 		4195573325DE61183D11F308 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ResizableEdgeComponent.h"; path = "../../../../../JUCE/modules/juce_gui_basics/layout/juce_ResizableEdgeComponent.h"; sourceTree = "SOURCE_ROOT"; };
 		419F81F81F29881D1FD7DBF5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Path.h"; path = "../../../../../JUCE/modules/juce_graphics/geometry/juce_Path.h"; sourceTree = "SOURCE_ROOT"; };
 		41ECA49284CA2038CD135C84 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_DrawableShape.h"; path = "../../../../../JUCE/modules/juce_gui_basics/drawables/juce_DrawableShape.h"; sourceTree = "SOURCE_ROOT"; };
@@ -876,6 +877,7 @@
 					C18CFCFFAE8241D1D539735E,
 					FB92A91114FF1450F33E3909,
 					C32D1B1F4BC16117D5E1572F,
+					4101C7A2C97BFDB8B078BCA4,
 					2C1D2867C00171760E01A97D,
 					0CCC5FFD5FD927C3D6D22C4B,
 					E6E6954C629C7F77AA260475,
