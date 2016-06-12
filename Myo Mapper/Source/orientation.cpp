@@ -41,11 +41,11 @@ void Orientation::resized()
     rescaleRoll.setBounds(rescaleYaw.getX(), rescalePitch.getBottom()+7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
 }
 
-void Orientation::setValues(float Yaw, float Pitch, float Roll)
+void Orientation::setValues(Vector3D< float > Orientation)
 {
-    rescaleYaw.setValue(Yaw);
-    rescalePitch.setValue(Pitch);
-    rescaleRoll.setValue(Roll);
+    rescaleYaw.setValue(Orientation.x);
+    rescalePitch.setValue(Orientation.y);
+    rescaleRoll.setValue(Orientation.z);
 }
 
 void Orientation::setOSCPort(int Port)

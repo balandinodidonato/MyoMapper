@@ -82,9 +82,7 @@ void MyoManager::run()
         
         if (tryEnterWrite())
         {
-            myoData.yaw = listener.getYaw();
-            myoData.roll = listener.getRoll();
-            myoData.pitch = listener.getPitch();
+            myoData.orientation = listener.getOrientation();
             myoData.emg = listener.getEmg();
             myoData.pose = listener.getPose();
             myoData.acceleration = listener.getAccel();

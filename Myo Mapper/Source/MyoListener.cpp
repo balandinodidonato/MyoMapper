@@ -19,7 +19,7 @@
 // provides several virtual functions for handling different kinds of events. If you do not override an event, the
 // default behavior is to do nothing.
 MyoListener::MyoListener()
-: onArm(false), isUnlocked(false), roll(0.f), pitch(0.f), yaw(0.f), currentPose(), emgSamples(), acceleration()
+: onArm(false), isUnlocked(false), orientation(), currentPose(), emgSamples(), acceleration()
 {
 }
 
@@ -51,6 +51,10 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
     pitch = asin(max(-1.0f, min(1.0f, 2.0f * (quat.w() * quat.y() - quat.z() * quat.x()))));
     yaw = atan2(2.0f * (quat.w() * quat.z() + quat.x() * quat.y()),
                       1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
+    
+    orientation.x = yaw;
+    orientation.y = pitch;
+    orientation.z = roll;
 }
 
 void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const Vector3D< float > &accel)
@@ -100,19 +104,9 @@ void MyoListener::onLock(myo::Myo* myo, uint64_t timestamp)
     isUnlocked = false;
 }
 
-float MyoListener::getRoll() const
+Vector3D< float > MyoListener::getOrientation()
 {
-    return roll;
-}
-
-float MyoListener::getYaw() const
-{
-    return yaw;
-}
-
-float MyoListener::getPitch() const
-{
-    return pitch;
+    return orientation;
 }
 
 std::array<int8_t, 8> MyoListener::getEmg()
