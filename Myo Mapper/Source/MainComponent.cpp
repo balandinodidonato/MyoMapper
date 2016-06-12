@@ -54,8 +54,13 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(setHostAddress);
     setHostAddress.addListener(this);
     
+    pose.setWidgetLabel("Pose");
+    addAndMakeVisible(pose);
+    
     myoManager.connect();
     myoManager.startPoll();
+    
+    pose.setPoseLabel("Pose Null");
     
     startTimer(25);
 }
@@ -75,11 +80,11 @@ void MainComponent::resized()
     
     orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*0.5-2.5, (getHeight()*0.5)-15);
     acc.setBounds(orientation.getX(), orientation.getBottom()+5, getWidth()*0.3-10, getBottom()-(orientation.getBottom()+15));
-    gyro.setBounds(acc.getRight()+10, acc.getY(), acc.getWidth(), acc.getHeight());
+    gyro.setBounds(acc.getRight()+5, acc.getY(), acc.getWidth(), acc.getHeight());
     
     emg.setBounds(orientation.getRight()+5, orientation.getY(), orientation.getWidth(), orientation.getHeight());
     
-    
+    pose.setBounds(gyro.getRight()+5, acc.getY(), getRight()-gyro.getRight()-15, acc.getHeight()*0.5-5);
     
     oscPortSlider.setBounds(getX()+100, getY()+50, getWidth()*0.15, getHeight()*0.03);
     

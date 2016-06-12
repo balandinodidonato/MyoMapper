@@ -16,6 +16,7 @@
 #include "imu.h"
 #include "settings.h"
 #include "MyoManager.h"
+#include "Pose.h"
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
@@ -58,6 +59,9 @@ private:
     Label setHostAddress;
     
     String hostAddress;
+    
+    Pose pose;
+    
         
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

@@ -1081,12 +1081,12 @@
 				A151D0A214E6BEBDD3EBC26B /* orientation.cpp */,
 				4E7D61CA41694257EBBC8C08 /* rescale.h */,
 				0DEB113DDC0F0649AD7C4B56 /* rescale.cpp */,
-				0714B3E11C8C53CA7715C8D4 /* emg.h */,
 				D87EAC4EE104D6DB09D21F9E /* emg.cpp */,
-				BF4C9ACA5ADD98B436B4CED1 /* imu.h */,
+				0714B3E11C8C53CA7715C8D4 /* emg.h */,
 				D0E27C8574274A61319FA848 /* Pose.cpp */,
 				A6E415AB6CA42169996127C4 /* Pose.h */,
 				DE62CDAE3CDC1CA37B1DE10F /* imu.cpp */,
+				BF4C9ACA5ADD98B436B4CED1 /* imu.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";

@@ -51,7 +51,7 @@ private:
     
     int oscPort;
     String hostAddress;
-    
+
     OSCSender sender;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (IMU)

@@ -63,6 +63,7 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
 void MyoListener::onPose(myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
 {
     currentPose = pose;
+    printf("%S \n",currentPose);
     if (pose != myo::Pose::unknown && pose != myo::Pose::rest) {
         // Tell the Myo to stay unlocked until told otherwise. We do that here so you can hold the poses without the
         // Myo becoming locked.
