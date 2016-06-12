@@ -15,7 +15,7 @@
 Pose::Pose()
 {
     addAndMakeVisible(poseLabel);
-
+    sender.connect (hostAddress, oscPort);
 }
 
 Pose::~Pose()
@@ -50,5 +50,23 @@ void Pose::setWidgetLabel(String WidgetLabel)
 
 void Pose::setPoseLabel(String LabelText)
 {
+    if(enableOSCvalue) sender.send ("/Myo/"+labelWidget, (String) LabelText);
     poseLabel.setText(LabelText, dontSendNotification);
+}
+
+void Pose::setOSCPort(int Port)
+{
+    oscPort = Port;
+    sender.connect(hostAddress, oscPort);
+}
+
+void Pose::setOSChostAddress(juce::String HostAddress)
+{
+    hostAddress = HostAddress;
+    sender.connect(hostAddress, oscPort);
+}
+
+void Pose::enableOSC(bool EnableOSC)
+{
+    enableOSCvalue = EnableOSC;
 }

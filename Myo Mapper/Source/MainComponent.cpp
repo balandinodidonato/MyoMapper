@@ -60,8 +60,6 @@ hostAddress("127.0.0.1")
     myoManager.connect();
     myoManager.startPoll();
     
-    pose.setPoseLabel("Pose Null");
-    
     startTimer(25);
 }
 
@@ -100,6 +98,7 @@ void MainComponent::sliderValueChanged(juce::Slider *slider)
         emg.setOSCPort(oscPortSlider.getValue());
         gyro.setOSCPort(oscPortSlider.getValue());
         acc.setOSCPort(oscPortSlider.getValue());
+        pose.setOSCPort(oscPortSlider.getValue());
     }
 }
 
@@ -111,6 +110,7 @@ void MainComponent::labelTextChanged(juce::Label *labelThatHasChanged)
         emg.setOSChostAddress(setHostAddress.getText());
         gyro.setOSChostAddress(setHostAddress.getText());
         acc.setOSChostAddress(setHostAddress.getText());
+        pose.setOSChostAddress(setHostAddress.getText());
     }
 }
 
@@ -125,7 +125,7 @@ void MainComponent::timerCallback()
     gyro.setValues(myoData.gyro);
     acc.setValues(myoData.accel);
     orientation.setValues(myoData.yaw, myoData.pitch, myoData.roll);
-    
+    pose.setPoseLabel(myoData.pose);
 }
 
 

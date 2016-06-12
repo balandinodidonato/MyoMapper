@@ -23,6 +23,7 @@ public:
     float getRoll() const;
     float getPitch() const;
     float getYaw() const;
+    String getPose();
     std::array<int8_t, 8> getEmg();
     
 private:

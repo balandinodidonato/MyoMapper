@@ -21,6 +21,7 @@ struct MyoData
     float yaw;
     float pitch;
     float roll;
+    String pose;
 };
 
 

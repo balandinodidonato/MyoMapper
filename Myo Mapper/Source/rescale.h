@@ -55,6 +55,9 @@ private:
     Label maxSliderLabel;
     
     OSCSender sender;
+    bool enableOSCvalue;
+    int oscPort;
+    String hostAddress;
     
     float reversed;
     float centred;
@@ -64,9 +67,6 @@ private:
     float minOutputValue;
     float scaled;
     float input;
-    int oscPort;
-    String hostAddress;
-    bool enableOSCvalue;
     String labelWidget;
     const long double PI = 3.141592653589793238L;
     int test = 0;

@@ -27,9 +27,18 @@ public:
     void setWidgetLabel(String WidgetLabel);
     void setPoseLabel(String LabelText);
     
+    void setOSCPort (int Port);
+    void setOSChostAddress(String HostAddress);
+    void enableOSC(bool EnableOSC);
+    
 private:
     Label poseLabel;
     String labelWidget;
+    bool enableOSCvalue = true;
+    
+    OSCSender sender;
+    int oscPort;
+    String hostAddress;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Pose)
 };
