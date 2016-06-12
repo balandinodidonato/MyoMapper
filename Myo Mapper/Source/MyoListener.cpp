@@ -51,11 +51,6 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
     pitch = asin(max(-1.0f, min(1.0f, 2.0f * (quat.w() * quat.y() - quat.z() * quat.x()))));
     yaw = atan2(2.0f * (quat.w() * quat.z() + quat.x() * quat.y()),
                       1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
-    
-//    // Convert the floating point angles in radians to a scale from 0 to 18.
-//    roll_w = static_cast<int>((roll + (float)M_PI)/(M_PI * 2.0f) * 18);
-//    pitch_w = static_cast<int>((pitch + (float)M_PI/2.0f)/M_PI * 18);
-//    yaw_w = static_cast<int>((yaw + (float)M_PI)/(M_PI * 2.0f) * 18);
 }
 
 // onPose() is called whenever the Myo detects that the person wearing it has changed their pose, for example,
@@ -63,10 +58,11 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
 void MyoListener::onPose(myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
 {
     currentPose = pose;
-    printf("%S \n",currentPose);
+        
     if (pose != myo::Pose::unknown && pose != myo::Pose::rest) {
         // Tell the Myo to stay unlocked until told otherwise. We do that here so you can hold the poses without the
         // Myo becoming locked.
+        print();
         myo->unlock(myo::Myo::unlockHold);
         // Notify the Myo that the pose has resulted in an action, in this case changing
         // the text on the screen. The Myo will vibrate.
@@ -122,7 +118,7 @@ void MyoListener::print()
     // Clear the current line
     std::cout << '\r';
     // Print out the orientation. Orientation data is always available, even if no arm is currently recognized.
-    std::cout << '[' << roll << ']' << '[' << pitch << ']' << '[' << yaw << ']';
+  //  std::cout << '[' << roll << ']' << '[' << pitch << ']' << '[' << yaw << ']';
     if (onArm) {
         // Print out the lock state, the currently recognized pose, and which arm Myo is being worn on.
         // Pose::toString() provides the human-readable name of a pose. We can also output a Pose directly to an
@@ -137,9 +133,6 @@ void MyoListener::print()
         std::cout << '[' << std::string(8, ' ') << ']' << "[?]" << '[' << std::string(14, ' ') << ']';
     }
     std::cout << std::flush;
-    
-    // Clear the current line
-    std::cout << '\r';
 }
 
 float MyoListener::getRoll() const
@@ -160,4 +153,9 @@ float MyoListener::getPitch() const
 std::array<int8_t, 8> MyoListener::getEmg()
 {
     return emgSamples;
+}
+
+String MyoListener::getPose()
+{
+    return currentPose.toString();
 }
