@@ -57,11 +57,20 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
     orientation.z = roll;
 }
 
-void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const Vector3D< float > &accel)
+void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& accel)
 {
-    acceleration = accel;
-    printf("acc finction \n");
+    acceleration.x = accel.x();
+    acceleration.y = accel.y();
+    acceleration.z = accel.z();
 }
+
+void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro)
+{
+    Gyro.x = gyro.x();
+    Gyro.y = gyro.y();
+    Gyro.z = gyro.z();
+}
+
 
 void MyoListener::onPose(myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
 {
@@ -122,4 +131,9 @@ String MyoListener::getPose()
 Vector3D< float > MyoListener::getAccel()
 {
     return acceleration;
+}
+
+Vector3D< float > MyoListener::getGyro()
+{
+    return Gyro;
 }

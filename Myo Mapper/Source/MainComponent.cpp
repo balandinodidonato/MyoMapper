@@ -67,9 +67,6 @@ void MainComponent::paint(juce::Graphics &g)
 {
     g.fillAll(Colours::grey);
     
-//    orientation.setValues(myoManager.getYaw(), myoManager.getPitch(), myoManager.getRoll());
-//    printf(" Rescaled: %f",myoManager.getPitch());
-    
 }
 
 void MainComponent::resized()

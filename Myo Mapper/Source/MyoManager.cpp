@@ -75,6 +75,7 @@ void MyoManager::run()
             myoData.emg = listener.getEmg();
             myoData.pose = listener.getPose();
             myoData.acceleration = listener.getAccel();
+            myoData.gyro = listener.getGyro();
             exitWrite();
         }
     }
