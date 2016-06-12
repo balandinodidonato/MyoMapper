@@ -22,6 +22,7 @@ public:
     MyoListener();
     Vector3D< float > getOrientation();
     Vector3D< float > getAccel();
+    Vector3D<float> getGyro();
     String getPose();
     std::array<int8_t, 8> getEmg();
     
@@ -37,14 +38,16 @@ private:
     void onLock(myo::Myo* myo, uint64_t timestamp);
     void print();
     void onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg);
-    void onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const Vector3D< float > &accel);
-    
+    void onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& accel);
+    void onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro);
+
     bool onArm;
     myo::Arm whichArm;
     bool isUnlocked;
     Vector3D< float > orientation;
     std::array<int8_t, 8> emgSamples;
-    Vector3D< float > acceleration;
+    Vector3D<float> acceleration;
+    Vector3D<float> Gyro;
     float yaw;
     float pitch;
     float roll;

@@ -44,7 +44,7 @@ private:
     Label yLabel;
     Label zLabel;
     
-    Vector3D< float > imuValues;
+   // Vector3D< float > imuValues;
     
     int OSCport;
     bool enableOSCvalue;
