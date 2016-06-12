@@ -30,7 +30,7 @@ void Orientation::paint(juce::Graphics &g)
     g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
     g.setColour(Colours::black);
     g.setFont(getHeight()*0.07);
-    g.drawText("Orientation", getLocalBounds(),
+    g.drawText("Myo 1", getLocalBounds(),
                Justification::centredTop, true);   // draw some placeholder text
 }
 
