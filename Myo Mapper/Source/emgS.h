@@ -62,7 +62,7 @@ private:
     String labelWidget;
     OSCSender sender;
     
-    int oscPort;
+    size_t oscPort;
     String hostAddress;
     bool enableOSCvalue;
     

@@ -40,12 +40,14 @@ private:
     void onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg);
     void onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& accel);
     void onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro);
+    void onPair(myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion);
 
     bool onArm;
     myo::Arm whichArm;
     bool isUnlocked;
     Vector3D< float > orientation;
     std::array<int8_t, 8> emgSamples;
+    std::vector<myo::Myo*> knownMyos;
     Vector3D<float> acceleration;
     Vector3D<float> Gyro;
     float yaw;

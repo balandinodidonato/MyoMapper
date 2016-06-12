@@ -14,6 +14,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 // Classes that inherit from myo::DeviceListener can be used to receive events from Myo devices. DeviceListener
 // provides several virtual functions for handling different kinds of events. If you do not override an event, the
@@ -35,6 +36,19 @@ void MyoListener::onUnpair(myo::Myo* myo, uint64_t timestamp)
     isUnlocked = false;
     emgSamples.fill(0);
 }
+
+void MyoListener::onPair(myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion)
+{
+    knownMyos.push_back(myo);
+    for (size_t i = 0; i < knownMyos.size(); ++i) {
+    printf("MYO: %zu",i); // here where to update the list of available myos
+    }
+}
+
+
+    // Walk through the list of Myo devices that we've seen pairing events for.
+
+
 
 // onOrientationData() is called whenever the Myo device provides its current orientation, which is represented
 // as a unit quaternion.
@@ -88,7 +102,7 @@ void MyoListener::onArmSync(myo::Myo* myo, uint64_t timestamp, myo::Arm arm, myo
 
 void MyoListener::onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg)
 {
-    for (int i = 0; i < 8; i++) {
+    for (size_t i = 0; i < 8; i++) {
     emgSamples[i] = emg[i];
     }
 }

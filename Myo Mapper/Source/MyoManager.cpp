@@ -46,7 +46,7 @@ bool MyoManager::connect()
     if (myo)
     {
         hub->addListener(&listener);
-        isConnected = true;
+        knownMyos.push_back(myo);
         myo->setStreamEmg(myo::Myo::streamEmgEnabled);
         myo->unlock(myo::Myo::unlockHold);
     }
@@ -118,4 +118,26 @@ void MyoManager::startPoll()
 void MyoManager::stopPoll()
 {
     stopThread(1000);
+}
+
+int MyoManager::getMyoList(){
+    
+    numberOfMyos = 0;
+    
+    for (size_t i = 0; i < knownMyos.size(); ++i) {
+        numberOfMyos = numberOfMyos+1;
+    }
+    return numberOfMyos;
+}
+
+int MyoManager::identifyMyo() {
+    // Walk through the list of Myo devices that we've seen pairing events for.
+    for (size_t i = 0; i < knownMyos.size(); ++i) {
+        // If two Myo pointers compare equal, they refer to the same Myo device.
+        if (knownMyos[i] == myo) {
+            return i + 1;
+        }
+    }
+    
+    return 0;
 }
