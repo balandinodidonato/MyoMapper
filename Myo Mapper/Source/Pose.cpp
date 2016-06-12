@@ -16,6 +16,7 @@ Pose::Pose()
 {
     addAndMakeVisible(poseLabel);
     sender.connect (hostAddress, oscPort);
+    poseLabel.setJustificationType(36);
 }
 
 Pose::~Pose()
@@ -40,7 +41,7 @@ void Pose::paint (Graphics& g)
 void Pose::resized()
 {
     poseLabel.setFont(getHeight()*0.2);
-    poseLabel.setBounds(10, getHeight()*0.35, getWidth()*0.9, getHeight()*0.5);
+    poseLabel.setBounds(getX(), getHeight()*0.35, getWidth()*0.95, getHeight()*0.5);
 }
 
 void Pose::setWidgetLabel(String WidgetLabel)
