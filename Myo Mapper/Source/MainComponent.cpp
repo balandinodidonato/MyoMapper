@@ -26,13 +26,12 @@ hostAddress("127.0.0.1")
     setSize(getParentWidth()*0.6, getParentHeight()*0.5);
     addAndMakeVisible(orientation);
     addAndMakeVisible(emg);
-    addAndMakeVisible(gyro);
-    addAndMakeVisible(acc);
+    addChildComponent(gyro);
+    addChildComponent(acc);
     addAndMakeVisible(settingsPannel);
     
     gyro.setWidgetLabel("Gyro");
     acc.setWidgetLabel("Acceleration");
-    
     
     oscPortSlider.setRange(0, 9999, 1);
     oscPortSlider.setValue(5432);
@@ -91,9 +90,9 @@ void MainComponent::resized()
     acc.setBounds(orientation.getX(), orientation.getBottom()+5, getWidth()*0.3-10, getBottom()-(orientation.getBottom()+15));
     gyro.setBounds(acc.getRight()+5, acc.getY(), acc.getWidth(), acc.getHeight());
     
-    emg.setBounds(orientation.getRight()+5, orientation.getY(), orientation.getWidth(), orientation.getHeight());
+    emg.setBounds(orientation.getX(), orientation.getBottom()+10, orientation.getWidth(), orientation.getHeight()*0.33);
     
-    pose.setBounds(gyro.getRight()+5, acc.getY(), getRight()-gyro.getRight()-15, acc.getHeight()*0.5-5);
+    pose.setBounds(orientation.getX(), emg.getBottom()+10, orientation.getWidth(), getHeight()*0.12);
     
     oscPortSlider.setBounds(getX()+100, getY()+50, getWidth()*0.15, getHeight()*0.03);
     

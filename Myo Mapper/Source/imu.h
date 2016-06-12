@@ -36,15 +36,6 @@ public:
 private:
     
     String labelWidget;
-    Slider x;
-    Slider y;
-    Slider z;
-    
-    Label xLabel;
-    Label yLabel;
-    Label zLabel;
-    
-   // Vector3D< float > imuValues;
     
     int OSCport;
     bool enableOSCvalue;
