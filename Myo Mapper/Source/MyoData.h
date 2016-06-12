@@ -16,8 +16,8 @@
 struct MyoData
 {
     std::array<int8_t, 8> emg;
-    std::array<int, 3> gyro;
-    std::array<int, 3> accel;
+    Vector3D< float > gyro;
+    Vector3D< float > acceleration;
     float yaw;
     float pitch;
     float roll;

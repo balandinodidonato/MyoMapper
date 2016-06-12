@@ -48,6 +48,7 @@ bool MyoManager::connect()
         hub->addListener(&listener);
         isConnected = true;
         myo->setStreamEmg(myo::Myo::streamEmgEnabled);
+        myo->unlock(myo::Myo::unlockHold);
     }
     else
     {
@@ -56,7 +57,6 @@ bool MyoManager::connect()
     }
     
     return isConnected;
-
 }
 
 void MyoManager::run()
@@ -76,7 +76,7 @@ void MyoManager::run()
             myoData.pitch = listener.getPitch();
             myoData.emg = listener.getEmg();
             myoData.pose = listener.getPose();
-            
+            myoData.acceleration = listener.getAccel();
             exitWrite();
         }
     }

@@ -123,7 +123,7 @@ void MainComponent::timerCallback()
     
     emg.setValues(myoData.emg);
     gyro.setValues(myoData.gyro);
-    acc.setValues(myoData.accel);
+    acc.setValues(myoData.acceleration);
     orientation.setValues(myoData.yaw, myoData.pitch, myoData.roll);
     pose.setPoseLabel(myoData.pose);
 }
