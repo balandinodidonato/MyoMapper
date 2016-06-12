@@ -20,9 +20,7 @@ class MyoListener : public myo::DeviceListener
 {
 public:
     MyoListener();
-    float getRoll() const;
-    float getPitch() const;
-    float getYaw() const;
+    Vector3D< float > getOrientation();
     Vector3D< float > getAccel();
     String getPose();
     std::array<int8_t, 8> getEmg();
@@ -44,11 +42,12 @@ private:
     bool onArm;
     myo::Arm whichArm;
     bool isUnlocked;
-    float roll;
-    float pitch;
-    float yaw;
+    Vector3D< float > orientation;
     std::array<int8_t, 8> emgSamples;
     Vector3D< float > acceleration;
+    float yaw;
+    float pitch;
+    float roll;
     
     myo::Pose currentPose;
 };

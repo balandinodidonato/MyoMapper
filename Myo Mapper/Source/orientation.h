@@ -27,7 +27,7 @@ public:
     
     void paint (Graphics& g) override;
     void resized() override;
-    void setValues (float Yaw, float Pitch, float Roll);
+    void setValues (Vector3D< float >);
     void setOSCPort (int Port);
     void setHostAddress(String HostAddress);
     
