@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00C21076546BD3C41BE3490C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6961D66C3C9A60E52FE8322 /* OpenGL.framework */; };
 		18E0E1561A01AC4378FAD286 /* juce_gui_extra.mm in Sources */ = {isa = PBXBuildFile; fileRef = A28EB745B9121A093788F896 /* juce_gui_extra.mm */; };
+		3249BC9D9EFFE689218A472F /* Pose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0E27C8574274A61319FA848 /* Pose.cpp */; };
 		3C0EC502ED74F7BE8C6B8647 /* imu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE62CDAE3CDC1CA37B1DE10F /* imu.cpp */; };
 		406A3622585F79E74E579FA2 /* MyoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC5FFD5FD927C3D6D22C4B /* MyoManager.cpp */; };
 		5136B5F30EC112831726206C /* juce_graphics.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED8A349155C638AEFB06F17B /* juce_graphics.mm */; };
@@ -569,6 +570,7 @@
 		A6961D66C3C9A60E52FE8322 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		A6AA2B3A132FF906479B06FC /* juce_String.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_String.h; path = ../../../../../JUCE/modules/juce_core/text/juce_String.h; sourceTree = SOURCE_ROOT; };
 		A6B9045E3F32A65B2679020D /* juce_mac_CoreGraphicsHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_mac_CoreGraphicsHelpers.h; path = ../../../../../JUCE/modules/juce_graphics/native/juce_mac_CoreGraphicsHelpers.h; sourceTree = SOURCE_ROOT; };
+		A6E415AB6CA42169996127C4 /* Pose.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Pose.h; path = ../../Source/Pose.h; sourceTree = SOURCE_ROOT; };
 		A6EDAD4769982C19BAD2D33B /* jcinit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = jcinit.c; path = ../../../../../JUCE/modules/juce_graphics/image_formats/jpglib/jcinit.c; sourceTree = SOURCE_ROOT; };
 		A6EF0E636AD22C3397AA0AF2 /* juce_PropertiesFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_PropertiesFile.cpp; path = ../../../../../JUCE/modules/juce_data_structures/app_properties/juce_PropertiesFile.cpp; sourceTree = SOURCE_ROOT; };
 		A726452622926565AC081236 /* juce_TextButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_TextButton.cpp; path = ../../../../../JUCE/modules/juce_gui_basics/buttons/juce_TextButton.cpp; sourceTree = SOURCE_ROOT; };
@@ -736,6 +738,7 @@
 		CFBB22D638326946819A2204 /* juce_ImagePreviewComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ImagePreviewComponent.h; path = ../../../../../JUCE/modules/juce_gui_basics/filebrowser/juce_ImagePreviewComponent.h; sourceTree = SOURCE_ROOT; };
 		CFCAF70B6F3801DE56AD67B1 /* juce_DrawableImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_DrawableImage.h; path = ../../../../../JUCE/modules/juce_gui_basics/drawables/juce_DrawableImage.h; sourceTree = SOURCE_ROOT; };
 		D02FEDB3B91D10BFEEDFFD53 /* juce_Drawable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_Drawable.cpp; path = ../../../../../JUCE/modules/juce_gui_basics/drawables/juce_Drawable.cpp; sourceTree = SOURCE_ROOT; };
+		D0E27C8574274A61319FA848 /* Pose.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Pose.cpp; path = ../../Source/Pose.cpp; sourceTree = SOURCE_ROOT; };
 		D18B9DC55C4C20209FF63B78 /* juce_LeakedObjectDetector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_LeakedObjectDetector.h; path = ../../../../../JUCE/modules/juce_core/memory/juce_LeakedObjectDetector.h; sourceTree = SOURCE_ROOT; };
 		D1CC3F22C8F4050DDE2FA73E /* juce_OpenGLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_OpenGLContext.h; path = ../../../../../JUCE/modules/juce_opengl/opengl/juce_OpenGLContext.h; sourceTree = SOURCE_ROOT; };
 		D1CFC549DB4148AC80E6A1A8 /* juce_DrawableImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_DrawableImage.cpp; path = ../../../../../JUCE/modules/juce_gui_basics/drawables/juce_DrawableImage.cpp; sourceTree = SOURCE_ROOT; };
@@ -1072,15 +1075,17 @@
 				0CCC5FFD5FD927C3D6D22C4B /* MyoManager.cpp */,
 				E6E6954C629C7F77AA260475 /* MyoListener.h */,
 				19D13FF6E2668F91946131BA /* MyoListener.cpp */,
+				C185657F72C1A5BA685E24C3 /* emgS.h */,
+				C61F408C57A62CA5EF0026C1 /* emgS.cpp */,
 				E843402C9F385A32413BB678 /* orientation.h */,
 				A151D0A214E6BEBDD3EBC26B /* orientation.cpp */,
 				4E7D61CA41694257EBBC8C08 /* rescale.h */,
 				0DEB113DDC0F0649AD7C4B56 /* rescale.cpp */,
 				0714B3E11C8C53CA7715C8D4 /* emg.h */,
 				D87EAC4EE104D6DB09D21F9E /* emg.cpp */,
-				C185657F72C1A5BA685E24C3 /* emgS.h */,
-				C61F408C57A62CA5EF0026C1 /* emgS.cpp */,
 				BF4C9ACA5ADD98B436B4CED1 /* imu.h */,
+				D0E27C8574274A61319FA848 /* Pose.cpp */,
+				A6E415AB6CA42169996127C4 /* Pose.h */,
 				DE62CDAE3CDC1CA37B1DE10F /* imu.cpp */,
 			);
 			name = Source;
@@ -2448,6 +2453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3249BC9D9EFFE689218A472F /* Pose.cpp in Sources */,
 				99CAD7971DB8C87B79AB2B0C /* Main.cpp in Sources */,
 				6BC1398793FCC5C37ABBF1CA /* MainComponent.cpp in Sources */,
 				406A3622585F79E74E579FA2 /* MyoManager.cpp in Sources */,
