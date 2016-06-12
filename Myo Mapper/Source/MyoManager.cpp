@@ -47,6 +47,7 @@ bool MyoManager::connect()
     {
         hub->addListener(&listener);
         isConnected = true;
+        myo->setStreamEmg(myo::Myo::streamEmgEnabled);
     }
     else
     {
@@ -55,11 +56,14 @@ bool MyoManager::connect()
     }
     
     return isConnected;
+
 }
 
 void MyoManager::run()
 {
     if (!myo) return;
+    
+   
     
     while (!threadShouldExit())
     {

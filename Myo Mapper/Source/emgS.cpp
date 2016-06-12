@@ -131,7 +131,7 @@ void EmgS::setLabelWidget(juce::String LabelWidget)
     labelWidget = LabelWidget;
 }
 
-void EmgS::setValues(std::array<int, 8> &Emg)
+void EmgS::setValues(std::array<int8_t, 8> &Emg)
 {
     float emgSum = 0;
     float emgScaled = 0;
@@ -162,7 +162,8 @@ float EmgS::getMav()
     MAV = mav;
     return MAV;
 }
-std::array<int, 8> EmgS::getEMG()
+
+std::array<int8_t, 8> EmgS::getEMG()
 {
     return emg;
 }

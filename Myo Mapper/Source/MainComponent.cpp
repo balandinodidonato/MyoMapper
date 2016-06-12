@@ -115,7 +115,6 @@ void MainComponent::timerCallback()
     emg.setValues(myoData.emg);
     gyro.setValues(myoData.gyro);
     acc.setValues(myoData.accel);
-    
     orientation.setValues(myoData.yaw, myoData.pitch, myoData.roll);
     
 }

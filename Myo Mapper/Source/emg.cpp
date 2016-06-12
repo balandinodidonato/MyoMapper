@@ -37,7 +37,7 @@ void Emg::resized()
     rescaleMav.setBounds(getWidth()*0.012, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
 }
 
-void Emg::setValues(std::array<int, 8> &EMG)
+void Emg::setValues(std::array<int8_t, 8> &EMG)
 {
     emgS.setValues(EMG);
     rescaleMav.setValue(emgS.getMav());
@@ -56,7 +56,7 @@ void Emg::setOSChostAddress(juce::String HostAddress)
     emgS.setOSChostAddress(HostAddress);
 }
 
-std::array<int, 8> Emg::getEmg()
+std::array<int8_t, 8> Emg::getEmg()
 {
     return emgS.getEMG();
 }

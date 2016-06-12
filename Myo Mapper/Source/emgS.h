@@ -29,9 +29,9 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void setLabelWidget (String LabelWidget);
-    void setValues(std::array<int, 8> &Emg);
+    void setValues(std::array<int8_t, 8> &Emg);
     float getMav();
-    std::array<int, 8> getEMG();
+    std::array<int8_t, 8> getEMG();
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
     
@@ -56,7 +56,7 @@ private:
     Label emg6sliderLabel;
     Label emg7sliderLabel;
     
-    std::array<int, 8> emg;
+    std::array<int8_t, 8> emg;
     float mav = 0;
     
     String labelWidget;

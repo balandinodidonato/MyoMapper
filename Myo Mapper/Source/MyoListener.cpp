@@ -9,12 +9,17 @@
  */
 
 #include "MyoListener.h"
+#include <array>
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
+#include <string>
 
 // Classes that inherit from myo::DeviceListener can be used to receive events from Myo devices. DeviceListener
 // provides several virtual functions for handling different kinds of events. If you do not override an event, the
 // default behavior is to do nothing.
 MyoListener::MyoListener()
-: onArm(false), isUnlocked(false), roll(0.f), pitch(0.f), yaw(0.f), currentPose()
+: onArm(false), isUnlocked(false), roll(0.f), pitch(0.f), yaw(0.f), currentPose(), emgSamples()
 {
 }
 
@@ -28,6 +33,7 @@ void MyoListener::onUnpair(myo::Myo* myo, uint64_t timestamp)
     yaw = 0.f;
     onArm = false;
     isUnlocked = false;
+    emgSamples.fill(0);
 }
 
 // onOrientationData() is called whenever the Myo device provides its current orientation, which is represented
@@ -83,7 +89,7 @@ void MyoListener::onArmSync(myo::Myo* myo, uint64_t timestamp, myo::Arm arm, myo
 void MyoListener::onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg)
 {
     for (int i = 0; i < 8; i++) {
-        emgSamples[i] = emg[i];
+    emgSamples[i] = emg[i];
     }
 }
 
@@ -130,6 +136,9 @@ void MyoListener::print()
         std::cout << '[' << std::string(8, ' ') << ']' << "[?]" << '[' << std::string(14, ' ') << ']';
     }
     std::cout << std::flush;
+    
+    // Clear the current line
+    std::cout << '\r';
 }
 
 float MyoListener::getRoll() const
@@ -147,7 +156,7 @@ float MyoListener::getPitch() const
     return pitch;
 }
 
-std::array<int, 8> MyoListener::getEmg()
+std::array<int8_t, 8> MyoListener::getEmg()
 {
     return emgSamples;
 }

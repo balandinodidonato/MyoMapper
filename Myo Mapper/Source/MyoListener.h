@@ -23,7 +23,7 @@ public:
     float getRoll() const;
     float getPitch() const;
     float getYaw() const;
-    std::array<int, 8> getEmg();
+    std::array<int8_t, 8> getEmg();
     
 private:
     
@@ -45,7 +45,7 @@ private:
     float roll;
     float pitch;
     float yaw;
-    std::array<int, 8> emgSamples;
+    std::array<int8_t, 8> emgSamples;
     
     myo::Pose currentPose;
 };
