@@ -152,4 +152,9 @@ void MainComponent::timerCallback()
     
 }
 
+void MainComponent::disconnectMyo()
+{
+    myoManager.disconnect();
+}
+
 
