@@ -38,6 +38,7 @@ public:
     void resized() override;
     void sliderValueChanged (Slider* slider) override;
     void labelTextChanged (Label* labelThatHasChanged) override;
+    void disconnectMyo();
     
     Orientation orientation;
     

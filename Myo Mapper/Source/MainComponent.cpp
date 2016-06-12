@@ -128,4 +128,9 @@ void MainComponent::timerCallback()
     pose.setPoseLabel(myoData.pose);
 }
 
+void MainComponent::disconnectMyo()
+{
+    myoManager.disconnect();
+}
+
 
