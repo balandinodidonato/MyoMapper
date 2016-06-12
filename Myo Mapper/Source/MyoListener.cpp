@@ -19,7 +19,7 @@
 // provides several virtual functions for handling different kinds of events. If you do not override an event, the
 // default behavior is to do nothing.
 MyoListener::MyoListener()
-: onArm(false), isUnlocked(false), roll(0.f), pitch(0.f), yaw(0.f), currentPose(), emgSamples()
+: onArm(false), isUnlocked(false), roll(0.f), pitch(0.f), yaw(0.f), currentPose(), emgSamples(), acceleration()
 {
 }
 
@@ -53,25 +53,15 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
                       1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
 }
 
-// onPose() is called whenever the Myo detects that the person wearing it has changed their pose, for example,
-// making a fist, or not making a fist anymore.
+void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const Vector3D< float > &accel)
+{
+    acceleration = accel;
+    printf("acc finction \n");
+}
+
 void MyoListener::onPose(myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
 {
     currentPose = pose;
-        
-    if (pose != myo::Pose::unknown && pose != myo::Pose::rest) {
-        // Tell the Myo to stay unlocked until told otherwise. We do that here so you can hold the poses without the
-        // Myo becoming locked.
-        print();
-        myo->unlock(myo::Myo::unlockHold);
-        // Notify the Myo that the pose has resulted in an action, in this case changing
-        // the text on the screen. The Myo will vibrate.
-        myo->notifyUserAction();
-    } else {
-        // Tell the Myo to stay unlocked only for a short period. This allows the Myo to stay unlocked while poses
-        // are being performed, but lock after inactivity.
-        myo->unlock(myo::Myo::unlockTimed);
-    }
 }
 
 // onArmSync() is called whenever Myo has recognized a Sync Gesture after someone has put it on their
@@ -110,31 +100,6 @@ void MyoListener::onLock(myo::Myo* myo, uint64_t timestamp)
     isUnlocked = false;
 }
 
-// There are other virtual functions in DeviceListener that we could override here, like onAccelerometerData().
-// For this example, the functions overridden above are sufficient.
-// We define this function to print the current values that were updated by the on...() functions above.
-void MyoListener::print()
-{
-    // Clear the current line
-    std::cout << '\r';
-    // Print out the orientation. Orientation data is always available, even if no arm is currently recognized.
-  //  std::cout << '[' << roll << ']' << '[' << pitch << ']' << '[' << yaw << ']';
-    if (onArm) {
-        // Print out the lock state, the currently recognized pose, and which arm Myo is being worn on.
-        // Pose::toString() provides the human-readable name of a pose. We can also output a Pose directly to an
-        // output stream (e.g. std::cout << currentPose;). In this case we want to get the pose name's length so
-        // that we can fill the rest of the field with spaces below, so we obtain it as a string using toString().
-        std::string poseString = currentPose.toString();
-        std::cout << '[' << (isUnlocked ? "unlocked" : "locked  ") << ']'
-        << '[' << (whichArm == myo::armLeft ? "L" : "R") << ']'
-        << '[' << poseString << std::string(14 - poseString.size(), ' ') << ']';
-    } else {
-        // Print out a placeholder for the arm and pose when Myo doesn't currently know which arm it's on.
-        std::cout << '[' << std::string(8, ' ') << ']' << "[?]" << '[' << std::string(14, ' ') << ']';
-    }
-    std::cout << std::flush;
-}
-
 float MyoListener::getRoll() const
 {
     return roll;
@@ -158,4 +123,9 @@ std::array<int8_t, 8> MyoListener::getEmg()
 String MyoListener::getPose()
 {
     return currentPose.toString();
+}
+
+Vector3D< float > MyoListener::getAccel()
+{
+    return acceleration;
 }

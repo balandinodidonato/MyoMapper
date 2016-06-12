@@ -136,7 +136,7 @@ void MainComponent::timerCallback()
 <<<<<<< Updated upstream
     emg.setValues(myoData.emg);
     gyro.setValues(myoData.gyro);
-    acc.setValues(myoData.accel);
+    acc.setValues(myoData.acceleration);
     orientation.setValues(myoData.yaw, myoData.pitch, myoData.roll);
 =======
     unsigned int id = myoList.getSelectedId() - 1;

@@ -23,6 +23,7 @@ public:
     float getRoll() const;
     float getPitch() const;
     float getYaw() const;
+    Vector3D< float > getAccel();
     String getPose();
     std::array<int8_t, 8> getEmg();
     
@@ -38,7 +39,7 @@ private:
     void onLock(myo::Myo* myo, uint64_t timestamp);
     void print();
     void onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg);
-
+    void onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const Vector3D< float > &accel);
     
     bool onArm;
     myo::Arm whichArm;
@@ -47,6 +48,7 @@ private:
     float pitch;
     float yaw;
     std::array<int8_t, 8> emgSamples;
+    Vector3D< float > acceleration;
     
     myo::Pose currentPose;
 };

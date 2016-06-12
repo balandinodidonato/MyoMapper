@@ -49,6 +49,7 @@ bool MyoManager::connect()
 <<<<<<< Updated upstream
         isConnected = true;
         myo->setStreamEmg(myo::Myo::streamEmgEnabled);
+        myo->unlock(myo::Myo::unlockHold);
     }
     else
     {
@@ -67,7 +68,6 @@ bool MyoManager::connect()
 >>>>>>> Stashed changes
     
     return isConnected;
-
 }
 
 void MyoManager::run()
@@ -87,7 +87,7 @@ void MyoManager::run()
             myoData.pitch = listener.getPitch();
             myoData.emg = listener.getEmg();
             myoData.pose = listener.getPose();
-            
+            myoData.acceleration = listener.getAccel();
             exitWrite();
         }
     }

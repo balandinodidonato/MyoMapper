@@ -28,7 +28,7 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void setWidgetLabel(String WidgetLabel);
-    void setValues(std::array<int, 3> &ImuValues);
+    void setValues(Vector3D< float > &ImuValues);
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
     void enableOSC(bool EnableOSC);
@@ -44,7 +44,7 @@ private:
     Label yLabel;
     Label zLabel;
     
-    int imuValues[3];
+    Vector3D< float > imuValues;
     
     int OSCport;
     bool enableOSCvalue;

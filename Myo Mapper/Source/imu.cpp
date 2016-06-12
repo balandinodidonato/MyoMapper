@@ -23,7 +23,7 @@ enableOSCvalue(true)
     addAndMakeVisible(x);
     x.setSliderStyle(juce::Slider::LinearVertical);
     x.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, true, 35, 20);
-    x.setRange(0, 128);
+    x.setRange(-10000, 10000);
     
     xLabel.setText ("X", dontSendNotification);
     addAndMakeVisible(xLabel);
@@ -31,7 +31,7 @@ enableOSCvalue(true)
     addAndMakeVisible(y);
     y.setSliderStyle(juce::Slider::LinearVertical);
     y.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, true, 35, 20);
-    y.setRange(0, 128);
+    y.setRange(-10000, 10000);
     
     yLabel.setText ("Y", dontSendNotification);
     addAndMakeVisible(yLabel);
@@ -39,7 +39,7 @@ enableOSCvalue(true)
     addAndMakeVisible(z);
     z.setSliderStyle(juce::Slider::LinearVertical);
     z.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, true, 35, 20);
-    z.setRange(0, 128);
+    z.setRange(-10000, 10000);
     
     zLabel.setText ("Z", dontSendNotification);
     addAndMakeVisible(zLabel);
@@ -81,18 +81,13 @@ void IMU::setWidgetLabel(String WidgetLabel)
     labelWidget = WidgetLabel;
 }
 
-void IMU::setValues(std::array<int, 3> &ImuValues)
+void IMU::setValues(Vector3D< float > &ImuValues)
 {
-    for(int i=0; i<3; i++)
-    {
-        imuValues[i] = ImuValues[i];
-    }
+    x.setValue(imuValues.x);
+    y.setValue(imuValues.y);
+    z.setValue(imuValues.z);
     
-    x.setValue(imuValues[0]);
-    y.setValue(imuValues[1]);
-    z.setValue(imuValues[2]);
-    
-    sender.send ("/Myo/"+labelWidget, (int) imuValues[0], (int) imuValues[1], (int) imuValues[2]);
+    sender.send ("/Myo/"+labelWidget, (float) imuValues.x, (float) imuValues.y, (float) imuValues.z);
 }
 
 void IMU::setOSCPort (int Port)
