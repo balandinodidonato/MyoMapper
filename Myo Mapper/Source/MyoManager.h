@@ -26,6 +26,8 @@ public:
     
     void startPoll();
     void stopPoll();
+    int getMyoList();
+    int identifyMyo();
     
     MyoData getMyoData(bool &success) const;
 
@@ -34,11 +36,11 @@ private:
     void run() override;
     MyoListener listener;
     MyoData myoData;
+    int numberOfMyos;
     
     myo::Hub *hub;
     myo::Myo *myo;
-    
-    
+    std::vector<myo::Myo*> knownMyos;
 };
 
 

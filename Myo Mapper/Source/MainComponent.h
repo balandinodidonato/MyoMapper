@@ -39,7 +39,7 @@ public:
     void sliderValueChanged (Slider* slider) override;
     void labelTextChanged (Label* labelThatHasChanged) override;
     void disconnectMyo();
-    
+
     Orientation orientation;
     
 private:
@@ -63,7 +63,9 @@ private:
     
     Pose pose;
     
-        
+    ComboBox myoList;
+    int selectedMyo;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
 

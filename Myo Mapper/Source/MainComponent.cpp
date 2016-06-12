@@ -23,7 +23,7 @@ hostAddress("127.0.0.1")
     gyro.setOSCPort(oscPortSlider.getValue());
     acc.setOSCPort(oscPortSlider.getValue());
     
-    setSize(getParentWidth()*0.6, getParentHeight()*0.5);
+    setSize(getParentWidth()*0.4, getParentHeight()*0.5);
     addAndMakeVisible(orientation);
     addAndMakeVisible(emg);
     addChildComponent(gyro);
@@ -59,22 +59,20 @@ hostAddress("127.0.0.1")
     myoManager.connect();
     myoManager.startPoll();
     
-<<<<<<< Updated upstream
-    pose.setPoseLabel("Pose Null");
-=======
     myoList.setText("Available Myos");
     addAndMakeVisible(myoList);
 
-//    for(int i = 0; i<myoManager.getMyoList(); i++){
-    myoList.addItem("Myo n. 1",1);
-    myoList.addItem("Myo n. 2", 2);
-//        if(myoManager.getMyoList()==3) myoList.addItem("Myo n. 3", myoManager.getMyoList());
-//        if(myoManager.getMyoList()==4) myoList.addItem("Myo n. 4", myoManager.getMyoList());
-//    }
->>>>>>> Stashed changes
+    for(int i = 0; i<myoManager.getMyoList(); i++){
+        if(myoManager.getMyoList()==1) myoList.addItem("Myo n. 1", myoManager.getMyoList());
+        if(myoManager.getMyoList()==2) myoList.addItem("Myo n. 2", myoManager.getMyoList());
+        if(myoManager.getMyoList()==3) myoList.addItem("Myo n. 3", myoManager.getMyoList());
+        if(myoManager.getMyoList()==4) myoList.addItem("Myo n. 4", myoManager.getMyoList());
+    }
     
     startTimer(25);
 }
+
+
 
 void MainComponent::paint(juce::Graphics &g)
 {
@@ -86,18 +84,14 @@ void MainComponent::resized()
 {
     settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.19-10);
     
-    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*0.5-2.5, (getHeight()*0.5)-15);
-    acc.setBounds(orientation.getX(), orientation.getBottom()+5, getWidth()*0.3-10, getBottom()-(orientation.getBottom()+15));
-    gyro.setBounds(acc.getRight()+5, acc.getY(), acc.getWidth(), acc.getHeight());
-    
-    emg.setBounds(orientation.getX(), orientation.getBottom()+10, orientation.getWidth(), orientation.getHeight()*0.33);
-    
-    pose.setBounds(orientation.getX(), emg.getBottom()+10, orientation.getWidth(), getHeight()*0.12);
-    
-    oscPortSlider.setBounds(getX()+100, getY()+50, getWidth()*0.15, getHeight()*0.03);
-    
+    oscPortSlider.setBounds(getX()+100, getY()+50, getWidth()*0.3, getHeight()*0.03);
     hostAddressTitle.setBounds(getX()+30, getY()+100, getWidth()*0.2, getHeight()*0.03);
     setHostAddress.setBounds(getX()+125, getY()+100, getWidth()*0.14, getHeight()*0.03);
+    myoList.setBounds(oscPortSlider.getRight()+20, oscPortSlider.getY(), getWidth()*0.45, oscPortSlider.getHeight());
+    
+    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), (getHeight()*0.5)-15);
+    emg.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth(), orientation.getHeight()*0.33);
+    pose.setBounds(orientation.getX(), emg.getBottom()+10, settingsPannel.getWidth(), getHeight()*0.12);
 }
 
 void MainComponent::sliderValueChanged(juce::Slider *slider)
@@ -108,6 +102,7 @@ void MainComponent::sliderValueChanged(juce::Slider *slider)
         emg.setOSCPort(oscPortSlider.getValue());
         gyro.setOSCPort(oscPortSlider.getValue());
         acc.setOSCPort(oscPortSlider.getValue());
+        pose.setOSCPort(oscPortSlider.getValue());
     }
 }
 
@@ -119,6 +114,7 @@ void MainComponent::labelTextChanged(juce::Label *labelThatHasChanged)
         emg.setOSChostAddress(setHostAddress.getText());
         gyro.setOSChostAddress(setHostAddress.getText());
         acc.setOSChostAddress(setHostAddress.getText());
+        pose.setOSChostAddress(setHostAddress.getText());
     }
 }
 
@@ -129,23 +125,14 @@ void MainComponent::timerCallback()
     
     if (!success) return;
     
-<<<<<<< Updated upstream
+    if (myoList.getSelectedId() == myoManager.identifyMyo()){
+    
     emg.setValues(myoData.emg);
     gyro.setValues(myoData.gyro);
     acc.setValues(myoData.acceleration);
-    orientation.setValues(myoData.yaw, myoData.pitch, myoData.roll);
-=======
-    unsigned int id = myoList.getSelectedId() - 1;
-    
-    if (id >= myoData.size()) return;
-    
-    emg.setValues(myoData[id].emg);
-    gyro.setValues(myoData[id].gyro);
-    acc.setValues(myoData[id].acceleration);
-    orientation.setValues(myoData[id].orientation);
-    pose.setPoseLabel(myoData[id].pose);
->>>>>>> Stashed changes
-    
+    orientation.setValues(myoData.orientation);
+    pose.setPoseLabel(myoData.pose);
+    }
 }
 
 void MainComponent::disconnectMyo()
