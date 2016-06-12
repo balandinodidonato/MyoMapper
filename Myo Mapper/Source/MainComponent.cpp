@@ -71,11 +71,15 @@ void MainComponent::paint(juce::Graphics &g)
 
 void MainComponent::resized()
 {
-    orientation.setBounds(10, getHeight()*0.19, getWidth()*0.5, (getHeight()*0.5)-15);
-    emg.setBounds(getWidth()*0.5+20, getHeight()*0.19, getWidth()*0.47, (getHeight()*0.5)-15);
-    gyro.setBounds(10, getHeight()*0.68, getWidth()*0.5, (getHeight()*0.3));
-    acc.setBounds(getWidth()*0.5+20, getHeight()*0.68, getWidth()*0.47, (getHeight()*0.3));
-    settingsPannel.setBounds(10, 10, getRight()-16, getHeight()*0.19-10);
+    settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.19-10);
+    
+    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*0.5-2.5, (getHeight()*0.5)-15);
+    acc.setBounds(orientation.getX(), orientation.getBottom()+5, getWidth()*0.3-10, getBottom()-(orientation.getBottom()+15));
+    gyro.setBounds(acc.getRight()+10, acc.getY(), acc.getWidth(), acc.getHeight());
+    
+    emg.setBounds(orientation.getRight()+5, orientation.getY(), orientation.getWidth(), orientation.getHeight());
+    
+    
     
     oscPortSlider.setBounds(getX()+100, getY()+50, getWidth()*0.15, getHeight()*0.03);
     
