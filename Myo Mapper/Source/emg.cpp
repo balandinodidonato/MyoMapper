@@ -18,6 +18,7 @@ labelWidget("Myo Data")
     rescaleMav.setLabelWidget("Mav");
     emgS.setLabelWidget("Emg");
     addAndMakeVisible(emgS);
+    rescaleMav.setTargetValue(1);
 }
 
 void Emg::paint(juce::Graphics &g)

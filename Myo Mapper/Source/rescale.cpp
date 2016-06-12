@@ -73,7 +73,7 @@ void Rescale::paint(juce::Graphics &g)
     g.setColour(Colours::black);
     g.setFont(getHeight()*0.2);
     g.drawText(labelWidget, getLocalBounds(),
-               Justification::centredTop, true);   // draw some placeholder text
+    Justification::centredTop, true);   // draw some placeholder text
 }
 
 void Rescale::buttonClicked(juce::Button *button)
@@ -81,7 +81,7 @@ void Rescale::buttonClicked(juce::Button *button)
     if (button == &centre)
     {
         offset = input; // take the current myo value as offset to centre the data
-        targetValue = 0.5; // centre the myo data at half of the established range
+        test = 1; // centre the myo data at half of the established range
     }
 }
 
@@ -110,15 +110,12 @@ void Rescale::sliderValueChanged(juce::Slider *slider)
 
 void Rescale::resized()
 {
-    centre.setBounds (10, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
-    reverse.setBounds(getWidth()*0.2+15, getHeight()*0.2, getWidth()*0.18, getHeight()*0.3);
-    minSlider.setBounds(getWidth()*0.46+15, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
-    maxSlider.setBounds(getWidth()*0.75+15, getHeight()*0.2, getWidth()*0.2, getHeight()*0.3);
-    
-    mmSlider.setBounds(10, getHeight()*0.65, getWidth()*0.95, getHeight()*0.2);
-    
-    minSliderLabel.setFont(getWidth()*0.04);
-    maxSliderLabel.setFont(getWidth()*0.04);
+    centre.setBounds (10, 25, getWidth()*0.2, getHeight()*0.3);
+    reverse.setBounds(centre.getRight()+getWidth()*0.02, centre.getY(), centre.getWidth(), centre.getHeight());
+    minSlider.setBounds(reverse.getRight()+getWidth()*0.05, centre.getY(), centre.getWidth(), centre.getHeight());
+    maxSlider.setBounds(minSlider.getRight()+getWidth()*0.1, centre.getY(), centre.getWidth(), centre.getHeight());    
+    mmSlider.setBounds(centre.getX(), centre.getBottom()+25, getWidth()*0.95, getHeight()*0.2);
+
 }
 
 void Rescale::setLabelWidget(juce::String LabelWidget)
@@ -134,7 +131,7 @@ void Rescale::setValue(float Value)
     input = (input+PI)/(2*PI);
     
     // Centre incoming value
-    centred = 1-(offset-(input-targetValue)); // input is the value to be centred
+    centred = 1-(offset-(input-(targetValue*test))); // input is the value to be centred
     centred = std::abs(centred);
     
     if (reverse.getToggleStateValue()==true) // reverse centred value
@@ -166,6 +163,11 @@ void Rescale::setOSChostAddress(juce::String HostAddress)
 void Rescale::enableOSC(bool EnableOSC)
 {
     enableOSCvalue = EnableOSC;
+}
+
+void Rescale::setTargetValue (float TargetValue)
+{
+    targetValue = TargetValue;
 }
 
 

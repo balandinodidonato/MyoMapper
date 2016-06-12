@@ -18,6 +18,9 @@ Orientation::Orientation()
     rescaleYaw.setLabelWidget("Yaw");
     rescalePitch.setLabelWidget("Pitch");
     rescaleRoll.setLabelWidget("Roll");
+    rescaleYaw.setTargetValue(0.5),
+    rescalePitch.setTargetValue(0.5);
+    rescaleRoll.setTargetValue(0.5);
 }
 
 void Orientation::paint(juce::Graphics &g)
@@ -33,9 +36,9 @@ void Orientation::paint(juce::Graphics &g)
 
 void Orientation::resized()
 {
-    rescaleYaw.setBounds(getWidth()*0.012, getHeight()*0.1, getWidth()*0.98, getHeight()*0.28);
-    rescalePitch.setBounds(getWidth()*0.012, getHeight()*0.4, getWidth()*0.98, getHeight()*0.28);
-    rescaleRoll.setBounds(getWidth()*0.012, getHeight()*0.7, getWidth()*0.98, getHeight()*0.28);
+    rescaleYaw.setBounds(10, getHeight()*0.1, getRight()-30, getHeight()*0.28);
+    rescalePitch.setBounds(rescaleYaw.getX(), rescaleYaw.getBottom()+7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
+    rescaleRoll.setBounds(rescaleYaw.getX(), rescalePitch.getBottom()+7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
 }
 
 void Orientation::setValues(float Yaw, float Pitch, float Roll)

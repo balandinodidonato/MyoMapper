@@ -38,6 +38,7 @@ public:
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
     void enableOSC(bool EnableOSC);
+    void setTargetValue(float TargetValue);
 
 private:
     
@@ -58,7 +59,7 @@ private:
     float reversed;
     float centred;
     float offset;
-    float targetValue;
+    float targetValue = 0.5;
     float maxOutputValue;
     float minOutputValue;
     float scaled;
@@ -68,6 +69,7 @@ private:
     bool enableOSCvalue;
     String labelWidget;
     const long double PI = 3.141592653589793238L;
+    int test = 0;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };
