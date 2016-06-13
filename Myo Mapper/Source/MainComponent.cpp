@@ -43,7 +43,6 @@ void MainComponent::paint(juce::Graphics &g)
     
     if (settingsPannel.getOSCsettingsStatus())
         setOSC();
-        
 }
 
 void MainComponent::resized()
@@ -63,6 +62,8 @@ void MainComponent::timerCallback()
     if (!success) return;
     
     unsigned int id = settingsPannel.getSelectedMyo();
+    
+    setMyoID(id);
     
     if (id >= myoData.size()) return;
     
@@ -92,6 +93,15 @@ void MainComponent::setOSC()
     acc.setOSChostAddress(settingsPannel.getHostAddress());
     pose.setOSChostAddress(settingsPannel.getHostAddress());
 
+}
+
+void MainComponent::setMyoID(int ID)
+{
+    orientation.setMyoID(ID);
+    acc.setMyoID(ID);
+    gyro.setMyoID(ID);
+    emg.setMyoID(ID);
+    pose.setMyoID(ID);
 }
 
 

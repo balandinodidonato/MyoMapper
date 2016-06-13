@@ -31,6 +31,8 @@ public:
     void setOSChostAddress(String HostAddress);
     void enableOSC(bool EnableOSC);
     
+    void setMyoID(int MyoID);
+        
 private:
     Label poseLabel;
     String labelWidget;
@@ -39,6 +41,9 @@ private:
     OSCSender sender;
     int oscPort;
     String hostAddress;
+    
+    String MyoIDString;
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Pose)
 };

@@ -77,3 +77,12 @@ float Orientation::getRoll()
     return rescaleRoll.getValue();
 }
 
+void Orientation::setMyoID(int MyoID)
+{
+    rescaleYaw.setMyoID(MyoID);
+    rescalePitch.setMyoID(MyoID);
+    rescaleRoll.setMyoID(MyoID);
+}
+
+
+

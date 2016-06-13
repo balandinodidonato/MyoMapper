@@ -34,6 +34,7 @@ public:
     std::array<int8_t, 8> getEMG();
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
+    void setMyoID(int MyoID);
     
 private:
     void showConnectionErrorMessage (const String& messageText);
@@ -65,6 +66,9 @@ private:
     size_t oscPort;
     String hostAddress;
     bool enableOSCvalue;
+    
+    String MyoIDString;
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EmgS)
 };

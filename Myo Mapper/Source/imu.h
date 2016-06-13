@@ -32,6 +32,7 @@ public:
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
     void enableOSC(bool EnableOSC);
+    void setMyoID(int MyoID);
     
 private:
     
@@ -39,6 +40,7 @@ private:
     
     int OSCport;
     bool enableOSCvalue;
+    String MyoIDString;
     
     int oscPort;
     String hostAddress;
