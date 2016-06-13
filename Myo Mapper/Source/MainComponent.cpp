@@ -63,8 +63,8 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(myoList);
 
 //    for(int i = 0; i<myoManager.getMyoList(); i++){
-//        if(myoManager.getMyoList()==1) myoList.addItem("Myo n. 1", myoManager.getMyoList());
-//        if(myoManager.getMyoList()==2) myoList.addItem("Myo n. 2", myoManager.getMyoList());
+    myoList.addItem("Myo n. 1",1);
+    myoList.addItem("Myo n. 2", 2);
 //        if(myoManager.getMyoList()==3) myoList.addItem("Myo n. 3", myoManager.getMyoList());
 //        if(myoManager.getMyoList()==4) myoList.addItem("Myo n. 4", myoManager.getMyoList());
 //    }
@@ -125,7 +125,7 @@ void MainComponent::timerCallback()
     
     if (!success) return;
     
-    unsigned int id = myoList.getSelectedId();
+    unsigned int id = myoList.getSelectedId() - 1;
     
     if (id >= myoData.size()) return;
     
