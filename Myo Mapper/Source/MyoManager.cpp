@@ -35,7 +35,7 @@ bool MyoManager::connect()
         if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
         {
             std::cout << "Attempting to find a Myo..." << std::endl;
-            myo = hub->waitForMyo(10000);
+//            myo = hub->waitForMyo(10000);
         }
     }
     catch (const std::exception& e)
@@ -43,9 +43,10 @@ bool MyoManager::connect()
         std::cerr << "Error: " << e.what() << std::endl;
     }
     
-    if (myo)
-    {
+//    if (myo)
+//    {
         hub->addListener(&listener);
+<<<<<<< Updated upstream
         isConnected = true;
         myo->setStreamEmg(myo::Myo::streamEmgEnabled);
     }
@@ -54,6 +55,16 @@ bool MyoManager::connect()
         std::cerr << "Error: Myo not found" << std::endl;
         disconnect();
     }
+=======
+//       myo->setStreamEmg(myo::Myo::streamEmgEnabled);
+//       myo->unlock(myo::Myo::unlockHold);
+//    }
+//    else
+//    {
+//        std::cerr << "Error: Myo not found" << std::endl;
+//        disconnect();
+//    }
+>>>>>>> Stashed changes
     
     return isConnected;
 
@@ -61,7 +72,7 @@ bool MyoManager::connect()
 
 void MyoManager::run()
 {
-    if (!myo) return;
+//    if (!myo) return;
     
    
     

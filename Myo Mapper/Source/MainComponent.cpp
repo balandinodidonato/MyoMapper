@@ -60,7 +60,19 @@ hostAddress("127.0.0.1")
     myoManager.connect();
     myoManager.startPoll();
     
+<<<<<<< Updated upstream
     pose.setPoseLabel("Pose Null");
+=======
+    myoList.setText("Available Myos");
+    addAndMakeVisible(myoList);
+
+//    for(int i = 0; i<myoManager.getMyoList(); i++){
+    myoList.addItem("Myo n. 1",1);
+    myoList.addItem("Myo n. 2", 2);
+//        if(myoManager.getMyoList()==3) myoList.addItem("Myo n. 3", myoManager.getMyoList());
+//        if(myoManager.getMyoList()==4) myoList.addItem("Myo n. 4", myoManager.getMyoList());
+//    }
+>>>>>>> Stashed changes
     
     startTimer(25);
 }
@@ -121,10 +133,22 @@ void MainComponent::timerCallback()
     
     if (!success) return;
     
+<<<<<<< Updated upstream
     emg.setValues(myoData.emg);
     gyro.setValues(myoData.gyro);
     acc.setValues(myoData.accel);
     orientation.setValues(myoData.yaw, myoData.pitch, myoData.roll);
+=======
+    unsigned int id = myoList.getSelectedId() - 1;
+    
+    if (id >= myoData.size()) return;
+    
+    emg.setValues(myoData[id].emg);
+    gyro.setValues(myoData[id].gyro);
+    acc.setValues(myoData[id].acceleration);
+    orientation.setValues(myoData[id].orientation);
+    pose.setPoseLabel(myoData[id].pose);
+>>>>>>> Stashed changes
     
 }
 
