@@ -13,10 +13,34 @@
 
 //==============================================================================
 Settings::Settings()
+:
+labelWidget("Settings"),
+hostAddress("127.0.0.1")
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
-
+    oscPortSlider.setRange(0, 9999, 1);
+    oscPortSlider.setValue(5432);
+    oscPortSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
+    oscPortSlider.setSliderStyle(juce::Slider::IncDecButtons);
+    addAndMakeVisible(oscPortSlider);
+    
+    oscPortLabel.setText ("OSC Port", dontSendNotification);
+    oscPortLabel.attachToComponent (&oscPortSlider, true);
+    addAndMakeVisible(oscPortLabel);
+    oscPortSlider.addListener(this);
+    
+    hostAddressTitle.setText ("Host Address:", dontSendNotification);
+    addAndMakeVisible(hostAddressTitle);
+    
+    setHostAddress.setText (hostAddress, dontSendNotification);
+    setHostAddress.setEditable(true);
+    addAndMakeVisible(setHostAddress);
+    setHostAddress.addListener(this);
+    
+    myoList.setText("Available Myos");
+    addAndMakeVisible(myoList);
+    
+    myoList.addItem("Myo n. 1", 1);
+    myoList.addItem("Myo n. 2", 2);
 }
 
 Settings::~Settings()
@@ -25,27 +49,55 @@ Settings::~Settings()
 
 void Settings::paint (Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (Colours::white);   // clear the background
-
-    g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (Colours::lightblue);
-    g.setFont (14.0f);
-    g.drawText ("Settings", getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
+    g.fillAll(Colours::lightgrey);   // clear the background
+    g.setColour(Colours::grey);
+    g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
+    
+    g.setColour(Colours::white);
+    g.fillRoundedRectangle(10, getHeight()*0.15, getRight()-30, getHeight()*0.795, 5);
+    
+    g.setColour(Colours::black);
+    g.setFont(getHeight()*0.11);
+    g.drawText(labelWidget, getLocalBounds(),
+               Justification::centredTop, true);   // draw some placeholder
 }
 
 void Settings::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
-
+    oscPortSlider.setBounds(getX()+100, getY()+30, getWidth()*0.3, getHeight()*0.2);
+    hostAddressTitle.setBounds(getX()+30, oscPortSlider.getBottom()+10, getWidth()*0.3, oscPortSlider.getHeight());
+    setHostAddress.setBounds(getX()+125, oscPortSlider.getBottom()+10, getWidth()*0.14, oscPortSlider.getHeight());
+    myoList.setBounds(oscPortSlider.getRight()+20, oscPortSlider.getY(), getWidth()*0.4, oscPortSlider.getHeight());
 }
+
+void Settings::sliderValueChanged(juce::Slider *slider)
+{
+    if (slider == &oscPortSlider)
+    {
+        oscPort = oscPortSlider.getValue();
+    }
+}
+
+void Settings::labelTextChanged(juce::Label *labelThatHasChanged)
+{
+    if (labelThatHasChanged == &setHostAddress)
+    {
+        hostAddress = setHostAddress.getText();
+    }
+}
+
+int Settings::getOSCPort()
+{
+    return oscPort;
+}
+
+String Settings::getHostAddress()
+{
+    return hostAddress;
+}
+
+int Settings::getSelectedMyo()
+{
+    return myoList.getSelectedId() - 1;
+}
+

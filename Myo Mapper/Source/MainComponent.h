@@ -25,8 +25,6 @@
 /*
 */
 class MainComponent    : public Component,
-                         public Slider::Listener,
-                         public Label::Listener,
                          private Timer
 {
     
@@ -36,8 +34,6 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void sliderValueChanged (Slider* slider) override;
-    void labelTextChanged (Label* labelThatHasChanged) override;
     void disconnectMyo();
 
     Orientation orientation;
@@ -51,19 +47,8 @@ private:
     IMU acc;
     Settings settingsPannel;
     MyoManager myoManager;
-    
-    String labelWidget;
-    Slider oscPortSlider;
-
-    Label oscPortLabel;
-    Label hostAddressTitle;
-    Label setHostAddress;
-    
-    String hostAddress;
-    
     Pose pose;
     
-    ComboBox myoList;
     int selectedMyo;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
