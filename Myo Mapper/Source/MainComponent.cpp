@@ -62,12 +62,12 @@ hostAddress("127.0.0.1")
     myoList.setText("Available Myos");
     addAndMakeVisible(myoList);
 
-    for(int i = 0; i<myoManager.getMyoList(); i++){
-        if(myoManager.getMyoList()==1) myoList.addItem("Myo n. 1", myoManager.getMyoList());
-        if(myoManager.getMyoList()==2) myoList.addItem("Myo n. 2", myoManager.getMyoList());
-        if(myoManager.getMyoList()==3) myoList.addItem("Myo n. 3", myoManager.getMyoList());
-        if(myoManager.getMyoList()==4) myoList.addItem("Myo n. 4", myoManager.getMyoList());
-    }
+//    for(int i = 0; i<myoManager.getMyoList(); i++){
+//        if(myoManager.getMyoList()==1) myoList.addItem("Myo n. 1", myoManager.getMyoList());
+//        if(myoManager.getMyoList()==2) myoList.addItem("Myo n. 2", myoManager.getMyoList());
+//        if(myoManager.getMyoList()==3) myoList.addItem("Myo n. 3", myoManager.getMyoList());
+//        if(myoManager.getMyoList()==4) myoList.addItem("Myo n. 4", myoManager.getMyoList());
+//    }
     
     startTimer(25);
 }
@@ -121,18 +121,20 @@ void MainComponent::labelTextChanged(juce::Label *labelThatHasChanged)
 void MainComponent::timerCallback()
 {
     bool success = false;
-    MyoData myoData = myoManager.getMyoData(success);
+    std::vector<MyoData> myoData = myoManager.getMyoData(success);
     
     if (!success) return;
     
-    if (myoList.getSelectedId() == myoManager.identifyMyo()){
+    unsigned int id = myoList.getSelectedId();
     
-    emg.setValues(myoData.emg);
-    gyro.setValues(myoData.gyro);
-    acc.setValues(myoData.acceleration);
-    orientation.setValues(myoData.orientation);
-    pose.setPoseLabel(myoData.pose);
-    }
+    if (id >= myoData.size()) return;
+    
+    emg.setValues(myoData[id].emg);
+    gyro.setValues(myoData[id].gyro);
+    acc.setValues(myoData[id].acceleration);
+    orientation.setValues(myoData[id].orientation);
+    pose.setPoseLabel(myoData[id].pose);
+    
 }
 
 void MainComponent::disconnectMyo()

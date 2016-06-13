@@ -14,17 +14,23 @@
 #include "myo/myo.hpp"
 #include "orientation.h"
 
+#include "MyoData.h"
+
 #include <array>
 
 class MyoListener : public myo::DeviceListener
 {
 public:
     MyoListener();
-    Vector3D< float > getOrientation();
-    Vector3D< float > getAccel();
-    Vector3D<float> getGyro();
-    String getPose();
-    std::array<int8_t, 8> getEmg();
+//    Vector3D< float > getOrientation();
+//    Vector3D< float > getAccel();
+//    Vector3D<float> getGyro();
+//    String getPose();
+    
+    std::vector<MyoData> getMyoData() const;
+//    unsigned int getNumberOfMyos() const;
+    
+//    std::array<int8_t, 8> getEmg();
     
 private:
     
@@ -53,6 +59,8 @@ private:
     float yaw;
     float pitch;
     float roll;
+    
+    std::vector<MyoData> myoData;
     
     myo::Pose currentPose;
 };

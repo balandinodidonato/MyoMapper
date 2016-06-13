@@ -20,7 +20,12 @@
 // provides several virtual functions for handling different kinds of events. If you do not override an event, the
 // default behavior is to do nothing.
 MyoListener::MyoListener()
-: onArm(false), isUnlocked(false), orientation(), currentPose(), emgSamples(), acceleration()
+: onArm(false),
+isUnlocked(false),
+orientation(),
+currentPose(),
+emgSamples(),
+acceleration()
 {
 }
 
@@ -40,6 +45,8 @@ void MyoListener::onUnpair(myo::Myo* myo, uint64_t timestamp)
 void MyoListener::onPair(myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion)
 {
     knownMyos.push_back(myo);
+    myoData.resize(knownMyos.size());
+    
     for (size_t i = 0; i < knownMyos.size(); ++i) {
     printf("MYO: %zu",i); // here where to update the list of available myos
     }
@@ -73,9 +80,23 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
 
 void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& accel)
 {
-    acceleration.x = accel.x();
-    acceleration.y = accel.y();
-    acceleration.z = accel.z();
+    unsigned int i = 0;
+    
+    for(; i < knownMyos.size(); ++i)
+    {
+        if (knownMyos[i] == myo)
+        {
+            break;
+        }
+    }
+    
+    myoData[i].acceleration.x = accel.x();
+    
+//    
+//    
+//    acceleration.x = accel.x();
+//    acceleration.y = accel.y();
+//    acceleration.z = accel.z();
 }
 
 void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro)
@@ -127,27 +148,37 @@ void MyoListener::onLock(myo::Myo* myo, uint64_t timestamp)
     isUnlocked = false;
 }
 
-Vector3D< float > MyoListener::getOrientation()
+std::vector<MyoData> MyoListener::getMyoData() const
 {
-    return orientation;
+    return myoData;
 }
 
-std::array<int8_t, 8> MyoListener::getEmg()
-{
-    return emgSamples;
-}
+//unsigned int MyoListener::getNumberOfMyos() const
+//{
+//    return knownMyos.size();
+//}
 
-String MyoListener::getPose()
-{
-    return currentPose.toString();
-}
-
-Vector3D< float > MyoListener::getAccel()
-{
-    return acceleration;
-}
-
-Vector3D< float > MyoListener::getGyro()
-{
-    return Gyro;
-}
+//Vector3D< float > MyoListener::getOrientation()
+//{
+//    return orientation;
+//}
+//
+//std::array<int8_t, 8> MyoListener::getEmg()
+//{
+//    return emgSamples;
+//}
+//
+//String MyoListener::getPose()
+//{
+//    return currentPose.toString();
+//}
+//
+//Vector3D< float > MyoListener::getAccel()
+//{
+//    return acceleration;
+//}
+//
+//Vector3D< float > MyoListener::getGyro()
+//{
+//    return Gyro;
+//}
