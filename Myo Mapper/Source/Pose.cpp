@@ -51,7 +51,7 @@ void Pose::setWidgetLabel(String WidgetLabel)
 
 void Pose::setPoseLabel(String LabelText)
 {
-    if(enableOSCvalue) sender.send ("/Myo/"+labelWidget, (String) LabelText);
+    if(enableOSCvalue) sender.send ("/Myo/"+MyoIDString+"/"+labelWidget, (String) LabelText);
     poseLabel.setText(LabelText, dontSendNotification);
 }
 
@@ -70,4 +70,9 @@ void Pose::setOSChostAddress(juce::String HostAddress)
 void Pose::enableOSC(bool EnableOSC)
 {
     enableOSCvalue = EnableOSC;
+}
+
+void Pose::setMyoID(int MyoID)
+{
+    MyoIDString = String(MyoID+1);
 }

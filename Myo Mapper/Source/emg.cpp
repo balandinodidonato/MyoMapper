@@ -63,4 +63,10 @@ float Emg::getMav()
     return emgS.getMav();
 }
 
+void Emg::setMyoID(int MyoID)
+{
+    emgS.setMyoID(MyoID);
+    rescaleMav.setMyoID(MyoID);
+}
+
 

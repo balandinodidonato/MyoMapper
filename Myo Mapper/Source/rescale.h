@@ -39,6 +39,7 @@ public:
     void setOSChostAddress(String HostAddress);
     void enableOSC(bool EnableOSC);
     void setTargetValue(float TargetValue);
+    void setMyoID(int MyoID);
 
 private:
     
@@ -70,6 +71,7 @@ private:
     String labelWidget;
     const long double PI = 3.141592653589793238L;
     int test = 0;
+    String MyoIDString;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };

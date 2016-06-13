@@ -30,6 +30,7 @@ public:
     void setValues (Vector3D< float >);
     void setOSCPort (int Port);
     void setHostAddress(String HostAddress);
+    void setMyoID(int MyoID);
     
     float getYaw();
     float getPitch();

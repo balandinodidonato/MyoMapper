@@ -38,7 +38,7 @@ void IMU::setWidgetLabel(String WidgetLabel)
 
 void IMU::setValues(Vector3D< float > &ImuValues)
 {
-    sender.send ("/Myo/"+labelWidget, (float) ImuValues.x, (float) ImuValues.y, (float) ImuValues.z);
+    if(enableOSCvalue) sender.send ("/Myo/"+MyoIDString+"/"+labelWidget, (float) ImuValues.x, (float) ImuValues.y, (float) ImuValues.z);
 }
 
 void IMU::setOSCPort (int Port)
@@ -56,4 +56,9 @@ void IMU::setOSChostAddress(String HostAddress)
 void IMU::enableOSC(bool EnableOSC)
 {
     enableOSCvalue = EnableOSC;
+}
+
+void IMU::setMyoID(int MyoID)
+{
+    MyoIDString = String(MyoID+1);
 }

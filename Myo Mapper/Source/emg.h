@@ -33,6 +33,8 @@ public:
     void setOSChostAddress(String HostAddress);
     std::array<int8_t, 8> getEmg();
     float getMav();
+    void setMyoID(int MyoID);
+    
     
 private:
     String labelWidget;
@@ -42,7 +44,8 @@ private:
     int oscPort;
     String hostAddress;
     std::array<int8_t, 8> EMGs;
-    
+    String MyoIDString;
+        
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Emg)
 };
 
