@@ -46,7 +46,6 @@ bool MyoManager::connect()
     if (myo)
     {
         hub->addListener(&listener);
-        knownMyos.push_back(myo);
         myo->setStreamEmg(myo::Myo::streamEmgEnabled);
         myo->unlock(myo::Myo::unlockHold);
     }
@@ -71,19 +70,20 @@ void MyoManager::run()
         
         if (tryEnterWrite())
         {
-            myoData.orientation = listener.getOrientation();
-            myoData.emg = listener.getEmg();
-            myoData.pose = listener.getPose();
-            myoData.acceleration = listener.getAccel();
-            myoData.gyro = listener.getGyro();
+            myoData = listener.getMyoData();
+//            myoData.orientation = listener.getOrientation();
+//            myoData.emg = listener.getEmg();
+//            myoData.pose = listener.getPose();
+//            myoData.acceleration = listener.getAccel();
+//            myoData.gyro = listener.getGyro();
             exitWrite();
         }
     }
 }
 
-MyoData MyoManager::getMyoData(bool &success) const
+std::vector<MyoData> MyoManager::getMyoData(bool &success) const
 {
-    MyoData dataCopy;
+    std::vector<MyoData> dataCopy;
     
     if (tryEnterRead())
     {
@@ -120,24 +120,24 @@ void MyoManager::stopPoll()
     stopThread(1000);
 }
 
-int MyoManager::getMyoList(){
-    
-    numberOfMyos = 0;
-    
-    for (size_t i = 0; i < knownMyos.size(); ++i) {
-        numberOfMyos = numberOfMyos+1;
-    }
-    return numberOfMyos;
-}
+//int MyoManager::getMyoList(){
+//    
+//    numberOfMyos = 0;
+//    
+//    for (size_t i = 0; i < knownMyos.size(); ++i) {
+//        numberOfMyos = numberOfMyos+1;
+//    }
+//    return numberOfMyos;
+//}
 
-int MyoManager::identifyMyo() {
-    // Walk through the list of Myo devices that we've seen pairing events for.
-    for (size_t i = 0; i < knownMyos.size(); ++i) {
-        // If two Myo pointers compare equal, they refer to the same Myo device.
-        if (knownMyos[i] == myo) {
-            return i + 1;
-        }
-    }
-    
-    return 0;
-}
+//int MyoManager::identifyMyo() {
+//    // Walk through the list of Myo devices that we've seen pairing events for.
+//    for (size_t i = 0; i < knownMyos.size(); ++i) {
+//        // If two Myo pointers compare equal, they refer to the same Myo device.
+//        if (knownMyos[i] == myo) {
+//            return i + 1;
+//        }
+//    }
+//    
+//    return 0;
+//}
