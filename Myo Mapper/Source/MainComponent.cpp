@@ -37,26 +37,23 @@ void MainComponent::paint(juce::Graphics &g)
 {
     g.fillAll(Colours::grey);
     
-    orientation.setOSCPort(settingsPannel.getOSCPort());
-    emg.setOSCPort(settingsPannel.getOSCPort());
-    gyro.setOSCPort(settingsPannel.getOSCPort());
-    acc.setOSCPort(settingsPannel.getOSCPort());
-    pose.setOSCPort(settingsPannel.getOSCPort());
+    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.5)-15)*settingsPannel.getShowOrientation());
+    emg.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowMav(), (getHeight()*0.16)*settingsPannel.getShowMav());
+    pose.setBounds(orientation.getX(), emg.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
     
-    orientation.setHostAddress(settingsPannel.getHostAddress());
-    emg.setOSChostAddress(settingsPannel.getHostAddress());
-    gyro.setOSChostAddress(settingsPannel.getHostAddress());
-    acc.setOSChostAddress(settingsPannel.getHostAddress());
-    pose.setOSChostAddress(settingsPannel.getHostAddress());
+    if (settingsPannel.getOSCsettingsStatus())
+        setOSC();
+        
 }
 
 void MainComponent::resized()
 {
     settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.19-10);
-    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), (getHeight()*0.5)-15);
+    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.5)-15)*settingsPannel.getShowOrientation());
     emg.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth(), orientation.getHeight()*0.33);
     pose.setBounds(orientation.getX(), emg.getBottom()+10, settingsPannel.getWidth(), getHeight()*0.12);
 }
+
 
 void MainComponent::timerCallback()
 {
@@ -79,6 +76,22 @@ void MainComponent::timerCallback()
 void MainComponent::disconnectMyo()
 {
     myoManager.disconnect();
+}
+
+void MainComponent::setOSC()
+{
+    orientation.setOSCPort(settingsPannel.getOSCPort());
+    emg.setOSCPort(settingsPannel.getOSCPort());
+    gyro.setOSCPort(settingsPannel.getOSCPort());
+    acc.setOSCPort(settingsPannel.getOSCPort());
+    pose.setOSCPort(settingsPannel.getOSCPort());
+    
+    orientation.setHostAddress(settingsPannel.getHostAddress());
+    emg.setOSChostAddress(settingsPannel.getHostAddress());
+    gyro.setOSChostAddress(settingsPannel.getHostAddress());
+    acc.setOSChostAddress(settingsPannel.getHostAddress());
+    pose.setOSChostAddress(settingsPannel.getHostAddress());
+
 }
 
 

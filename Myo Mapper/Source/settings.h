@@ -28,6 +28,10 @@ public:
     void resized() override;
     void labelTextChanged(juce::Label *labelThatHasChanged) override;
     void sliderValueChanged(juce::Slider *slider) override;
+    int getShowOrientation();
+    int getShowPose();
+    int getShowMav();
+    bool getOSCsettingsStatus();
     
     int getOSCPort();
     String getHostAddress();
@@ -40,6 +44,11 @@ private:
     Label setHostAddress;
     Label oscPortLabel;
     ComboBox myoList;
+    ToggleButton showOrientation;
+    ToggleButton showMav;
+    ToggleButton showPose;
+    
+    bool oscSettingsChanged = true;
     
     int oscPort = 5432;
     String hostAddress = "127.0.0.1";
