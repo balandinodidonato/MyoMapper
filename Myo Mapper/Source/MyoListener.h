@@ -34,6 +34,8 @@ public:
     
 private:
     
+    int getMyoID(myo::Myo* myo);
+    
     void onUnpair(myo::Myo* myo, uint64_t timestamp);
     void onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo::Quaternion<float>& quat);
     void onPose(myo::Myo* myo, uint64_t timestamp, myo::Pose pose);

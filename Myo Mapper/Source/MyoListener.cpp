@@ -73,37 +73,33 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
     yaw = atan2(2.0f * (quat.w() * quat.z() + quat.x() * quat.y()),
                       1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
     
-    orientation.x = yaw;
-    orientation.y = pitch;
-    orientation.z = roll;
+    
+    int myoID = getMyoID(myo);
+    if(myoID == -1) return;
+
+    myoData[myoID].orientation.x = yaw;
+    myoData[myoID].orientation.y = pitch;
+    myoData[myoID].orientation.z = roll;
 }
 
 void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& accel)
 {
-    unsigned int i = 0;
+    int myoID = getMyoID(myo);
+    if(myoID == -1) return;
     
-    for(; i < knownMyos.size(); ++i)
-    {
-        if (knownMyos[i] == myo)
-        {
-            break;
-        }
-    }
-    
-    myoData[i].acceleration.x = accel.x();
-    
-//    
-//    
-//    acceleration.x = accel.x();
-//    acceleration.y = accel.y();
-//    acceleration.z = accel.z();
+    myoData[myoID].acceleration.x = accel.x();
+    myoData[myoID].acceleration.y = accel.y();
+    myoData[myoID].acceleration.z = accel.z();
 }
 
 void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro)
 {
-    Gyro.x = gyro.x();
-    Gyro.y = gyro.y();
-    Gyro.z = gyro.z();
+    int myoID = getMyoID(myo);
+    if(myoID == -1) return;
+
+    myoData[myoID].gyro.x = gyro.x();
+    myoData[myoID].gyro.y = gyro.y();
+    myoData[myoID].gyro.z = gyro.z();
 }
 
 
@@ -152,6 +148,20 @@ std::vector<MyoData> MyoListener::getMyoData() const
 {
     return myoData;
 }
+
+int MyoListener::getMyoID(myo::Myo* myo)
+{
+    for(unsigned int i = 0; i < knownMyos.size(); ++i)
+    {
+        if (knownMyos[i] == myo)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
 
 //unsigned int MyoListener::getNumberOfMyos() const
 //{
