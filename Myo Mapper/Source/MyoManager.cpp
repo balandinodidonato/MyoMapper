@@ -58,8 +58,8 @@ bool MyoManager::connect()
         std::cerr << "Error: Myo not found" << std::endl;
         disconnect();
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                          "Error",
-                                          "Myo not found. Please, conncect the Myo armband and relunch Myo Mapper",
+                                          "Myo not found",
+                                          "Please, conncect the Myo armband and relaunch Myo Mapper",
                                           "OK");
         
     }
