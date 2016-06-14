@@ -154,7 +154,7 @@ void EmgS::setValues(std::array<int8_t, 8> &Emg)
     emg6slider.setValue(emg[6]);
     emg7slider.setValue(emg[7]);
     
-    if(enableOSCvalue) sender.send ("/Myo"+MyoIDString+"/"+labelWidget, (int) emg[0], (int) emg[1], (int) emg[2], (int) emg[3], (int) emg[4], (int) emg[5], (int) emg[6], (int) emg[7]);
+    if(enableOSCvalue) sender.send ("/Myo"+MyoIDString+"/"+labelWidget, (int) Emg[0], (int) Emg[1], (int) Emg[2], (int) Emg[3], (int) Emg[4], (int) Emg[5], (int) Emg[6], (int) Emg[7]);
 }
 
 float EmgS::getMav()
