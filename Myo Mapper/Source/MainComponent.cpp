@@ -67,11 +67,11 @@ void MainComponent::timerCallback()
     
     if (id >= myoData.size()) return;
     
-    emg.setValues(myoData[id].emg);
+    emg.setValues(myoData[id].EMG);
     gyro.setValues(myoData[id].gyro);
     acc.setValues(myoData[id].acceleration);
     orientation.setValues(myoData[id].orientation);
-    pose.setPoseLabel(myoData[id].pose);
+    pose.setPoseLabel(myoData[id].Pose);
 }
 
 void MainComponent::disconnectMyo()

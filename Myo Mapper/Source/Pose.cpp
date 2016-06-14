@@ -51,7 +51,7 @@ void Pose::setWidgetLabel(String WidgetLabel)
 
 void Pose::setPoseLabel(String LabelText)
 {
-    if(enableOSCvalue) sender.send ("/Myo/"+MyoIDString+"/"+labelWidget, (String) LabelText);
+    if(enableOSCvalue) sender.send ("/Myo"+MyoIDString+"/"+labelWidget, (String) LabelText);
     poseLabel.setText(LabelText, dontSendNotification);
 }
 

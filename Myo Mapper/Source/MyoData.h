@@ -15,11 +15,11 @@
 
 struct MyoData
 {
-    std::array<int8_t, 8> emg;
+    std::array<int8_t, 8> EMG;
     Vector3D< float > gyro;
     Vector3D< float > acceleration;
     Vector3D< float > orientation;
-    String pose;
+    String Pose;
 };
 
 

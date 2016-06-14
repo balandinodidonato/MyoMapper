@@ -139,7 +139,7 @@ void Rescale::setValue(float Value)
     
     scaled = jmap(centred, minOutputValue, maxOutputValue); // Scale value within the new range
         
-    if(enableOSCvalue) sender.send ("/Myo/"+MyoIDString+"/"+labelWidget, (float) scaled);
+    if(enableOSCvalue) sender.send ("/Myo"+MyoIDString+"/"+labelWidget, (float) scaled);
     
     mmSlider.setValue(scaled);
 }

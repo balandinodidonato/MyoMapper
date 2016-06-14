@@ -23,10 +23,19 @@ MyoListener::MyoListener()
 : onArm(false),
 isUnlocked(false),
 orientation(),
-currentPose(),
-emgSamples(),
+Pose(),
+EMG(),
 acceleration()
 {
+}
+
+
+void MyoListener::onConnect(myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion)
+{
+    knownMyos.push_back(myo);
+    myoData.resize(knownMyos.size());
+    myo->setStreamEmg(myo::Myo::streamEmgEnabled);
+    myo->unlock(myo::Myo::unlockHold);
 }
 
 // onUnpair() is called whenever the Myo is disconnected from Myo Connect by the user.
@@ -39,23 +48,17 @@ void MyoListener::onUnpair(myo::Myo* myo, uint64_t timestamp)
     yaw = 0.f;
     onArm = false;
     isUnlocked = false;
-    emgSamples.fill(0);
+    EMG.fill(0);
+    Pose = "None";
 }
 
 void MyoListener::onPair(myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion)
 {
     knownMyos.push_back(myo);
     myoData.resize(knownMyos.size());
-    
-    for (size_t i = 0; i < knownMyos.size(); ++i) {
-    printf("MYO: %zu",i); // here where to update the list of available myos
-    }
+    myo->setStreamEmg(myo::Myo::streamEmgEnabled);
+    myo->unlock(myo::Myo::unlockHold);
 }
-
-
-    // Walk through the list of Myo devices that we've seen pairing events for.
-
-
 
 // onOrientationData() is called whenever the Myo device provides its current orientation, which is represented
 // as a unit quaternion.
@@ -94,7 +97,9 @@ void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const m
 
 void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro)
 {
+
     int myoID = getMyoID(myo);
+    std::cout << "Myo Gyro: " << myoID << std::endl;
     if(myoID == -1) return;
 
     myoData[myoID].gyro.x = gyro.x();
@@ -105,7 +110,10 @@ void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::
 
 void MyoListener::onPose(myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
 {
-    currentPose = pose;
+    int myoID = getMyoID(myo);
+    if(myoID == -1) return;
+    
+    myoData[myoID].Pose = pose.toString();
 }
 
 // onArmSync() is called whenever Myo has recognized a Sync Gesture after someone has put it on their
@@ -119,9 +127,15 @@ void MyoListener::onArmSync(myo::Myo* myo, uint64_t timestamp, myo::Arm arm, myo
 
 void MyoListener::onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg)
 {
+    int myoID = getMyoID(myo);
+    std::cout << "Myo EMG: " << myoID << std::endl;
+    if(myoID == -1) return;
+    
     for (size_t i = 0; i < 8; i++) {
-    emgSamples[i] = emg[i];
+    myoData[myoID].EMG[i] = emg[i];
     }
+    
+
 }
 
 // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after
@@ -161,34 +175,3 @@ int MyoListener::getMyoID(myo::Myo* myo)
 
     return -1;
 }
-
-
-//unsigned int MyoListener::getNumberOfMyos() const
-//{
-//    return knownMyos.size();
-//}
-
-//Vector3D< float > MyoListener::getOrientation()
-//{
-//    return orientation;
-//}
-//
-//std::array<int8_t, 8> MyoListener::getEmg()
-//{
-//    return emgSamples;
-//}
-//
-//String MyoListener::getPose()
-//{
-//    return currentPose.toString();
-//}
-//
-//Vector3D< float > MyoListener::getAccel()
-//{
-//    return acceleration;
-//}
-//
-//Vector3D< float > MyoListener::getGyro()
-//{
-//    return Gyro;
-//}
