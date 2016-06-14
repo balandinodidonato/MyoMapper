@@ -42,6 +42,11 @@ bool MyoManager::connect()
     catch (const std::exception& e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
+        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                          "Error",
+                                          e.what(),
+                                          "OK");
+        
     }
     
     if (myo)
@@ -52,6 +57,11 @@ bool MyoManager::connect()
     {
         std::cerr << "Error: Myo not found" << std::endl;
         disconnect();
+        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                          "Error",
+                                          "Myo not found. Please, conncect the Myo armband and relunch Myo Mapper",
+                                          "OK");
+        
     }
 
     return isConnected;

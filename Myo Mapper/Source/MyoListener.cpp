@@ -99,7 +99,6 @@ void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::
 {
 
     int myoID = getMyoID(myo);
-    std::cout << "Myo Gyro: " << myoID << std::endl;
     if(myoID == -1) return;
 
     myoData[myoID].gyro.x = gyro.x();
@@ -128,7 +127,6 @@ void MyoListener::onArmSync(myo::Myo* myo, uint64_t timestamp, myo::Arm arm, myo
 void MyoListener::onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg)
 {
     int myoID = getMyoID(myo);
-    std::cout << "Myo EMG: " << myoID << std::endl;
     if(myoID == -1) return;
     
     for (size_t i = 0; i < 8; i++) {

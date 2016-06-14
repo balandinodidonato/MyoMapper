@@ -14,6 +14,8 @@
 
 MainComponent::MainComponent()
 {
+    getLookAndFeel().setUsingNativeAlertWindows(true);
+
     setSize(getParentWidth()*0.4, getParentHeight()*0.5);
     addAndMakeVisible(orientation);
     addAndMakeVisible(emg);
