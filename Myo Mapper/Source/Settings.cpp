@@ -36,11 +36,13 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(setHostAddress);
     setHostAddress.addListener(this);
     
-    myoList.setText("Available Myos");
+    myoList.setText("Select Myo");
     addAndMakeVisible(myoList);
     
     myoList.addItem("Myo n. 1", 1);
     myoList.addItem("Myo n. 2", 2);
+    myoList.addItem("Myo n. 3", 3);
+    myoList.addItem("Myo n. 4", 4);
     
     showOrientation.setButtonText("Show Orientation");
     addAndMakeVisible(showOrientation);
