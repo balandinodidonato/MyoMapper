@@ -32,6 +32,8 @@ public:
     int getShowPose();
     int getShowMav();
     bool getOSCsettingsStatus();
+    void setOSCsettingsStatus(bool OSCsettingsStatus);
+    
     
     int getOSCPort();
     String getHostAddress();
@@ -48,7 +50,7 @@ private:
     ToggleButton showMav;
     ToggleButton showPose;
     
-    bool oscSettingsChanged = true;
+    bool oscSettingsChanged = false;
     
     int oscPort = 5432;
     String hostAddress = "127.0.0.1";

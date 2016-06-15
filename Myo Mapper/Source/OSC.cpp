@@ -33,7 +33,6 @@ void OSC::connect()
                                           "Myo Mapper could not connect to UDP port "+String(oscPort)+".",
                                           "OK");
     oscConnection = true;
-    std::cout << "OSC connection " << oscConnection << std::endl;
 }
 
 void OSC::disconnect()
@@ -42,15 +41,10 @@ void OSC::disconnect()
     oscConnection = false;
 }
 
-void OSC::setPortSender(int Port){
+void OSC::setSender(String HostAddress, int Port){
     oscPort = Port;
     connect();
-}
-
-void OSC::setHostHaddress(String HostAddress)
-{
     hostAddress = HostAddress;
-    connect();
 }
 
 void OSC::sendOSC(int id,

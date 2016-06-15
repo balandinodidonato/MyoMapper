@@ -135,3 +135,8 @@ bool Settings::getOSCsettingsStatus()
     return oscSettingsChanged;
 }
 
+void Settings::setOSCsettingsStatus(bool changeStatus)
+{
+    oscSettingsChanged = changeStatus;
+}
+
