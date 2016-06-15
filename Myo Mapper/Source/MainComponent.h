@@ -12,11 +12,11 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "orientation.h"
-#include "emg.h"
-#include "imu.h"
+#include "mav.h"
 #include "settings.h"
 #include "MyoManager.h"
 #include "Pose.h"
+#include "OSC.h"
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
@@ -44,12 +44,11 @@ private:
     
     void timerCallback() override;
     
-    Emg emg;
-    IMU gyro;
-    IMU acc;
+    Mav mav;
     Settings settingsPannel;
     MyoManager myoManager;
     Pose pose;
+    OSC osc;
     
     int selectedMyo;
     

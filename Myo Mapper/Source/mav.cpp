@@ -8,20 +8,18 @@
   ==============================================================================
 */
 
-#include "emg.h"
+#include "mav.h"
 
-Emg::Emg()
+Mav::Mav()
 :
 labelWidget("Myo Data")
 {
     addAndMakeVisible(rescaleMav);
     rescaleMav.setLabelWidget("Mav");
-    emgS.setLabelWidget("Emg");
-    addChildComponent(emgS);
     rescaleMav.setTargetValue(1);
 }
 
-void Emg::paint(juce::Graphics &g)
+void Mav::paint(juce::Graphics &g)
 {
     g.fillAll(Colours::lightgrey);   // clear the background
     g.setColour(Colours::grey);
@@ -29,44 +27,52 @@ void Emg::paint(juce::Graphics &g)
     g.setColour(Colours::black);
 }
 
-void Emg::resized()
+void Mav::resized()
 {
     rescaleMav.setBounds(10, 10, getRight()-30, getHeight()-20);
 }
 
-void Emg::setValues(std::array<int8_t, 8> &EMG)
+void Mav::setValues(std::array<int8_t, 8> EMG)
 {
-    emgS.setValues(EMG);
-    rescaleMav.setValue(emgS.getMav());
+    rescaleMav.setValue(calculateMav(EMG));
 }
 
-void Emg::setOSCPort(int Port)
+void Mav::setOSCPort(int Port)
 {
     rescaleMav.setOSCPort(Port);
-    emgS.setOSCPort(Port);
 }
 
 
-void Emg::setOSChostAddress(juce::String HostAddress)
+void Mav::setOSChostAddress(juce::String HostAddress)
 {
     rescaleMav.setOSChostAddress(HostAddress);
-    emgS.setOSChostAddress(HostAddress);
 }
 
-std::array<int8_t, 8> Emg::getEmg()
+float Mav::getMav()
 {
-    return emgS.getEMG();
+    return mav;
 }
 
-float Emg::getMav()
+void Mav::setMyoID(int MyoID)
 {
-    return emgS.getMav();
-}
-
-void Emg::setMyoID(int MyoID)
-{
-    emgS.setMyoID(MyoID);
     rescaleMav.setMyoID(MyoID);
 }
 
-
+float Mav::calculateMav(std::array<int8_t, 8> EMG)
+{
+    float emgSum = 0;
+    float emgScaled = 0;
+    mav = 0;
+    std::array<float, 8> emg = {0, 0, 0, 0, 0, 0, 0, 0};
+    
+    for (int i=0; i<8; i++)
+    {
+        emg[i] = abs(EMG[i]);
+        emgScaled = emg[i]*0.0078125;
+        emgSum = emgSum + emgScaled;
+    }
+    
+    mav = emgSum * 0.125;
+    
+    return mav;
+}

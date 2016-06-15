@@ -6,6 +6,8 @@
               companyEmail="contact@integra.io ">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
+      <FILE id="lRkxqB" name="OSC.cpp" compile="1" resource="0" file="Source/OSC.cpp"/>
+      <FILE id="TOvZW6" name="OSC.h" compile="0" resource="0" file="Source/OSC.h"/>
       <FILE id="Ot6Nk3" name="Settings.cpp" compile="1" resource="0" file="Source/Settings.cpp"/>
       <FILE id="h8i1pe" name="Settings.h" compile="0" resource="0" file="Source/Settings.h"/>
       <FILE id="BDIoaP" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
@@ -19,16 +21,12 @@
       <FILE id="POB1yB" name="MyoManager.cpp" compile="1" resource="0" file="Source/MyoManager.cpp"/>
       <FILE id="D0Y8rk" name="MyoListener.h" compile="0" resource="0" file="Source/MyoListener.h"/>
       <FILE id="hCEqvO" name="MyoListener.cpp" compile="1" resource="0" file="Source/MyoListener.cpp"/>
-      <FILE id="ON3coS" name="emgS.h" compile="0" resource="0" file="Source/emgS.h"/>
-      <FILE id="N10LrA" name="emgS.cpp" compile="1" resource="0" file="Source/emgS.cpp"/>
       <FILE id="cEBa54" name="orientation.h" compile="0" resource="0" file="Source/orientation.h"/>
       <FILE id="bkctpE" name="orientation.cpp" compile="1" resource="0" file="Source/orientation.cpp"/>
       <FILE id="Gzqd6E" name="rescale.h" compile="0" resource="0" file="Source/rescale.h"/>
       <FILE id="q0Or2R" name="rescale.cpp" compile="1" resource="0" file="Source/rescale.cpp"/>
-      <FILE id="DuDYqV" name="emg.h" compile="0" resource="0" file="Source/emg.h"/>
-      <FILE id="KlHUWG" name="emg.cpp" compile="1" resource="0" file="Source/emg.cpp"/>
-      <FILE id="IDXW2H" name="imu.h" compile="0" resource="0" file="Source/imu.h"/>
-      <FILE id="Byv0Sm" name="imu.cpp" compile="1" resource="0" file="Source/imu.cpp"/>
+      <FILE id="DuDYqV" name="mav.h" compile="0" resource="0" file="Source/mav.h"/>
+      <FILE id="KlHUWG" name="mav.cpp" compile="1" resource="0" file="Source/mav.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

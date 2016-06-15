@@ -22,15 +22,11 @@ class MyoListener : public myo::DeviceListener
 {
 public:
     MyoListener();
-//    Vector3D< float > getOrientation();
-//    Vector3D< float > getAccel();
-//    Vector3D<float> getGyro();
-//    String getPose();
     
     std::vector<MyoData> getMyoData() const;
-//    unsigned int getNumberOfMyos() const;
-    
-//    std::array<int8_t, 8> getEmg();
+    void setOSCPort (int Port);
+    void setOSChostAddress(String HostAddress);
+    void enableOSC(bool EnableOSC);
     
 private:
     
@@ -62,6 +58,7 @@ private:
     float yaw;
     float pitch;
     float roll;
+    int ID;
     
     std::vector<MyoData> myoData;
     String Pose;

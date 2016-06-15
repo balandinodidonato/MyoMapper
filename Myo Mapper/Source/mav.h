@@ -1,54 +1,55 @@
 /*
   ==============================================================================
 
-    imu.h
-    Created: 9 Jun 2016 11:06:35am
+    emg.h
+    Created: 8 Jun 2016 10:26:58pm
     Author:  Balandino Di Donato
 
   ==============================================================================
 */
 
-#ifndef IMU_H_INCLUDED
-#define IMU_H_INCLUDED
+#ifndef EMG_H_INCLUDED
+#define EMG_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "rescale.h"
 
 #include <array>
 
 //==============================================================================
 /*
 */
-class IMU    : public Component
+class Mav    : public Component
 {
 public:
-    IMU();
-
-    ~IMU() {};
+    Mav();
+    ~Mav() {};
 
     void paint (Graphics& g) override;
     void resized() override;
-    void setWidgetLabel(String WidgetLabel);
-    void setValues(Vector3D< float > &ImuValues);
+    void setValues(std::array<int8_t, 8> EMG);
     void setOSCPort (int Port);
     void setOSChostAddress(String HostAddress);
-    void enableOSC(bool EnableOSC);
+    std::array<int8_t, 8> getEmg();
+    float getMav();
     void setMyoID(int MyoID);
     
 private:
     
     String labelWidget;
     
-    int OSCport;
-    bool enableOSCvalue;
-    String MyoIDString;
+    float calculateMav(std::array<int8_t, 8> EMG);
     
+    
+    Rescale rescaleMav;
     int oscPort;
     String hostAddress;
-
-    OSCSender sender;
-    
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (IMU)
+    std::array<int8_t, 8> EMGs;
+    String MyoIDString;
+    float mav;
+        
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Mav)
 };
 
 
-#endif  // IMU_H_INCLUDED
+#endif  // EMG_H_INCLUDED
