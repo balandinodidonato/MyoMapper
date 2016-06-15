@@ -23,9 +23,10 @@ MyoListener::MyoListener()
 : onArm(false),
 isUnlocked(false),
 orientation(),
-Pose(),
-EMG(),
-acceleration()
+emgRaw(),
+emgScaled(),
+acceleration(),
+Pose()
 {
 }
 
@@ -48,12 +49,24 @@ void MyoListener::onUnpair(myo::Myo* myo, uint64_t timestamp)
     yaw = 0.f;
     onArm = false;
     isUnlocked = false;
-    EMG.fill(0);
+    emgRaw.fill(0);
+    emgScaled.fill(0);
     Pose = "None";
 }
 
 void MyoListener::onPair(myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion)
 {
+    // We've added a Myo.
+    // Let's initialise the.
+    roll = 0.f;
+    pitch = 0.f;
+    yaw = 0.f;
+    onArm = false;
+    isUnlocked = false;
+    emgRaw.fill(0);
+    emgScaled.fill(0);
+    Pose = "None";
+    
     knownMyos.push_back(myo);
     myoData.resize(knownMyos.size());
     myo->setStreamEmg(myo::Myo::streamEmgEnabled);
@@ -130,10 +143,9 @@ void MyoListener::onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg
     if(myoID == -1) return;
     
     for (size_t i = 0; i < 8; i++) {
-    myoData[myoID].EMG[i] = emg[i];
+    myoData[myoID].emgRaw[i] = emg[i];
+    myoData[myoID].emgScaled[i] = abs(emg[i])*0.0078125f;
     }
-    
-
 }
 
 // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after

@@ -54,7 +54,8 @@ void OSC::setHostHaddress(String HostAddress)
 }
 
 void OSC::sendOSC(int id,
-                  std::array<int8_t, 8> emg,
+                  std::array<int8_t, 8> emgRaw,
+                  std::array<float, 8> emgScaled,
                   float mav,
                   Vector3D< float > gyro,
                   Vector3D< float > acceleration,
@@ -64,7 +65,8 @@ void OSC::sendOSC(int id,
 {
     String ID = String (id+1);
     
-    sender.send ("/myo"+ID+"/emg", (int) emg[0], (int) emg[1], (int) emg[2], (int) emg[3], (int) emg[4], (int) emg[5], (int) emg[6], (int) emg[7]);
+    sender.send ("/myo"+ID+"/emgRaw", (int) emgRaw[0], (int) emgRaw[1], (int) emgRaw[2], (int) emgRaw[3], (int) emgRaw[4], (int) emgRaw[5], (int) emgRaw[6], (int) emgRaw[7]);
+    sender.send ("/myo"+ID+"/emgScaled", (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);
     sender.send("/myo"+ID+"/mav", (float) mav);
     sender.send("/myo"+ID+"/gyro", (float) gyro.x, (float) gyro.y, (float) gyro.z);
     sender.send("/myo"+ID+"/acceleration", (float) acceleration.x, (float) acceleration.y, (float) acceleration.z);

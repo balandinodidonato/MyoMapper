@@ -51,7 +51,8 @@ private:
     myo::Arm whichArm;
     bool isUnlocked;
     Vector3D< float > orientation;
-    std::array<int8_t, 8> EMG;
+    std::array<int8_t, 8> emgRaw;
+    std::array<float_t, 8> emgScaled;
     std::vector<myo::Myo*> knownMyos;
     Vector3D<float> acceleration;
     Vector3D<float> Gyro;

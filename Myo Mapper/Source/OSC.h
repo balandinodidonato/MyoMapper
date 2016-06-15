@@ -25,7 +25,8 @@ public:
     void setPortSender(int Port);
     void setHostHaddress(String HostAddress);
     void sendOSC(int id,
-                 std::array<int8_t, 8> emg,
+                 std::array<int8_t, 8> emgRaw,
+                 std::array<float, 8> emgScaled,
                  float mav,
                  Vector3D< float > gyro,
                  Vector3D< float > acceleration,
