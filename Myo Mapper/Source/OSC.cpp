@@ -23,21 +23,26 @@ oscConnectionReceiver(false)
 {
     receiver.addListener (this, "/myo/vibrate");
     
-    receiver.addListener(this, "/myo/yaw/centre");
-    receiver.addListener(this, "/myo/yaw/rescale/setMin");
-    receiver.addListener(this, "/myo/yaw/rescale/setMax");
+    String myoData = "null";
     
-    receiver.addListener(this, "/myo/pitch/centre");
-    receiver.addListener(this, "/myo/pitch/rescale/setMin");
-    receiver.addListener(this, "/myo/pitch/rescale/setMax");
-    
-    receiver.addListener(this, "/myo/roll/centre");
-    receiver.addListener(this, "/myo/roll/rescale/setMin");
-    receiver.addListener(this, "/myo/roll/rescale/setMax");
-    
-    receiver.addListener(this, "/myo/mav/centre");
-    receiver.addListener(this, "/myo/mav/rescale/setMin");
-    receiver.addListener(this, "/myo/mav/rescale/setMax");
+    for(unsigned i = 0; i<4; i++){
+        
+        if(i==0) myoData = "yaw";
+        if(i==1) myoData = "pitch";
+        if(i==2) myoData = "roll";
+        if(i==3) myoData = "mav";
+        
+        String action = "null";
+        
+        for(unsigned y = 0; y<4; y++){
+            
+            if(i==0) action = "/centre";
+            if(i==1) action = "/rescale/setMin";
+            if(i==2) action = "/rescale/setMax";
+            
+            receiver.addListener(this, "/myo/"+myoData+action);
+        }
+    }
 }
 
 OSC::~OSC()
