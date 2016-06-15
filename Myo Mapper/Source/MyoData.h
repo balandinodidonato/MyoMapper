@@ -18,7 +18,8 @@ struct MyoData
     std::array<int8_t, 8> EMG;
     Vector3D< float > gyro;
     Vector3D< float > acceleration;
-    Vector3D< float > orientation;
+    Vector3D< float > orientationScaled;
+    Vector3D< float > orientationRaw;
     String Pose;
 };
 

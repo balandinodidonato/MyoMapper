@@ -26,9 +26,11 @@ public:
     void setHostHaddress(String HostAddress);
     void sendOSC(int id,
                  std::array<int8_t, 8> emg,
+                 float mav,
                  Vector3D< float > gyro,
                  Vector3D< float > acceleration,
-                 Vector3D< float > orientation,
+                 Vector3D< float > orientationRaw,
+                 Vector3D< float > orientationScaled,
                  String Pose);
     void connect();
     void disconnect();

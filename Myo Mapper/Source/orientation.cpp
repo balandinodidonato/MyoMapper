@@ -48,18 +48,13 @@ void Orientation::setValues(Vector3D< float > Orientation)
     rescaleRoll.setValue(Orientation.z);
 }
 
-void Orientation::setOSCPort(int Port)
+Vector3D<float> Orientation::getValue()
 {
-    rescaleYaw.setOSCPort(Port);
-    rescaleRoll.setOSCPort(Port);
-    rescalePitch.setOSCPort(Port);
-}
-
-void Orientation::setHostAddress(juce::String HostAddress)
-{
-    rescaleYaw.setOSChostAddress(HostAddress);
-    rescalePitch.setOSChostAddress(HostAddress);
-    rescaleRoll.setOSChostAddress(HostAddress);
+    orientationScaled.x = rescaleYaw.getValue();
+    orientationScaled.y = rescalePitch.getValue();
+    orientationScaled.z = rescaleYaw.getValue();
+    
+    return orientationScaled;
 }
 
 float Orientation::getYaw()
@@ -75,13 +70,6 @@ float Orientation::getPitch()
 float Orientation::getRoll()
 {
     return rescaleRoll.getValue();
-}
-
-void Orientation::setMyoID(int MyoID)
-{
-    rescaleYaw.setMyoID(MyoID);
-    rescalePitch.setMyoID(MyoID);
-    rescaleRoll.setMyoID(MyoID);
 }
 
 

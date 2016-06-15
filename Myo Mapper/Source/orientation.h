@@ -28,9 +28,7 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void setValues (Vector3D< float >);
-    void setOSCPort (int Port);
-    void setHostAddress(String HostAddress);
-    void setMyoID(int MyoID);
+    Vector3D<float> getValue();
     
     float getYaw();
     float getPitch();
@@ -41,6 +39,7 @@ private:
     Rescale rescaleYaw;
     Rescale rescalePitch;
     Rescale rescaleRoll;
+    Vector3D<float> orientationScaled;
 
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Orientation)

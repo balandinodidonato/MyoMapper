@@ -35,8 +35,6 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void disconnectMyo();
-    void setOSC();
-    void setMyoID(int ID);
 
     Orientation orientation;
     

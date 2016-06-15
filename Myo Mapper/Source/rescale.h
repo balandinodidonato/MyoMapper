@@ -35,11 +35,7 @@ public:
     void setLabelWidget (String LabelWidget);
     void setValue (float Value);
     float getValue();
-    void setOSCPort (int Port);
-    void setOSChostAddress(String HostAddress);
-    void enableOSC(bool EnableOSC);
     void setTargetValue(float TargetValue);
-    void setMyoID(int MyoID);
 
 private:
     

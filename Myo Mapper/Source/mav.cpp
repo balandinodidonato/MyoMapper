@@ -37,25 +37,10 @@ void Mav::setValues(std::array<int8_t, 8> EMG)
     rescaleMav.setValue(calculateMav(EMG));
 }
 
-void Mav::setOSCPort(int Port)
-{
-    rescaleMav.setOSCPort(Port);
-}
-
-
-void Mav::setOSChostAddress(juce::String HostAddress)
-{
-    rescaleMav.setOSChostAddress(HostAddress);
-}
-
 float Mav::getMav()
 {
-    return mav;
-}
-
-void Mav::setMyoID(int MyoID)
-{
-    rescaleMav.setMyoID(MyoID);
+    return rescaleMav.getValue();
+    std::cout << "mav called - mav: " << rescaleMav.getValue() << std::endl;
 }
 
 float Mav::calculateMav(std::array<int8_t, 8> EMG)

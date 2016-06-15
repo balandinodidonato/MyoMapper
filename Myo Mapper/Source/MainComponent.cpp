@@ -38,9 +38,13 @@ void MainComponent::paint(juce::Graphics &g)
     orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.5)-15)*settingsPannel.getShowOrientation());
     mav.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowMav(), (getHeight()*0.16)*settingsPannel.getShowMav());
     pose.setBounds(orientation.getX(), mav.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
-    
-    if (settingsPannel.getOSCsettingsStatus())
-        setOSC();
+//    
+//    if (settingsPannel.getOSCsettingsStatus())
+//    {
+//        osc.setPortSender(settingsPannel.getOSCPort());
+//        osc.setHostHaddress(settingsPannel.getHostAddress());
+//    }
+
 }
 
 void MainComponent::resized()
@@ -61,36 +65,20 @@ void MainComponent::timerCallback()
     
     unsigned int id = settingsPannel.getSelectedMyo();
     
-    setMyoID(id);
+   // setMyoID(id);
     
     if (id >= myoData.size()) return;
     
-   
-    
-    osc.sendOSC(id, myoData[id].EMG, myoData[id].gyro, myoData[id].acceleration, myoData[id].orientation, myoData[id].Pose);
-    
     mav.setValues(myoData[id].EMG);
-    orientation.setValues(myoData[id].orientation);
+    orientation.setValues(myoData[id].orientationRaw);
     pose.setPoseLabel(myoData[id].Pose);
-
+    
+    osc.sendOSC(id, myoData[id].EMG, mav.getMav(), myoData[id].gyro, myoData[id].acceleration, myoData[id].orientationRaw, orientation.getValue(), myoData[id].Pose);
 }
 
 void MainComponent::disconnectMyo()
 {
     myoManager.disconnect();
-}
-
-void MainComponent::setOSC()
-{
-    orientation.setOSCPort(settingsPannel.getOSCPort());
-    
-    orientation.setHostAddress(settingsPannel.getHostAddress());
-
-}
-
-void MainComponent::setMyoID(int ID)
-{
-    orientation.setMyoID(ID);
 }
 
 

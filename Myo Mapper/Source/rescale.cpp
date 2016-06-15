@@ -19,10 +19,8 @@ targetValue(0),        // Target value to centre to
 maxOutputValue(1.0),
 minOutputValue(0.0),
 scaled(0),
-input(0),
-enableOSCvalue(true)    // enable osc messages
+input(0)
 {
-    sender.connect (hostAddress, oscPort);
     
     addAndMakeVisible(centre);
     centre.setButtonText ("Centre");
@@ -138,8 +136,6 @@ void Rescale::setValue(float Value)
     { centred = 1-centred; }
     
     scaled = jmap(centred, minOutputValue, maxOutputValue); // Scale value within the new range
-        
-    if(enableOSCvalue) sender.send ("/Myo"+MyoIDString+"/"+labelWidget, (float) scaled);
     
     mmSlider.setValue(scaled);
 }
@@ -149,31 +145,9 @@ float Rescale::getValue()
     return scaled;
 }
 
-void Rescale::setOSCPort(int Port)
-{
-    oscPort = Port;
-    sender.connect(hostAddress, oscPort);
-}
-
-void Rescale::setOSChostAddress(juce::String HostAddress)
-{
-    hostAddress = HostAddress;
-    sender.connect(hostAddress, oscPort);
-}
-
-void Rescale::enableOSC(bool EnableOSC)
-{
-    enableOSCvalue = EnableOSC;
-}
-
 void Rescale::setTargetValue (float TargetValue)
 {
     targetValue = TargetValue;
-}
-
-void Rescale::setMyoID(int MyoID)
-{
-    MyoIDString = String(MyoID+1);
 }
 
 

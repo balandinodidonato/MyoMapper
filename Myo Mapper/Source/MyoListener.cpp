@@ -80,9 +80,9 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
     int myoID = getMyoID(myo);
     if(myoID == -1) return;
 
-    myoData[myoID].orientation.x = yaw;
-    myoData[myoID].orientation.y = pitch;
-    myoData[myoID].orientation.z = roll;
+    myoData[myoID].orientationRaw.x = yaw;
+    myoData[myoID].orientationRaw.y = pitch;
+    myoData[myoID].orientationRaw.z = roll;
 }
 
 void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& accel)

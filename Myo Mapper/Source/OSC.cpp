@@ -55,16 +55,20 @@ void OSC::setHostHaddress(String HostAddress)
 
 void OSC::sendOSC(int id,
                   std::array<int8_t, 8> emg,
+                  float mav,
                   Vector3D< float > gyro,
                   Vector3D< float > acceleration,
-                  Vector3D< float > orientation,
+                  Vector3D< float > orientationRaw,
+                  Vector3D< float > orientationScaled,
                   String Pose)
 {
-    String ID = String (id);
+    String ID = String (id+1);
     
-    sender.send ("/myo/"+ID+"/emg", (int) emg[0], (int) emg[1], (int) emg[2], (int) emg[3], (int) emg[4], (int) emg[5], (int) emg[6], (int) emg[7]);
-    sender.send("/myo/"+ID+"/gyro", (float) gyro.x, (float) gyro.y, (float) gyro.z);
-    sender.send("/myo/"+ID+"/acceleration", (float) acceleration.x, (float) acceleration.y, (float) acceleration.z);
-    sender.send("/myo/"+ID+"/orientation", (float) orientation.x, (float) orientation.y, (float) orientation.z);
-    sender.send("/myo/"+ID+"/pose", (String) Pose);
+    sender.send ("/myo"+ID+"/emg", (int) emg[0], (int) emg[1], (int) emg[2], (int) emg[3], (int) emg[4], (int) emg[5], (int) emg[6], (int) emg[7]);
+    sender.send("/myo"+ID+"/mav", (float) mav);
+    sender.send("/myo"+ID+"/gyro", (float) gyro.x, (float) gyro.y, (float) gyro.z);
+    sender.send("/myo"+ID+"/acceleration", (float) acceleration.x, (float) acceleration.y, (float) acceleration.z);
+    sender.send("/myo"+ID+"/orientationRaw", (float) orientationRaw.x, (float) orientationRaw.y, (float) orientationRaw.z);
+    sender.send("/myo"+ID+"/orientationScaled", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z);
+    sender.send("/myo"+ID+"/pose", (String) Pose);
 }
