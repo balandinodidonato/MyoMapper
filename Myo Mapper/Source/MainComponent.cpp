@@ -74,6 +74,12 @@ void MainComponent::timerCallback()
     pose.setPoseLabel(myoData[id].pose+" - "+String(myoData[id].poseID));
     
     osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, mav.getMav(), myoData[id].gyro, myoData[id].acceleration, myoData[id].orientationRaw, orientation.getValue(), myoData[id].pose, myoData[id].poseID);
+    
+    if(osc.getVibrateTest())
+    {
+        myoManager.vibrate(osc.getVibration());
+        osc.setVibrateTest(false);
+    }
 }
 
 void MainComponent::disconnectMyoAndOSC()

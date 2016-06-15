@@ -30,6 +30,8 @@ public:
     void labelTextChanged(juce::Label *labelThatHasChanged) override;
     void sliderValueChanged(juce::Slider *slider) override;
     
+    void vibrate();
+    
     int getShowOrientation();
     int getShowPose();
     int getShowMav();

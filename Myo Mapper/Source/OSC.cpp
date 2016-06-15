@@ -15,6 +15,7 @@
 //==============================================================================
 OSC::OSC()
 :
+vibrationType("null"),
 oscPortSender(5432),
 oscPortReceiver(5431),
 hostAddress("127.0.0.1"),
@@ -130,7 +131,9 @@ void OSC::oscMessageReceived(const OSCMessage& message)
     {
         if (message.size() == 1 && message[0].isString())
         {
-            std::cout << "vibrate: " << message[0].getString() << std::endl;
+                vibrationType =  message[0].getString();
+                vibrateTest = true;
+                std::cout << "vibrate: " << vibrationType << std::endl;
         }
     }
 
@@ -188,4 +191,20 @@ void OSC::oscMessageReceived(const OSCMessage& message)
 
     }
 }
+
+String OSC::getVibration()
+{
+    return vibrationType;
+}
+
+bool OSC::getVibrateTest()
+{
+    return vibrateTest;
+}
+
+void OSC::setVibrateTest(bool VibrateTest)
+{
+    vibrateTest = false;
+}
+
 

@@ -140,4 +140,3 @@ void Settings::setOSCsettingsStatusSender(bool changeStatus)
 {
     oscSettingsChanged = changeStatus;
 }
-

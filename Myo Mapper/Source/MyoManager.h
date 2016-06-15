@@ -27,6 +27,8 @@ public:
     void startPoll();
     void stopPoll();
     
+    void vibrate(String VibrationType);
+        
     std::vector<MyoData> getMyoData(bool &success) const;
 
 private:
@@ -39,8 +41,5 @@ private:
     myo::Hub *hub;
     myo::Myo *myo;
 };
-
-
-
 
 #endif  // MYOMANAGER_H_INCLUDED
