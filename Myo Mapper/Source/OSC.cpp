@@ -128,7 +128,8 @@ void OSC::oscMessageReceived(const OSCMessage& message)
             std::cout << "vibrate: " << message[0].getString() << std::endl;
         }
     }
-    
+
+// ---------------- Centre/ Rescale yaw, pitch and roll
     String myoData = "null";
     
     for(unsigned i = 0; i<4; i++){
@@ -140,26 +141,46 @@ void OSC::oscMessageReceived(const OSCMessage& message)
     
         if (message.getAddressPattern() == "/myo/"+myoData+"/centre")
         {
-            if (message.size() == 1 && message[0].isInt32())
+            if (message.size() == 1)
             {
-            std::cout << myoData+" centre: " << message[0].getInt32() << std::endl;
+                if (message[0].isInt32())
+                {
+                    std::cout << myoData+" Centre: " << message[0].getInt32() << std::endl;
+                }
+                else return;
             }
         }
         if (message.getAddressPattern() == "/myo/"+myoData+"/rescale/setMin")
         {
-            if (message.size() == 1 && message[0].isInt32())
+            if (message.size() == 1)
             {
-            std::cout << myoData+" set min: " << message[0].getInt32() << std::endl;
+                if (message[0].isFloat32())
+                {
+                    std::cout << myoData+" set max float: " << message[0].getFloat32() << std::endl;
+                }
+                if (message[0].isInt32())
+                {
+                    std::cout << myoData+" set max int: " << message[0].getInt32() << std::endl;
+                }
+                else return;
             }
         }
         if (message.getAddressPattern() == "/myo/"+myoData+"/rescale/setMax")
         {
-            if (message.size() == 1 && message[0].isInt32())
+            if (message.size() == 1)
             {
-                std::cout << myoData+" set max: " << message[0].getInt32() << std::endl;
+                if (message[0].isFloat32())
+                {
+                    std::cout << myoData+" set max float: " << message[0].getFloat32() << std::endl;
+                }
+                if (message[0].isInt32())
+                {
+                    std::cout << myoData+" set max int: " << message[0].getInt32() << std::endl;
+                }
+            else return;
             }
         }
+
     }
 }
-
 
