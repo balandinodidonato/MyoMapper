@@ -37,6 +37,10 @@ bool MyoManager::connect()
         {
             std::cout << "Attempting to find a Myo..." << std::endl;
             myo = hub->waitForMyo(10000);
+            AlertWindow::showMessageBoxAsync (AlertWindow::InfoIcon,
+                                              "Looking for a Myo",
+                                              "",
+                                              "OK");
         }
     }
     catch (const std::exception& e)
@@ -59,7 +63,7 @@ bool MyoManager::connect()
         disconnect();
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "Myo not found",
-                                          "Please, conncect the Myo armband and relaunch Myo Mapper",
+                                          "Please, conncect the Myo armband and relaunch Myo Mapper.",
                                           "OK");
         
     }
