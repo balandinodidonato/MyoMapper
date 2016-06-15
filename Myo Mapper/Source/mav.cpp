@@ -32,9 +32,9 @@ void Mav::resized()
     rescaleMav.setBounds(10, 10, getRight()-30, getHeight()-20);
 }
 
-void Mav::setValues(std::array<int8_t, 8> EMG)
+void Mav::setValues(std::array<float_t, 8> emgScaled)
 {
-    rescaleMav.setValue(calculateMav(EMG));
+    rescaleMav.setValue(calculateMav(emgScaled));
 }
 
 float Mav::getMav()
@@ -43,21 +43,17 @@ float Mav::getMav()
     std::cout << "mav called - mav: " << rescaleMav.getValue() << std::endl;
 }
 
-float Mav::calculateMav(std::array<int8_t, 8> EMG)
+float Mav::calculateMav(std::array<float_t, 8> emgScaled)
 {
     float emgSum = 0;
-    float emgScaled = 0;
     mav = 0;
-    std::array<float, 8> emg = {0, 0, 0, 0, 0, 0, 0, 0};
     
     for (int i=0; i<8; i++)
     {
-        emg[i] = abs(EMG[i]);
-        emgScaled = emg[i]*0.0078125;
-        emgSum = emgSum + emgScaled;
+        emgSum = emgSum + emgScaled[i];
     }
     
-    mav = emgSum * 0.125;
+    mav = emgSum * 1.25;
     
     return mav;
 }

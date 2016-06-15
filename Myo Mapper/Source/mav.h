@@ -27,7 +27,7 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void setValues(std::array<int8_t, 8> EMG);
+    void setValues(std::array<float_t, 8> emgScaled);
     std::array<int8_t, 8> getEmg();
     float getMav();
     
@@ -35,7 +35,7 @@ private:
     
     String labelWidget;
     
-    float calculateMav(std::array<int8_t, 8> EMG);
+    float calculateMav(std::array<float_t, 8> emgScaled);
     
     
     Rescale rescaleMav;
