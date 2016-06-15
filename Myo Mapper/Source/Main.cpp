@@ -57,7 +57,6 @@ public:
 
         void closeButtonPressed() override
         {
-
             MainComponent().disconnectMyoAndOSC();
             JUCEApplication::getInstance()->systemRequestedQuit();
         }

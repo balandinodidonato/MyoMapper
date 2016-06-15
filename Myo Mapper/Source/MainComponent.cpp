@@ -25,20 +25,21 @@ MainComponent::MainComponent()
     myoManager.connect();
     myoManager.startPoll();
     
-    osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPort());
-    osc.connect();
+    osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
+    osc.connectSender();
+    osc.connectReceiver();
     
     startTimer(25);
 }
 
 void MainComponent::paint(juce::Graphics &g)
 {
-    if(settingsPannel.getOSCsettingsStatus())
+    if(settingsPannel.getOSCsettingsStatusSender())
     {
-        osc.disconnect();
-        osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPort());
-        settingsPannel.setOSCsettingsStatus(false);
-        osc.connect();
+        osc.disconnectSender();
+        osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
+        settingsPannel.setOSCsettingsStatusSender(false);
+        osc.connectSender();
     }
     
     g.fillAll(Colours::grey);
@@ -78,7 +79,8 @@ void MainComponent::timerCallback()
 void MainComponent::disconnectMyoAndOSC()
 {
     myoManager.disconnect();
-    osc.disconnect();
+    osc.disconnectSender();
+    osc.disconnectReceiver();
 }
 
 

@@ -15,35 +15,55 @@
 //==============================================================================
 OSC::OSC()
 :
-oscPort(5432),
+oscPortSender(5432),
+oscPortReceiver(5431),
 hostAddress("127.0.0.1"),
-oscConnection(false)
+oscConnectionSender(false),
+oscConnectionReceiver(false)
 {
+    receiver.addListener (this, "/myo/vibrate");
+    
+    receiver.addListener(this, "/myo/yaw/centre");
+    receiver.addListener(this, "/myo/yaw/rescale/setMin");
+    receiver.addListener(this, "/myo/yaw/rescale/setMax");
+    
+    receiver.addListener(this, "/myo/pitch/centre");
+    receiver.addListener(this, "/myo/pitch/rescale/setMin");
+    receiver.addListener(this, "/myo/pitch/rescale/setMax");
+    
+    receiver.addListener(this, "/myo/roll/centre");
+    receiver.addListener(this, "/myo/roll/rescale/setMin");
+    receiver.addListener(this, "/myo/roll/rescale/setMax");
+    
+    receiver.addListener(this, "/myo/mav/centre");
+    receiver.addListener(this, "/myo/mav/rescale/setMin");
+    receiver.addListener(this, "/myo/mav/rescale/setMax");
 }
 
 OSC::~OSC()
 {
 }
 
-void OSC::connect()
+// ==============   SENDER   ==============
+
+void OSC::connectSender()
 {
-    if (! sender.connect (hostAddress, oscPort))
+    if (! sender.connect (hostAddress, oscPortSender))
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                          "Open Sound Control",
-                                          "Myo Mapper could not connect to UDP port "+String(oscPort)+".",
+                                          "OSC Sender",
+                                          "Myo Mapper could not connect to UDP port "+String(oscPortSender)+".",
                                           "OK");
-    oscConnection = true;
+    oscConnectionSender = true;
 }
 
-void OSC::disconnect()
+void OSC::disconnectSender()
 {
     sender.disconnect();
-    oscConnection = false;
+    oscConnectionSender = false;
 }
 
 void OSC::setSender(String HostAddress, int Port){
-    oscPort = Port;
-    connect();
+    oscPortSender = Port;
     hostAddress = HostAddress;
 }
 
@@ -70,3 +90,76 @@ void OSC::sendOSC(int id,
     sender.send("/myo"+ID+"/orientationScaled", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z);
     sender.send("/myo"+ID+"/pose", (int) poseID, (String) pose);
 }
+
+// ============== END SENDER ==============
+
+
+// ==============  RECEIVER  ==============
+
+void OSC::setReceiver(int Port){
+    oscPortReceiver = Port;
+}
+
+void OSC::connectReceiver()
+{
+    if (! receiver.connect (oscPortReceiver))
+        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                          "OSC Receiver",
+                                          "Myo Mapper could not connect to UDP port "+String(oscPortReceiver)+".",
+                                          "OK");
+    
+    oscConnectionReceiver = true;
+}
+
+void OSC::disconnectReceiver()
+{
+    receiver.disconnect();
+    oscConnectionReceiver = false;
+}
+
+void OSC::oscMessageReceived(const OSCMessage& message)
+{
+    
+// ---------------- Vibrate
+    if (message.getAddressPattern() == "/myo/vibrate")
+    {
+        if (message.size() == 1 && message[0].isString())
+        {
+            std::cout << "vibrate: " << message[0].getString() << std::endl;
+        }
+    }
+    
+    String myoData = "null";
+    
+    for(unsigned i = 0; i<4; i++){
+        
+        if(i==0) myoData = "yaw";
+        if(i==1) myoData = "pitch";
+        if(i==2) myoData = "roll";
+        if(i==3) myoData = "mav";
+    
+        if (message.getAddressPattern() == "/myo/"+myoData+"/centre")
+        {
+            if (message.size() == 1 && message[0].isInt32())
+            {
+            std::cout << myoData+" centre: " << message[0].getInt32() << std::endl;
+            }
+        }
+        if (message.getAddressPattern() == "/myo/"+myoData+"/rescale/setMin")
+        {
+            if (message.size() == 1 && message[0].isInt32())
+            {
+            std::cout << myoData+" set min: " << message[0].getInt32() << std::endl;
+            }
+        }
+        if (message.getAddressPattern() == "/myo/"+myoData+"/rescale/setMax")
+        {
+            if (message.size() == 1 && message[0].isInt32())
+            {
+                std::cout << myoData+" set max: " << message[0].getInt32() << std::endl;
+            }
+        }
+    }
+}
+
+

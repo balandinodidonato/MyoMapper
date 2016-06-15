@@ -26,33 +26,37 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    
     void labelTextChanged(juce::Label *labelThatHasChanged) override;
     void sliderValueChanged(juce::Slider *slider) override;
+    
     int getShowOrientation();
     int getShowPose();
     int getShowMav();
-    bool getOSCsettingsStatus();
-    void setOSCsettingsStatus(bool OSCsettingsStatus);
     
+    bool getOSCsettingsStatusSender();
+    void setOSCsettingsStatusSender(bool OSCsettingsStatusSender);
     
-    int getOSCPort();
+    int getOSCPortSender();
     String getHostAddress();
     int getSelectedMyo();
     
 private:
-    String labelWidget = "Settings";
-    Slider oscPortSlider;
+    Slider oscPortSliderSender;
+    Label oscPortLabelSender;
+    
     Label hostAddressTitle;
     Label setHostAddress;
-    Label oscPortLabel;
+    
     ComboBox myoList;
+    
     ToggleButton showOrientation;
     ToggleButton showMav;
     ToggleButton showPose;
     
     bool oscSettingsChanged = false;
     
-    int oscPort = 5432;
+    int oscPortSender = 5432;
     String hostAddress = "127.0.0.1";
     
     

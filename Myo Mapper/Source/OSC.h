@@ -16,13 +16,17 @@
 //==============================================================================
 /*
 */
-class OSC    : public Component
+class OSC    : public Component,
+               private OSCReceiver,
+               private OSCReceiver::ListenerWithOSCAddress<OSCReceiver::MessageLoopCallback>
+
 {
 public:
     OSC();
     ~OSC();
     
     void setSender(String HostAddress, int Port);
+    void setReceiver(int Port);
     void sendOSC(int id,
                  std::array<int8_t, 8> emgRaw,
                  std::array<float, 8> emgScaled,
@@ -33,16 +37,30 @@ public:
                  Vector3D< float > orientationScaled,
                  String pose,
                  int poseID);
-    void connect();
-    void disconnect();
+    
+    void connectSender();
+    void connectReceiver();
+    void disconnectSender();
+    void disconnectReceiver();
+    
+    void oscMessageReceived (const OSCMessage& message) override;
+    void getOSCMessage(const OSCMessage& message, String myoData);
+
 
 private:
     
     OSCSender sender;
-    int oscPort;
+    OSCReceiver receiver;
+    
+    int oscPortSender;
+    int oscPortReceiver;
     String hostAddress;
+    
     bool enableOSCvalue;
-    bool oscConnection;
+    
+    bool oscConnectionSender;
+    bool oscConnectionReceiver;
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)
 };
