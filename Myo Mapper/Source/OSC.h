@@ -31,7 +31,8 @@ public:
                  Vector3D< float > acceleration,
                  Vector3D< float > orientationRaw,
                  Vector3D< float > orientationScaled,
-                 String Pose);
+                 String pose,
+                 int poseID);
     void connect();
     void disconnect();
 

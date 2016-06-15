@@ -24,26 +24,10 @@ public:
 
     void paint (Graphics&);
     void resized();
-    void setWidgetLabel(String WidgetLabel);
     void setPoseLabel(String LabelText);
-    
-    void setOSCPort (int Port);
-    void setOSChostAddress(String HostAddress);
-    void enableOSC(bool EnableOSC);
-    
-    void setMyoID(int MyoID);
         
 private:
-    Label poseLabel;
-    String labelWidget;
-    bool enableOSCvalue = true;
-    
-    OSCSender sender;
-    int oscPort;
-    String hostAddress;
-    
-    String MyoIDString;
-    
+    Label poseLabel;    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Pose)
 };

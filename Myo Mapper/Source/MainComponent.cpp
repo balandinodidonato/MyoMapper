@@ -20,8 +20,6 @@ MainComponent::MainComponent()
     addAndMakeVisible(orientation);
     addAndMakeVisible(mav);
     addAndMakeVisible(settingsPannel);
-    
-    pose.setWidgetLabel("Pose");
     addAndMakeVisible(pose);
     
     myoManager.connect();
@@ -35,13 +33,12 @@ MainComponent::MainComponent()
 
 void MainComponent::paint(juce::Graphics &g)
 {
-    
     if(settingsPannel.getOSCsettingsStatus())
     {
         osc.disconnect();
         osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPort());
-        osc.connect();
         settingsPannel.setOSCsettingsStatus(false);
+        osc.connect();
     }
     
     g.fillAll(Colours::grey);
@@ -73,9 +70,9 @@ void MainComponent::timerCallback()
     
     mav.setValues(myoData[id].emgScaled);
     orientation.setValues(myoData[id].orientationRaw);
-    pose.setPoseLabel(myoData[id].Pose);
+    pose.setPoseLabel(myoData[id].pose+" - "+String(myoData[id].poseID));
     
-    osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, mav.getMav(), myoData[id].gyro, myoData[id].acceleration, myoData[id].orientationRaw, orientation.getValue(), myoData[id].Pose);
+    osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, mav.getMav(), myoData[id].gyro, myoData[id].acceleration, myoData[id].orientationRaw, orientation.getValue(), myoData[id].pose, myoData[id].poseID);
 }
 
 void MainComponent::disconnectMyoAndOSC()

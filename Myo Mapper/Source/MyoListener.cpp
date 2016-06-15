@@ -122,10 +122,20 @@ void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::
 
 void MyoListener::onPose(myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
 {
+    int poseID = 0;
     int myoID = getMyoID(myo);
     if(myoID == -1) return;
-    
-    myoData[myoID].Pose = pose.toString();
+  
+    if(pose==myo::Pose::unknown) poseID = -1;
+    if(pose==myo::Pose::rest) poseID = 0;
+    if(pose==myo::Pose::fist) poseID = 1;
+    if(pose==myo::Pose::fingersSpread) poseID = 2;
+    if(pose==myo::Pose::waveIn) poseID = 3;
+    if(pose==myo::Pose::waveOut) poseID = 4;
+    if(pose==myo::Pose::doubleTap) poseID = 5;
+
+    myoData[myoID].pose = pose.toString();
+    myoData[myoID].poseID = poseID;
 }
 
 // onArmSync() is called whenever Myo has recognized a Sync Gesture after someone has put it on their

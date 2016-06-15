@@ -15,7 +15,6 @@
 Pose::Pose()
 {
     addAndMakeVisible(poseLabel);
-    sender.connect (hostAddress, oscPort);
     poseLabel.setJustificationType(36);
 }
 
@@ -34,7 +33,7 @@ void Pose::paint (Graphics& g)
     
     g.setColour(Colours::black);
     g.setFont(getHeight()*0.3);
-    g.drawText(labelWidget, getLocalBounds(),
+    g.drawText("Pose", getLocalBounds(),
                Justification::centredTop, true);   // draw some placeholder text
 }
 
@@ -44,35 +43,7 @@ void Pose::resized()
     poseLabel.setBounds(getX(), getHeight()*0.35, getWidth()*0.95, getHeight()*0.5);
 }
 
-void Pose::setWidgetLabel(String WidgetLabel)
-{
-    labelWidget = WidgetLabel;
-}
-
 void Pose::setPoseLabel(String LabelText)
 {
-    if(enableOSCvalue) sender.send ("/Myo"+MyoIDString+"/"+labelWidget, (String) LabelText);
     poseLabel.setText(LabelText, dontSendNotification);
-}
-
-void Pose::setOSCPort(int Port)
-{
-    oscPort = Port;
-    sender.connect(hostAddress, oscPort);
-}
-
-void Pose::setOSChostAddress(juce::String HostAddress)
-{
-    hostAddress = HostAddress;
-    sender.connect(hostAddress, oscPort);
-}
-
-void Pose::enableOSC(bool EnableOSC)
-{
-    enableOSCvalue = EnableOSC;
-}
-
-void Pose::setMyoID(int MyoID)
-{
-    MyoIDString = String(MyoID+1);
 }

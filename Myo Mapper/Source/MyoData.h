@@ -21,7 +21,8 @@ struct MyoData
     Vector3D< float > acceleration;
     Vector3D< float > orientationScaled;
     Vector3D< float > orientationRaw;
-    String Pose;
+    String pose;
+    int poseID;
 };
 
 
