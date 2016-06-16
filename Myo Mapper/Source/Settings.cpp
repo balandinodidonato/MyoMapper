@@ -14,7 +14,9 @@
 //==============================================================================
 Settings::Settings()
 :
-hostAddress("127.0.0.1")
+oscPortSender(5432),
+hostAddress("127.0.0.1"),
+oscPortReceiver(5431)
 {
     oscPortSliderSender.setRange(0, 9999, 1);
     oscPortSliderSender.setValue(5432);
@@ -22,7 +24,7 @@ hostAddress("127.0.0.1")
     oscPortSliderSender.setSliderStyle(juce::Slider::IncDecButtons);
     addAndMakeVisible(oscPortSliderSender);
     
-    oscPortLabelSender.setText ("OSC Port", dontSendNotification);
+    oscPortLabelSender.setText ("OSC Port Sender", dontSendNotification);
     oscPortLabelSender.attachToComponent (&oscPortSliderSender, true);
     addAndMakeVisible(oscPortLabelSender);
     oscPortSliderSender.addListener(this);
@@ -34,6 +36,17 @@ hostAddress("127.0.0.1")
     setHostAddress.setEditable(true);
     addAndMakeVisible(setHostAddress);
     setHostAddress.addListener(this);
+    
+    oscPortSliderReceiver.setRange(0, 9999, 1);
+    oscPortSliderReceiver.setValue(5431);
+    oscPortSliderReceiver.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
+    oscPortSliderReceiver.setSliderStyle(juce::Slider::IncDecButtons);
+    addAndMakeVisible(oscPortSliderReceiver);
+    
+    oscPortLabelReceiver.setText ("OSC Port Receiver", dontSendNotification);
+    oscPortLabelReceiver.attachToComponent (&oscPortSliderReceiver, true);
+    addAndMakeVisible(oscPortLabelReceiver);
+    oscPortSliderReceiver.addListener(this);
     
     myoList.setText("Select Myo");
     addAndMakeVisible(myoList);
@@ -71,12 +84,14 @@ void Settings::paint (Graphics& g)
 
 void Settings::resized()
 {
-    oscPortSliderSender.setBounds(getX()+80, getY()+20, getWidth()*0.3, getHeight()*0.2);
-    myoList.setBounds(oscPortSliderSender.getRight()+20, oscPortSliderSender.getY(), getWidth()*0.4, oscPortSliderSender.getHeight());
-    
-    hostAddressTitle.setBounds(oscPortSliderSender.getX()-65, oscPortSliderSender.getBottom()+10, getWidth()*0.18, oscPortSliderSender.getHeight());
+    hostAddressTitle.setBounds(20, 20, getWidth()*0.18, getHeight()*0.28);
     setHostAddress.setBounds(hostAddressTitle.getX()+hostAddressTitle.getWidth(), hostAddressTitle.getY(), getWidth()*0.3, hostAddressTitle.getHeight());
-    showOrientation.setBounds(hostAddressTitle.getX(), hostAddressTitle.getBottom()+5, getWidth()*0.3, setHostAddress.getHeight());
+    myoList.setBounds(getWidth()*0.5, setHostAddress.getY()+setHostAddress.getHeight()*0.25, getWidth()*0.465, setHostAddress.getHeight()*0.5);
+    
+    oscPortSliderSender.setBounds(130, hostAddressTitle.getBottom()+5, getWidth()*0.25, getHeight()*0.2);
+    oscPortSliderReceiver.setBounds(myoList.getX()+oscPortLabelReceiver.getWidth(), oscPortSliderSender.getY(), oscPortSliderSender.getWidth(), oscPortSliderSender.getHeight());
+    
+    showOrientation.setBounds(hostAddressTitle.getX(), oscPortSliderSender.getBottom()+5, getWidth()*0.3, setHostAddress.getHeight());
     showMav.setBounds(showOrientation.getRight()+10, showOrientation.getY(), showOrientation.getWidth(), showOrientation.getHeight());
     showPose.setBounds(showMav.getRight()+10, showOrientation.getY(), showOrientation.getWidth(), showOrientation.getHeight());
 }
@@ -86,7 +101,13 @@ void Settings::sliderValueChanged(juce::Slider *slider)
     if (slider == &oscPortSliderSender)
     {
         oscPortSender = oscPortSliderSender.getValue();
-        oscSettingsChanged = true;
+        oscSettingsChangedSender = true;
+    }
+    
+    if (slider == &oscPortSliderReceiver)
+    {
+        oscPortReceiver = oscPortSliderReceiver.getValue();
+        oscSettingsChangedReceiver = true;
     }
 }
 
@@ -95,20 +116,28 @@ void Settings::labelTextChanged(juce::Label *labelThatHasChanged)
     if (labelThatHasChanged == &setHostAddress)
     {
         hostAddress = setHostAddress.getText();
-        oscSettingsChanged = true;
+        oscSettingsChangedSender = true;
+        oscSettingsChangedReceiver = true;
     }
 }
 
 int Settings::getOSCPortSender()
 {
     return oscPortSender;
-    oscSettingsChanged = false;
+    oscSettingsChangedSender = false;
+}
+
+int Settings::getOSCPortReceiver()
+{
+    return oscPortReceiver;
+    oscSettingsChangedReceiver = false;
 }
 
 String Settings::getHostAddress()
 {
     return hostAddress;
-    oscSettingsChanged = false;
+    oscSettingsChangedSender = false;
+    oscSettingsChangedReceiver = false;
 }
 
 int Settings::getSelectedMyo()
@@ -133,10 +162,20 @@ int Settings::getShowMav()
 
 bool Settings::getOSCsettingsStatusSender()
 {
-    return oscSettingsChanged;
+    return oscSettingsChangedSender;
 }
 
 void Settings::setOSCsettingsStatusSender(bool changeStatus)
 {
-    oscSettingsChanged = changeStatus;
+    oscSettingsChangedSender = changeStatus;
+}
+
+bool Settings::getOSCsettingsStatusReceiver()
+{
+    return oscSettingsChangedReceiver;
+}
+
+void Settings::setOSCsettingsStatusReceiver(bool changeStatus)
+{
+    oscSettingsChangedReceiver = changeStatus;
 }

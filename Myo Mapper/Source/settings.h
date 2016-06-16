@@ -37,15 +37,23 @@ public:
     int getShowMav();
     
     bool getOSCsettingsStatusSender();
+    bool getOSCsettingsStatusReceiver();
+
     void setOSCsettingsStatusSender(bool OSCsettingsStatusSender);
+    void setOSCsettingsStatusReceiver(bool OSCsettingsStatusReceiver);
     
     int getOSCPortSender();
+    int getOSCPortReceiver();
+    
     String getHostAddress();
     int getSelectedMyo();
     
 private:
     Slider oscPortSliderSender;
+    Slider oscPortSliderReceiver;
+
     Label oscPortLabelSender;
+    Label oscPortLabelReceiver;
     
     Label hostAddressTitle;
     Label setHostAddress;
@@ -56,10 +64,14 @@ private:
     ToggleButton showMav;
     ToggleButton showPose;
     
-    bool oscSettingsChanged = false;
+    bool oscSettingsChangedSender = false;
+    bool oscSettingsChangedReceiver = false;
     
-    int oscPortSender = 5432;
-    String hostAddress = "127.0.0.1";
+    int oscPortSender;
+    int oscPortReceiver;
+
+    String hostAddress;
+    
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Settings)

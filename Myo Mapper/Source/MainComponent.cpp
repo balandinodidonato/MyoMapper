@@ -16,7 +16,7 @@ MainComponent::MainComponent()
 {
     getLookAndFeel().setUsingNativeAlertWindows(true);
 
-    setSize(getParentWidth()*0.4, getParentHeight()*0.5);
+    setSize(getParentWidth()*0.4, getParentHeight());
     addAndMakeVisible(orientation);
     addAndMakeVisible(mav);
     addAndMakeVisible(settingsPannel);
@@ -40,6 +40,14 @@ void MainComponent::paint(juce::Graphics &g)
         osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
         settingsPannel.setOSCsettingsStatusSender(false);
         osc.connectSender();
+    }
+
+    if(settingsPannel.getOSCsettingsStatusReceiver())
+    {
+        osc.disconnectReceiver();
+        osc.setReceiver(settingsPannel.getOSCPortReceiver());
+        settingsPannel.setOSCsettingsStatusReceiver(false);
+        osc.connectReceiver();
     }
     
     g.fillAll(Colours::grey);

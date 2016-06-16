@@ -52,7 +52,7 @@ public:
             setCentrePosition(getWidth()*0.5, 0);
             setVisible (true);
             setResizable(true, true);
-            setResizeLimits(getParentWidth()*0.3, getParentHeight(), getParentWidth(), getParentHeight());
+            setResizeLimits(getParentWidth()*0.4, getParentHeight(), getParentWidth(), getParentHeight());
         }
 
         void closeButtonPressed() override
