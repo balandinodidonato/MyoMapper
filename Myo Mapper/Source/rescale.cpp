@@ -78,8 +78,7 @@ void Rescale::buttonClicked(juce::Button *button)
 {
     if (button == &centre)
     {
-        offset = input; // take the current myo value as offset to centre the data
-        test = 1; // centre the myo data at half of the established range
+        setCentre();
     }
 }
 
@@ -122,6 +121,11 @@ void Rescale::setLabelWidget(juce::String LabelWidget)
     mmSliderLabel.setText (labelWidget, dontSendNotification);
 }
 
+void Rescale::setTargetValue (float TargetValue)
+{
+    targetValue = TargetValue;
+}
+
 void Rescale::setValue(float Value)
 {
     input = Value;
@@ -145,12 +149,18 @@ float Rescale::getValue()
     return scaled;
 }
 
-void Rescale::setTargetValue (float TargetValue)
+void Rescale::setMin(float Value)
 {
-    targetValue = TargetValue;
+    mmSlider.setMinValue(Value);
 }
 
+void Rescale::setMax(float Value)
+{
+    mmSlider.setMinValue(Value);
+}
 
-
-
-
+void Rescale::setCentre()
+{
+    offset = input; // take the current myo value as offset to centre the data
+    test = 1; // centre the myo data at half of the established range
+}

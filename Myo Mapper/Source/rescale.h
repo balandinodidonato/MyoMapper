@@ -36,6 +36,9 @@ public:
     void setValue (float Value);
     float getValue();
     void setTargetValue(float TargetValue);
+    void setMin(float Value);
+    void setMax(float Value);
+    void setCentre();
 
 private:
     

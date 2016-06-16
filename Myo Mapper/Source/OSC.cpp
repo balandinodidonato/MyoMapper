@@ -15,37 +15,38 @@
 //==============================================================================
 OSC::OSC()
 :
+vibrate(false),
+vibrationType("null"),
+centreYaw(false),
+centrePitch(false),
+centreRoll(false),
+rescaleMinTest(false),
+rescaleMIN(0),
+rescaleMaxTest(false),
+rescaleMAX(0),
 oscPortSender(5432),
 oscPortReceiver(5431),
 hostAddress("127.0.0.1"),
 oscConnectionSender(false),
 oscConnectionReceiver(false),
-vibrationType("null"),
 Id("0")
 {
-    String myoData = "null";
+    String myoValue;
     
-    for(unsigned i = 0; i<4; i++){
+    for(int i = 0; i<4; i++){
         
-        if(i==0) myoData = "yaw";
-        if(i==1) myoData = "pitch";
-        if(i==2) myoData = "roll";
-        if(i==3) myoData = "mav";
+        String Z = String(i+1);
         
-        String action = "null";
-        
-        for(unsigned y = 0; y<4; y++){
+        for(int y =0; y<3; y++)
+        {
+            if(y==0) myoValue = "/yaw";
+            if(y==1) myoValue = "/pitch";
+            if(y==2) myoValue = "/roll";
             
-            if(i==0) action = "/centre";
-            if(i==1) action = "/rescale/setMin";
-            if(i==2) action = "/rescale/setMax";
-        
-            for(int z=0; z<4; z++)
-            {
-                String Z = String(z);
-                receiver.addListener(this, "/myo/"+Z+"/vibrate");
-                receiver.addListener(this, "/myo/"+Z+"/"+myoData+action);
-            }
+            receiver.addListener(this, "/myo/"+Z+"/vibrate");
+            receiver.addListener(this, "/myo/"+Z+myoValue+"/centre");
+            receiver.addListener(this, "/myo/"+Z+myoValue+"/setMin");
+            receiver.addListener(this, "/myo/"+Z+myoValue+"/setMax");
         }
     }
 }
@@ -132,36 +133,31 @@ void OSC::oscMessageReceived(const OSCMessage& message)
     
 // ---------------- Vibrate
     if (message.getAddressPattern() == "/myo/"+Id+"/vibrate")
-    {
         if (message.size() == 1 && message[0].isString())
         {
                 vibrationType =  message[0].getString();
-                vibrateTest = true;
-                std::cout << "vibrate: " << vibrationType << std::endl;
+                vibrate = true;
+                std::cout << "vibrate: " << message[0].getString() << std::endl;
         }
-    }
-
-// ---------------- Centre/ Rescale yaw, pitch and roll
+    
+    
+    // ---------------- Centre/ Rescale yaw, pitch and roll
     String myoData = "null";
     
-    for(unsigned i = 0; i<4; i++){
+    for(int X = 0; X<4; X++){
         
-        if(i==0) myoData = "yaw";
-        if(i==1) myoData = "pitch";
-        if(i==2) myoData = "roll";
-        if(i==3) myoData = "mav";
+        if(X==0) myoDataIn = "yaw";
+        else if(X==1) myoDataIn = "pitch";
+        else if(X==2) myoDataIn = "roll";
+        else if(X==3) myoDataIn = "mav";
     
-        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoData+"/centre")
-        {
+        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoDataIn+"/centre")
             if (message.size() == 1)
-            {
-                if (message[0].isInt32())
-                {
-                    std::cout << myoData+" Centre: " << message[0].getInt32() << std::endl;
-                }
-                else return;
-            }
-        }
+                if (message[0].isString())
+                    if(X==0) centreYaw = true;
+                    else if(X==1) centrePitch = true;
+                    else if(X==2) centreRoll = true;
+        
         if (message.getAddressPattern() == "/myo/"+Id+"/"+myoData+"/rescale/setMin")
         {
             if (message.size() == 1)
@@ -194,21 +190,6 @@ void OSC::oscMessageReceived(const OSCMessage& message)
         }
 
     }
-}
-
-String OSC::getVibration()
-{
-    return vibrationType;
-}
-
-bool OSC::getVibrateTest()
-{
-    return vibrateTest;
-}
-
-void OSC::setVibrateTest(bool VibrateTest)
-{
-    vibrateTest = false;
 }
 
 void OSC::setMyoIdReceiver(int ID)

@@ -85,11 +85,27 @@ void MainComponent::timerCallback()
 
     osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, mav.getMav(), myoData[id].gyro, myoData[id].acceleration, myoData[id].orientationRaw, orientation.getValue(), myoData[id].pose, myoData[id].poseID);
     
-    if(osc.getVibrateTest())
+    if(osc.vibrate)
     {
-        myoManager.vibrate(osc.getVibration());
-        osc.setVibrateTest(false);
+        myoManager.vibrate(osc.vibrationType);
+        osc.vibrate = false;
     }
+    if(osc.centreYaw)
+    {
+        orientation.centreYaw();
+        osc.centreYaw = false;
+    }
+    if(osc.centrePitch)
+    {
+        orientation.centrePitch();
+        osc.centrePitch = false;
+    }
+    if(osc.centreRoll)
+    {
+        orientation.centreRoll();
+        osc.centreRoll = false;
+    }
+    
 }
 
 void MainComponent::disconnectMyoAndOSC()

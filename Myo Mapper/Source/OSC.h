@@ -45,15 +45,24 @@ public:
     
     void oscMessageReceived (const OSCMessage& message) override;
     void getOSCMessage(const OSCMessage& message, String myoData);
-        
-    String getVibration();
     
-    bool getVibrateTest();
-    void setVibrateTest(bool vibrateTest);
     void setMyoIdReceiver(int ID);
 
+    bool vibrate;
+    String vibrationType;
 
+    bool centreYaw;
+    bool centrePitch;
+    bool centreRoll;
 
+    bool rescaleMinTest;
+    int rescaleMIN;
+    
+    bool rescaleMaxTest;
+    int rescaleMAX;
+    
+    String myoDataIn;
+    
 private:
     
     OSCSender sender;
@@ -68,11 +77,7 @@ private:
     bool oscConnectionSender;
     bool oscConnectionReceiver;
     
-    String vibrationType;
-    
     String Id;
-    
-    bool vibrateTest = false;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)

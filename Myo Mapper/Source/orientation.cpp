@@ -72,5 +72,20 @@ float Orientation::getRoll()
     return rescaleRoll.getValue();
 }
 
+void Orientation::centreYaw()
+{
+    rescaleYaw.setCentre();
+}
+
+void Orientation::centrePitch()
+{
+    rescalePitch.setCentre();
+}
+
+void Orientation::centreRoll()
+{
+    rescaleRoll.setCentre();
+}
+
 
 

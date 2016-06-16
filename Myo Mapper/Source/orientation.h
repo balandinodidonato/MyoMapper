@@ -34,6 +34,10 @@ public:
     float getPitch();
     float getRoll();
     
+    void centreYaw();
+    void centrePitch();
+    void centreRoll();
+    
 private:
     
     Rescale rescaleYaw;
