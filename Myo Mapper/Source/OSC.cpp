@@ -15,15 +15,14 @@
 //==============================================================================
 OSC::OSC()
 :
-vibrationType("null"),
 oscPortSender(5432),
 oscPortReceiver(5431),
 hostAddress("127.0.0.1"),
 oscConnectionSender(false),
-oscConnectionReceiver(false)
+oscConnectionReceiver(false),
+vibrationType("null"),
+Id("0")
 {
-    receiver.addListener (this, "/myo/vibrate");
-    
     String myoData = "null";
     
     for(unsigned i = 0; i<4; i++){
@@ -40,8 +39,13 @@ oscConnectionReceiver(false)
             if(i==0) action = "/centre";
             if(i==1) action = "/rescale/setMin";
             if(i==2) action = "/rescale/setMax";
-            
-            receiver.addListener(this, "/myo/"+myoData+action);
+        
+            for(int z=0; z<4; z++)
+            {
+                String Z = String(z);
+                receiver.addListener(this, "/myo/"+Z+"/vibrate");
+                receiver.addListener(this, "/myo/"+Z+"/"+myoData+action);
+            }
         }
     }
 }
@@ -127,7 +131,7 @@ void OSC::oscMessageReceived(const OSCMessage& message)
 {
     
 // ---------------- Vibrate
-    if (message.getAddressPattern() == "/myo/vibrate")
+    if (message.getAddressPattern() == "/myo/"+Id+"/vibrate")
     {
         if (message.size() == 1 && message[0].isString())
         {
@@ -147,7 +151,7 @@ void OSC::oscMessageReceived(const OSCMessage& message)
         if(i==2) myoData = "roll";
         if(i==3) myoData = "mav";
     
-        if (message.getAddressPattern() == "/myo/"+myoData+"/centre")
+        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoData+"/centre")
         {
             if (message.size() == 1)
             {
@@ -158,7 +162,7 @@ void OSC::oscMessageReceived(const OSCMessage& message)
                 else return;
             }
         }
-        if (message.getAddressPattern() == "/myo/"+myoData+"/rescale/setMin")
+        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoData+"/rescale/setMin")
         {
             if (message.size() == 1)
             {
@@ -173,7 +177,7 @@ void OSC::oscMessageReceived(const OSCMessage& message)
                 else return;
             }
         }
-        if (message.getAddressPattern() == "/myo/"+myoData+"/rescale/setMax")
+        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoData+"/rescale/setMax")
         {
             if (message.size() == 1)
             {
@@ -205,6 +209,11 @@ bool OSC::getVibrateTest()
 void OSC::setVibrateTest(bool VibrateTest)
 {
     vibrateTest = false;
+}
+
+void OSC::setMyoIdReceiver(int ID)
+{
+    Id = String(ID);
 }
 
 

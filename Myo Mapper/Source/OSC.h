@@ -50,6 +50,7 @@ public:
     
     bool getVibrateTest();
     void setVibrateTest(bool vibrateTest);
+    void setMyoIdReceiver(int ID);
 
 
 
@@ -69,9 +70,9 @@ private:
     
     String vibrationType;
     
-    bool vibrateTest = false;
+    String Id;
     
-
+    bool vibrateTest = false;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)

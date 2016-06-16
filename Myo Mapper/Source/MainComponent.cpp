@@ -68,11 +68,13 @@ void MainComponent::timerCallback()
     unsigned int id = settingsPannel.getSelectedMyo();
     
     if (id >= myoData.size()) return;
-    
+
+    osc.setMyoIdReceiver(id+1);
+
     mav.setValues(myoData[id].emgScaled);
     orientation.setValues(myoData[id].orientationRaw);
     pose.setPoseLabel(myoData[id].pose+" - "+String(myoData[id].poseID));
-    
+
     osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, mav.getMav(), myoData[id].gyro, myoData[id].acceleration, myoData[id].orientationRaw, orientation.getValue(), myoData[id].pose, myoData[id].poseID);
     
     if(osc.getVibrateTest())
