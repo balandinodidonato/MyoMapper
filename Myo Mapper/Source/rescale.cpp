@@ -40,7 +40,7 @@ input(0)
     reverse.addListener (this);
     reverse.setButtonText("Reverse");
     
-    minSlider.setRange(-1.0, 2.0, 0.01);
+    minSlider.setRange(-1.0, 2.0, 0.001);
     minSlider.setValue(0.0);
     minSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
     minSlider.setSliderStyle(juce::Slider::IncDecButtons);
@@ -51,7 +51,7 @@ input(0)
     addAndMakeVisible(minSliderLabel);
     minSlider.addListener(this);
     
-    maxSlider.setRange(-1.0, 2.0, 0.01);
+    maxSlider.setRange(-1.0, 2.0, 0.001);
     maxSlider.setValue(1.0);
     minSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
     maxSlider.setSliderStyle(juce::Slider::IncDecButtons);
