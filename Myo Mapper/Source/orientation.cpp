@@ -52,7 +52,7 @@ Vector3D<float> Orientation::getValue()
 {
     orientationScaled.x = rescaleYaw.getValue();
     orientationScaled.y = rescalePitch.getValue();
-    orientationScaled.z = rescaleYaw.getValue();
+    orientationScaled.z = rescaleRoll.getValue();
     
     return orientationScaled;
 }
@@ -74,16 +74,25 @@ float Orientation::getRoll()
 
 void Orientation::map(int myoData, int Action, float Value)
 {
-    if(myoData==0 && Action==1) rescaleYaw.setCentre();
-    if(myoData==1 && Action==1) rescalePitch.setCentre();
-    if(myoData==2 && Action==1) rescaleRoll.setCentre();
+    if(myoData==0)
+    {
+        if (Action==1) rescaleYaw.setCentre();
+        else if (Action==2) rescaleYaw.setMin(Value);
+        else if (Action==3) rescaleYaw.setMax(Value);
+    }
     
-    if(myoData==0 && Action==2) rescaleYaw.setMin(Value);
-    if(myoData==1 && Action==2) rescalePitch.setMin(Value);
-    if(myoData==2 && Action==2) rescaleRoll.setMin(Value);
+    else if(myoData==1)
+    {
+        if (Action==1) rescalePitch.setCentre();
+        else if (Action==2) rescalePitch.setMin(Value);
+        else if (Action==3) rescalePitch.setMax(Value);
+    }
     
-    if(myoData==0 && Action==3) rescaleYaw.setMax(Value);
-    if(myoData==1 && Action==3) rescalePitch.setMax(Value);
-    if(myoData==2 && Action==3) rescaleRoll.setMax(Value);
+    else if(myoData==2)
+    {
+        if (Action==1) rescaleRoll.setCentre();
+        else if (Action==2) rescaleRoll.setMin(Value);
+        else if (Action==3) rescaleRoll.setMax(Value);
+    }
 }
 

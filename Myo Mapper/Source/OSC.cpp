@@ -132,49 +132,46 @@ void OSC::oscMessageReceived(const OSCMessage& message)
     
 // ---------------- Vibrate
     
-    if (message.getAddressPattern() == "/myo/"+Id+action[1])
+    if (message.getAddressPattern() == "/myo/"+Id+action[0])
         if (message.size() == 1 && message[0].isString())
         {
             vibrationType =  message[0].getString();
             vibrate = true;
-            std::cout << "vibrate: " << message[0].getString() << std::endl;
         }
     
     for(int i = 0; i<4; i++) // myoDataIn
     {
-        for(int y=1; y<4; y++) // action
+        // ---------------- Centre
+        
+        if (message.getAddressPattern() == "/myo/"+Id+myoDataIn[i]+action[1])
         {
-            // ---------------- Centre
-            
-            if (message.getAddressPattern() == "/myo/"+Id+myoDataIn[i]+action[y])
+            if (message.size() == 1 && message[0].isString())
             {
-                std::cout << "Centre: i" << i << " y" << y << "patt: " << "/myo/"+Id+myoDataIn[i]+action[y] << std::endl;
-
-                if (message.size() == 1 && message[0].isString())
+                if (message[0].getString() == "centre")
                 {
-                    if (message[0].getString() == "centre")
-                    {
-                        map[i][y] = true;
-                    }
+                    map[i][1] = true;
                 }
             }
-            
+        }
+        
+        for(int y=2; y<4; y++) // action
+        {
             // ---------------- Set MinMax
             
             if (message.getAddressPattern() == "/myo/"+Id+myoDataIn[i]+action[y])
                 if (message.size() == 1)
+                {
                     if (message[0].isInt32())
                     {
                         value = message[0].isInt32();
                         map[i][y] = true;
-                        std::cout << "set: i" << i << " y " << y << std::endl;
                     }
                     else if (message[0].isFloat32())
                     {
                         value = message[0].getFloat32();
                         map[i][y] = true;
-                        std::cout << "set: i" << i << " y " << y << std::endl;
                     }
+                }
             }
         }
     }

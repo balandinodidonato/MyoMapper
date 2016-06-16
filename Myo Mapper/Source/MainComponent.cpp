@@ -94,18 +94,18 @@ void MainComponent::timerCallback()
 
     for(int i=0; i<4; i++) // myoData
     {
-        for(int y=1; y<4; y++) // action
+        if(osc.map[i][1])
         {
-            if(i<=2)
-            {
-                if(osc.map[i][y]) orientation.map(i, y, osc.value);
-                osc.map[i][y] = false;
-            }
-            if(i>2)
-            {
-                if(osc.map[i][y]) mav.map(i, y, osc.value);
-                osc.map[i][y] = false;
-            }
+            orientation.map(i, 1, osc.value);
+            osc.map[i][1] = false;
+        }
+        for(int y=2; y<4; y++) // action
+        {
+                if(osc.map[i][y])
+                {
+                    mav.map(i, y, osc.value);
+                    osc.map[i][y] = false;
+                }
         }
     }
 }
