@@ -1,0 +1,324 @@
+#N canvas 116 23 1043 594 10;
+#X obj 509 199 unpack 0 0 0;
+#X obj 509 221 vsl 15 128 0 1 0 0 empty empty yaw 0 140 0 10 -262144
+-1 -1 10530 1;
+#X obj 543 221 vsl 15 128 0 1 0 0 empty empty pitch 0 140 0 10 -262144
+-1 -1 9332 1;
+#X obj 578 221 vsl 15 128 0 1 0 0 empty empty roll 0 140 0 10 -262144
+-1 -1 3341 1;
+#X obj 659 199 unpack 0 0 0;
+#X obj 659 221 vsl 15 128 -3.14159 3.14159 0 0 empty empty x 0 140
+0 10 -262144 -1 -1 4323 1;
+#X obj 693 221 vsl 15 128 -3.14159 3.14159 0 0 empty empty y 0 140
+0 10 -262144 -1 -1 6358 1;
+#X obj 728 221 vsl 15 128 -3.14159 3.14159 0 0 empty empty z 0 140
+0 10 -262144 -1 -1 6400 1;
+#X text 494 368 ORIENTATION (Scaled 0-1);
+#X text 656 368 ACCELERATION (raw);
+#X obj 189 199 unpack 0 0 0 0 0 0 0 0;
+#X obj 189 221 vsl 15 128 0 1 0 0 empty empty 1 0 140 0 10 -262144
+-1 -1 99 1;
+#X obj 209 221 vsl 15 128 0 1 0 0 empty empty 2 0 140 0 10 -262144
+-1 -1 595 1;
+#X obj 229 221 vsl 15 128 0 1 0 0 empty empty 3 0 140 0 10 -262144
+-1 -1 99 1;
+#X obj 249 221 vsl 15 128 0 1 0 0 empty empty 4 0 140 0 10 -262144
+-1 -1 298 1;
+#X obj 269 221 vsl 15 128 0 1 0 0 empty empty 5 0 140 0 10 -262144
+-1 -1 496 1;
+#X obj 289 221 vsl 15 128 0 1 0 0 empty empty 6 0 140 0 10 -262144
+-1 -1 298 1;
+#X obj 309 221 vsl 15 128 0 1 0 0 empty empty 7 0 140 0 10 -262144
+-1 -1 99 1;
+#X obj 329 221 vsl 15 128 0 1 0 0 empty empty 8 0 140 0 10 -262144
+-1 -1 198 1;
+#X obj 19 199 unpack 0 0 0 0 0 0 0 0;
+#X obj 19 221 vsl 15 128 -127 128 0 0 empty empty 1 0 140 0 10 -262144
+-1 -1 6275 1;
+#X obj 39 221 vsl 15 128 -127 128 0 0 empty empty 2 0 140 0 10 -262144
+-1 -1 6026 1;
+#X obj 59 221 vsl 15 128 -127 128 0 0 empty empty 3 0 140 0 10 -262144
+-1 -1 6375 1;
+#X obj 79 221 vsl 15 128 -127 128 0 0 empty empty 4 0 140 0 10 -262144
+-1 -1 6176 1;
+#X obj 99 221 vsl 15 128 -127 127 0 0 empty empty 5 0 140 0 10 -262144
+-1 -1 6100 1;
+#X obj 119 221 vsl 15 128 -127 128 0 0 empty empty 6 0 140 0 10 -262144
+-1 -1 6475 1;
+#X obj 139 221 vsl 15 128 -127 128 0 0 empty empty 7 0 140 0 10 -262144
+-1 -1 6375 1;
+#X obj 159 221 vsl 15 128 -127 128 0 0 empty empty 8 0 140 0 10 -262144
+-1 -1 6425 1;
+#X text 44 368 EMG RAW (-127 \, 128);
+#X text 202 368 EMG DATA (Scaled: 0 \, 1);
+#X obj 369 199 unpack 0 0 0;
+#X obj 369 221 vsl 15 128 -3.14159 3.14159 0 0 empty empty yaw 0 140
+0 10 -262144 -1 -1 10100 1;
+#X obj 403 221 vsl 15 128 -3.14159 3.14159 0 0 empty empty pitch 0
+140 0 10 -262144 -1 -1 9480 1;
+#X obj 438 221 vsl 15 128 -3.14159 3.14159 0 0 empty empty roll 0 140
+0 10 -262144 -1 -1 6714 1;
+#X text 366 368 ACCELERATION (raw);
+#X obj 789 199 unpack 0 0 0;
+#X obj 789 221 vsl 15 128 -1000 1000 0 0 empty empty x 0 140 0 10 -262144
+-1 -1 6350 1;
+#X obj 823 221 vsl 15 128 -1000 1000 0 0 empty empty y 0 140 0 10 -262144
+-1 -1 6350 1;
+#X obj 858 221 vsl 15 128 -1000 1000 0 0 empty empty z 0 140 0 10 -262144
+-1 -1 6350 1;
+#X text 786 368 Gyro (raw);
+#X obj 889 199 unpack 0 s;
+#X text 896 258 Pose;
+#X obj 946 220 print pose;
+#X floatatom 889 221 5 0 0 0 - - -, f 5;
+#N canvas 0 22 281 387 YAW 0;
+#X msg 33 200 send /myo/1/yaw/centre centre;
+#X obj 33 342 s osc;
+#X obj 36 84 hsl 128 15 -1 2 0 0 empty empty Set_Min 0 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 33 100 5 0 0 2 - - -, f 5;
+#X obj 36 134 hsl 128 15 -1 2 0 0 empty empty Set_Max 0 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 33 150 5 0 0 2 - - -, f 5;
+#X obj 33 45 bng 15 250 50 0 empty empty Centre 17 7 0 10 -262144 -1
+-1;
+#X obj 111 45 tgl 15 0 empty empty Reverse 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 83 223 send /myo/1/yaw/reverse 1;
+#X msg 93 253 send /myo/1/yaw/setMin \$1;
+#X msg 103 283 send /myo/1/yaw/setMax \$1;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 9 0;
+#X connect 4 0 5 0;
+#X connect 5 0 10 0;
+#X connect 6 0 0 0;
+#X connect 7 0 8 0;
+#X connect 8 0 1 0;
+#X connect 9 0 1 0;
+#X connect 10 0 1 0;
+#X coords 0 -1 1 1 150 150 1 25 25;
+#X restore 15 427 pd YAW;
+#X text 13 405 MESSAGES TO MYO MAPPER;
+#X text 20 117 MESSAGES FROM MYO MAPPER;
+#N canvas 0 22 301 259 VIBRATE 0;
+#X obj 37 222 s osc;
+#X obj 35 60 bng 15 250 50 0 empty empty Short 17 7 0 10 -262144 -1
+-1;
+#X obj 35 100 bng 15 250 50 0 empty empty Medium 17 7 0 10 -262144
+-1 -1;
+#X obj 35 140 bng 15 250 50 0 empty empty Long 17 7 0 10 -262144 -1
+-1;
+#X msg 37 193 send /myo/1/vibrate \$1;
+#X obj 131 89 symbol short;
+#X obj 131 119 symbol medium;
+#X obj 131 159 symbol long;
+#X connect 1 0 5 0;
+#X connect 2 0 6 0;
+#X connect 3 0 7 0;
+#X connect 4 0 0 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 7 0 4 0;
+#X coords 0 -1 1 1 100 150 1 25 25;
+#X restore 657 427 pd VIBRATE;
+#N canvas 0 22 281 387 PITCH 0;
+#X obj 33 342 s osc;
+#X obj 36 84 hsl 128 15 -1 2 0 0 empty empty Set_Min 0 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 33 100 5 0 0 2 - - -, f 5;
+#X obj 36 134 hsl 128 15 -1 2 0 0 empty empty Set_Max 0 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 33 150 5 0 0 2 - - -, f 5;
+#X obj 33 45 bng 15 250 50 0 empty empty Centre 17 7 0 10 -262144 -1
+-1;
+#X obj 111 45 tgl 15 0 empty empty Reverse 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 33 193 send /myo/1/pitch/centre centre;
+#X msg 83 223 send /myo/1/pitch/reverse 1;
+#X msg 93 253 send /myo/1/pitch/setMin \$1;
+#X msg 103 283 send /myo/1/pitch/setMax \$1;
+#X connect 1 0 2 0;
+#X connect 2 0 9 0;
+#X connect 3 0 4 0;
+#X connect 4 0 10 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X connect 10 0 0 0;
+#X coords 0 -1 1 1 150 150 1 25 25;
+#X restore 175 427 pd PITCH;
+#N canvas 0 22 316 387 ROLL 0;
+#X obj 33 342 s osc;
+#X obj 36 84 hsl 128 15 -1 2 0 0 empty empty Set_Min 0 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 33 100 5 0 0 2 - - -, f 5;
+#X obj 36 134 hsl 128 15 -1 2 0 0 empty empty Set_Max 0 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 33 150 5 0 0 2 - - -, f 5;
+#X obj 33 45 bng 15 250 50 0 empty empty Centre 17 7 0 10 -262144 -1
+-1;
+#X obj 111 45 tgl 15 0 empty empty Reverse 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 83 223 send /myo/1/roll/reverse 1;
+#X msg 33 193 send /myo/1/roll/centre centre;
+#X msg 93 253 send /myo/1/roll/setMin \$1;
+#X msg 103 283 send /myo/1/roll/setMax \$1;
+#X connect 1 0 2 0;
+#X connect 2 0 9 0;
+#X connect 3 0 4 0;
+#X connect 4 0 10 0;
+#X connect 5 0 8 0;
+#X connect 6 0 7 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X connect 10 0 0 0;
+#X coords 0 -1 1 1 150 150 1 25 25;
+#X restore 335 427 pd ROLL;
+#N canvas 0 22 281 387 MAV 0;
+#X obj 33 342 s osc;
+#X obj 36 84 hsl 128 15 -1 2 0 0 empty empty Set_Min 0 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 33 100 5 0 0 2 - - -, f 5;
+#X obj 36 134 hsl 128 15 -1 2 0 0 empty empty Set_Max 0 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 33 150 5 0 0 2 - - -, f 5;
+#X obj 33 45 bng 15 250 50 0 empty empty Centre 17 7 0 10 -262144 -1
+-1;
+#X obj 111 45 tgl 15 0 empty empty Reverse 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 33 193 send /myo/1/mav/centre centre;
+#X msg 83 223 send /myo/1/mav/reverse 1;
+#X msg 93 253 send /myo/1/mav/setMin \$1;
+#X msg 103 283 send /myo/1/mav/setMax \$1;
+#X connect 1 0 2 0;
+#X connect 2 0 9 0;
+#X connect 3 0 4 0;
+#X connect 4 0 10 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X connect 10 0 0 0;
+#X coords 0 -1 1 1 150 150 1 25 25;
+#X restore 495 427 pd MAV;
+#N canvas 0 22 450 300 oscSender 0;
+#X obj 106 163 tgl 15 0 empty empty Status_Connection 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 9 116 osc/packOSC;
+#X obj 9 278 iemnet/udpsend 5431;
+#X msg 166 247 disconnect;
+#X obj 105 30 r init;
+#X obj 9 86 r osc;
+#X msg 159 224 connect 127.0.0.1 \$1;
+#X msg 105 52 5431;
+#X floatatom 105 84 5 0 0 1 Port - -, f 5;
+#X obj 105 127 tgl 15 0 empty empty Connect/Disconnect 17 7 0 10 -262144
+-1 -1 5431 1;
+#X obj 188 185 sel 1 0;
+#X obj 105 103 t 1 i;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 7 0;
+#X connect 5 0 1 0;
+#X connect 6 0 2 0;
+#X connect 7 0 8 0;
+#X connect 8 0 11 0;
+#X connect 9 0 10 0;
+#X connect 10 0 6 0;
+#X connect 10 1 3 0;
+#X connect 11 0 9 0;
+#X connect 11 1 6 0;
+#X coords 0 -1 1 1 140 150 1 100 50;
+#X restore 765 427 pd oscSender;
+#N canvas 0 22 396 321 from_Myo_Mapper 0;
+#X obj 6 137 oscparse;
+#X obj 6 159 list trim;
+#X obj 6 207 route myo1;
+#X obj 92 206 print myo data;
+#X msg 6 93 port \$1;
+#X floatatom 6 73 6 0 0 1 OSC_Port_Receiver - -, f 6;
+#X obj 6 115 iemnet/udpreceive;
+#X msg 6 49 5432;
+#X obj 6 229 route emgRaw emgScaled orientationRaw orientationScaled
+acceleration gyro pose;
+#X obj 92 177 spigot;
+#X obj 155 73 tgl 15 0 empty empty PRINT_MYO_DATA 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 6 24 r init;
+#X obj 155 30 r init;
+#X msg 155 52 1;
+#X obj 6 272 outlet;
+#X obj 56 272 outlet;
+#X obj 108 272 outlet;
+#X obj 158 272 outlet;
+#X obj 209 272 outlet;
+#X obj 260 272 outlet;
+#X obj 310 272 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 9 0;
+#X connect 2 0 8 0;
+#X connect 4 0 6 0;
+#X connect 5 0 4 0;
+#X connect 6 0 0 0;
+#X connect 7 0 5 0;
+#X connect 8 0 14 0;
+#X connect 8 1 15 0;
+#X connect 8 2 16 0;
+#X connect 8 3 17 0;
+#X connect 8 4 18 0;
+#X connect 8 5 19 0;
+#X connect 8 6 20 0;
+#X connect 9 0 3 0;
+#X connect 10 0 9 1;
+#X connect 11 0 7 0;
+#X connect 12 0 13 0;
+#X connect 13 0 10 0;
+#X coords 0 -1 1 1 877 40 1 2 50;
+#X restore 19 142 pd from_Myo_Mapper;
+#X obj 916 452 s init;
+#X obj 916 427 loadbang;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 0 2 3 0;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;
+#X connect 4 2 7 0;
+#X connect 10 0 11 0;
+#X connect 10 1 12 0;
+#X connect 10 2 13 0;
+#X connect 10 3 14 0;
+#X connect 10 4 15 0;
+#X connect 10 5 16 0;
+#X connect 10 6 17 0;
+#X connect 10 7 18 0;
+#X connect 19 0 20 0;
+#X connect 19 1 21 0;
+#X connect 19 2 22 0;
+#X connect 19 3 23 0;
+#X connect 19 4 24 0;
+#X connect 19 5 25 0;
+#X connect 19 6 26 0;
+#X connect 19 7 27 0;
+#X connect 30 0 31 0;
+#X connect 30 1 32 0;
+#X connect 30 2 33 0;
+#X connect 35 0 36 0;
+#X connect 35 1 37 0;
+#X connect 35 2 38 0;
+#X connect 40 0 43 0;
+#X connect 40 1 42 0;
+#X connect 52 0 19 0;
+#X connect 52 1 10 0;
+#X connect 52 2 30 0;
+#X connect 52 3 0 0;
+#X connect 52 4 4 0;
+#X connect 52 5 35 0;
+#X connect 52 6 40 0;
+#X connect 54 0 53 0;
