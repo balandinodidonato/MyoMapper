@@ -20,6 +20,7 @@ vibrationType("null"),
 centreYaw(false),
 centrePitch(false),
 centreRoll(false),
+centreMav(false),
 rescaleMinTest(false),
 rescaleMIN(0),
 rescaleMaxTest(false),
@@ -29,24 +30,22 @@ oscPortReceiver(5431),
 hostAddress("127.0.0.1"),
 oscConnectionSender(false),
 oscConnectionReceiver(false),
-Id("0")
+Id("0"),
+myoDataIn{"/yaw", "/pitch", "/roll", "/mav"},
+action{"/vibrate", "/centre", "/setMin", "/setMax"}
 {
-    String myoValue;
-    
-    for(int i = 0; i<4; i++){
-        
-        String Z = String(i+1);
-        
-        for(int y =0; y<3; y++)
+    for(int i = 0; i<4; i++) // id
+    {
+        String I = String(i);
+
+        receiver.addListener(this, "/myo/"+I+action[0]);
+
+        for(int y =0; y<4; y++) // myo data
         {
-            if(y==0) myoValue = "/yaw";
-            if(y==1) myoValue = "/pitch";
-            if(y==2) myoValue = "/roll";
-            
-            receiver.addListener(this, "/myo/"+Z+"/vibrate");
-            receiver.addListener(this, "/myo/"+Z+myoValue+"/centre");
-            receiver.addListener(this, "/myo/"+Z+myoValue+"/setMin");
-            receiver.addListener(this, "/myo/"+Z+myoValue+"/setMax");
+            for(int z=1; z<4; z++)
+            {
+                receiver.addListener(this, "/myo/"+I+myoDataIn[y]+action[z]);
+            }
         }
     }
 }
@@ -132,65 +131,95 @@ void OSC::oscMessageReceived(const OSCMessage& message)
 {
     
 // ---------------- Vibrate
-    if (message.getAddressPattern() == "/myo/"+Id+"/vibrate")
+    
+    if (message.getAddressPattern() == "/myo/"+Id+action[1])
         if (message.size() == 1 && message[0].isString())
         {
-                vibrationType =  message[0].getString();
-                vibrate = true;
-                std::cout << "vibrate: " << message[0].getString() << std::endl;
+            vibrationType =  message[0].getString();
+            vibrate = true;
+            std::cout << "vibrate: " << message[0].getString() << std::endl;
         }
     
-    
-    // ---------------- Centre/ Rescale yaw, pitch and roll
-    String myoData = "null";
-    
-    for(int X = 0; X<4; X++){
-        
-        if(X==0) myoDataIn = "yaw";
-        else if(X==1) myoDataIn = "pitch";
-        else if(X==2) myoDataIn = "roll";
-        else if(X==3) myoDataIn = "mav";
-    
-        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoDataIn+"/centre")
-            if (message.size() == 1)
-                if (message[0].isString())
-                    if(X==0) centreYaw = true;
-                    else if(X==1) centrePitch = true;
-                    else if(X==2) centreRoll = true;
-        
-        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoData+"/rescale/setMin")
+    for(int i = 0; i<4; i++) // myoDataIn
+    {
+        for(int y=1; y<4; y++) // action
         {
-            if (message.size() == 1)
+            // ---------------- Centre
+            
+            if (message.getAddressPattern() == "/myo/"+Id+myoDataIn[i]+action[y])
             {
-                if (message[0].isFloat32())
-                {
-                    std::cout << myoData+" set max float: " << message[0].getFloat32() << std::endl;
-                }
-                if (message[0].isInt32())
-                {
-                    std::cout << myoData+" set max int: " << message[0].getInt32() << std::endl;
-                }
-                else return;
-            }
-        }
-        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoData+"/rescale/setMax")
-        {
-            if (message.size() == 1)
-            {
-                if (message[0].isFloat32())
-                {
-                    std::cout << myoData+" set max float: " << message[0].getFloat32() << std::endl;
-                }
-                if (message[0].isInt32())
-                {
-                    std::cout << myoData+" set max int: " << message[0].getInt32() << std::endl;
-                }
-            else return;
-            }
-        }
+                std::cout << "Centre: i" << i << " y" << y << "patt: " << "/myo/"+Id+myoDataIn[i]+action[y] << std::endl;
 
+                if (message.size() == 1 && message[0].isString())
+                {
+                    if (message[0].getString() == "centre")
+                    {
+                        map[i][y] = true;
+                    }
+                }
+            }
+            
+            // ---------------- Set MinMax
+            
+            if (message.getAddressPattern() == "/myo/"+Id+myoDataIn[i]+action[y])
+                if (message.size() == 1)
+                    if (message[0].isInt32())
+                    {
+                        value = message[0].isInt32();
+                        map[i][y] = true;
+                        std::cout << "set: i" << i << " y " << y << std::endl;
+                    }
+                    else if (message[0].isFloat32())
+                    {
+                        value = message[0].isFloat32();
+                        map[i][y] = true;
+                        std::cout << "set: i" << i << " y " << y << std::endl;
+                    }
+            }
+        }
     }
-}
+        
+//        
+//        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoDataIn+"/centre")
+//            if (message.size() == 1)
+//                if (message[0].isString())
+//                    map[0][i] = true;
+//
+//// ---------------- SET MIN
+//        
+//        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoDataIn+"/setMin")
+//            if (message.size() == 1)
+//                if (message[0].isInt32())
+//                    {
+//                        map[1][i] = true;
+//                        std::cout << myoDataIn << " set Min float: " << message[0].getFloat32() << std::endl;
+//                    }
+//                if (message[0].isFloat32())
+//                    {
+//                        map[1][i] = true;
+//                        std::cout << myoDataIn << " set Min float: " << message[0].getFloat32() << std::endl;
+//                    }
+//
+//// ---------------- SET MAX
+//
+//        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoDataIn+"/setMin")
+//            if (message.size() == 1)
+//                if (message[0].isString())
+//                    if(i==0)
+//                    {
+//                        std::cout << myoDataIn << " set Max float: " << message[0].getFloat32() << std::endl;
+//                    }
+//                    else if(i==1)
+//                    {
+//                        std::cout << myoDataIn << " set Max float: " << message[0].getFloat32() << std::endl;
+//                    }
+//                    else if(i==2)
+//                    {
+//                        std::cout << myoDataIn << " set Max float: " << message[0].getFloat32() << std::endl;
+//                    }
+//
+//    }
+//}
 
 void OSC::setMyoIdReceiver(int ID)
 {

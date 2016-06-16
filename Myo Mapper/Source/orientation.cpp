@@ -72,20 +72,18 @@ float Orientation::getRoll()
     return rescaleRoll.getValue();
 }
 
-void Orientation::centreYaw()
+void Orientation::map(int myoData, int Action, float Value)
 {
-    rescaleYaw.setCentre();
+    if(myoData==0 && Action==1) rescaleYaw.setCentre();
+    if(myoData==1 && Action==1) rescalePitch.setCentre();
+    if(myoData==2 && Action==1) rescaleRoll.setCentre();
+    
+    if(myoData==0 && Action==2) rescaleYaw.setMin(Value);
+    if(myoData==1 && Action==2) rescalePitch.setMin(Value);
+    if(myoData==2 && Action==2) rescaleRoll.setMin(Value);
+    
+    if(myoData==0 && Action==3) rescaleYaw.setMax(Value);
+    if(myoData==1 && Action==3) rescalePitch.setMax(Value);
+    if(myoData==2 && Action==3) rescaleRoll.setMax(Value);
 }
-
-void Orientation::centrePitch()
-{
-    rescalePitch.setCentre();
-}
-
-void Orientation::centreRoll()
-{
-    rescaleRoll.setCentre();
-}
-
-
 

@@ -57,3 +57,16 @@ float Mav::calculateMav(std::array<float_t, 8> emgScaled)
     
     return mav;
 }
+
+void Mav::map(int myoData, int Action, float Value)
+{
+    if(myoData==3 && Action==1)  rescaleMav.setCentre();
+    if(myoData==3 && Action==2) rescaleMav.setMin(Value);
+    if(myoData==3 && Action==3) rescaleMav.setMax(Value);
+
+}
+
+
+
+
+

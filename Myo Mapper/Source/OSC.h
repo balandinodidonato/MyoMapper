@@ -54,15 +54,16 @@ public:
     bool centreYaw;
     bool centrePitch;
     bool centreRoll;
+    bool centreMav;
+    bool map[3][4];
 
     bool rescaleMinTest;
     int rescaleMIN;
     
     bool rescaleMaxTest;
     int rescaleMAX;
-    
-    String myoDataIn;
-    
+    float value;
+
 private:
     
     OSCSender sender;
@@ -78,6 +79,9 @@ private:
     bool oscConnectionReceiver;
     
     String Id;
+    
+    String myoDataIn[4];
+    String action[4];
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)

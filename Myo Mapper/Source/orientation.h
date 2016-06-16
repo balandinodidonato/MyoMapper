@@ -34,9 +34,7 @@ public:
     float getPitch();
     float getRoll();
     
-    void centreYaw();
-    void centrePitch();
-    void centreRoll();
+    void map(int myoData, int Action, float Value);
     
 private:
     

@@ -156,7 +156,7 @@ void Rescale::setMin(float Value)
 
 void Rescale::setMax(float Value)
 {
-    mmSlider.setMinValue(Value);
+    mmSlider.setMaxValue(Value);
 }
 
 void Rescale::setCentre()

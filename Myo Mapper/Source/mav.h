@@ -30,7 +30,9 @@ public:
     void setValues(std::array<float_t, 8> emgScaled);
     std::array<int8_t, 8> getEmg();
     float getMav();
-    
+    void centreMav();
+    void map(int myoData, int Action, float Value);
+        
 private:
     
     String labelWidget;
