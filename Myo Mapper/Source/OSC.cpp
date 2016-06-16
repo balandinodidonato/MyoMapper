@@ -171,55 +171,13 @@ void OSC::oscMessageReceived(const OSCMessage& message)
                     }
                     else if (message[0].isFloat32())
                     {
-                        value = message[0].isFloat32();
+                        value = message[0].getFloat32();
                         map[i][y] = true;
                         std::cout << "set: i" << i << " y " << y << std::endl;
                     }
             }
         }
     }
-        
-//        
-//        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoDataIn+"/centre")
-//            if (message.size() == 1)
-//                if (message[0].isString())
-//                    map[0][i] = true;
-//
-//// ---------------- SET MIN
-//        
-//        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoDataIn+"/setMin")
-//            if (message.size() == 1)
-//                if (message[0].isInt32())
-//                    {
-//                        map[1][i] = true;
-//                        std::cout << myoDataIn << " set Min float: " << message[0].getFloat32() << std::endl;
-//                    }
-//                if (message[0].isFloat32())
-//                    {
-//                        map[1][i] = true;
-//                        std::cout << myoDataIn << " set Min float: " << message[0].getFloat32() << std::endl;
-//                    }
-//
-//// ---------------- SET MAX
-//
-//        if (message.getAddressPattern() == "/myo/"+Id+"/"+myoDataIn+"/setMin")
-//            if (message.size() == 1)
-//                if (message[0].isString())
-//                    if(i==0)
-//                    {
-//                        std::cout << myoDataIn << " set Max float: " << message[0].getFloat32() << std::endl;
-//                    }
-//                    else if(i==1)
-//                    {
-//                        std::cout << myoDataIn << " set Max float: " << message[0].getFloat32() << std::endl;
-//                    }
-//                    else if(i==2)
-//                    {
-//                        std::cout << myoDataIn << " set Max float: " << message[0].getFloat32() << std::endl;
-//                    }
-//
-//    }
-//}
 
 void OSC::setMyoIdReceiver(int ID)
 {
