@@ -20,13 +20,17 @@
 // provides several virtual functions for handling different kinds of events. If you do not override an event, the
 // default behavior is to do nothing.
 MyoListener::MyoListener()
-: onArm(false),
+:
+onArm(false),
 isUnlocked(false),
 orientation(),
 emgRaw(),
 emgScaled(),
-acceleration(),
-Pose()
+acceleration(0, 0, 0),
+yaw(0),
+pitch(0),
+roll(0),
+Pose("null")
 {
 }
 
@@ -51,7 +55,7 @@ void MyoListener::onUnpair(myo::Myo* myo, uint64_t timestamp)
     isUnlocked = false;
     emgRaw.fill(0);
     emgScaled.fill(0);
-    Pose = "None";
+    Pose = "null";
 }
 
 void MyoListener::onPair(myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion)
@@ -65,7 +69,7 @@ void MyoListener::onPair(myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersion
     isUnlocked = false;
     emgRaw.fill(0);
     emgScaled.fill(0);
-    Pose = "None";
+    Pose = "null";
     
     knownMyos.push_back(myo);
     myoData.resize(knownMyos.size());

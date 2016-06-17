@@ -35,7 +35,6 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void disconnectMyoAndOSC();
-    void vibrate();
 
     Orientation orientation;
     
@@ -52,7 +51,6 @@ private:
     OSC osc;
     
     int selectedMyo;
-    bool vibrateTest = false;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

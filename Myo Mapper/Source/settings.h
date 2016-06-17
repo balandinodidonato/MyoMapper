@@ -64,8 +64,8 @@ private:
     ToggleButton showMav;
     ToggleButton showPose;
     
-    bool oscSettingsChangedSender = false;
-    bool oscSettingsChangedReceiver = false;
+    bool oscSettingsChangedSender;
+    bool oscSettingsChangedReceiver;
     
     int oscPortSender;
     int oscPortReceiver;

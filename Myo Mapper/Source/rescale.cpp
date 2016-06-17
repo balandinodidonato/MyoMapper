@@ -19,7 +19,10 @@ targetValue(0),        // Target value to centre to
 maxOutputValue(1.0),
 minOutputValue(0.0),
 scaled(0),
-input(0)
+input(0),
+PI(3.141592653589793238L),
+r2PI(1/(2*PI)),
+test(0)
 {
     
     addAndMakeVisible(centre);
@@ -130,7 +133,7 @@ void Rescale::setValue(float Value)
 {
     input = Value;
     
-    input = (input+PI)*0.1591549430919;
+    input = (input+PI)*r2PI;
     
     // Centre incoming value
     centred = 1-(offset-(input-(targetValue*test))); // input is the value to be centred
