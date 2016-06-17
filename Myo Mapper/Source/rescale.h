@@ -39,6 +39,7 @@ public:
     void setMin(float Value);
     void setMax(float Value);
     void setCentre();
+    void setReverse(bool Status);
 
 private:
     

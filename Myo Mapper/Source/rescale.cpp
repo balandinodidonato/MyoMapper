@@ -130,7 +130,7 @@ void Rescale::setValue(float Value)
 {
     input = Value;
     
-    input = (input+PI)/(2*PI);
+    input = (input+PI)*0.1591549430919;
     
     // Centre incoming value
     centred = 1-(offset-(input-(targetValue*test))); // input is the value to be centred
@@ -163,4 +163,10 @@ void Rescale::setCentre()
 {
     offset = input; // take the current myo value as offset to centre the data
     test = 1; // centre the myo data at half of the established range
+}
+
+void Rescale::setReverse(bool Status)
+{
+    reverse.setToggleState(Status, dontSendNotification);
+    reverse.setState(juce::Button::buttonDown);
 }

@@ -17,10 +17,6 @@ OSC::OSC()
 :
 vibrate(false),
 vibrationType("null"),
-centreYaw(false),
-centrePitch(false),
-centreRoll(false),
-centreMav(false),
 rescaleMinTest(false),
 rescaleMIN(0),
 rescaleMaxTest(false),
@@ -32,7 +28,7 @@ oscConnectionSender(false),
 oscConnectionReceiver(false),
 Id("0"),
 myoDataIn{"/yaw", "/pitch", "/roll", "/mav"},
-action{"/vibrate", "/centre", "/setMin", "/setMax"}
+action{"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
 {
     for(int i = 0; i<4; i++) // id
     {
@@ -40,9 +36,9 @@ action{"/vibrate", "/centre", "/setMin", "/setMax"}
 
         receiver.addListener(this, "/myo/"+I+action[0]);
 
-        for(int y =0; y<4; y++) // myo data
+        for(int y=0; y<4; y++) // myo data
         {
-            for(int z=1; z<4; z++)
+            for(int z=1; z<5; z++) //action
             {
                 receiver.addListener(this, "/myo/"+I+myoDataIn[y]+action[z]);
             }
@@ -130,7 +126,7 @@ void OSC::disconnectReceiver()
 void OSC::oscMessageReceived(const OSCMessage& message)
 {
     
-// ---------------- Vibrate
+    // ---------------- Vibrate
     
     if (message.getAddressPattern() == "/myo/"+Id+action[0])
         if (message.size() == 1 && message[0].isString())
@@ -154,6 +150,24 @@ void OSC::oscMessageReceived(const OSCMessage& message)
             }
         }
         
+        // ---------------- Reverse
+        
+        else if (message.getAddressPattern() == "/myo/"+Id+myoDataIn[i]+action[4])
+        {
+            if (message.size() == 1 && message[0].isInt32())
+            {
+                if (message[0].getInt32() == 1)
+                {
+                    reverseStatus = true;
+                }
+                else if (message[0].getInt32() == 0)
+                {
+                    reverseStatus = false;
+                }
+                map[i][4] = true;
+            }
+        }
+        
         for(int y=2; y<4; y++) // action
         {
             // ---------------- Set MinMax
@@ -164,13 +178,12 @@ void OSC::oscMessageReceived(const OSCMessage& message)
                     if (message[0].isInt32())
                     {
                         value = message[0].isInt32();
-                        map[i][y] = true;
                     }
-                    else if (message[0].isFloat32())
+                    if (message[0].isFloat32())
                     {
                         value = message[0].getFloat32();
-                        map[i][y] = true;
                     }
+                    map[i][y] = true;
                 }
             }
         }

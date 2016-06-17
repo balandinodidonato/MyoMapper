@@ -93,21 +93,13 @@ void MainComponent::timerCallback()
     }
 
     for(int i=0; i<4; i++) // myoData
-    {
-        if(osc.map[i][1])
-        {
-            orientation.map(i, 1, osc.value);
-            osc.map[i][1] = false;
-        }
-        for(int y=2; y<4; y++) // action
-        {
-                if(osc.map[i][y])
-                {
-                    mav.map(i, y, osc.value);
-                    osc.map[i][y] = false;
-                }
-        }
-    }
+        for(int y=1; y<5; y++) // action
+            if(osc.map[i][y])
+            {
+                orientation.map(i, y, osc.value, osc.reverseStatus);
+                mav.map(i, y, osc.value, osc.reverseStatus);
+                osc.map[i][y] = false;
+            }
 }
 
 void MainComponent::disconnectMyoAndOSC()

@@ -51,11 +51,7 @@ public:
     bool vibrate;
     String vibrationType;
 
-    bool centreYaw;
-    bool centrePitch;
-    bool centreRoll;
-    bool centreMav;
-    bool map[3][4];
+    bool map[4][5];
 
     bool rescaleMinTest;
     int rescaleMIN;
@@ -63,6 +59,8 @@ public:
     bool rescaleMaxTest;
     int rescaleMAX;
     float value;
+    
+    bool reverseStatus;
 
 private:
     
@@ -81,7 +79,7 @@ private:
     String Id;
     
     String myoDataIn[4];
-    String action[4];
+    String action[5];
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)

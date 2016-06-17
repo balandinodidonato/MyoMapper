@@ -31,7 +31,7 @@ public:
     std::array<int8_t, 8> getEmg();
     float getMav();
     void centreMav();
-    void map(int myoData, int Action, float Value);
+    void map(int myoData, int Action, float Value, bool ReverseStatus);
         
 private:
     

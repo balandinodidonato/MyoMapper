@@ -34,7 +34,7 @@ public:
     float getPitch();
     float getRoll();
     
-    void map(int myoData, int Action, float Value);
+    void map(int myoData, int Action, float Value, bool ReverseStatus);
     
 private:
     

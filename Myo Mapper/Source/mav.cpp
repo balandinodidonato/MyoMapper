@@ -40,7 +40,6 @@ void Mav::setValues(std::array<float_t, 8> emgScaled)
 float Mav::getMav()
 {
     return rescaleMav.getValue();
-    std::cout << "mav called - mav: " << rescaleMav.getValue() << std::endl;
 }
 
 float Mav::calculateMav(std::array<float_t, 8> emgScaled)
@@ -58,12 +57,15 @@ float Mav::calculateMav(std::array<float_t, 8> emgScaled)
     return mav;
 }
 
-void Mav::map(int myoData, int Action, float Value)
+void Mav::map(int myoData, int Action, float Value, bool ReverseStatus)
 {
-    if(myoData==3 && Action==1)  rescaleMav.setCentre();
-    if(myoData==3 && Action==2) rescaleMav.setMin(Value);
-    if(myoData==3 && Action==3) rescaleMav.setMax(Value);
-
+    if(myoData==3)
+    {
+        if(Action==1) rescaleMav.setCentre();
+        else if(Action==2) rescaleMav.setMin(Value);
+        else if(Action==3) rescaleMav.setMax(Value);
+        else if(Action==4) rescaleMav.setReverse(ReverseStatus);
+    }
 }
 
 
