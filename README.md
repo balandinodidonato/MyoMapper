@@ -22,14 +22,14 @@ MyoMapper initially sends OSC messages at the port 5432 and receive messages at 
 
 | OSC tag             | Myo parameter            | Value Type               | Range       |
 | :---:               | :---:                    | :---:                    |:---:        |
-| /orientationScaled  | Yaw, Pitch, Roll         | `float`, `float`, `float`      | `0`, `1`        |
-| /orientationRaw     | Yaw, Pitch, Roll         | `float`, float, `float`      | `-PI`, `PI`     |
-| /acceleration       | Acc. x, Acc. y, Acc. z   | `float`, float, `float`      | `-PI`, `PI`     |
-| /gyro               | Gyro X, Gyro Y, Gyro Z   | `float`, `float`, `float`      | `-1000`, `1000` |
-| /mav                | EMGs Mean Absolute Value | `float`                    | `0`, `1`        |
-| /emgScaled          | EMG 1, EMG 2 ... EMG 8   | `float`, float, ... float  | `0`, `1`        |
-| /emgRaw             | EMG 1, EMG 2 ... EMG 8   | `int`, `int`, ... `int`        | `-127`, `128`   |
-| /pose               | Hand pose                | `int`, `string`              | -1, 5 ; `"unknown"`, `"rest"`,  `"fist"`, `"fingerSpread"`, `"waveIn"`, `"waveOut"`, `"doubleTap"` |
+| `/orientationScaled`  | Yaw, Pitch, Roll         | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`        |
+| `/orientationRaw`     | Yaw, Pitch, Roll         | `float`, float, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI`     |
+| `/acceleration`       | Acc. x, Acc. y, Acc. z   | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI`     |
+| `/gyro`               | Gyro X, Gyro Y, Gyro Z   | `float`, `float`, `float`      | `-1000, 1000`, `-1000, 1000`, `-1000, 1000` |
+| `/mav`                | EMGs Mean Absolute Value | `float`                    | `0, 1`, `0, 1`, `0, 1`        |
+| `/emgScaled`          | EMG 1, EMG 2 ... EMG 8   | `float`, `float`, ... `float`  | `0, 1`, `0, 1` ... `0, 1`        |
+| `/emgRaw`             | EMG 1, EMG 2 ... EMG 8   | `int`, `int`, ... `int`        | `-127, 128`, `-127, 128` ... `-127, 128`   |
+| `/pose`               | Hand pose                | `int`, `string`              | `-1, 5` ; `"unknown", "rest",  "fist", "fingerSpread", "waveIn", "waveOut", "doubleTap"` |
 
 ### Accepted OSC messages
 
@@ -39,11 +39,11 @@ myoValue = the value which has to be processed. It has to be a `String` which va
 
 | OSC tag                    | Value Type | Range                     | Functions                                              |
 | :---:                      | :---:      | :---:                     |  :---:                                                 |
-| /myo/id/vibrate            | `String`   | `short`, `medium`, `long` | Makes the Myo vibrate for a short, medium or long time |
-| /myo/id/myoValue/centre    | `String`   | `centre`                  | Centre the current value within the set range          |
-| /myo/id/myoValue/setMin    | `float`    |  `0`, `1`                 | Set the lowest outgoing value                          |
-| /myo/id/myoValue/setMax    | `float`    |  `0`, `1`                 | Set the highest outgoing value                         |
-| /myo/id/myoValue/reverse   | `int`      |  `0`, `1`                 | Reverse the current value                              |
+| `/myo/id/vibrate`            | `String`   | `short`, `medium`, `long` | Makes the Myo vibrate for a short, medium or long time |
+| `/myo/id/myoValue/centre`    | `String`   | `centre`                  | Centre the current value within the set range          |
+| `/myo/id/myoValue/setMin`    | `float`    |  `0`, `1`                 | Set the lowest outgoing value                          |
+| `/myo/id/myoValue/setMax`    | `float`    |  `0`, `1`                 | Set the highest outgoing value                         |
+| `/myo/id/myoValue/reverse`   | `int`      |  `0`, `1`                 | Reverse the current value                              |
 
 ---
 
