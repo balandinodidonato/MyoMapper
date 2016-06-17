@@ -1,116 +1,49 @@
 # MyoMapper
-MyoMapper, is a tool to convert and rescale raw data from the Myo and to send them to musical applications (Eg. [Integra Live](http://www.integralive.org), [Pd](https://puredata.info), [Max/MSP](https://cycling74.com/products/max/)) through OSC and/or MIDI protocol.
+MyoMapper, is an application to convert and rescale raw data from the Myo and to send them to musical applications through OSC and/or MIDI protocol.
 
-It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
+It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) and [Jamie Bullock](http://jamiebullock.com/) at [Integra Lab](http://www.integra.io/lab).
 
 MyoMapper demos are available [here](https://vimeo.com/album/3313801).
 
-[**DOWNLOAD MyoMapper for OSX or Windows**](https://github.com/balandinodidonato/MyoMapper/releases/tag/1)
+[**DOWNLOAD MyoMapper**](http://www.balandinodidonato.com/myomapper/)
 
-## How to use it
+## Get Started
 
 - Launch [Myo Connect](https://developer.thalmic.com/downloads)
-- Install `unlock.myo`  script (`path/to/MyoMapper/script/unlock.myo`) to do so:
-`Myo Connect -> Application Manager -> +Add -> Select unlock.myo`
 - Connect your Myo armband
 - Verify that the connection is stable and Myo Connect is receiving data
 - Launch MyoMapper
 
 ## OSC Communication
 
-MyoMapper sends OSC messages at the **port 5432**.
+MyoMapper initially sends OSC messages at the port 5432 and receive messages at the port 5431, but it can changed through the setting pannel.
 
-Unfortunately there is no GUI command yet, (I promised to myself to insert this feature in) however it is still possible to do it. All you need to do is:
+### Outgoing OSC messages
 
-Open the osc.pde file
-`open <path>/<to>/MyoMapper/MyoMapper/osc.pde`
+| OSC tag             | Myo parameter            | Value Type               | Range       |
+| :---:               | :---:                    | :---:                    |:---:        |
+| /orientationScaled  | Yaw, Pitch, Roll         | `float`, `float`, `float`      | `0`, `1`        |
+| /orientationRaw     | Yaw, Pitch, Roll         | `float`, float, `float`      | `-PI`, `PI`     |
+| /acceleration       | Acc. x, Acc. y, Acc. z   | `float`, float, `float`      | `-PI`, `PI`     |
+| /gyro               | Gyro X, Gyro Y, Gyro Z   | `float`, `float`, `float`      | `-1000`, `1000` |
+| /mav                | EMGs Mean Absolute Value | `float`                    | `0`, `1`        |
+| /emgScaled          | EMG 1, EMG 2 ... EMG 8   | `float`, float, ... float  | `0`, `1`        |
+| /emgRaw             | EMG 1, EMG 2 ... EMG 8   | `int`, `int`, ... `int`        | `-127`, `128`   |
+| /pose               | Hand pose                | `int`, `string`              | -1, 5 ; `"unknown"`, `"rest"`,  `"fist"`, `"fingerSpread"`, `"waveIn"`, `"waveOut"`, `"doubleTap"` |
 
-Editi the following code line:
+### Accepted OSC messages
 
-`myRemoteLocation = new NetAddress("127.0.0.1",5432); // IP address and Port`
+**NB:**
+id = the value which indicates the selected Myo. It has to be an `int`, which value can be `1`, `2`, `3`, `4`.
+myoValue = the value which has to be processed. It has to be a `String` which value can be `yaw`, `pitch`, `roll`, `mav`.
 
-Save the osc.pde file
-Build again MyoMapper. It is advisable to run it first from Processing using the top right corner button in order to check the OSC communication.
-
-### OSC mapping
-
-| OSC tag      | Value                  | Myo parameter                |
-| :---:        | :---:                  | :---:                        |
-| /orientation | 0-1, 0-1, 0-1          | Yaw, Pitch, Roll             |
-| /acc         | 0-1000, 0-1000, 0-1000 | Acc X, Acc Y, Acc Z          |
-| /gyro        | 0-2PI, 0-2PI, 0-2PI    | Gyro X, Gyro Y, Gyro Z       |
-| /emgAvg      | 0-1                    | EMG average                  |
-| /emg         | 0-1, 0-1, 0-1, ... 0-1 | EMG 1, EMG 2, EMG 3 ... EMG 8|
-| /pose        | `UNCKNOWN`, 0          | Pose: Unknown                |
-| /pose        | `FIST`, 1              |  Pose: Fist                  |
-| /pose        | `FINGERS_SPREAD`, 2    | Pose: Fingers Spread         |
-| /pose        | `WAVE_IN`, 3           | Pose: Wave In                |
-| /pose        | `WAVE_OUT`, 4          | Pose: Wave Out               |
-| /pose        | `DOUBLE_TAP`, 5        | Pose: Double Tap             |
-| /pose        | `REST`, 6              | Pose: Rest                   |
-
-
-
-## MIDI Communication
-
-The **MIDI port** can be changed through the user interface once you have built the application.
-
-In order to change **MIDI channel** to which send MIDI data it is easily doable through the GUI.
-
-To change **cc value** of the single Myo value, you need to open the relative pde file and edit the parameters of the functions which send MIDI data.
-
-Eg.
-
-To change cc values of Myo acceleration values you have to open the `myoAcceleration.pde` file
-
-`open <path>/<to>/MyoMapper/MyoMapper/myoAcceleration.pde`
-
-and then edit the function to send MIDI data at the line 19.
-
-
-                            |MIDI ch| cc | value  |
-                            |       |    |        |
-    myBus.sendControllerChange(chMIDI, 4, rollMIDI);
-    myBus.sendControllerChange(chMIDI, 5, pitchMIDI);
-    myBus.sendControllerChange(chMIDI, 6, yawMIDI);
-
-
-
-                              |MIDI ch| cc | value  |
-                              |       |    |        |
-     myBus.sendControllerChange(chMIDI, 4, rollMIDI);
-     myBus.sendControllerChange(chMIDI, 5, pitchMIDI);
-     myBus.sendControllerChange(chMIDI, 6, yawMIDI);
-
-### MIDI mapping
-
-| cc value | Velocity | Myo parameter        |
-| :---:    | :---:    | :---:                |
-| 1        | 0-127    | Yaw                  |
-| 2        | 0-127    | Pitch                |
-| 3        | 0-127    | Roll                 |
-| 4        | 0-127    | Acc X                |
-| 5        | 0-127    | Acc Y                |
-| 6        | 0-127    | Acc Z                |
-| 7        | 0-127    | Gyro X               |
-| 8        | 0-127    | Gyro Y               |
-| 9        | 0-127    | Gyro Z               |
-| 10       | 0-127    | EMG average          |
-| 11       | 0-127    | EMG pad 1            |
-| 12       | 0-127    | EMG pad 2            |
-| 13       | 0-127    | EMG pad 3            |
-| 14       | 0-127    | EMG pad 4            |
-| 15       | 0-127    | EMG pad 5            |
-| 16       | 0-127    | EMG pad 6            |
-| 17       | 0-127    | EMG pad 7            |
-| 18       | 0-127    | EMG pad 8            |
-| 20       | 0        | Pose: Unknown        |
-| 20       | 21       | Pose: Fist           |
-| 20       | 42       | Pose: Fingers Spread |
-| 20       | 64       | Pose: Wave In        |
-| 20       | 85       | Pose: Wave Out       |
-| 20       | 106      | Pose: Double Tap     |
-| 20       | 127      | Pose: REST           |
+| OSC tag                    | Value Type | Range                     | Functions                                              |
+| :---:                      | :---:      | :---:                     |  :---:                                                 |
+| /myo/id/vibrate            | `String`   | `short`, `medium`, `long` | Makes the Myo vibrate for a short, medium or long time |
+| /myo/id/myoValue/centre    | `String`   | `centre`                  | Centre the current value within the set range          |
+| /myo/id/myoValue/setMin    | `float`    |  `0`, `1`                 | Set the lowest outgoing value                          |
+| /myo/id/myoValue/setMax    | `float`    |  `0`, `1`                 | Set the highest outgoing value                         |
+| /myo/id/myoValue/reverse   | `int`      |  `0`, `1`                 | Reverse the current value                              |
 
 ---
 
@@ -123,43 +56,20 @@ and then edit the function to send MIDI data at the line 19.
 Source immage: Arief, Z., Sulistijono, I. A., & Ardiansyah, R. A. (2015, September). *Comparison of five time series EMG features extractions using Myo Armband.* In Electronics Symposium (IES), 2015 International (pp. 11-14). IEEE. Chicago.
 
 
-## To build
+## To build on OS X
 
 ### Requirements
 
-- [Processing 2.2.1](https://processing.org/download/)
-- Libraries for Processing:
-  - [The midibus](http://www.smallbutdigital.com/themidibus.php)
-  - [ControlP5](http://www.sojamo.de/libraries/controlP5/)
-  - [oscP5](http://www.sojamo.de/libraries/oscP5/)
-  - [Myo For Processing](https://github.com/nok/myo-processing)
+- [X Code](https://developer.apple.com/xcode/)
+- [Myo SDK for OS X](https://developer.thalmic.com/downloads)
 
 ### Build process
 
-Create a folder called MyoMapper.
-
-Open a Terminal and change your directory to the MyoMapper Folder
-
-`cd <path>/<to>/MyoMapper`
-
-Clone the repository
-
-`git clone https://github.com/balandinodidonato/MyoMapper`
-
-Open the MyoMapper.pde file
-
-`open MyoMapper/MyoMapper.pde`
-
-Once the Processing Sketch came up
-
-Navigate to the top bar and select `File -> Export Application`
-
-- Select the Platform which you will be working on
-- Click on `Export`
+#### Updated soon
 
 ## License
 
-Copyright (c)  2016 - Balandino Di Donato
+Copyright (c)  2016 - Integra Lab
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
