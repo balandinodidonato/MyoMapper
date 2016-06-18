@@ -122,7 +122,7 @@ void MainComponent::disconnectMyoAndOSC()
 
 StringArray MainComponent::getMenuBarNames()
 {
-    const char* menuNames[] = {"Myo Mapper", "Window","Help", 0};
+    const char* menuNames[] = {"Myo Mapper", "Help", 0};
     return StringArray (menuNames);
 }
 
