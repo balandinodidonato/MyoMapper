@@ -38,7 +38,6 @@ AboutWindow::~AboutWindow()
 
 void AboutWindow::paint (Graphics& g)
 {
-    
     g.fillAll (Colours::grey);
     g.setFont(25);
     g.drawText("Myo Mapper", 0, 0, getWidth(), getHeight()*0.2, juce::Justification::centred);
@@ -57,7 +56,7 @@ void AboutWindow::resized()
     description.setText(textDescription, dontSendNotification);
     description.setBounds(0, getHeight()*0.3, getWidth(), getHeight()*0.4);
     
-    copyright.setText("Copyright "+String (CharPointer_UTF8 ("®")), dontSendNotification);
+    copyright.setText("Copyright  "+String (CharPointer_UTF8 ("®")), dontSendNotification);
     copyright.setBounds(getWidth()*0.12, getHeight()-(getHeight()*0.2), getWidth()*0.3, getHeight()*0.1);
     
     integraLab.setFont(juce::Font::plain, true);

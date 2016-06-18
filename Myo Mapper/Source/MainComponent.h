@@ -18,6 +18,7 @@
 #include "Pose.h"
 #include "OSC.h"
 #include "AboutWindow.h"
+#include "HelpWindow.h"
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
@@ -54,9 +55,10 @@ public:
     };
     
     void AboutMyoMapperDialogWindow();
+    void HelpDialogWindow();
     
 private:
-    
+
     void timerCallback() override;
     
     Mav mav;
@@ -68,7 +70,6 @@ private:
     int selectedMyo;
     
     MenuBarComponent menuBar;
-    HyperlinkButton documentation;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

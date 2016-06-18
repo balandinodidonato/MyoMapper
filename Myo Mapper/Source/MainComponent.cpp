@@ -36,8 +36,6 @@ menuBar(this)//,
     osc.connectReceiver();
     
     startTimer(25);
-    
-
 }
 
 void MainComponent::paint(juce::Graphics &g)
@@ -158,6 +156,7 @@ void MainComponent::menuItemSelected(int menuID, int index)
             JUCEApplication::getInstance()->systemRequestedQuit();
             break;
         case Documentation:
+            HelpDialogWindow();
             break;
         case ShowOrientation:
             break;
@@ -187,4 +186,25 @@ void MainComponent::AboutMyoMapperDialogWindow()
     aboutWindow->setResizable(false, false);
     aboutWindow->setUsingNativeTitleBar (true);
     aboutWindow->setVisible (true);
+}
+
+void MainComponent::HelpDialogWindow()
+{
+    HelpWindow* helpWindow = new HelpWindow ("Documentation", Colours::grey, DocumentWindow::closeButton);
+    helpWindow->addToDesktop();
+    
+    Rectangle<int> area (0, 0, 300, 150);
+    
+    RectanglePlacement placement ((true ? RectanglePlacement::xLeft
+                                   : RectanglePlacement::xRight)
+                                  | RectanglePlacement::yTop
+                                  | RectanglePlacement::doNotResize);
+    
+    Rectangle<int> result (placement.appliedTo (area, Desktop::getInstance().getDisplays()
+                                                .getMainDisplay().userArea.reduced (20)));
+    helpWindow->setBounds (result);
+    
+    helpWindow->setResizable(false, false);
+    helpWindow->setUsingNativeTitleBar (true);
+    helpWindow->setVisible (true);
 }
