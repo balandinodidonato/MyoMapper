@@ -25,12 +25,13 @@
 /*
 */
 class MainComponent    : public Component,
-                         private Timer
+                         private Timer,
+                         public MenuBarModel
 {
     
 public:
     MainComponent();
-    ~MainComponent() {};
+    ~MainComponent(){};
 
     void paint (Graphics& g) override;
     void resized() override;
@@ -38,7 +39,18 @@ public:
 
     Orientation orientation;
     
+    StringArray getMenuBarNames() override;
+    PopupMenu getMenuForIndex(int index, const String& name) override;
+    void menuItemSelected (int menuID, int index) override;
     
+    enum MenuIDs {
+        AboutMyoMapper = 1000,
+        Quit,
+        Documentation
+    };
+    
+    void AboutMyoMapperDialogWindow();
+   // HyperlinkButton acknowledgment;
     
 private:
     
@@ -52,6 +64,9 @@ private:
     
     int selectedMyo;
     
+    MenuBarComponent menuBar;
+    HyperlinkButton documentation;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
 
