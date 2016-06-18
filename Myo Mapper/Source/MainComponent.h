@@ -17,6 +17,7 @@
 #include "MyoManager.h"
 #include "Pose.h"
 #include "OSC.h"
+#include "AboutWindow.h"
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
@@ -46,11 +47,13 @@ public:
     enum MenuIDs {
         AboutMyoMapper = 1000,
         Quit,
+        ShowOrientation,
+        ShowEMGsMAV,
+        ShowPose,
         Documentation
     };
     
     void AboutMyoMapperDialogWindow();
-   // HyperlinkButton acknowledgment;
     
 private:
     

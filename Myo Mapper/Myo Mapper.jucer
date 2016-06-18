@@ -6,6 +6,8 @@
               companyEmail="contact@integra.io ">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
+      <FILE id="Oedd8x" name="AboutWindow.cpp" compile="1" resource="0" file="Source/AboutWindow.cpp"/>
+      <FILE id="hn6pYz" name="AboutWindow.h" compile="0" resource="0" file="Source/AboutWindow.h"/>
       <FILE id="lRkxqB" name="OSC.cpp" compile="1" resource="0" file="Source/OSC.cpp"/>
       <FILE id="TOvZW6" name="OSC.h" compile="0" resource="0" file="Source/OSC.h"/>
       <FILE id="Ot6Nk3" name="Settings.cpp" compile="1" resource="0" file="Source/Settings.cpp"/>

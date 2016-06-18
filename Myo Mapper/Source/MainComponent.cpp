@@ -14,13 +14,10 @@
 
 MainComponent::MainComponent()
 :
-menuBar(this),
-documentation("Documentation", URL ("https://github.com/balandinodidonato/MyoMapper/wiki"))
+menuBar(this)//,
+//documentation("Documentation", URL ("https://github.com/balandinodidonato/MyoMapper/wiki"))
 {
     setSize(getParentWidth()*0.4, getParentHeight());
-
-    addChildComponent(documentation);
-    documentation.setColour (HyperlinkButton::textColourId, Colours::lightblue);
 
     addAndMakeVisible(&menuBar);
 
@@ -125,7 +122,7 @@ void MainComponent::disconnectMyoAndOSC()
 
 StringArray MainComponent::getMenuBarNames()
 {
-    const char* menuNames[] = {"Myo Mapper", "Help", 0};
+    const char* menuNames[] = {"Myo Mapper", "Window","Help", 0};
     return StringArray (menuNames);
 }
 
@@ -137,6 +134,12 @@ PopupMenu MainComponent::getMenuForIndex(int index, const String& name)
         menu.addItem(AboutMyoMapper, "About Myo Mapper");
         menu.addSeparator();
         menu.addItem(Quit, "Quit");
+    }
+    if (name == "Window")
+    {
+        menu.addItem(ShowOrientation, "Show Orientation");
+        menu.addItem(ShowEMGsMAV, "Show EMGs MAV");
+        menu.addItem(ShowPose, "Show Pose");
     }
     else if (name == "Help")
     {
@@ -155,43 +158,33 @@ void MainComponent::menuItemSelected(int menuID, int index)
             JUCEApplication::getInstance()->systemRequestedQuit();
             break;
         case Documentation:
-            
+            break;
+        case ShowOrientation:
+            break;
+        case ShowEMGsMAV:
+            break;
+        case ShowPose:
             break;
     }
 }
 
 void MainComponent::AboutMyoMapperDialogWindow()
 {
-    String m;
+    AboutWindow* aboutWindow = new AboutWindow ("About Myo Mapper", Colours::grey, DocumentWindow::closeButton);
+    aboutWindow->addToDesktop();
     
-    HyperlinkButton* acknowledgment = new HyperlinkButton();
+    Rectangle<int> area (0, 0, 300, 200);
     
-    addAndMakeVisible(acknowledgment);
-    acknowledgment->setURL(URL("https://github.com/balandinodidonato/MyoMapper/wiki"));
-    acknowledgment->setName("acknowledgment");
-    acknowledgment->setBounds(0, 0, getWidth(), 40);
+    RectanglePlacement placement ((true ? RectanglePlacement::xLeft
+                                   : RectanglePlacement::xRight)
+                                  | RectanglePlacement::yTop
+                                  | RectanglePlacement::doNotResize);
     
-    m << "Myo Mapper" << newLine
-    << "Version 2.0" << newLine
-    << newLine
-    << "Copyright Integra Lab - 2016";
+    Rectangle<int> result (placement.appliedTo (area, Desktop::getInstance().getDisplays()
+                                                .getMainDisplay().userArea.reduced (20)));
+    aboutWindow->setBounds (result);
     
-    DialogWindow::LaunchOptions options;
-    Label* label = new Label();
-    label->setText (m, dontSendNotification);
-    label->setColour (Label::textColourId, Colours::whitesmoke);
-    options.content.setOwned (label);
-    
-    Rectangle<int> area (0, 0, 400, 400);
-    
-    options.content->setSize (area.getWidth(), area.getHeight());
-    
-    options.dialogTitle                   = "About Myo Mapper";
-    options.dialogBackgroundColour        = Colours::grey;
-    options.escapeKeyTriggersCloseButton  = true;
-    options.useNativeTitleBar             = true;
-    options.resizable                     = true;
-    
-    DialogWindow* dw = options.launchAsync();
-    dw->centreWithSize (400, 400);
+    aboutWindow->setResizable(false, false);
+    aboutWindow->setUsingNativeTitleBar (true);
+    aboutWindow->setVisible (true);
 }
