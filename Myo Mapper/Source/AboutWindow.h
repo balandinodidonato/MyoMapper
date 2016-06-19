@@ -32,7 +32,6 @@ private:
     void closeButtonPressed() override;
 
     HyperlinkButton integraLab;
-    Label description;
     Label copyright;
     Label copyrightDate;
 

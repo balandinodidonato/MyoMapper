@@ -17,10 +17,6 @@ AboutWindow::AboutWindow (const String& name, Colour backgroundColour, int butto
 DocumentWindow (name, backgroundColour, buttonsNeeded),
 integraLab ("Integra Lab", URL ("http://integra.io/"))
 {
-    description.setJustificationType(juce::Justification::centred);
-    description.setFont(15);
-    juce::Component::addAndMakeVisible(description);
-    
     juce::Component::addAndMakeVisible(integraLab);
     
     copyright.setJustificationType(juce::Justification::right);
@@ -47,17 +43,8 @@ void AboutWindow::paint (Graphics& g)
 
 void AboutWindow::resized()
 {
-    String textDescription;
-    
-    textDescription << "Myo Mapper is developped by" << newLine
-    << "Balandino Di Donato and Jamie Bullock" << newLine
-    << "at Integra Lab (Birmingham Conservatoire).";
-    
-    description.setText(textDescription, dontSendNotification);
-    description.setBounds(0, getHeight()*0.3, getWidth(), getHeight()*0.4);
-    
     copyright.setText("Copyright  "+String (CharPointer_UTF8 ("®")), dontSendNotification);
-    copyright.setBounds(getWidth()*0.12, getHeight()-(getHeight()*0.2), getWidth()*0.3, getHeight()*0.1);
+    copyright.setBounds(getWidth()*0.13, getHeight()-(getHeight()*0.2), getWidth()*0.3, getHeight()*0.1);
     
     integraLab.setFont(juce::Font::plain, true);
     integraLab.setBounds(copyright.getRight(), copyright.getY(), getWidth()*0.23, copyright.getHeight());
