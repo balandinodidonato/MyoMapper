@@ -14,8 +14,7 @@
 
 MainComponent::MainComponent()
 :
-menuBar(this)//,
-//documentation("Documentation", URL ("https://github.com/balandinodidonato/MyoMapper/wiki"))
+menuBar(this)
 {
     setSize(getParentWidth()*0.4, getParentHeight());
 
@@ -124,6 +123,10 @@ StringArray MainComponent::getMenuBarNames()
     return StringArray (menuNames);
 }
 
+// ===================================================================
+//                          MENU BAR
+// ===================================================================
+
 PopupMenu MainComponent::getMenuForIndex(int index, const String& name)
 {
     PopupMenu menu;
@@ -131,6 +134,8 @@ PopupMenu MainComponent::getMenuForIndex(int index, const String& name)
     {
         menu.addItem(AboutMyoMapper, "About Myo Mapper");
         menu.addSeparator();
+     //   menu.addItem(AddMyo, "Add Myo");
+     //   menu.addSeparator();
         menu.addItem(Quit, "Quit");
     }
     if (name == "Window")
@@ -141,7 +146,7 @@ PopupMenu MainComponent::getMenuForIndex(int index, const String& name)
     }
     else if (name == "Help")
     {
-        menu.addItem(Documentation, "Documentation");
+        menu.addItem(onlineDocumentation, "Online Documentation");
     }
     return menu;
 }
@@ -152,10 +157,13 @@ void MainComponent::menuItemSelected(int menuID, int index)
         case AboutMyoMapper:
             AboutMyoMapperDialogWindow();
             break;
+        case AddMyo:
+
+            break;
         case Quit:
             JUCEApplication::getInstance()->systemRequestedQuit();
             break;
-        case Documentation:
+        case onlineDocumentation:
             HelpDialogWindow();
             break;
         case ShowOrientation:
@@ -174,9 +182,9 @@ void MainComponent::AboutMyoMapperDialogWindow()
     
     Rectangle<int> area (0, 0, 200, 200);
     
-    RectanglePlacement placement ((true ? RectanglePlacement::xLeft
+    RectanglePlacement placement ((true ? RectanglePlacement::xMid
                                    : RectanglePlacement::xRight)
-                                  | RectanglePlacement::yTop
+                                  | RectanglePlacement::yMid
                                   | RectanglePlacement::doNotResize);
     
     Rectangle<int> result (placement.appliedTo (area, Desktop::getInstance().getDisplays()
@@ -190,14 +198,14 @@ void MainComponent::AboutMyoMapperDialogWindow()
 
 void MainComponent::HelpDialogWindow()
 {
-    HelpWindow* helpWindow = new HelpWindow ("Documentation", Colours::grey, DocumentWindow::closeButton);
+    HelpWindow* helpWindow = new HelpWindow ("Online Documentation", Colours::grey, DocumentWindow::closeButton);
     helpWindow->addToDesktop();
     
     Rectangle<int> area (0, 0, 300, 150);
     
-    RectanglePlacement placement ((true ? RectanglePlacement::xLeft
+    RectanglePlacement placement ((true ? RectanglePlacement::xMid
                                    : RectanglePlacement::xRight)
-                                  | RectanglePlacement::yTop
+                                  | RectanglePlacement::yMid
                                   | RectanglePlacement::doNotResize);
     
     Rectangle<int> result (placement.appliedTo (area, Desktop::getInstance().getDisplays()

@@ -17,14 +17,7 @@
   ==============================================================================
 */
 
-//[Headers] You can add your own extra header files here...
-//[/Headers]
-
 #include "AboutWindowContent.h"
-
-
-//[MiscUserDefs] You can add your own user definitions and misc code here...
-//[/MiscUserDefs]
 
 //==============================================================================
 AboutWindowContent::AboutWindowContent ()
@@ -89,7 +82,6 @@ AboutWindowContent::~AboutWindowContent()
 //==============================================================================
 void AboutWindowContent::paint (Graphics& g)
 {
-
     g.fillAll (Colours::lightgrey);
 }
 

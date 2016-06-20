@@ -47,11 +47,12 @@ public:
     
     enum MenuIDs {
         AboutMyoMapper = 1000,
+        AddMyo,
         Quit,
         ShowOrientation,
         ShowEMGsMAV,
         ShowPose,
-        Documentation
+        onlineDocumentation
     };
     
     void AboutMyoMapperDialogWindow();

@@ -22,14 +22,14 @@ public:
     HelpWindow(const String& name, Colour backgroundColour, int buttonsNeeded);
     ~HelpWindow();
 
-    void paint (Graphics&);
-    void resized();
+    void paint (Graphics&) override;
+    void resized() override;
 
 private:
     
     void closeButtonPressed() override;
         
-    HyperlinkButton documentation;
+    HyperlinkButton wiki;
     HyperlinkButton sourceCode;
     HyperlinkButton support;
 

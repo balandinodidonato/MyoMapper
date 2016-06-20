@@ -15,11 +15,11 @@
 HelpWindow::HelpWindow(const String& name, Colour backgroundColour, int buttonsNeeded)
 :
 DocumentWindow (name, backgroundColour, buttonsNeeded),
-documentation ("Documentation", URL ("https://github.com/balandinodidonato/MyoMapper/wiki")),
+wiki ("Wiki", URL ("https://github.com/balandinodidonato/MyoMapper/wiki")),
 sourceCode ("Source Code", URL ("https://github.com/balandinodidonato/MyoMapper/")),
 support("Ask the developper", URL ("info@balandinodidonato.com"))
 {
-    juce::Component::addAndMakeVisible(documentation);
+    juce::Component::addAndMakeVisible(wiki);
     juce::Component::addAndMakeVisible(sourceCode);
     juce::Component::addAndMakeVisible(support);
 }
@@ -35,14 +35,16 @@ void HelpWindow::paint (Graphics& g)
 
 void HelpWindow::resized()
 {
-    documentation.setFont(juce::Font::plain, true);
-    documentation.setBounds(10, 20, getWidth(), getHeight()*0.25);
+    int space = getHeight()*0.1;
+    
+    wiki.setFont(juce::Font::plain, true);
+    wiki.setBounds(10, space, getWidth(), getHeight()*0.2);
     
     sourceCode.setFont(juce::Font::plain, true);
-    sourceCode.setBounds(10, documentation.getBottom(), documentation.getWidth(), documentation.getHeight());
+    sourceCode.setBounds(10, wiki.getBottom()+space, wiki.getWidth(), wiki.getHeight());
     
     support.setFont(juce::Font::plain, true);
-    support.setBounds(10, sourceCode.getBottom(), documentation.getWidth(), documentation.getHeight());
+    support.setBounds(10, sourceCode.getBottom()+space, wiki.getWidth(), wiki.getHeight());
 }
 
 void HelpWindow::closeButtonPressed()
