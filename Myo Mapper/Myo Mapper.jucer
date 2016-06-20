@@ -6,12 +6,9 @@
               companyEmail="contact@integra.io ">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
-      <FILE id="k5ke2I" name="AboutWindow_2.cpp" compile="1" resource="0"
-            file="Source/AboutWindow_2.cpp"/>
-      <FILE id="VzUSyk" name="AboutWindow_2.h" compile="0" resource="0" file="Source/AboutWindow_2.h"/>
-      <FILE id="PXpmUH" name="EmbeddedImage.cpp" compile="1" resource="0"
-            file="Source/EmbeddedImage.cpp"/>
-      <FILE id="mw5OTr" name="EmbeddedImage.h" compile="0" resource="0" file="Source/EmbeddedImage.h"/>
+      <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
+        <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
+      </GROUP>
       <FILE id="jmv4gh" name="HelpWindow.cpp" compile="1" resource="0" file="Source/HelpWindow.cpp"/>
       <FILE id="DKaHIH" name="HelpWindow.h" compile="0" resource="0" file="Source/HelpWindow.h"/>
       <FILE id="Oedd8x" name="AboutWindow.cpp" compile="1" resource="0" file="Source/AboutWindow.cpp"/>

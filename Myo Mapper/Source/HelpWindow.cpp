@@ -36,7 +36,7 @@ void HelpWindow::paint (Graphics& g)
 void HelpWindow::resized()
 {
     int space = getHeight()*0.1;
-    
+        
     wiki.setFont(juce::Font::plain, true);
     wiki.setBounds(0, space, getWidth(), getHeight()*0.2);
     
