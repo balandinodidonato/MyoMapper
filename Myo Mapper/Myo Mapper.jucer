@@ -9,6 +9,10 @@
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>
+      <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
+            file="Source/AboutWindowContent.cpp"/>
+      <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"
+            file="Source/AboutWindowContent.h"/>
       <FILE id="jmv4gh" name="HelpWindow.cpp" compile="1" resource="0" file="Source/HelpWindow.cpp"/>
       <FILE id="DKaHIH" name="HelpWindow.h" compile="0" resource="0" file="Source/HelpWindow.h"/>
       <FILE id="Oedd8x" name="AboutWindow.cpp" compile="1" resource="0" file="Source/AboutWindow.cpp"/>
