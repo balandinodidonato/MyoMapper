@@ -1,83 +1,83 @@
-#N canvas 44 186 1022 559 10;
+#N canvas -751 236 1022 559 10;
 #X obj 503 172 unpack 0 0 0;
 #X obj 503 194 vsl 15 128 0 1 0 0 empty empty yaw 0 140 0 10 -262144
--1 -1 4859 1;
+-1 -1 4699 1;
 #X obj 537 194 vsl 15 128 0 1 0 0 empty empty pitch 0 140 0 10 -262144
--1 -1 9202 1;
+-1 -1 6350 1;
 #X obj 572 194 vsl 15 128 0 1 0 0 empty empty roll 0 140 0 10 -262144
--1 -1 8135 1;
+-1 -1 6350 1;
 #X obj 653 172 unpack 0 0 0;
 #X obj 653 194 vsl 15 128 -3.14159 3.14159 0 0 empty empty x 0 140
-0 10 -262144 -1 -1 4402 1;
+0 10 -262144 -1 -1 6350 1;
 #X obj 687 194 vsl 15 128 -3.14159 3.14159 0 0 empty empty y 0 140
-0 10 -262144 -1 -1 6611 1;
+0 10 -262144 -1 -1 6350 1;
 #X obj 722 194 vsl 15 128 -3.14159 3.14159 0 0 empty empty z 0 140
-0 10 -262144 -1 -1 6567 1;
+0 10 -262144 -1 -1 6350 1;
 #X text 488 341 ORIENTATION (Scaled 0-1);
 #X text 650 341 ACCELERATION (raw);
 #X obj 183 172 unpack 0 0 0 0 0 0 0 0;
 #X obj 183 194 vsl 15 128 0 1 0 0 empty empty 1 0 140 0 10 -262144
--1 -1 198 1;
+-1 -1 0 1;
 #X obj 203 194 vsl 15 128 0 1 0 0 empty empty 2 0 140 0 10 -262144
--1 -1 99 1;
+-1 -1 0 1;
 #X obj 223 194 vsl 15 128 0 1 0 0 empty empty 3 0 140 0 10 -262144
--1 -1 198 1;
+-1 -1 0 1;
 #X obj 243 194 vsl 15 128 0 1 0 0 empty empty 4 0 140 0 10 -262144
--1 -1 99 1;
+-1 -1 0 1;
 #X obj 263 194 vsl 15 128 0 1 0 0 empty empty 5 0 140 0 10 -262144
--1 -1 695 1;
+-1 -1 0 1;
 #X obj 283 194 vsl 15 128 0 1 0 0 empty empty 6 0 140 0 10 -262144
--1 -1 99 1;
+-1 -1 0 1;
 #X obj 303 194 vsl 15 128 0 1 0 0 empty empty 7 0 140 0 10 -262144
 -1 -1 0 1;
 #X obj 323 194 vsl 15 128 0 1 0 0 empty empty 8 0 140 0 10 -262144
--1 -1 99 1;
+-1 -1 0 1;
 #X obj 13 172 unpack 0 0 0 0 0 0 0 0;
 #X obj 13 194 vsl 15 128 -127 128 0 0 empty empty 1 0 140 0 10 -262144
--1 -1 6225 1;
+-1 -1 6325 1;
 #X obj 33 194 vsl 15 128 -127 128 0 0 empty empty 2 0 140 0 10 -262144
--1 -1 6275 1;
+-1 -1 6325 1;
 #X obj 53 194 vsl 15 128 -127 128 0 0 empty empty 3 0 140 0 10 -262144
--1 -1 6225 1;
+-1 -1 6325 1;
 #X obj 73 194 vsl 15 128 -127 128 0 0 empty empty 4 0 140 0 10 -262144
--1 -1 6275 1;
+-1 -1 6325 1;
 #X obj 93 194 vsl 15 128 -127 127 0 0 empty empty 5 0 140 0 10 -262144
--1 -1 6000 1;
+-1 -1 6350 1;
 #X obj 113 194 vsl 15 128 -127 128 0 0 empty empty 6 0 140 0 10 -262144
--1 -1 6375 1;
+-1 -1 6325 1;
 #X obj 133 194 vsl 15 128 -127 128 0 0 empty empty 7 0 140 0 10 -262144
 -1 -1 6325 1;
 #X obj 153 194 vsl 15 128 -127 128 0 0 empty empty 8 0 140 0 10 -262144
--1 -1 6275 1;
+-1 -1 6325 1;
 #X text 38 341 EMG RAW (-127 \, 128);
 #X text 196 341 EMG DATA (Scaled: 0 \, 1);
 #X obj 363 172 unpack 0 0 0;
 #X obj 363 194 vsl 15 128 -3.14159 3.14159 0 0 empty empty yaw 0 140
-0 10 -262144 -1 -1 4859 1;
+0 10 -262144 -1 -1 6350 1;
 #X obj 397 194 vsl 15 128 -3.14159 3.14159 0 0 empty empty pitch 0
-140 0 10 -262144 -1 -1 9202 1;
+140 0 10 -262144 -1 -1 6350 1;
 #X obj 432 194 vsl 15 128 -3.14159 3.14159 0 0 empty empty roll 0 140
-0 10 -262144 -1 -1 8135 1;
+0 10 -262144 -1 -1 6350 1;
 #X obj 783 172 unpack 0 0 0;
 #X obj 783 194 vsl 15 128 -1000 1000 0 0 empty empty x 0 140 0 10 -262144
--1 -1 6347 1;
+-1 -1 6350 1;
 #X obj 817 194 vsl 15 128 -1000 1000 0 0 empty empty y 0 140 0 10 -262144
--1 -1 6354 1;
+-1 -1 6350 1;
 #X obj 852 194 vsl 15 128 -1000 1000 0 0 empty empty z 0 140 0 10 -262144
--1 -1 6352 1;
+-1 -1 6350 1;
 #X text 780 341 Gyro (raw);
 #X obj 883 172 unpack 0 s;
 #X text 890 231 Pose;
 #X obj 940 193 print pose;
 #X floatatom 883 194 5 0 0 0 - - -, f 5;
-#N canvas 353 407 281 387 YAW 0;
+#N canvas 85 -594 281 387 YAW 0;
 #X msg 33 200 send /myo/1/yaw/centre centre;
 #X obj 33 342 s osc;
 #X obj 36 84 hsl 128 15 -1 2 0 0 empty empty Set_Min 0 -8 0 10 -262144
--1 -1 3433 1;
+-1 -1 7933 1;
 #X floatatom 33 100 5 0 0 2 - - -, f 5;
 #X obj 36 134 hsl 128 15 -1 2 0 0 empty empty Set_Max 0 -8 0 10 -262144
--1 -1 8767 1;
+-1 -1 2567 1;
 #X floatatom 33 150 5 0 0 2 - - -, f 5;
 #X obj 33 45 bng 15 250 50 0 empty empty Centre 17 7 0 10 -262144 -1
 -1;
@@ -91,11 +91,13 @@
 #X obj 209 47 t b b;
 #X obj 209 91 t i i;
 #X msg 238 69 1;
+#X msg 113 313 send /myo/2/yaw/setMax \$1;
 #X connect 0 0 1 0;
 #X connect 2 0 3 0;
 #X connect 3 0 8 0;
 #X connect 4 0 5 0;
 #X connect 5 0 9 0;
+#X connect 5 0 16 0;
 #X connect 6 0 0 0;
 #X connect 7 0 10 0;
 #X connect 8 0 1 0;
@@ -108,11 +110,12 @@
 #X connect 14 0 7 0;
 #X connect 14 1 2 0;
 #X connect 15 0 4 0;
+#X connect 16 0 1 0;
 #X coords 0 -1 1 1 150 150 1 25 25;
 #X restore 9 400 pd YAW;
 #X text 7 378 MESSAGES TO MYO MAPPER;
 #X text 14 90 MESSAGES FROM MYO MAPPER;
-#N canvas 0 22 301 259 VIBRATE 0;
+#N canvas 109 22 430 268 VIBRATE 0;
 #X obj 37 222 s osc;
 #X obj 35 60 bng 15 250 50 0 empty empty Short 17 7 0 10 -262144 -1
 -1;
@@ -124,22 +127,25 @@
 #X obj 131 89 symbol short;
 #X obj 131 119 symbol medium;
 #X obj 131 159 symbol long;
+#X msg 232 191 send /myo/2/vibrate \$1;
 #X connect 1 0 5 0;
 #X connect 2 0 6 0;
 #X connect 3 0 7 0;
 #X connect 4 0 0 0;
 #X connect 5 0 4 0;
+#X connect 5 0 8 0;
 #X connect 6 0 4 0;
 #X connect 7 0 4 0;
+#X connect 8 0 0 0;
 #X coords 0 -1 1 1 100 150 1 25 25;
 #X restore 651 400 pd VIBRATE;
 #N canvas 0 22 281 387 PITCH 0;
 #X obj 33 342 s osc;
 #X obj 36 84 hsl 128 15 -1 2 0 0 empty empty Set_Min 0 -8 0 10 -262144
--1 -1 4033 1;
+-1 -1 6833 1;
 #X floatatom 33 100 5 0 0 2 - - -, f 5;
 #X obj 36 134 hsl 128 15 -1 2 0 0 empty empty Set_Max 0 -8 0 10 -262144
--1 -1 8667 1;
+-1 -1 8467 1;
 #X floatatom 33 150 5 0 0 2 - - -, f 5;
 #X obj 33 45 bng 15 250 50 0 empty empty Centre 17 7 0 10 -262144 -1
 -1;
@@ -176,10 +182,10 @@
 #N canvas 0 22 316 387 ROLL 0;
 #X obj 33 342 s osc;
 #X obj 36 84 hsl 128 15 -1 2 0 0 empty empty Set_Min 0 -8 0 10 -262144
--1 -1 4133 1;
+-1 -1 4233 1;
 #X floatatom 33 100 5 0 0 2 - - -, f 5;
 #X obj 36 134 hsl 128 15 -1 2 0 0 empty empty Set_Max 0 -8 0 10 -262144
--1 -1 8667 1;
+-1 -1 8467 1;
 #X floatatom 33 150 5 0 0 2 - - -, f 5;
 #X obj 33 45 bng 15 250 50 0 empty empty Centre 17 7 0 10 -262144 -1
 -1;
@@ -216,10 +222,10 @@
 #N canvas 0 22 281 387 MAV 0;
 #X obj 33 342 s osc;
 #X obj 36 84 hsl 128 15 -1 2 0 0 empty empty Set_Min 0 -8 0 10 -262144
--1 -1 2133 1;
+-1 -1 4233 1;
 #X floatatom 33 100 5 0 0 2 - - -, f 5;
 #X obj 36 134 hsl 128 15 -1 2 0 0 empty empty Set_Max 0 -8 0 10 -262144
--1 -1 10167 1;
+-1 -1 8467 1;
 #X floatatom 33 150 5 0 0 2 - - -, f 5;
 #X obj 33 45 bng 15 250 50 0 empty empty Centre 17 7 0 10 -262144 -1
 -1;

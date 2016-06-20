@@ -172,7 +172,7 @@ void MainComponent::AboutMyoMapperDialogWindow()
     AboutWindow* aboutWindow = new AboutWindow ("About Myo Mapper", Colours::grey, DocumentWindow::closeButton);
     aboutWindow->addToDesktop();
     
-    Rectangle<int> area (0, 0, 300, 200);
+    Rectangle<int> area (0, 0, 200, 200);
     
     RectanglePlacement placement ((true ? RectanglePlacement::xLeft
                                    : RectanglePlacement::xRight)

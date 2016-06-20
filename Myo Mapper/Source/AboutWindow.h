@@ -12,6 +12,7 @@
 #define ABOUTWINDOW_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "AboutWindowContent.h"
 
 //==============================================================================
 /*
@@ -27,14 +28,10 @@ public:
     void resized() override;
     
 private:
-    HyperlinkButton acknowledgment;
     
     void closeButtonPressed() override;
-
-    HyperlinkButton integraLab;
-    Label copyright;
-    Label copyrightDate;
-
+    
+    AboutWindowContent aboutWindowContent;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AboutWindow)
 };
