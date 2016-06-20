@@ -38,13 +38,13 @@ void HelpWindow::resized()
     int space = getHeight()*0.1;
     
     wiki.setFont(juce::Font::plain, true);
-    wiki.setBounds(10, space, getWidth(), getHeight()*0.2);
+    wiki.setBounds(0, space, getWidth(), getHeight()*0.2);
     
     sourceCode.setFont(juce::Font::plain, true);
-    sourceCode.setBounds(10, wiki.getBottom()+space, wiki.getWidth(), wiki.getHeight());
+    sourceCode.setBounds(wiki.getX(), wiki.getBottom()+space, wiki.getWidth(), wiki.getHeight());
     
     support.setFont(juce::Font::plain, true);
-    support.setBounds(10, sourceCode.getBottom()+space, wiki.getWidth(), wiki.getHeight());
+    support.setBounds(wiki.getX(), sourceCode.getBottom()+space, wiki.getWidth(), wiki.getHeight());
 }
 
 void HelpWindow::closeButtonPressed()
