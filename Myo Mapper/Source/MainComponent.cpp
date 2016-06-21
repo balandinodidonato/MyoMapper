@@ -16,6 +16,20 @@ MainComponent::MainComponent()
 :
 menuBar(this)
 {
+    
+#if JUCE_MAC
+    if (MenuBarModel::getMacMainMenu() != nullptr)
+    {
+        MenuBarModel::setMacMainMenu (nullptr);
+        menuBar.setModel (this);
+    }
+    else
+    {
+        menuBar.setModel (nullptr);
+        MenuBarModel::setMacMainMenu (this);
+    }
+#endif
+    
     setSize(getParentWidth()*0.4, getParentHeight());
 
     addAndMakeVisible(&menuBar);
@@ -58,6 +72,13 @@ void MainComponent::paint(juce::Graphics &g)
     
     g.fillAll(Colours::grey);
 
+    #if JUCE_MAC
+        settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.19-10);
+    #else
+        menuBar.setBounds(0, 0, getWidth(), 20);
+        settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
+    #endif
+    
     orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.5)-15)*settingsPannel.getShowOrientation());
     mav.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowMav(), (getHeight()*0.16)*settingsPannel.getShowMav());
     pose.setBounds(orientation.getX(), mav.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
@@ -65,9 +86,13 @@ void MainComponent::paint(juce::Graphics &g)
 
 void MainComponent::resized()
 {
-    menuBar.setBounds(0, 0, getWidth(), 20);
-
-    settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
+    #if JUCE_MAC
+        settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.19-10);
+    #else
+        menuBar.setBounds(0, 0, getWidth(), 20);
+        settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
+    #endif
+    
     orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.5)-15)*settingsPannel.getShowOrientation());
     mav.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowMav(), (getHeight()*0.16)*settingsPannel.getShowMav());
     pose.setBounds(orientation.getX(), mav.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
@@ -117,35 +142,22 @@ void MainComponent::disconnectMyoAndOSC()
     osc.disconnectReceiver();
 }
 
-StringArray MainComponent::getMenuBarNames()
-{
-    const char* menuNames[] = {"Myo Mapper", "Help", 0};
-    return StringArray (menuNames);
-}
-
 // ===================================================================
 //                          MENU BAR
 // ===================================================================
 
+StringArray MainComponent::getMenuBarNames()
+{
+    const char* menuNames[] = {"Help", nullptr};
+    return StringArray (menuNames);
+}
+
 PopupMenu MainComponent::getMenuForIndex(int index, const String& name)
 {
     PopupMenu menu;
-    if (name == "Myo Mapper")
+    if (name == "Help")
     {
         menu.addItem(AboutMyoMapper, "About Myo Mapper");
-        menu.addSeparator();
-     //   menu.addItem(AddMyo, "Add Myo");
-     //   menu.addSeparator();
-        menu.addItem(Quit, "Quit");
-    }
-    if (name == "Window")
-    {
-        menu.addItem(ShowOrientation, "Show Orientation");
-        menu.addItem(ShowEMGsMAV, "Show EMGs MAV");
-        menu.addItem(ShowPose, "Show Pose");
-    }
-    else if (name == "Help")
-    {
         menu.addItem(onlineDocumentation, "Online Documentation");
     }
     return menu;
@@ -153,26 +165,8 @@ PopupMenu MainComponent::getMenuForIndex(int index, const String& name)
 
 void MainComponent::menuItemSelected(int menuID, int index)
 {
-    switch (menuID) {
-        case AboutMyoMapper:
-            AboutMyoMapperDialogWindow();
-            break;
-        case AddMyo:
-
-            break;
-        case Quit:
-            JUCEApplication::getInstance()->systemRequestedQuit();
-            break;
-        case onlineDocumentation:
-            HelpDialogWindow();
-            break;
-        case ShowOrientation:
-            break;
-        case ShowEMGsMAV:
-            break;
-        case ShowPose:
-            break;
-    }
+        if (menuID == AboutMyoMapper) AboutMyoMapperDialogWindow();
+        else if (menuID == onlineDocumentation) HelpDialogWindow();
 }
 
 void MainComponent::AboutMyoMapperDialogWindow()
