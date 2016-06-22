@@ -14,6 +14,7 @@
 
 MainComponent::MainComponent()
 :
+selectedMyoID(0),
 menuBar(this)
 {
     
@@ -41,6 +42,7 @@ menuBar(this)
     addAndMakeVisible(settingsPannel);
     addAndMakeVisible(pose);
     
+    settingsPannel.myoList.addListener(this);
     myoManager.connect();
     myoManager.startPoll();
     
@@ -106,12 +108,10 @@ void MainComponent::timerCallback()
     
     if (!success) return;
     
-    unsigned int id = settingsPannel.getSelectedMyo();
+    if (!selectedMyoID || selectedMyoID >= myoData.size()) return;
+
+    uint8 id = selectedMyoID;
     
-    if (id >= myoData.size()) return;
-
-    osc.setMyoIdReceiver(id+1);
-
     mav.setValues(myoData[id].emgScaled);
     orientation.setValues(myoData[id].orientationRaw);
     pose.setPoseLabel(myoData[id].pose+" - "+String(myoData[id].poseID));
@@ -209,4 +209,14 @@ void MainComponent::HelpDialogWindow()
     helpWindow->setResizable(false, false);
     helpWindow->setUsingNativeTitleBar (true);
     helpWindow->setVisible (true);
+}
+
+void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
+{
+    if(comboBoxThatHasChanged == &settingsPannel.myoList)
+    {
+        selectedMyoID = settingsPannel.myoList.getSelectedId();
+        osc.setMyoIdReceiver(selectedMyoID);
+    }
+    
 }

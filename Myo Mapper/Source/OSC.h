@@ -47,7 +47,7 @@ public:
     void getOSCMessage(const OSCMessage& message, String myoData);
     
     void setMyoIdReceiver(int ID);
-
+    
     bool vibrate;
     String vibrationType;
 

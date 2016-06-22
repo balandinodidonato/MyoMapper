@@ -28,7 +28,8 @@
 */
 class MainComponent    : public Component,
                          private Timer,
-                         public MenuBarModel
+                         public MenuBarModel,
+                        private ComboBox::Listener
 {
     
 public:
@@ -61,6 +62,7 @@ public:
 private:
 
     void timerCallback() override;
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     
     Mav mav;
     Settings settingsPannel;
@@ -68,7 +70,7 @@ private:
     Pose pose;
     OSC osc;
     
-    int selectedMyo;
+    uint8 selectedMyoID;
     
     MenuBarComponent menuBar;
 

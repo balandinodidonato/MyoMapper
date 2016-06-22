@@ -1,12 +1,12 @@
 /*
-  ==============================================================================
-
-    OSC.cpp
-    Created: 14 Jun 2016 4:33:38pm
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
+ ==============================================================================
+ 
+ OSC.cpp
+ Created: 14 Jun 2016 4:33:38pm
+ Author:  Balandino Di Donato
+ 
+ ==============================================================================
+ */
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "OSC.h"
@@ -33,9 +33,9 @@ action{"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
     for(int i = 0; i<4; i++) // id
     {
         String I = String(i);
-
+        
         receiver.addListener(this, "/myo/"+I+action[0]);
-
+        
         for(int y=0; y<4; y++) // myo data
         {
             for(int z=1; z<5; z++) //action
@@ -172,7 +172,9 @@ void OSC::oscMessageReceived(const OSCMessage& message)
         {
             // ---------------- Set MinMax
             
-            if (message.getAddressPattern() == "/myo/"+Id+myoDataIn[i]+action[y])
+            String matchString = "/myo/"+Id+myoDataIn[i]+action[y];
+            
+            if (message.getAddressPattern() == matchString)
                 if (message.size() == 1)
                 {
                     if (message[0].isInt32())
@@ -185,13 +187,15 @@ void OSC::oscMessageReceived(const OSCMessage& message)
                     }
                     map[i][y] = true;
                 }
-            }
         }
     }
+}
 
 void OSC::setMyoIdReceiver(int ID)
 {
     Id = String(ID);
 }
+
+
 
 

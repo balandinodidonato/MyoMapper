@@ -48,6 +48,10 @@ public:
     String getHostAddress();
     int getSelectedMyo();
     
+    
+    ComboBox myoList;
+    
+    
 private:
     Slider oscPortSliderSender;
     Slider oscPortSliderReceiver;
@@ -58,7 +62,6 @@ private:
     Label hostAddressTitle;
     Label setHostAddress;
     
-    ComboBox myoList;
     
     ToggleButton showOrientation;
     ToggleButton showMav;
