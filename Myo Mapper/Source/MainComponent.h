@@ -34,7 +34,7 @@ class MainComponent    : public Component,
     
 public:
     MainComponent();
-    ~MainComponent(){};
+    ~MainComponent();
 
     void paint (Graphics& g) override;
     void resized() override;
@@ -70,7 +70,7 @@ private:
     Pose pose;
     OSC osc;
     
-    uint8 selectedMyoID;
+    int selectedMyoID;
     
     MenuBarComponent menuBar;
 

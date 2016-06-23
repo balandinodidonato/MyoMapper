@@ -28,6 +28,8 @@ public:
     void setOSChostAddress(String HostAddress);
     void enableOSC(bool EnableOSC);
     
+    std::vector<myo::Myo*> knownMyos;
+    
 private:
     
     int getMyoID(myo::Myo* myo);
@@ -53,7 +55,6 @@ private:
     Vector3D< float > orientation;
     std::array<int8_t, 8> emgRaw;
     std::array<float_t, 8> emgScaled;
-    std::vector<myo::Myo*> knownMyos;
     Vector3D<float> acceleration;
     Vector3D<float> Gyro;
     float yaw;

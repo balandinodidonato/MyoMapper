@@ -53,6 +53,14 @@ menuBar(this)
     startTimer(25);
 }
 
+MainComponent::~MainComponent()
+{
+    #if JUCE_MAC
+        MenuBarModel::setMacMainMenu (nullptr);
+    #endif
+    PopupMenu::dismissAllActiveMenus();
+}
+
 void MainComponent::paint(juce::Graphics &g)
 {
     
@@ -100,6 +108,7 @@ void MainComponent::resized()
     pose.setBounds(orientation.getX(), mav.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
 }
 
+int i = 0;
 
 void MainComponent::timerCallback()
 {
@@ -110,14 +119,14 @@ void MainComponent::timerCallback()
     
     if (!selectedMyoID || selectedMyoID >= myoData.size()) return;
 
-    uint8 id = selectedMyoID;
-    
+    uint8 id = selectedMyoID-1;
+        
     mav.setValues(myoData[id].emgScaled);
     orientation.setValues(myoData[id].orientationRaw);
     pose.setPoseLabel(myoData[id].pose+" - "+String(myoData[id].poseID));
 
     osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, mav.getMav(), myoData[id].gyro, myoData[id].acceleration, myoData[id].orientationRaw, orientation.getValue(), myoData[id].pose, myoData[id].poseID);
-    
+ 
     
     if(osc.vibrate)
     {
@@ -217,6 +226,8 @@ void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     {
         selectedMyoID = settingsPannel.myoList.getSelectedId();
         osc.setMyoIdReceiver(selectedMyoID);
+        std::cout << "combobox changed - selected Myo: " << selectedMyoID << std::endl;
+
     }
     
 }
