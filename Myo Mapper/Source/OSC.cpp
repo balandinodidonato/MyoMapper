@@ -30,17 +30,17 @@ Id("0"),
 myoDataIn{"/yaw", "/pitch", "/roll", "/mav"},
 action{"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
 {
-    for(int i = 0; i<4; i++) // id
+    for(int i = 1; i<5; i++) // id
     {
         String I = String(i);
         
-        receiver.addListener(this, "/myo/"+I+action[0]);
+        receiver.addListener(this, "/myo"+I+action[0]);
         
         for(int y=0; y<4; y++) // myo data
         {
             for(int z=1; z<5; z++) //action
             {
-                receiver.addListener(this, "/myo/"+I+myoDataIn[y]+action[z]);
+                receiver.addListener(this, "/myo"+I+myoDataIn[y]+action[z]);
             }
         }
     }
@@ -85,7 +85,7 @@ void OSC::sendOSC(int id,
                   int poseID
                   )
 {
-    String ID = String (id);
+    String ID = String (id+1);
     
     sender.send ("/myo"+ID+"/emgRaw", (int) emgRaw[0], (int) emgRaw[1], (int) emgRaw[2], (int) emgRaw[3], (int) emgRaw[4], (int) emgRaw[5], (int) emgRaw[6], (int) emgRaw[7]);
     sender.send ("/myo"+ID+"/emgScaled", (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);
@@ -128,7 +128,7 @@ void OSC::oscMessageReceived(const OSCMessage& message)
     
     // ---------------- Vibrate
     
-    if (message.getAddressPattern() == "/myo/"+Id+action[0])
+    if (message.getAddressPattern() == "/myo"+Id+action[0])
         if (message.size() == 1 && message[0].isString())
         {
             vibrationType =  message[0].getString();
@@ -139,7 +139,7 @@ void OSC::oscMessageReceived(const OSCMessage& message)
     {
         // ---------------- Centre
         
-        if (message.getAddressPattern() == "/myo/"+Id+myoDataIn[i]+action[1])
+        if (message.getAddressPattern() == "/myo"+Id+myoDataIn[i]+action[1])
         {
             if (message.size() == 1 && message[0].isString())
             {
@@ -152,7 +152,7 @@ void OSC::oscMessageReceived(const OSCMessage& message)
         
         // ---------------- Reverse
         
-        else if (message.getAddressPattern() == "/myo/"+Id+myoDataIn[i]+action[4])
+        if (message.getAddressPattern() == "/myo"+Id+myoDataIn[i]+action[4])
         {
             if (message.size() == 1 && message[0].isInt32())
             {
@@ -164,15 +164,26 @@ void OSC::oscMessageReceived(const OSCMessage& message)
                 {
                     reverseStatus = false;
                 }
-                map[i][4] = true;
             }
+            else if (message.size() == 1 && message[0].isFloat32())
+            {
+                if (message[0].getFloat32() == 1)
+                {
+                    reverseStatus = true;
+                }
+                else if (message[0].getFloat32() == 0)
+                {
+                    reverseStatus = false;
+                }
+            }
+            map[i][4] = true;
         }
         
         for(int y=2; y<4; y++) // action
         {
             // ---------------- Set MinMax
             
-            String matchString = "/myo/"+Id+myoDataIn[i]+action[y];
+            String matchString = "/myo"+Id+myoDataIn[i]+action[y];
             
             if (message.getAddressPattern() == matchString)
                 if (message.size() == 1)
@@ -181,7 +192,7 @@ void OSC::oscMessageReceived(const OSCMessage& message)
                     {
                         value = message[0].isInt32();
                     }
-                    if (message[0].isFloat32())
+                    else if (message[0].isFloat32())
                     {
                         value = message[0].getFloat32();
                     }
