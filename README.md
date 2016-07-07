@@ -1,18 +1,89 @@
+<<<<<<< HEAD
 # Myo Mapper
 Myo Mapper is an [open-source](https://opensource.org/) application to manage and send [Myo](https://www.myo.com/) data to any audio and visual software able to receive [OSC](http://opensoundcontrol.org/) and [MIDI](https://www.midi.org/) messages.
 With Myo Mapper you can also send Myo data to any hardware with embedded MIDI connection through a MIDI I/O interface.
 
 [Download Myo Mapper](https://github.com/balandinodidonato/MyoMapper/releases) and get started with [examples](https://github.com/balandinodidonato/MyoMapper/releases/download/1.3/MyoMapper-Examples.zip) for [Integra Live](http://integralive.org/), [Pd](https://puredata.info/) and [Max](https://cycling74.com/products/max/).
+=======
+# MyoMapper
+MyoMapper, is an application to convert and rescale raw data from the Myo and to send them to musical applications through OSC and/or MIDI protocol.
+
+It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) and [Jamie Bullock](http://jamiebullock.com/) at [Integra Lab](http://www.integra.io/lab).
+>>>>>>> develop
 
 [**DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
 
+<<<<<<< HEAD
 <img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/master/docs/images/MyoMapper.png" height="300" alt="MyoMapper-EMG" />
 
 Myo Mapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com/) at [Integra Lab](http://www.integra.io).
+=======
+[**DOWNLOAD MyoMapper**](http://www.balandinodidonato.com/myomapper/)
+
+## Get Started
+
+- Launch [Myo Connect](https://developer.thalmic.com/downloads)
+- Connect your Myo armband
+- Verify that the connection is stable and Myo Connect is receiving data
+- Launch MyoMapper
+
+## OSC Communication
+
+MyoMapper initially sends OSC messages at the port 5432 and receive messages at the port 5431, but it can changed through the setting pannel.
+
+### Outgoing OSC messages
+
+| OSC tag             | Myo parameter            | Value Type               | Range       |
+| :---:               | :---:                    | :---:                    |:---:        |
+| `/myo+id/orientationScaled`  | Yaw, Pitch, Roll         | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`        |
+| `/myo+id/orientationRaw`     | Yaw, Pitch, Roll         | `float`, float, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI`     |
+| `/myo+id/acceleration`       | Acc. x, Acc. y, Acc. z   | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI`     |
+| `/myo+id/gyro`               | Gyro X, Gyro Y, Gyro Z   | `float`, `float`, `float`      | `-1000, 1000`, `-1000, 1000`, `-1000, 1000` |
+| `/myo+id/mav`                | EMGs Mean Absolute Value | `float`                    | `0, 1`, `0, 1`, `0, 1`        |
+| `/myo+id/emgScaled`          | EMG 1, EMG 2 ... EMG 8   | `float`, `float`, ... `float`  | `0, 1`, `0, 1` ... `0, 1`        |
+| `/myo+id/emgRaw`             | EMG 1, EMG 2 ... EMG 8   | `int`, `int`, ... `int`        | `-127, 128`, `-127, 128` ... `-127, 128`   |
+| `/myo+id/pose`               | Hand pose                | `int`, `string`              | `-1, 5` ; `"unknown", "rest",  "fist", "fingerSpread", "waveIn", "waveOut", "doubleTap"` |
+
+### Accepted OSC messages
+
+**NB:**
+id = the value which indicates the selected Myo. It has to be an `int`, which value can be `1`, `2`, `3`, `4`.
+myoValue = the value which has to be processed. It has to be a `String` which value can be `yaw`, `pitch`, `roll`, `mav`.
+
+| OSC tag                    | Value Type | Range                     | Functions                                              |
+| :---:                      | :---:      | :---:                     |  :---:                                                 |
+| `/myo+id/vibrate`            | `String`   | `short`, `medium`, `long` | Makes the Myo vibrate for a short, medium or long time |
+| `/myo+id/myoValue/centre`    | `String`   | `centre`                  | Centre the current value within the set range          |
+| `/myo+id/myoValue/setMin`    | `float`    |  `0`, `1`                 | Set the lowest outgoing value                          |
+| `/myo+id/myoValue/setMax`    | `float`    |  `0`, `1`                 | Set the highest outgoing value                         |
+| `/myo+id/myoValue/reverse`   | `int`      |  `0`, `1`                 | Reverse the current value                              |
+
+---
+
+**N.B.:**
+
+- EMG pad enumeration has been established by Thalmic Lab, please see image below, or visit the flowing page: [https://developer.thalmic.com/forums/topic/255/](https://developer.thalmic.com/forums/topic/255/).***
+
+![EMG pad enumumeration](http://i59.tinypic.com/1zyez3r.jpg "EMG pad enumumeration")
+
+Source immage: Arief, Z., Sulistijono, I. A., & Ardiansyah, R. A. (2015, September). *Comparison of five time series EMG features extractions using Myo Armband.* In Electronics Symposium (IES), 2015 International (pp. 11-14). IEEE. Chicago.
+
+
+## To build on OS X
+
+### Requirements
+
+- [X Code](https://developer.apple.com/xcode/)
+- [Myo SDK for OS X](https://developer.thalmic.com/downloads)
+
+### Build process
+
+#### Updated soon
+>>>>>>> develop
 
 ## License
 
-Copyright (c)  2016 - Balandino Di Donato
+Copyright (c)  2016 - Integra Lab
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
