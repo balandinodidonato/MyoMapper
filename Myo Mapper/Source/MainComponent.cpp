@@ -119,7 +119,7 @@ void MainComponent::timerCallback()
     
     if (!selectedMyoID || selectedMyoID >= myoData.size()) return;
 
-    uint8 id = selectedMyoID-1;
+    uint8 id = selectedMyoID;
         
     mav.setValues(myoData[id].emgScaled);
     orientation.setValues(myoData[id].orientationRaw);
@@ -226,8 +226,6 @@ void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     {
         selectedMyoID = settingsPannel.myoList.getSelectedId();
         osc.setMyoIdReceiver(selectedMyoID);
-        std::cout << "combobox changed - selected Myo: " << selectedMyoID << std::endl;
-
     }
     
 }
