@@ -4,11 +4,9 @@ MyoMapper, is an application to convert and rescale raw data from the Myo and to
 
 It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) and [Jamie Bullock](http://jamiebullock.com/) at [Integra Lab](http://www.integra.io/lab).
 
-[**DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
+[**DOWNLOAD MyoMapper**](https://github.com/balandinodidonato/MyoMapper/releases)
 
-[**DOWNLOAD MyoMapper**](http://www.balandinodidonato.com/myomapper/)
-
-[Myo Mapper receiver for Pd]()
+[Myo Mapper receiver for Pd](https://github.com/balandinodidonato/MyoMapper/tree/master/examples/Pd)
 
 ## Get Started
 
