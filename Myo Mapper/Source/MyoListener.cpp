@@ -96,6 +96,8 @@ void MyoListener::onOrientationData(myo::Myo* myo, uint64_t timestamp, const myo
     
     int myoID = getMyoID(myo);
     if(myoID == -1) return;
+    
+
 
     myoData[myoID].orientationRaw.x = yaw;
     myoData[myoID].orientationRaw.y = pitch;
@@ -189,7 +191,7 @@ std::vector<MyoData> MyoListener::getMyoData() const
 
 int MyoListener::getMyoID(myo::Myo* myo)
 {
-    for(unsigned int i = 0; i < knownMyos.size(); ++i)
+    for(unsigned int i = 1; i < knownMyos.size(); ++i)
     {
         if (knownMyos[i] == myo)
         {

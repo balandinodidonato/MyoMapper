@@ -16,6 +16,12 @@ It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com)
 - Connect your Myo armband
 - Verify that the connection is stable and Myo Connect is receiving data
 - Launch MyoMapper
+- Select the Myo
+
+To map multiple Myos, launch a second Myo Mapper's instance and select a different Myo. To do so:
+- Duplicate the Myo Mapper application you have already installed.
+- Rename it with a different name, eg. "Myo Mapper 2"
+- Launch it
 
 ## OSC Communication
 
@@ -68,7 +74,7 @@ Source immage: Arief, Z., Sulistijono, I. A., & Ardiansyah, R. A. (2015, Septemb
 
 ### Build process
 
-#### Updated soon
+**This section will be updated soon**
 
 ## License
 
