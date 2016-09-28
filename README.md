@@ -1,24 +1,14 @@
-<<<<<<< HEAD
-# Myo Mapper
-Myo Mapper is an [open-source](https://opensource.org/) application to manage and send [Myo](https://www.myo.com/) data to any audio and visual software able to receive [OSC](http://opensoundcontrol.org/) and [MIDI](https://www.midi.org/) messages.
-With Myo Mapper you can also send Myo data to any hardware with embedded MIDI connection through a MIDI I/O interface.
 
-[Download Myo Mapper](https://github.com/balandinodidonato/MyoMapper/releases) and get started with [examples](https://github.com/balandinodidonato/MyoMapper/releases/download/1.3/MyoMapper-Examples.zip) for [Integra Live](http://integralive.org/), [Pd](https://puredata.info/) and [Max](https://cycling74.com/products/max/).
-=======
 # MyoMapper
 MyoMapper, is an application to convert and rescale raw data from the Myo and to send them to musical applications through OSC and/or MIDI protocol.
 
 It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) and [Jamie Bullock](http://jamiebullock.com/) at [Integra Lab](http://www.integra.io/lab).
->>>>>>> develop
 
 [**DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
 
-<<<<<<< HEAD
-<img src="https://raw.githubusercontent.com/balandinodidonato/MyoMapper/master/docs/images/MyoMapper.png" height="300" alt="MyoMapper-EMG" />
-
-Myo Mapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com/) at [Integra Lab](http://www.integra.io).
-=======
 [**DOWNLOAD MyoMapper**](http://www.balandinodidonato.com/myomapper/)
+
+[Myo Mapper receiver for Pd]()
 
 ## Get Started
 
@@ -79,7 +69,6 @@ Source immage: Arief, Z., Sulistijono, I. A., & Ardiansyah, R. A. (2015, Septemb
 ### Build process
 
 #### Updated soon
->>>>>>> develop
 
 ## License
 
