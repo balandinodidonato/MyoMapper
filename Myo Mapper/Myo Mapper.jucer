@@ -42,12 +42,12 @@
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="" extraLinkerFlags=""
-               extraCompilerFlags="-I/Users/jamie/Library/Frameworks/myo.framework/Versions/A/Headers&#10;"
-               extraFrameworks="myo.framework" smallIcon="WFoxze" bigIcon="WFoxze">
+               extraCompilerFlags="" extraFrameworks="myo" smallIcon="WFoxze"
+               bigIcon="WFoxze" postbuildCommand="dst=${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Frameworks&#10;mkdir -p &quot;${dst}&quot;&#10;cp -r &quot;/Users/jamie/Library/Frameworks/myo.framework&quot; &quot;$dst&quot;">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;~/Library/Frameworks/&quot;"/>
+                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;~/Library/Frameworks/&quot;, LD_RUNPATH_SEARCH_PATHS=&quot;@loader_path/../Frameworks&quot;"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;~/Library/Frameworks/&quot;"/>
