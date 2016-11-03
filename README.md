@@ -68,11 +68,27 @@ Source immage: Arief, Z., Sulistijono, I. A., & Ardiansyah, R. A. (2015, Septemb
 ### Requirements
 
 - [X Code](https://developer.apple.com/xcode/)
-- [Myo SDK for OS X](https://developer.thalmic.com/downloads)
+- [Myo Framework for Mac](https://developer.thalmic.com/downloads)
+- [JUCE](https://www.juce.com/get-juce)
 
 ### Build process
 
-**This section will be updated soon**
+- Move the Myo framework into `~/Library/Frameworks`.
+
+  From terminal: `mv current-myo-framework-path ~/Library/Frameworks`
+
+  If there is not any folder named Frameworks under `~/Library` then create one and move the Myo framework into it.
+
+- Move the JUCE into `/Applications`.
+
+  From terminal: `mv current-JUCE-path /Applications`
+
+- Open `Myo Mapper.jucer`
+- Verify that all modules are linked by clicking `config` -> `modules`
+- Click `Save Project and Open in IDE`
+- Build App
+
+If any issue, please [report and issue](https://github.com/balandinodidonato/MyoMapper/issues) or [email the developer](info@balandinodidonato.com).
 
 ## License
 
