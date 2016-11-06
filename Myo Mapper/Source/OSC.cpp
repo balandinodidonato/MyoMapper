@@ -95,6 +95,9 @@ void OSC::sendOSC(int id,
     sender.send("/myo"+ID+"/orientationRaw", (float) orientationRaw.x, (float) orientationRaw.y, (float) orientationRaw.z);
     sender.send("/myo"+ID+"/orientationScaled", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z);
     sender.send("/myo"+ID+"/pose", (int) poseID, (String) pose);
+    sender.send("/myo"+ID+"/all", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) acceleration.x, (float) acceleration.y, (float) acceleration.z, (float) gyro.x, (float) gyro.y, (float) gyro.z, (float) mav);
+    sender.send("/myo"+ID+"/allEMG", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) acceleration.x, (float) acceleration.y, (float) acceleration.z, (float) gyro.x, (float) gyro.y, (float) gyro.z, (float) mav, (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);
+
 }
 
 // ============== END SENDER ==============
