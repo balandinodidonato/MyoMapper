@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.yourcompany.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.4" companyName="Integra Lab" companyWebsite="http://integra.io/"
+              jucerVersion="4.3.0" companyName="Integra Lab" companyWebsite="http://integra.io/"
               companyEmail="contact@integra.io ">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
@@ -38,6 +38,10 @@
       <FILE id="q0Or2R" name="rescale.cpp" compile="1" resource="0" file="Source/rescale.cpp"/>
       <FILE id="DuDYqV" name="mav.h" compile="0" resource="0" file="Source/mav.h"/>
       <FILE id="KlHUWG" name="mav.cpp" compile="1" resource="0" file="Source/mav.cpp"/>
+      <FILE id="iqYY9F" name="waveformLength.cpp" compile="1" resource="0"
+            file="Source/waveformLength.cpp"/>
+      <FILE id="I8qni4" name="waveformLength.h" compile="0" resource="0"
+            file="Source/waveformLength.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
