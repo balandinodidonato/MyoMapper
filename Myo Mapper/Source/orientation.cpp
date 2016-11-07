@@ -59,17 +59,16 @@ Vector3D<float> Orientation::getValue()
 
 Vector3D<float> Orientation::getWl(){
     
-    orientationWl.x = std::abs(factor.x-rescaleYaw.getValue());
-    orientationWl.y = std::abs(factor.y-rescalePitch.getValue());
-    orientationWl.z = std::abs(factor.y-rescaleRoll.getValue());
+    yawWl.setValue(rescaleYaw.getValue());
+    pitchWl.setValue(rescalePitch.getValue());
+    rollWl.setValue(rescaleRoll.getValue());
 
-    factor.x = rescaleYaw.getValue();
-    factor.y = rescalePitch.getValue();
-    factor.z = rescaleRoll.getValue();
+    orientationWl.x = yawWl.getValue();
+    orientationWl.y = pitchWl.getValue();
+    orientationWl.z = rollWl.getValue();
     
     return orientationWl;
     
-    std::cout << "orientation WL: " << &orientationWl << std::endl;
 }
 
 float Orientation::getYaw()

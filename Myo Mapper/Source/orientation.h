@@ -13,6 +13,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "rescale.h"
+#include "waveformLength.h"
 
 //==============================================================================
 /*
@@ -46,7 +47,9 @@ private:
     Vector3D<float> orientationScaled;
     Vector3D<float> orientationWl;
     Vector3D<float> factor;
-
+    WaveformLength yawWl;
+    WaveformLength pitchWl;
+    WaveformLength rollWl;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Orientation)
 };

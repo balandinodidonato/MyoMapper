@@ -13,6 +13,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "rescale.h"
+#include "waveformLength.h"
 
 #include <array>
 
@@ -43,8 +44,9 @@ private:
     Rescale rescaleMav;
     std::array<int8_t, 8> EMGs;
     float mav;
-    float mavWl;
+  //  float mavWl;
     float factor;
+    WaveformLength mavWl;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Mav)
 };

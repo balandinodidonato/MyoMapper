@@ -43,7 +43,8 @@ float Mav::getMav()
 }
 
 float Mav::getMavWl(){
-    return mavWl;
+
+    return mavWl.getValue();
 }
 
 float Mav::calculateMav(std::array<float_t, 8> emgScaled)
@@ -58,9 +59,8 @@ float Mav::calculateMav(std::array<float_t, 8> emgScaled)
     
     mav = emgSum * 1.25;
     
-    mavWl = std::abs(factor-mav); // this extract the waveform length of the MAV value
-    factor = mav;
-        
+    mavWl.setValue(mav);
+    
     return mav;
 }
 
