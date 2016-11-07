@@ -36,6 +36,7 @@ public:
                  Vector3D< float > acceleration,
                  Vector3D< float > orientationRaw,
                  Vector3D< float > orientationScaled,
+                 Vector3D< float > orientationWl,
                  String pose,
                  int poseID);
     

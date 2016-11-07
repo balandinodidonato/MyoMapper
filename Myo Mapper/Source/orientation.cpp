@@ -57,6 +57,21 @@ Vector3D<float> Orientation::getValue()
     return orientationScaled;
 }
 
+Vector3D<float> Orientation::getWl(){
+    
+    orientationWl.x = std::abs(factor.x-rescaleYaw.getValue());
+    orientationWl.y = std::abs(factor.y-rescalePitch.getValue());
+    orientationWl.z = std::abs(factor.y-rescaleRoll.getValue());
+
+    factor.x = rescaleYaw.getValue();
+    factor.y = rescalePitch.getValue();
+    factor.z = rescaleRoll.getValue();
+    
+    return orientationWl;
+    
+    std::cout << "orientation WL: " << &orientationWl << std::endl;
+}
+
 float Orientation::getYaw()
 {
     return rescaleYaw.getValue();
