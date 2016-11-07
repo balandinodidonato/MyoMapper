@@ -43,7 +43,9 @@ float Mav::getMav()
 }
 
 float Mav::getMavWl(){
-
+    
+    mavWl.setValue(mav);
+    
     return mavWl.getValue();
 }
 
@@ -58,8 +60,6 @@ float Mav::calculateMav(std::array<float_t, 8> emgScaled)
     }
     
     mav = emgSum * 1.25;
-    
-    mavWl.setValue(mav);
     
     return mav;
 }

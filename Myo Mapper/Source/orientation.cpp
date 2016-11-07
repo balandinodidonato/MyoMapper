@@ -54,21 +54,15 @@ Vector3D<float> Orientation::getValue()
     orientationScaled.y = rescalePitch.getValue();
     orientationScaled.z = rescaleRoll.getValue();
     
+
+    
     return orientationScaled;
 }
 
 Vector3D<float> Orientation::getWl(){
     
-    yawWl.setValue(rescaleYaw.getValue());
-    pitchWl.setValue(rescalePitch.getValue());
-    rollWl.setValue(rescaleRoll.getValue());
-
-    orientationWl.x = yawWl.getValue();
-    orientationWl.y = pitchWl.getValue();
-    orientationWl.z = rollWl.getValue();
-    
-    return orientationWl;
-    
+    orientationWl.set3DValue(orientationScaled);
+    return orientationWl.get3DValue();
 }
 
 float Orientation::getYaw()

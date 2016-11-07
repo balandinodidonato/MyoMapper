@@ -13,6 +13,7 @@
 
 #include "myo/myo.hpp"
 #include "orientation.h"
+#include "waveformLength.h"
 
 #include "MyoData.h"
 
@@ -66,6 +67,10 @@ private:
     String Pose;
     
     int numberOfMyos;
+    
+    WaveformLength accWl;
+    WaveformLength gyroWl;
+    
 };
 
 
