@@ -71,13 +71,6 @@ Source immage: Arief, Z., Sulistijono, I. A., & Ardiansyah, R. A. (2015, Septemb
 ### Requirements
 
 - [X Code](https://developer.apple.com/xcode/)
-- [Myo SDK for OS X](https://developer.thalmic.com/downloads)
-
-## To build on OS X
-
-### Requirements
-
-- [X Code](https://developer.apple.com/xcode/)
 - [Myo Framework for Mac](https://developer.thalmic.com/downloads)
 - [JUCE](https://www.juce.com/get-juce)
 
