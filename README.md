@@ -8,8 +8,13 @@ It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com)
 
 [Myo Mapper receiver for Pd](https://github.com/balandinodidonato/MyoMapper/tree/master/examples/Pd)
 
-## Get Started
+## Installation process
+- Download the Myo frameworks
+- Unpack zip folder and move it into `~/Library/Frameworks`. If there is no `Frameworks` folder into `~/Library` then create one.
+- You should be all set up to get started!
 
+
+## Get Started
 - Launch [Myo Connect](https://developer.thalmic.com/downloads)
 - Connect your Myo armband
 - Verify that the connection is stable and Myo Connect is receiving data
@@ -22,11 +27,9 @@ To map multiple Myos, launch a second Myo Mapper's instance and select a differe
 - Launch it
 
 ## OSC Communication
-
 MyoMapper initially sends OSC messages at the port 5432 and receive messages at the port 5431, but it can changed through the setting pannel.
 
 ### Outgoing OSC messages
-
 | OSC tag             | Myo parameter            | Value Type               | Range       |
 | :---:               | :---:                    | :---:                    |:---:        |
 | `/myo+id/orientationScaled`  | Yaw, Pitch, Roll         | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`        |
