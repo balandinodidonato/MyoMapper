@@ -9,7 +9,7 @@ It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com)
 [Myo Mapper receiver for Pd](https://github.com/balandinodidonato/MyoMapper/tree/master/examples/Pd)
 
 ## Installation process
-- Download the Myo frameworks
+- [Download the Myo frameworks](http://developer.thalmic.com/login/redirect/?next=/downloads)
 - Unpack zip folder and move it into `~/Library/Frameworks`. If there is no `Frameworks` folder into `~/Library` then create one.
 - You should be all set up to get started!
 
