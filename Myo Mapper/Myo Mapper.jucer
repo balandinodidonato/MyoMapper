@@ -42,6 +42,9 @@
             file="Source/waveformLength.cpp"/>
       <FILE id="I8qni4" name="waveformLength.h" compile="0" resource="0"
             file="Source/waveformLength.h"/>
+      <FILE id="X3YNFS" name="ZeroCrossing.cpp" compile="1" resource="0"
+            file="Source/ZeroCrossing.cpp"/>
+      <FILE id="UdsBEv" name="ZeroCrossing.h" compile="0" resource="0" file="Source/ZeroCrossing.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

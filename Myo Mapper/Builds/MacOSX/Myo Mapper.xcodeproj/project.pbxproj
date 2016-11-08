@@ -30,6 +30,7 @@
 		8BE90999B651C89ABD452AA9 = {isa = PBXBuildFile; fileRef = 0DEB113DDC0F0649AD7C4B56; };
 		581F52B28CE8E4374467D92A = {isa = PBXBuildFile; fileRef = B94EA46001C7AF4DD5700832; };
 		CB3A60C7119CAF06A1B62734 = {isa = PBXBuildFile; fileRef = 94BC431FB71546F3DFF91339; };
+		4F462E25AEAB9DC98AE2BD9D = {isa = PBXBuildFile; fileRef = F144D9CB5B97EC0416E0DD3D; };
 		E0E2975352C263B3304FB06D = {isa = PBXBuildFile; fileRef = E63FB5683F3DD5CB2F45DCF6; };
 		74E00BEC8B42864E42FE9AF3 = {isa = PBXBuildFile; fileRef = 06DBFEB4A8DB2354E9C92C6D; };
 		54422AEC2F309061CCB41F5A = {isa = PBXBuildFile; fileRef = C458D683C01845A9F7ED2B1B; };
@@ -856,6 +857,7 @@
 		EFB8D3EEEA3EFDEB9B2FB984 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_SystemStats.h"; path = "../../../../../../Applications/JUCE/modules/juce_core/system/juce_SystemStats.h"; sourceTree = "SOURCE_ROOT"; };
 		F0B4CA8B48CE66195A49CDF4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_StretchableObjectResizer.h"; path = "../../../../../../Applications/JUCE/modules/juce_gui_basics/layout/juce_StretchableObjectResizer.h"; sourceTree = "SOURCE_ROOT"; };
 		F0F1EE5D405EAE19DEFCE785 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_Uuid.cpp"; path = "../../../../../../Applications/JUCE/modules/juce_core/misc/juce_Uuid.cpp"; sourceTree = "SOURCE_ROOT"; };
+		F144D9CB5B97EC0416E0DD3D = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ZeroCrossing.cpp; path = ../../Source/ZeroCrossing.cpp; sourceTree = "SOURCE_ROOT"; };
 		F1B927669CA67652A43E57E7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_RuntimePermissions.h"; path = "../../../../../../Applications/JUCE/modules/juce_core/misc/juce_RuntimePermissions.h"; sourceTree = "SOURCE_ROOT"; };
 		F1F4C99FB0E50FAF0CFAF219 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_android_RuntimePermissions.cpp"; path = "../../../../../../Applications/JUCE/modules/juce_core/native/juce_android_RuntimePermissions.cpp"; sourceTree = "SOURCE_ROOT"; };
 		F2729E984C1FAEA3FCD161D1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_NamedPipe.h"; path = "../../../../../../Applications/JUCE/modules/juce_core/network/juce_NamedPipe.h"; sourceTree = "SOURCE_ROOT"; };
@@ -893,6 +895,7 @@
 		FE5F4AC76C5277D8E29B820F = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_OpenGLTexture.h"; path = "../../../../../../Applications/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h"; sourceTree = "SOURCE_ROOT"; };
 		FEC85455C0916F21BCDEF566 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_File.cpp"; path = "../../../../../../Applications/JUCE/modules/juce_core/files/juce_File.cpp"; sourceTree = "SOURCE_ROOT"; };
 		FF073A5F659AFEE002BB215D = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_PathIterator.h"; path = "../../../../../../Applications/JUCE/modules/juce_graphics/geometry/juce_PathIterator.h"; sourceTree = "SOURCE_ROOT"; };
+		FF54074A7CCEE1B5FE7C7A4C = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZeroCrossing.h; path = ../../Source/ZeroCrossing.h; sourceTree = "SOURCE_ROOT"; };
 		FF61717B60DDCEC1677A3C2C = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ZipFile.h"; path = "../../../../../../Applications/JUCE/modules/juce_core/zip/juce_ZipFile.h"; sourceTree = "SOURCE_ROOT"; };
 		FF97405E27A00D7EDB62B1FF = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_ApplicationCommandInfo.cpp"; path = "../../../../../../Applications/JUCE/modules/juce_gui_basics/commands/juce_ApplicationCommandInfo.cpp"; sourceTree = "SOURCE_ROOT"; };
 		FFF45ECE96EB728EEC41376D = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_CharacterFunctions.cpp"; path = "../../../../../../Applications/JUCE/modules/juce_core/text/juce_CharacterFunctions.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -928,7 +931,9 @@
 					D877248516CAFFCBADE7BABC,
 					B94EA46001C7AF4DD5700832,
 					94BC431FB71546F3DFF91339,
-					B6E6D57E39C1C44CCFBCAECC, ); name = Source; sourceTree = "<group>"; };
+					B6E6D57E39C1C44CCFBCAECC,
+					F144D9CB5B97EC0416E0DD3D,
+					FF54074A7CCEE1B5FE7C7A4C, ); name = Source; sourceTree = "<group>"; };
 		41441FC2D162F780FA517D7C = {isa = PBXGroup; children = (
 					20D383E2F058B24531C5590B, ); name = "Myo Mapper"; sourceTree = "<group>"; };
 		5E7FE4724FB003164300C27C = {isa = PBXGroup; children = (
@@ -2029,6 +2034,7 @@
 					8BE90999B651C89ABD452AA9,
 					581F52B28CE8E4374467D92A,
 					CB3A60C7119CAF06A1B62734,
+					4F462E25AEAB9DC98AE2BD9D,
 					E0E2975352C263B3304FB06D,
 					74E00BEC8B42864E42FE9AF3,
 					54422AEC2F309061CCB41F5A,
