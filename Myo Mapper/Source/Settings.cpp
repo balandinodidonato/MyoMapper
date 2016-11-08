@@ -1,17 +1,6 @@
-/*
-  ==============================================================================
-
-    Settings.cpp
-    Created: 13 Jun 2016 3:41:59pm
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Settings.h"
 
-//==============================================================================
 Settings::Settings()
 :
 oscSettingsChangedSender(false),

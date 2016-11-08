@@ -1,13 +1,3 @@
-/*
- ==============================================================================
- 
- AboutWindow.cpp
- Created: 20 Jun 2016 1:51:25pm
- Author:  Balandino Di Donato
- 
- ==============================================================================
- */
-
 #ifndef __JUCE_HEADER_CDC82D17D8FC0FC8__
 #define __JUCE_HEADER_CDC82D17D8FC0FC8__
 

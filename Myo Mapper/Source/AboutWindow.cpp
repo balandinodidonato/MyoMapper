@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    AboutWindow.cpp
-    Created: 18 Jun 2016 9:49:25am
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AboutWindow.h"
 

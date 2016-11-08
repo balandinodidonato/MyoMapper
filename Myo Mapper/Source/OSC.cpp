@@ -1,18 +1,7 @@
-/*
- ==============================================================================
- 
- OSC.cpp
- Created: 14 Jun 2016 4:33:38pm
- Author:  Balandino Di Donato
- 
- ==============================================================================
- */
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "OSC.h"
 #include "MyoData.h"
 
-//==============================================================================
 OSC::OSC()
 :
 vibrate(false),
@@ -107,7 +96,6 @@ void OSC::sendOSC(int id,
     sender.send("/myo"+ID+"/orientation/wl", (float) orientationWl.x, (float) orientationWl.y, (float) orientationWl.z);
     
     sender.send("/myo"+ID+"/pose", (int) poseID, (String) pose);
-    
     
     sender.send("/myo"+ID+"/all", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) orientationWl.x, (float) orientationWl.y, (float) orientationWl.z, (float) acceleration.x, (float) acceleration.y, (float) acceleration.z, (float) accelerationWl.x, (float) accelerationWl.y, (float) accelerationWl.z, (float) gyro.x, (float) gyro.y, (float) gyro.z, (float) gyroWl.x, (float) gyroWl.y, (float) gyroWl.z, (float) mav, (float) mavWl);
     sender.send("/myo"+ID+"/allEMG", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) orientationWl.x, (float) orientationWl.y, (float) orientationWl.z, (float) acceleration.x, (float) acceleration.y, (float) acceleration.z, (float) accelerationWl.x, (float) accelerationWl.y, (float) accelerationWl.z, (float) gyro.x, (float) gyro.y, (float) gyro.z, (float) gyroWl.x, (float) gyroWl.y, (float) gyroWl.z, (float) mav, (float) mavWl, (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);

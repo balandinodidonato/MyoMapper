@@ -14,9 +14,7 @@
 #include "myo/myo.hpp"
 #include "orientation.h"
 #include "waveformLength.h"
-
 #include "MyoData.h"
-
 #include <array>
 
 class MyoListener : public myo::DeviceListener

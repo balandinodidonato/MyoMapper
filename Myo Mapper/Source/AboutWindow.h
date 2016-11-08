@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    AboutWindow.h
-    Created: 18 Jun 2016 9:49:25am
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
-
 #ifndef ABOUTWINDOW_H_INCLUDED
 #define ABOUTWINDOW_H_INCLUDED
 

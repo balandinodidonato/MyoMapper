@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    HelpWindow.cpp
-    Created: 18 Jun 2016 12:33:00pm
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "HelpWindow.h"
 

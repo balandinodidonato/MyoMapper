@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    MainComponent.h
-    Created: 7 Jun 2016 1:14:39pm
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
-
 #ifndef MAINCOMPONENT_H_INCLUDED
 #define MAINCOMPONENT_H_INCLUDED
 
@@ -19,7 +9,6 @@
 #include "OSC.h"
 #include "AboutWindow.h"
 #include "HelpWindow.h"
-
 #include "../JuceLibraryCode/JuceHeader.h"
 
 

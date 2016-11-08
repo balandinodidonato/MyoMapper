@@ -1,6 +1,5 @@
 #include "waveformLength.h"
 
-
 WaveformLength::WaveformLength ()
 {
 }

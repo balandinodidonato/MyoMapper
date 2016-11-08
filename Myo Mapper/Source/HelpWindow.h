@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    HelpWindow.h
-    Created: 18 Jun 2016 12:33:00pm
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
-
 #ifndef HELPWINDOW_H_INCLUDED
 #define HELPWINDOW_H_INCLUDED
 

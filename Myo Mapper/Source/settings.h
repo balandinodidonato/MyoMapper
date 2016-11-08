@@ -1,21 +1,8 @@
-/*
-  ==============================================================================
-
-    settings.h
-    Created: 9 Jun 2016 2:04:30pm
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
-
 #ifndef SETTINGS_H_INCLUDED
 #define SETTINGS_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-//==============================================================================
-/*
-*/
 class Settings    : public Component,
 private Label::Listener,
 private Slider::Listener

@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    MyoManager.h
-    Created: 10 Jun 2016 12:22:24pm
-    Author:  Jamie Bullock
-
-  ==============================================================================
-*/
-
 #ifndef MYOMANAGER_H_INCLUDED
 #define MYOMANAGER_H_INCLUDED
 
