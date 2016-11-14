@@ -3,7 +3,7 @@ MyoMapper, is an application to convert and rescale raw data from the Myo and to
 
 It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) and [Jamie Bullock](http://jamiebullock.com/) at [Integra Lab](http://www.integra.io/lab).
 
-[**DOWNLOAD MyoMapper**](https://github.com/balandinodidonato/MyoMapper/releases)
+[**DOWNLOAD MyoMapper**](https://sourceforge.net/projects/myomapper/files/latest/download)
 
 [Myo Mapper receiver for Pd](https://github.com/balandinodidonato/MyoMapper/tree/master/examples/Pd)
 
@@ -23,18 +23,6 @@ To map multiple Myos, launch a second Myo Mapper's instance and select a differe
 MyoMapper initially sends OSC messages at the port 5432 and receive messages at the port 5431, but it can changed through the setting pannel.
 
 ### Outgoing OSC messages
-<<<<<<< HEAD
-| OSC tag             | Myo parameter            | Value Type               | Range       |
-| :---:               | :---:                    | :---:                    |:---:        |
-| `/myo+id/orientationScaled`  | Yaw, Pitch, Roll         | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`        |
-| `/myo+id/orientationRaw`     | Yaw, Pitch, Roll         | `float`, float, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI`     |
-| `/myo+id/acceleration`       | Acc. x, Acc. y, Acc. z   | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI`     |
-| `/myo+id/gyro`               | Gyro X, Gyro Y, Gyro Z   | `float`, `float`, `float`      | `-1000, 1000`, `-1000, 1000`, `-1000, 1000` |
-| `/myo+id/mav`                | EMGs Mean Absolute Value | `float`                    | `0, 1`, `0, 1`, `0, 1`        |
-| `/myo+id/emgScaled`          | EMG 1, EMG 2 ... EMG 8   | `float`, `float`, ... `float`  | `0, 1`, `0, 1` ... `0, 1`        |
-| `/myo+id/emgRaw`             | EMG 1, EMG 2 ... EMG 8   | `int`, `int`, ... `int`        | `-127, 128`, `-127, 128` ... `-127, 128`   |
-| `/myo+id/pose`               | Hand pose                | `int`, `string`              | `-1, 5` ; `"unknown", "rest",  "fist", "fingerSpread", "waveIn", "waveOut", "doubleTap"` |
-=======
 
 | OSC tag                      | Myo parameter                                  | Value Type                     | Range                     |
 | :---:                        | :---:                                          | :---:                          |:---:                      |
@@ -53,7 +41,6 @@ MyoMapper initially sends OSC messages at the port 5432 and receive messages at 
 | `/myo+id/all`                | Scaled Yaw, Scaled Pitch, Scaled Roll, Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1` |
 | `/myo+id/EMG`               | Scaled Yaw, Scaled Pitch, Scaled Roll, Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL, EMG 1 Scaled, EMG 2 Scaled, EMG 3 Scaled, EMG 4 Scaled, EMG 5 Scaled, EMG 6 Scaled, EMG 7 Scaled, EMG 8 Scaled | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1` |
 
->>>>>>> develop
 
 ### Accepted OSC messages
 
