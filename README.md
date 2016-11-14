@@ -26,20 +26,23 @@ MyoMapper initially sends OSC messages at the port 5432 and receive messages at 
 
 ### Outgoing OSC messages
 
-| OSC tag                      | Myo parameter                         | Value Type                     | Range                     |
-| :---:                        | :---:                                 | :---:                          |:---:                      |
-| `/myo+id/orientation/scaled` | Scaled Yaw, Scaled Pitch, Scaled Roll | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`    |
-| `/myo+id/orientation`        | Yaw, Pitch, Roll                      | `float`, float, `float`        | `-PI, PI`, `-PI, PI`, `-PI, PI`     |
-| `/myo+id/orientation/wl`     | Yaw WL, Pitch WL, Roll WL             | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`      |
-| `/myo+id/acceleration`       | Acc. x, Acc. y, Acc. z                | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI`     |
-| `/myo+id/acceleration/wl`    | Acc. x WL, Acc. y WL, Acc. z WL       | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI`     |
-| `/myo+id/gyro`               | Gyro X, Gyro Y, Gyro Z                | `float`, `float`, `float`      | `-1000, 1000`, `-1000, 1000`, `-1000, 1000` |
-| `/myo+id/gyro/wl`            | Gyro X WL, Gyro Y WL, Gyro Z WL       | `float`, `float`, `float`      | `-1000, 1000`, `-1000, 1000`, `-1000, 1000` |
-| `/myo+id/EMGs/mav`           | EMGs Mean Absolute Value              | `float`                        | `0, 1`, `0, 1`, `0, 1` |
-| `/myo+id/EMGs/mav/wl`        | EMGs Mean Absolute Value WL           | `float`                        | `0, 1`, `0, 1`, `0, 1`                |
-| `/myo+id/EMGs/abs`           | EMG 1, EMG 2 ... EMG 8                | `float`, `float`, ... `float`  | `0, 1`, `0, 1` ... `0, 1`        |
-| `/myo+id/EMGs`               | EMG 1, EMG 2 ... EMG 8                | `int`, `int`, ... `int`        | `-127, 128`, `-127, 128` ... `-127, 128`   |
-| `/myo+id/pose`               | Hand pose                             | `int`, `string`                | `-1, 5` ; `"unknown", "rest",  "fist", "fingerSpread", "waveIn", "waveOut", "doubleTap"` |
+| OSC tag                      | Myo parameter                                  | Value Type                     | Range                     |
+| :---:                        | :---:                                          | :---:                          |:---:                      |
+| `/myo+id/orientation/scaled` | Scaled Yaw, Scaled Pitch, Scaled Roll          | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`    |
+| `/myo+id/orientation`        | Yaw, Pitch, Roll                               | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI` |
+| `/myo+id/orientation/wl`     | Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`      |
+| `/myo+id/acceleration`       | Acc. x, Acc. y, Acc. z                         | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI` |
+| `/myo+id/acceleration/wl`    | Acc. x WL, Acc. y WL, Acc. z WL                | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI` |
+| `/myo+id/gyro`               | Gyro X, Gyro Y, Gyro Z                         | `float`, `float`, `float`      | `-1000, 1000`, `-1000, 1000`, `-1000, 1000` |
+| `/myo+id/gyro/wl`            | Gyro X WL, Gyro Y WL, Gyro Z WL                | `float`, `float`, `float`      | `-1000, 1000`, `-1000, 1000`, `-1000, 1000` |
+| `/myo+id/EMGs/mav`           | EMGs Mean Absolute Value                       | `float`                        | `0, 1` |
+| `/myo+id/EMGs/mav/wl`        | EMGs Mean Absolute Value WL                    | `float`                        | `0, 1` |
+| `/myo+id/EMG/scaled`           | EMG 1, EMG 2 ... EMG 8                         | `float`, `float`, ... `float`  | `0, 1`, `0, 1` ... `0, 1`        |
+| `/myo+id/EMG`               | EMG 1, EMG 2 ... EMG 8                         | `int`, `int`, ... `int`        | `-127, 128`, `-127, 128` ... `-127, 128`   |
+| `/myo+id/pose`               | Hand pose                                      | `int`, `string`                | `-1, 5` ; `"unknown", "rest",  "fist", "fingerSpread", "waveIn", "waveOut", "doubleTap"` |
+| `/myo+id/all`                | Scaled Yaw, Scaled Pitch, Scaled Roll, Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1` |
+| `/myo+id/EMG`               | Scaled Yaw, Scaled Pitch, Scaled Roll, Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL, EMG 1 Scaled, EMG 2 Scaled, EMG 3 Scaled, EMG 4 Scaled, EMG 5 Scaled, EMG 6 Scaled, EMG 7 Scaled, EMG 8 Scaled | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1` |
+
 
 ### Accepted OSC messages
 
