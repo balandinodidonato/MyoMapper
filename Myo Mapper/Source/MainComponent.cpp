@@ -1,15 +1,4 @@
-/*
-  ==============================================================================
-
-    MainComponent.cpp
-    Created: 9 Jun 2016 3:54:58pm
-    Author:  Jamie Bullock
-
-  ==============================================================================
-*/
-
 #include "MainComponent.h"
-
 #include "MyoData.h"
 
 MainComponent::MainComponent()
@@ -125,7 +114,7 @@ void MainComponent::timerCallback()
     orientation.setValues(myoData[id].orientationRaw);
     pose.setPoseLabel(myoData[id].pose+" - "+String(myoData[id].poseID));
 
-    osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, mav.getMav(), myoData[id].gyro, myoData[id].acceleration, myoData[id].orientationRaw, orientation.getValue(), myoData[id].pose, myoData[id].poseID);
+    osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, mav.getMav(), mav.getMavWl(), myoData[id].gyro, myoData[id].gyroWl, myoData[id].acceleration, myoData[id].accelerationWl, myoData[id].orientationRaw, orientation.getValue(), orientation.getWl(), myoData[id].pose, myoData[id].poseID);
  
     
     if(osc.vibrate)

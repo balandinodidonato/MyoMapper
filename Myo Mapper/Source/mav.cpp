@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    emg.cpp
-    Created: 10 Jun 2016 10:33:43am
-    Author:  Jamie Bullock
-
-  ==============================================================================
-*/
-
 #include "mav.h"
 
 Mav::Mav()
@@ -42,10 +32,17 @@ float Mav::getMav()
     return rescaleMav.getValue();
 }
 
+float Mav::getMavWl(){
+    
+    mavWl.setValue(mav);
+    
+    return mavWl.getValue();
+}
+
 float Mav::calculateMav(std::array<float_t, 8> emgScaled)
 {
+    
     float emgSum = 0;
-    mav = 0;
     
     for (int i=0; i<8; i++)
     {

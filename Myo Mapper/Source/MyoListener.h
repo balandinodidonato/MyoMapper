@@ -13,9 +13,8 @@
 
 #include "myo/myo.hpp"
 #include "orientation.h"
-
+#include "waveformLength.h"
 #include "MyoData.h"
-
 #include <array>
 
 class MyoListener : public myo::DeviceListener
@@ -66,6 +65,10 @@ private:
     String Pose;
     
     int numberOfMyos;
+    
+    WaveformLength accWl;
+    WaveformLength gyroWl;
+    
 };
 
 

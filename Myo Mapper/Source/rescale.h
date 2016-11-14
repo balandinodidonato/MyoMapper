@@ -1,21 +1,8 @@
-/*
-  ==============================================================================
-
-    Rescale.h
-    Created: 7 Jun 2016 6:05:00pm
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
-
 #ifndef RESCALE_H_INCLUDED
 #define RESCALE_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-//==============================================================================
-/*
-*/
 class Rescale    : public Component,
                    public Button::Listener,
                    public Slider::Listener

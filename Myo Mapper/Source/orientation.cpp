@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    orientation.cpp
-    Created: 10 Jun 2016 10:33:13am
-    Author:  Jamie Bullock
-
-  ==============================================================================
-*/
-
 #include "orientation.h"
 
 Orientation::Orientation()
@@ -54,7 +44,15 @@ Vector3D<float> Orientation::getValue()
     orientationScaled.y = rescalePitch.getValue();
     orientationScaled.z = rescaleRoll.getValue();
     
+
+    
     return orientationScaled;
+}
+
+Vector3D<float> Orientation::getWl(){
+    
+    orientationWl.set3DValue(orientationScaled);
+    return orientationWl.get3DValue();
 }
 
 float Orientation::getYaw()

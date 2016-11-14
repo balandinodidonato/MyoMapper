@@ -1,13 +1,3 @@
-/*
- ==============================================================================
- 
- MyoListener.cpp
- Created: 10 Jun 2016 11:54:24am
- Author:  Jamie Bullock
- 
- ==============================================================================
- */
-
 #include "MyoListener.h"
 #include <array>
 #include <iostream>
@@ -33,7 +23,6 @@ roll(0),
 Pose("null")
 {
 }
-
 
 void MyoListener::onConnect(myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion)
 {
@@ -112,6 +101,8 @@ void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const m
     myoData[myoID].acceleration.x = accel.x();
     myoData[myoID].acceleration.y = accel.y();
     myoData[myoID].acceleration.z = accel.z();
+    accWl.set3DValue(myoData[myoID].acceleration);
+    myoData[myoID].accelerationWl = accWl.get3DValue();
 }
 
 void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro)
@@ -123,6 +114,9 @@ void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::
     myoData[myoID].gyro.x = gyro.x();
     myoData[myoID].gyro.y = gyro.y();
     myoData[myoID].gyro.z = gyro.z();
+    gyroWl.set3DValue(myoData[myoID].gyro);
+    myoData[myoID].gyroWl = gyroWl.get3DValue();
+    
 }
 
 
