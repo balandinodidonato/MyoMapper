@@ -127,7 +127,8 @@ void Rescale::setValue(float Value)
     
     // Centre incoming value
     centred = 1-(offset-(input-(targetValue*test))); // input is the value to be centred
-    centred = std::abs(centred);
+    centred = (float)((int) (centred*1000) % (int)1000);
+    centred = centred * 0.001;
     
     if (reverse.getToggleStateValue()==true) // reverse centred value
     { centred = 1-centred; }
