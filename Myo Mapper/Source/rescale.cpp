@@ -4,7 +4,7 @@ Rescale::Rescale()
 :
 reversed(0),           // variables used for testing the logic
 centred(0),            // centred data init
-offset(1),             // offset for centering myo data
+offset(0),             // offset for centering myo data
 targetValue(0),        // Target value to centre to
 maxOutputValue(1.0),
 minOutputValue(0.0),
@@ -122,19 +122,22 @@ void Rescale::setTargetValue (float TargetValue)
 void Rescale::setValue(float Value)
 {
     input = Value;
+    input0 = (input+PI)/(2*PI); // scale input from -PI,PI to 0,1
+
+    // centre
+    input1 = 1-offset;
+    centred = input0 + input1;
+    centred = centred + (targetValue*test);
+    centred = centred*100000;
+    centred = (float)((int) (centred) % (int)100000);
+    centred = centred * 0.00001;
     
-    input = (input+PI)*r2PI;
-    
-    // Centre incoming value
-    centred = 1-(offset-(input-(targetValue*test))); // input is the value to be centred
-    centred = (float)((int) (centred*1000) % (int)1000);
-    centred = centred * 0.001;
-    
-    if (reverse.getToggleStateValue()==true) // reverse centred value
-    { centred = 1-centred; }
-    
-    scaled = jmap(centred, minOutputValue, maxOutputValue); // Scale value within the new range
-    
+    // reverse
+    if (reverse.getToggleStateValue()==true)
+        { centred = 1-centred; }
+    // scale within the range
+    scaled = jmap(centred, minOutputValue, maxOutputValue);
+
     mmSlider.setValue(scaled);
 }
 
@@ -155,7 +158,7 @@ void Rescale::setMax(float Value)
 
 void Rescale::setCentre()
 {
-    offset = input; // take the current myo value as offset to centre the data
+    offset = input0; // take the current myo value as offset to centre the data
     test = 1; // centre the myo data at half of the established range
 }
 
