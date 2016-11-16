@@ -6,7 +6,7 @@ labelWidget("Myo Data")
 {
     addAndMakeVisible(rescaleMav);
     rescaleMav.setLabelWidget("Mav");
-    rescaleMav.setTargetValue(1);
+    rescaleMav.setTargetValue(0.03);
 }
 
 void Mav::paint(juce::Graphics &g)
@@ -50,7 +50,6 @@ float Mav::calculateMav(std::array<float_t, 8> emgScaled)
     }
     
     mav = emgSum * 1.25;
-    
     return mav;
 }
 
