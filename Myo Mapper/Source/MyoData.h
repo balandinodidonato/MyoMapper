@@ -15,6 +15,8 @@ struct MyoData
     Vector3D< float > orientationRaw;
     String pose;
     int poseID;
+    float mav;
+    float mavWfL;
 };
 
 

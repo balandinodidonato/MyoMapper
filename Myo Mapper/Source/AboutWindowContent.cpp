@@ -14,7 +14,7 @@ AboutWindowContent::AboutWindowContent ()
     image->setName ("image");
 
     addAndMakeVisible (version = new Label ("version",
-                                            TRANS("Version 2.0")));
+                                            TRANS("Version 2.1.4")));
     version->setFont (Font (12.00f, Font::plain));
     version->setJustificationType (Justification::centred);
     version->setEditable (false, false, false);

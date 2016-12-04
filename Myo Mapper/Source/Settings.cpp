@@ -49,8 +49,6 @@ hostAddress("127.0.0.1")
     
     showOrientation.setButtonText("Show Orientation");
     addAndMakeVisible(showOrientation);
-    showMav.setButtonText("Show Mav");
-    addAndMakeVisible(showMav);
     showPose.setButtonText("Show Pose");
     addAndMakeVisible(showPose);
 }
@@ -83,8 +81,7 @@ void Settings::resized()
     oscPortSliderReceiver.setBounds(myoList.getX()+oscPortLabelReceiver.getWidth(), oscPortSliderSender.getY(), oscPortSliderSender.getWidth(), oscPortSliderSender.getHeight());
     
     showOrientation.setBounds(hostAddressTitle.getX(), oscPortSliderSender.getBottom()+5, getWidth()*0.3, setHostAddress.getHeight());
-    showMav.setBounds(showOrientation.getRight()+10, showOrientation.getY(), showOrientation.getWidth(), showOrientation.getHeight());
-    showPose.setBounds(showMav.getRight()+10, showOrientation.getY(), showOrientation.getWidth(), showOrientation.getHeight());
+    showPose.setBounds(showOrientation.getRight()+10, showOrientation.getY(), showOrientation.getWidth(), showOrientation.getHeight());
 }
 
 void Settings::sliderValueChanged(juce::Slider *slider)
@@ -144,11 +141,6 @@ int Settings::getShowOrientation()
 int Settings::getShowPose()
 {
     return showPose.getToggleState();
-}
-
-int Settings::getShowMav()
-{
-    return showMav.getToggleState();
 }
 
 bool Settings::getOSCsettingsStatusSender()
