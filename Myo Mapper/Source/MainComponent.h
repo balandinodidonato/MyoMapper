@@ -2,7 +2,7 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "orientation.h"
-#include "mav.h"
+//#include "mav.h"
 #include "settings.h"
 #include "MyoManager.h"
 #include "Pose.h"
@@ -53,7 +53,6 @@ private:
     void timerCallback() override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     
-    Mav mav;
     Settings settingsPannel;
     MyoManager myoManager;
     Pose pose;

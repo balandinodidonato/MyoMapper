@@ -60,15 +60,16 @@ private:
     float pitch;
     float roll;
     int ID;
+    float emgSum = 0;
     
     std::vector<MyoData> myoData;
     String Pose;
     
     int numberOfMyos;
     
-    WaveformLength accWl;
-    WaveformLength gyroWl;
-    
+    WaveformLength accWfL;
+    WaveformLength gyroWfL;
+    WaveformLength mavWfL;
 };
 
 

@@ -55,6 +55,8 @@ private:
     float minOutputValue;
     float scaled;
     float input;
+    float input0;
+    float input1;
     String labelWidget;
     const long double PI;
     const long double r2PI;

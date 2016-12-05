@@ -44,8 +44,6 @@ Vector3D<float> Orientation::getValue()
     orientationScaled.y = rescalePitch.getValue();
     orientationScaled.z = rescaleRoll.getValue();
     
-
-    
     return orientationScaled;
 }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="1.0.0"
-              bundleIdentifier="com.yourcompany.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="4.3.0" companyName="Integra Lab" companyWebsite="http://integra.io/"
-              companyEmail="contact@integra.io ">
+<JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="2.1.4.18"
+              bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
+              jucerVersion="4.3.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
+              companyEmail="info@balandinodidonato.com">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">

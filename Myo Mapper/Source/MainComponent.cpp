@@ -27,7 +27,6 @@ menuBar(this)
     getLookAndFeel().setUsingNativeAlertWindows(true);
     
     addAndMakeVisible(orientation);
-    addAndMakeVisible(mav);
     addAndMakeVisible(settingsPannel);
     addAndMakeVisible(pose);
     
@@ -72,15 +71,14 @@ void MainComponent::paint(juce::Graphics &g)
     g.fillAll(Colours::grey);
 
     #if JUCE_MAC
-        settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.19-10);
+        settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.23-10);
     #else
         menuBar.setBounds(0, 0, getWidth(), 20);
         settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
     #endif
     
-    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.5)-15)*settingsPannel.getShowOrientation());
-    mav.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowMav(), (getHeight()*0.16)*settingsPannel.getShowMav());
-    pose.setBounds(orientation.getX(), mav.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
+    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.63)-15)*settingsPannel.getShowOrientation());
+    pose.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
 }
 
 void MainComponent::resized()
@@ -92,9 +90,8 @@ void MainComponent::resized()
         settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
     #endif
     
-    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.5)-15)*settingsPannel.getShowOrientation());
-    mav.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowMav(), (getHeight()*0.16)*settingsPannel.getShowMav());
-    pose.setBounds(orientation.getX(), mav.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
+    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.63)-15)*settingsPannel.getShowOrientation());
+    pose.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
 }
 
 int i = 0;
@@ -110,11 +107,10 @@ void MainComponent::timerCallback()
 
     uint8 id = selectedMyoID;
         
-    mav.setValues(myoData[id].emgScaled);
     orientation.setValues(myoData[id].orientationRaw);
     pose.setPoseLabel(myoData[id].pose+" - "+String(myoData[id].poseID));
 
-    osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, mav.getMav(), mav.getMavWl(), myoData[id].gyro, myoData[id].gyroWl, myoData[id].acceleration, myoData[id].accelerationWl, myoData[id].orientationRaw, orientation.getValue(), orientation.getWl(), myoData[id].pose, myoData[id].poseID);
+    osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, myoData[id].mav,  myoData[id].mavWfL, myoData[id].gyro, myoData[id].gyroWl, myoData[id].acceleration, myoData[id].accelerationWl, myoData[id].orientationRaw, orientation.getValue(), orientation.getWl(), myoData[id].pose, myoData[id].poseID);
  
     
     if(osc.vibrate)
@@ -128,7 +124,6 @@ void MainComponent::timerCallback()
             if(osc.map[i][y])
             {
                 orientation.map(i, y, osc.value, osc.reverseStatus);
-                mav.map(i, y, osc.value, osc.reverseStatus);
                 osc.map[i][y] = false;
             }
 }

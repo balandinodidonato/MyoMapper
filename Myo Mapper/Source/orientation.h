@@ -35,6 +35,7 @@ private:
     Rescale rescalePitch;
     Rescale rescaleRoll;
     Vector3D<float> orientationScaled;
+    Vector3D<float> wfLScaled;
     
     WaveformLength orientationWl;
     

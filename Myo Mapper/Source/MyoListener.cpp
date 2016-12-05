@@ -101,8 +101,8 @@ void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const m
     myoData[myoID].acceleration.x = accel.x();
     myoData[myoID].acceleration.y = accel.y();
     myoData[myoID].acceleration.z = accel.z();
-    accWl.set3DValue(myoData[myoID].acceleration);
-    myoData[myoID].accelerationWl = accWl.get3DValue();
+    accWfL.set3DValue(myoData[myoID].acceleration);
+    myoData[myoID].accelerationWl = accWfL.get3DValue();
 }
 
 void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro)
@@ -114,8 +114,8 @@ void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::
     myoData[myoID].gyro.x = gyro.x();
     myoData[myoID].gyro.y = gyro.y();
     myoData[myoID].gyro.z = gyro.z();
-    gyroWl.set3DValue(myoData[myoID].gyro);
-    myoData[myoID].gyroWl = gyroWl.get3DValue();
+    gyroWfL.set3DValue(myoData[myoID].gyro);
+    myoData[myoID].gyroWl = gyroWfL.get3DValue();
     
 }
 
@@ -152,10 +152,19 @@ void MyoListener::onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg
     int myoID = getMyoID(myo);
     if(myoID == -1) return;
     
+    
+    emgSum = 0; // reset value for AVG
+    
     for (size_t i = 0; i < 8; i++) {
     myoData[myoID].emgRaw[i] = emg[i];
     myoData[myoID].emgScaled[i] = abs(emg[i])*0.0078125f;
+    emgSum = emgSum + myoData[myoID].emgScaled[i];
     }
+    
+    myoData[myoID].mav = emgSum * 0.125;
+   
+    mavWfL.setValue(myoData[myoID].mav);
+    myoData[myoID].mavWfL = mavWfL.getValue();
 }
 
 // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after
