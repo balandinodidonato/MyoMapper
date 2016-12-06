@@ -69,7 +69,13 @@ private:
     
     WaveformLength accWfL;
     WaveformLength gyroWfL;
+    
+    WaveformLength accScaledWfL;
+    WaveformLength gyroScaledWfL;
+    
     WaveformLength mavWfL;
+    
+    
 };
 
 

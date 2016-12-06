@@ -68,37 +68,45 @@ void OSC::sendOSC(int id,
                   float mav,
                   float mavWl,
                   Vector3D< float > gyro,
-                  Vector3D< float > gyroWl,
+                  Vector3D< float > gyroWfL,
+                  Vector3D< float > gyroScaled,
+                  Vector3D< float > gyroScaledWfL,
                   Vector3D< float > acceleration,
-                  Vector3D< float > accelerationWl,
+                  Vector3D< float > accelerationWfL,
+                  Vector3D< float > accelerationScaled,
+                  Vector3D< float > accelerationScaledWfL,
                   Vector3D< float > orientationRaw,
                   Vector3D< float > orientationScaled,
-                  Vector3D< float > orientationWl,
+                  Vector3D< float > orientationWfL,
                   String pose,
                   int poseID
                   )
 {
     String ID = String (id);
     
-    sender.send ("/myo"+ID+"/EMG/raw", (int) emgRaw[0], (int) emgRaw[1], (int) emgRaw[2], (int) emgRaw[3], (int) emgRaw[4], (int) emgRaw[5], (int) emgRaw[6], (int) emgRaw[7]);
-    sender.send ("/myo"+ID+"/EMG/scaled", (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);
-    sender.send("/myo"+ID+"/EMGs/mav", (float) mav);
-    sender.send("/myo"+ID+"/EMGs/wl", (float) mavWl);
-    
-    sender.send("/myo"+ID+"/gyro/raw", (float) gyro.x, (float) gyro.y, (float) gyro.z);
-    sender.send("/myo"+ID+"/gyro/wl", (float) gyroWl.x, (float) gyroWl.y, (float) gyroWl.z);
-    
-    sender.send("/myo"+ID+"/acceleration/raw", (float) acceleration.x, (float) acceleration.y, (float) acceleration.z);
-    sender.send("/myo"+ID+"/acceleration/wl", (float) accelerationWl.x, (float) accelerationWl.y, (float) accelerationWl.z);
-    
     sender.send("/myo"+ID+"/orientation/raw", (float) orientationRaw.x, (float) orientationRaw.y, (float) orientationRaw.z);
     sender.send("/myo"+ID+"/orientation/scaled", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z);
-    sender.send("/myo"+ID+"/orientation/wl", (float) orientationWl.x, (float) orientationWl.y, (float) orientationWl.z);
+    sender.send("/myo"+ID+"/orientation/scaledWfL", (float) orientationWfL.x, (float) orientationWfL.y, (float) orientationWfL.z);
+    
+    sender.send("/myo"+ID+"/gyro/raw", (float) gyro.x, (float) gyro.y, (float) gyro.z);
+    sender.send("/myo"+ID+"/gyro/rawWfL", (float) gyroWfL.x, (float) gyroWfL.y, (float) gyroWfL.z);
+    sender.send("/myo"+ID+"/gyro/scaled", (float) gyroScaled.x, (float) gyroScaled.y, (float) gyroScaled.z);
+    sender.send("/myo"+ID+"/gyro/scaledWfL", (float) gyroScaledWfL.x, (float) gyroScaledWfL.y, (float) gyroScaledWfL.z);
+    
+    sender.send("/myo"+ID+"/acceleration/raw", (float) acceleration.x, (float) acceleration.y, (float) acceleration.z);
+    sender.send("/myo"+ID+"/acceleration/rawWfL", (float) accelerationWfL.x, (float) accelerationWfL.y, (float) accelerationWfL.z);
+    sender.send("/myo"+ID+"/acceleration/scaled", (float) accelerationScaled.x, (float) accelerationScaled.y, (float) accelerationScaled.z);
+    sender.send("/myo"+ID+"/acceleration/scaledWfL", (float) accelerationScaledWfL.x, (float) accelerationScaledWfL.y, (float) accelerationScaledWfL.z);
+    
+    sender.send ("/myo"+ID+"/EMG/raw", (int) emgRaw[0], (int) emgRaw[1], (int) emgRaw[2], (int) emgRaw[3], (int) emgRaw[4], (int) emgRaw[5], (int) emgRaw[6], (int) emgRaw[7]);
+    sender.send ("/myo"+ID+"/EMG/scaled", (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);
+    sender.send("/myo"+ID+"/EMG/mav", (float) mav);
+    sender.send("/myo"+ID+"/EMG/mavWfL", (float) mavWl);
     
     sender.send("/myo"+ID+"/pose", (int) poseID, (String) pose);
     
-    sender.send("/myo"+ID+"/all", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) orientationWl.x, (float) orientationWl.y, (float) orientationWl.z, (float) acceleration.x, (float) acceleration.y, (float) acceleration.z, (float) accelerationWl.x, (float) accelerationWl.y, (float) accelerationWl.z, (float) gyro.x, (float) gyro.y, (float) gyro.z, (float) gyroWl.x, (float) gyroWl.y, (float) gyroWl.z, (float) mav, (float) mavWl);
-    sender.send("/myo"+ID+"/allEMG", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) orientationWl.x, (float) orientationWl.y, (float) orientationWl.z, (float) acceleration.x, (float) acceleration.y, (float) acceleration.z, (float) accelerationWl.x, (float) accelerationWl.y, (float) accelerationWl.z, (float) gyro.x, (float) gyro.y, (float) gyro.z, (float) gyroWl.x, (float) gyroWl.y, (float) gyroWl.z, (float) mav, (float) mavWl, (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);
+    sender.send("/myo"+ID+"/all", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) orientationWfL.x, (float) orientationWfL.y, (float) orientationWfL.z, (float) accelerationScaled.x, (float) accelerationScaled.y, (float) accelerationScaled.z, (float) accelerationScaledWfL.x, (float) accelerationScaledWfL.y, (float) accelerationScaledWfL.z, (float) gyroScaled.x, (float) gyroScaled.y, (float) gyroScaled.z, (float) gyroScaledWfL.x, (float) gyroScaledWfL.y, (float) gyroScaledWfL.z, (float) mav, (float) mavWl);
+    sender.send("/myo"+ID+"/allEMG", (float) (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) orientationWfL.x, (float) orientationWfL.y, (float) orientationWfL.z, (float) accelerationScaled.x, (float) accelerationScaled.y, (float) accelerationScaled.z, (float) accelerationScaledWfL.x, (float) accelerationScaledWfL.y, (float) accelerationScaledWfL.z, (float) gyroScaled.x, (float) gyroScaled.y, (float) gyroScaled.z, (float) gyroScaledWfL.x, (float) gyroScaledWfL.y, (float) gyroScaledWfL.z, (float) mav, (float) mavWl, (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);
 
 }
 
