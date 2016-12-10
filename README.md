@@ -1,100 +1,16 @@
-# MyoMapper
-MyoMapper, is an application to convert and rescale raw data from the Myo and to send them to musical applications through OSC and/or MIDI protocol.
+# Myo Mapper
+Myo Mapper maps[Myo armband](https://www.myo.com) data into Open Sound Control (OSC) messages. Moreover, it rescales, centre and extracts features from Myo raw data.
 
-It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) and [Jamie Bullock](http://jamiebullock.com/) at [Integra Lab](http://www.integra.io/lab).
+Myo Mapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
 
-[**DOWNLOAD MyoMapper**](https://github.com/balandinodidonato/MyoMapper/releases)
+### Acknowledgment
+- [Jamie Bullock](http://jamiebullock.com/), developer
 
-[Myo Mapper receiver for Pd](https://github.com/balandinodidonato/MyoMapper/tree/master/examples/Pd)
+### [**DOWNLOAD**](https://github.com/balandinodidonato/MyoMapper/releases)
 
-## Get Started
-
-- Launch [Myo Connect](https://developer.thalmic.com/downloads)
-- Connect your Myo armband
-- Verify that the connection is stable and Myo Connect is receiving data
-- Launch MyoMapper
-- Select the Myo
-
-To map multiple Myos, launch a second Myo Mapper's instance and select a different Myo. To do so:
-- Duplicate the Myo Mapper application you have already installed.
-- Rename it with a different name, eg. "Myo Mapper 2"
-- Launch it
-
-## OSC Communication
-
-MyoMapper initially sends OSC messages at the port 5432 and receive messages at the port 5431, but it can changed through the setting pannel.
-
-### Outgoing OSC messages
-
-| OSC tag                      | Myo parameter                                  | Value Type                     | Range                     |
-| :---:                        | :---:                                          | :---:                          |:---:                      |
-| `/myo+id/orientation/scaled` | Scaled Yaw, Scaled Pitch, Scaled Roll          | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`    |
-| `/myo+id/orientation/raw`        | Yaw, Pitch, Roll                               | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI` |
-| `/myo+id/orientation/wl`     | Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`      |
-| `/myo+id/acceleration/raw`       | Acc. x, Acc. y, Acc. z                         | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI` |
-| `/myo+id/acceleration/wl`    | Acc. x WL, Acc. y WL, Acc. z WL                | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI` |
-| `/myo+id/gyro/raw`               | Gyro X, Gyro Y, Gyro Z                         | `float`, `float`, `float`      | `-1000, 1000`, `-1000, 1000`, `-1000, 1000` |
-| `/myo+id/gyro/wl`            | Gyro X WL, Gyro Y WL, Gyro Z WL                | `float`, `float`, `float`      | `-1000, 1000`, `-1000, 1000`, `-1000, 1000` |
-| `/myo+id/EMGs/mav`           | EMGs Mean Absolute Value                       | `float`                        | `0, 1` |
-| `/myo+id/EMGs/wl`        | EMGs Mean Absolute Value WL                    | `float`                        | `0, 1` |
-| `/myo+id/EMG/scaled`           | EMG 1, EMG 2 ... EMG 8                         | `float`, `float`, ... `float`  | `0, 1`, `0, 1` ... `0, 1`        |
-| `/myo+id/EMG/raw`               | EMG 1, EMG 2 ... EMG 8                         | `int`, `int`, ... `int`        | `-127, 128`, `-127, 128` ... `-127, 128`   |
-| `/myo+id/pose`               | Hand pose                                      | `int`, `string`                | `-1, 5` ; `"unknown", "rest",  "fist", "fingerSpread", "waveIn", "waveOut", "doubleTap"` |
-| `/myo+id/all`                | Scaled Yaw, Scaled Pitch, Scaled Roll, Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1` |
-| `/myo+id/EMG`               | Scaled Yaw, Scaled Pitch, Scaled Roll, Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL, EMG 1 Scaled, EMG 2 Scaled, EMG 3 Scaled, EMG 4 Scaled, EMG 5 Scaled, EMG 6 Scaled, EMG 7 Scaled, EMG 8 Scaled | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1` |
-
-
-### Accepted OSC messages
-
-**NB:**
-id = the value which indicates the selected Myo. It has to be an `int`, which value can be `1`, `2`, `3`, `4`.
-myoValue = the value which has to be processed. It has to be a `String` which value can be `yaw`, `pitch`, `roll`, `mav`.
-
-| OSC tag                      | Value Type | Range                     | Functions                                              |
-| :---:                        | :---:      | :---:                     |  :---:                                                 |
-| `/myo+id/vibrate`            | `String`   | `short`, `medium`, `long` | Makes the Myo vibrate for a short, medium or long time |
-| `/myo+id/myoValue/centre`    | `String`   | `centre`                  | Centre the current value within the set range          |
-| `/myo+id/myoValue/setMin`    | `float`    |  `0`, `1`                 | Set the lowest outgoing value                          |
-| `/myo+id/myoValue/setMax`    | `float`    |  `0`, `1`                 | Set the highest outgoing value                         |
-| `/myo+id/myoValue/reverse`   | `int`      |  `0`, `1`                 | Reverse the current value                              |
+### [**DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
 
 ---
-
-**N.B.:**
-
-- EMG pad enumeration has been established by Thalmic Lab, please see image below, or visit the flowing page: [https://developer.thalmic.com/forums/topic/255/](https://developer.thalmic.com/forums/topic/255/).***
-
-![EMG pad enumumeration](http://i59.tinypic.com/1zyez3r.jpg "EMG pad enumumeration")
-
-Source immage: Arief, Z., Sulistijono, I. A., & Ardiansyah, R. A. (2015, September). *Comparison of five time series EMG features extractions using Myo Armband.* In Electronics Symposium (IES), 2015 International (pp. 11-14). IEEE. Chicago.
-
-
-## To build on OS X
-
-### Requirements
-
-- [X Code](https://developer.apple.com/xcode/)
-- [Myo Framework for Mac](https://developer.thalmic.com/downloads)
-- [JUCE](https://www.juce.com/get-juce)
-
-### Build process
-
-- Move the Myo framework into `~/Library/Frameworks`.
-
-  From terminal: `mv current-myo-framework-path ~/Library/Frameworks`
-
-  If there is not any folder named Frameworks under `~/Library` then create one and move the Myo framework into it.
-
-- Move the JUCE into `/Applications`.
-
-  From terminal: `mv current-JUCE-path /Applications`
-
-- Open `Myo Mapper.jucer`
-- Verify that all modules are linked by clicking `config` -> `modules`
-- Click `Save Project and Open in IDE`
-- Build App
-
-If any issue, please [report and issue](https://github.com/balandinodidonato/MyoMapper/issues) or [email the developer](info@balandinodidonato.com).
 
 ## License
 

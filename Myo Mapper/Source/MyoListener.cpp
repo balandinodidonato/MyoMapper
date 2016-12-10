@@ -97,12 +97,20 @@ void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const m
 {
     int myoID = getMyoID(myo);
     if(myoID == -1) return;
-    
+   
     myoData[myoID].acceleration.x = accel.x();
-    myoData[myoID].acceleration.y = accel.y();
-    myoData[myoID].acceleration.z = accel.z();
+    myoData[myoID].acceleration.y = accel.x();
+    myoData[myoID].acceleration.z = accel.x();
+
+    myoData[myoID].accelerationScaled.x = (accel.x()+16)*0.03125;
+    myoData[myoID].accelerationScaled.y = (accel.y()+16)*0.03125;
+    myoData[myoID].accelerationScaled.z = (accel.z()+16)*0.03125;
+   
     accWfL.set3DValue(myoData[myoID].acceleration);
-    myoData[myoID].accelerationWl = accWfL.get3DValue();
+    myoData[myoID].accelerationWfL = accWfL.get3DValue();
+    
+    accScaledWfL.set3DValue(myoData[myoID].accelerationScaled);
+    myoData[myoID].accelerationScaledWfL = accScaledWfL.get3DValue();
 }
 
 void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro)
@@ -110,12 +118,20 @@ void MyoListener::onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::
 
     int myoID = getMyoID(myo);
     if(myoID == -1) return;
-
+   
     myoData[myoID].gyro.x = gyro.x();
     myoData[myoID].gyro.y = gyro.y();
     myoData[myoID].gyro.z = gyro.z();
+
+    myoData[myoID].gyroScaled.x = (gyro.x()+2000)* 0.00025;
+    myoData[myoID].gyroScaled.y = (gyro.y()+2000)* 0.00025;
+    myoData[myoID].gyroScaled.z = (gyro.z()+2000)* 0.00025;
+   
     gyroWfL.set3DValue(myoData[myoID].gyro);
-    myoData[myoID].gyroWl = gyroWfL.get3DValue();
+    myoData[myoID].gyroWfL = gyroWfL.get3DValue();
+    
+    gyroScaledWfL.set3DValue(myoData[myoID].gyroScaled);
+    myoData[myoID].gyroScaledWfL = gyroScaledWfL.get3DValue();
     
 }
 
@@ -157,8 +173,9 @@ void MyoListener::onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg
     
     for (size_t i = 0; i < 8; i++) {
     myoData[myoID].emgRaw[i] = emg[i];
-    myoData[myoID].emgScaled[i] = abs(emg[i])*0.0078125f;
-    emgSum = emgSum + myoData[myoID].emgScaled[i];
+    myoData[myoID].emgScaled[i] = (emg[i]+127)*0.003921568627;
+    myoData[myoID].emgScaledAbs[i] = std::abs(emg[i]*0.0078125);
+    emgSum = emgSum + myoData[myoID].emgScaledAbs[i];
     }
     
     myoData[myoID].mav = emgSum * 0.125;
