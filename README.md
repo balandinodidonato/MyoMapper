@@ -1,18 +1,21 @@
-# MyoMapper
-MyoMapper, is an application to convert and rescale raw data from the Myo and to send them to musical applications through OSC and/or MIDI protocol.
+# Myo Mapper
+Myo Mapper maps[Myo armband](https://www.myo.com) data into Open Sound Control (OSC) messages. Moreover, it rescales, centre and extracts features from Myo raw data.
 
-It has been developed by [Balandino Di Donato](http://www.balandinodidonato.com) and [Jamie Bullock](http://jamiebullock.com/) at [Integra Lab](http://www.integra.io/lab).
+Myo Mapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com)at [Integra Lab](http://www.integra.io/lab).
 
-[**DOWNLOAD MyoMapper**](https://github.com/balandinodidonato/MyoMapper/releases)
+### Acknowledgment
+- [Jamie Bullock](http://jamiebullock.com/), developer
 
-[Myo Mapper receiver for Pd](https://github.com/balandinodidonato/MyoMapper/tree/master/examples/Pd)
+### [**DOWNLOAD**](https://github.com/balandinodidonato/MyoMapper/releases)
+
+### [**DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/releases)
 
 ## Get Started
 
 - Launch [Myo Connect](https://developer.thalmic.com/downloads)
 - Connect your Myo armband
 - Verify that the connection is stable and Myo Connect is receiving data
-- Launch MyoMapper
+- Launch Myo Mapper
 - Select the Myo
 
 To map multiple Myos, launch a second Myo Mapper's instance and select a different Myo. To do so:
@@ -22,15 +25,15 @@ To map multiple Myos, launch a second Myo Mapper's instance and select a differe
 
 ## OSC Communication
 
-MyoMapper initially sends OSC messages at the port 5432 and receive messages at the port 5431, but it can changed through the setting pannel.
+Myo Mapper initially sends OSC messages at the port 5432 and receive messages at the port 5431, but it can changed through the setting pannel.
 
 ### Outgoing OSC messages
-     
+
 | OSC tag                          | Myo parameter                                           | Value Type                     | Range                     |
 | :---:                            | :---:                                                   | :---:                          |:---:                      |
-| `/myo+id/orientation/scaled`     | Scaled Yaw, Scaled Pitch, Scaled Roll                   | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`    |
+| `/myo+id/orientation/scaled`     | Yaw Scaled, Pitch Scaled, Roll Scaled                   | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`    |
 | `/myo+id/orientation/raw`        | Yaw, Pitch, Roll                                        | `float`, `float`, `float`      | `-PI, PI`, `-PI, PI`, `-PI, PI` |
-| `/myo+id/orientation/wl`         | Scaled Yaw WfL, Scaled Pitch WfL, Scaled Roll WfL       | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`      |
+| `/myo+id/orientation/wl`         | Yaw Scaled WfL, Pitch Scaled WfL, Roll Scaled WfL       | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`      |
 | `/myo+id/acceleration/raw`       | Acc. x, Acc. y, Acc. z                                  | `float`, `float`, `float`      | `-16, 16`, `-16, 16`, `-16, 16` |
 | `/myo+id/acceleration/rawWfL`    | Acc. x WfL, Acc. y WfL, Acc. z WfL                      | `float`, `float`, `float`      | `-16, 16`, `-16, 16`, `-16, 16` |
 | `/myo+id/acceleration/scaled`    | Acc. x Scaled, Acc. y Scaled, Acc. z Scaled             | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`    |
@@ -41,12 +44,13 @@ MyoMapper initially sends OSC messages at the port 5432 and receive messages at 
 | `/myo+id/gyro/scaledWfL`         | Gyro x Scaled WfL, Gyro y Scaled WfL, Gyro z Scaled WfL | `float`, `float`, `float`      | `0, 1`, `0, 1`, `0, 1`    |
 | `/myo+id/EMG/mav`                | EMGs Mean Absolute Value                                | `float`                        | `0, 1`                          |
 | `/myo+id/EMG/mavWfL`             | EMGs Mean Absolute Value WfL                            | `float`                        | `0, 1` |
-| `/myo+id/EMG/scaled`             | EMG 1, EMG 2 ... EMG 8                                  | `float`, `float`, ... `float`  | `0, 1`, `0, 1` ... `0, 1`        |
+| `/myo+id/EMG/scaled`             | EMG 1 Scaled, EMG 2 Scaled ... EMG 8 Scaled             | `float`, `float`, ... `float`  | `0, 1`, `0, 1` ... `0, 1`        |
+| `/myo+id/EMG/scaledAbs`          | EMG 1 Scaled Abs, EMG 2 Scaled Abs ... EMG 8 Scaled Abs | `float`, `float`, ... `float`  | `0, 1`, `0, 1` ... `0, 1`        |
 | `/myo+id/EMG/raw`                | EMG 1, EMG 2 ... EMG 8                                  | `int`, `int`, ... `int`        | `-127, 128`, `-127, 128` ... `-127, 128`   |
 | `/myo+id/pose`                   | Hand pose                                               | `int`, `string`                | `-1, 5` ; `"unknown", "rest",  "fist", "fingerSpread", "waveIn", "waveOut", "doubleTap"`        |
-| `/myo+id/all`                | Scaled Yaw, Scaled Pitch, Scaled Roll, Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1` |
-| `/myo+id/EMG`               | Scaled Yaw, Scaled Pitch, Scaled Roll, Scaled Yaw WL, Scaled Pitch WL, Scaled Roll WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL, EMG 1 Scaled, EMG 2 Scaled, EMG 3 Scaled, EMG 4 Scaled, EMG 5 Scaled, EMG 6 Scaled, EMG 7 Scaled, EMG 8 Scaled | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1` |
-
+| `/myo+id/all`                | Yaw Scaled, Pitch Scaled, Roll Scaled, Yaw Scaled WL, Pitch Scaled WL, Roll Scaled WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1` |
+| `/myo+id/EMG`               | Yaw Scaled, Pitch Scaled, Roll Scaled, Yaw Scaled WL, Pitch Scaled WL, Roll Scaled WL, Acc. x, Acc. y, Acc. z, Acc. x WL, Acc. y WL, Acc. z WL, Gyro X, Gyro Y, Gyro Z, Gyro X WL, Gyro Y WL, Gyro Z WL, EMGs Mean Absolute Value, EMGs Mean Absolute Value WL, EMG 1 Scaled, EMG 2 Scaled, EMG 3 Scaled, EMG 4 Scaled, EMG 5 Scaled, EMG 6 Scaled, EMG 7 Scaled, EMG 8 Scaled | `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float`, `float` | `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `-PI, PI`, `-PI, PI`, `-PI, PI`, `0, PI`,`0, PI`,`0, PI`, `-1000, 1000`, `-1000, 1000`, `-1000, 1000`, `0, 1000`, `0, 1000`, `0, 1000`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1`, `0, 1` |
+| `/wek/inputs`  |Yaw Scaled, Pitch Scaled, Roll Scaled, Acc. x Scaled, Acc. y Scaled, Acc. z Scaled, Gyro x Scaled, Gyro y Scaled, Gyro z Scaled, EMGs Mean Absolute Value, EMGs Mean Absolute Value WfL |  `float`, `float`, ... , `float` | `0, 1`, `0, 1` ... `0, 1` |
 
 ### Accepted OSC messages
 
