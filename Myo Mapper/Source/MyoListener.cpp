@@ -173,8 +173,9 @@ void MyoListener::onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg
     
     for (size_t i = 0; i < 8; i++) {
     myoData[myoID].emgRaw[i] = emg[i];
-    myoData[myoID].emgScaled[i] = abs(emg[i])*0.0078125f;
-    emgSum = emgSum + myoData[myoID].emgScaled[i];
+    myoData[myoID].emgScaled[i] = (emg[i]+127)*0.003921568627;
+    myoData[myoID].emgScaledAbs[i] = std::abs(emg[i]*0.0078125);
+    emgSum = emgSum + myoData[myoID].emgScaledAbs[i];
     }
     
     myoData[myoID].mav = emgSum * 0.125;

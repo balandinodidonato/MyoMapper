@@ -110,7 +110,7 @@ void MainComponent::timerCallback()
     orientation.setValues(myoData[id].orientationRaw);
     pose.setPoseLabel(myoData[id].pose+" - "+String(myoData[id].poseID));
 
-    osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, myoData[id].mav,  myoData[id].mavWfL, myoData[id].gyro, myoData[id].gyroWfL, myoData[id].gyroScaled, myoData[id].gyroScaledWfL, myoData[id].acceleration, myoData[id].accelerationWfL, myoData[id].accelerationScaled, myoData[id].accelerationScaledWfL, myoData[id].orientationRaw, orientation.getValue(), orientation.getWl(), myoData[id].pose, myoData[id].poseID);
+    osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, myoData[id].emgScaledAbs, myoData[id].mav,  myoData[id].mavWfL, myoData[id].gyro, myoData[id].gyroWfL, myoData[id].gyroScaled, myoData[id].gyroScaledWfL, myoData[id].acceleration, myoData[id].accelerationWfL, myoData[id].accelerationScaled, myoData[id].accelerationScaledWfL, myoData[id].orientationRaw, orientation.getValue(), orientation.getWl(), myoData[id].pose, myoData[id].poseID);
  
     
     if(osc.vibrate)

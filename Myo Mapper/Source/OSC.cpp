@@ -65,6 +65,7 @@ void OSC::setSender(String HostAddress, int Port){
 void OSC::sendOSC(int id,
                   std::array<int8_t, 8> emgRaw,
                   std::array<float, 8> emgScaled,
+                  std::array<float, 8> emgScaledAbs,
                   float mav,
                   float mavWl,
                   Vector3D< float > gyro,
@@ -99,15 +100,18 @@ void OSC::sendOSC(int id,
     sender.send("/myo"+ID+"/acceleration/scaledWfL", (float) accelerationScaledWfL.x, (float) accelerationScaledWfL.y, (float) accelerationScaledWfL.z);
     
     sender.send ("/myo"+ID+"/EMG/raw", (int) emgRaw[0], (int) emgRaw[1], (int) emgRaw[2], (int) emgRaw[3], (int) emgRaw[4], (int) emgRaw[5], (int) emgRaw[6], (int) emgRaw[7]);
+    
     sender.send ("/myo"+ID+"/EMG/scaled", (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);
+    sender.send ("/myo"+ID+"/EMG/scaledAbs", (float) emgScaledAbs[0], (float) emgScaledAbs[1], (float) emgScaledAbs[2], (float) emgScaledAbs[3], (float) emgScaledAbs[4], (float) emgScaledAbs[5], (float) emgScaledAbs[6], (float) emgScaledAbs[7]);
+    sender.send("/myo"+ID+"/EMG/mav", (float) mav);
     sender.send("/myo"+ID+"/EMG/mav", (float) mav);
     sender.send("/myo"+ID+"/EMG/mavWfL", (float) mavWl);
     
     sender.send("/myo"+ID+"/pose", (int) poseID, (String) pose);
     
     sender.send("/myo"+ID+"/all", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) orientationWfL.x, (float) orientationWfL.y, (float) orientationWfL.z, (float) accelerationScaled.x, (float) accelerationScaled.y, (float) accelerationScaled.z, (float) accelerationScaledWfL.x, (float) accelerationScaledWfL.y, (float) accelerationScaledWfL.z, (float) gyroScaled.x, (float) gyroScaled.y, (float) gyroScaled.z, (float) gyroScaledWfL.x, (float) gyroScaledWfL.y, (float) gyroScaledWfL.z, (float) mav, (float) mavWl);
-    sender.send("/myo"+ID+"/allEMG", (float) (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) orientationWfL.x, (float) orientationWfL.y, (float) orientationWfL.z, (float) accelerationScaled.x, (float) accelerationScaled.y, (float) accelerationScaled.z, (float) accelerationScaledWfL.x, (float) accelerationScaledWfL.y, (float) accelerationScaledWfL.z, (float) gyroScaled.x, (float) gyroScaled.y, (float) gyroScaled.z, (float) gyroScaledWfL.x, (float) gyroScaledWfL.y, (float) gyroScaledWfL.z, (float) mav, (float) mavWl, (float) emgScaled[0], (float) emgScaled[1], (float) emgScaled[2], (float) emgScaled[3], (float) emgScaled[4], (float) emgScaled[5], (float) emgScaled[6], (float) emgScaled[7]);
-
+    sender.send("/myo"+ID+"/allEMG", (float) (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) orientationWfL.x, (float) orientationWfL.y, (float) orientationWfL.z, (float) accelerationScaled.x, (float) accelerationScaled.y, (float) accelerationScaled.z, (float) accelerationScaledWfL.x, (float) accelerationScaledWfL.y, (float) accelerationScaledWfL.z, (float) gyroScaled.x, (float) gyroScaled.y, (float) gyroScaled.z, (float) gyroScaledWfL.x, (float) gyroScaledWfL.y, (float) gyroScaledWfL.z, (float) mav, (float) mavWl, (float) emgScaledAbs[0], (float) emgScaledAbs[1], (float) emgScaledAbs[2], (float) emgScaledAbs[3], (float) emgScaledAbs[4], (float) emgScaledAbs[5], (float) emgScaledAbs[6], (float) emgScaledAbs[7]);
+    sender.send("/wek/inputs", (float) orientationScaled.x, (float) orientationScaled.y, (float) orientationScaled.z, (float) accelerationScaled.x, (float) accelerationScaled.y, (float) accelerationScaled.z, (float) gyroScaled.x, (float) gyroScaled.y, (float) gyroScaled.z, (float) mav, (float) mavWl);
 }
 
 // ============== END SENDER ==============

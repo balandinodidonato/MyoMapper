@@ -20,6 +20,7 @@ public:
     void sendOSC(int id,
                  std::array<int8_t, 8> emgRaw,
                  std::array<float, 8> emgScaled,
+                 std::array<float, 8> emgScaledAbs,
                  float mav,
                  float mavWl,
                  Vector3D< float > gyro,
