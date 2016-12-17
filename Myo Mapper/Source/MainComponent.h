@@ -47,13 +47,14 @@ public:
     
     void AboutMyoMapperDialogWindow();
     void HelpDialogWindow();
+    Settings settingsPannel;
+    
     
 private:
 
     void timerCallback() override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     
-    Settings settingsPannel;
     MyoManager myoManager;
     Pose pose;
     OSC osc;

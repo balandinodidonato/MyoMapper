@@ -20,14 +20,14 @@ void Orientation::paint(juce::Graphics &g)
     g.setColour(Colours::grey);
     g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
     g.setColour(Colours::black);
-    g.setFont(getHeight()*0.07);
+    g.setFont(getHeight()*0.06);
     g.drawText("Orientation", getLocalBounds(),
                Justification::centredTop, true);   // draw some placeholder text
 }
 
 void Orientation::resized()
 {
-    rescaleYaw.setBounds(10, getHeight()*0.1, getRight()-30, getHeight()*0.28);
+    rescaleYaw.setBounds(10, getHeight()*0.07, getRight()-30, getHeight()*0.29);
     rescalePitch.setBounds(rescaleYaw.getX(), rescaleYaw.getBottom()+7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
     rescaleRoll.setBounds(rescaleYaw.getX(), rescalePitch.getBottom()+7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
 }
