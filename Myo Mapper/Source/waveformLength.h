@@ -16,12 +16,12 @@ public:
 
 private:
     
-    float factor;
+    float previousInput;
     float input;
     float wl;
 
     Vector3D<float> input3D;
-    Vector3D<float> factor3D;
+    Vector3D<float> previousInput3D;
     Vector3D<float> wl3D;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WaveformLength)
