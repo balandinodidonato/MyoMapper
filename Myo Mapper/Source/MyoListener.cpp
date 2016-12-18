@@ -99,8 +99,8 @@ void MyoListener::onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const m
     if(myoID == -1) return;
    
     myoData[myoID].acceleration.x = accel.x();
-    myoData[myoID].acceleration.y = accel.x();
-    myoData[myoID].acceleration.z = accel.x();
+    myoData[myoID].acceleration.y = accel.y();
+    myoData[myoID].acceleration.z = accel.z();
 
     myoData[myoID].accelerationScaled.x = (accel.x()+16)*0.03125;
     myoData[myoID].accelerationScaled.y = (accel.y()+16)*0.03125;

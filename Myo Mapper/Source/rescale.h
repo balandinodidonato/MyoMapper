@@ -25,22 +25,28 @@ public:
     void setTargetValue(float TargetValue);
     void setMin(float Value);
     void setMax(float Value);
-    void setCentre();
+    void setCalibrate();
     void setReverse(bool Status);
-
+    void setLimit(bool Status);
+    
 private:
     
-    TextButton centre;
+    TextButton calibrate;
     Slider mmSlider;
     Label mmSliderLabel;
 
     ToggleButton reverse;
+    ToggleButton limit;
     
-    Slider minSlider;
-    Slider maxSlider;
+    Slider outMinSlider;
+    Slider outMaxSlider;
+    Slider inMinSlider;
+    Slider inMaxSlider;
     
-    Label minSliderLabel;
-    Label maxSliderLabel;
+    Label outMinSliderLabel;
+    Label outMaxSliderLabel;
+    Label inMinSliderLabel;
+    Label inMaxSliderLabel;
     
     OSCSender sender;
     bool enableOSCvalue;
@@ -48,20 +54,25 @@ private:
     String hostAddress;
     
     float reversed;
-    float centred;
+    float calibrated;
     float offset;
     float targetValue = 0.5;
-    float maxOutputValue;
-    float minOutputValue;
     float scaled;
     float input;
     float input0;
     float input1;
     String labelWidget;
-    const long double PI;
+    const long double PI = 3.141592653589793;
     const long double r2PI;
     int test = 0;
     String MyoIDString;
+    float inMin;
+    float inMax;
+    float outMin;
+    float outMax;
+    float limited;
+    
+    float pippo = 0;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };

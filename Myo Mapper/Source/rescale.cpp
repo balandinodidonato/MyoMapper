@@ -1,23 +1,25 @@
 #include "rescale.h"
+#include <algorithm>
 
 Rescale::Rescale()
 :
 reversed(0),           // variables used for testing the logic
-centred(0),            // centred data init
+calibrated(0),            // centred data init
 offset(0),             // offset for centering myo data
 targetValue(0),        // Target value to centre to
-maxOutputValue(1.0),
-minOutputValue(0.0),
 scaled(0),
 input(0),
 PI(3.141592653589793238L),
 r2PI(1/(2*PI)),
-test(0)
+test(0),
+inMin(0),
+inMax(1),
+outMin(0),
+outMax(1)
 {
-    
-    addAndMakeVisible(centre);
-    centre.setButtonText ("Centre");
-    centre.addListener (this);
+    addAndMakeVisible(calibrate);
+    calibrate.setButtonText ("Calibrate");
+    calibrate.addListener (this);
     
     addAndMakeVisible(mmSlider);
     mmSlider.setSliderStyle(juce::Slider::ThreeValueHorizontal);
@@ -32,45 +34,83 @@ test(0)
     addAndMakeVisible(reverse);
     reverse.addListener (this);
     reverse.setButtonText("Reverse");
+
+    addAndMakeVisible(limit);
+    limit.addListener (this);
+    limit.setButtonText("Limit");
     
-    minSlider.setRange(-1.0, 2.0, 0.001);
-    minSlider.setValue(0.0);
-    minSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
-    minSlider.setSliderStyle(juce::Slider::IncDecButtons);
-    addAndMakeVisible(minSlider);
+    outMinSliderLabel.setText ("Out Min", dontSendNotification);
+    outMinSliderLabel.attachToComponent (&outMinSlider, true);
+    addAndMakeVisible(outMinSliderLabel);
+    outMinSlider.addListener(this);
     
-    minSliderLabel.setText ("Min", dontSendNotification);
-    minSliderLabel.attachToComponent (&minSlider, true);
-    addAndMakeVisible(minSliderLabel);
-    minSlider.addListener(this);
+    outMaxSliderLabel.setText ("Out Max", dontSendNotification);
+    outMaxSliderLabel.attachToComponent (&outMaxSlider, true);
+    addAndMakeVisible(outMaxSliderLabel);
+    outMaxSlider.addListener(this);
+
+    inMinSliderLabel.setText ("In Min", dontSendNotification);
+    inMinSliderLabel.attachToComponent (&inMinSlider, true);
+    addAndMakeVisible(inMinSliderLabel);
+    inMinSlider.addListener(this);
     
-    maxSlider.setRange(-1.0, 2.0, 0.001);
-    maxSlider.setValue(1.0);
-    minSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
-    maxSlider.setSliderStyle(juce::Slider::IncDecButtons);
-    addAndMakeVisible(maxSlider);
+    inMaxSliderLabel.setText ("In Max", dontSendNotification);
+    inMaxSliderLabel.attachToComponent (&inMaxSlider, true);
+    addAndMakeVisible(inMaxSliderLabel);
+    inMaxSlider.addListener(this);
     
-    maxSliderLabel.setText ("Max", dontSendNotification);
-    maxSliderLabel.attachToComponent (&maxSlider, true);
-    addAndMakeVisible(maxSliderLabel);
-    maxSlider.addListener(this);
+    outMinSlider.setRange(-1.0, 2.0, 0.001);
+    outMinSlider.setValue(0.0);
+    outMinSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
+    outMinSlider.setSliderStyle(juce::Slider::IncDecButtons);
+    addAndMakeVisible(outMinSlider);
+    
+    outMaxSlider.setRange(-1.0, 2.0, 0.001);
+    outMaxSlider.setValue(0.0);
+    outMaxSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
+    outMaxSlider.setSliderStyle(juce::Slider::IncDecButtons);
+    addAndMakeVisible(outMaxSlider);
+    
+    inMinSlider.setRange(0, 1, 0.001);
+    inMinSlider.setValue(0);
+    inMinSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
+    inMinSlider.setSliderStyle(juce::Slider::IncDecButtons);
+    addAndMakeVisible(inMinSlider);
+    
+    inMaxSlider.setRange(0, 1, 0.001);
+    inMaxSlider.setValue(1);
+    inMaxSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
+    inMaxSlider.setSliderStyle(juce::Slider::IncDecButtons);
+    addAndMakeVisible(inMaxSlider);
 }
 
 void Rescale::paint(juce::Graphics &g)
 {
     g.fillAll(Colours::white);   // clear the background
-    g.setColour(Colours::lightgrey);
+    g.setColour(Colours::white);
     g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 3, 3);
     g.setColour(Colours::black);
-    g.setFont(getHeight()*0.2);
+    g.setFont(getHeight()*0.17);
     g.drawText(labelWidget, getLocalBounds(), Justification::centredTop, true);   // draw some placeholder text
+}
+
+void Rescale::resized()
+{
+    calibrate.setBounds (10, 25, getWidth()*0.2, getHeight()*0.3);
+    reverse.setBounds(calibrate.getRight()+getWidth()*0.02, calibrate.getY(), getWidth()*0.15, calibrate.getHeight()*0.6);
+//    limit.setBounds(reverse.getX(), reverse.getBottom()+reverse.getHeight()*0.5, reverse.getWidth(), reverse.getHeight());
+    inMinSlider.setBounds(reverse.getRight()+getWidth()*0.1, reverse.getY(), getWidth()*0.18, getHeight()*0.15);
+    outMinSlider.setBounds(inMinSlider.getRight()+getWidth()*0.13, inMinSlider.getY(), inMinSlider.getWidth(), inMinSlider.getHeight());
+    inMaxSlider.setBounds(inMinSlider.getX(), reverse.getBottom()+reverse.getHeight()*0.5, inMinSlider.getWidth(), inMinSlider.getHeight());
+    outMaxSlider.setBounds(outMinSlider.getX(), inMaxSlider.getY(), outMinSlider.getWidth(), outMinSlider.getHeight());
+    mmSlider.setBounds(calibrate.getX(), calibrate.getBottom()+25, getWidth()*0.95, getHeight()*0.2);
 }
 
 void Rescale::buttonClicked(juce::Button *button)
 {
-    if (button == &centre)
+    if (button == &calibrate)
     {
-        setCentre();
+        setCalibrate();
     }
 }
 
@@ -78,33 +118,46 @@ void Rescale::sliderValueChanged(juce::Slider *slider)
 {
     if (slider == &mmSlider)
     {
-        minOutputValue = mmSlider.getMinValue();
-        maxOutputValue = mmSlider.getMaxValue();
-        minSlider.setValue(minOutputValue);
-        maxSlider.setValue(maxOutputValue);
+        outMin = mmSlider.getMinValue();
+        outMax = mmSlider.getMaxValue();
+        outMaxSlider.setValue(outMax);
+        outMinSlider.setValue(outMin);
     }
     
-    else if (slider ==&minSlider)
+else if (slider ==&outMinSlider)
     {
-        minOutputValue = minSlider.getValue();
-        mmSlider.setMinValue(minOutputValue);
+        outMin = outMinSlider.getValue();
+        outMinSlider.setValue(outMin);
     }
     
-    if (slider ==&maxSlider)
+    if (slider ==&outMaxSlider)
     {
-        maxOutputValue = maxSlider.getValue();
-        mmSlider.setMaxValue(maxOutputValue);
+        outMax = outMaxSlider.getValue();
+        outMaxSlider.setValue(outMax);
     }
+    
+    else if (slider ==&inMinSlider)
+    {
+        inMin = inMinSlider.getValue();
+    }
+    
+    if (slider ==&inMaxSlider)
+    {
+        inMax = inMaxSlider.getValue();
+    }
+    
 }
 
-void Rescale::resized()
+void Rescale::setReverse(bool Status)
 {
-    centre.setBounds (10, 25, getWidth()*0.2, getHeight()*0.3);
-    reverse.setBounds(centre.getRight()+getWidth()*0.02, centre.getY(), centre.getWidth(), centre.getHeight());
-    minSlider.setBounds(reverse.getRight()+getWidth()*0.05, centre.getY(), centre.getWidth(), centre.getHeight());
-    maxSlider.setBounds(minSlider.getRight()+getWidth()*0.1, centre.getY(), centre.getWidth(), centre.getHeight());    
-    mmSlider.setBounds(centre.getX(), centre.getBottom()+25, getWidth()*0.95, getHeight()*0.2);
+    reverse.setToggleState(Status, dontSendNotification);
+    reverse.setState(juce::Button::buttonDown);
+}
 
+void Rescale::setLimit(bool Status)
+{
+    limit.setToggleState(Status, dontSendNotification);
+    limit.setState(juce::Button::buttonDown);
 }
 
 void Rescale::setLabelWidget(juce::String LabelWidget)
@@ -118,31 +171,10 @@ void Rescale::setTargetValue (float TargetValue)
     targetValue = TargetValue;
 }
 
-void Rescale::setValue(float Value)
+void Rescale::setCalibrate()
 {
-    input = Value;
-    input0 = (input+PI)/(2*PI); // scale input from -PI,PI to 0,1
-
-    // centre
-    input1 = 1-offset;
-    centred = input0 + input1;
-    centred = centred + (targetValue*test);
-    centred = centred*100000;
-    centred = (float)((int) (centred) % (int)100000);
-    centred = centred * 0.00001;
-    
-    // reverse
-    if (reverse.getToggleStateValue()==true)
-        { centred = 1-centred; }
-    // scale within the range
-    scaled = jmap(centred, minOutputValue, maxOutputValue);
-
-    mmSlider.setValue(scaled);
-}
-
-float Rescale::getValue()
-{
-    return scaled;
+    offset = input0; // take the current myo value as offset to centre the data
+    test = 1; // centre the myo data at half of the established range
 }
 
 void Rescale::setMin(float Value)
@@ -155,14 +187,41 @@ void Rescale::setMax(float Value)
     mmSlider.setMaxValue(Value);
 }
 
-void Rescale::setCentre()
+void Rescale::setValue(float Value)
 {
-    offset = input0; // take the current myo value as offset to centre the data
-    test = 1; // centre the myo data at half of the established range
+    input = Value;
+    
+    // scale between 0 and 1
+    input0 = (input+PI)/(2*PI); // scale input from -PI,PI to 0,1
+    
+    // calibrate
+    input1 = 1-offset;
+    calibrated = input0 + input1;
+    calibrated = calibrated + (targetValue*test);
+    
+    // mod
+    calibrated = calibrated*10000000;
+    calibrated = (float)((int) (calibrated) % (int)10000000);
+    calibrated = calibrated * 0.0000001;
+
+    if (reverse.getToggleStateValue()==true){
+        reversed = 1-calibrated;
+    }
+    else reversed = calibrated;
+    
+    // limit input
+    limited = std::max(reversed,inMin); // limit lower values
+    limited = std::min(reversed,inMax); // limit maximum values
+
+    // scale output
+    scaled = jmap(limited, inMin, inMax, outMin, outMax);
+
+    mmSlider.setValue(scaled);
 }
 
-void Rescale::setReverse(bool Status)
+float Rescale::getValue()
 {
-    reverse.setToggleState(Status, dontSendNotification);
-    reverse.setState(juce::Button::buttonDown);
+    return scaled;
 }
+
+

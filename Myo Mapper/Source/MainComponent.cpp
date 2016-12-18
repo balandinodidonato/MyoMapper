@@ -76,9 +76,17 @@ void MainComponent::paint(juce::Graphics &g)
         menuBar.setBounds(0, 0, getWidth(), 20);
         settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
     #endif
+   
+    if(settingsPannel.getShowOrientation()==1)
+        orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), ((getHeight()*0.63)-15));
+    else orientation.setBounds(0, 0, 0, 0);
     
-    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.63)-15)*settingsPannel.getShowOrientation());
-    pose.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
+    if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==1)
+        pose.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12));
+    else if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==0)
+        pose.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), (getHeight()*0.12));
+    else pose.setBounds(0, 0, 0, 0);
+    
 }
 
 void MainComponent::resized()
@@ -90,8 +98,15 @@ void MainComponent::resized()
         settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
     #endif
     
-    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth()*settingsPannel.getShowOrientation(), ((getHeight()*0.63)-15)*settingsPannel.getShowOrientation());
-    pose.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12)*settingsPannel.getShowPose());
+    if(settingsPannel.getShowOrientation()==1)
+    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), ((getHeight()*0.63)-15));
+    else orientation.setBounds(0, 0, 0, 0);
+        
+    if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==1)
+        pose.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12));
+    else if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==0)
+        pose.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), (getHeight()*0.12));
+    else pose.setBounds(0, 0, 0, 0);
 }
 
 int i = 0;
