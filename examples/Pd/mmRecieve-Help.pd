@@ -1,157 +1,185 @@
-#N canvas 7 54 1433 558 10;
-#X obj 511 242 unpack 0 0 0;
-#X obj 511 264 vsl 15 128 0 1 0 0 empty empty yaw 0 140 0 10 -262144
--1 -1 0 1;
-#X obj 545 264 vsl 15 128 0 1 0 0 empty empty pitch 0 140 0 10 -262144
--1 -1 0 1;
-#X obj 580 264 vsl 15 128 0 1 0 0 empty empty roll 0 140 0 10 -262144
--1 -1 0 1;
-#X obj 963 242 unpack 0 0 0;
-#X obj 963 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty x 0 140
-0 10 -262144 -1 -1 0 1;
-#X obj 997 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty y 0 140
-0 10 -262144 -1 -1 0 1;
-#X obj 1032 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty z 0 140
-0 10 -262144 -1 -1 0 1;
-#X text 496 411 ORIENTATION (Scaled 0-1);
-#X text 960 411 ACCELERATION (raw);
+#N canvas 7 54 1413 477 10;
+#X obj 573 251 unpack 0 0 0;
+#X obj 573 273 vsl 15 128 0 1 0 0 empty empty yaw 0 140 0 10 -262144
+-1 -1 7510 1;
+#X obj 607 273 vsl 15 128 0 1 0 0 empty empty pitch 0 140 0 10 -262144
+-1 -1 9427 1;
+#X obj 642 272 vsl 15 128 0 1 0 0 empty empty roll 0 140 0 10 -262144
+-1 -1 3984 1;
+#X obj 787 253 unpack 0 0 0;
+#X obj 787 275 vsl 15 128 -3.14159 3.14159 0 0 empty empty x 0 140
+0 10 -262144 -1 -1 4192 1;
+#X obj 821 275 vsl 15 128 -3.14159 3.14159 0 0 empty empty y 0 140
+0 10 -262144 -1 -1 6260 1;
+#X obj 856 275 vsl 15 128 -3.14159 3.14159 0 0 empty empty z 0 140
+0 10 -262144 -1 -1 6383 1;
 #X obj 183 242 unpack 0 0 0 0 0 0 0 0;
 #X obj 183 264 vsl 15 128 0 1 0 0 empty empty 1 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6176 1;
 #X obj 203 264 vsl 15 128 0 1 0 0 empty empty 2 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6325 1;
 #X obj 223 264 vsl 15 128 0 1 0 0 empty empty 3 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6176 1;
 #X obj 243 264 vsl 15 128 0 1 0 0 empty empty 4 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6225 1;
 #X obj 263 264 vsl 15 128 0 1 0 0 empty empty 5 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6325 1;
 #X obj 283 264 vsl 15 128 0 1 0 0 empty empty 6 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6325 1;
 #X obj 303 264 vsl 15 128 0 1 0 0 empty empty 7 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6425 1;
 #X obj 323 264 vsl 15 128 0 1 0 0 empty empty 8 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6275 1;
 #X obj 13 242 unpack 0 0 0 0 0 0 0 0;
 #X obj 13 264 vsl 15 128 -127 128 0 0 empty empty 1 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6176 1;
 #X obj 33 264 vsl 15 128 -127 128 0 0 empty empty 2 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6325 1;
 #X obj 53 264 vsl 15 128 -127 128 0 0 empty empty 3 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6176 1;
 #X obj 73 264 vsl 15 128 -127 128 0 0 empty empty 4 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6225 1;
 #X obj 93 264 vsl 15 128 -127 127 0 0 empty empty 5 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6350 1;
 #X obj 113 264 vsl 15 128 -127 128 0 0 empty empty 6 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6325 1;
 #X obj 133 264 vsl 15 128 -127 128 0 0 empty empty 7 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6425 1;
 #X obj 153 264 vsl 15 128 -127 128 0 0 empty empty 8 0 140 0 10 -262144
--1 -1 0 1;
+-1 -1 6275 1;
 #X text 38 411 EMG RAW (-127 \, 128);
 #X text 196 411 EMG DATA (Scaled: 0 \, 1);
-#X obj 663 242 unpack 0 0 0;
-#X obj 663 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty yaw 0 140
-0 10 -262144 -1 -1 0 1;
-#X obj 697 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty pitch 0
-140 0 10 -262144 -1 -1 0 1;
-#X obj 732 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty roll 0 140
-0 10 -262144 -1 -1 0 1;
-#X obj 1213 242 unpack 0 0 0;
-#X obj 1213 264 vsl 15 128 -1000 1000 0 0 empty empty x 0 140 0 10
--262144 -1 -1 0 1;
-#X obj 1247 264 vsl 15 128 -1000 1000 0 0 empty empty y 0 140 0 10
--262144 -1 -1 0 1;
-#X obj 1282 264 vsl 15 128 -1000 1000 0 0 empty empty z 0 140 0 10
--262144 -1 -1 0 1;
-#X text 1210 411 Gyro (raw);
-#X obj 804 472 unpack 0 s;
-#X obj 862 493 print pose;
-#X floatatom 804 494 5 0 0 0 Pose - -, f 5;
+#X obj 469 251 unpack 0 0 0;
+#X obj 469 273 vsl 15 128 -3.14159 3.14159 0 0 empty empty yaw 0 140
+0 10 -262144 -1 -1 7510 1;
+#X obj 503 273 vsl 15 128 -3.14159 3.14159 0 0 empty empty pitch 0
+140 0 10 -262144 -1 -1 9427 1;
+#X obj 538 273 vsl 15 128 -3.14159 3.14159 0 0 empty empty roll 0 140
+0 10 -262144 -1 -1 3984 1;
+#X obj 1103 145 unpack 0 s;
+#X obj 1161 173 print pose;
+#X floatatom 1103 174 5 0 0 0 Pose - -, f 5;
 #X text 14 60 MESSAGES FROM MYO MAPPER;
-#X text 648 411 ORIENTATION (-PI \, +PI);
 #X text 11 6 Myo Mapper Receiver/Sender Here a patch to get started
 getting Thalmic's Myo armband (www.myo.com) into Pd using Myo Mapper
 (www.balandinodidonato.com/myomapper).;
-#X obj 13 85 MyoMapper_Receiver;
-#X obj 365 264 vsl 15 128 0 1 0 0 empty empty EMGs_MAV 0 140 0 10 -262144
+#X obj 365 264 vsl 15 128 0 1 0 0 empty empty emgMav 0 140 0 10 -262144
+-1 -1 136 1;
+#X obj 415 264 vsl 15 128 0 1 0 0 empty empty wfl 0 140 0 10 -262144
+-1 -1 25 1;
+#X obj 677 250 unpack 0 0 0;
+#X obj 677 272 vsl 15 128 0 1 0 0 empty empty yaw 0 140 0 10 -262144
 -1 -1 0 1;
-#X obj 425 264 vsl 15 128 0 1 0 0 empty empty EMGs_MAV_WFL 0 140 0
-10 -262144 -1 -1 0 1;
-#X obj 833 242 unpack 0 0 0;
-#X obj 833 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty yaw 0 140
-0 10 -262144 -1 -1 0 1;
-#X obj 867 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty pitch 0
-140 0 10 -262144 -1 -1 0 1;
-#X obj 902 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty roll 0 140
-0 10 -262144 -1 -1 0 1;
-#X text 818 411 WaveFromlenght (0 \, 1);
-#X obj 1083 242 unpack 0 0 0;
-#X obj 1083 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty x 0 140
-0 10 -262144 -1 -1 0 1;
-#X obj 1117 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty y 0 140
-0 10 -262144 -1 -1 0 1;
-#X obj 1152 264 vsl 15 128 -3.14159 3.14159 0 0 empty empty z 0 140
-0 10 -262144 -1 -1 0 1;
-#X obj 1313 242 unpack 0 0 0;
-#X obj 1313 264 vsl 15 128 -1000 1000 0 0 empty empty x 0 140 0 10
--262144 -1 -1 0 1;
-#X obj 1347 264 vsl 15 128 -1000 1000 0 0 empty empty y 0 140 0 10
--262144 -1 -1 0 1;
-#X obj 1382 264 vsl 15 128 -1000 1000 0 0 empty empty z 0 140 0 10
--262144 -1 -1 0 1;
-#X text 1080 411 ACCELERATION (WFL);
-#X text 1310 411 Gyro (WFL);
-#X obj 942 162 print ALL;
+#X obj 711 272 vsl 15 128 0 1 0 0 empty empty pitch 0 140 0 10 -262144
+-1 -1 0 1;
+#X obj 746 272 vsl 15 128 0 1 0 0 empty empty roll 0 140 0 10 -262144
+-1 -1 0 1;
+#X obj 887 253 unpack 0 0 0;
+#X obj 887 275 vsl 15 128 0 1 0 0 empty empty x 0 140 0 10 -262144
+-1 -1 5926 1;
+#X obj 921 275 vsl 15 128 0 1 0 0 empty empty y 0 140 0 10 -262144
+-1 -1 6332 1;
+#X obj 956 275 vsl 15 128 0 1 0 0 empty empty z 0 140 0 10 -262144
+-1 -1 6356 1;
+#X obj 13 85 mmRecieve;
+#X text 905 437 ACCELERATION;
+#X text 807 421 raw;
+#X text 910 421 scaled;
+#X obj 1094 254 unpack 0 0 0;
+#X obj 1094 276 vsl 15 128 -1000 1000 0 0 empty empty x 0 140 0 10
+-262144 -1 -1 6349 1;
+#X obj 1128 276 vsl 15 128 -1000 1000 0 0 empty empty y 0 140 0 10
+-262144 -1 -1 6351 1;
+#X obj 1163 276 vsl 15 128 -1000 1000 0 0 empty empty z 0 140 0 10
+-262144 -1 -1 6349 1;
+#X obj 994 254 unpack 0 0 0;
+#X obj 994 276 vsl 15 128 0 1 0 0 empty empty x 0 140 0 10 -262144
+-1 -1 0 1;
+#X obj 1028 276 vsl 15 128 0 1 0 0 empty empty y 0 140 0 10 -262144
+-1 -1 0 1;
+#X obj 1063 276 vsl 15 128 0 1 0 0 empty empty z 0 140 0 10 -262144
+-1 -1 2 1;
+#X text 1017 422 scaled;
+#X obj 1200 253 unpack 0 0 0;
+#X obj 1200 275 vsl 15 128 0 1 0 0 empty empty x 0 140 0 10 -262144
+-1 -1 6350 1;
+#X obj 1234 275 vsl 15 128 0 1 0 0 empty empty y 0 140 0 10 -262144
+-1 -1 6351 1;
+#X obj 1269 275 vsl 15 128 0 1 0 0 empty empty z 0 140 0 10 -262144
+-1 -1 6350 1;
+#X obj 1307 253 unpack 0 0 0;
+#X obj 1307 275 vsl 15 128 0 1 0 0 empty empty x 0 140 0 10 -262144
+-1 -1 1 1;
+#X obj 1341 275 vsl 15 128 0 1 0 0 empty empty y 0 140 0 10 -262144
+-1 -1 1 1;
+#X obj 1376 275 vsl 15 128 0 1 0 0 empty empty z 0 140 0 10 -262144
+-1 -1 0 1;
+#X text 1121 423 Raw;
+#X text 1338 423 WfL;
+#X text 1231 423 Scaled;
+#X text 702 419 Wfl;
+#X text 590 422 scaled;
+#X text 495 418 raw, f 9;
+#X text 579 443 ORIENTATION;
+#X text 1206 444 GYRO;
+#X obj 666 225 print;
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
 #X connect 0 2 3 0;
 #X connect 4 0 5 0;
 #X connect 4 1 6 0;
 #X connect 4 2 7 0;
-#X connect 10 0 11 0;
-#X connect 10 1 12 0;
-#X connect 10 2 13 0;
-#X connect 10 3 14 0;
-#X connect 10 4 15 0;
-#X connect 10 5 16 0;
-#X connect 10 6 17 0;
-#X connect 10 7 18 0;
-#X connect 19 0 20 0;
-#X connect 19 1 21 0;
-#X connect 19 2 22 0;
-#X connect 19 3 23 0;
-#X connect 19 4 24 0;
-#X connect 19 5 25 0;
-#X connect 19 6 26 0;
-#X connect 19 7 27 0;
-#X connect 30 0 31 0;
-#X connect 30 1 32 0;
-#X connect 30 2 33 0;
-#X connect 34 0 35 0;
-#X connect 34 1 36 0;
-#X connect 34 2 37 0;
-#X connect 39 0 41 0;
-#X connect 39 1 40 0;
-#X connect 45 0 19 0;
-#X connect 45 1 10 0;
-#X connect 45 2 46 0;
-#X connect 45 3 47 0;
-#X connect 45 4 0 0;
-#X connect 45 5 30 0;
-#X connect 45 7 4 0;
-#X connect 45 8 53 0;
-#X connect 45 9 34 0;
-#X connect 45 10 57 0;
-#X connect 45 11 39 0;
-#X connect 45 13 63 0;
-#X connect 48 0 49 0;
-#X connect 48 1 50 0;
-#X connect 48 2 51 0;
-#X connect 53 0 54 0;
-#X connect 53 1 55 0;
-#X connect 53 2 56 0;
-#X connect 57 0 58 0;
-#X connect 57 1 59 0;
-#X connect 57 2 60 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 8 2 11 0;
+#X connect 8 3 12 0;
+#X connect 8 4 13 0;
+#X connect 8 5 14 0;
+#X connect 8 6 15 0;
+#X connect 8 7 16 0;
+#X connect 17 0 18 0;
+#X connect 17 1 19 0;
+#X connect 17 2 20 0;
+#X connect 17 3 21 0;
+#X connect 17 4 22 0;
+#X connect 17 5 23 0;
+#X connect 17 6 24 0;
+#X connect 17 7 25 0;
+#X connect 28 0 29 0;
+#X connect 28 1 30 0;
+#X connect 28 2 31 0;
+#X connect 32 0 34 0;
+#X connect 32 1 33 0;
+#X connect 39 0 40 0;
+#X connect 39 1 41 0;
+#X connect 39 2 42 0;
+#X connect 43 0 44 0;
+#X connect 43 1 45 0;
+#X connect 43 2 46 0;
+#X connect 47 0 17 0;
+#X connect 47 1 8 0;
+#X connect 47 2 37 0;
+#X connect 47 3 38 0;
+#X connect 47 4 28 0;
+#X connect 47 5 0 0;
+#X connect 47 6 39 0;
+#X connect 47 6 76 0;
+#X connect 47 7 4 0;
+#X connect 47 8 43 0;
+#X connect 47 9 55 0;
+#X connect 47 10 51 0;
+#X connect 47 11 60 0;
+#X connect 47 12 64 0;
+#X connect 47 13 32 0;
+#X connect 51 0 52 0;
+#X connect 51 1 53 0;
+#X connect 51 2 54 0;
+#X connect 55 0 56 0;
+#X connect 55 1 57 0;
+#X connect 55 2 58 0;
+#X connect 60 0 61 0;
+#X connect 60 1 62 0;
+#X connect 60 2 63 0;
+#X connect 64 0 65 0;
+#X connect 64 1 66 0;
+#X connect 64 2 67 0;
