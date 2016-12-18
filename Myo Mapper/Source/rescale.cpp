@@ -4,7 +4,7 @@
 Rescale::Rescale()
 :
 reversed(0),           // variables used for testing the logic
-centred(0),            // centred data init
+calibrated(0),            // centred data init
 offset(0),             // offset for centering myo data
 targetValue(0),        // Target value to centre to
 scaled(0),
@@ -17,9 +17,9 @@ inMax(1),
 outMin(0),
 outMax(1)
 {
-    addAndMakeVisible(centre);
-    centre.setButtonText ("Calibrate");
-    centre.addListener (this);
+    addAndMakeVisible(calibrate);
+    calibrate.setButtonText ("Calibrate");
+    calibrate.addListener (this);
     
     addAndMakeVisible(mmSlider);
     mmSlider.setSliderStyle(juce::Slider::ThreeValueHorizontal);
@@ -87,7 +87,7 @@ outMax(1)
 void Rescale::paint(juce::Graphics &g)
 {
     g.fillAll(Colours::white);   // clear the background
-    g.setColour(Colours::lightgrey);
+    g.setColour(Colours::white);
     g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 3, 3);
     g.setColour(Colours::black);
     g.setFont(getHeight()*0.17);
@@ -96,22 +96,21 @@ void Rescale::paint(juce::Graphics &g)
 
 void Rescale::resized()
 {
-    centre.setBounds (10, 25, getWidth()*0.2, getHeight()*0.3);
-    reverse.setBounds(centre.getRight()+getWidth()*0.02, centre.getY(), getWidth()*0.15, centre.getHeight()*0.6);
- //   limit.setBounds(reverse.getX(), reverse.getBottom()+reverse.getHeight()*0.5, reverse.getWidth(), reverse.getHeight());
-    
-    inMinSlider.setBounds(reverse.getRight()+getWidth()*0.1, centre.getY(), getWidth()*0.18, getHeight()*0.15);
+    calibrate.setBounds (10, 25, getWidth()*0.2, getHeight()*0.3);
+    reverse.setBounds(calibrate.getRight()+getWidth()*0.02, calibrate.getY(), getWidth()*0.15, calibrate.getHeight()*0.6);
+//    limit.setBounds(reverse.getX(), reverse.getBottom()+reverse.getHeight()*0.5, reverse.getWidth(), reverse.getHeight());
+    inMinSlider.setBounds(reverse.getRight()+getWidth()*0.1, reverse.getY(), getWidth()*0.18, getHeight()*0.15);
     outMinSlider.setBounds(inMinSlider.getRight()+getWidth()*0.13, inMinSlider.getY(), inMinSlider.getWidth(), inMinSlider.getHeight());
     inMaxSlider.setBounds(inMinSlider.getX(), reverse.getBottom()+reverse.getHeight()*0.5, inMinSlider.getWidth(), inMinSlider.getHeight());
     outMaxSlider.setBounds(outMinSlider.getX(), inMaxSlider.getY(), outMinSlider.getWidth(), outMinSlider.getHeight());
-    mmSlider.setBounds(centre.getX(), centre.getBottom()+25, getWidth()*0.95, getHeight()*0.2);
+    mmSlider.setBounds(calibrate.getX(), calibrate.getBottom()+25, getWidth()*0.95, getHeight()*0.2);
 }
 
 void Rescale::buttonClicked(juce::Button *button)
 {
-    if (button == &centre)
+    if (button == &calibrate)
     {
-        setCentre();
+        setCalibrate();
     }
 }
 
@@ -123,7 +122,6 @@ void Rescale::sliderValueChanged(juce::Slider *slider)
         outMax = mmSlider.getMaxValue();
         outMaxSlider.setValue(outMax);
         outMinSlider.setValue(outMin);
-        
     }
     
 else if (slider ==&outMinSlider)
@@ -173,7 +171,7 @@ void Rescale::setTargetValue (float TargetValue)
     targetValue = TargetValue;
 }
 
-void Rescale::setCentre()
+void Rescale::setCalibrate()
 {
     offset = input0; // take the current myo value as offset to centre the data
     test = 1; // centre the myo data at half of the established range
@@ -194,28 +192,29 @@ void Rescale::setValue(float Value)
     input = Value;
     
     // scale between 0 and 1
-    input = (Value+PI)/(2*PI); // scale input from -PI,PI to 0,1
+    input0 = (input+PI)/(2*PI); // scale input from -PI,PI to 0,1
     
     // calibrate
     input1 = 1-offset;
-    centred = input + input1;
-    centred = centred + (targetValue*test);
+    calibrated = input0 + input1;
+    calibrated = calibrated + (targetValue*test);
     
     // mod
-    centred = centred*10000000;
-    centred = (float)((int) (centred) % (int)10000000);
-    centred = centred * 0.0000001;
+    calibrated = calibrated*10000000;
+    calibrated = (float)((int) (calibrated) % (int)10000000);
+    calibrated = calibrated * 0.0000001;
 
-    // limit input
-    centred = std::max(centred,inMin); // limit lower values
-    centred = std::min(centred,inMax); // limit maximum values
-
-    // reverse
-    if (reverse.getToggleStateValue()==true)
-    { centred = 1-centred; }
+    if (reverse.getToggleStateValue()==true){
+        reversed = 1-calibrated;
+    }
+    else reversed = calibrated;
     
+    // limit input
+    limited = std::max(reversed,inMin); // limit lower values
+    limited = std::min(reversed,inMax); // limit maximum values
+
     // scale output
-    scaled = jmap(centred, inMin, inMax, outMin, outMax);
+    scaled = jmap(limited, inMin, inMax, outMin, outMax);
 
     mmSlider.setValue(scaled);
 }

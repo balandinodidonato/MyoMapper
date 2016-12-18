@@ -25,13 +25,13 @@ public:
     void setTargetValue(float TargetValue);
     void setMin(float Value);
     void setMax(float Value);
-    void setCentre();
+    void setCalibrate();
     void setReverse(bool Status);
     void setLimit(bool Status);
     
 private:
     
-    TextButton centre;
+    TextButton calibrate;
     Slider mmSlider;
     Label mmSliderLabel;
 
@@ -54,7 +54,7 @@ private:
     String hostAddress;
     
     float reversed;
-    float centred;
+    float calibrated;
     float offset;
     float targetValue = 0.5;
     float scaled;

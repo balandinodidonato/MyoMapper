@@ -69,12 +69,13 @@ float Orientation::getRoll()
     return rescaleRoll.getValue();
 }
 
+// Recal functions from OSC data in input
 void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
 {
     switch (myoData) {
         case 0:
             switch (Action) {
-                case 1: rescaleYaw.setCentre(); break;
+                case 1: rescaleYaw.setCalibrate(); break;
                 case 2: rescaleYaw.setMin(Value); break;
                 case 3: rescaleYaw.setMax(Value); break;
                 case 4: rescaleYaw.setReverse(ReverseStatus); break;
@@ -84,7 +85,7 @@ void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
             break;
         case 1:
             switch (Action) {
-                case 1: rescalePitch.setCentre(); break;
+                case 1: rescalePitch.setCalibrate(); break;
                 case 2: rescalePitch.setMin(Value); break;
                 case 3: rescalePitch.setMax(Value); break;
                 case 4: rescalePitch.setReverse(ReverseStatus); break;
@@ -94,7 +95,7 @@ void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
             break;
         case 2:
             switch (Action) {
-                case 1: rescaleRoll.setCentre(); break;
+                case 1: rescaleRoll.setCalibrate(); break;
                 case 2: rescaleRoll.setMin(Value); break;
                 case 3: rescaleRoll.setMax(Value); break;
                 case 4: rescaleRoll.setReverse(ReverseStatus); break;
