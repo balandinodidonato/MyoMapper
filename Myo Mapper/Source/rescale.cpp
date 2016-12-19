@@ -221,7 +221,7 @@ void Rescale::setValue(float Value)
 
 float Rescale::getValue()
 {
-    return scaled;
+    return calibrated;
 }
 
 
