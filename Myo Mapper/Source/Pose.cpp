@@ -1,7 +1,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Pose.h"
 
-//==============================================================================
 Pose::Pose()
 {
     addAndMakeVisible(poseLabel);

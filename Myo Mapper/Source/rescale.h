@@ -59,7 +59,6 @@ private:
     float targetValue = 0.5;
     float scaled;
     float input;
-    float input0;
     float input1;
     String labelWidget;
     const long double PI = 3.141592653589793;
@@ -70,9 +69,7 @@ private:
     float inMax;
     float outMin;
     float outMax;
-    float limited;
     
-    float pippo = 0;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };

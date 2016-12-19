@@ -25,7 +25,7 @@ void WaveformLength::set3DValue(Vector3D<float> Value3D){
     wl3D.x = std::abs(input3D.x-previousInput3D.x);
     wl3D.y = std::abs(input3D.y-previousInput3D.y);
     wl3D.z = std::abs(input3D.z-previousInput3D.z);
-    
+
     previousInput3D = input3D;
 }
 

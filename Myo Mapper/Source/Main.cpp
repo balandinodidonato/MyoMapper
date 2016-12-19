@@ -1,18 +1,15 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
 
-//==============================================================================
 class MyoMapperApplication  : public JUCEApplication
 {
 public:
-    //==============================================================================
     MyoMapperApplication() {}
 
     const String getApplicationName() override       { return ProjectInfo::projectName; }
     const String getApplicationVersion() override    { return ProjectInfo::versionString; }
     bool moreThanOneInstanceAllowed() override       { return true; }
 
-    //==============================================================================
     void initialise (const String& commandLine) override
     {
         mainWindow = new MainWindow (getApplicationName());
@@ -24,7 +21,6 @@ public:
         mainWindow = nullptr; // (deletes our window)
     }
 
-    //==============================================================================
     void systemRequestedQuit() override
     {
         quit();
@@ -35,11 +31,6 @@ public:
         mainWindow = new MainWindow (getApplicationName());
     }
 
-    //==============================================================================
-    /*
-        This class implements the desktop window that contains an instance of
-        our MainContentComponent class.
-    */
     class MainWindow    : public DocumentWindow
     {
     public:
@@ -69,6 +60,4 @@ private:
     ScopedPointer<MainWindow> mainWindow;
 };
 
-//==============================================================================
-// This macro generates the main() routine that launches the app.
 START_JUCE_APPLICATION (MyoMapperApplication)
