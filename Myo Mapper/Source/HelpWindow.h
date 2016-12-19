@@ -3,9 +3,6 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-//==============================================================================
-/*
-*/
 class HelpWindow    : public DocumentWindow
 {
 public:
@@ -22,7 +19,6 @@ private:
     HyperlinkButton wiki;
     HyperlinkButton sourceCode;
     HyperlinkButton support;
-
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HelpWindow)
 };

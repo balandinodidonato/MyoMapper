@@ -3,10 +3,10 @@
 
 Rescale::Rescale()
 :
-reversed(0),           // variables used for testing the logic
-calibrated(0),            // centred data init
-offset(0),             // offset for centering myo data
-targetValue(0),        // Target value to centre to
+reversed(0),
+calibrated(0),
+offset(0),
+targetValue(0),
 scaled(0),
 input(0),
 PI(3.141592653589793238L),
@@ -173,8 +173,8 @@ void Rescale::setTargetValue (float TargetValue)
 
 void Rescale::setCalibrate()
 {
-    offset = input0; // take the current myo value as offset to centre the data
-    test = 1; // centre the myo data at half of the established range
+    offset = scaled;
+    test = 1;
 }
 
 void Rescale::setMin(float Value)
@@ -192,11 +192,11 @@ void Rescale::setValue(float Value)
     input = Value;
     
     // scale between 0 and 1
-    input0 = (input+PI)/(2*PI); // scale input from -PI,PI to 0,1
+    scaled = (input+PI)/(2*PI); // scale input from -PI,PI to 0,1
     
     // calibrate
     input1 = 1-offset;
-    calibrated = input0 + input1;
+    calibrated = scaled + input1;
     calibrated = calibrated + (targetValue*test);
     
     // mod
@@ -204,19 +204,19 @@ void Rescale::setValue(float Value)
     calibrated = (float)((int) (calibrated) % (int)10000000);
     calibrated = calibrated * 0.0000001;
 
+    // reverse velues
     if (reverse.getToggleStateValue()==true){
-        reversed = 1-calibrated;
+        calibrated = 1-calibrated;
     }
-    else reversed = calibrated;
     
     // limit input
-    limited = std::max(reversed,inMin); // limit lower values
-    limited = std::min(reversed,inMax); // limit maximum values
+    calibrated = std::max(calibrated,inMin); // limit lower values
+    calibrated = std::min(calibrated,inMax); // limit maximum values
 
     // scale output
-    scaled = jmap(limited, inMin, inMax, outMin, outMax);
+    calibrated = jmap(calibrated, inMin, inMax, outMin, outMax);
 
-    mmSlider.setValue(scaled);
+    mmSlider.setValue(calibrated);
 }
 
 float Rescale::getValue()

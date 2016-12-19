@@ -17,7 +17,12 @@ public:
     void labelTextChanged(juce::Label *labelThatHasChanged) override;
     void sliderValueChanged(juce::Slider *slider) override;
     
+    void setOSCsettingsStatusSender(bool OSCsettingsStatusSender);
+    void setOSCsettingsStatusReceiver(bool OSCsettingsStatusReceiver);
+    
     void vibrate();
+    
+    ComboBox myoList;
     
     int getShowOrientation();
     int getShowPose();
@@ -26,18 +31,10 @@ public:
     bool getOSCsettingsStatusSender();
     bool getOSCsettingsStatusReceiver();
 
-    void setOSCsettingsStatusSender(bool OSCsettingsStatusSender);
-    void setOSCsettingsStatusReceiver(bool OSCsettingsStatusReceiver);
-    
     int getOSCPortSender();
     int getOSCPortReceiver();
-    
     String getHostAddress();
     int getSelectedMyo();
-    
-    
-    ComboBox myoList;
-    
     
 private:
     Slider oscPortSliderSender;
@@ -49,10 +46,11 @@ private:
     Label hostAddressTitle;
     Label setHostAddress;
     
-    
     ToggleButton showOrientation;
     ToggleButton showMav;
     ToggleButton showPose;
+    
+    String hostAddress;
     
     bool oscSettingsChangedSender;
     bool oscSettingsChangedReceiver;
@@ -60,10 +58,6 @@ private:
     int oscPortSender;
     int oscPortReceiver;
 
-    String hostAddress;
-    
-    
-    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Settings)
 };
 

@@ -74,8 +74,8 @@ void Settings::paint (Graphics& g)
 void Settings::resized()
 {
     hostAddressTitle.setBounds(20, 20, getWidth()*0.18, getHeight()*0.28);
-    setHostAddress.setBounds(hostAddressTitle.getX()+hostAddressTitle.getWidth(), hostAddressTitle.getY(), getWidth()*0.3, hostAddressTitle.getHeight());
-    myoList.setBounds(getWidth()*0.5, setHostAddress.getY()+setHostAddress.getHeight()*0.25, getWidth()*0.465, setHostAddress.getHeight()*0.5);
+    setHostAddress.setBounds(hostAddressTitle.getRight()+getWidth()*0.01, hostAddressTitle.getY()+hostAddressTitle.getHeight()*0.25, getWidth()*0.2, hostAddressTitle.getHeight()*0.5);
+    myoList.setBounds(getWidth()*0.5, setHostAddress.getY(), getWidth()*0.465, setHostAddress.getHeight());
     
     oscPortSliderSender.setBounds(130, hostAddressTitle.getBottom()+5, getWidth()*0.25, getHeight()*0.2);
     oscPortSliderReceiver.setBounds(myoList.getX()+oscPortLabelReceiver.getWidth(), oscPortSliderSender.getY(), oscPortSliderSender.getWidth(), oscPortSliderSender.getHeight());

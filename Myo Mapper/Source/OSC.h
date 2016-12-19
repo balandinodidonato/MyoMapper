@@ -3,9 +3,6 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-//==============================================================================
-/*
-*/
 class OSC    : public Component,
                private OSCReceiver,
                private OSCReceiver::ListenerWithOSCAddress<OSCReceiver::MessageLoopCallback>

@@ -25,6 +25,4 @@ struct MyoData
     float mavWfL;
 };
 
-
-
 #endif  // MYODATA_H_INCLUDED

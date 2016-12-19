@@ -16,13 +16,12 @@ Orientation::Orientation()
 
 void Orientation::paint(juce::Graphics &g)
 {
-    g.fillAll(Colours::lightgrey);   // clear the background
+    g.fillAll(Colours::lightgrey);
     g.setColour(Colours::grey);
     g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
     g.setColour(Colours::black);
     g.setFont(getHeight()*0.06);
-    g.drawText("Orientation", getLocalBounds(),
-               Justification::centredTop, true);   // draw some placeholder text
+    g.drawText("Orientation", getLocalBounds(), Justification::centredTop, true); 
 }
 
 void Orientation::resized()

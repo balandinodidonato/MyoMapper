@@ -3,9 +3,6 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-//==============================================================================
-/*
-*/
 class Pose    : public Component
 {
 public:
