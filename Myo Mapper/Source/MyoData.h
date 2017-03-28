@@ -14,6 +14,7 @@ struct MyoData
     Vector3D< float > gyroScaledWfL;
     Vector3D< float > acceleration;
     Vector3D< float > accelerationScaled;
+    Vector3D< float > accelerationScaledAbs;
     Vector3D< float > accelerationWfL;
     Vector3D< float > accelerationScaledWfL;
     Vector3D< float > orientationRaw;
