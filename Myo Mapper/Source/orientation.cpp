@@ -1,5 +1,5 @@
 #include "orientation.h"
-#include "C:/Program Files/JUCE/modules/juce_core/containers/juce_Array.h"
+#include "juce_Array.h"
 
 Orientation::Orientation()
 {

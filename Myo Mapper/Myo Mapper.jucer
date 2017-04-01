@@ -66,7 +66,7 @@
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="WFoxze" bigIcon="WFoxze"
-            externalLibraries="myo">
+            externalLibraries="myo32.lib&#10;myo64.lib">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="Myo Mapper"/>
