@@ -1,0 +1,5 @@
+﻿  orientation.cpp
+z:\myomapper\myo mapper\source\orientation.cpp(21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+z:\myomapper\myo mapper\source\orientation.cpp(23): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+z:\myomapper\myo mapper\source\orientation.cpp(29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+LINK : fatal error LNK1104: cannot open file 'myo.obj'

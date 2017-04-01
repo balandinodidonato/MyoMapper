@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2015
+Project("{5106C72C-C8D1-1996-009A-472DF049CAD3}") = "Myo Mapper", "Myo Mapper.vcxproj", "{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}.Debug|Win32.Build.0 = Debug|Win32
+		{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}.Release|Win32.ActiveCfg = Release|Win32
+		{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

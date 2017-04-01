@@ -11,7 +11,7 @@
 #ifndef MYOLISTENER_H_INCLUDED
 #define MYOLISTENER_H_INCLUDED
 
-#include "myo/myo.hpp"
+#include "../Resources/myo-sdk-win-0.9.0/include/myo/myo.hpp"
 #include "orientation.h"
 #include "waveformLength.h"
 #include "MyoData.h"
