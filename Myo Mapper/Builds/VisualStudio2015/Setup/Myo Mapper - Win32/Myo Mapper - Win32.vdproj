@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:Myo Mapper - Win32"
+"ProjectName" = "8:Myo Mapper 2.4.9 - Win32"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -157,7 +157,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Myo Mapper"
         "ProductCode" = "8:{421D01D2-1FD3-4406-A3AE-56D44D12901B}"
-        "PackageCode" = "8:{F18EF6CC-7778-479F-A253-AFF39A275FC6}"
+        "PackageCode" = "8:{35CDED73-21D7-40B3-AC65-0CB30D6D5CDD}"
         "UpgradeCode" = "8:{0C3BFD0A-677F-4DFA-8F75-A5D497EF519B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -171,7 +171,7 @@
         "Title" = "8:Myo Mapper"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Balandino Di Donato"
-        "Keywords" = "8:myo, mapper, osc, armband, map, thalmic"
+        "Keywords" = "8:myo mapper osc armband map thalmic"
         "ARPCOMMENTS" = "8:Thalmic's Myo armband OSC mapper"
         "ARPURLINFOABOUT" = "8:http://www.balandinodidonato.com/"
         "ARPPRODUCTICON" = "8:_DAD22CAB2CA646D2A958B7D242C0ECA3"
@@ -277,6 +277,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AAD7F5523B854AC9904BFF561BD16E92"
+            {
+            "Name" = "8:Myo Mapper"
+            "Arguments" = "8:"
+            "Description" = "8:Myo Mapper"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_9AC55809CA904B0EBA41A87908C7D747"
+            "Folder" = "8:_9AC55809CA904B0EBA41A87908C7D747"
+            "WorkingFolder" = "8:_9AC55809CA904B0EBA41A87908C7D747"
+            "Icon" = "8:_DAD22CAB2CA646D2A958B7D242C0ECA3"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AD48D6CAD0034087855B588E6945EDED"
+            {
+            "Name" = "8:Myo Mapper"
+            "Arguments" = "8:"
+            "Description" = "8:Myo Mapper"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_8FB05711447F4C8EBF0B451392F37990"
+            "Folder" = "8:_8FB05711447F4C8EBF0B451392F37990"
+            "WorkingFolder" = "8:_8FB05711447F4C8EBF0B451392F37990"
+            "Icon" = "8:_DAD22CAB2CA646D2A958B7D242C0ECA3"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
