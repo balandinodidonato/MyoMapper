@@ -1,111 +1,111 @@
 ﻿  Main.cpp
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'firmwareVersion': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'firmwareVersion': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(100): warning C4100: 'warmupState': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'rotation': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'xDirection': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'arm': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'pose': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'rotation': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'accel': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'gyro': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'rssi': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'level': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'emg': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'warmupResult': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(192): warning C4100: 'event': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
-  c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
-  c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'firmwareVersion': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'firmwareVersion': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(100): warning C4100: 'warmupState': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'rotation': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'xDirection': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'arm': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'pose': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'rotation': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'accel': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'gyro': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'rssi': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'level': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'emg': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'warmupResult': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(192): warning C4100: 'event': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
 z:\myomapper\myo mapper\source\main.cpp(13): warning C4100: 'commandLine': unreferenced formal parameter
 z:\myomapper\myo mapper\source\main.cpp(29): warning C4100: 'commandLine': unreferenced formal parameter
 z:\myomapper\myo mapper\source\main.cpp(43): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 z:\myomapper\myo mapper\source\main.cpp(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   MainComponent.cpp
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'firmwareVersion': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'firmwareVersion': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(100): warning C4100: 'warmupState': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'rotation': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'xDirection': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'arm': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'pose': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'rotation': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'accel': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'gyro': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'rssi': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'level': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'emg': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'warmupResult': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(192): warning C4100: 'event': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
-  c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
-  c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'firmwareVersion': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'firmwareVersion': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(100): warning C4100: 'warmupState': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'rotation': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'xDirection': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'arm': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'pose': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'rotation': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'accel': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'gyro': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'rssi': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'level': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'emg': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'warmupResult': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(192): warning C4100: 'event': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
 z:\myomapper\myo mapper\source\maincomponent.cpp(23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 z:\myomapper\myo mapper\source\maincomponent.cpp(77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 z:\myomapper\myo mapper\source\maincomponent.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
@@ -341,57 +341,57 @@ c:\program files\juce\modules\juce_graphics\native\juce_renderinghelpers.h(1876)
               SavedStateType=juce::RenderingHelpers::SoftwareRendererSavedState
           ]
   MyoListener.cpp
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'firmwareVersion': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'firmwareVersion': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(100): warning C4100: 'warmupState': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'rotation': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'xDirection': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'arm': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'pose': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'rotation': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'accel': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'gyro': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'rssi': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'level': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'emg': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'warmupResult': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(192): warning C4100: 'event': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
-  c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
-  c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'firmwareVersion': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'firmwareVersion': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(100): warning C4100: 'warmupState': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'rotation': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'xDirection': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'arm': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'pose': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'rotation': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'accel': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'gyro': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'rssi': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'level': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'emg': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'warmupResult': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(192): warning C4100: 'event': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
 z:\myomapper\myo mapper\source\myolistener.cpp(27): warning C4100: 'firmwareVersion': unreferenced formal parameter
 z:\myomapper\myo mapper\source\myolistener.cpp(27): warning C4100: 'timestamp': unreferenced formal parameter
 z:\myomapper\myo mapper\source\myolistener.cpp(36): warning C4100: 'timestamp': unreferenced formal parameter
@@ -424,57 +424,57 @@ z:\myomapper\myo mapper\source\myolistener.cpp(196): warning C4100: 'myo': unref
 z:\myomapper\myo mapper\source\myolistener.cpp(202): warning C4100: 'timestamp': unreferenced formal parameter
 z:\myomapper\myo mapper\source\myolistener.cpp(202): warning C4100: 'myo': unreferenced formal parameter
   MyoManager.cpp
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'firmwareVersion': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'firmwareVersion': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(100): warning C4100: 'warmupState': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'rotation': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'xDirection': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'arm': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'pose': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'rotation': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'accel': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'gyro': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'rssi': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'level': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'emg': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'warmupResult': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'timestamp': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'myo': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(192): warning C4100: 'event': unreferenced formal parameter
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
-  c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
-c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
-  c:\sdk\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'firmwareVersion': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(65): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(72): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'firmwareVersion': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(80): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(87): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(100): warning C4100: 'warmupState': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'rotation': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'xDirection': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'arm': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(99): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(107): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(114): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(121): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'pose': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(129): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'rotation': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(137): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'accel': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(145): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'gyro': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(153): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'rssi': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(162): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'level': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(172): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'emg': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(180): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'warmupResult': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'timestamp': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(188): warning C4100: 'myo': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\devicelistener.hpp(192): warning C4100: 'event': unreferenced formal parameter
+c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(39): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
+c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): warning C4297: 'myo::ThrowOnError::~ThrowOnError': function assumed not to throw an exception but does
+  c:\myo-sdk-win-0.9.0\include\myo\cxx\detail\throwonerror.hpp(45): note: destructor or deallocator has a (possibly implicit) non-throwing exception specification
   Generating Code...
   Myo Mapper.vcxproj -> Z:\MyoMapper\Myo Mapper\Builds\VisualStudio2015\Debug\Myo Mapper.exe
   Myo Mapper.vcxproj -> Debug\\Myo Mapper.pdb (Full PDB)

@@ -45,10 +45,10 @@
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Program Files\JUCE\modules\juce_core\containers;C:\SDK\myo-sdk-win-0.9.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\SDK\myo-sdk-win-0.9.0\lib;$(LibraryPath)</LibraryPath>
-    <ExecutablePath>C:\SDK\myo-sdk-win-0.9.0\bin;$(ExecutablePath)</ExecutablePath>
-    <ReferencePath>C:\SDK\myo-sdk-win-0.9.0\lib;$(ReferencePath)</ReferencePath>
+    <IncludePath>C:\Program Files\JUCE\modules\juce_core\containers;C:\myo-sdk-win-0.9.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\myo-sdk-win-0.9.0\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>C:\myo-sdk-win-0.9.0\bin;$(ExecutablePath)</ExecutablePath>
+    <ReferencePath>C:\myo-sdk-win-0.9.0\lib;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
