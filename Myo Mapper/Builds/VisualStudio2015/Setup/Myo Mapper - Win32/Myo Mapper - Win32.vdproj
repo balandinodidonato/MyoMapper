@@ -21,6 +21,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8E8B5744A391482BBDCB1136C8E65B62"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B93D3805E0794627A261E0CCAE677DF0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DAD22CAB2CA646D2A958B7D242C0ECA3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -43,6 +55,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -59,6 +87,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -80,6 +116,46 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E8B5744A391482BBDCB1136C8E65B62"
+            {
+            "SourcePath" = "8:C:\\myo-sdk-win-0.9.0\\bin\\myo64.dll"
+            "TargetName" = "8:myo64.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_FB8911C645864BEAB90797583981C5E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B93D3805E0794627A261E0CCAE677DF0"
+            {
+            "SourcePath" = "8:C:\\myo-sdk-win-0.9.0\\bin\\myo32.dll"
+            "TargetName" = "8:myo32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_FB8911C645864BEAB90797583981C5E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DAD22CAB2CA646D2A958B7D242C0ECA3"
             {
             "SourcePath" = "8:..\\..\\icon.ico"
@@ -157,7 +233,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Myo Mapper"
         "ProductCode" = "8:{421D01D2-1FD3-4406-A3AE-56D44D12901B}"
-        "PackageCode" = "8:{35CDED73-21D7-40B3-AC65-0CB30D6D5CDD}"
+        "PackageCode" = "8:{B7B37A53-2454-428B-8A60-308D56940C74}"
         "UpgradeCode" = "8:{0C3BFD0A-677F-4DFA-8F75-A5D497EF519B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -277,31 +353,31 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AAD7F5523B854AC9904BFF561BD16E92"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_216F7E31A70B484D85F94E20B053ED1A"
             {
             "Name" = "8:Myo Mapper"
             "Arguments" = "8:"
-            "Description" = "8:Myo Mapper"
+            "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_9AC55809CA904B0EBA41A87908C7D747"
+            "Target" = "8:_5B28ED91E9E24187A3AFAC993CAFF38E"
             "Folder" = "8:_9AC55809CA904B0EBA41A87908C7D747"
-            "WorkingFolder" = "8:_9AC55809CA904B0EBA41A87908C7D747"
+            "WorkingFolder" = "8:_FB8911C645864BEAB90797583981C5E6"
             "Icon" = "8:_DAD22CAB2CA646D2A958B7D242C0ECA3"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AD48D6CAD0034087855B588E6945EDED"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7157A42F467B447CB3E18AA3634CC4A2"
             {
             "Name" = "8:Myo Mapper"
             "Arguments" = "8:"
-            "Description" = "8:Myo Mapper"
+            "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_8FB05711447F4C8EBF0B451392F37990"
+            "Target" = "8:_5B28ED91E9E24187A3AFAC993CAFF38E"
             "Folder" = "8:_8FB05711447F4C8EBF0B451392F37990"
-            "WorkingFolder" = "8:_8FB05711447F4C8EBF0B451392F37990"
+            "WorkingFolder" = "8:_FB8911C645864BEAB90797583981C5E6"
             "Icon" = "8:_DAD22CAB2CA646D2A958B7D242C0ECA3"
             "Feature" = "8:"
             }

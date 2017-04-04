@@ -98,7 +98,7 @@ void Rescale::resized()
 {
     calibrate.setBounds (10, 25, getWidth()*0.2, getHeight()*0.3);
     reverse.setBounds(calibrate.getRight()+getWidth()*0.02, calibrate.getY(), getWidth()*0.15, calibrate.getHeight()*0.6);
-//    limit.setBounds(reverse.getX(), reverse.getBottom()+reverse.getHeight()*0.5, reverse.getWidth(), reverse.getHeight());
+    limit.setBounds(reverse.getX(), reverse.getBottom()+reverse.getHeight()*0.5, reverse.getWidth(), reverse.getHeight());
     inMinSlider.setBounds(reverse.getRight()+getWidth()*0.1, reverse.getY(), getWidth()*0.18, getHeight()*0.15);
     outMinSlider.setBounds(inMinSlider.getRight()+getWidth()*0.13, inMinSlider.getY(), inMinSlider.getWidth(), inMinSlider.getHeight());
     inMaxSlider.setBounds(inMinSlider.getX(), reverse.getBottom()+reverse.getHeight()*0.5, inMinSlider.getWidth(), inMinSlider.getHeight());
