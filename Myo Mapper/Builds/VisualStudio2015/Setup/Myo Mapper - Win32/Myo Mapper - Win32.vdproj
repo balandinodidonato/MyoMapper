@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:Myo Mapper 2.4.9 - Win32"
+"ProjectName" = "8:Myo Mapper 2.5.12 - Win32"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -15,19 +15,19 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_1723E68C396644EB9B88CDB3BA22A1F4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5B28ED91E9E24187A3AFAC993CAFF38E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_8E8B5744A391482BBDCB1136C8E65B62"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B93D3805E0794627A261E0CCAE677DF0"
+        "MsmKey" = "8:_A7254F002A5A426380701D022F23E5B8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -94,6 +94,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
     }
@@ -116,10 +124,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E8B5744A391482BBDCB1136C8E65B62"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1723E68C396644EB9B88CDB3BA22A1F4"
             {
-            "SourcePath" = "8:C:\\myo-sdk-win-0.9.0\\bin\\myo64.dll"
-            "TargetName" = "8:myo64.dll"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\myo32.dll"
+            "TargetName" = "8:myo32.dll"
             "Tag" = "8:"
             "Folder" = "8:_FB8911C645864BEAB90797583981C5E6"
             "Condition" = "8:"
@@ -136,10 +144,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B93D3805E0794627A261E0CCAE677DF0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A7254F002A5A426380701D022F23E5B8"
             {
-            "SourcePath" = "8:C:\\myo-sdk-win-0.9.0\\bin\\myo32.dll"
-            "TargetName" = "8:myo32.dll"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\myo64.dll"
+            "TargetName" = "8:myo64.dll"
             "Tag" = "8:"
             "Folder" = "8:_FB8911C645864BEAB90797583981C5E6"
             "Condition" = "8:"
@@ -158,7 +166,7 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DAD22CAB2CA646D2A958B7D242C0ECA3"
             {
-            "SourcePath" = "8:..\\..\\icon.ico"
+            "SourcePath" = "8:\\\\vmware-host\\Shared Folders\\MyoMapper\\Myo Mapper\\Builds\\VisualStudio2015\\icon.ico"
             "TargetName" = "8:icon.ico"
             "Tag" = "8:"
             "Folder" = "8:_FB8911C645864BEAB90797583981C5E6"
@@ -232,15 +240,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Myo Mapper"
-        "ProductCode" = "8:{421D01D2-1FD3-4406-A3AE-56D44D12901B}"
-        "PackageCode" = "8:{B7B37A53-2454-428B-8A60-308D56940C74}"
+        "ProductCode" = "8:{A8ABFAFB-109A-4390-BD89-CFE45CE30635}"
+        "PackageCode" = "8:{7B5EEB4F-F9E8-4226-863F-35410C66F502}"
         "UpgradeCode" = "8:{0C3BFD0A-677F-4DFA-8F75-A5D497EF519B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.4.9"
+        "ProductVersion" = "8:2.5.12"
         "Manufacturer" = "8:Balandino Di Donato"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.balandinodidonato.com/myomapper/"
@@ -782,7 +790,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5B28ED91E9E24187A3AFAC993CAFF38E"
             {
-            "SourcePath" = "8:..\\..\\Debug\\Myo Mapper.exe"
+            "SourcePath" = "8:\\\\vmware-host\\Shared Folders\\MyoMapper\\Myo Mapper\\Builds\\VisualStudio2015\\Debug\\Myo Mapper.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_FB8911C645864BEAB90797583981C5E6"
