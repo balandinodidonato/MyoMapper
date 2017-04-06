@@ -1,2 +1,5 @@
 ﻿  orientation.cpp
-z:\myomapper\myo mapper\source\orientation.cpp(2): fatal error C1083: Cannot open include file: 'juce_Array.h': No such file or directory
+z:\myomapper\myo mapper\source\orientation.cpp(21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+z:\myomapper\myo mapper\source\orientation.cpp(23): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+z:\myomapper\myo mapper\source\orientation.cpp(29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+LINK : fatal error LNK1104: cannot open file 'Z:\MyoMapper\Myo Mapper\Builds\VisualStudio2015\Debug\\Myo Mapper.exe'
