@@ -18,7 +18,6 @@ public:
     void  buttonClicked (Button* button) override;
     void sliderValueChanged (Slider* slider) override;
     void resized() override;
-    
     void setLabelWidget (String LabelWidget);
     void setValue (float Value);
     float getValue();
@@ -27,7 +26,6 @@ public:
     void setMax(float Value);
     void setCalibrate();
     void setReverse(bool Status);
-    void setLimit(bool Status);
     
 private:
     
@@ -36,7 +34,6 @@ private:
     Label mmSliderLabel;
 
     ToggleButton reverse;
-    ToggleButton limit;
     
     Slider outMinSlider;
     Slider outMaxSlider;

@@ -27,7 +27,6 @@ outMax(1)
     mmSlider.setMinValue(0.0);
     mmSlider.setMaxValue(1.0);
     mmSlider.addListener (this);
-    
     addAndMakeVisible (mmSliderLabel);
     mmSliderLabel.attachToComponent (&mmSlider, true);
     
@@ -35,10 +34,6 @@ outMax(1)
     reverse.addListener (this);
     reverse.setButtonText("Reverse");
 
-    addAndMakeVisible(limit);
-    limit.addListener (this);
-    limit.setButtonText("Limit");
-    
     outMinSliderLabel.setText ("Out Min", dontSendNotification);
     outMinSliderLabel.attachToComponent (&outMinSlider, true);
     addAndMakeVisible(outMinSliderLabel);
@@ -76,7 +71,7 @@ outMax(1)
     inMinSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
     inMinSlider.setSliderStyle(juce::Slider::IncDecButtons);
     addAndMakeVisible(inMinSlider);
-    
+  
     inMaxSlider.setRange(0, 1, 0.001);
     inMaxSlider.setValue(1);
     inMaxSlider.setIncDecButtonsMode(juce::Slider::incDecButtonsDraggable_Vertical);
@@ -98,7 +93,6 @@ void Rescale::resized()
 {
     calibrate.setBounds (10, 25, getWidth()*0.2, getHeight()*0.3);
     reverse.setBounds(calibrate.getRight()+getWidth()*0.02, calibrate.getY(), getWidth()*0.15, calibrate.getHeight()*0.6);
-    limit.setBounds(reverse.getX(), reverse.getBottom()+reverse.getHeight()*0.5, reverse.getWidth(), reverse.getHeight());
     inMinSlider.setBounds(reverse.getRight()+getWidth()*0.1, reverse.getY(), getWidth()*0.18, getHeight()*0.15);
     outMinSlider.setBounds(inMinSlider.getRight()+getWidth()*0.13, inMinSlider.getY(), inMinSlider.getWidth(), inMinSlider.getHeight());
     inMaxSlider.setBounds(inMinSlider.getX(), reverse.getBottom()+reverse.getHeight()*0.5, inMinSlider.getWidth(), inMinSlider.getHeight());
@@ -127,14 +121,14 @@ void Rescale::sliderValueChanged(juce::Slider *slider)
 else if (slider ==&outMinSlider)
     {
         outMin = outMinSlider.getValue();
-        outMinSlider.setValue(outMin);
+		mmSlider.setMinValue(outMin);
     }
     
     if (slider ==&outMaxSlider)
     {
         outMax = outMaxSlider.getValue();
-        outMaxSlider.setValue(outMax);
-    }
+		mmSlider.setMaxValue(outMax);
+	}
     
     else if (slider ==&inMinSlider)
     {
@@ -145,19 +139,12 @@ else if (slider ==&outMinSlider)
     {
         inMax = inMaxSlider.getValue();
     }
-    
 }
 
 void Rescale::setReverse(bool Status)
 {
     reverse.setToggleState(Status, dontSendNotification);
     reverse.setState(juce::Button::buttonDown);
-}
-
-void Rescale::setLimit(bool Status)
-{
-    limit.setToggleState(Status, dontSendNotification);
-    limit.setState(juce::Button::buttonDown);
 }
 
 void Rescale::setLabelWidget(juce::String LabelWidget)
@@ -194,6 +181,10 @@ void Rescale::setValue(float Value)
     // scale between 0 and 1
     scaled = (input+PI)/(2*PI); // scale input from -PI,PI to 0,1
     
+								// limit input
+	calibrated = std::max(scaled, inMin); // limit lower values
+	calibrated = std::min(scaled, inMax); // limit maximum values
+
     // calibrate
     input1 = 1-offset;
     calibrated = scaled + input1;
@@ -209,13 +200,8 @@ void Rescale::setValue(float Value)
         calibrated = 1-calibrated;
     }
     
-    // limit input
-    calibrated = std::max(calibrated,inMin); // limit lower values
-    calibrated = std::min(calibrated,inMax); // limit maximum values
-
     // scale output
     calibrated = jmap(calibrated, inMin, inMax, outMin, outMax);
-
     mmSlider.setValue(calibrated);
 }
 

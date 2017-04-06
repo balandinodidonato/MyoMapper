@@ -229,4 +229,3 @@ void MainComponent::HelpDialogWindow()
     helpWindow->setUsingNativeTitleBar (true);
     helpWindow->setVisible (true);
 }
-
