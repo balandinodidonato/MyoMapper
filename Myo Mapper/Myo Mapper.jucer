@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="2.1.4.18"
+<JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="2.5.12"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="4.3.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
+              jucerVersion="4.3.1" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
@@ -36,15 +36,10 @@
       <FILE id="bkctpE" name="orientation.cpp" compile="1" resource="0" file="Source/orientation.cpp"/>
       <FILE id="Gzqd6E" name="rescale.h" compile="0" resource="0" file="Source/rescale.h"/>
       <FILE id="q0Or2R" name="rescale.cpp" compile="1" resource="0" file="Source/rescale.cpp"/>
-      <FILE id="DuDYqV" name="mav.h" compile="0" resource="0" file="Source/mav.h"/>
-      <FILE id="KlHUWG" name="mav.cpp" compile="1" resource="0" file="Source/mav.cpp"/>
       <FILE id="iqYY9F" name="waveformLength.cpp" compile="1" resource="0"
             file="Source/waveformLength.cpp"/>
       <FILE id="I8qni4" name="waveformLength.h" compile="0" resource="0"
             file="Source/waveformLength.h"/>
-      <FILE id="X3YNFS" name="ZeroCrossing.cpp" compile="1" resource="0"
-            file="Source/ZeroCrossing.cpp"/>
-      <FILE id="UdsBEv" name="ZeroCrossing.h" compile="0" resource="0" file="Source/ZeroCrossing.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
@@ -70,6 +65,25 @@
         <MODULEPATH id="juce_osc" path="../../../../../Applications/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
+    <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="WFoxze" bigIcon="WFoxze"
+            externalLibraries="myo32.lib&#10;myo64.lib">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="Myo Mapper"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="3" targetName="Myo Mapper"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_osc" path="C:\Program Files\JUCE\modules"/>
+        <MODULEPATH id="juce_opengl" path="C:\Program Files\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="C:\Program Files\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="C:\Program Files\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="C:\Program Files\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="C:\Program Files\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="C:\Program Files\JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="C:\Program Files\JUCE\modules"/>
+      </MODULEPATHS>
+    </VS2015>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
@@ -84,5 +98,6 @@
   <JUCEOPTIONS/>
   <LIVE_SETTINGS>
     <OSX/>
+    <WINDOWS/>
   </LIVE_SETTINGS>
 </JUCERPROJECT>

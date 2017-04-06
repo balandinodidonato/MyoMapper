@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Myo Mapper", "Myo Mapper.vcxproj", "{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Myo Mapper 2.5.12 - Win32", "Setup\Myo Mapper - Win32\Myo Mapper - Win32.vdproj", "{FB591737-7B78-4EF9-80B8-DF5C6BB38EDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}.Debug|Win32.Build.0 = Debug|Win32
+		{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}.Release|Win32.ActiveCfg = Release|Win32
+		{53CF9A0C-3977-0649-0FEA-4F74FAC5378C}.Release|Win32.Build.0 = Release|Win32
+		{FB591737-7B78-4EF9-80B8-DF5C6BB38EDB}.Debug|Win32.ActiveCfg = Debug
+		{FB591737-7B78-4EF9-80B8-DF5C6BB38EDB}.Debug|Win32.Build.0 = Debug
+		{FB591737-7B78-4EF9-80B8-DF5C6BB38EDB}.Release|Win32.ActiveCfg = Release
+		{FB591737-7B78-4EF9-80B8-DF5C6BB38EDB}.Release|Win32.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

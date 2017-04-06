@@ -109,7 +109,7 @@ void MainComponent::resized()
     else pose.setBounds(0, 0, 0, 0);
 }
 
-int i = 0;
+//int i = 0;
 
 void MainComponent::timerCallback()
 {
@@ -148,6 +148,17 @@ void MainComponent::disconnectMyoAndOSC()
     myoManager.disconnect();
     osc.disconnectSender();
     osc.disconnectReceiver();
+}
+
+
+void MainComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
+{
+	if (comboBoxThatHasChanged == &settingsPannel.myoList)
+	{
+		selectedMyoID = settingsPannel.myoList.getSelectedId();
+		osc.setMyoIdReceiver(selectedMyoID);
+	}
+
 }
 
 // ===================================================================
@@ -217,14 +228,4 @@ void MainComponent::HelpDialogWindow()
     helpWindow->setResizable(false, false);
     helpWindow->setUsingNativeTitleBar (true);
     helpWindow->setVisible (true);
-}
-
-void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
-{
-    if(comboBoxThatHasChanged == &settingsPannel.myoList)
-    {
-        selectedMyoID = settingsPannel.myoList.getSelectedId();
-        osc.setMyoIdReceiver(selectedMyoID);
-    }
-    
 }

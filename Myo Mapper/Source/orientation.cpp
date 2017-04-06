@@ -1,5 +1,5 @@
 #include "orientation.h"
-#include "juce_Array.h"
+#include "../modules/juce_core/containers/juce_Array.h"
 
 Orientation::Orientation()
 {
@@ -75,9 +75,9 @@ void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
         case 0:
             switch (Action) {
                 case 1: rescaleYaw.setCalibrate(); break;
-                case 2: rescaleYaw.setMin(Value); break;
-                case 3: rescaleYaw.setMax(Value); break;
-                case 4: rescaleYaw.setReverse(ReverseStatus); break;
+                //case 2: rescaleYaw.setMin(Value); break;
+                //case 3: rescaleYaw.setMax(Value); break;
+                //case 4: rescaleYaw.setReverse(ReverseStatus); break;
                 default:
                     break;
             }
@@ -85,9 +85,9 @@ void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
         case 1:
             switch (Action) {
                 case 1: rescalePitch.setCalibrate(); break;
-                case 2: rescalePitch.setMin(Value); break;
-                case 3: rescalePitch.setMax(Value); break;
-                case 4: rescalePitch.setReverse(ReverseStatus); break;
+                //case 2: rescalePitch.setMin(Value); break;
+                //case 3: rescalePitch.setMax(Value); break;
+                //case 4: rescalePitch.setReverse(ReverseStatus); break;
                 default:
                     break;
             }
@@ -95,9 +95,9 @@ void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
         case 2:
             switch (Action) {
                 case 1: rescaleRoll.setCalibrate(); break;
-                case 2: rescaleRoll.setMin(Value); break;
-                case 3: rescaleRoll.setMax(Value); break;
-                case 4: rescaleRoll.setReverse(ReverseStatus); break;
+                //case 2: rescaleRoll.setMin(Value); break;
+                //case 3: rescaleRoll.setMax(Value); break;
+                //case 4: rescaleRoll.setReverse(ReverseStatus); break;
                 default:
                     break;
             }

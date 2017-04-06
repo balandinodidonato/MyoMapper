@@ -77,10 +77,10 @@ void Settings::resized()
     setHostAddress.setBounds(hostAddressTitle.getRight()+getWidth()*0.01, hostAddressTitle.getY()+hostAddressTitle.getHeight()*0.25, getWidth()*0.2, hostAddressTitle.getHeight()*0.5);
     myoList.setBounds(getWidth()*0.5, setHostAddress.getY(), getWidth()*0.465, setHostAddress.getHeight());
     
-    oscPortSliderSender.setBounds(130, hostAddressTitle.getBottom()+5, getWidth()*0.25, getHeight()*0.2);
+    oscPortSliderSender.setBounds(135, hostAddressTitle.getBottom()+5, getWidth()*0.25, getHeight()*0.2);
     oscPortSliderReceiver.setBounds(myoList.getX()+oscPortLabelReceiver.getWidth(), oscPortSliderSender.getY(), oscPortSliderSender.getWidth(), oscPortSliderSender.getHeight());
     
-    showOrientation.setBounds(hostAddressTitle.getX(), oscPortSliderSender.getBottom()+5, getWidth()*0.3, setHostAddress.getHeight());
+    showOrientation.setBounds(hostAddressTitle.getX(), oscPortSliderSender.getBottom()+5, getWidth()*0.3, getHeight()*0.2);
     showPose.setBounds(showOrientation.getRight()+10, showOrientation.getY(), showOrientation.getWidth(), showOrientation.getHeight());
 }
 
