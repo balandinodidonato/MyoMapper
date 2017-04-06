@@ -1,5 +1,5 @@
 # Myo Mapper
-Myo Mapper maps[Myo armband](https://www.myo.com) data into Open Sound Control (OSC) messages. Moreover, it rescales, centre and extracts features from Myo raw data.
+Myo Mapper maps Thalmic's '[Myo armband](https://www.myo.com) data into Open Sound Control (OSC) messages. Moreover, it rescales, centre and extracts features from Myo raw data.
 
 Myo Mapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
 
