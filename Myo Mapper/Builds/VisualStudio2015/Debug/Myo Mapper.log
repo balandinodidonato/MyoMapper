@@ -1,20 +1,2 @@
-﻿  rescale.cpp
-z:\myomapper\myo mapper\source\rescale.cpp(91): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(93): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(99): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(100): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(101): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(102): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(103): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(104): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(106): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(121): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(122): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(129): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(135): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(141): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(146): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(195): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
-z:\myomapper\myo mapper\source\rescale.cpp(205): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Myo Mapper.vcxproj -> Z:\MyoMapper\Myo Mapper\Builds\VisualStudio2015\Debug\Myo Mapper.exe
-  Myo Mapper.vcxproj -> Debug\\Myo Mapper.pdb (Full PDB)
+﻿  orientation.cpp
+z:\myomapper\myo mapper\source\orientation.cpp(2): fatal error C1083: Cannot open include file: 'juce_Array.h': No such file or directory

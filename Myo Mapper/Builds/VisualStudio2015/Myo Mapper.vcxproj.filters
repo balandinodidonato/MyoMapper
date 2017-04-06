@@ -2730,6 +2730,14 @@
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_extra\juce_gui_extra.h" />
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_opengl\juce_opengl.h" />
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_osc\juce_osc.h" />
+    <ClInclude Include="C:\Program Files\JUCE\modules\juce_core\juce_core.h" />
+    <ClInclude Include="C:\Program Files\JUCE\modules\juce_data_structures\juce_data_structures.h" />
+    <ClInclude Include="C:\Program Files\JUCE\modules\juce_events\juce_events.h" />
+    <ClInclude Include="C:\Program Files\JUCE\modules\juce_graphics\juce_graphics.h" />
+    <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_basics\juce_gui_basics.h" />
+    <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_extra\juce_gui_extra.h" />
+    <ClInclude Include="C:\Program Files\JUCE\modules\juce_opengl\juce_opengl.h" />
+    <ClInclude Include="C:\Program Files\JUCE\modules\juce_osc\juce_osc.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Resources\icon.png">
