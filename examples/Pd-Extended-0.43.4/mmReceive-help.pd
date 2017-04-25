@@ -99,6 +99,15 @@ messages from Myo Mapper software: http://www.balandinodidonato.com/myomapper/
 #X floatatom 176 564 5 0 0 0 accY - -;
 #X floatatom 211 584 5 0 0 0 accZ - -;
 #X obj 14 69 mmReceive 1 5432;
+<<<<<<< HEAD
+=======
+#X floatatom 15 543 5 0 0 0 x - -;
+#X floatatom 42 563 5 0 0 0 y - -;
+#X floatatom 69 583 5 0 0 0 z - -;
+#X obj 15 521 unpack f f f f;
+#X obj 15 499 r orientQuaternion1;
+#X floatatom 96 603 5 0 0 0 w - -;
+>>>>>>> develop
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
 #X connect 0 2 3 0;
@@ -175,3 +184,11 @@ messages from Myo Mapper software: http://www.balandinodidonato.com/myomapper/
 #X connect 93 0 94 0;
 #X connect 93 1 95 0;
 #X connect 93 2 96 0;
+<<<<<<< HEAD
+=======
+#X connect 101 0 98 0;
+#X connect 101 1 99 0;
+#X connect 101 2 100 0;
+#X connect 101 3 103 0;
+#X connect 102 0 101 0;
+>>>>>>> develop
