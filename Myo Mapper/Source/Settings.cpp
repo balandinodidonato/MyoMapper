@@ -118,14 +118,11 @@ int Settings::getOSCPortSender()
 int Settings::getOSCPortReceiver()
 {
     return oscPortReceiver;
-    oscSettingsChangedReceiver = false;
 }
 
 String Settings::getHostAddress()
 {
     return hostAddress;
-    oscSettingsChangedSender = false;
-    oscSettingsChangedReceiver = false;
 }
 
 int Settings::getSelectedMyo()
