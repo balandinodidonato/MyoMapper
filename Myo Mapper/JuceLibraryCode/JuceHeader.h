@@ -36,8 +36,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "Myo Mapper";
-    const char* const  versionString  = "2.5.12";
-    const int          versionNumber  = 0x2050c;
+    const char* const  versionString  = "2.5.13";
+    const int          versionNumber  = 0x2050d;
 }
 #endif
 

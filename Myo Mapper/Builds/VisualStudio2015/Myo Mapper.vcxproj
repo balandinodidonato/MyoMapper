@@ -58,7 +58,7 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;C:\Program Files\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=2.5.12;JUCE_APP_VERSION_HEX=0x2050c;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=2.5.13;JUCE_APP_VERSION_HEX=0x2050d;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -100,7 +100,7 @@
     <ClCompile>
       <Optimization>Full</Optimization>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;C:\Program Files\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=2.5.12;JUCE_APP_VERSION_HEX=0x2050c;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=2.5.13;JUCE_APP_VERSION_HEX=0x2050d;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -1431,7 +1431,7 @@
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_core\zip\juce_GZIPDecompressorInputStream.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_core\zip\juce_ZipFile.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_core\juce_core.h"/>
-    <ClInclude Include="C:\Program Files\JUCE\modules\juce_core\juce_core.h"/>
+    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_core\juce_core.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_data_structures\app_properties\juce_ApplicationProperties.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_data_structures\app_properties\juce_PropertiesFile.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_data_structures\undomanager\juce_UndoableAction.h"/>
@@ -1441,7 +1441,7 @@
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_data_structures\values\juce_ValueTree.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_data_structures\values\juce_ValueTreeSynchroniser.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_data_structures\juce_data_structures.h"/>
-    <ClInclude Include="C:\Program Files\JUCE\modules\juce_data_structures\juce_data_structures.h"/>
+    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_data_structures\juce_data_structures.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_events\broadcasters\juce_ActionBroadcaster.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_events\broadcasters\juce_ActionListener.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_events\broadcasters\juce_AsyncUpdater.h"/>
@@ -1465,7 +1465,7 @@
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_events\timers\juce_MultiTimer.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_events\timers\juce_Timer.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_events\juce_events.h"/>
-    <ClInclude Include="C:\Program Files\JUCE\modules\juce_events\juce_events.h"/>
+    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_events\juce_events.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_graphics\colour\juce_Colour.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_graphics\colour\juce_ColourGradient.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_graphics\colour\juce_Colours.h"/>
@@ -1522,7 +1522,7 @@
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_graphics\placement\juce_Justification.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_graphics\placement\juce_RectanglePlacement.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_graphics\juce_graphics.h"/>
-    <ClInclude Include="C:\Program Files\JUCE\modules\juce_graphics\juce_graphics.h"/>
+    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_graphics\juce_graphics.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_basics\application\juce_Application.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_basics\buttons\juce_ArrowButton.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_basics\buttons\juce_Button.h"/>
@@ -1653,7 +1653,7 @@
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_basics\windows\juce_TooltipWindow.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_basics\windows\juce_TopLevelWindow.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_basics\juce_gui_basics.h"/>
-    <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_basics\juce_gui_basics.h"/>
+    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_basics\juce_gui_basics.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_extra\code_editor\juce_CodeDocument.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_extra\code_editor\juce_CodeEditorComponent.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_extra\code_editor\juce_CodeTokeniser.h"/>
@@ -1678,7 +1678,7 @@
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_extra\misc\juce_WebBrowserComponent.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_extra\native\juce_mac_CarbonViewWrapperComponent.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_extra\juce_gui_extra.h"/>
-    <ClInclude Include="C:\Program Files\JUCE\modules\juce_gui_extra\juce_gui_extra.h"/>
+    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_extra\juce_gui_extra.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_opengl\geometry\juce_Draggable3DOrientation.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_opengl\geometry\juce_Matrix3D.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_opengl\geometry\juce_Quaternion.h"/>
@@ -1701,7 +1701,7 @@
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_opengl\opengl\juce_OpenGLTexture.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_opengl\utils\juce_OpenGLAppComponent.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_opengl\juce_opengl.h"/>
-    <ClInclude Include="C:\Program Files\JUCE\modules\juce_opengl\juce_opengl.h"/>
+    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_opengl\juce_opengl.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_osc\osc\juce_OSCAddress.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_osc\osc\juce_OSCArgument.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_osc\osc\juce_OSCBundle.h"/>
@@ -1711,7 +1711,7 @@
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_osc\osc\juce_OSCTypes.h"/>
     <ClInclude Include="C:\Program Files\JUCE\modules\juce_osc\juce_osc.h"/>
-    <ClInclude Include="C:\Program Files\JUCE\modules\juce_osc\juce_osc.h"/>
+    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_osc\juce_osc.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
