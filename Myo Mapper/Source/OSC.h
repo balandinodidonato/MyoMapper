@@ -18,6 +18,7 @@ public:
                  std::array<int8_t, 8> emgRaw,
                  std::array<float, 8> emgScaled,
                  std::array<float, 8> emgScaledAbs,
+                 std::array<float, 4> quaternion,
                  float mav,
                  float mavWl,
                  Vector3D< float > gyro,
@@ -31,6 +32,7 @@ public:
                  Vector3D< float > orientationRaw,
                  Vector3D< float > orientationScaled,
                  Vector3D< float > orientationWfL,
+                 
                  String pose,
                  int poseID);
     

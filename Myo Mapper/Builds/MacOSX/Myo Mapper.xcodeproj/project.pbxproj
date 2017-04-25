@@ -1977,17 +1977,10 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../../..//Applications/JUCE/modules", "$(inherited)");
 				INFOPLIST_FILE = Info-App.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-<<<<<<< HEAD
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-=======
-<<<<<<< HEAD
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-=======
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
->>>>>>> develop
->>>>>>> release
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.balandinodidonato.MyoMapper;
 				SDKROOT_ppc = macosx10.5; }; name = Release; };

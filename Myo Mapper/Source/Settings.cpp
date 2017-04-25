@@ -1,13 +1,13 @@
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Settings.h"
+#include "settings.h"
 
 Settings::Settings()
 :
+hostAddress("127.0.0.1"),
 oscSettingsChangedSender(false),
 oscSettingsChangedReceiver(false),
 oscPortSender(5432),
-oscPortReceiver(5431),
-hostAddress("127.0.0.1")
+oscPortReceiver(5431)
 {
     oscPortSliderSender.setRange(0, 9999, 1);
     oscPortSliderSender.setValue(5432);
