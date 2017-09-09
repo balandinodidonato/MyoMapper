@@ -31,11 +31,6 @@ public:
     bool getOSCsettingsStatusSender();
     bool getOSCsettingsStatusReceiver();
 
-    // Made ToggleButtons public for MainComponent::Button::Listener
-    ToggleButton showOrientation;
-    ToggleButton showPose;
-    ToggleButton showMav;
-    
     int getOSCPortSender();
     int getOSCPortReceiver();
     String getHostAddress();
@@ -50,6 +45,10 @@ private:
     
     Label hostAddressTitle;
     Label setHostAddress;
+    
+    ToggleButton showOrientation;
+    ToggleButton showMav;
+    ToggleButton showPose;
     
     String hostAddress;
     
