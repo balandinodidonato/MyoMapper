@@ -4,8 +4,8 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 class Settings    : public Component,
-private Label::Listener,
-private Slider::Listener
+private juce::Label::Listener,
+private juce::Slider::Listener
 {
 public:
     Settings();
@@ -14,11 +14,11 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     
-    void labelTextChanged(juce::Label *labelThatHasChanged) override;
-    void sliderValueChanged(juce::Slider *slider) override;
+    void labelTextChanged (juce::Label *labelThatHasChanged) override;
+    void sliderValueChanged (juce::Slider *slider) override;
     
-    void setOSCsettingsStatusSender(bool OSCsettingsStatusSender);
-    void setOSCsettingsStatusReceiver(bool OSCsettingsStatusReceiver);
+    void setOSCsettingsStatusSender (bool OSCsettingsStatusSender);
+    void setOSCsettingsStatusReceiver (bool OSCsettingsStatusReceiver);
     
     void vibrate();
     

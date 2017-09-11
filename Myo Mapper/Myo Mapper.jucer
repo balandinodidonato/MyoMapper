@@ -2,44 +2,49 @@
 
 <JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="2.5.13"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="4.3.1" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
-              companyEmail="info@balandinodidonato.com">
+              jucerVersion="5.1.1" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
+              companyEmail="info@balandinodidonato.com" displaySplashScreen="1"
+              reportAppUsage="1" splashScreenColour="Dark" cppLanguageStandard="11">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>
-      <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
-            file="Source/AboutWindowContent.cpp"/>
-      <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"
-            file="Source/AboutWindowContent.h"/>
-      <FILE id="jmv4gh" name="HelpWindow.cpp" compile="1" resource="0" file="Source/HelpWindow.cpp"/>
-      <FILE id="DKaHIH" name="HelpWindow.h" compile="0" resource="0" file="Source/HelpWindow.h"/>
-      <FILE id="Oedd8x" name="AboutWindow.cpp" compile="1" resource="0" file="Source/AboutWindow.cpp"/>
-      <FILE id="hn6pYz" name="AboutWindow.h" compile="0" resource="0" file="Source/AboutWindow.h"/>
-      <FILE id="lRkxqB" name="OSC.cpp" compile="1" resource="0" file="Source/OSC.cpp"/>
-      <FILE id="TOvZW6" name="OSC.h" compile="0" resource="0" file="Source/OSC.h"/>
-      <FILE id="Ot6Nk3" name="Settings.cpp" compile="1" resource="0" file="Source/Settings.cpp"/>
-      <FILE id="h8i1pe" name="Settings.h" compile="0" resource="0" file="Source/Settings.h"/>
-      <FILE id="BDIoaP" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
-      <FILE id="ptKlKy" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
+      <GROUP id="{2098BAB5-B007-98E8-0BA2-8093E352BED8}" name="Myo">
+        <FILE id="FO3vBI" name="MyoData.h" compile="0" resource="0" file="Source/MyoData.h"/>
+        <FILE id="POB1yB" name="MyoManager.cpp" compile="1" resource="0" file="Source/MyoManager.cpp"/>
+        <FILE id="EKeAn0" name="MyoManager.h" compile="0" resource="0" file="Source/MyoManager.h"/>
+        <FILE id="hCEqvO" name="MyoListener.cpp" compile="1" resource="0" file="Source/MyoListener.cpp"/>
+        <FILE id="D0Y8rk" name="MyoListener.h" compile="0" resource="0" file="Source/MyoListener.h"/>
+        <FILE id="iqYY9F" name="WaveformLength.cpp" compile="1" resource="0"
+              file="Source/WaveformLength.cpp"/>
+        <FILE id="I8qni4" name="WaveformLength.h" compile="0" resource="0"
+              file="Source/WaveformLength.h"/>
+      </GROUP>
+      <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="MenuBar">
+        <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
+              file="Source/AboutWindowContent.cpp"/>
+        <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"
+              file="Source/AboutWindowContent.h"/>
+        <FILE id="jmv4gh" name="HelpWindow.cpp" compile="1" resource="0" file="Source/HelpWindow.cpp"/>
+        <FILE id="DKaHIH" name="HelpWindow.h" compile="0" resource="0" file="Source/HelpWindow.h"/>
+        <FILE id="Oedd8x" name="AboutWindow.cpp" compile="1" resource="0" file="Source/AboutWindow.cpp"/>
+        <FILE id="hn6pYz" name="AboutWindow.h" compile="0" resource="0" file="Source/AboutWindow.h"/>
+      </GROUP>
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-      <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="Vath7r" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
-      <FILE id="FO3vBI" name="MyoData.h" compile="0" resource="0" file="Source/MyoData.h"/>
-      <FILE id="EKeAn0" name="MyoManager.h" compile="0" resource="0" file="Source/MyoManager.h"/>
-      <FILE id="POB1yB" name="MyoManager.cpp" compile="1" resource="0" file="Source/MyoManager.cpp"/>
-      <FILE id="D0Y8rk" name="MyoListener.h" compile="0" resource="0" file="Source/MyoListener.h"/>
-      <FILE id="hCEqvO" name="MyoListener.cpp" compile="1" resource="0" file="Source/MyoListener.cpp"/>
-      <FILE id="cEBa54" name="orientation.h" compile="0" resource="0" file="Source/orientation.h"/>
-      <FILE id="bkctpE" name="orientation.cpp" compile="1" resource="0" file="Source/orientation.cpp"/>
-      <FILE id="Gzqd6E" name="rescale.h" compile="0" resource="0" file="Source/rescale.h"/>
-      <FILE id="q0Or2R" name="rescale.cpp" compile="1" resource="0" file="Source/rescale.cpp"/>
-      <FILE id="iqYY9F" name="waveformLength.cpp" compile="1" resource="0"
-            file="Source/waveformLength.cpp"/>
-      <FILE id="I8qni4" name="waveformLength.h" compile="0" resource="0"
-            file="Source/waveformLength.h"/>
+      <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="Ot6Nk3" name="Settings.cpp" compile="1" resource="0" file="Source/Settings.cpp"/>
+      <FILE id="h8i1pe" name="Settings.h" compile="0" resource="0" file="Source/Settings.h"/>
+      <FILE id="bkctpE" name="Orientation.cpp" compile="1" resource="0" file="Source/Orientation.cpp"/>
+      <FILE id="cEBa54" name="Orientation.h" compile="0" resource="0" file="Source/Orientation.h"/>
+      <FILE id="BDIoaP" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
+      <FILE id="ptKlKy" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
+      <FILE id="q0Or2R" name="Rescale.cpp" compile="1" resource="0" file="Source/Rescale.cpp"/>
+      <FILE id="Gzqd6E" name="Rescale.h" compile="0" resource="0" file="Source/Rescale.h"/>
+      <FILE id="lRkxqB" name="OSC.cpp" compile="1" resource="0" file="Source/OSC.cpp"/>
+      <FILE id="TOvZW6" name="OSC.h" compile="0" resource="0" file="Source/OSC.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
@@ -49,10 +54,10 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;~/Library/Frameworks/&quot;, LD_RUNPATH_SEARCH_PATHS=&quot;@loader_path/../Frameworks&quot;"/>
+                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;, LD_RUNPATH_SEARCH_PATHS=&quot;@loader_path/../Frameworks&quot;"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;~/Library/Frameworks/&quot;"/>
+                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../../../Applications/JUCE/modules"/>
@@ -86,14 +91,14 @@
     </VS2015>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS/>
   <LIVE_SETTINGS>

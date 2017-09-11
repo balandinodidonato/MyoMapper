@@ -6,7 +6,7 @@
 class HelpWindow    : public DocumentWindow
 {
 public:
-    HelpWindow(const String& name, Colour backgroundColour, int buttonsNeeded);
+    HelpWindow (const String& name, Colour backgroundColour, int buttonsNeeded);
     ~HelpWindow();
 
     void paint (Graphics&) override;

@@ -1,9 +1,9 @@
 #ifndef MAINCOMPONENT_H_INCLUDED
 #define MAINCOMPONENT_H_INCLUDED
 
-#include "orientation.h"
+#include "Orientation.h"
 //#include "mav.h"
-#include "settings.h"
+#include "Settings.h"
 #include "MyoManager.h"
 #include "Pose.h"
 #include "OSC.h"
@@ -33,7 +33,7 @@ public:
     Orientation orientation;
     
     StringArray getMenuBarNames() override;
-    PopupMenu getMenuForIndex(int index, const String& name) override;
+    PopupMenu getMenuForIndex (int index, const String& name) override;
     void menuItemSelected (int menuID, int index) override;
     
     enum MenuIDs {
@@ -48,7 +48,7 @@ public:
     
     void AboutMyoMapperDialogWindow();
     void HelpDialogWindow();
-    void buttonClicked (Button* button) override;   // Added function to update code when ToggleButton is pressed
+    void buttonClicked (Button* button) override;
     
     Settings settingsPannel;
     

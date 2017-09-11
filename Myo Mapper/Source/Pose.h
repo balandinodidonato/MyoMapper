@@ -11,7 +11,7 @@ public:
 
     void paint (Graphics&);
     void resized();
-    void setPoseLabel(String LabelText);
+    void setPoseLabel (String LabelText);
         
 private:
     Label poseLabel;    
