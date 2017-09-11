@@ -12,8 +12,8 @@ public:
 
     void initialise (const String& commandLine) override
     {
+        juce::LookAndFeel::setDefaultLookAndFeel (&oldLookAndFeel);
         mainWindow = new MainWindow (getApplicationName());
-
     }
     
     void shutdown() override
@@ -40,10 +40,13 @@ public:
         {
             setUsingNativeTitleBar (true);
             setContentOwned (new MainComponent(), true);
-            setCentrePosition(getWidth()*0.5, 0);
+            setCentrePosition (getWidth() * 0.5, 0);
             setVisible (true);
-            setResizable(true, true);
-            setResizeLimits(getParentWidth()*0.4, getParentHeight()*0.8, getParentWidth(), getParentHeight()*0.8);
+            setResizable (true, true);
+            setResizeLimits (getParentWidth() * 0.4,
+                             getParentHeight() * 0.8,
+                             getParentWidth(),
+                             getParentHeight() * 0.8);
         }
 
         void closeButtonPressed() override
@@ -58,6 +61,8 @@ public:
 
 private:
     ScopedPointer<MainWindow> mainWindow;
+    
+    LookAndFeel_V3 oldLookAndFeel;
 };
 
 START_JUCE_APPLICATION (MyoMapperApplication)

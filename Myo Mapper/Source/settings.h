@@ -4,8 +4,8 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 class Settings    : public Component,
-private Label::Listener,
-private Slider::Listener
+private juce::Label::Listener,
+private juce::Slider::Listener
 {
 public:
     Settings();
@@ -14,11 +14,11 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     
-    void labelTextChanged(juce::Label *labelThatHasChanged) override;
-    void sliderValueChanged(juce::Slider *slider) override;
+    void labelTextChanged (juce::Label *labelThatHasChanged) override;
+    void sliderValueChanged (juce::Slider *slider) override;
     
-    void setOSCsettingsStatusSender(bool OSCsettingsStatusSender);
-    void setOSCsettingsStatusReceiver(bool OSCsettingsStatusReceiver);
+    void setOSCsettingsStatusSender (bool OSCsettingsStatusSender);
+    void setOSCsettingsStatusReceiver (bool OSCsettingsStatusReceiver);
     
     void vibrate();
     
@@ -31,6 +31,11 @@ public:
     bool getOSCsettingsStatusSender();
     bool getOSCsettingsStatusReceiver();
 
+    // Made ToggleButtons public for MainComponent::Button::Listener
+    ToggleButton showOrientation;
+    ToggleButton showPose;
+    ToggleButton showMav;
+    
     int getOSCPortSender();
     int getOSCPortReceiver();
     String getHostAddress();
@@ -45,10 +50,6 @@ private:
     
     Label hostAddressTitle;
     Label setHostAddress;
-    
-    ToggleButton showOrientation;
-    ToggleButton showMav;
-    ToggleButton showPose;
     
     String hostAddress;
     

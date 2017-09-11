@@ -2,8 +2,8 @@
 #define MAPPING_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "rescale.h"
-#include "waveformLength.h"
+#include "Rescale.h"
+#include "WaveformLength.h"
 
 //==============================================================================
 /*
@@ -18,7 +18,7 @@ public:
     
     void paint (Graphics& g) override;
     void resized() override;
-    void setValues (Vector3D< float >);
+    void setValues (Vector3D<float>);
    
     Vector3D<float> getValue();
     Vector3D<float> getWl();
@@ -26,7 +26,7 @@ public:
     float getPitch();
     float getRoll();
     
-    void map(int myoData, int Action, float Value, bool ReverseStatus);
+    void map (int myoData, int Action, float Value, bool ReverseStatus);
 
 private:
     
