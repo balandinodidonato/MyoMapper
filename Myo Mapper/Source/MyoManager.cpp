@@ -2,15 +2,14 @@
 #include "MyoListener.h"
 
 MyoManager::MyoManager()
-:   Thread("Myo Data Thread"),
-    hub(nullptr),
-    myo(nullptr)
+:   Thread ("Myo Data Thread"),
+    hub (nullptr),
+    myo (nullptr)
 {
 }
 
 MyoManager::~MyoManager()
 {
-    myo->lock();
     stopPoll();
     disconnect();
 }

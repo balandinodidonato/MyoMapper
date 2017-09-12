@@ -1,4 +1,4 @@
-#include "orientation.h"
+#include "Orientation.h"
 #include "../modules/juce_core/containers/juce_Array.h"
 
 Orientation::Orientation()

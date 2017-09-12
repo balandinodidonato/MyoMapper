@@ -83,8 +83,29 @@ void MainComponent::resized()
     
     settingsPannel.setBounds (area.removeFromTop (getHeight() * 0.24)
                               .reduced (getHeight() * 0.01));
-    orientation.setBounds (area.removeFromTop (getHeight() * 0.5)
-                           .reduced (getHeight() * 0.5, 0));
+    
+    orientation.setBounds (settingsPannel.getX(),
+                           settingsPannel.getBottom() + 5,
+                           settingsPannel.getWidth(),
+                           getHeight() * 0.63 - 15);
+    
+    if (orientation.isVisible() == false)
+    {
+        pose.setBounds (settingsPannel.getX(),
+                        settingsPannel.getBottom() + 5,
+                        settingsPannel.getWidth(),
+                        getHeight() * 0.12);
+    }
+    else if (orientation.isVisible() == true)
+    {
+        pose.setBounds (orientation.getX(),
+                        orientation.getBottom() + 10,
+                        settingsPannel.getWidth() * settingsPannel.getShowPose(),
+                        getHeight() * 0.12);
+    }
+    
+//    orientation.setBounds (area.removeFromTop (getHeight() * 0.5)
+//                           .reduced (getHeight() * 0.5, 0));
     
     /*
     #if JUCE_MAC
@@ -131,30 +152,27 @@ void MainComponent::buttonClicked (Button* button)
         if (orientation.isVisible() == true)
         {
             orientation.setVisible (!orientation.isVisible());
-            removeChildComponent (&orientation);
-            
-            /*
-            orientation.setBounds (0, 0 ,0,0 );
+//            removeChildComponent (&orientation);
+//            orientation.setBounds (0, 0 ,0,0 );
             pose.setBounds (settingsPannel.getX(),
                             settingsPannel.getBottom() + 5,
                             settingsPannel.getWidth(),
                             getHeight() * 0.12);
-             */
         }
         else if (orientation.isVisible() == false)
         {
 //            orientation.setVisible (!orientation.isVisible());
-            addAndMakeVisible (orientation);
-            /*
-            orientation.setBounds (settingsPannel.getX(),
-                                   settingsPannel.getBottom() + 5,
-                                   settingsPannel.getWidth(),
-                                   (getHeight() * 0.63) - 15);
+//            addAndMakeVisible (orientation);
+            orientation.setVisible (!orientation.isVisible());
+//            orientation.setBounds (settingsPannel.getX(),
+//                                   settingsPannel.getBottom() + 5,
+//                                   settingsPannel.getWidth(),
+//                                   (getHeight() * 0.63) - 15);
             pose.setBounds (orientation.getX(),
                             orientation.getBottom() + 10,
                             settingsPannel.getWidth() * settingsPannel.getShowPose(),
                             getHeight() * 0.12);
-             */
+//             */
         }
     }
     
