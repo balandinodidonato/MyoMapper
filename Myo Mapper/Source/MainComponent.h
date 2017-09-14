@@ -48,7 +48,7 @@ public:
     
     void AboutMyoMapperDialogWindow();
     void HelpDialogWindow();
-    void buttonClicked (Button* button);
+    void buttonClicked (Button* button) override;
     void setPanelVisibility (Component &component);
     
     Settings settingsPannel;
