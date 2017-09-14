@@ -2,9 +2,8 @@
 #include "MyoData.h"
 
 MainComponent::MainComponent()
-:
-selectedMyoID(0),
-menuBar(this)
+:   selectedMyoID(0),
+    menuBar(this)
 {
     
 #if JUCE_MAC
@@ -57,18 +56,18 @@ MainComponent::~MainComponent()
 void MainComponent::paint(juce::Graphics &g)
 {
     
-    if(settingsPannel.getOSCsettingsStatusSender())
+    if (settingsPannel.getOSCsettingsStatusSender())
     {
         osc.disconnectSender();
-        osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
+        osc.setSender (settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
         settingsPannel.setOSCsettingsStatusSender (false);
         osc.connectSender();
     }
 
-    if(settingsPannel.getOSCsettingsStatusReceiver())
+    if (settingsPannel.getOSCsettingsStatusReceiver())
     {
         osc.disconnectReceiver();
-        osc.setReceiver(settingsPannel.getOSCPortReceiver());
+        osc.setReceiver (settingsPannel.getOSCPortReceiver());
         settingsPannel.setOSCsettingsStatusReceiver (false);
         osc.connectReceiver();
     }
@@ -78,130 +77,31 @@ void MainComponent::paint(juce::Graphics &g)
 
 void MainComponent::resized()
 {
+    auto area = getLocalBounds().reduced (getHeight() * 0.01);
     
-    auto area = getLocalBounds();
+    settingsPannel.setBounds (area.removeFromTop (getHeight() * 0.24));
     
-    settingsPannel.setBounds (area.removeFromTop (getHeight() * 0.24)
-                              .reduced (getHeight() * 0.01));
-    
-    orientation.setBounds (settingsPannel.getX(),
-                           settingsPannel.getBottom() + 5,
-                           settingsPannel.getWidth(),
-                           getHeight() * 0.63 - 15);
-    
-    if (orientation.isVisible() == false)
+    if (orientation.isVisible() == true)
     {
-        pose.setBounds (settingsPannel.getX(),
-                        settingsPannel.getBottom() + 5,
-                        settingsPannel.getWidth(),
-                        getHeight() * 0.12);
+        orientation.setBounds (area.removeFromTop (getHeight() * 0.63));
     }
-    else if (orientation.isVisible() == true)
-    {
-        pose.setBounds (orientation.getX(),
-                        orientation.getBottom() + 10,
-                        settingsPannel.getWidth() * settingsPannel.getShowPose(),
-                        getHeight() * 0.12);
-    }
-    
-//    orientation.setBounds (area.removeFromTop (getHeight() * 0.5)
-//                           .reduced (getHeight() * 0.5, 0));
-    
-    /*
-    #if JUCE_MAC
-        settingsPannel.setBounds (10,
-                                  10,
-                                  getRight() - 20,
-                                  getHeight() * 0.19 - 10);
-    #else
-        menuBar.setBounds(0, 0, getWidth(), 20);
-        settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
-    #endif
-    
-    if (settingsPannel.getShowOrientation() == 1)
-    {
-        orientation.setBounds (settingsPannel.getX(),
-                               settingsPannel.getBottom() + 5,
-                               settingsPannel.getWidth(),
-                               getHeight() * 0.63 - 15);
-    }
-    else
-        orientation.setBounds (0, 0, 0, 0);
-        
-    if (settingsPannel.getShowPose() == 1 && settingsPannel.getShowOrientation() == 1)
-    {
-        pose.setBounds (orientation.getX(),
-                        orientation.getBottom() + 10,
-                        settingsPannel.getWidth() * settingsPannel.getShowPose(),
-                        getHeight() * 0.12);
-    }
-    else if (settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==0)
-    {
-        pose.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), (getHeight()*0.12));
-    }
-    else
-        pose.setBounds(0, 0, 0, 0);
-     */
+    pose.setBounds (area.removeFromTop (getHeight() * 0.12));
 }
 
-// Function checking if ToggleButton was pressed to update GUI
 void MainComponent::buttonClicked (Button* button)
 {
-    if (button == &settingsPannel.showOrientation)
-    {
-        if (orientation.isVisible() == true)
-        {
-            orientation.setVisible (!orientation.isVisible());
-//            removeChildComponent (&orientation);
-//            orientation.setBounds (0, 0 ,0,0 );
-            pose.setBounds (settingsPannel.getX(),
-                            settingsPannel.getBottom() + 5,
-                            settingsPannel.getWidth(),
-                            getHeight() * 0.12);
-        }
-        else if (orientation.isVisible() == false)
-        {
-//            orientation.setVisible (!orientation.isVisible());
-//            addAndMakeVisible (orientation);
-            orientation.setVisible (!orientation.isVisible());
-//            orientation.setBounds (settingsPannel.getX(),
-//                                   settingsPannel.getBottom() + 5,
-//                                   settingsPannel.getWidth(),
-//                                   (getHeight() * 0.63) - 15);
-            pose.setBounds (orientation.getX(),
-                            orientation.getBottom() + 10,
-                            settingsPannel.getWidth() * settingsPannel.getShowPose(),
-                            getHeight() * 0.12);
-//             */
-        }
-    }
     
+    if (button == &settingsPannel.showOrientation)
+        setPanelVisibility (orientation);
     if (button == &settingsPannel.showPose)
-    {
-        if (pose.isVisible() == true)
-        {
-            pose.setVisible (!pose.isVisible());
-            pose.setBounds (0, 0, 0, 0);
-        }
-        else if (pose.isVisible() == false)
-        {
-            pose.setVisible (!pose.isVisible());
-            if (orientation.isVisible() == true)
-            {
-                pose.setBounds (orientation.getX(),
-                                orientation.getBottom() + 10,
-                                settingsPannel.getWidth() * settingsPannel.getShowPose(),
-                                getHeight() * 0.12);
-            }
-            else if (orientation.isVisible() == false)
-            {
-                pose.setBounds (settingsPannel.getX(),
-                                settingsPannel.getBottom() + 5,
-                                settingsPannel.getWidth(),
-                                getHeight() * 0.12);
-            }
-        }
-    }
+        setPanelVisibility (pose);
+    
+    resized();
+}
+
+void MainComponent::setPanelVisibility (Component &panel)
+{
+    panel.setVisible (!panel.isVisible());
 }
 
 void MainComponent::timerCallback()
