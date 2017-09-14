@@ -5,7 +5,7 @@ AboutWindow::AboutWindow (const String& name, Colour backgroundColour, int butto
 :
 DocumentWindow (name, backgroundColour, buttonsNeeded)
 {
-    juce::Component::addAndMakeVisible(aboutWindowContent);
+    Component::addAndMakeVisible(aboutWindowContent);
 }
 
 AboutWindow::~AboutWindow()

@@ -2,12 +2,10 @@
 #include "MyoListener.h"
 
 MyoManager::MyoManager()
-:
-Thread("Myo Data Thread"),
-hub(nullptr),
-myo(nullptr)
+:   Thread ("Myo Data Thread"),
+    hub (nullptr),
+    myo (nullptr)
 {
-    
 }
 
 MyoManager::~MyoManager()
@@ -23,13 +21,13 @@ bool MyoManager::connect()
     
     try
     {
-        if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
+        if ((hub = new myo::Hub ("com.yourcompany.MyoMapper")))
         {
             std::cout << "Attempting to find a Myo..." << std::endl;
-            myo = hub->waitForMyo(10000);
-            listener.knownMyos.push_back(myo);
-            myo->setStreamEmg(myo::Myo::streamEmgEnabled);
-            myo->unlock(myo::Myo::unlockHold);
+            myo = hub->waitForMyo (10000);
+            listener.knownMyos.push_back (myo);
+            myo->setStreamEmg (myo::Myo::streamEmgEnabled);
+            myo->unlock (myo::Myo::unlockHold);
         }
     }
     catch (const std::exception& e)
@@ -44,7 +42,7 @@ bool MyoManager::connect()
     
     if (myo)
     {
-        hub->addListener(&listener);
+        hub->addListener (&listener);
     }
     else
     {
@@ -66,7 +64,7 @@ void MyoManager::run()
     
     while (!threadShouldExit())
     {
-        hub->runOnce(20);
+        hub->runOnce (20);
         
         if (tryEnterWrite())
         {
@@ -76,7 +74,7 @@ void MyoManager::run()
     }
 }
 
-std::vector<MyoData> MyoManager::getMyoData(bool &success) const
+std::vector<MyoData> MyoManager::getMyoData (bool &success) const
 {
     std::vector<MyoData> dataCopy;
     
@@ -100,7 +98,7 @@ void MyoManager::disconnect()
     }
     stopPoll();
     // It's safe to call removeListener() for a not-added listener
-    hub->removeListener(&listener);
+    hub->removeListener (&listener);
     delete hub;
     hub = nullptr;
 }
@@ -112,15 +110,15 @@ void MyoManager::startPoll()
 
 void MyoManager::stopPoll()
 {
-    stopThread(1000);
+    stopThread (1000);
 }
 
-void MyoManager::vibrate(String VibrationType)
+void MyoManager::vibrate (String VibrationType)
 {
-    if(VibrationType == "long")
-        myo->vibrate(myo::Myo::vibrationLong);
-    if(VibrationType == "medium")
-        myo->vibrate(myo::Myo::vibrationMedium);
-    if(VibrationType == "short")
-        myo->vibrate(myo::Myo::vibrationShort);
+    if (VibrationType == "long")
+        myo->vibrate (myo::Myo::vibrationLong);
+    if (VibrationType == "medium")
+        myo->vibrate (myo::Myo::vibrationMedium);
+    if (VibrationType == "short")
+        myo->vibrate (myo::Myo::vibrationShort);
 }

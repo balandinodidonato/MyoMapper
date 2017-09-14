@@ -2,9 +2,8 @@
 #include "MyoData.h"
 
 MainComponent::MainComponent()
-:
-selectedMyoID(0),
-menuBar(this)
+:   selectedMyoID(0),
+    menuBar(this)
 {
     
 #if JUCE_MAC
@@ -20,17 +19,22 @@ menuBar(this)
     }
 #endif
     
-    setSize(getParentWidth()*0.4, getParentHeight());
+    setSize (getParentWidth() * 0.4, getParentHeight());
 
-    addAndMakeVisible(&menuBar);
+    addAndMakeVisible (&menuBar);
 
-    getLookAndFeel().setUsingNativeAlertWindows(true);
+    getLookAndFeel().setUsingNativeAlertWindows (true);
     
-    addAndMakeVisible(orientation);
-    addAndMakeVisible(settingsPannel);
-    addAndMakeVisible(pose);
+    addAndMakeVisible (orientation);
+    orientation.setVisible (false);
+    addAndMakeVisible (settingsPannel);
+    addAndMakeVisible (pose);
+    pose.setVisible (false);
     
-    settingsPannel.myoList.addListener(this);
+    settingsPannel.showOrientation.addListener (this);
+    settingsPannel.showPose.addListener (this);
+    
+    settingsPannel.myoList.addListener (this);
     myoManager.connect();
     myoManager.startPoll();
     
@@ -52,95 +56,107 @@ MainComponent::~MainComponent()
 void MainComponent::paint(juce::Graphics &g)
 {
     
-    if(settingsPannel.getOSCsettingsStatusSender())
+    if (settingsPannel.getOSCsettingsStatusSender())
     {
         osc.disconnectSender();
-        osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
-        settingsPannel.setOSCsettingsStatusSender(false);
+        osc.setSender (settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
+        settingsPannel.setOSCsettingsStatusSender (false);
         osc.connectSender();
     }
 
-    if(settingsPannel.getOSCsettingsStatusReceiver())
+    if (settingsPannel.getOSCsettingsStatusReceiver())
     {
         osc.disconnectReceiver();
-        osc.setReceiver(settingsPannel.getOSCPortReceiver());
-        settingsPannel.setOSCsettingsStatusReceiver(false);
+        osc.setReceiver (settingsPannel.getOSCPortReceiver());
+        settingsPannel.setOSCsettingsStatusReceiver (false);
         osc.connectReceiver();
     }
     
     g.fillAll(Colours::grey);
-
-    #if JUCE_MAC
-        settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.23-10);
-    #else
-        menuBar.setBounds(0, 0, getWidth(), 20);
-        settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
-    #endif
-   
-    if(settingsPannel.getShowOrientation()==1)
-        orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), ((getHeight()*0.63)-15));
-    else orientation.setBounds(0, 0, 0, 0);
-    
-    if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==1)
-        pose.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12));
-    else if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==0)
-        pose.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), (getHeight()*0.12));
-    else pose.setBounds(0, 0, 0, 0);
-    
 }
 
 void MainComponent::resized()
 {
-    #if JUCE_MAC
-        settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.19-10);
-    #else
-        menuBar.setBounds(0, 0, getWidth(), 20);
-        settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
-    #endif
+    auto area = getLocalBounds().reduced (getHeight() * 0.01);
     
-    if(settingsPannel.getShowOrientation()==1)
-    orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), ((getHeight()*0.63)-15));
-    else orientation.setBounds(0, 0, 0, 0);
-        
-    if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==1)
-        pose.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12));
-    else if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==0)
-        pose.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), (getHeight()*0.12));
-    else pose.setBounds(0, 0, 0, 0);
+    settingsPannel.setBounds (area.removeFromTop (getHeight() * 0.24));
+    
+    if (orientation.isVisible() == true)
+    {
+        orientation.setBounds (area.removeFromTop (getHeight() * 0.63));
+    }
+    pose.setBounds (area.removeFromTop (getHeight() * 0.12));
 }
 
-//int i = 0;
+void MainComponent::buttonClicked (Button* button)
+{
+    
+    if (button == &settingsPannel.showOrientation)
+        setPanelVisibility (orientation);
+    if (button == &settingsPannel.showPose)
+        setPanelVisibility (pose);
+    
+    resized();
+}
+
+void MainComponent::setPanelVisibility (Component &panel)
+{
+    panel.setVisible (!panel.isVisible());
+}
 
 void MainComponent::timerCallback()
 {
     bool success = false;
-    std::vector<MyoData> myoData = myoManager.getMyoData(success);
+    std::vector<MyoData> myoData = myoManager.getMyoData (success);
     
-    if (!success) return;
+    if (! success) return;
     
-    if (!selectedMyoID || selectedMyoID >= myoData.size()) return;
+    if (! selectedMyoID || selectedMyoID >= myoData.size()) return;
 
     uint8 id = selectedMyoID;
         
-    orientation.setValues(myoData[id].orientationRaw);
-    pose.setPoseLabel(myoData[id].pose+" - "+String(myoData[id].poseID));
+    orientation.setValues (myoData[id].orientationRaw);
+    pose.setPoseLabel (myoData[id].pose + " - " + String (myoData[id].poseID));
 
-    osc.sendOSC(id, myoData[id].emgRaw, myoData[id].emgScaled, myoData[id].emgScaledAbs, myoData[id].quaternion, myoData[id].mav,  myoData[id].mavWfL, myoData[id].gyro, myoData[id].gyroWfL, myoData[id].gyroScaled, myoData[id].gyroScaledWfL, myoData[id].acceleration, myoData[id].accelerationWfL, myoData[id].accelerationScaled, myoData[id].accelerationScaledWfL, myoData[id].orientationRaw, orientation.getValue(), orientation.getWl(), myoData[id].pose, myoData[id].poseID);
+    osc.sendOSC (id,
+                 myoData[id].emgRaw,
+                 myoData[id].emgScaled,
+                 myoData[id].emgScaledAbs,
+                 myoData[id].quaternion,
+                 myoData[id].mav,
+                 myoData[id].mavWfL,
+                 myoData[id].gyro,
+                 myoData[id].gyroWfL,
+                 myoData[id].gyroScaled,
+                 myoData[id].gyroScaledWfL,
+                 myoData[id].acceleration,
+                 myoData[id].accelerationWfL,
+                 myoData[id].accelerationScaled,
+                 myoData[id].accelerationScaledWfL,
+                 myoData[id].orientationRaw,
+                 orientation.getValue(),
+                 orientation.getWl(),
+                 myoData[id].pose,
+                 myoData[id].poseID);
  
     
-    if(osc.vibrate)
+    if (osc.vibrate)
     {
-        myoManager.vibrate(osc.vibrationType);
+        myoManager.vibrate (osc.vibrationType);
         osc.vibrate = false;
     }
 
-    for(int i=0; i<4; i++) // myoData
-        for(int y=1; y<5; y++) // action
-            if(osc.map[i][y])
+    for (int i = 0; i < 4; ++i) // myoData
+    {
+        for (int y = 1; y < 5; ++y) // action
+        {
+            if (osc.map[i][y])
             {
-                orientation.map(i, y, osc.value, osc.reverseStatus);
+                orientation.map (i, y, osc.value, osc.reverseStatus);
                 osc.map[i][y] = false;
             }
+        }
+    }
 }
 
 void MainComponent::disconnectMyoAndOSC()
@@ -151,12 +167,12 @@ void MainComponent::disconnectMyoAndOSC()
 }
 
 
-void MainComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
+void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 {
 	if (comboBoxThatHasChanged == &settingsPannel.myoList)
 	{
 		selectedMyoID = settingsPannel.myoList.getSelectedId();
-		osc.setMyoIdReceiver(selectedMyoID);
+		osc.setMyoIdReceiver (selectedMyoID);
 	}
 
 }
@@ -171,32 +187,35 @@ StringArray MainComponent::getMenuBarNames()
     return StringArray (menuNames);
 }
 
-PopupMenu MainComponent::getMenuForIndex(int index, const String& name)
+PopupMenu MainComponent::getMenuForIndex (int index, const String& name)
 {
     PopupMenu menu;
     if (name == "Help")
     {
-        menu.addItem(AboutMyoMapper, "About Myo Mapper");
-        menu.addItem(onlineDocumentation, "Online Documentation");
+        menu.addItem (AboutMyoMapper, "About Myo Mapper");
+        menu.addItem (onlineDocumentation, "Online Documentation");
     }
     return menu;
 }
 
-void MainComponent::menuItemSelected(int menuID, int index)
+void MainComponent::menuItemSelected (int menuID, int index)
 {
-        if (menuID == AboutMyoMapper) AboutMyoMapperDialogWindow();
-        else if (menuID == onlineDocumentation) HelpDialogWindow();
+        if (menuID == AboutMyoMapper)
+            AboutMyoMapperDialogWindow();
+        else if (menuID == onlineDocumentation)
+            HelpDialogWindow();
 }
 
 void MainComponent::AboutMyoMapperDialogWindow()
 {
-    AboutWindow* aboutWindow = new AboutWindow ("About Myo Mapper", Colours::grey, DocumentWindow::closeButton);
+    AboutWindow* aboutWindow = new AboutWindow ("About Myo Mapper",
+                                                Colours::grey,
+                                                DocumentWindow::closeButton);
     aboutWindow->addToDesktop();
     
     Rectangle<int> area (0, 0, 200, 200);
     
-    RectanglePlacement placement ((true ? RectanglePlacement::xMid
-                                   : RectanglePlacement::xRight)
+    RectanglePlacement placement (RectanglePlacement::xMid
                                   | RectanglePlacement::yMid
                                   | RectanglePlacement::doNotResize);
     
@@ -204,20 +223,21 @@ void MainComponent::AboutMyoMapperDialogWindow()
                                                 .getMainDisplay().userArea.reduced (20)));
     aboutWindow->setBounds (result);
     
-    aboutWindow->setResizable(false, false);
+    aboutWindow->setResizable (false, false);
     aboutWindow->setUsingNativeTitleBar (true);
     aboutWindow->setVisible (true);
 }
 
 void MainComponent::HelpDialogWindow()
 {
-    HelpWindow* helpWindow = new HelpWindow ("Online Documentation", Colours::grey, DocumentWindow::closeButton);
+    HelpWindow* helpWindow = new HelpWindow ("Online Documentation",
+                                             Colours::grey,
+                                             DocumentWindow::closeButton);
     helpWindow->addToDesktop();
     
     Rectangle<int> area (0, 0, 300, 150);
     
-    RectanglePlacement placement ((true ? RectanglePlacement::xMid
-                                   : RectanglePlacement::xRight)
+    RectanglePlacement placement (RectanglePlacement::xMid
                                   | RectanglePlacement::yMid
                                   | RectanglePlacement::doNotResize);
     
@@ -225,7 +245,7 @@ void MainComponent::HelpDialogWindow()
                                                 .getMainDisplay().userArea.reduced (20)));
     helpWindow->setBounds (result);
     
-    helpWindow->setResizable(false, false);
+    helpWindow->setResizable (false, false);
     helpWindow->setUsingNativeTitleBar (true);
     helpWindow->setVisible (true);
 }

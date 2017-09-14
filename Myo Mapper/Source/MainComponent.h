@@ -1,9 +1,9 @@
 #ifndef MAINCOMPONENT_H_INCLUDED
 #define MAINCOMPONENT_H_INCLUDED
 
-#include "orientation.h"
+#include "Orientation.h"
 //#include "mav.h"
-#include "settings.h"
+#include "Settings.h"
 #include "MyoManager.h"
 #include "Pose.h"
 #include "OSC.h"
@@ -18,7 +18,8 @@
 class MainComponent    : public Component,
                          private Timer,
                          public MenuBarModel,
-                        private ComboBox::Listener
+                         private ComboBox::Listener,
+                         private Button::Listener   // Added Listener for panel show/ hide buttons
 {
     
 public:
@@ -32,7 +33,7 @@ public:
     Orientation orientation;
     
     StringArray getMenuBarNames() override;
-    PopupMenu getMenuForIndex(int index, const String& name) override;
+    PopupMenu getMenuForIndex (int index, const String& name) override;
     void menuItemSelected (int menuID, int index) override;
     
     enum MenuIDs {
@@ -47,6 +48,9 @@ public:
     
     void AboutMyoMapperDialogWindow();
     void HelpDialogWindow();
+    void buttonClicked (Button* button) override;
+    void setPanelVisibility (Component &component);
+    
     Settings settingsPannel;
     
     
