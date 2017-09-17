@@ -1343,6 +1343,7 @@
     <ClInclude Include="..\..\Source\AboutWindowContent.h"/>
     <ClInclude Include="..\..\Source\HelpWindow.h"/>
     <ClInclude Include="..\..\Source\AboutWindow.h"/>
+    <ClInclude Include="..\..\Source\PropertyManager.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\Settings.h"/>
     <ClInclude Include="..\..\Source\Orientation.h"/>

@@ -9,6 +9,7 @@
 #include "OSC.h"
 #include "AboutWindow.h"
 #include "HelpWindow.h"
+#include "PropertyManager.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
@@ -38,6 +39,9 @@ public:
     
     enum MenuIDs {
         AboutMyoMapper = 1000,
+        Preferences,
+        OpenSettingsFromFile,
+        SaveSettingsToFile,
         AddMyo,
         Quit,
         ShowOrientation,
@@ -54,8 +58,8 @@ public:
     Settings settingsPannel;
     
     
-private:
-
+    
+private:    
     void timerCallback() override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     

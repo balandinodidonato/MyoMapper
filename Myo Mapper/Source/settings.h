@@ -1,6 +1,7 @@
 #ifndef SETTINGS_H_INCLUDED
 #define SETTINGS_H_INCLUDED
 
+#include "PropertyManager.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 class Settings    : public Component,
@@ -40,6 +41,8 @@ public:
     int getOSCPortReceiver();
     String getHostAddress();
     int getSelectedMyo();
+    
+    PropertyManager propertyManager;
     
 private:
     Slider oscPortSliderSender;

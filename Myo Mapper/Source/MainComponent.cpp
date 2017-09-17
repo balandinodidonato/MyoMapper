@@ -5,6 +5,7 @@ MainComponent::MainComponent()
 :   selectedMyoID(0),
     menuBar(this)
 {
+   
     
 #if JUCE_MAC
     if (MenuBarModel::getMacMainMenu() != nullptr)
@@ -19,6 +20,8 @@ MainComponent::MainComponent()
     }
 #endif
     
+    PropertiesFile* properties = settingsPannel.propertyManager.appProperties.getUserSettings();
+    
     setSize (getParentWidth() * 0.4, getParentHeight());
 
     addAndMakeVisible (&menuBar);
@@ -26,10 +29,11 @@ MainComponent::MainComponent()
     getLookAndFeel().setUsingNativeAlertWindows (true);
     
     addAndMakeVisible (orientation);
-    orientation.setVisible (false);
+    orientation.setVisible (properties->getBoolValue ("Show Orientation", false));
     addAndMakeVisible (settingsPannel);
     addAndMakeVisible (pose);
-    pose.setVisible (false);
+    pose.setVisible (properties->getBoolValue ("Show Pose", false));
+    
     
     settingsPannel.showOrientation.addListener (this);
     settingsPannel.showPose.addListener (this);
@@ -90,7 +94,6 @@ void MainComponent::resized()
 
 void MainComponent::buttonClicked (Button* button)
 {
-    
     if (button == &settingsPannel.showOrientation)
         setPanelVisibility (orientation);
     if (button == &settingsPannel.showPose)
@@ -183,13 +186,18 @@ void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 
 StringArray MainComponent::getMenuBarNames()
 {
-    const char* menuNames[] = {"Help", nullptr};
+    const char* menuNames[] = {"File", "Help", nullptr};
     return StringArray (menuNames);
 }
 
 PopupMenu MainComponent::getMenuForIndex (int index, const String& name)
 {
     PopupMenu menu;
+    if (name == "File")
+    {
+        menu.addItem (OpenSettingsFromFile, "Open");
+        menu.addItem (SaveSettingsToFile, "Save as...");
+    }
     if (name == "Help")
     {
         menu.addItem (AboutMyoMapper, "About Myo Mapper");

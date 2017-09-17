@@ -8,8 +8,10 @@ Settings::Settings()
     oscPortSender (5432),
     oscPortReceiver (5431)
 {
+    PropertiesFile* properties = propertyManager.appProperties.getUserSettings();
+    
     oscPortSliderSender.setRange (0, 9999, 1);
-    oscPortSliderSender.setValue (5432);
+    oscPortSliderSender.setValue (properties->getIntValue ("OSC Send", 5432));
     oscPortSliderSender.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     oscPortSliderSender.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (oscPortSliderSender);
@@ -28,7 +30,7 @@ Settings::Settings()
     setHostAddress.addListener (this);
     
     oscPortSliderReceiver.setRange (0, 9999, 1);
-    oscPortSliderReceiver.setValue (5431);
+    oscPortSliderReceiver.setValue (properties->getIntValue ("OSC Receive", 5431));
     oscPortSliderReceiver.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     oscPortSliderReceiver.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (oscPortSliderReceiver);
@@ -38,7 +40,7 @@ Settings::Settings()
     addAndMakeVisible (oscPortLabelReceiver);
     oscPortSliderReceiver.addListener (this);
     
-    myoList.setText ("Select Myo");
+    myoList.setText (properties->getValue ("Myo Number", "Select Myo"));
     addAndMakeVisible (myoList);
     
     myoList.addItem ("Myo n. 1", 1);
@@ -47,13 +49,24 @@ Settings::Settings()
     myoList.addItem ("Myo n. 4", 4);
     
     showOrientation.setButtonText ("Show Orientation");
+    showOrientation.setToggleState (properties->getBoolValue ("Show Orientation", false),
+                                    dontSendNotification);
     addAndMakeVisible (showOrientation);
     showPose.setButtonText ("Show Pose");
+    showPose.setToggleState (properties->getBoolValue ("Show Pose", false),
+                             dontSendNotification);
+    showPose.setVisible (properties->getBoolValue ("Show Pose", false));
     addAndMakeVisible (showPose);
 }
 
 Settings::~Settings()
 {
+    PropertiesFile* properties = propertyManager.appProperties.getUserSettings();
+    properties->setValue ("Myo Number", myoList.getText());
+    properties->setValue ("OSC Send", oscPortSliderSender.getValue());
+    properties->setValue ("OSC Receive", oscPortSliderReceiver.getValue());
+    properties->setValue ("Show Orientation", showOrientation.getToggleStateValue());
+    properties->setValue ("Show Pose", showPose.getToggleStateValue());
 }
 
 void Settings::paint (Graphics& g)
