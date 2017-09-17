@@ -20,9 +20,9 @@ class PropertyManager
 public:
     PropertyManager()
     {
-        options.applicationName = "settings";
+        options.applicationName = "userSettings";
         options.folderName = ProjectInfo::projectName;
-        options.filenameSuffix = ".xml";
+        options.filenameSuffix = ".mapper";
         options.osxLibrarySubFolder = "Application Support";
         appProperties.setStorageParameters (options);
         appProperties.getCommonSettings (true);
