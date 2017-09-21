@@ -131,6 +131,10 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     myoData[myoID].gyroScaled.y = (gyro.y() + 2000) *  0.00025;
     myoData[myoID].gyroScaled.z = (gyro.z() + 2000) *  0.00025;
    
+    myoData[myoID].gyroScaledAbs.x = std::abs((myoData[myoID].gyroScaled.x-0.5)*2);
+    myoData[myoID].gyroScaledAbs.y = std::abs((myoData[myoID].gyroScaled.y-0.5)*2);
+    myoData[myoID].gyroScaledAbs.z = std::abs((myoData[myoID].gyroScaled.z-0.5)*2);
+    
     gyroFod.set3DValue (myoData[myoID].gyro);
     myoData[myoID].gyroFod = gyroFod.get3DValue();
     
@@ -190,7 +194,6 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
    
     mavSod.setValue (myoData[myoID].mav);
     myoData[myoID].mavSod = mavSod.getValue();
-    std::cout << myoData[myoID].mavSod << std::endl;
 }
 
 // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after
