@@ -137,6 +137,7 @@ void MainComponent::timerCallback()
                  myoData[id].orientationRaw,
                  orientation.getValue(),
                  orientation.getFod(),
+                 orientation.getSod(),
                  myoData[id].pose,
                  myoData[id].poseID);
  

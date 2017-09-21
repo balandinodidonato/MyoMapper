@@ -140,7 +140,6 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     
     gyroScaledFod.set3DValue (myoData[myoID].gyroScaled);
     myoData[myoID].gyroScaledFod = gyroScaledFod.get3DValue();
-    
 }
 
 

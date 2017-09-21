@@ -81,6 +81,7 @@ void OSC::sendOSC (int id,
                    Vector3D<float> orientationRaw,
                    Vector3D<float> orientationScaled,
                    Vector3D<float> orientationFod,
+                   Vector3D<float> orientationSod,
                    String pose,
                    int poseID
                   )
@@ -95,10 +96,14 @@ void OSC::sendOSC (int id,
                  (float) orientationScaled.x,
                  (float) orientationScaled.y,
                  (float) orientationScaled.z);
-    sender.send ("/myo" + ID + "/orientation/scaledFod",
+    sender.send ("/myo" + ID + "/orientation/velocity",
                  (float) orientationFod.x,
                  (float) orientationFod.y,
                  (float) orientationFod.z);
+    sender.send ("/myo" + ID + "/orientation/acceleration",
+                 (float) orientationSod.x,
+                 (float) orientationSod.y,
+                 (float) orientationSod.z);
     sender.send ("/myo" + ID + "/gyro/raw",
                  (float) gyro.x,
                  (float) gyro.y,
@@ -119,7 +124,6 @@ void OSC::sendOSC (int id,
                  (float) gyroScaledFod.x,
                  (float) gyroScaledFod.y,
                  (float) gyroScaledFod.z);
-    
     sender.send ("/myo" + ID + "/acceleration/raw",
                  (float) acceleration.x,
                  (float) acceleration.y,
