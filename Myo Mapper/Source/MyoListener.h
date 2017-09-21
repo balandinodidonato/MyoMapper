@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    MyoListener.h
-    Created: 10 Jun 2016 11:54:24am
-    Author:  Jamie Bullock
-
-  ==============================================================================
-*/
-
 #ifndef MYOLISTENER_H_INCLUDED
 #define MYOLISTENER_H_INCLUDED
 
