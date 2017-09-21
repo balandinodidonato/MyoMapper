@@ -12,7 +12,7 @@ SecondOrderDifference::~SecondOrderDifference()
 void SecondOrderDifference::setValue (float Value)
 {
     input = Value;
-    sod = std::abs(input-(2*previousInputs[0])+previousInputs[1])*scaleFactor;
+    sod = (input-(2*previousInputs[0])+previousInputs[1])*scaleFactor;
     
     previousInputs[inputPointer] = input;
     inputPointer++;
@@ -29,9 +29,9 @@ void SecondOrderDifference::set3DValue(Vector3D<float> Value3D)
     
     input3D = Value3D;
     
-    sod3D.x = std::abs (input3D.x-(2*previousInputs3D[0].x)+previousInputs3D[1].x) * scaleFactor;
-    sod3D.x = std::abs (input3D.y-(2*previousInputs3D[0].y)+previousInputs3D[1].y) * scaleFactor;
-    sod3D.x = std::abs (input3D.z-(2*previousInputs3D[0].z)+previousInputs3D[1].z) * scaleFactor;
+    sod3D.x = (input3D.x-(2*previousInputs3D[0].x)+previousInputs3D[1].x) * scaleFactor;
+    sod3D.x = (input3D.y-(2*previousInputs3D[0].y)+previousInputs3D[1].y) * scaleFactor;
+    sod3D.x = (input3D.z-(2*previousInputs3D[0].z)+previousInputs3D[1].z) * scaleFactor;
 
     previousInputs3D[inputPointer3D] = input3D;
     inputPointer3D++;
