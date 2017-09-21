@@ -11,6 +11,10 @@
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>
       <GROUP id="{2098BAB5-B007-98E8-0BA2-8093E352BED8}" name="Myo">
+        <FILE id="CIAzqu" name="SecondOrderDifference.cpp" compile="1" resource="0"
+              file="Source/SecondOrderDifference.cpp"/>
+        <FILE id="tufhzi" name="SecondOrderDifference.h" compile="0" resource="0"
+              file="Source/SecondOrderDifference.h"/>
         <FILE id="Ux6nrY" name="FirstOrderDifferece.cpp" compile="1" resource="0"
               file="Source/FirstOrderDifferece.cpp"/>
         <FILE id="eh2dio" name="FirstOrderDifference.h" compile="0" resource="0"
