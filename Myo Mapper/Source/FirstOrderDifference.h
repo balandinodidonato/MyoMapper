@@ -19,7 +19,7 @@ private:
     float previousInput;
     float input;
     float fod;
-    float factor = 4;
+    float scaleFactor = 4;
 
     Vector3D<float> input3D;
     Vector3D<float> previousInput3D;
