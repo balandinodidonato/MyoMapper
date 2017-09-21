@@ -4,6 +4,7 @@
 #include "myo/myo.hpp"
 #include "Orientation.h"
 #include "FirstOrderDifference.h"
+#include "SecondOrderDifference.h"
 #include "MyoData.h"
 #include <array>
 
@@ -69,7 +70,7 @@ private:
     
     FirstOrderDifference mavFod;
     
-    
+    SecondOrderDifference mavSod;
 };
 
 
