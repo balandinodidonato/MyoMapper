@@ -58,7 +58,7 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="" extraLinkerFlags=""
                extraCompilerFlags="" extraFrameworks="myo" smallIcon="WFoxze"
                bigIcon="WFoxze" postbuildCommand="dst=${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Frameworks&#10;mkdir -p &quot;${dst}&quot;"
-               vst3Folder="">
+               vst3Folder="" rtasFolder="" aaxFolder="">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
