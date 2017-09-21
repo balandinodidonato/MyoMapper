@@ -1,34 +1,30 @@
 /*
   ==============================================================================
 
-   This file is part of the juce_core module of the JUCE library.
-   Copyright (c) 2015 - ROLI Ltd.
+   This file is part of the JUCE library.
+   Copyright (c) 2017 - ROLI Ltd.
 
-   Permission to use, copy, modify, and/or distribute this software for any purpose with
-   or without fee is hereby granted, provided that the above copyright notice and this
-   permission notice appear in all copies.
+   JUCE is an open source library subject to commercial or open-source
+   licensing.
 
-   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD
-   TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN
-   NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
-   DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER
-   IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-   CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+   The code included in this file is provided under the terms of the ISC license
+   http://www.isc.org/downloads/software-support-policy/isc-license. Permission
+   To use, copy, modify, and/or distribute this software for any purpose with or
+   without fee is hereby granted provided that the above copyright notice and
+   this permission notice appear in all copies.
 
-   ------------------------------------------------------------------------------
-
-   NOTE! This permissive ISC license applies ONLY to files within the juce_core module!
-   All other JUCE modules are covered by a dual GPL/commercial license, so if you are
-   using any other modules, be sure to check that you also comply with their license.
-
-   For more details, visit www.juce.com
+   JUCE IS PROVIDED "AS IS" WITHOUT ANY WARRANTY, AND ALL WARRANTIES, WHETHER
+   EXPRESSED OR IMPLIED, INCLUDING MERCHANTABILITY AND FITNESS FOR PURPOSE, ARE
+   DISCLAIMED.
 
   ==============================================================================
 */
 
-class JSONParser
+namespace juce
 {
-public:
+
+struct JSONParser
+{
     static Result parseObjectOrArray (String::CharPointerType t, var& result)
     {
         t = t.findEndOfWhitespace();
@@ -82,7 +78,7 @@ public:
                             if (digitValue < 0)
                                 return createFail ("Syntax error in unicode escape sequence");
 
-                            c = (juce_wchar) ((c << 4) + digitValue);
+                            c = (juce_wchar) ((c << 4) + static_cast<juce_wchar> (digitValue));
                         }
 
                         break;
@@ -325,11 +321,11 @@ private:
 };
 
 //==============================================================================
-class JSONFormatter
+struct JSONFormatter
 {
-public:
     static void write (OutputStream& out, const var& v,
-                       const int indentLevel, const bool allOnOneLine)
+                       const int indentLevel, const bool allOnOneLine,
+                       int maximumDecimalPlaces)
     {
         if (v.isString())
         {
@@ -349,14 +345,18 @@ public:
         {
             out << (static_cast<bool> (v) ? "true" : "false");
         }
+        else if (v.isDouble())
+        {
+            out << String (static_cast<double> (v), maximumDecimalPlaces);
+        }
         else if (v.isArray())
         {
-            writeArray (out, *v.getArray(), indentLevel, allOnOneLine);
+            writeArray (out, *v.getArray(), indentLevel, allOnOneLine, maximumDecimalPlaces);
         }
         else if (v.isObject())
         {
             if (DynamicObject* object = v.getDynamicObject())
-                object->writeAsJSON (out, indentLevel, allOnOneLine);
+                object->writeAsJSON (out, indentLevel, allOnOneLine, maximumDecimalPlaces);
             else
                 jassertfalse; // Only DynamicObjects can be converted to JSON!
         }
@@ -426,7 +426,8 @@ public:
     }
 
     static void writeArray (OutputStream& out, const Array<var>& array,
-                            const int indentLevel, const bool allOnOneLine)
+                            const int indentLevel, const bool allOnOneLine,
+                            int maximumDecimalPlaces)
     {
         out << '[';
 
@@ -440,7 +441,7 @@ public:
                 if (! allOnOneLine)
                     writeSpaces (out, indentLevel + indentSize);
 
-                write (out, array.getReference(i), indentLevel + indentSize, allOnOneLine);
+                write (out, array.getReference(i), indentLevel + indentSize, allOnOneLine, maximumDecimalPlaces);
 
                 if (i < array.size() - 1)
                 {
@@ -499,16 +500,16 @@ Result JSON::parse (const String& text, var& result)
     return JSONParser::parseObjectOrArray (text.getCharPointer(), result);
 }
 
-String JSON::toString (const var& data, const bool allOnOneLine)
+String JSON::toString (const var& data, const bool allOnOneLine, int maximumDecimalPlaces)
 {
     MemoryOutputStream mo (1024);
-    JSONFormatter::write (mo, data, 0, allOnOneLine);
+    JSONFormatter::write (mo, data, 0, allOnOneLine, maximumDecimalPlaces);
     return mo.toUTF8();
 }
 
-void JSON::writeToStream (OutputStream& output, const var& data, const bool allOnOneLine)
+void JSON::writeToStream (OutputStream& output, const var& data, const bool allOnOneLine, int maximumDecimalPlaces)
 {
-    JSONFormatter::write (output, data, 0, allOnOneLine);
+    JSONFormatter::write (output, data, 0, allOnOneLine, maximumDecimalPlaces);
 }
 
 String JSON::escapeString (StringRef s)
@@ -535,7 +536,7 @@ Result JSON::parseQuotedString (String::CharPointerType& t, var& result)
 class JSONTests  : public UnitTest
 {
 public:
-    JSONTests() : UnitTest ("JSON") {}
+    JSONTests() : UnitTest ("JSON", "JSON") {}
 
     static String createRandomWideCharString (Random& r)
     {
@@ -571,24 +572,18 @@ public:
         return CharPointer_ASCII (buffer);
     }
 
-    // (creates a random double that can be easily stringified, to avoid
-    // false failures when decimal places are rounded or truncated slightly)
+    // Creates a random double that can be easily stringified, to avoid
+    // false failures when decimal places are rounded or truncated slightly
     static var createRandomDouble (Random& r)
     {
-        for (;;)
-        {
-            var v (String (r.nextDouble() * 1000.0, 20).getDoubleValue());
-
-            if (v.toString() == String (static_cast<double> (v), 20))
-                return v;
-        }
+        return var ((r.nextDouble() * 1000.0) + 0.1);
     }
 
     static var createRandomVar (Random& r, int depth)
     {
         switch (r.nextInt (depth > 3 ? 6 : 8))
         {
-            case 0:     return var();
+            case 0:     return {};
             case 1:     return r.nextInt();
             case 2:     return r.nextInt64();
             case 3:     return r.nextBool();
@@ -616,7 +611,7 @@ public:
             }
 
             default:
-                return var();
+                return {};
         }
     }
 
@@ -654,3 +649,5 @@ public:
 static JSONTests JSONUnitTests;
 
 #endif
+
+} // namespace juce
