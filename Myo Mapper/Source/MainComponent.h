@@ -2,13 +2,12 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "Orientation.h"
-//#include "mav.h"
 #include "Settings.h"
 #include "MyoManager.h"
 #include "Pose.h"
 #include "OSC.h"
 #include "AboutWindow.h"
-#include "HelpWindow.h"
+#include "helpWindow.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
