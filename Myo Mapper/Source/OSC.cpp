@@ -78,6 +78,7 @@ void OSC::sendOSC (int id,
                    Vector3D<float> accelerationFod,
                    Vector3D<float> accelerationScaled,
                    Vector3D<float> accelerationScaledFod,
+                   Vector3D<float> accelerationScaledMavg,
                    Vector3D<float> orientationRaw,
                    Vector3D<float> orientationScaled,
                    Vector3D<float> orientationFod,
@@ -147,6 +148,10 @@ void OSC::sendOSC (int id,
                  (float) accelerationScaledFod.x,
                  (float) accelerationScaledFod.y,
                  (float) accelerationScaledFod.z);
+    sender.send ("/myo" + ID + "/acceleration/scaledMavg",
+                 (float) accelerationScaledMavg.x,
+                 (float) accelerationScaledMavg.y,
+                 (float) accelerationScaledMavg.z);
     
     sender.send ("/myo" + ID + "/EMG/raw",
                  (int) emgRaw[0],

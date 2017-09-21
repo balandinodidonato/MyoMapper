@@ -19,6 +19,7 @@ struct MyoData
     Vector3D<float> accelerationScaledAbs;
     Vector3D<float> accelerationFod;
     Vector3D<float> accelerationScaledFod;
+    Vector3D<float> accelerationScaledMavg;
     Vector3D<float> orientationRaw;
     Vector3D<float> orientationScaled;
     Vector3D<float> orientationScaledFod;

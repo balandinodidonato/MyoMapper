@@ -148,6 +148,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\MovingAverage.cpp"/>
     <ClCompile Include="..\..\Source\SecondOrderDifference.cpp"/>
     <ClCompile Include="..\..\Source\FirstOrderDifferece.cpp"/>
     <ClCompile Include="..\..\Source\MyoManager.cpp"/>
@@ -1346,6 +1347,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\MovingAverage.h"/>
     <ClInclude Include="..\..\Source\SecondOrderDifference.h"/>
     <ClInclude Include="..\..\Source\FirstOrderDifference.h"/>
     <ClInclude Include="..\..\Source\MyoData.h"/>

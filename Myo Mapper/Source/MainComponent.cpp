@@ -134,6 +134,7 @@ void MainComponent::timerCallback()
                  myoData[id].accelerationFod,
                  myoData[id].accelerationScaled,
                  myoData[id].accelerationScaledFod,
+                 myoData[id].accelerationScaledMavg,
                  myoData[id].orientationRaw,
                  orientation.getValue(),
                  orientation.getFod(),

@@ -14,28 +14,29 @@ public:
     
     void setSender (String HostAddress, int Port);
     void setReceiver (int Port);
-    void sendOSC (int id, //1
-                  std::array<int8_t, 8> emgRaw, //2
-                  std::array<float, 8> emgScaled, //3
-                  std::array<float, 8> emgScaledAbs, //4
-                  std::array<float, 4> quaternion, //5
-                  float mav, //6
-                  float mavWl, //7
-                  Vector3D<float> gyro, //8
-                  Vector3D<float> gyroFod, //9
-                  Vector3D<float> gyroScaled, //10
-                  Vector3D<float> gyroScaledAbs, //11
-                  Vector3D<float> gyroScaledFod, //12
-                  Vector3D<float> acceleration, //13
-                  Vector3D<float> accelerationFod, //14
-                  Vector3D<float> accelerationScaled, //15
-                  Vector3D<float> accelerationScaledFod, //16
-                  Vector3D<float> orientationRaw, //17
-                  Vector3D<float> orientationScaled, //18
-                  Vector3D<float> orientationFod, //19
-                  Vector3D<float> orientationSod, //20
-                  String pose, //21
-                  int poseID); //22
+    void sendOSC (int id,
+                  std::array<int8_t, 8> emgRaw,
+                  std::array<float, 8> emgScaled,
+                  std::array<float, 8> emgScaledAbs,
+                  std::array<float, 4> quaternion,
+                  float mav,
+                  float mavWl,
+                  Vector3D<float> gyro,
+                  Vector3D<float> gyroFod,
+                  Vector3D<float> gyroScaled,
+                  Vector3D<float> gyroScaledAbs,
+                  Vector3D<float> gyroScaledFod,
+                  Vector3D<float> acceleration,
+                  Vector3D<float> accelerationFod,
+                  Vector3D<float> accelerationScaled,
+                  Vector3D<float> accelerationScaledFod,
+                  Vector3D<float> accelerationScaledMavg,
+                  Vector3D<float> orientationRaw,
+                  Vector3D<float> orientationScaled,
+                  Vector3D<float> orientationFod,
+                  Vector3D<float> orientationSod,
+                  String pose,
+                  int poseID);
     
     void connectSender();
     void connectReceiver();

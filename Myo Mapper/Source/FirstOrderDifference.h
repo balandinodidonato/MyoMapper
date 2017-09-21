@@ -9,10 +9,10 @@ public:
     FirstOrderDifference ();
     ~FirstOrderDifference();
 
-    void setValue (float value);
+    void setValue (float Value);
     float getValue();
     Vector3D<float> get3DValue();
-    void set3DValue (Vector3D<float>);
+    void set3DValue (Vector3D<float> Value);
 
 private:
     
