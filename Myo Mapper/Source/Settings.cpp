@@ -136,7 +136,6 @@ void Settings::labelTextChanged (juce::Label *labelThatHasChanged)
 int Settings::getOSCPortSender()
 {
     return oscPortSender;
-    oscSettingsChangedSender = false;
 }
 
 int Settings::getOSCPortReceiver()
