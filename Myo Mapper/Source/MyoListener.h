@@ -13,7 +13,7 @@
 
 #include "myo/myo.hpp"
 #include "Orientation.h"
-#include "WaveformLength.h"
+#include "FirstOrderDifference.h"
 #include "MyoData.h"
 #include <array>
 
@@ -71,13 +71,13 @@ private:
     
     int numberOfMyos;
     
-    WaveformLength accWfL;
-    WaveformLength gyroWfL;
+    FirstOrderDifference accFod;
+    FirstOrderDifference gyroFod;
     
-    WaveformLength accScaledWfL;
-    WaveformLength gyroScaledWfL;
+    FirstOrderDifference accScaledFod;
+    FirstOrderDifference gyroScaledFod;
     
-    WaveformLength mavWfL;
+    FirstOrderDifference mavFod;
     
     
 };

@@ -11,20 +11,20 @@ struct MyoData
     std::array<float, 4> quaternion;
     Vector3D<float> gyro;
     Vector3D<float> gyroScaled;
-    Vector3D<float> gyroWfL;
-    Vector3D<float> gyroScaledWfL;
+    Vector3D<float> gyroFod;
+    Vector3D<float> gyroScaledFod;
     Vector3D<float> acceleration;
     Vector3D<float> accelerationScaled;
     Vector3D<float> accelerationScaledAbs;
-    Vector3D<float> accelerationWfL;
-    Vector3D<float> accelerationScaledWfL;
+    Vector3D<float> accelerationFod;
+    Vector3D<float> accelerationScaledFod;
     Vector3D<float> orientationRaw;
     Vector3D<float> orientationScaled;
-    Vector3D<float> orientationScaledWfL;
+    Vector3D<float> orientationScaledFod;
     String pose;
     int poseID;
     float mav;
-    float mavWfL;
+    float mavFod;
 };
 
 #endif  // MYODATA_H_INCLUDED

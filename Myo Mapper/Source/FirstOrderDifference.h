@@ -3,11 +3,11 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class WaveformLength  : public Component
+class FirstOrderDifference  : public Component
 {
 public:
-    WaveformLength ();
-    ~WaveformLength();
+    FirstOrderDifference ();
+    ~FirstOrderDifference();
 
     void setValue (float value);
     float getValue();
@@ -18,14 +18,14 @@ private:
     
     float previousInput;
     float input;
-    float wl;
+    float fod;
     float factor = 4;
 
     Vector3D<float> input3D;
     Vector3D<float> previousInput3D;
-    Vector3D<float> wl3D;
+    Vector3D<float> fod3D;
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WaveformLength)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FirstOrderDifference)
 };
 
 #endif
