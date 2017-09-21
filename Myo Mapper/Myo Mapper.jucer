@@ -7,6 +7,7 @@
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
+      <FILE id="cMDdMU" name="CommandIDs.h" compile="0" resource="0" file="Source/CommandIDs.h"/>
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>
@@ -32,8 +33,6 @@
         <FILE id="hn6pYz" name="AboutWindow.h" compile="0" resource="0" file="Source/AboutWindow.h"/>
       </GROUP>
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-      <FILE id="EOO7LR" name="PropertyManager.h" compile="0" resource="0"
-            file="Source/PropertyManager.h"/>
       <FILE id="Vath7r" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>

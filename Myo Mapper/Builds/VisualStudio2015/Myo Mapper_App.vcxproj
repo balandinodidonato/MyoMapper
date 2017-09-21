@@ -1345,6 +1345,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\CommandIDs.h"/>
     <ClInclude Include="..\..\Source\MyoData.h"/>
     <ClInclude Include="..\..\Source\MyoManager.h"/>
     <ClInclude Include="..\..\Source\MyoListener.h"/>
@@ -1352,7 +1353,6 @@
     <ClInclude Include="..\..\Source\AboutWindowContent.h"/>
     <ClInclude Include="..\..\Source\HelpWindow.h"/>
     <ClInclude Include="..\..\Source\AboutWindow.h"/>
-    <ClInclude Include="..\..\Source\PropertyManager.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\Settings.h"/>
     <ClInclude Include="..\..\Source\Orientation.h"/>

@@ -1,6 +1,8 @@
 #ifndef MAINCOMPONENT_H_INCLUDED
 #define MAINCOMPONENT_H_INCLUDED
 
+#include "CommandIDs.h"
+
 #include "Orientation.h"
 //#include "mav.h"
 #include "Settings.h"
@@ -9,7 +11,6 @@
 #include "OSC.h"
 #include "AboutWindow.h"
 #include "HelpWindow.h"
-#include "PropertyManager.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
@@ -19,6 +20,7 @@
 class MainComponent    : public Component,
                          private Timer,
                          public MenuBarModel,
+                         public ApplicationCommandTarget,
                          private ComboBox::Listener,
                          private Button::Listener   // Added Listener for panel show/ hide buttons
 {
@@ -50,18 +52,28 @@ public:
         onlineDocumentation
     };
     
-    void AboutMyoMapperDialogWindow();
-    void HelpDialogWindow();
-    void buttonClicked (Button* button) override;
-    void setPanelVisibility (Component &component);
+    ApplicationCommandTarget* getNextCommandTarget() override;
+    void getAllCommands (Array<CommandID>& commands) override;
+    void getCommandInfo (CommandID commandID, ApplicationCommandInfo& result) override;
+    bool perform (const InvocationInfo& info) override;
     
     Settings settingsPannel;
+    void setPanelVisibility (Component &component);
+    
+    void AboutMyoMapperDialogWindow();
+    void HelpDialogWindow();
+    
+    void buttonClicked (Button* button) override;
+    
+    
     
     
     
 private:    
     void timerCallback() override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
+    
+    ApplicationCommandManager commandManager;
     
     MyoManager myoManager;
     Pose pose;

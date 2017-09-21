@@ -1563,6 +1563,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\CommandIDs.h">
+      <Filter>Myo Mapper\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\MyoData.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
@@ -1583,9 +1586,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\AboutWindow.h">
       <Filter>Myo Mapper\Source\MenuBar</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\PropertyManager.h">
-      <Filter>Myo Mapper\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>Myo Mapper\Source</Filter>

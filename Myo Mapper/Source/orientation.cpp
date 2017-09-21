@@ -1,5 +1,4 @@
 #include "Orientation.h"
-#include "../modules/juce_core/containers/juce_Array.h"
 
 Orientation::Orientation()
 {
@@ -9,7 +8,7 @@ Orientation::Orientation()
     rescaleYaw.setLabelWidget ("Yaw");
     rescalePitch.setLabelWidget ("Pitch");
     rescaleRoll.setLabelWidget ("Roll");
-    rescaleYaw.setTargetValue (0.5),
+    rescaleYaw.setTargetValue (0.5);
     rescalePitch.setTargetValue (0.5);
     rescaleRoll.setTargetValue (0.5);
 }
