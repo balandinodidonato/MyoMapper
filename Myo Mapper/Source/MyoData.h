@@ -11,6 +11,7 @@ struct MyoData
     std::array<float, 4> quaternion;
     Vector3D<float> gyro;
     Vector3D<float> gyroScaled;
+    Vector3D<float> gyroScaledAbs;
     Vector3D<float> gyroFod;
     Vector3D<float> gyroScaledFod;
     Vector3D<float> acceleration;

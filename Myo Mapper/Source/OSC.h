@@ -24,6 +24,7 @@ public:
                  Vector3D<float> gyro,
                  Vector3D<float> gyroFod,
                  Vector3D<float> gyroScaled,
+                 Vector3D<float> gyroScaledAbs,
                  Vector3D<float> gyroScaledFod,
                  Vector3D<float> acceleration,
                  Vector3D<float> accelerationFod,
