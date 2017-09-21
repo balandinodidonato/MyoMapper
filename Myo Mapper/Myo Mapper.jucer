@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="2.5.13"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="5.1.1" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
+              jucerVersion="4.3.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
@@ -11,15 +11,15 @@
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>
       <GROUP id="{2098BAB5-B007-98E8-0BA2-8093E352BED8}" name="Myo">
+        <FILE id="Ux6nrY" name="FirstOrderDifferece.cpp" compile="1" resource="0"
+              file="Source/FirstOrderDifferece.cpp"/>
+        <FILE id="eh2dio" name="FirstOrderDifference.h" compile="0" resource="0"
+              file="Source/FirstOrderDifference.h"/>
         <FILE id="FO3vBI" name="MyoData.h" compile="0" resource="0" file="Source/MyoData.h"/>
         <FILE id="POB1yB" name="MyoManager.cpp" compile="1" resource="0" file="Source/MyoManager.cpp"/>
         <FILE id="EKeAn0" name="MyoManager.h" compile="0" resource="0" file="Source/MyoManager.h"/>
         <FILE id="hCEqvO" name="MyoListener.cpp" compile="1" resource="0" file="Source/MyoListener.cpp"/>
         <FILE id="D0Y8rk" name="MyoListener.h" compile="0" resource="0" file="Source/MyoListener.h"/>
-        <FILE id="iqYY9F" name="WaveformLength.cpp" compile="1" resource="0"
-              file="Source/WaveformLength.cpp"/>
-        <FILE id="I8qni4" name="WaveformLength.h" compile="0" resource="0"
-              file="Source/WaveformLength.h"/>
       </GROUP>
       <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="MenuBar">
         <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
@@ -60,14 +60,14 @@
                        customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_osc" path="../../../../Applications/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="WFoxze" bigIcon="WFoxze"
@@ -91,14 +91,14 @@
     </VS2015>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS/>
   <LIVE_SETTINGS>

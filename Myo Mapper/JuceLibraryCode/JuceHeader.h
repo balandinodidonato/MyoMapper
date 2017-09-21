@@ -10,7 +10,8 @@
 
 */
 
-#pragma once
+#ifndef __APPHEADERFILE_M7UYPJ__
+#define __APPHEADERFILE_M7UYPJ__
 
 #include "AppConfig.h"
 
@@ -39,3 +40,5 @@ namespace ProjectInfo
     const int          versionNumber  = 0x2050d;
 }
 #endif
+
+#endif   // __APPHEADERFILE_M7UYPJ__
