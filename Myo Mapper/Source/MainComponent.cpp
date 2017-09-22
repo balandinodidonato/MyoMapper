@@ -122,6 +122,7 @@ void MainComponent::timerCallback()
                  myoData[id].emgRaw,
                  myoData[id].emgScaled,
                  myoData[id].emgScaledAbs,
+                 myoData[id].emgScaledAbsMavg,
                  myoData[id].quaternion,
                  myoData[id].mav,
                  myoData[id].mavFod,

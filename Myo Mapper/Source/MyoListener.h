@@ -73,6 +73,7 @@ private:
     SecondOrderDifference mavSod;
     
     MovingAverage EMGMavMavg;
+    MovingAverage EMGMavg[8];
 };
 
 
