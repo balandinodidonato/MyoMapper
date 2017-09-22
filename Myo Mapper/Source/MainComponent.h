@@ -63,6 +63,7 @@ private:
     OSC osc;
     
     int selectedMyoID;
+    bool VibrationState = false;
     
     MenuBarComponent menuBar;
 

@@ -113,12 +113,12 @@ void MyoManager::stopPoll()
     stopThread (1000);
 }
 
-void MyoManager::vibrate (String VibrationType)
+void MyoManager::vibrate (String VibrationType, bool State)
 {
-    if (VibrationType == "long")
+    if (VibrationType == "long" && State==true)
         myo->vibrate (myo::Myo::vibrationLong);
-    if (VibrationType == "medium")
+    if (VibrationType == "medium" && State==true)
         myo->vibrate (myo::Myo::vibrationMedium);
-    if (VibrationType == "short")
+    if (VibrationType == "short" && State==true)
         myo->vibrate (myo::Myo::vibrationShort);
 }

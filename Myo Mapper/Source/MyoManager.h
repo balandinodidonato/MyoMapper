@@ -17,7 +17,7 @@ public:
     void startPoll();
     void stopPoll();
     
-    void vibrate (String VibrationType);
+    void vibrate (String VibrationType, bool State);
         
     std::vector<MyoData> getMyoData (bool &success) const;
 
