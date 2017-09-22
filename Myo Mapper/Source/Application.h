@@ -84,6 +84,8 @@ public:
     ScopedPointer<ApplicationCommandManager> commandManager;
     ScopedPointer<ApplicationProperties> appProperties;
     
+    // General floating window builder used to create these windows
+    ScopedPointer<Component> aboutWindow, documentationWindow;
     
     
 private:

@@ -8,8 +8,8 @@
     <Filter Include="Myo Mapper\Source\Myo">
       <UniqueIdentifier>{47829F43-28E0-7E37-F2C1-387A2A13B617}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Myo Mapper\Source\MenuBar">
-      <UniqueIdentifier>{96CC7397-9239-10AF-C33D-5930088CFFC5}</UniqueIdentifier>
+    <Filter Include="Myo Mapper\Source\Windows">
+      <UniqueIdentifier>{D0FDF861-AD88-9C73-55B2-8244AF04A0A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Myo Mapper\Source">
       <UniqueIdentifier>{EC71C6D6-89BD-5883-9D66-53542463DA0B}</UniqueIdentifier>
@@ -250,14 +250,20 @@
     <ClCompile Include="..\..\Source\WaveformLength.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\MainWindow.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\WindowsList.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+      <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HelpWindow.cpp">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+      <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\AboutWindow.cpp">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+      <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>Myo Mapper\Source</Filter>
@@ -1581,14 +1587,20 @@
     <ClInclude Include="..\..\Source\WaveformLength.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\MainWindow.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\WindowsList.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\AboutWindowContent.h">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+      <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\HelpWindow.h">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+      <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AboutWindow.h">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+      <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Application.h">
       <Filter>Myo Mapper\Source</Filter>

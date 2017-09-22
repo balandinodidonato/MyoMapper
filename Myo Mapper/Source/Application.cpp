@@ -163,6 +163,10 @@ void MyoMapperApplication::createFileMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapperAs);
     menu.addSeparator();
     menu.addCommandItem (&getCommandManager(), CommandIDs::quitMapper);
+    
+    #if ! JUCE_MAC
+        menu.addCommandItem (&getCommandManager(), CommandIDs::showPreferences);
+    #endif
 }
 
 void MyoMapperApplication::createViewMenu (PopupMenu& menu)
@@ -181,6 +185,7 @@ void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::moveWindowsToFront);
     menu.addCommandItem (&getCommandManager(), CommandIDs::hideAllWindows);
     menu.addSeparator();
+    menu.addCommandItem (&getCommandManager(), CommandIDs::closeWindow)
     menu.addCommandItem (&getCommandManager(), CommandIDs::closeAllWindows);
 }
 
@@ -224,6 +229,7 @@ void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
         CommandIDs::newDisplayWindow,
         CommandIDs::moveWindowsToFront,
         CommandIDs::hideAllWindows,
+        CommandIDs::closeWindow,
         CommandIDs::closeAllWindows,
         CommandIDs::showAboutWindow,
         CommandIDs::showDocumentationWindow
@@ -295,7 +301,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             break;
             
         case CommandIDs::closeAllWindows:
-            result.setInfo ("Close all", "Close all windows but keep the current project open", CommandCategories::windows, 0);
+            result.setInfo ("Close All", "Close all windows but keep the current project open", CommandCategories::windows, 0);
             break;
             
         case CommandIDs::showAboutWindow:
@@ -327,6 +333,7 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
         case CommandIDs::newDisplayWindow:              newDisplayWindow(); break;
         case CommandIDs::moveWindowsToFront:            moveWindowsToFront(); break;
         case CommandIDs::hideAllWindows:                hideAllWindows(); break;
+        case CommandIDs::closeAllWindows:               closeAllWindows(); break;
         case CommandIDs::closeAllWindows:               closeAllWindows(); break;
         case CommandIDs::showAboutWindow:               showAboutWindow(); break;
         case CommandIDs::showDocumentationWindow:       showDocumentationWindow(); break;

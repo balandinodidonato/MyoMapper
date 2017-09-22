@@ -28,7 +28,8 @@ namespace CommandIDs
         newDisplayWindow                =   0x200021,
         moveWindowsToFront              =   0x200022,
         hideAllWindows                  =   0x200023,
-        closeAllWindows                 =   0x200024,
+        closeWindow                     =   0x200024,
+        closeAllWindows                 =   0x200025,
         
         showAboutWindow                 =   0x200030,
         showDocumentationWindow         =   0x200031,

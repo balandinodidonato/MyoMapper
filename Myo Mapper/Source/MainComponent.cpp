@@ -14,7 +14,6 @@ MainComponent::MainComponent()
     addAndMakeVisible (pose);
     pose.setVisible (MyoMapperApplication::MyoMapperApplication::    MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Pose", false));
     
-    
     settingsPannel.showOrientation.addListener (this);
     settingsPannel.showPose.addListener (this);
     
@@ -46,21 +45,16 @@ MainComponent::MainComponent()
     
     startTimer(25);
     
-    selectedMyoID = MyoMapperApplication::    MyoMapperApplication::getAppProperties().getUserSettings()->getIntValue("Myo ID", 0);
+    selectedMyoID = MyoMapperApplication::getAppProperties().getUserSettings()->getIntValue("Myo ID", 0);
 }
 
 MainComponent::~MainComponent()
 {
-    MyoMapperApplication::    MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("Myo ID", selectedMyoID);
+    MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("Myo ID", selectedMyoID);
     
-    /*
-    #if JUCE_MAC
-        setMacMainMenu (nullptr);
-    #else
+    #if ! JUCE_MAC
         setMenuBar (nullptr);
     #endif
-    PopupMenu::dismissAllActiveMenus();
-     */
 }
 
 void MainComponent::paint(juce::Graphics &g)

@@ -151,6 +151,8 @@
     <ClCompile Include="..\..\Source\MyoManager.cpp"/>
     <ClCompile Include="..\..\Source\MyoListener.cpp"/>
     <ClCompile Include="..\..\Source\WaveformLength.cpp"/>
+    <ClCompile Include="..\..\Source\MainWindow.cpp"/>
+    <ClCompile Include="..\..\Source\WindowsList.cpp"/>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp"/>
     <ClCompile Include="..\..\Source\HelpWindow.cpp"/>
     <ClCompile Include="..\..\Source\AboutWindow.cpp"/>
@@ -1351,6 +1353,8 @@
     <ClInclude Include="..\..\Source\MyoManager.h"/>
     <ClInclude Include="..\..\Source\MyoListener.h"/>
     <ClInclude Include="..\..\Source\WaveformLength.h"/>
+    <ClInclude Include="..\..\Source\MainWindow.h"/>
+    <ClInclude Include="..\..\Source\WindowsList.h"/>
     <ClInclude Include="..\..\Source\AboutWindowContent.h"/>
     <ClInclude Include="..\..\Source\HelpWindow.h"/>
     <ClInclude Include="..\..\Source\AboutWindow.h"/>
