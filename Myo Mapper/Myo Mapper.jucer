@@ -11,6 +11,10 @@
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>
       <GROUP id="{2098BAB5-B007-98E8-0BA2-8093E352BED8}" name="Myo">
+        <FILE id="F04npp" name="FirstOrderDifference.cpp" compile="1" resource="0"
+              file="Source/FirstOrderDifference.cpp"/>
+        <FILE id="l7l4TK" name="FirstOrderDifference.h" compile="0" resource="0"
+              file="Source/FirstOrderDifference.h"/>
         <FILE id="kFmd2o" name="MovingAverage.cpp" compile="1" resource="0"
               file="Source/MovingAverage.cpp"/>
         <FILE id="Apy2sl" name="MovingAverage.h" compile="0" resource="0" file="Source/MovingAverage.h"/>
@@ -20,10 +24,6 @@
               file="Source/SecondOrderDifference.cpp"/>
         <FILE id="tufhzi" name="SecondOrderDifference.h" compile="0" resource="0"
               file="Source/SecondOrderDifference.h"/>
-        <FILE id="Ux6nrY" name="FirstOrderDifferece.cpp" compile="1" resource="0"
-              file="Source/FirstOrderDifferece.cpp"/>
-        <FILE id="eh2dio" name="FirstOrderDifference.h" compile="0" resource="0"
-              file="Source/FirstOrderDifference.h"/>
         <FILE id="FO3vBI" name="MyoData.h" compile="0" resource="0" file="Source/MyoData.h"/>
         <FILE id="POB1yB" name="MyoManager.cpp" compile="1" resource="0" file="Source/MyoManager.cpp"/>
         <FILE id="EKeAn0" name="MyoManager.h" compile="0" resource="0" file="Source/MyoManager.h"/>

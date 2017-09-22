@@ -148,10 +148,10 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\FirstOrderDifference.cpp"/>
     <ClCompile Include="..\..\Source\MovingAverage.cpp"/>
     <ClCompile Include="..\..\Source\Mav.cpp"/>
     <ClCompile Include="..\..\Source\SecondOrderDifference.cpp"/>
-    <ClCompile Include="..\..\Source\FirstOrderDifferece.cpp"/>
     <ClCompile Include="..\..\Source\MyoManager.cpp"/>
     <ClCompile Include="..\..\Source\MyoListener.cpp"/>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp"/>
@@ -1348,10 +1348,10 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\FirstOrderDifference.h"/>
     <ClInclude Include="..\..\Source\MovingAverage.h"/>
     <ClInclude Include="..\..\Source\Mav.h"/>
     <ClInclude Include="..\..\Source\SecondOrderDifference.h"/>
-    <ClInclude Include="..\..\Source\FirstOrderDifference.h"/>
     <ClInclude Include="..\..\Source\MyoData.h"/>
     <ClInclude Include="..\..\Source\MyoManager.h"/>
     <ClInclude Include="..\..\Source\MyoListener.h"/>
