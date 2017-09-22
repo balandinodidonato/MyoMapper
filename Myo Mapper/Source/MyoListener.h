@@ -7,6 +7,7 @@
 #include "SecondOrderDifference.h"
 #include "MyoData.h"
 #include <array>
+#include "MovingAverage.h"
 
 class MyoListener : public myo::DeviceListener
 {
@@ -69,8 +70,9 @@ private:
     FirstOrderDifference gyroScaledFod;
     
     FirstOrderDifference mavFod;
-    
     SecondOrderDifference mavSod;
+    
+    MovingAverage accMovAvg;
 };
 
 

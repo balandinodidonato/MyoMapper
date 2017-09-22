@@ -115,6 +115,9 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
     
     accScaledFod.set3DValue (myoData[myoID].accelerationScaled);
     myoData[myoID].accelerationScaledFod = accScaledFod.get3DValue();
+    
+    accMovAvg.setValue3D(myoData[myoID].accelerationScaled, 2);
+    myoData[myoID].accelerationScaledMavg = accMovAvg.getValue3D();
 }
 
 void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &gyro)
@@ -140,7 +143,6 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     
     gyroScaledFod.set3DValue (myoData[myoID].gyroScaled);
     myoData[myoID].gyroScaledFod = gyroScaledFod.get3DValue();
-    
 }
 
 
