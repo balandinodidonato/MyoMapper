@@ -18,6 +18,7 @@ public:
                   std::array<int8_t, 8> emgRaw,
                   std::array<float, 8> emgScaled,
                   std::array<float, 8> emgScaledAbs,
+                  std::array<float, 8> emgScaledAbsMavg,
                   std::array<float, 4> quaternion,
                   float mav,
                   float mavFod,

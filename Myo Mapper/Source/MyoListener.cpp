@@ -106,10 +106,9 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
     myoData[myoID].acceleration.y = accel.y();
     myoData[myoID].acceleration.z = accel.z();
 
-    myoData[myoID].accelerationScaled.x = (accel.x() + 16) * 0.03125;
-    myoData[myoID].accelerationScaled.y = (accel.y() + 16) * 0.03125;
-    myoData[myoID].accelerationScaled.z = (accel.z() + 16) * 0.03125;
-   
+    scaleAcc.setScale(myoData[myoID].acceleration, 16, 0.03125);
+    myoData[myoID].accelerationScaled = scaleAcc.getScaledVector3D();
+       
     accFod.set3DValue (myoData[myoID].acceleration);
     myoData[myoID].accelerationFod = accFod.get3DValue();
     
@@ -127,13 +126,11 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     myoData[myoID].gyro.y = gyro.y();
     myoData[myoID].gyro.z = gyro.z();
 
-    myoData[myoID].gyroScaled.x = (gyro.x() + 2000) *  0.00025;
-    myoData[myoID].gyroScaled.y = (gyro.y() + 2000) *  0.00025;
-    myoData[myoID].gyroScaled.z = (gyro.z() + 2000) *  0.00025;
+    scaleGyro.setScale(myoData[myoID].gyro, 2000, 0.00025);
+    myoData[myoID].gyroScaled = scaleGyro.getScaledVector3D();
    
-    myoData[myoID].gyroScaledAbs.x = std::abs((myoData[myoID].gyroScaled.x-0.5)*2);
-    myoData[myoID].gyroScaledAbs.y = std::abs((myoData[myoID].gyroScaled.y-0.5)*2);
-    myoData[myoID].gyroScaledAbs.z = std::abs((myoData[myoID].gyroScaled.z-0.5)*2);
+    scaleGyro.setAbs(myoData[myoID].gyroScaled, 1);
+    myoData[myoID].gyroScaledAbs = scaleGyro.getAbsVector3D();
     
     gyroFod.set3DValue (myoData[myoID].gyro);
     myoData[myoID].gyroFod = gyroFod.get3DValue();
@@ -181,15 +178,23 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
     for (size_t i = 0; i < 8; ++i)
     {
         myoData[myoID].emgRaw[i] = emg[i];
-        myoData[myoID].emgScaled[i] = (emg[i] + 127) * 0.003921568627;
-        myoData[myoID].emgScaledAbs[i] = std::abs (emg[i] * 0.0078125);
-        emgSum = emgSum + myoData[myoID].emgScaledAbs[i];
+        
+        scaleEMG[i].setScale(emg[i], 127, 0.003921568627);
+        myoData[myoID].emgScaled[i] = scaleEMG[i].getScaledFloat();
+        
+        scaleEMG[i].setAbs(myoData[myoID].emgScaled[i], 1);
+        myoData[myoID].emgScaledAbs[i] = scaleEMG[i].getFloatAbs();
+        
+        EMGMavg[i].setValue(myoData[myoID].emgScaledAbs[i], 10);
+        myoData[myoID].emgScaledAbsMavg[i] = EMGMavg[i].getFloat();
     }
     
-    myoData[myoID].mav = emgSum * 0.125;
-   
+    emgMav.setValue(myoData[myoID].emgScaledAbs);
+        
+    myoData[myoID].mav = emgMav.getValue();
+
     EMGMavMavg.setValue(myoData[myoID].mav, 10);
-    myoData[myoID].emgMavMavg = EMGMavMavg.getValue();
+    myoData[myoID].emgMavMavg = EMGMavMavg.getFloat();
     
     mavFod.setValue (myoData[myoID].mav);
     myoData[myoID].mavFod = mavFod.getValue();

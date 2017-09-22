@@ -1,14 +1,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SecondOrderDifference.h"
 
-SecondOrderDifference::SecondOrderDifference()
-{
-}
-
-SecondOrderDifference::~SecondOrderDifference()
-{
-}
-
 void SecondOrderDifference::setValue (float Value)
 {
     input = Value;
