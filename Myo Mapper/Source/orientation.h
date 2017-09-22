@@ -3,11 +3,9 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Rescale.h"
-#include "WaveformLength.h"
+#include "FirstOrderDifference.h"
+#include "SecondOrderDifference.h"
 
-//==============================================================================
-/*
- */
 class Orientation   : public Component
                         
 {
@@ -21,7 +19,8 @@ public:
     void setValues (Vector3D<float>);
    
     Vector3D<float> getValue();
-    Vector3D<float> getWl();
+    Vector3D<float> getFod(); // Fod = First order difference
+    Vector3D<float> getSod(); // Sod = Second order difference
     float getYaw();
     float getPitch();
     float getRoll();
@@ -33,11 +32,13 @@ private:
     Rescale rescaleYaw;
     Rescale rescalePitch;
     Rescale rescaleRoll;
-    WaveformLength orientationWl;
+    FirstOrderDifference orientationFod;
+    SecondOrderDifference orientationSod;
     
     Vector3D<float> orientationScaled;
-    Vector3D<float> wfLScaled;
-    
+    Vector3D<float> FodScaled;
+    Vector3D<float> SodScaled;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Orientation)
 };
 

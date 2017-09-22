@@ -110,11 +110,11 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
     myoData[myoID].accelerationScaled.y = (accel.y() + 16) * 0.03125;
     myoData[myoID].accelerationScaled.z = (accel.z() + 16) * 0.03125;
    
-    accWfL.set3DValue (myoData[myoID].acceleration);
-    myoData[myoID].accelerationWfL = accWfL.get3DValue();
+    accFod.set3DValue (myoData[myoID].acceleration);
+    myoData[myoID].accelerationFod = accFod.get3DValue();
     
-    accScaledWfL.set3DValue (myoData[myoID].accelerationScaled);
-    myoData[myoID].accelerationScaledWfL = accScaledWfL.get3DValue();
+    accScaledFod.set3DValue (myoData[myoID].accelerationScaled);
+    myoData[myoID].accelerationScaledFod = accScaledFod.get3DValue();
 }
 
 void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &gyro)
@@ -131,12 +131,15 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     myoData[myoID].gyroScaled.y = (gyro.y() + 2000) *  0.00025;
     myoData[myoID].gyroScaled.z = (gyro.z() + 2000) *  0.00025;
    
-    gyroWfL.set3DValue (myoData[myoID].gyro);
-    myoData[myoID].gyroWfL = gyroWfL.get3DValue();
+    myoData[myoID].gyroScaledAbs.x = std::abs((myoData[myoID].gyroScaled.x-0.5)*2);
+    myoData[myoID].gyroScaledAbs.y = std::abs((myoData[myoID].gyroScaled.y-0.5)*2);
+    myoData[myoID].gyroScaledAbs.z = std::abs((myoData[myoID].gyroScaled.z-0.5)*2);
     
-    gyroScaledWfL.set3DValue (myoData[myoID].gyroScaled);
-    myoData[myoID].gyroScaledWfL = gyroScaledWfL.get3DValue();
+    gyroFod.set3DValue (myoData[myoID].gyro);
+    myoData[myoID].gyroFod = gyroFod.get3DValue();
     
+    gyroScaledFod.set3DValue (myoData[myoID].gyroScaled);
+    myoData[myoID].gyroScaledFod = gyroScaledFod.get3DValue();
 }
 
 
@@ -185,8 +188,14 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
     
     myoData[myoID].mav = emgSum * 0.125;
    
-    mavWfL.setValue (myoData[myoID].mav);
-    myoData[myoID].mavWfL = mavWfL.getValue();
+    EMGMavMavg.setValue(myoData[myoID].mav, 10);
+    myoData[myoID].emgMavMavg = EMGMavMavg.getValue();
+    
+    mavFod.setValue (myoData[myoID].mav);
+    myoData[myoID].mavFod = mavFod.getValue();
+   
+    mavSod.setValue (myoData[myoID].mav);
+    myoData[myoID].mavSod = mavSod.getValue();
 }
 
 // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after

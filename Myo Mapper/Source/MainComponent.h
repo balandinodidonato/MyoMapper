@@ -4,7 +4,6 @@
 //#include "CommandIDs.h"
 #include "Application.h"
 #include "Orientation.h"
-//#include "mav.h"
 #include "Settings.h"
 #include "MyoManager.h"
 #include "Pose.h"
@@ -30,7 +29,6 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    
     void disconnectMyoAndOSC();
 
     Orientation orientation;
@@ -55,7 +53,6 @@ public:
     
     void AboutMyoMapperDialogWindow();
     void HelpDialogWindow();
-    
     void buttonClicked (Button* button) override;
     
     

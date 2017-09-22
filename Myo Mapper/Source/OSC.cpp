@@ -63,29 +63,37 @@ void OSC::setSender (String HostAddress, int Port)
 }
 
 void OSC::sendOSC (int id,
-                  std::array<int8_t, 8> emgRaw,
-                  std::array<float, 8> emgScaled,
-                  std::array<float, 8> emgScaledAbs,
-                  std::array<float, 4> quaternion,
-                  float mav,
-                  float mavWl,
-                  Vector3D<float> gyro,
-                  Vector3D<float> gyroWfL,
-                  Vector3D<float> gyroScaled,
-                  Vector3D<float> gyroScaledWfL,
-                  Vector3D<float> acceleration,
-                  Vector3D<float> accelerationWfL,
-                  Vector3D<float> accelerationScaled,
-                  Vector3D<float> accelerationScaledWfL,
-                  Vector3D<float> orientationRaw,
-                  Vector3D<float> orientationScaled,
-                  Vector3D<float> orientationWfL,
-                  String pose,
-                  int poseID
+                   std::array<int8_t, 8> emgRaw,
+                   std::array<float, 8> emgScaled,
+                   std::array<float, 8> emgScaledAbs,
+                   std::array<float, 4> quaternion,
+                   float mav,
+                   float mavFod,
+                   float emgMavMavg,
+                   Vector3D<float> gyro,
+                   Vector3D<float> gyroFod,
+                   Vector3D<float> gyroScaled,
+                   Vector3D<float> gyroScaledAbs,
+                   Vector3D<float> gyroScaledFod,
+                   Vector3D<float> acceleration,
+                   Vector3D<float> accelerationFod,
+                   Vector3D<float> accelerationScaled,
+                   Vector3D<float> accelerationScaledFod,
+                   Vector3D<float> orientationRaw,
+                   Vector3D<float> orientationScaled,
+                   Vector3D<float> orientationFod,
+                   Vector3D<float> orientationSod,
+                   String pose,
+                   int poseID
                   )
 {
     String ID = String (id);
     
+    sender.send ("/myo" + ID + "/orientation/quaternion",
+                 (float) quaternion[0],
+                 (float) quaternion[1],
+                 (float) quaternion[2],
+                 (float) quaternion[3]);
     sender.send ("/myo" + ID + "/orientation/raw",
                  (float) orientationRaw.x,
                  (float) orientationRaw.y,
@@ -94,43 +102,52 @@ void OSC::sendOSC (int id,
                  (float) orientationScaled.x,
                  (float) orientationScaled.y,
                  (float) orientationScaled.z);
-    sender.send ("/myo" + ID + "/orientation/scaledWfL",
-                 (float) orientationWfL.x,
-                 (float) orientationWfL.y,
-                 (float) orientationWfL.z);
+    sender.send ("/myo" + ID + "/orientation/velocity",
+                 (float) orientationFod.x,
+                 (float) orientationFod.y,
+                 (float) orientationFod.z);
+    sender.send ("/myo" + ID + "/orientation/acceleration",
+                 (float) orientationSod.x,
+                 (float) orientationSod.y,
+                 (float) orientationSod.z);
+    
     sender.send ("/myo" + ID + "/gyro/raw",
                  (float) gyro.x,
                  (float) gyro.y,
                  (float) gyro.z);
-    sender.send ("/myo" + ID + "/gyro/rawWfL",
-                 (float) gyroWfL.x,
-                 (float) gyroWfL.y,
-                 (float) gyroWfL.z);
+    sender.send ("/myo" + ID + "/gyro/rawFod",
+                 (float) gyroFod.x,
+                 (float) gyroFod.y,
+                 (float) gyroFod.z);
     sender.send ("/myo" + ID + "/gyro/scaled",
                  (float) gyroScaled.x,
                  (float) gyroScaled.y,
                  (float) gyroScaled.z);
-    sender.send ("/myo" + ID + "/gyro/scaledWfL",
-                 (float) gyroScaledWfL.x,
-                 (float) gyroScaledWfL.y,
-                 (float) gyroScaledWfL.z);
+    sender.send ("/myo" + ID + "/gyro/scaledAbs",
+                 (float) gyroScaledAbs.x,
+                 (float) gyroScaledAbs.y,
+                 (float) gyroScaledAbs.z);
+    sender.send ("/myo" + ID + "/gyro/scaledFod",
+                 (float) gyroScaledFod.x,
+                 (float) gyroScaledFod.y,
+                 (float) gyroScaledFod.z);
     
     sender.send ("/myo" + ID + "/acceleration/raw",
                  (float) acceleration.x,
                  (float) acceleration.y,
                  (float) acceleration.z);
-    sender.send ("/myo" + ID + "/acceleration/rawWfL",
-                 (float) accelerationWfL.x,
-                 (float) accelerationWfL.y,
-                 (float) accelerationWfL.z);
+    sender.send ("/myo" + ID + "/acceleration/rawFod",
+                 (float) accelerationFod.x,
+                 (float) accelerationFod.y,
+                 (float) accelerationFod.z);
     sender.send ("/myo" + ID + "/acceleration/scaled",
                  (float) accelerationScaled.x,
                  (float) accelerationScaled.y,
                  (float) accelerationScaled.z);
-    sender.send ("/myo" + ID + "/acceleration/scaledWfL",
-                 (float) accelerationScaledWfL.x,
-                 (float) accelerationScaledWfL.y,
-                 (float) accelerationScaledWfL.z);
+    sender.send ("/myo" + ID + "/acceleration/scaledFod",
+                 (float) accelerationScaledFod.x,
+                 (float) accelerationScaledFod.y,
+                 (float) accelerationScaledFod.z);
     
     sender.send ("/myo" + ID + "/EMG/raw",
                  (int) emgRaw[0],
@@ -141,7 +158,6 @@ void OSC::sendOSC (int id,
                  (int) emgRaw[5],
                  (int) emgRaw[6],
                  (int) emgRaw[7]);
-    
     sender.send ("/myo" + ID + "/EMG/scaled",
                  (float) emgScaled[0],
                  (float) emgScaled[1],
@@ -162,54 +178,10 @@ void OSC::sendOSC (int id,
                  (float) emgScaledAbs[7]);
     sender.send ("/myo" + ID + "/EMG/mav", (float) mav);
     sender.send ("/myo" + ID + "/EMG/mav", (float) mav);
-    sender.send ("/myo" + ID + "/EMG/mavWfL", (float) mavWl);
+    sender.send ("/myo" + ID + "/EMG/fod", (float) mavFod);
+    sender.send ("/myo" + ID + "/EMG/mavMavg",
+                 (float) emgMavMavg);
     sender.send ("/myo" + ID + "/pose", (int) poseID, (String) pose);
-    sender.send ("/myo" + ID + "/orientation/quaternion",
-                 (float) quaternion[0],
-                 (float) quaternion[1],
-                 (float) quaternion[2],
-                 (float) quaternion[3]);
-    sender.send ("/myo" + ID + "/all",
-                 (float) orientationScaled.x,
-                 (float) orientationScaled.y,
-                 (float) orientationScaled.z,
-                 (float) orientationWfL.x,
-                 (float) orientationWfL.y,
-                 (float) orientationWfL.z,
-                 (float) accelerationScaled.x,
-                 (float) accelerationScaled.y,
-                 (float) accelerationScaled.z,
-                 (float) accelerationScaledWfL.x,
-                 (float) accelerationScaledWfL.y,
-                 (float) accelerationScaledWfL.z,
-                 (float) gyroScaled.x,
-                 (float) gyroScaled.y,
-                 (float) gyroScaled.z,
-                 (float) gyroScaledWfL.x,
-                 (float) gyroScaledWfL.y,
-                 (float) gyroScaledWfL.z,
-                 (float) mav,
-                 (float) mavWl,
-                 (float) emgScaledAbs[0],
-                 (float) emgScaledAbs[1],
-                 (float) emgScaledAbs[2],
-                 (float) emgScaledAbs[3],
-                 (float) emgScaledAbs[4],
-                 (float) emgScaledAbs[5],
-                 (float) emgScaledAbs[6],
-                 (float) emgScaledAbs[7]);
-    sender.send ("/wek/inputs",
-                 (float) orientationScaled.x,
-                 (float) orientationScaled.y,
-                 (float) orientationScaled.z,
-                 (float) accelerationScaled.x,
-                 (float) accelerationScaled.y,
-                 (float) accelerationScaled.z,
-                 (float) gyroScaled.x,
-                 (float) gyroScaled.y,
-                 (float) gyroScaled.z,
-                 (float) mav,
-                 (float) mavWl);
 }
 
 // ============== END SENDER ==============

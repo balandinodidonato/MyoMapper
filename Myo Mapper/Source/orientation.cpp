@@ -46,11 +46,18 @@ Vector3D<float> Orientation::getValue()
     return orientationScaled;
 }
 
-Vector3D<float> Orientation::getWl(){
+Vector3D<float> Orientation::getFod(){
     
-    orientationWl.set3DValue (orientationScaled);
-    return orientationWl.get3DValue();
+    orientationFod.set3DValue (orientationScaled);
+    return orientationFod.get3DValue();
 }
+
+Vector3D<float> Orientation::getSod(){
+    
+    orientationSod.set3DValue (orientationScaled);
+    return orientationSod.get3DValue();
+}
+
 
 float Orientation::getYaw()
 {
