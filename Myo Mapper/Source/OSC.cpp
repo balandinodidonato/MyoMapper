@@ -68,7 +68,8 @@ void OSC::sendOSC (int id,
                    std::array<float, 8> emgScaledAbs,
                    std::array<float, 4> quaternion,
                    float mav,
-                   float mavWl,
+                   float mavFod,
+                   float emgMavMavg,
                    Vector3D<float> gyro,
                    Vector3D<float> gyroFod,
                    Vector3D<float> gyroScaled,
@@ -78,7 +79,6 @@ void OSC::sendOSC (int id,
                    Vector3D<float> accelerationFod,
                    Vector3D<float> accelerationScaled,
                    Vector3D<float> accelerationScaledFod,
-                   Vector3D<float> accelerationScaledMavg,
                    Vector3D<float> orientationRaw,
                    Vector3D<float> orientationScaled,
                    Vector3D<float> orientationFod,
@@ -148,10 +148,6 @@ void OSC::sendOSC (int id,
                  (float) accelerationScaledFod.x,
                  (float) accelerationScaledFod.y,
                  (float) accelerationScaledFod.z);
-    sender.send ("/myo" + ID + "/acceleration/scaledMavg",
-                 (float) accelerationScaledMavg.x,
-                 (float) accelerationScaledMavg.y,
-                 (float) accelerationScaledMavg.z);
     
     sender.send ("/myo" + ID + "/EMG/raw",
                  (int) emgRaw[0],
@@ -182,7 +178,9 @@ void OSC::sendOSC (int id,
                  (float) emgScaledAbs[7]);
     sender.send ("/myo" + ID + "/EMG/mav", (float) mav);
     sender.send ("/myo" + ID + "/EMG/mav", (float) mav);
-    sender.send ("/myo" + ID + "/EMG/fod", (float) mavWl);
+    sender.send ("/myo" + ID + "/EMG/fod", (float) mavFod);
+    sender.send ("/myo" + ID + "/EMG/mavMavg",
+                 (float) emgMavMavg);
     sender.send ("/myo" + ID + "/pose", (int) poseID, (String) pose);
 }
 

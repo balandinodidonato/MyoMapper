@@ -72,7 +72,7 @@ private:
     FirstOrderDifference mavFod;
     SecondOrderDifference mavSod;
     
-    MovingAverage accMovAvg;
+    MovingAverage EMGMavMavg;
 };
 
 
