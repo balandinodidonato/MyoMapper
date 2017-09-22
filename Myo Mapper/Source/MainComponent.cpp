@@ -2,26 +2,10 @@
 #include "MyoData.h"
 
 MainComponent::MainComponent()
-:   selectedMyoID(0),
-    menuBar(this)
+:   selectedMyoID (0),
+    menuBar (this)
 {
-    setComponentID ("MainComponentID");
-#if JUCE_MAC
-    if (MenuBarModel::getMacMainMenu() != nullptr)
-    {
-        MenuBarModel::setMacMainMenu (nullptr);
-        menuBar.setModel (this);
-    }
-    else
-    {
-        menuBar.setModel (nullptr);
-        MenuBarModel::setMacMainMenu (this);
-    }
-#endif
-    
     setSize (getParentWidth() * 0.4, getParentHeight());
-
-    addAndMakeVisible (&menuBar);
 
     getLookAndFeel().setUsingNativeAlertWindows (true);
     
@@ -43,18 +27,35 @@ MainComponent::MainComponent()
     osc.connectSender();
     osc.connectReceiver();
 
-    addKeyListener (commandManager.getKeyMappings());
-    commandManager.setFirstCommandTarget (this);
-//    commandManager.setFirstCommandTarget (this);
-//    propertyManager.commandManager.setFirstCommandTarget (this);
+    #if JUCE_MAC
+        setMacMainMenu (this);
+    #else
+        setMenuBar (this);
+    #endif
+    
+    addKeyListener (getCommandManager().getKeyMappings());
+    
+    #if JUCE_MAC
+        setMacMainMenu (this);
+    #else
+        setMenuBar (this);
+    #endif
+    
+    getCommandManager().setFirstCommandTarget (this);
     
     startTimer(25);
+    
+    selectedMyoID = getAppProperties().getUserSettings()->getIntValue("Myo ID", 0);
 }
 
 MainComponent::~MainComponent()
 {
+    getAppProperties().getUserSettings()->setValue ("Myo ID", selectedMyoID);
+    
     #if JUCE_MAC
-        MenuBarModel::setMacMainMenu (nullptr);
+        setMacMainMenu (nullptr);
+    #else
+        setMenuBar (nullptr);
     #endif
     PopupMenu::dismissAllActiveMenus();
 }
@@ -117,7 +118,7 @@ void MainComponent::timerCallback()
     if (! success) return;
     
     if (! selectedMyoID || selectedMyoID >= myoData.size()) return;
-
+    
     uint8 id = selectedMyoID;
         
     orientation.setValues (myoData[id].orientationRaw);
@@ -193,59 +194,66 @@ StringArray MainComponent::getMenuBarNames()
     names.add ("View");         // Text size/ zoom, fullscreen
     names.add ("Window");      // Move to front, new visualswindow, close all, minimise
     names.add ("Help");         // About, documentation
-    return StringArray (names);
+    return names;
 }
 
-PopupMenu MainComponent::getMenuForIndex (int index, const String& menuName)
+
+PopupMenu MainComponent::getMenuForIndex (int topLevelMenuIndex, const String& menuName)
 {
     PopupMenu menu;
     
-    if (menuName == "File")
+    if (topLevelMenuIndex == 0)
     {
-//        menu.addItem (CommandIDs::newMapper, "New");
-        menu.addCommandItem (&commandManager, CommandIDs::newMapper);
+        // File Menu
+        
+        menu.addCommandItem (&getCommandManager(), CommandIDs::newMapper);
         menu.addSeparator();
-        menu.addCommandItem (&commandManager, CommandIDs::openMapper);
-        menu.addCommandItem (&commandManager, CommandIDs::saveMapper);
-        menu.addCommandItem (&commandManager, CommandIDs::saveMapperAs);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::openMapper);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapper);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapperAs);
         menu.addSeparator();
-        menu.addCommandItem (&commandManager, CommandIDs::quitMapper);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::quitMapper);
     }
-    else if (menuName == "View")
-//    if (index == 1)
+    else if (topLevelMenuIndex == 1)
     {
-        menu.addCommandItem (&commandManager, CommandIDs::zoomIncrease);
-        menu.addCommandItem (&commandManager, CommandIDs::zoomDecrease);
+        // View Menu
+        
+        menu.addCommandItem (&getCommandManager(), CommandIDs::zoomIncrease);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::zoomDecrease);
         menu.addSeparator();
-        menu.addCommandItem (&commandManager, CommandIDs::enableFullscreen);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::enableFullscreen);
     }
-    else if (menuName == "Window")
-//    if (index == 2)
+    else if (topLevelMenuIndex == 2)
     {
-        menu.addCommandItem (&commandManager, CommandIDs::newDisplayWindow);
+        // Window Menu
+        
+        menu.addCommandItem (&getCommandManager(), CommandIDs::newDisplayWindow);
         menu.addSeparator();
-        menu.addCommandItem (&commandManager, CommandIDs::moveWindowsToFront);
-        menu.addCommandItem (&commandManager, CommandIDs::hideAllWindows);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::moveWindowsToFront);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::hideAllWindows);
         menu.addSeparator();
-        menu.addCommandItem (&commandManager, CommandIDs::closeAllWindows);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::closeAllWindows);
     }
-    else if (menuName == "Help")
-//    if (index == 3)
+    else if (topLevelMenuIndex == 3)
     {
-        menu.addCommandItem (&commandManager, CommandIDs::showAboutWindow);
-        menu.addCommandItem (&commandManager, CommandIDs::showDocumentationWindow);
-//        menu.addItem (AboutMyoMapper, "About Myo Mapper");
-//        menu.addItem (onlineDocumentation, "Online Documentation");
+        // Help Menu
+        
+        menu.addCommandItem (&getCommandManager(), CommandIDs::showAboutWindow);
+        menu.addCommandItem (&getCommandManager(), CommandIDs::showDocumentationWindow);
     }
+    
     return menu;
 }
 
-void MainComponent::menuItemSelected (int menuID, int index)
+void MainComponent::menuItemSelected (int menuItemID, int topLevelMenuIndex)
 {
-//        if (menuID == AboutMyoMapper)
-//            AboutMyoMapperDialogWindow();
-//        else if (menuID == onlineDocumentation)
-//            HelpDialogWindow();
+//        if (index == 0)
+    
+}
+
+void MainComponent::menuBarActivated (bool isActive)
+{
+    // Remove keyboard focus from windows if necessary
 }
 
 // ===================================================================
@@ -253,12 +261,13 @@ void MainComponent::menuItemSelected (int menuID, int index)
 // ===================================================================
 ApplicationCommandTarget* MainComponent::getNextCommandTarget()
 {
-    
+    // Search upwards through UI tree to find appropriate command target
     return findFirstTargetParentComponent();
 }
 
 void MainComponent::getAllCommands (Array<CommandID> &commands)
 {
+    // Return a list of commands the manager's target can perform
     const CommandID id[] = {    CommandIDs::newMapper,
                                 CommandIDs::openMapper,
                                 CommandIDs::saveMapper,
@@ -273,11 +282,9 @@ void MainComponent::getAllCommands (Array<CommandID> &commands)
                                 CommandIDs::closeAllWindows,
                                 CommandIDs::showAboutWindow,
                                 CommandIDs::showDocumentationWindow
-    };
+                            };
     
     commands.addArray (id, numElementsInArray (id));
-    
-//    return id;
 }
 
 void MainComponent::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
@@ -365,9 +372,11 @@ bool MainComponent::perform (const InvocationInfo& info)
             break;
             
         case CommandIDs::saveMapper:
+            // To Implement With Projucer OpenDocumentManager
             break;
             
         case CommandIDs::saveMapperAs:
+            // To Implement With Projucer OpenDocumentManager
             break;
             
         case CommandIDs::quitMapper:

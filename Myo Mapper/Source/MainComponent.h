@@ -31,13 +31,15 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    
     void disconnectMyoAndOSC();
 
     Orientation orientation;
     
     StringArray getMenuBarNames() override;
     PopupMenu getMenuForIndex (int index, const String& name) override;
-    void menuItemSelected (int menuID, int index) override;
+    void menuItemSelected (int menuItemID, int topLevelMenuIndex) override;
+    void menuBarActivated (bool isActive) override;
     
     enum MenuIDs {
         AboutMyoMapper = 1000,
@@ -72,8 +74,6 @@ public:
 private:    
     void timerCallback() override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
-    
-    ApplicationCommandManager commandManager;
     
     MyoManager myoManager;
     Pose pose;

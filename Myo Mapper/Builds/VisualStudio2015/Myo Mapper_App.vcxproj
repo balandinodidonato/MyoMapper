@@ -155,6 +155,7 @@
     <ClCompile Include="..\..\Source\HelpWindow.cpp"/>
     <ClCompile Include="..\..\Source\AboutWindow.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
+    <ClCompile Include="..\..\Source\Application.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
     <ClCompile Include="..\..\Source\Settings.cpp"/>
     <ClCompile Include="..\..\Source\Orientation.cpp"/>
@@ -1353,6 +1354,7 @@
     <ClInclude Include="..\..\Source\AboutWindowContent.h"/>
     <ClInclude Include="..\..\Source\HelpWindow.h"/>
     <ClInclude Include="..\..\Source\AboutWindow.h"/>
+    <ClInclude Include="..\..\Source\Application.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\Settings.h"/>
     <ClInclude Include="..\..\Source\Orientation.h"/>

@@ -38,7 +38,7 @@ Settings::Settings()
     addAndMakeVisible (oscPortLabelReceiver);
     oscPortSliderReceiver.addListener (this);
     
-    myoList.setText (getAppProperties().getUserSettings()->getValue ("Myo Number", "Select Myo"));
+    myoList.setText (getAppProperties().getUserSettings()->getValue ("Myo Selector Number", "Select Myo"));
     addAndMakeVisible (myoList);
     
     myoList.addItem ("Myo n. 1", 1);
@@ -59,7 +59,7 @@ Settings::Settings()
 
 Settings::~Settings()
 {
-    getAppProperties().getUserSettings()->setValue ("Myo Number", myoList.getText());
+    getAppProperties().getUserSettings()->setValue ("Myo Selector Number", myoList.getText());
     getAppProperties().getUserSettings()->setValue ("OSC Send", oscPortSliderSender.getValue());
     getAppProperties().getUserSettings()->setValue ("OSC Receive", oscPortSliderReceiver.getValue());
     getAppProperties().getUserSettings()->setValue ("Show Orientation", showOrientation.getToggleStateValue());

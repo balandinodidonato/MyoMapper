@@ -24,13 +24,16 @@ namespace CommandIDs
         zoomDecrease                    =   0x200011,
         enableFullscreen                =   0x200012,
         
-        newDisplayWindow                =   0x200020,
-        moveWindowsToFront              =   0x200021,
-        hideAllWindows                  =   0x200022,
-        closeAllWindows                 =   0x200023,
+        showSettingsWindow              =   0x200020,
+        newDisplayWindow                =   0x200021,
+        moveWindowsToFront              =   0x200022,
+        hideAllWindows                  =   0x200023,
+        closeAllWindows                 =   0x200024,
         
         showAboutWindow                 =   0x200030,
-        showDocumentationWindow         =   0x200031
+        showDocumentationWindow         =   0x200031,
+        
+        showPreferences                 =   0x200040
     };
 }
 

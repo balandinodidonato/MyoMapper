@@ -262,6 +262,9 @@
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>Myo Mapper\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Application.cpp">
+      <Filter>Myo Mapper\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MainComponent.cpp">
       <Filter>Myo Mapper\Source</Filter>
     </ClCompile>
@@ -1586,6 +1589,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\AboutWindow.h">
       <Filter>Myo Mapper\Source\MenuBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Application.h">
+      <Filter>Myo Mapper\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>Myo Mapper\Source</Filter>

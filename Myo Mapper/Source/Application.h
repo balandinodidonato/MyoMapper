@@ -1,0 +1,91 @@
+/*
+  ==============================================================================
+
+    Application.h
+    Created: 21 Sep 2017 11:33:33pm
+    Author:  Jefferson Bledsoe
+
+  ==============================================================================
+*/
+
+#pragma once
+
+#include "../JuceLibraryCode/JuceHeader.h"
+#include "CommandIDs.h"
+
+//==============================================================================
+/*
+*/
+class MyoMapperApplication  : public JUCEApplication
+{
+public:
+    MyoMapperApplication();
+    
+    static MyoMapperApplication& getApp();
+    static ApplicationCommandManager& getCommandManager();
+    ApplicationProperties& getAppProperties();
+    
+    //==========================================================================
+    const String getApplicationName() override      { return ProjectInfo::projectName; }
+    const String getApplicationVersion() override   { return ProjectInfo::versionString; }
+    bool moreThanOneInstanceAllowed() override      { return true; }
+    
+    //==========================================================================
+    void initialise (const String& commandLine) override;
+    
+    void shutdown() override;
+    void systemRequestedQuit() override;
+    
+    //==========================================================================
+    MenuBarModel* getMenuModel();
+    StringArray getMenuBarNames();
+    void createMenu (PopupMenu&, const String& menuName);
+    void createFileMenu (PopupMenu&);
+    void createViewMenu (PopupMenu&);
+    void createWindowMenu (PopupMenu&);
+    void createHelpMenu (PopupMenu&);
+    void createAppleMenu (PopupMenu&);
+    void menuCommand (int menuItemID);
+    
+    //==========================================================================
+    void getAllCommands (Array<CommandID>&) override;
+    void getCommandInfo (CommandID commandID, ApplicationCommandInfo& result) override;
+    bool perform (const InvocationInfo& info) override;
+    
+    //==========================================================================
+    void createNewMapper();
+    void userFileOpenDialog();
+    void openFile();
+    void saveMapper();
+    void saveMapperAs();
+    void quitMapper();
+    void windowZoomIncrease();
+    void windowZoomDecrease();
+    void enableFullscreen();
+    void showSettingsWindow();
+    void newDisplayWindow();
+    void moveWindowsToFront();
+    void hideAllWindows();
+    void closeAllWindows();
+    void showAboutWindow();
+    void showDocumentationWindow();
+    
+    //==========================================================================
+//    MyoMapperLookAndFeel lookAndFeel;         // For new UI
+    LookAndFeel_V3 oldLookAndFeel;
+    
+    struct MainMenuBarModel;
+    ScopedPointer<MainMenuBarModel> menuModel;
+    
+    // Document Manager Goes Here
+    ScopedPointer<ApplicationCommandManager> commandManager;
+    ScopedPointer<ApplicationProperties> appProperties;
+    
+    
+    
+private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyoMapperApplication)
+};
+
+
+

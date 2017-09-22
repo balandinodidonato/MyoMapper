@@ -33,6 +33,8 @@
         <FILE id="hn6pYz" name="AboutWindow.h" compile="0" resource="0" file="Source/AboutWindow.h"/>
       </GROUP>
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="DYDlAi" name="Application.cpp" compile="1" resource="0" file="Source/Application.cpp"/>
+      <FILE id="vTYesi" name="Application.h" compile="0" resource="0" file="Source/Application.h"/>
       <FILE id="Vath7r" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>

@@ -1,6 +1,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
 
+//============================================================================================
 class MyoMapperApplication  : public JUCEApplication
 {
 public:
@@ -18,15 +19,15 @@ public:
         options.folderName = ProjectInfo::projectName;
         options.filenameSuffix = ".mapper";
         options.osxLibrarySubFolder = "Application Support";
-        
         appProperties = new ApplicationProperties();
         appProperties->setStorageParameters (options);
-        
-//        appProperties->setStorageParameters (options);
         
         // Change look to old look and create new window
         juce::LookAndFeel::setDefaultLookAndFeel (&oldLookAndFeel);
         mainWindow = new MainWindow (getApplicationName());
+        
+        commandManager.registerAllCommandsForTarget (this);
+//        commandManager.registerAllCommandsForTarget (mainWindow);
         
         // File Manager Here
     }
@@ -34,6 +35,8 @@ public:
     void shutdown() override
     {
         mainWindow = nullptr; // (deletes our window)
+        appProperties = nullptr;
+        LookAndFeel::setDefaultLookAndFeel (nullptr);
     }
 
     void systemRequestedQuit() override
@@ -41,7 +44,7 @@ public:
         if (mainWindow != nullptr)
         {
             mainWindow = nullptr;
-            JUCEApplicationBase::quit();
+//            JUCEApplicationBase::quit();
         }
         else
             JUCEApplicationBase::quit();
@@ -52,6 +55,7 @@ public:
         mainWindow = new MainWindow (getApplicationName());
     }
 
+//=================================================================================
     class MainWindow    : public DocumentWindow
     {
     public:
@@ -82,7 +86,6 @@ public:
 
     ApplicationCommandManager commandManager;
     ScopedPointer<ApplicationProperties> appProperties;
-
     
 private:
     ScopedPointer<MainWindow> mainWindow;
