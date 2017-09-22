@@ -8,6 +8,7 @@
 #include "MyoData.h"
 #include <array>
 #include "MovingAverage.h"
+#include "Mav.h"
 
 class MyoListener : public myo::DeviceListener
 {
@@ -74,6 +75,8 @@ private:
     
     MovingAverage EMGMavMavg;
     MovingAverage EMGMavg[8];
+    
+    Mav emgMav;
 };
 
 

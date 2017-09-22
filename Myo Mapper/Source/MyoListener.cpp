@@ -186,10 +186,11 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
        
         EMGMavg[i].setValue(myoData[myoID].emgScaledAbs[i], 10);
         myoData[myoID].emgScaledAbsMavg[i] = EMGMavg[i].getFloat();
-        
-        emgSum = emgSum + myoData[myoID].emgScaledAbs[i];
     }
-    myoData[myoID].mav = emgSum * 0.125;
+    
+    emgMav.setValue(myoData[myoID].emgScaledAbs);
+        
+    myoData[myoID].mav = emgMav.getValue();
 
     EMGMavMavg.setValue(myoData[myoID].mav, 10);
     myoData[myoID].emgMavMavg = EMGMavMavg.getFloat();
