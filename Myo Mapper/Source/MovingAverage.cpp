@@ -1,5 +1,4 @@
 #include "MovingAverage.h"
-#include "../JuceLibraryCode/JuceHeader.h"
 
 void MovingAverage::setValue(float Value, int NSamplesAvg)
 {

@@ -1,5 +1,4 @@
 #include "FirstOrderDifference.h"
-#include "../JuceLibraryCode/JuceHeader.h"
 
 void FirstOrderDifference::setValue (float Value)
 {

@@ -241,6 +241,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\ScaleValues.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FirstOrderDifference.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
@@ -1572,6 +1575,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\ScaleValues.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\FirstOrderDifference.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
