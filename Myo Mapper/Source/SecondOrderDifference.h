@@ -2,14 +2,9 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-//==============================================================================
-/*
-*/
-class SecondOrderDifference    : public Component
+class SecondOrderDifference
 {
 public:
-    SecondOrderDifference ();
-    ~SecondOrderDifference();
     
     void setValue (float Value);
     float getValue();
@@ -28,6 +23,4 @@ private:
     Vector3D<float> previousInputs3D[2];
     Vector3D<float> sod3D;
     int inputPointer3D = 0;
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SecondOrderDifference)
 };
