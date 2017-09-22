@@ -79,6 +79,7 @@ private:
     
     ScaleValues scaleAcc;
     ScaleValues scaleGyro;
+    ScaleValues scaleEMG[8];
 };
 
 
