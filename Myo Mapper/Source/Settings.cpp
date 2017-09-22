@@ -9,7 +9,7 @@ Settings::Settings()
     oscPortReceiver (5431)
 {
     oscPortSliderSender.setRange (0, 9999, 1);
-    oscPortSliderSender.setValue (getAppProperties().getUserSettings()->getIntValue ("OSC Send", 5432));
+    oscPortSliderSender.setValue (MyoMapperApplication::MyoMapperApplication::    MyoMapperApplication::getAppProperties().getUserSettings()->getIntValue ("OSC Send", 5432));
     oscPortSliderSender.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     oscPortSliderSender.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (oscPortSliderSender);
@@ -28,7 +28,7 @@ Settings::Settings()
     setHostAddress.addListener (this);
     
     oscPortSliderReceiver.setRange (0, 9999, 1);
-    oscPortSliderReceiver.setValue (getAppProperties().getUserSettings()->getIntValue ("OSC Receive", 5431));
+    oscPortSliderReceiver.setValue (MyoMapperApplication::MyoMapperApplication::    MyoMapperApplication::getAppProperties().getUserSettings()->getIntValue ("OSC Receive", 5431));
     oscPortSliderReceiver.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     oscPortSliderReceiver.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (oscPortSliderReceiver);
@@ -38,7 +38,7 @@ Settings::Settings()
     addAndMakeVisible (oscPortLabelReceiver);
     oscPortSliderReceiver.addListener (this);
     
-    myoList.setText (getAppProperties().getUserSettings()->getValue ("Myo Selector Number", "Select Myo"));
+    myoList.setText (    MyoMapperApplication::getAppProperties().getUserSettings()->getValue ("Myo Selector Number", "Select Myo"));
     addAndMakeVisible (myoList);
     
     myoList.addItem ("Myo n. 1", 1);
@@ -47,23 +47,23 @@ Settings::Settings()
     myoList.addItem ("Myo n. 4", 4);
     
     showOrientation.setButtonText ("Show Orientation");
-    showOrientation.setToggleState (getAppProperties().getUserSettings()->getBoolValue ("Show Orientation", false),
+    showOrientation.setToggleState (    MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Orientation", false),
                                     dontSendNotification);
     addAndMakeVisible (showOrientation);
     showPose.setButtonText ("Show Pose");
-    showPose.setToggleState (getAppProperties().getUserSettings()->getBoolValue ("Show Pose", false),
+    showPose.setToggleState (    MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Pose", false),
                              dontSendNotification);
-    showPose.setVisible (getAppProperties().getUserSettings()->getBoolValue ("Show Pose", false));
+    showPose.setVisible (    MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Pose", false));
     addAndMakeVisible (showPose);
 }
 
 Settings::~Settings()
 {
-    getAppProperties().getUserSettings()->setValue ("Myo Selector Number", myoList.getText());
-    getAppProperties().getUserSettings()->setValue ("OSC Send", oscPortSliderSender.getValue());
-    getAppProperties().getUserSettings()->setValue ("OSC Receive", oscPortSliderReceiver.getValue());
-    getAppProperties().getUserSettings()->setValue ("Show Orientation", showOrientation.getToggleStateValue());
-    getAppProperties().getUserSettings()->setValue ("Show Pose", showPose.getToggleStateValue());
+        MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("Myo Selector Number", myoList.getText());
+        MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("OSC Send", oscPortSliderSender.getValue());
+        MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("OSC Receive", oscPortSliderReceiver.getValue());
+        MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("Show Orientation", showOrientation.getToggleStateValue());
+        MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("Show Pose", showPose.getToggleStateValue());
 }
 
 void Settings::paint (Graphics& g)

@@ -2,9 +2,7 @@
 #define SETTINGS_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
-ApplicationCommandManager& getCommandManager();
-ApplicationProperties& getAppProperties();
+#include "Application.h"
 
 class Settings    : public Component,
                     private juce::Label::Listener,

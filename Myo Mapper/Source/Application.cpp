@@ -55,6 +55,20 @@ void MyoMapperApplication::initialise (const String& commandLine)
     
     LookAndFeel::setDefaultLookAndFeel (&oldLookAndFeel);
     
+    // Draw Window
+    
+    // File manager initialisation
+    
+    commandManager = new ApplicationCommandManager();
+    commandManager->registerAllCommandsForTarget (this);
+    
+    getCommandManager().registerAllCommandsForTarget (this);
+    
+    menuModel = new MainMenuBarModel();
+    
+    #if JUCE_MAC
+    MenuBarModel::setMacMainMenu(menuModel);
+    #endif
     
 }
 

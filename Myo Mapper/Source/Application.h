@@ -23,7 +23,7 @@ public:
     
     static MyoMapperApplication& getApp();
     static ApplicationCommandManager& getCommandManager();
-    ApplicationProperties& getAppProperties();
+    static ApplicationProperties&     getAppProperties();
     
     //==========================================================================
     const String getApplicationName() override      { return ProjectInfo::projectName; }

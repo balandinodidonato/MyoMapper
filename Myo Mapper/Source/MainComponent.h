@@ -1,8 +1,8 @@
 #ifndef MAINCOMPONENT_H_INCLUDED
 #define MAINCOMPONENT_H_INCLUDED
 
-#include "CommandIDs.h"
-
+//#include "CommandIDs.h"
+#include "Application.h"
 #include "Orientation.h"
 //#include "mav.h"
 #include "Settings.h"
@@ -19,8 +19,7 @@
 */
 class MainComponent    : public Component,
                          private Timer,
-                         public MenuBarModel,
-                         public ApplicationCommandTarget,
+//                         public ApplicationCommandTarget,
                          private ComboBox::Listener,
                          private Button::Listener   // Added Listener for panel show/ hide buttons
 {
@@ -36,11 +35,6 @@ public:
 
     Orientation orientation;
     
-    StringArray getMenuBarNames() override;
-    PopupMenu getMenuForIndex (int index, const String& name) override;
-    void menuItemSelected (int menuItemID, int topLevelMenuIndex) override;
-    void menuBarActivated (bool isActive) override;
-    
     enum MenuIDs {
         AboutMyoMapper = 1000,
         Preferences,
@@ -54,10 +48,7 @@ public:
         onlineDocumentation
     };
     
-    ApplicationCommandTarget* getNextCommandTarget() override;
-    void getAllCommands (Array<CommandID>& commands) override;
-    void getCommandInfo (CommandID commandID, ApplicationCommandInfo& result) override;
-    bool perform (const InvocationInfo& info) override;
+//    ApplicationCommandTarget* getNextCommandTarget() override;
     
     Settings settingsPannel;
     void setPanelVisibility (Component &component);
