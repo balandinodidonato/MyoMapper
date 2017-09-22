@@ -16,17 +16,18 @@ public:
 
 private:
     
-    float input = 0;
+    float input[100];
     int nSamplesAvg = 0;
-    float mavg = 0;
     int pointer = 0;
-    int pointer3d = 0;
+    float mavg = 0;
     float sum = 0;
     
-    Vector3D<float> input3d;
-    Vector3D<float> sum3d;
-    Vector3D<float> mavg3d;
+    Vector3D<float> input3d[100];
     int nSamplesAvg3D = 0;
+    int pointer3d = 0;
+    Vector3D<float> sum3d = {0, 0, 0,};
+    Vector3D<float> mavg3d = {0, 0, 0,};
+
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MovingAverage)
 };
