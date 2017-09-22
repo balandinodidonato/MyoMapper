@@ -60,21 +60,33 @@ void MyoMapperApplication::initialise (const String& commandLine)
     // File manager initialisation
     
     commandManager = new ApplicationCommandManager();
-    commandManager->registerAllCommandsForTarget (this);
-    
     getCommandManager().registerAllCommandsForTarget (this);
+    
+//    getCommandManager().registerAllCommandsForTarget (this);
     
     menuModel = new MainMenuBarModel();
     
+    // Wait for message loop to initialise menu bar and register command
+    triggerAsyncUpdate();
+}
+
+void MyoMapperApplication::handleAsyncUpdate()
+{
     #if JUCE_MAC
-    MenuBarModel::setMacMainMenu(menuModel);
+        PopupMenu appleMenu;
+        createAppleMenu(appleMenu);
+        MenuBarModel::setMacMainMenu(menuModel, &appleMenu);
     #endif
-    
 }
 
 void MyoMapperApplication::shutdown()
 {
 //    mainWindow = nullptr; // (deletes our window)
+    #if JUCE_MAC
+        MenuBarModel::setMacMainMenu (nullptr);
+    #endif
+    menuModel = nullptr;
+    commandManager = nullptr;
     appProperties = nullptr;
     LookAndFeel::setDefaultLookAndFeel (nullptr);
 }

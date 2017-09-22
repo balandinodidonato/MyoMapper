@@ -16,7 +16,8 @@
 //==============================================================================
 /*
 */
-class MyoMapperApplication  : public JUCEApplication
+class MyoMapperApplication  : public JUCEApplication,
+                              private AsyncUpdater
 {
 public:
     MyoMapperApplication();
@@ -35,6 +36,8 @@ public:
     
     void shutdown() override;
     void systemRequestedQuit() override;
+    
+    void handleAsyncUpdate() override;
     
     //==========================================================================
     MenuBarModel* getMenuModel();
