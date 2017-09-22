@@ -3,6 +3,7 @@
 #include <array>
 
 void Mav::setValue(std::array<float, 8> Values){
+
     
     sum = 0;
     

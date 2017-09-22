@@ -241,10 +241,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Mav.cpp">
+    <ClCompile Include="..\..\Source\MovingAverage.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\MovingAverage.cpp">
+    <ClCompile Include="..\..\Source\Mav.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SecondOrderDifference.cpp">
@@ -1572,10 +1572,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Mav.h">
+    <ClInclude Include="..\..\Source\MovingAverage.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\MovingAverage.h">
+    <ClInclude Include="..\..\Source\Mav.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SecondOrderDifference.h">
