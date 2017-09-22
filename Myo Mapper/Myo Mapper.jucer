@@ -6,8 +6,14 @@
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
+    <GROUP id="{84577E64-7EB8-4A2A-6BC4-1584DD875F14}" name="Utility">
+      <FILE id="eNRTqH" name="CommandIDs.h" compile="0" resource="0" file="Source/Utility/CommandIDs.h"/>
+      <FILE id="p4ljyI" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/Utility/MyoMapperLookAndFeel.cpp"/>
+      <FILE id="J84YTa" name="MyoMapperLookAndFeel.h" compile="0" resource="0"
+            file="Source/Utility/MyoMapperLookAndFeel.h"/>
+    </GROUP>
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
-      <FILE id="cMDdMU" name="CommandIDs.h" compile="0" resource="0" file="Source/CommandIDs.h"/>
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>

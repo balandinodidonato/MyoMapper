@@ -148,6 +148,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\MyoManager.cpp"/>
     <ClCompile Include="..\..\Source\MyoListener.cpp"/>
     <ClCompile Include="..\..\Source\WaveformLength.cpp"/>
@@ -1348,7 +1349,8 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\CommandIDs.h"/>
+    <ClInclude Include="..\..\Source\Utility\CommandIDs.h"/>
+    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\MyoData.h"/>
     <ClInclude Include="..\..\Source\MyoManager.h"/>
     <ClInclude Include="..\..\Source\MyoListener.h"/>

@@ -14,9 +14,9 @@
 
 //==============================================================================
 MainWindow::MainWindow()
-:   DocumentWindow (MyoMapperApplication::getApp().getApplicationName,
-                    MyoMapperApplication::getApp().oldLookAndFeel.getCurrentColourScheme,
-                    MyoMapperApplication::getApp().lookAndFeel.getCurrentColourScheme()
+:   DocumentWindow (MyoMapperApplication::getApp().getApplicationName(),
+                    Colours::darkgrey,
+//                    MyoMapperApplication::getApp().lookAndFeel.getUIColour (
                     DocumentWindow::allButtons, false)
 {
     // In your constructor, you should add any child components, and

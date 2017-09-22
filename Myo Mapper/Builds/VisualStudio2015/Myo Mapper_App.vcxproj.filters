@@ -2,6 +2,9 @@
 
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Myo Mapper\Utility">
+      <UniqueIdentifier>{547E4C02-41ED-AD2C-4DA7-9B451B66989F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Myo Mapper\Source\Resources">
       <UniqueIdentifier>{813689DA-F49E-6D7D-1EB4-89943506DF7E}</UniqueIdentifier>
     </Filter>
@@ -241,6 +244,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
+      <Filter>Myo Mapper\Utility</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MyoManager.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
@@ -1572,8 +1578,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\CommandIDs.h">
-      <Filter>Myo Mapper\Source</Filter>
+    <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
+      <Filter>Myo Mapper\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
+      <Filter>Myo Mapper\Utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MyoData.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
