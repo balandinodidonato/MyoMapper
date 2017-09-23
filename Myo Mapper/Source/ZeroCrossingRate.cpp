@@ -1,24 +1,24 @@
 #include "ZeroCrossingRate.h"
 
-void ZeroCrossing::setEmgValue(int Value){
+void ZeroCrossing::setValue(float Value, int BufferSize){
     
-    emgBuffer[emgCounter] = Value;
-    zeroCrossEmg = 0;
+    buffer[counter] = Value;
+    zeroCrossingRate = 0;
     
-    for (unsigned int i=0; i<200; i++) {
-        if(emgBuffer[i]>0 && emgBuffer[(i+1)%200]<0){
-            zeroCrossEmg++;
+    for (unsigned int i=0; i<BufferSize; i++) {
+        if(buffer[i]>0 && buffer[(i+1)%BufferSize]<0){
+            zeroCrossingRate++;
         }
-        else if(emgBuffer[i]<0 && emgBuffer[(i+1)%200]>0){
-            zeroCrossEmg++;
+        else if(buffer[i]<0 && buffer[(i+1)%200]>0){
+            zeroCrossingRate++;
         }
         else continue;
     }
     
-    emgCounter++;
-    emgCounter = emgCounter % 200;
+    counter++;
+    counter = counter % 200;
 }
 
 int ZeroCrossing::getValue(){
-    return zeroCrossEmg;
+    return zeroCrossingRate;
 }
