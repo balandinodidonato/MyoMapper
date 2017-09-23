@@ -9,6 +9,7 @@ struct MyoData
     std::array<float, 8> emgScaled;
     std::array<float, 8> emgScaledAbs;
     std::array<float, 8> emgScaledAbsMavg;
+    std::array<int, 8> emgZeroCross;
     std::array<float, 4> quaternion;
     Vector3D<float> gyro;
     Vector3D<float> gyroScaled;
