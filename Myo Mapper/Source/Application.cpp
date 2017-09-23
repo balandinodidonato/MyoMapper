@@ -183,7 +183,7 @@ void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::moveWindowsToFront);
     menu.addCommandItem (&getCommandManager(), CommandIDs::hideAllWindows);
     menu.addSeparator();
-    menu.addCommandItem (&getCommandManager(), CommandIDs::closeWindow)
+    menu.addCommandItem (&getCommandManager(), CommandIDs::closeWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::closeAllWindows);
 }
 
@@ -298,6 +298,11 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             result.addDefaultKeypress ('h', ModifierKeys::commandModifier);
             break;
             
+        case CommandIDs::closeWindow:
+            result.setInfo ("Close Window", "Close the currently selected window", CommandCategories::windows, 0);
+            result.addDefaultKeypress ('w', ModifierKeys::commandModifier);
+            break;
+            
         case CommandIDs::closeAllWindows:
             result.setInfo ("Close All", "Close all windows but keep the current project open", CommandCategories::windows, 0);
             break;
@@ -331,7 +336,7 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
         case CommandIDs::newDisplayWindow:              newDisplayWindow(); break;
         case CommandIDs::moveWindowsToFront:            moveWindowsToFront(); break;
         case CommandIDs::hideAllWindows:                hideAllWindows(); break;
-        case CommandIDs::closeAllWindows:               closeAllWindows(); break;
+        case CommandIDs::closeWindow:                   closeWindow(); break;
         case CommandIDs::closeAllWindows:               closeAllWindows(); break;
         case CommandIDs::showAboutWindow:               showAboutWindow(); break;
         case CommandIDs::showDocumentationWindow:       showDocumentationWindow(); break;
@@ -405,6 +410,11 @@ void MyoMapperApplication::moveWindowsToFront()
 void MyoMapperApplication::hideAllWindows()
 {
     // Hide all windows (minimise or hidden)
+}
+
+void MyoMapperApplication::closeWindow()
+{
+    // Close currently selected window
 }
 
 void MyoMapperApplication::closeAllWindows()

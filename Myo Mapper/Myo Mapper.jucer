@@ -25,10 +25,17 @@
         <FILE id="D0Y8rk" name="MyoListener.h" compile="0" resource="0" file="Source/MyoListener.h"/>
       </GROUP>
       <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="Windows">
-        <FILE id="E3K2fp" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
-        <FILE id="Uj4ZUE" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
-        <FILE id="srNWbv" name="WindowsList.cpp" compile="1" resource="0" file="Source/WindowsList.cpp"/>
-        <FILE id="GCwRn0" name="WindowsList.h" compile="0" resource="0" file="Source/WindowsList.h"/>
+        <FILE id="NxmLWF" name="WindowsList.cpp" compile="1" resource="0" file="Source/Windows/WindowsList.cpp"/>
+        <FILE id="ekIkit" name="WindowsList.h" compile="0" resource="0" file="Source/Windows/WindowsList.h"/>
+        <FILE id="MvtaUk" name="WindowSetter.h" compile="0" resource="0" file="Source/Windows/WindowSetter.h"/>
+        <FILE id="Ysd86j" name="SettingsWindow.cpp" compile="1" resource="0"
+              file="Source/Windows/SettingsWindow.cpp"/>
+        <FILE id="JcIkoU" name="SettingsWindow.h" compile="0" resource="0"
+              file="Source/Windows/SettingsWindow.h"/>
+        <FILE id="wxMnHw" name="FeedbackWindow.cpp" compile="1" resource="0"
+              file="Source/Windows/FeedbackWindow.cpp"/>
+        <FILE id="PjttkR" name="FeedbackWindow.h" compile="0" resource="0"
+              file="Source/Windows/FeedbackWindow.h"/>
         <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
               file="Source/AboutWindowContent.cpp"/>
         <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"

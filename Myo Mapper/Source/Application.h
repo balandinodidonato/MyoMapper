@@ -69,6 +69,7 @@ public:
     void newDisplayWindow();
     void moveWindowsToFront();
     void hideAllWindows();
+    void closeWindow();
     void closeAllWindows();
     void showAboutWindow();
     void showDocumentationWindow();

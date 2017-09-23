@@ -247,28 +247,19 @@
     <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
       <Filter>Myo Mapper\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\MovingAverage.cpp">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SecondOrderDifference.cpp">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\FirstOrderDifferece.cpp">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\MyoManager.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MyoListener.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\WaveformLength.cpp">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\MainWindow.cpp">
+    <ClCompile Include="..\..\Source\Windows\WindowsList.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\WindowsList.cpp">
+    <ClCompile Include="..\..\Source\Windows\SettingsWindow.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\FeedbackWindow.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp">
@@ -1593,15 +1584,6 @@
     <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
       <Filter>Myo Mapper\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\MovingAverage.h">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SecondOrderDifference.h">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\FirstOrderDifference.h">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\MyoData.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
@@ -1610,6 +1592,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\MyoListener.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\WindowsList.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\WindowSetter.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\SettingsWindow.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\FeedbackWindow.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AboutWindowContent.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
@@ -2034,7 +2028,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\juce_core.h">
       <Filter>Juce Modules\juce_core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_core\juce_core.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_core\juce_core.h">
       <Filter>Juce Modules\juce_core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_data_structures\app_properties\juce_ApplicationProperties.h">
@@ -2064,7 +2058,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_data_structures\juce_data_structures.h">
       <Filter>Juce Modules\juce_data_structures</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_data_structures\juce_data_structures.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_data_structures\juce_data_structures.h">
       <Filter>Juce Modules\juce_data_structures</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\broadcasters\juce_ActionBroadcaster.h">
@@ -2139,7 +2133,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\juce_events.h">
       <Filter>Juce Modules\juce_events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_events\juce_events.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_events\juce_events.h">
       <Filter>Juce Modules\juce_events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_graphics\colour\juce_Colour.h">
@@ -2313,7 +2307,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_graphics\juce_graphics.h">
       <Filter>Juce Modules\juce_graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_graphics\juce_graphics.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_graphics\juce_graphics.h">
       <Filter>Juce Modules\juce_graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\application\juce_Application.h">
@@ -2721,7 +2715,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\juce_gui_basics.h">
       <Filter>Juce Modules\juce_gui_basics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_basics\juce_gui_basics.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_basics\juce_gui_basics.h">
       <Filter>Juce Modules\juce_gui_basics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\code_editor\juce_CodeDocument.h">
@@ -2799,7 +2793,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>Juce Modules\juce_gui_extra</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>Juce Modules\juce_gui_extra</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_opengl\geometry\juce_Draggable3DOrientation.h">
@@ -2868,7 +2862,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_opengl\juce_opengl.h">
       <Filter>Juce Modules\juce_opengl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_opengl\juce_opengl.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_opengl\juce_opengl.h">
       <Filter>Juce Modules\juce_opengl</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_osc\osc\juce_OSCAddress.h">
@@ -2898,7 +2892,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_osc\juce_osc.h">
       <Filter>Juce Modules\juce_osc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_osc\juce_osc.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_osc\juce_osc.h">
       <Filter>Juce Modules\juce_osc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">

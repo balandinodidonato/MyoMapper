@@ -11,7 +11,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "MainWindow.h"
+#include "WindowSetter.h"
 
 //==============================================================================
 /*
@@ -21,15 +21,15 @@ class WindowsList
 public:
     WindowsList();
     
-    ScopedPointer<MainWindow> createNewWindow();
-    
+    ScopedPointer<WindowSetter> createNewFeedbackWindow();
+    ScopedPointer<WindowSetter> createNewSettingsWindow();
     
     void forceCloseWindows();
     void askAllWindowsToClose();
-    void closeWindow (MainWindow*);
+    void closeWindow (WindowSetter*);
     
     
-    OwnedArray<MainWindow> windows;
+    OwnedArray<WindowSetter> windows;
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowsList)
 };
