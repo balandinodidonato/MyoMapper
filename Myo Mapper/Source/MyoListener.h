@@ -83,6 +83,7 @@ private:
     ScaleValues scaleEMG[8];
     
     ZeroCrossing emgZeroCross[8];
+    ZeroCrossing gyroZeroCross;
 };
 
 

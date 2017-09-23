@@ -77,6 +77,7 @@ void OSC::sendOSC (int id,
                    Vector3D<float> gyroScaled,
                    Vector3D<float> gyroScaledAbs,
                    Vector3D<float> gyroScaledFod,
+                   Vector3D<int> gyroZeroCross,
                    Vector3D<float> acceleration,
                    Vector3D<float> accelerationFod,
                    Vector3D<float> accelerationScaled,
@@ -133,6 +134,10 @@ void OSC::sendOSC (int id,
                  (float) gyroScaledFod.x,
                  (float) gyroScaledFod.y,
                  (float) gyroScaledFod.z);
+    sender.send ("/myo" + ID + "/gyro/zeroCrossingRate",
+                 (int) gyroZeroCross.x,
+                 (int) gyroZeroCross.y,
+                 (int) gyroZeroCross.z);
     
     sender.send ("/myo" + ID + "/acceleration/raw",
                  (float) acceleration.x,
