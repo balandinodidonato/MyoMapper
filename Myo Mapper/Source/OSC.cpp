@@ -67,6 +67,7 @@ void OSC::sendOSC (int id,
                    std::array<float, 8> emgScaled,
                    std::array<float, 8> emgScaledAbs,
                    std::array<float, 8> emgScaledAbsMavg,
+                   std::array<int, 8> emgZeroCross,
                    std::array<float, 4> quaternion,
                    float mav,
                    float mavFod,
@@ -76,6 +77,7 @@ void OSC::sendOSC (int id,
                    Vector3D<float> gyroScaled,
                    Vector3D<float> gyroScaledAbs,
                    Vector3D<float> gyroScaledFod,
+                   Vector3D<int> gyroZeroCross,
                    Vector3D<float> acceleration,
                    Vector3D<float> accelerationFod,
                    Vector3D<float> accelerationScaled,
@@ -132,6 +134,10 @@ void OSC::sendOSC (int id,
                  (float) gyroScaledFod.x,
                  (float) gyroScaledFod.y,
                  (float) gyroScaledFod.z);
+    sender.send ("/myo" + ID + "/gyro/zeroCrossingRate",
+                 (int) gyroZeroCross.x,
+                 (int) gyroZeroCross.y,
+                 (int) gyroZeroCross.z);
     
     sender.send ("/myo" + ID + "/acceleration/raw",
                  (float) acceleration.x,
@@ -186,6 +192,15 @@ void OSC::sendOSC (int id,
                  (float) emgScaledAbsMavg[5],
                  (float) emgScaledAbsMavg[6],
                  (float) emgScaledAbsMavg[7]);
+    sender.send ("/myo" + ID + "/EMG/ZeroCrossing",
+                 (float) emgZeroCross[0],
+                 (float) emgZeroCross[1],
+                 (float) emgZeroCross[2],
+                 (float) emgZeroCross[3],
+                 (float) emgZeroCross[4],
+                 (float) emgZeroCross[5],
+                 (float) emgZeroCross[6],
+                 (float) emgZeroCross[7]);
     sender.send ("/myo" + ID + "/EMG/mav", (float) mav);
     sender.send ("/myo" + ID + "/EMG/mav", (float) mav);
     sender.send ("/myo" + ID + "/EMG/fod", (float) mavFod);

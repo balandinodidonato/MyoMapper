@@ -137,6 +137,9 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     
     gyroScaledFod.set3DValue (myoData[myoID].gyroScaled);
     myoData[myoID].gyroScaledFod = gyroScaledFod.get3DValue();
+    
+    gyroZeroCross.setValue(myoData[myoID].gyro, 50);
+    myoData[myoID].gyroZeroCross = gyroZeroCross.getVector();
 }
 
 
@@ -181,6 +184,9 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
         
         scaleEMG[i].setScale(emg[i], 127, 0.003921568627);
         myoData[myoID].emgScaled[i] = scaleEMG[i].getScaledFloat();
+        
+        emgZeroCross[i].setValue(emg[i], 200);
+        myoData[myoID].emgZeroCross[i] = emgZeroCross[i].getInt();
         
         scaleEMG[i].setAbs(myoData[myoID].emgScaled[i], 1);
         myoData[myoID].emgScaledAbs[i] = scaleEMG[i].getFloatAbs();

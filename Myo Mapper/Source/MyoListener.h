@@ -8,6 +8,7 @@
 #include "MovingAverage.h"
 #include "Mav.h"
 #include "ScaleValues.h"
+#include "ZeroCrossingRate.h"
 
 class MyoListener : public myo::DeviceListener
 {
@@ -80,6 +81,9 @@ private:
     ScaleValues scaleAcc;
     ScaleValues scaleGyro;
     ScaleValues scaleEMG[8];
+    
+    ZeroCrossing emgZeroCross[8];
+    ZeroCrossing gyroZeroCross;
 };
 
 
