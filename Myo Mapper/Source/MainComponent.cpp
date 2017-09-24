@@ -146,9 +146,9 @@ void MainComponent::timerCallback()
                  myoData[id].poseID);
  
     
-    if (osc.vibrate)
+    if (osc.vibrate && VibrationState)
     {
-        myoManager.vibrate (osc.vibrationType);
+        myoManager.vibrate (osc.vibrationType, true);
         osc.vibrate = false;
     }
 
