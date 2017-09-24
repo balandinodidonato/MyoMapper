@@ -3,11 +3,12 @@
 
 #include "myo/myo.hpp"
 #include "Orientation.h"
-#include "FirstOrderDifference.h"
-#include "SecondOrderDifference.h"
 #include "MyoData.h"
 #include <array>
 #include "MovingAverage.h"
+#include "Mav.h"
+#include "ScaleValues.h"
+#include "ZeroCrossingRate.h"
 
 class MyoListener : public myo::DeviceListener
 {
@@ -73,6 +74,16 @@ private:
     SecondOrderDifference mavSod;
     
     MovingAverage EMGMavMavg;
+    MovingAverage EMGMavg[8];
+
+    Mav emgMav;
+    
+    ScaleValues scaleAcc;
+    ScaleValues scaleGyro;
+    ScaleValues scaleEMG[8];
+    
+    ZeroCrossing emgZeroCross[8];
+    ZeroCrossing gyroZeroCross;
 };
 
 

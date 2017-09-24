@@ -1,13 +1,5 @@
 #include "FirstOrderDifference.h"
 
-FirstOrderDifference::FirstOrderDifference ()
-{
-}
-
-FirstOrderDifference::~FirstOrderDifference()
-{
-}
-
 void FirstOrderDifference::setValue (float Value)
 {
     input = Value;
@@ -28,7 +20,7 @@ void FirstOrderDifference::set3DValue(Vector3D<float> Value3D)
     fod3D.x = (input3D.x-previousInput3D.x) * scaleFactor;
     fod3D.y = (input3D.y-previousInput3D.y) * scaleFactor;
     fod3D.z = (input3D.z-previousInput3D.z) * scaleFactor;
-
+    
     previousInput3D = input3D;
 }
 

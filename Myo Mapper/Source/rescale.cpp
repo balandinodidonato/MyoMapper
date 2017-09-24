@@ -211,7 +211,7 @@ void Rescale::setValue (float Value)
     calibrated = (float) ((int)(calibrated) % (int)10000000);
     calibrated = calibrated * 0.0000001;
 
-    // reverse velues
+    // reverse values
     if (reverse.getToggleStateValue() == true)
     {
         calibrated = 1 - calibrated;

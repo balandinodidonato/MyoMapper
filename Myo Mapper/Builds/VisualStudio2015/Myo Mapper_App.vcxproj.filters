@@ -246,6 +246,26 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
       <Filter>Myo Mapper\Utility</Filter>
+    <ClCompile Include="..\..\Source\minMax.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ZeroCrossingRate.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ScaleValues.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FirstOrderDifference.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MovingAverage.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Mav.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SecondOrderDifference.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MyoManager.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
@@ -1580,9 +1600,28 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
       <Filter>Myo Mapper\Utility</Filter>
+    <ClInclude Include="..\..\Source\minMax.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
       <Filter>Myo Mapper\Utility</Filter>
+    <ClInclude Include="..\..\Source\ZeroCrossingRate.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ScaleValues.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FirstOrderDifference.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MovingAverage.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Mav.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SecondOrderDifference.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MyoData.h">
       <Filter>Myo Mapper\Source\Myo</Filter>

@@ -18,6 +18,27 @@
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>
       <GROUP id="{2098BAB5-B007-98E8-0BA2-8093E352BED8}" name="Myo">
+        <FILE id="T42mLD" name="minMax.cpp" compile="1" resource="0" file="Source/minMax.cpp"/>
+        <FILE id="ljTHeb" name="minMax.h" compile="0" resource="0" file="Source/minMax.h"/>
+        <FILE id="AJZywL" name="ZeroCrossingRate.cpp" compile="1" resource="0"
+              file="Source/ZeroCrossingRate.cpp"/>
+        <FILE id="jZ1n19" name="ZeroCrossingRate.h" compile="0" resource="0"
+              file="Source/ZeroCrossingRate.h"/>
+        <FILE id="sLSqHI" name="ScaleValues.cpp" compile="1" resource="0" file="Source/ScaleValues.cpp"/>
+        <FILE id="YaAR0t" name="ScaleValues.h" compile="0" resource="0" file="Source/ScaleValues.h"/>
+        <FILE id="F04npp" name="FirstOrderDifference.cpp" compile="1" resource="0"
+              file="Source/FirstOrderDifference.cpp"/>
+        <FILE id="l7l4TK" name="FirstOrderDifference.h" compile="0" resource="0"
+              file="Source/FirstOrderDifference.h"/>
+        <FILE id="kFmd2o" name="MovingAverage.cpp" compile="1" resource="0"
+              file="Source/MovingAverage.cpp"/>
+        <FILE id="Apy2sl" name="MovingAverage.h" compile="0" resource="0" file="Source/MovingAverage.h"/>
+        <FILE id="IsxgEn" name="Mav.cpp" compile="1" resource="0" file="Source/Mav.cpp"/>
+        <FILE id="qqJELz" name="Mav.h" compile="0" resource="0" file="Source/Mav.h"/>
+        <FILE id="CIAzqu" name="SecondOrderDifference.cpp" compile="1" resource="0"
+              file="Source/SecondOrderDifference.cpp"/>
+        <FILE id="tufhzi" name="SecondOrderDifference.h" compile="0" resource="0"
+              file="Source/SecondOrderDifference.h"/>
         <FILE id="FO3vBI" name="MyoData.h" compile="0" resource="0" file="Source/MyoData.h"/>
         <FILE id="POB1yB" name="MyoManager.cpp" compile="1" resource="0" file="Source/MyoManager.cpp"/>
         <FILE id="EKeAn0" name="MyoManager.h" compile="0" resource="0" file="Source/MyoManager.h"/>

@@ -125,6 +125,8 @@ void MainComponent::timerCallback()
                  myoData[id].emgRaw,
                  myoData[id].emgScaled,
                  myoData[id].emgScaledAbs,
+                 myoData[id].emgScaledAbsMavg,
+                 myoData[id].emgZeroCross,
                  myoData[id].quaternion,
                  myoData[id].mav,
                  myoData[id].mavFod,
@@ -134,6 +136,7 @@ void MainComponent::timerCallback()
                  myoData[id].gyroScaled,
                  myoData[id].gyroScaledAbs,
                  myoData[id].gyroScaledFod,
+                 myoData[id].gyroZeroCross,
                  myoData[id].acceleration,
                  myoData[id].accelerationFod,
                  myoData[id].accelerationScaled,
@@ -146,9 +149,9 @@ void MainComponent::timerCallback()
                  myoData[id].poseID);
  
     
-    if (osc.vibrate)
+    if (osc.vibrate && VibrationState)
     {
-        myoManager.vibrate (osc.vibrationType);
+        myoManager.vibrate (osc.vibrationType, true);
         osc.vibrate = false;
     }
 
