@@ -118,7 +118,6 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
 
 void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &gyro)
 {
-
     int myoID = getMyoID(myo);
     if (myoID == -1) return;
    
@@ -193,10 +192,13 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
         
         EMGMavg[i].setValue(myoData[myoID].emgScaledAbs[i], 10);
         myoData[myoID].emgScaledAbsMavg[i] = EMGMavg[i].getFloat();
+        
+        emgMinMax[i].setValues(myoData[myoID].emgScaledAbs[i], 200); // window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
+        myoData[myoID].emgMin[i] = emgMinMax[i].getMin();
+        myoData[myoID].emgMax[i] = emgMinMax[i].getMax();
     }
     
     emgMav.setValue(myoData[myoID].emgScaledAbs);
-        
     myoData[myoID].mav = emgMav.getValue();
 
     EMGMavMavg.setValue(myoData[myoID].mav, 10);
