@@ -20,6 +20,8 @@ public:
                   std::array<float, 8> emgScaledAbs,
                   std::array<float, 8> emgScaledAbsMavg,
                   std::array<int, 8> emgZeroCross,
+                  std::array<float, 8> emgMin,
+                  std::array<float, 8> emgMax,
                   std::array<float, 4> quaternion,
                   float mav,
                   float mavFod,

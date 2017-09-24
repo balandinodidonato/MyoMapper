@@ -9,6 +9,7 @@
 #include "Mav.h"
 #include "ScaleValues.h"
 #include "ZeroCrossingRate.h"
+#include "minMax.h"
 
 class MyoListener : public myo::DeviceListener
 {
@@ -84,6 +85,8 @@ private:
     
     ZeroCrossing emgZeroCross[8];
     ZeroCrossing gyroZeroCross;
+    
+    minMax emgMinMax[8];
 };
 
 
