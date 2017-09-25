@@ -9,7 +9,7 @@
 #include "Mav.h"
 #include "ScaleValues.h"
 #include "ZeroCrossingRate.h"
-#include "minMax.h"
+#include "MinMax.h"
 
 class MyoListener : public myo::DeviceListener
 {
@@ -65,28 +65,28 @@ private:
     
     int numberOfMyos;
     
+    ScaleValues scaleAcc;
     FirstOrderDifference accFod;
-    FirstOrderDifference gyroFod;
-    
     FirstOrderDifference accScaledFod;
+
+    ScaleValues scaleGyro;
+    FirstOrderDifference gyroFod;
+    ZeroCrossing gyroZeroCross;
     FirstOrderDifference gyroScaledFod;
-    
-    FirstOrderDifference mavFod;
-    SecondOrderDifference mavSod;
-    
-    MovingAverage EMGMavMavg;
-    MovingAverage EMGMavg[8];
+
+    ScaleValues scaleEMG[8];
+    FirstOrderDifference emgScaledAbsFob[8];
+    MovingAverage emgScaledAbsFobMavg[8];
+    ZeroCrossing emgZeroCross[8];
+    MinMax emgMinMax[8];
 
     Mav emgMav;
-    
-    ScaleValues scaleAcc;
-    ScaleValues scaleGyro;
-    ScaleValues scaleEMG[8];
-    
-    ZeroCrossing emgZeroCross[8];
-    ZeroCrossing gyroZeroCross;
-    
-    minMax emgMinMax[8];
+    MovingAverage emgMavg[8];
+    MovingAverage emgMavMavg;
+    FirstOrderDifference emgMavFod;
+    MovingAverage emgMavFodMavg;
+    SecondOrderDifference emgMavSod;
+    MinMax emgMavMinMax;
 };
 
 

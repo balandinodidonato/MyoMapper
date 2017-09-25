@@ -241,7 +241,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\minMax.cpp">
+    <ClCompile Include="..\..\Source\MinMax.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ZeroCrossingRate.cpp">
@@ -1581,7 +1581,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\minMax.h">
+    <ClInclude Include="..\..\Source\MinMax.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ZeroCrossingRate.h">
