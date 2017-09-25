@@ -53,7 +53,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     appProperties = new ApplicationProperties();
     appProperties->setStorageParameters (options);
     
-    LookAndFeel::setDefaultLookAndFeel (&oldLookAndFeel);
+    LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
     
     // Draw Windows To Go Here
     
@@ -67,6 +67,9 @@ void MyoMapperApplication::initialise (const String& commandLine)
     
     // Wait for message loop to initialise menu bar and register command
     triggerAsyncUpdate();
+    
+    windowList = new WindowsList();
+    windowList->createNewSettingsWindow();
 }
 
 void MyoMapperApplication::handleAsyncUpdate()
@@ -76,6 +79,8 @@ void MyoMapperApplication::handleAsyncUpdate()
         createAppleMenu (appleMenu);
         MenuBarModel::setMacMainMenu (menuModel, &appleMenu);
     #endif
+    
+    
 }
 
 void MyoMapperApplication::shutdown()
@@ -86,6 +91,7 @@ void MyoMapperApplication::shutdown()
     menuModel = nullptr;
     commandManager = nullptr;
     appProperties = nullptr;
+    windowList = nullptr;
     LookAndFeel::setDefaultLookAndFeel (nullptr);
 }
 
@@ -120,6 +126,13 @@ ApplicationProperties& MyoMapperApplication::getAppProperties()
     ApplicationProperties* const appProp = getApp().appProperties;
     jassert (appProp != nullptr);
     return *appProp;
+}
+
+WindowsList& MyoMapperApplication::getWindowList()
+{
+    WindowsList* const winList = getApp().windowList;
+    jassert (winList != nullptr);
+    return *winList;
 }
 
 //==============================================================================
@@ -281,7 +294,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             
         case CommandIDs::showSettingsWindow:
             result.setInfo ("Show Settings Window", "Show the settings panel", CommandCategories::windows, 0);
-            result.addDefaultKeypress ('a', ModifierKeys::commandModifier);
+            result.addDefaultKeypress (',', ModifierKeys::commandModifier);
             break;
             
         case CommandIDs::newDisplayWindow:

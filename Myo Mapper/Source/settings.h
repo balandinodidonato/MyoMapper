@@ -2,7 +2,6 @@
 #define SETTINGS_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Application.h"
 
 class Settings    : public Component,
                     private juce::Label::Listener,

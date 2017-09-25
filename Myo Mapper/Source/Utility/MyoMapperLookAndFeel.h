@@ -15,15 +15,17 @@
 //==============================================================================
 /*
 */
-class MyoMapperLookAndFeel    : public Component
+class MyoMapperLookAndFeel    : public LookAndFeel_V4
 {
 public:
     MyoMapperLookAndFeel();
     ~MyoMapperLookAndFeel();
-
-    void paint (Graphics&) override;
-    void resized() override;
-
+    
+    void drawToggleButton (Graphics& g, ToggleButton& button,
+                           bool isMouseOverButton, bool isButtonDown);
+    
+    void setupColours();
+    
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyoMapperLookAndFeel)
 };

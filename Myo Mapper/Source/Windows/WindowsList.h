@@ -12,6 +12,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "WindowSetter.h"
+#include "FeedbackWindow.h"
+#include "SettingsWindow.h"
 
 //==============================================================================
 /*
@@ -21,13 +23,13 @@ class WindowsList
 public:
     WindowsList();
     
-    ScopedPointer<WindowSetter> createNewFeedbackWindow();
-    ScopedPointer<WindowSetter> createNewSettingsWindow();
+    void createInitialWindow();
+    WindowSetter* createNewFeedbackWindow();
+    WindowSetter* createNewSettingsWindow();
     
     void forceCloseWindows();
     void askAllWindowsToClose();
     void closeWindow (WindowSetter*);
-    
     
     OwnedArray<WindowSetter> windows;
 private:

@@ -14,38 +14,39 @@
 //==============================================================================
 MyoMapperLookAndFeel::MyoMapperLookAndFeel()
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
-
+    setupColours ();
 }
 
 MyoMapperLookAndFeel::~MyoMapperLookAndFeel()
 {
 }
 
-void MyoMapperLookAndFeel::paint (Graphics& g)
+void MyoMapperLookAndFeel::drawToggleButton(juce::Graphics &g, juce::ToggleButton &button, bool isMouseOverButton, bool isButtonDown)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("MyoMapperLookAndFeel", getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
+    const auto bounds = button.getLocalBounds().toFloat();
+    
+    Path toggleBack;
+    toggleBack.addArc (bounds.getX(), bounds.getHeight() * 0.28,
+                       bounds.getRight(), bounds.getHeight() * 0.28,
+                       -float_Pi / 2, float_Pi / 2,
+                       true);
+    toggleBack.lineTo (bounds.getRight(), bounds.getHeight() * 0.72);
+//    toggleBack.addArc (bounds.getRight(), bounds.getHeight() * 0.28,
+//                       bounds.getX(), bounds.getHeight() * 0.28,
+//                       float_Pi / 2, -(float_Pi / 2),
+//                       false);
+    
+    g.setColour (Colours::red);
+    g.fillPath (toggleBack);
+    
+    g.setColour (Colours::blue);
+    g.fillPath (toggleBack);
 }
 
-void MyoMapperLookAndFeel::resized()
+void MyoMapperLookAndFeel::setupColours()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
-
+    setColour (LookAndFeel_V4::ColourScheme::UIColour::defaultText, Colours::black);
+    setColour (Label::textColourId, Colour::fromString ("0x8493A8"));
+    setColour (Label::textColourId, Colour::fromRGB (132, 147, 168));
 }
+

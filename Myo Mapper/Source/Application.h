@@ -11,7 +11,9 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "Windows/WindowsList.h"
 #include "Utility/CommandIDs.h"
+#include "Utility/MyoMapperLookAndFeel.h"
 
 //==============================================================================
 /*
@@ -22,9 +24,10 @@ class MyoMapperApplication  : public JUCEApplication,
 public:
     MyoMapperApplication();
     
-    static MyoMapperApplication& getApp();
-    static ApplicationCommandManager& getCommandManager();
-    static ApplicationProperties&     getAppProperties();
+    static MyoMapperApplication&        getApp();
+    static ApplicationCommandManager&   getCommandManager();
+    static ApplicationProperties&       getAppProperties();
+    static WindowsList&                 getWindowList();
     
     //==========================================================================
     const String getApplicationName() override      { return ProjectInfo::projectName; }
@@ -74,9 +77,8 @@ public:
     void showAboutWindow();
     void showDocumentationWindow();
     
-    //==========================================================================
-//    MyoMapperLookAndFeel lookAndFeel;         // For new UI
-    LookAndFeel_V3 oldLookAndFeel;
+//    ==========================================================================
+    MyoMapperLookAndFeel lookAndFeel;         // For new UI
     
     struct MainMenuBarModel;
     ScopedPointer<MainMenuBarModel> menuModel;
@@ -86,6 +88,7 @@ public:
     ScopedPointer<ApplicationProperties> appProperties;
     
     // General floating window builder used to create these windows
+    ScopedPointer<WindowsList> windowList;
     ScopedPointer<Component> aboutWindow, documentationWindow;
     
     
