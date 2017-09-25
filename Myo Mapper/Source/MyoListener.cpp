@@ -202,22 +202,28 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
         emgMinMax[i].setValues(myoData[myoID].emgScaledAbs[i], 200); // window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
         myoData[myoID].emgMin[i] = emgMinMax[i].getMin();
         myoData[myoID].emgMax[i] = emgMinMax[i].getMax();
+        
+        
+        emgMavMinMax.setValues(myoData[myoID].emgMav, 200);// window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
+        myoData[myoID].emgMavMin = emgMavMinMax.getMin();
+        myoData[myoID].emgMavMax = emgMavMinMax.getMax();
+
     }
     
     emgMav.setValue(myoData[myoID].emgScaledAbs);
-    myoData[myoID].mav = emgMav.getValue();
+    myoData[myoID].emgMav = emgMav.getValue();
 
-    emgMavMavg.setValue(myoData[myoID].mav, 10);
+    emgMavMavg.setValue(myoData[myoID].emgMav, 10);
     myoData[myoID].emgMavMavg = emgMavMavg.getFloat();
     
-    mavFod.setValue (myoData[myoID].mav);
-    myoData[myoID].mavFod = mavFod.getValue();
+    emgMavFod.setValue (myoData[myoID].emgMav);
+    myoData[myoID].mavFod = emgMavFod.getValue();
     
-    mavFodMavg.setValue(myoData[myoID].mavFod, 10);
-    myoData[myoID].mavFodMavg = mavFodMavg.getFloat();
+    emgMavFodMavg.setValue(myoData[myoID].mavFod, 10);
+    myoData[myoID].mavFodMavg = emgMavFodMavg.getFloat();
    
-    mavSod.setValue (myoData[myoID].mav);
-    myoData[myoID].mavSod = mavSod.getValue();
+    emgMavSod.setValue (myoData[myoID].emgMav);
+    myoData[myoID].mavSod = emgMavSod.getValue();
 }
 
 // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after

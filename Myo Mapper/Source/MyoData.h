@@ -32,11 +32,13 @@ struct MyoData
     Vector3D<float> orientationScaledSod;
     String pose;
     int poseID;
-    float mav;
+    float emgMav;
     float mavFod;
     float mavFodMavg;
     float mavSod;
     float emgMavMavg;
+    float emgMavMin;
+    float emgMavMax;
 };
 
 #endif  // MYODATA_H_INCLUDED

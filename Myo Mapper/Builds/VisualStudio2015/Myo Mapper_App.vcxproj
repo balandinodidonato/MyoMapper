@@ -148,7 +148,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\minMax.cpp"/>
+    <ClCompile Include="..\..\Source\MinMax.cpp"/>
     <ClCompile Include="..\..\Source\ZeroCrossingRate.cpp"/>
     <ClCompile Include="..\..\Source\ScaleValues.cpp"/>
     <ClCompile Include="..\..\Source\FirstOrderDifference.cpp"/>
@@ -1351,7 +1351,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\minMax.h"/>
+    <ClInclude Include="..\..\Source\MinMax.h"/>
     <ClInclude Include="..\..\Source\ZeroCrossingRate.h"/>
     <ClInclude Include="..\..\Source\ScaleValues.h"/>
     <ClInclude Include="..\..\Source\FirstOrderDifference.h"/>

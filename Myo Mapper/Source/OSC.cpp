@@ -73,10 +73,12 @@ void OSC::sendOSC (int id,
                    std::array<float, 8> emgMin,
                    std::array<float, 8> emgMax,
                    std::array<float, 4> quaternion,
-                   float mav,
-                   float mavFod,
+                   float emgMav,
+                   float emgMavMin,
+                   float emgMavMax,
+                   float emgMavFod,
                    float emgMavMavg,
-                   float mavFodMavg,
+                   float emgMavFodMavg,
                    Vector3D<float> gyro,
                    Vector3D<float> gyroFod,
                    Vector3D<float> gyroScaled,
@@ -242,11 +244,13 @@ void OSC::sendOSC (int id,
                  (float) emgMax[5],
                  (float) emgMax[6],
                  (float) emgMax[7]);
-    
-    sender.send ("/myo" + ID + "/emg/mav", (float) mav);
-    sender.send ("/myo" + ID + "/emg/mav/fod", (float) mavFod);
-    sender.send ("/myo" + ID + "/emg/mav/fod/mavg",(float) mavFodMavg);
+    sender.send ("/myo" + ID + "/emg/mav", (float) emgMav);
     sender.send ("/myo" + ID + "/emg/mav/mavg",(float) emgMavMavg);
+    sender.send ("/myo" + ID + "/emg/mav/min", (float) emgMavMin);
+    sender.send ("/myo" + ID + "/emg/mav/max", (float) emgMavMax);
+    sender.send ("/myo" + ID + "/emg/mav/fod", (float) emgMavFod);
+    sender.send ("/myo" + ID + "/emg/mav/fod/mavg",(float) emgMavFodMavg);
+    
     sender.send ("/myo" + ID + "/pose", (int) poseID, (String) pose);
 }
 

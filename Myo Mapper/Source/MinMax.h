@@ -1,7 +1,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class minMax
+class MinMax
 {
 public:
     

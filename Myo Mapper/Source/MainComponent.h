@@ -2,7 +2,7 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "Orientation.h"
-#include "settings.h"
+#include "Settings.h"
 #include "MyoManager.h"
 #include "Pose.h"
 #include "OSC.h"
