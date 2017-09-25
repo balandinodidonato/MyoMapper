@@ -70,12 +70,13 @@ private:
     
     FirstOrderDifference accScaledFod;
     FirstOrderDifference gyroScaledFod;
-    
+    FirstOrderDifference emgScaledAbsFob[8];
     FirstOrderDifference mavFod;
     SecondOrderDifference mavSod;
     
     MovingAverage EMGMavMavg;
     MovingAverage EMGMavg[8];
+    MovingAverage emgScaledAbsFobMavg[8];
 
     Mav emgMav;
     
