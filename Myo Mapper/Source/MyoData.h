@@ -34,6 +34,7 @@ struct MyoData
     int poseID;
     float mav;
     float mavFod;
+    float mavFodMavg;
     float mavSod;
     float emgMavMavg;
 };

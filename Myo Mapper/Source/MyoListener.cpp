@@ -196,8 +196,8 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
         emgScaledAbsFobMavg[i].setValue(myoData[myoID].emgScaledAbsFob[i], 10);
         myoData[myoID].emgScaledAbsFobMavg[i] = emgScaledAbsFobMavg[i].getFloat();
         
-        EMGMavg[i].setValue(myoData[myoID].emgScaledAbs[i], 10);
-        myoData[myoID].emgScaledAbsMavg[i] = EMGMavg[i].getFloat();
+        emgMavg[i].setValue(myoData[myoID].emgScaledAbs[i], 10);
+        myoData[myoID].emgScaledAbsMavg[i] = emgMavg[i].getFloat();
         
         emgMinMax[i].setValues(myoData[myoID].emgScaledAbs[i], 200); // window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
         myoData[myoID].emgMin[i] = emgMinMax[i].getMin();
@@ -207,11 +207,14 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
     emgMav.setValue(myoData[myoID].emgScaledAbs);
     myoData[myoID].mav = emgMav.getValue();
 
-    EMGMavMavg.setValue(myoData[myoID].mav, 10);
-    myoData[myoID].emgMavMavg = EMGMavMavg.getFloat();
+    emgMavMavg.setValue(myoData[myoID].mav, 10);
+    myoData[myoID].emgMavMavg = emgMavMavg.getFloat();
     
     mavFod.setValue (myoData[myoID].mav);
     myoData[myoID].mavFod = mavFod.getValue();
+    
+    mavFodMavg.setValue(myoData[myoID].mavFod, 10);
+    myoData[myoID].mavFodMavg = mavFodMavg.getFloat();
    
     mavSod.setValue (myoData[myoID].mav);
     myoData[myoID].mavSod = mavSod.getValue();

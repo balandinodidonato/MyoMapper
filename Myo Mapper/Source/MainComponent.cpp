@@ -132,6 +132,7 @@ void MainComponent::timerCallback()
                  myoData[id].mav,
                  myoData[id].mavFod,
                  myoData[id].emgMavMavg,
+                 myoData[id].mavFodMavg,
                  myoData[id].gyro,
                  myoData[id].gyroFod,
                  myoData[id].gyroScaled,

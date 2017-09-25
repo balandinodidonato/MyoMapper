@@ -76,6 +76,7 @@ void OSC::sendOSC (int id,
                    float mav,
                    float mavFod,
                    float emgMavMavg,
+                   float mavFodMavg,
                    Vector3D<float> gyro,
                    Vector3D<float> gyroFod,
                    Vector3D<float> gyroScaled,
@@ -244,9 +245,8 @@ void OSC::sendOSC (int id,
     
     sender.send ("/myo" + ID + "/emg/mav", (float) mav);
     sender.send ("/myo" + ID + "/emg/mav/fod", (float) mavFod);
-    sender.send ("/myo" + ID + "/emg/mav/mavg",
-                 (float) emgMavMavg);
-    
+    sender.send ("/myo" + ID + "/emg/mav/fod/mavg",(float) mavFodMavg);
+    sender.send ("/myo" + ID + "/emg/mav/mavg",(float) emgMavMavg);
     sender.send ("/myo" + ID + "/pose", (int) poseID, (String) pose);
 }
 

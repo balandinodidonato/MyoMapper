@@ -28,7 +28,7 @@ public:
                   float mav,
                   float mavFod,
                   float emgMavMavg,
-                  
+                  float mavFodMavg,
                   Vector3D<float> gyro,
                   Vector3D<float> gyroFod,
                   Vector3D<float> gyroScaled,
