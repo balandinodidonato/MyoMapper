@@ -5,6 +5,26 @@
 
 struct MyoData
 {
+    std::array<float, 4> quaternion;
+    Vector3D<float> orientationRaw;
+    Vector3D<float> orientationScaled;
+    Vector3D<float> orientationScaledFod;
+    Vector3D<float> orientationScaledSod;
+    
+    Vector3D<float> accScaled;
+    Vector3D<float> accScaledAbs;
+    Vector3D<float> accFod;
+    Vector3D<float> accScaledFod;
+    
+    Vector3D<float> gyro;
+    Vector3D<float> gyroScaled;
+    Vector3D<float> gyroScaledAbs;
+    Vector3D<float> gyroFod;
+    Vector3D<float> gyroScaledFod;
+    Vector3D<float> gyroScaledFodMavg;
+    Vector3D<int> gyroZeroCross;
+    Vector3D<float> acceleration;
+    
     std::array<int8_t, 8> emgRaw;
     std::array<int8_t, 8> emgRawMavg;
     std::array<float, 8> emgScaled;
@@ -16,27 +36,6 @@ struct MyoData
     std::array<int, 8> emgZeroCrossMavg;
     std::array<float, 8> emgMin;
     std::array<float, 8> emgMax;
-    std::array<float, 4> quaternion;
-    Vector3D<float> gyro;
-    Vector3D<float> gyroScaled;
-    Vector3D<float> gyroScaledAbs;
-    Vector3D<float> gyroFod;
-    Vector3D<float> gyroScaledFod;
-    Vector3D<float> gyroScaledFodMavg;
-    Vector3D<int> gyroZeroCross;
-    Vector3D<float> acceleration;
-    
-    Vector3D<float> accScaled;
-    Vector3D<float> accScaledAbs;
-    Vector3D<float> accFod;
-    Vector3D<float> accScaledFod;
-    
-    Vector3D<float> orientationRaw;
-    Vector3D<float> orientationScaled;
-    Vector3D<float> orientationScaledFod;
-    Vector3D<float> orientationScaledSod;
-    String pose;
-    int poseID;
     float emgMav;
     float mavFod;
     float mavFodMavg;
@@ -44,6 +43,9 @@ struct MyoData
     float emgMavMavg;
     float emgMavMin;
     float emgMavMax;
+    
+    String pose;
+    int poseID;
 };
 
 #endif  // MYODATA_H_INCLUDED
