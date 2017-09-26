@@ -25,10 +25,12 @@ struct MyoData
     Vector3D<float> gyroScaledFodMavg;
     Vector3D<int> gyroZeroCross;
     Vector3D<float> acceleration;
-    Vector3D<float> accelerationScaled;
-    Vector3D<float> accelerationScaledAbs;
-    Vector3D<float> accelerationFod;
-    Vector3D<float> accelerationScaledFod;
+    
+    Vector3D<float> accScaled;
+    Vector3D<float> accScaledAbs;
+    Vector3D<float> accFod;
+    Vector3D<float> accScaledFod;
+    
     Vector3D<float> orientationRaw;
     Vector3D<float> orientationScaled;
     Vector3D<float> orientationScaledFod;

@@ -22,10 +22,10 @@ public:
                   Vector3D<float> orientationFod,
                   Vector3D<float> orientationSod,
                   
-                  Vector3D<float> acceleration,
-                  Vector3D<float> accelerationFod,
-                  Vector3D<float> accelerationScaled,
-                  Vector3D<float> accelerationScaledFod,
+                  Vector3D<float> acc,
+                  Vector3D<float> accFod,
+                  Vector3D<float> accScaled,
+                  Vector3D<float> accScaledFod,
                   
                   Vector3D<float> gyro,
                   Vector3D<float> gyroFod,

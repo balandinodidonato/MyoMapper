@@ -70,10 +70,10 @@ void OSC::sendOSC (int id,
                    Vector3D<float> orientationFod,
                    Vector3D<float> orientationSod,
                    
-                   Vector3D<float> acceleration,
-                   Vector3D<float> accelerationFod,
-                   Vector3D<float> accelerationScaled,
-                   Vector3D<float> accelerationScaledFod,
+                   Vector3D<float> acc,
+                   Vector3D<float> accFod,
+                   Vector3D<float> accScaled,
+                   Vector3D<float> accScaledFod,
                    
                    Vector3D<float> gyro,
                    Vector3D<float> gyroFod,
@@ -130,21 +130,22 @@ void OSC::sendOSC (int id,
                  (float) orientationSod.z);
     
     sender.send ("/myo" + ID + "/acceleration/raw",
-                 (float) acceleration.x,
-                 (float) acceleration.y,
-                 (float) acceleration.z);
+                 (float) acc.x,
+                 (float) acc.y,
+                 (float) acc.z);
     sender.send ("/myo" + ID + "/acceleration/raw/fod",
-                 (float) accelerationFod.x,
-                 (float) accelerationFod.y,
-                 (float) accelerationFod.z);
+                 (float) accFod.x,
+                 (float) accFod.y,
+                 (float) accFod.z);
     sender.send ("/myo" + ID + "/acceleration/scaled/raw",
-                 (float) accelerationScaled.x,
-                 (float) accelerationScaled.y,
-                 (float) accelerationScaled.z);
+                 (float) accScaled.x,
+                 (float) accScaled.y,
+                 (float) accScaled.z);
     sender.send ("/myo" + ID + "/acceleration/scaled/fod",
-                 (float) accelerationScaledFod.x,
-                 (float) accelerationScaledFod.y,
-                 (float) accelerationScaledFod.z);
+                 (float) accScaledFod.x,
+                 (float) accScaledFod.y,
+                 (float) accScaledFod.z);
+    
     
     sender.send ("/myo" + ID + "/gyro/raw",
                  (float) gyro.x,
