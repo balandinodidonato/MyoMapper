@@ -37,13 +37,10 @@ bool MyoManager::connect()
                                           "Error",
                                           e.what(),
                                           "OK");
-        
     }
     
     if (myo)
-    {
         hub->addListener (&listener);
-    }
     else
     {
         std::cerr << "Error: Myo not found" << std::endl;
@@ -52,7 +49,6 @@ bool MyoManager::connect()
                                           "Myo not found",
                                           "Please, conncect the Myo armband and relaunch Myo Mapper.",
                                           "OK");
-        
     }
 
     return isConnected;

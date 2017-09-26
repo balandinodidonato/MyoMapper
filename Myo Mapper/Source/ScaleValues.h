@@ -3,16 +3,16 @@
 
 class ScaleValues{
 public:
-    void setScale(Vector3D<float> Values, float sum, float product);
+    void setScale (Vector3D<float> Values, float sum, float product);
     Vector3D<float> getScaledVector3D();
     
-    void setScale(float Values, float sum, float product);
+    void setScale (float Values, float sum, float product);
     float getScaledFloat();
     
-    void setAbs(Vector3D<float> Values, float range);
+    void setAbs (Vector3D<float> Values, float range);
     Vector3D<float> getAbsVector3D();
    
-    void setAbs(float Values, float range);
+    void setAbs (float Values, float range);
     float getFloatAbs();
 
 private:

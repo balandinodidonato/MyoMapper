@@ -7,15 +7,13 @@
 class MovingAverage
 {
 public:
-    
     void setValue(float Value, int NSamplesAvg);
     void setValue(Vector3D<float> Value3d, int NSamplesAvg);
     
     float getFloat();
     Vector3D<float> getVector3D();
     
-private:
-    
+private: 
     float input[100];
     int nSamplesAvgFloat = 0;
     int pointer = 0;
