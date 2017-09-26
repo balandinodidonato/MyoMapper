@@ -2,22 +2,42 @@
 
 void ZeroCrossing::setValue(float Value, int BufferSize){
     
-    bufferSize = BufferSize;
-    buffer[counter] = Value;
-    zeroCrossingRate = 0;
+    bufferSizeF = BufferSize;
+    bufferF[counterF] = Value;
+    zeroCrossingRateF = 0;
     
-    for (unsigned int i=0; i<bufferSize; i++) {
-        if(buffer[i]>0 && buffer[(i+1)%bufferSize]<0){
-            zeroCrossingRate++;
+    for (unsigned int i=0; i<bufferSizeF; i++) {
+        if(bufferF[i]>0 && bufferF[(i+1)%bufferSizeF]<0){
+            zeroCrossingRateF++;
         }
-        else if(buffer[i]<0 && buffer[(i+1)%bufferSize]>0){
-            zeroCrossingRate++;
+        else if(bufferF[i]<0 && bufferF[(i+1)%bufferSizeF]>0){
+            zeroCrossingRateF++;
         }
         else continue;
     }
     
-    counter++;
-    counter = counter % bufferSize;
+    counterF++;
+    counterF = counterF % bufferSizeF;
+}
+
+void ZeroCrossing::setValue(int Value, int BufferSize){
+    
+    bufferSizeI = BufferSize;
+    bufferI[counterI] = Value;
+    zeroCrossingRateI = 0;
+    
+    for (unsigned int i=0; i<bufferSizeI; i++) {
+        if(bufferI[i]>0 && bufferI[(i+1)%bufferSizeI]<0){
+            zeroCrossingRateI++;
+        }
+        else if(bufferI[i]<0 && bufferI[(i+1)%bufferSizeI]>0){
+            zeroCrossingRateI++;
+        }
+        else continue;
+    }
+    
+    counterI++;
+    counterI = counterI % bufferSizeI;
 }
 
 void ZeroCrossing::setValue(Vector3D<float> Value, int BufferSize){
@@ -55,7 +75,11 @@ void ZeroCrossing::setValue(Vector3D<float> Value, int BufferSize){
 }
 
 int ZeroCrossing::getInt(){
-    return zeroCrossingRate;
+    return zeroCrossingRateI;
+}
+
+int ZeroCrossing::getFloat(){
+    return zeroCrossingRateF;
 }
 
 Vector3D<int> ZeroCrossing::getVector(){

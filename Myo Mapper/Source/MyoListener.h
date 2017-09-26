@@ -68,16 +68,20 @@ private:
     ScaleValues scaleAcc;
     FirstOrderDifference accFod;
     FirstOrderDifference accScaledFod;
+    MovingAverage accScaledFodMavg;
 
     ScaleValues scaleGyro;
     FirstOrderDifference gyroFod;
     ZeroCrossing gyroZeroCross;
     FirstOrderDifference gyroScaledFod;
+    MovingAverage gyroScaledFodMavg;
 
+    MovingAverage emgRawMavg[8];
     ScaleValues scaleEMG[8];
     FirstOrderDifference emgScaledAbsFob[8];
     MovingAverage emgScaledAbsFobMavg[8];
     ZeroCrossing emgZeroCross[8];
+    MovingAverage emgZeroCrossMavg[8];
     MinMax emgMinMax[8];
 
     Mav emgMav;
