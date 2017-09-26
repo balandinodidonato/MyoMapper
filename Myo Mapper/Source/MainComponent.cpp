@@ -9,10 +9,12 @@ MainComponent::MainComponent()
     getLookAndFeel().setUsingNativeAlertWindows (true);
     
     addAndMakeVisible (orientation);
-    orientation.setVisible (MyoMapperApplication::MyoMapperApplication::    MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Orientation", false));
+    // used
+//    orientation.setVisible (MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Orientation", false));
     addAndMakeVisible (settingsPannel);
     addAndMakeVisible (pose);
-    pose.setVisible (MyoMapperApplication::MyoMapperApplication::    MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Pose", false));
+    // used
+//    pose.setVisible MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Pose", false));
     
     settingsPannel.showOrientation.addListener (this);
     settingsPannel.showPose.addListener (this);
@@ -45,12 +47,14 @@ MainComponent::MainComponent()
     
     startTimer(25);
     
-    selectedMyoID = MyoMapperApplication::getAppProperties().getUserSettings()->getIntValue("Myo ID", 0);
+    // used
+//    selectedMyoID = MyoMapperApplication::getAppProperties().getUserSettings()->getIntValue("Myo ID", 0);
 }
 
 MainComponent::~MainComponent()
 {
-    MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("Myo ID", selectedMyoID);
+    // used
+//    MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("Myo ID", selectedMyoID);
     
     #if ! JUCE_MAC
         setMenuBar (nullptr);
