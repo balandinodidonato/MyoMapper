@@ -102,14 +102,14 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
     int myoID = getMyoID(myo);
     if (myoID == -1) return;
    
-    myoData[myoID].acceleration.x = accel.x();
-    myoData[myoID].acceleration.y = accel.y();
-    myoData[myoID].acceleration.z = accel.z();
+    myoData[myoID].acc.x = accel.x();
+    myoData[myoID].acc.y = accel.y();
+    myoData[myoID].acc.z = accel.z();
 
-    scaleAcc.setScale(myoData[myoID].acceleration, 16, 0.03125);
+    scaleAcc.setScale(myoData[myoID].acc, 16, 0.03125);
     myoData[myoID].accScaled = scaleAcc.getScaledVector3D();
        
-    accFod.set3DValue (myoData[myoID].acceleration);
+    accFod.set3DValue (myoData[myoID].acc);
     myoData[myoID].accFod = accFod.get3DValue();
     
     accScaledFod.set3DValue (myoData[myoID].accScaled);

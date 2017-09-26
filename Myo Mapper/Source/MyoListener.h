@@ -68,6 +68,7 @@ private:
     ScaleValues scaleAcc;
     FirstOrderDifference accFod;
     FirstOrderDifference accScaledFod;
+    MovingAverage accScaledFodMavg;
 
     ScaleValues scaleGyro;
     FirstOrderDifference gyroFod;

@@ -126,7 +126,7 @@ void MainComponent::timerCallback()
                  orientation.getFod(),
                  orientation.getSod(),
                  
-                 myoData[id].acceleration,
+                 myoData[id].acc,
                  myoData[id].accFod,
                  myoData[id].accScaled,
                  myoData[id].accScaledFod,
