@@ -14,7 +14,9 @@
 //==============================================================================
 SettingsWindow::SettingsWindow()
 {
+    oscSendLabel.setJustificationType (Justification::verticallyCentred);
     oscSendLabel.setText ("OSC Send Port", dontSendNotification);
+    oscSendLabel.attachToComponent (&oscSendSetter, false);
     addAndMakeVisible (oscSendLabel);
     
     oscSendSetter.setRange (1, 9999, 1);
@@ -23,7 +25,9 @@ SettingsWindow::SettingsWindow()
     oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
     addAndMakeVisible (oscSendSetter);
     
+    oscReceiveLabel.setJustificationType (Justification::verticallyCentred);
     oscReceiveLabel.setText ("OSC Receive Port", dontSendNotification);
+    oscReceiveLabel.attachToComponent (&oscReceiveSetter, false);
     addAndMakeVisible (oscReceiveLabel);
     
     oscReceiveSetter.setRange (1, 9999, 1);
@@ -88,13 +92,13 @@ void SettingsWindow::resized()
     
     myoSelectorLabel.setBounds (146.1, 96.9, 57.6, 20);
     myoSelectorSetter.setBounds (215, 93.3, 138.9, 30);
-    
+    /*
     orientationToggle.setBounds (69.7, 224.3, 71.7, 41.7);
     accelerationToggle.setBounds (153.1, 224.3, 71.7, 41.7);
     gyroToggle.setBounds (236.4, 224.3, 71.7, 41.7);
     emgToggle.setBounds (319.7, 224.3, 71.7, 41.7);
     poseToggle.setBounds (403.1, 224.3, 71.7, 41.7);
-    
+    */
     saveButton.setBounds (17.4, 267.7, 86.8, 24);
     openButton.setBounds (121.5, 267.7, 86.8, 24);
     hideOnStartupButton.setBounds (240.9, 267.7, 125.8, 23.3);

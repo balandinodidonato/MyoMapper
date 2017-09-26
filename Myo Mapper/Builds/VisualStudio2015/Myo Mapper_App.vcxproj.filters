@@ -2948,6 +2948,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\Utility\Roboto-Light.ttf">
+      <Filter>Myo Mapper\Utility</Filter>
+    </None>
+    <None Include="..\..\Source\Utility\Roboto-Medium.ttf">
+      <Filter>Myo Mapper\Utility</Filter>
+    </None>
     <None Include="..\..\Resources\icon.png">
       <Filter>Myo Mapper\Source\Resources</Filter>
     </None>

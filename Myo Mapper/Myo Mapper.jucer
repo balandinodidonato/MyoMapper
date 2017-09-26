@@ -12,6 +12,10 @@
             file="Source/Utility/MyoMapperLookAndFeel.cpp"/>
       <FILE id="J84YTa" name="MyoMapperLookAndFeel.h" compile="0" resource="0"
             file="Source/Utility/MyoMapperLookAndFeel.h"/>
+      <FILE id="iI87Ht" name="Roboto-Light.ttf" compile="0" resource="1"
+            file="Source/Utility/Roboto-Light.ttf"/>
+      <FILE id="XWiJgH" name="Roboto-Medium.ttf" compile="0" resource="1"
+            file="Source/Utility/Roboto-Medium.ttf"/>
     </GROUP>
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
