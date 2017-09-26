@@ -149,7 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp"/>
-    <ClCompile Include="..\..\Source\minMax.cpp"/>
+    <ClCompile Include="..\..\Source\MinMax.cpp"/>
     <ClCompile Include="..\..\Source\ZeroCrossingRate.cpp"/>
     <ClCompile Include="..\..\Source\ScaleValues.cpp"/>
     <ClCompile Include="..\..\Source\FirstOrderDifference.cpp"/>
@@ -1358,7 +1358,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\Utility\CommandIDs.h"/>
     <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h"/>
-    <ClInclude Include="..\..\Source\minMax.h"/>
+    <ClInclude Include="..\..\Source\MinMax.h"/>
     <ClInclude Include="..\..\Source\ZeroCrossingRate.h"/>
     <ClInclude Include="..\..\Source\ScaleValues.h"/>
     <ClInclude Include="..\..\Source\FirstOrderDifference.h"/>

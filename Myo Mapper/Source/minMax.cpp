@@ -1,6 +1,6 @@
-#include "minMax.h"
+#include "MinMax.h"
 
-void minMax::setValues (float Values, int bufferSize)
+void MinMax::setValues (float Values, int bufferSize)
 {
     buffer[counter] = Values;
     
@@ -20,7 +20,7 @@ void minMax::setValues (float Values, int bufferSize)
     counter = counter % bufferSize;
 }
 
-void minMax::setValues (Vector3D<float> Values, int bufferSize)
+void MinMax::setValues (Vector3D<float> Values, int bufferSize)
 {
     buffer3D[counter3D] = Values;
     
@@ -36,22 +36,22 @@ void minMax::setValues (Vector3D<float> Values, int bufferSize)
 }
 
 
-float minMax::getMin()
+float MinMax::getMin()
 {
     return min;
 }
 
-float minMax::getMax()
+float MinMax::getMax()
 {
     return max;
 }
 
-Vector3D<float> minMax::getMin3D()
+Vector3D<float> MinMax::getMin3D()
 {
     return min3D;
 }
 
-Vector3D<float> minMax::getMax3D()
+Vector3D<float> MinMax::getMax3D()
 {
     return max3D;
 }

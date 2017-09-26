@@ -247,7 +247,7 @@
     <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
       <Filter>Myo Mapper\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\minMax.cpp">
+    <ClCompile Include="..\..\Source\MinMax.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ZeroCrossingRate.cpp">
@@ -1599,6 +1599,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
+      <Filter>Myo Mapper\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
+      <Filter>Myo Mapper\Utility</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\MinMax.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
