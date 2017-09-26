@@ -6,12 +6,14 @@
 struct MyoData
 {
     std::array<int8_t, 8> emgRaw;
+    std::array<int8_t, 8> emgRawMavg;
     std::array<float, 8> emgScaled;
     std::array<float, 8> emgScaledAbs;
     std::array<float, 8> emgScaledAbsMavg;
     std::array<float, 8> emgScaledAbsFob;
     std::array<float, 8> emgScaledAbsFobMavg;
     std::array<int, 8> emgZeroCross;
+    std::array<int, 8> emgZeroCrossMavg;
     std::array<float, 8> emgMin;
     std::array<float, 8> emgMax;
     std::array<float, 4> quaternion;
@@ -20,6 +22,7 @@ struct MyoData
     Vector3D<float> gyroScaledAbs;
     Vector3D<float> gyroFod;
     Vector3D<float> gyroScaledFod;
+    Vector3D<float> gyroScaledFodMavg;
     Vector3D<int> gyroZeroCross;
     Vector3D<float> acceleration;
     Vector3D<float> accelerationScaled;
