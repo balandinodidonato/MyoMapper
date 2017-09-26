@@ -11,6 +11,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+//#include "../Application.h"
 
 //==============================================================================
 /*
@@ -24,7 +25,8 @@ public:
                  int initWidth, int initHeight,
                  int minWidth, int minHeight,
                  int maxWidth, int maxHeight)
-    : DialogWindow (title, Colours::white, true, true)
+    :   DialogWindow (title, Colours::white, true, true),
+        owner (this)
     {
         setUsingNativeTitleBar (true);
         setResizable (true, true);
@@ -32,22 +34,27 @@ public:
         setContentOwned (content, false);
         
         setVisible (true);
+        
+        
     }
 
     ~WindowSetter()
     {
     }
     
-    
-//  pseudo code for how the close should be implemented
-    /*
-    void closeButtonPressed()
+    void closeButtonPressed() override
     {
-        WindowSetter& w = this;
-        return w
+//        MyoMapperApplication::getWindowList().remove (this);
+        owner = nullptr;
     }
-     */
+    
+    bool escapeKeyPressed() override
+    {
+        return true;
+    }
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowSetter)
+    
+    ScopedPointer<Component> owner;
 };

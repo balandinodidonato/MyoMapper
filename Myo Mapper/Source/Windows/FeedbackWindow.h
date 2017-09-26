@@ -10,6 +10,8 @@
 
 #pragma once
 
+class WindowList;
+
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 //==============================================================================

@@ -62,14 +62,14 @@ void MyoMapperApplication::initialise (const String& commandLine)
     commandManager = new ApplicationCommandManager();
     getCommandManager().registerAllCommandsForTarget (this);
     
-    // Create a menu bar but don't draw it until the message thread is ready
+    // Create a menu bar
     menuModel = new MainMenuBarModel();
     
-    // Wait for message loop to initialise menu bar and register command
+    // Wait for message loop to initialise menu bar and register command for apple menu
     triggerAsyncUpdate();
     
-    windowList = new WindowsList();
-    windowList->createNewSettingsWindow();
+    windowList = new WindowList();
+    windowList->getOrCreateSettingsWindow();
 }
 
 void MyoMapperApplication::handleAsyncUpdate()
@@ -128,9 +128,9 @@ ApplicationProperties& MyoMapperApplication::getAppProperties()
     return *appProp;
 }
 
-WindowsList& MyoMapperApplication::getWindowList()
+WindowList& MyoMapperApplication::getWindowList()
 {
-    WindowsList* const winList = getApp().windowList;
+    WindowList* const winList = getApp().windowList;
     jassert (winList != nullptr);
     return *winList;
 }
@@ -243,7 +243,8 @@ void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
         CommandIDs::closeWindow,
         CommandIDs::closeAllWindows,
         CommandIDs::showAboutWindow,
-        CommandIDs::showDocumentationWindow
+        CommandIDs::showDocumentationWindow,
+        CommandIDs::showPreferences
     };
     
     commands.addArray (id, numElementsInArray (id));
@@ -294,7 +295,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             
         case CommandIDs::showSettingsWindow:
             result.setInfo ("Show Settings Window", "Show the settings panel", CommandCategories::windows, 0);
-            result.addDefaultKeypress (',', ModifierKeys::commandModifier);
+            result.addDefaultKeypress ('s', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::newDisplayWindow:
@@ -328,6 +329,10 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             result.setInfo ("Documentation", "Show a window to navigate to documentation", CommandCategories::windows, 0);
             break;
             
+        case CommandIDs::showPreferences:
+            result.setInfo ("Preferences", "Open the preferences menu", CommandCategories::windows, 0);
+            result.addDefaultKeypress (',', ModifierKeys::commandModifier);
+            
         default:
             break;
     }
@@ -353,6 +358,7 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
         case CommandIDs::closeAllWindows:               closeAllWindows(); break;
         case CommandIDs::showAboutWindow:               showAboutWindow(); break;
         case CommandIDs::showDocumentationWindow:       showDocumentationWindow(); break;
+        case CommandIDs::showPreferences:               showPreferencesWindow(); break;
 //        default:                                        return false;
     }
     
@@ -407,7 +413,7 @@ void MyoMapperApplication::enableFullscreen()
 
 void MyoMapperApplication::showSettingsWindow()
 {
-    // Show the inital settings window to make further adjustments
+    windowList->getOrCreateSettingsWindow();
 }
 
 void MyoMapperApplication::newDisplayWindow()
@@ -445,7 +451,10 @@ void MyoMapperApplication::showDocumentationWindow()
     // SHow the documentation window
 }
 
-
+void MyoMapperApplication::showPreferencesWindow()
+{
+    // Show the preferences window (moves on mac vs windows/ linux)s
+}
 
 
 

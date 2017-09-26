@@ -10,12 +10,16 @@
 
 #pragma once
 
+class WindowList;
+
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../Application.h"
 
 //==============================================================================
 /*
 */
+
+
 class SettingsWindow    : public Component,
                           private Button::Listener
 {

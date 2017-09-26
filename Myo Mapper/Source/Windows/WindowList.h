@@ -18,20 +18,22 @@
 //==============================================================================
 /*
 */
-class WindowsList
+class WindowList
 {
 public:
-    WindowsList();
+    WindowList();
     
     void createInitialWindow();
-    WindowSetter* createNewFeedbackWindow();
-    WindowSetter* createNewSettingsWindow();
+    void createNewFeedbackWindow();
+    void getOrCreateSettingsWindow();
     
     void forceCloseWindows();
     void askAllWindowsToClose();
     void closeWindow (WindowSetter*);
+//    void closeWindow (SettingsWindow*);
+    void closeWindow (FeedbackWindow*);
     
     OwnedArray<WindowSetter> windows;
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowsList)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowList)
 };
