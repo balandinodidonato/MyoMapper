@@ -114,6 +114,9 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
     
     accScaledFod.set3DValue (myoData[myoID].accScaled);
     myoData[myoID].accScaledFod = accScaledFod.get3DValue();
+    
+    accScaledFodMavg.setValue(myoData[myoID].accScaledFod, 10);
+    myoData[myoID].accScaledFodMavg = accScaledFodMavg.getVector3D();
 }
 
 void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &gyro)

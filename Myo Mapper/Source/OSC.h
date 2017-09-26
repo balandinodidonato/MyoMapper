@@ -26,6 +26,7 @@ public:
                   Vector3D<float> accFod,
                   Vector3D<float> accScaled,
                   Vector3D<float> accScaledFod,
+                  Vector3D<float> accScaledFodMavg,
                   
                   Vector3D<float> gyro,
                   Vector3D<float> gyroFod,

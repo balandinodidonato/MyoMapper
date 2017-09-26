@@ -74,6 +74,7 @@ void OSC::sendOSC (int id,
                    Vector3D<float> accFod,
                    Vector3D<float> accScaled,
                    Vector3D<float> accScaledFod,
+                   Vector3D<float> accScaledFodMavg,
                    
                    Vector3D<float> gyro,
                    Vector3D<float> gyroFod,
@@ -141,10 +142,14 @@ void OSC::sendOSC (int id,
                  (float) accScaled.x,
                  (float) accScaled.y,
                  (float) accScaled.z);
-    sender.send ("/myo" + ID + "/acceleration/scaled/fod",
+    sender.send ("/myo" + ID + "/acceleration/scaled/fod/raw",
                  (float) accScaledFod.x,
                  (float) accScaledFod.y,
                  (float) accScaledFod.z);
+    sender.send ("/myo" + ID + "/acceleration/scaled/fod/mavg",
+                 (float) accScaledFodMavg.x,
+                 (float) accScaledFodMavg.y,
+                 (float) accScaledFodMavg.z);
     
     
     sender.send ("/myo" + ID + "/gyro/raw",
@@ -167,10 +172,14 @@ void OSC::sendOSC (int id,
                  (float) gyroScaledAbs.x,
                  (float) gyroScaledAbs.y,
                  (float) gyroScaledAbs.z);
-    sender.send ("/myo" + ID + "/gyro/scaled/fod",
+    sender.send ("/myo" + ID + "/gyro/scaled/fod/raw",
                  (float) gyroScaledFod.x,
                  (float) gyroScaledFod.y,
                  (float) gyroScaledFod.z);
+    sender.send ("/myo" + ID + "/gyro/scaled/fod/mavg",
+                 (float) gyroScaledFodMavg.x,
+                 (float) gyroScaledFodMavg.y,
+                 (float) gyroScaledFodMavg.z);
     
     sender.send ("/myo" + ID + "/emg/raw/raw",
                  (int) emgRaw[0],

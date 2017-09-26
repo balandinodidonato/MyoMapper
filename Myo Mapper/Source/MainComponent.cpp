@@ -130,6 +130,7 @@ void MainComponent::timerCallback()
                  myoData[id].accFod,
                  myoData[id].accScaled,
                  myoData[id].accScaledFod,
+                 myoData[id].accScaledFodMavg,
                  
                  myoData[id].gyro,
                  myoData[id].gyroFod,
