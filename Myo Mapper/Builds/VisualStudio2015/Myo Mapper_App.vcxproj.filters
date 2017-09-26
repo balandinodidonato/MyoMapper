@@ -1599,13 +1599,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
-      <Filter>Myo Mapper\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
-      <Filter>Myo Mapper\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\minMax.h">
+    <ClInclude Include="..\..\Source\MinMax.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ZeroCrossingRate.h">
