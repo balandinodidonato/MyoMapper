@@ -2,18 +2,35 @@
 
 void MovingAverage::setValue(float Value, int NSamplesAvg)
 {
-    nSamplesAvgFloat = NSamplesAvg;
-    input[pointer] = Value;
+    nSamplesAvgF = NSamplesAvg;
+    inputF[pointerF] = Value;
     
-    for (int i=0; i<nSamplesAvgFloat; i++) {
-        sum = sum + input[i];
+    for (int i=0; i<nSamplesAvgF; i++) {
+        sumF = sumF + inputF[i];
     }
     
-    mavg = sum/nSamplesAvgFloat;
+    mavgF = sumF/nSamplesAvgF;
     
-    sum = 0;
-    pointer++;
-    pointer = pointer % nSamplesAvgFloat;
+    sumF = 0;
+    pointerF++;
+    pointerF = pointerF % nSamplesAvgF;
+    
+}
+
+void MovingAverage::setValue(int Value, int NSamplesAvg)
+{
+    nSamplesAvgI = NSamplesAvg;
+    inputI[pointerI] = Value;
+    
+    for (int i=0; i<nSamplesAvgI; i++) {
+        sumI = sumI + inputI[i];
+    }
+    
+    mavgI = sumI/nSamplesAvgI;
+    
+    sumI = 0;
+    pointerI++;
+    pointerI = pointerI % nSamplesAvgI;
     
 }
 
@@ -35,7 +52,12 @@ void MovingAverage::setValue(Vector3D<float> Value3d, int NSamplesAvg3d)
 
 float MovingAverage::getFloat()
 {
-    return mavg;
+    return mavgF;
+}
+
+int MovingAverage::getInt()
+{
+    return mavgI;
 }
 
 Vector3D<float> MovingAverage::getVector3D()

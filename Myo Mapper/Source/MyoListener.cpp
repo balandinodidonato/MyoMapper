@@ -187,8 +187,8 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
     {
         myoData[myoID].emgRaw[i] = emg[i];
         
-        emgRawMavg[i].setValue(myoData[myoID].emgRaw[i], 200);
-        myoData[myoID].emgRawMavg[i] = emgRawMavg[i].getFloat();
+        emgRawMavg[i].setValue(myoData[myoID].emgRaw[i], 10);
+        myoData[myoID].emgRawMavg[i] = emgRawMavg[i].getInt();
         
         scaleEMG[i].setScale(emg[i], 127, 0.003921568627);
         myoData[myoID].emgScaled[i] = scaleEMG[i].getScaledFloat();
@@ -196,8 +196,8 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
         emgZeroCross[i].setValue(emg[i], 200);
         myoData[myoID].emgZeroCross[i] = emgZeroCross[i].getInt();
         
-        emgZeroCrossMavg[i].setValue(myoData[myoID].emgZeroCross[i], 200);
-        myoData[myoID].emgZeroCrossMavg[i] =  emgZeroCrossMavg[i].getFloat();
+        emgZeroCrossMavg[i].setValue(myoData[myoID].emgZeroCross[i], 10);
+        myoData[myoID].emgZeroCrossMavg[i] =  emgZeroCrossMavg[i].getInt();
         
         scaleEMG[i].setAbs(myoData[myoID].emgScaled[i], 1);
         myoData[myoID].emgScaledAbs[i] = scaleEMG[i].getFloatAbs();
