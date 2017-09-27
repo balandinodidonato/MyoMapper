@@ -7,7 +7,7 @@
 #include "Pose.h"
 #include "OSC.h"
 #include "AboutWindow.h"
-#include "helpWindow.h"
+#include "HelpWindow.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 

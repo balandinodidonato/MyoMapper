@@ -130,7 +130,7 @@ void OSC::sendOSC (int id,
                  (float) orientationSod.y,
                  (float) orientationSod.z);
     
-    sender.send ("/myo" + ID + "/acceleration/raw",
+    sender.send ("/myo" + ID + "/acceleration/raw/raw",
                  (float) acc.x,
                  (float) acc.y,
                  (float) acc.z);
@@ -152,7 +152,7 @@ void OSC::sendOSC (int id,
                  (float) accScaledFodMavg.z);
     
     
-    sender.send ("/myo" + ID + "/gyro/raw",
+    sender.send ("/myo" + ID + "/gyro/raw/raw",
                  (float) gyro.x,
                  (float) gyro.y,
                  (float) gyro.z);
