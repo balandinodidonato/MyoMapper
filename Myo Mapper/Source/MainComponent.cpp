@@ -205,7 +205,7 @@ void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 
 StringArray MainComponent::getMenuBarNames()
 {
-    const char* menuNames[] = {"Help", nullptr};
+    const char* menuNames[] = {"Settings", "Help", nullptr};
     return StringArray (menuNames);
 }
 
@@ -217,6 +217,10 @@ PopupMenu MainComponent::getMenuForIndex (int index, const String& name)
         menu.addItem (AboutMyoMapper, "About Myo Mapper");
         menu.addItem (onlineDocumentation, "Online Documentation");
     }
+    if (name == "Settings")
+    {
+        menu.addItem (SettingsMyoData, "Myo Data");
+    }
     return menu;
 }
 
@@ -224,8 +228,10 @@ void MainComponent::menuItemSelected (int menuID, int index)
 {
         if (menuID == AboutMyoMapper)
             AboutMyoMapperDialogWindow();
-        else if (menuID == onlineDocumentation)
+        if (menuID == onlineDocumentation)
             HelpDialogWindow();
+        if (menuID == SettingsMyoData)
+            oscStreamingSettingsWindow();
 }
 
 void MainComponent::AboutMyoMapperDialogWindow()
@@ -270,4 +276,26 @@ void MainComponent::HelpDialogWindow()
     helpWindow->setResizable (false, false);
     helpWindow->setUsingNativeTitleBar (true);
     helpWindow->setVisible (true);
+}
+
+void MainComponent::oscStreamingSettingsWindow()
+{
+    OscSettingsWindow* oscSetWin = new OscSettingsWindow ("Myo Data",
+                                                          Colours::grey,
+                                                          DocumentWindow::allButtons);
+
+    
+    Rectangle<int> area (0, 0, 520, 520);
+    
+    RectanglePlacement placement (RectanglePlacement::xMid
+                                  | RectanglePlacement::yMid
+                                  | RectanglePlacement::doNotResize);
+    
+    Rectangle<int> result (placement.appliedTo (area, Desktop::getInstance().getDisplays()
+                                                .getMainDisplay().userArea.reduced (20)));
+    oscSetWin->setBounds (result);
+
+    oscSetWin->setResizable (false, false);
+    oscSetWin->setUsingNativeTitleBar (true);
+    oscSetWin->setVisible (true);
 }

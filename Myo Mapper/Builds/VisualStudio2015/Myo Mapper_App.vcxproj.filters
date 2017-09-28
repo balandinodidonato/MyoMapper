@@ -247,10 +247,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\OSC\accOSCsettings.cpp">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\OSC\orOSCsettings.cpp">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\OSC\OSC.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\OSCstreamingSettings.cpp">
+    <ClCompile Include="..\..\Source\OSC\OSCsettings.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Myo\MyoListener.cpp">
@@ -282,6 +288,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Features\ZeroCrossingRate.cpp">
       <Filter>Myo Mapper\Source\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\OscSettingsWindow.cpp">
+      <Filter>Myo Mapper\Source\MenuBar</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp">
       <Filter>Myo Mapper\Source\MenuBar</Filter>
@@ -1590,10 +1599,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\OSC\accOSCsettings.h">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\OSC\orOSCsettings.h">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\OSC\OSC.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\OSCstreamingSettings.h">
+    <ClInclude Include="..\..\Source\OSC\OSCsettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Myo\MyoData.h">
@@ -1628,6 +1643,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Features\ZeroCrossingRate.h">
       <Filter>Myo Mapper\Source\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\OscSettingsWindow.h">
+      <Filter>Myo Mapper\Source\MenuBar</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AboutWindowContent.h">
       <Filter>Myo Mapper\Source\MenuBar</Filter>

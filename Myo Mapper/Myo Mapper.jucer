@@ -8,12 +8,17 @@
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <GROUP id="{D9E48CAC-8B2D-D443-E0F4-E1F11E42E28B}" name="OSC">
+        <FILE id="ymj3u3" name="accOSCsettings.cpp" compile="1" resource="0"
+              file="Source/OSC/accOSCsettings.cpp"/>
+        <FILE id="kCBpvA" name="accOSCsettings.h" compile="0" resource="0"
+              file="Source/OSC/accOSCsettings.h"/>
+        <FILE id="dYznqa" name="orOSCsettings.cpp" compile="1" resource="0"
+              file="Source/OSC/orOSCsettings.cpp"/>
+        <FILE id="fwKmcz" name="orOSCsettings.h" compile="0" resource="0" file="Source/OSC/orOSCsettings.h"/>
         <FILE id="xLw1eJ" name="OSC.cpp" compile="1" resource="0" file="Source/OSC/OSC.cpp"/>
         <FILE id="ioVgOh" name="OSC.h" compile="0" resource="0" file="Source/OSC/OSC.h"/>
-        <FILE id="V2lGPA" name="OSCstreamingSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/OSCstreamingSettings.cpp"/>
-        <FILE id="KxHLb6" name="OSCstreamingSettings.h" compile="0" resource="0"
-              file="Source/OSC/OSCstreamingSettings.h"/>
+        <FILE id="enPDDS" name="OSCsettings.cpp" compile="1" resource="0" file="Source/OSC/OSCsettings.cpp"/>
+        <FILE id="Jxtcvi" name="OSCsettings.h" compile="0" resource="0" file="Source/OSC/OSCsettings.h"/>
       </GROUP>
       <GROUP id="{64B19B40-2616-4339-D467-FD4E7E7B5A36}" name="Myo">
         <FILE id="FiMC6c" name="MyoData.h" compile="0" resource="0" file="Source/Myo/MyoData.h"/>
@@ -51,6 +56,10 @@
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>
       <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="MenuBar">
+        <FILE id="YCq08E" name="OscSettingsWindow.cpp" compile="1" resource="0"
+              file="Source/OscSettingsWindow.cpp"/>
+        <FILE id="UHa4pE" name="OscSettingsWindow.h" compile="0" resource="0"
+              file="Source/OscSettingsWindow.h"/>
         <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
               file="Source/AboutWindowContent.cpp"/>
         <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"
