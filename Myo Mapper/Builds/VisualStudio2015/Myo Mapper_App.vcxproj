@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\OSC\OSC.cpp"/>
+    <ClCompile Include="..\..\Source\OSC\OSCstreamingSettings.cpp"/>
     <ClCompile Include="..\..\Source\Myo\MyoListener.cpp"/>
     <ClCompile Include="..\..\Source\Myo\MyoManager.cpp"/>
     <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp"/>
@@ -1352,6 +1353,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\OSC\OSC.h"/>
+    <ClInclude Include="..\..\Source\OSC\OSCstreamingSettings.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoData.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoListener.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoManager.h"/>

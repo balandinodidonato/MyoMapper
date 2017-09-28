@@ -250,6 +250,9 @@
     <ClCompile Include="..\..\Source\OSC\OSC.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\OSC\OSCstreamingSettings.cpp">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Myo\MyoListener.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
@@ -1588,6 +1591,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\OSC\OSC.h">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\OSC\OSCstreamingSettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Myo\MyoData.h">

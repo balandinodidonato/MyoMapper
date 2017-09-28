@@ -10,6 +10,10 @@
       <GROUP id="{D9E48CAC-8B2D-D443-E0F4-E1F11E42E28B}" name="OSC">
         <FILE id="xLw1eJ" name="OSC.cpp" compile="1" resource="0" file="Source/OSC/OSC.cpp"/>
         <FILE id="ioVgOh" name="OSC.h" compile="0" resource="0" file="Source/OSC/OSC.h"/>
+        <FILE id="V2lGPA" name="OSCstreamingSettings.cpp" compile="1" resource="0"
+              file="Source/OSC/OSCstreamingSettings.cpp"/>
+        <FILE id="KxHLb6" name="OSCstreamingSettings.h" compile="0" resource="0"
+              file="Source/OSC/OSCstreamingSettings.h"/>
       </GROUP>
       <GROUP id="{64B19B40-2616-4339-D467-FD4E7E7B5A36}" name="Myo">
         <FILE id="FiMC6c" name="MyoData.h" compile="0" resource="0" file="Source/Myo/MyoData.h"/>
