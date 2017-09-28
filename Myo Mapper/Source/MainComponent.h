@@ -8,6 +8,7 @@
 #include "OSC/OSC.h"
 #include "AboutWindow.h"
 #include "HelpWindow.h"
+#include "OscSettingsWindow.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
@@ -37,16 +38,14 @@ public:
     
     enum MenuIDs {
         AboutMyoMapper = 1000,
-        AddMyo,
+        SettingsMyoData,
         Quit,
-        ShowOrientation,
-        ShowEMGsMAV,
-        ShowPose,
         onlineDocumentation
     };
     
     void AboutMyoMapperDialogWindow();
     void HelpDialogWindow();
+    void oscStreamingSettingsWindow();
     void buttonClicked (Button* button) override;
     void setPanelVisibility (Component &component);
     

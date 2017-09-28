@@ -213,7 +213,6 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
         
         emgMinMax[i].setValues(myoData[myoID].emgScaledAbs[i], 200); // window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
         myoData[myoID].emgScaledAbsMin[i] = emgMinMax[i].getMin();
-        std::cout << myoData[myoID].emgScaledAbsMin[i] << std::endl;
         myoData[myoID].emgScaledAbsMax[i] = emgMinMax[i].getMax();
         
         
