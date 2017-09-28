@@ -12,6 +12,14 @@
               file="Source/OSC/accOSCsettings.cpp"/>
         <FILE id="kCBpvA" name="accOSCsettings.h" compile="0" resource="0"
               file="Source/OSC/accOSCsettings.h"/>
+        <FILE id="qaSW2b" name="emgOSCsettings.cpp" compile="1" resource="0"
+              file="Source/OSC/emgOSCsettings.cpp"/>
+        <FILE id="iRF5Br" name="emgOSCsettings.h" compile="0" resource="0"
+              file="Source/OSC/emgOSCsettings.h"/>
+        <FILE id="mxthWT" name="gyroOSCsettings.cpp" compile="1" resource="0"
+              file="Source/OSC/gyroOSCsettings.cpp"/>
+        <FILE id="ivhIrK" name="gyroOSCsettings.h" compile="0" resource="0"
+              file="Source/OSC/gyroOSCsettings.h"/>
         <FILE id="dYznqa" name="orOSCsettings.cpp" compile="1" resource="0"
               file="Source/OSC/orOSCsettings.cpp"/>
         <FILE id="fwKmcz" name="orOSCsettings.h" compile="0" resource="0" file="Source/OSC/orOSCsettings.h"/>

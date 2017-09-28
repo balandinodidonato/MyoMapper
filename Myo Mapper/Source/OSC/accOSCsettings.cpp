@@ -35,23 +35,26 @@ accOSCsettings::accOSCsettings ()
     addAndMakeVisible (accRaw = new ToggleButton ("accRaw"));
     accRaw->setButtonText (TRANS("Raw"));
     accRaw->addListener (this);
+    accRaw->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (accRawFod = new ToggleButton ("accRawFod"));
     accRawFod->setButtonText (TRANS("First Order Difference"));
     accRawFod->addListener (this);
+    accRawFod->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (accScaled = new ToggleButton ("accScaled"));
     accScaled->setButtonText (TRANS("Scaled"));
     accScaled->addListener (this);
     accScaled->setToggleState (true, dontSendNotification);
+    accScaled->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (accScaledFod = new ToggleButton ("accScaledFod"));
     accScaledFod->setButtonText (TRANS("First Order Difference"));
     accScaledFod->addListener (this);
+    accScaledFod->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (accFodbuffer = new Slider ("accFodbuffer"));
     accFodbuffer->setExplicitFocusOrder (10);
-    accFodbuffer->setValue (10);
     accFodbuffer->setRange (0, 200, 1);
     accFodbuffer->setSliderStyle (Slider::IncDecButtons);
     accFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
@@ -59,7 +62,6 @@ accOSCsettings::accOSCsettings ()
 
     addAndMakeVisible (accScaledFodbuffer = new Slider ("accScaledFodbuffer"));
     accScaledFodbuffer->setExplicitFocusOrder (10);
-    accScaledFodbuffer->setValue (10);
     accScaledFodbuffer->setRange (0, 200, 1);
     accScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
     accScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
@@ -99,7 +101,7 @@ void accOSCsettings::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff404040));
+    g.fillAll (Colours::grey);
 
     {
         int x = 188, y = 76, width = 200, height = 30;
@@ -213,7 +215,7 @@ BEGIN_JUCER_METADATA
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="600" initialHeight="400">
-  <BACKGROUND backgroundColour="ff404040">
+  <BACKGROUND backgroundColour="ff808080">
     <TEXT pos="188 76 200 30" fill="solid: ffffffff" hasStroke="0" text="Analysis buffer Size"
           fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"
           justification="36"/>
@@ -222,20 +224,23 @@ BEGIN_JUCER_METADATA
           justification="36"/>
   </BACKGROUND>
   <TOGGLEBUTTON name="accRaw" id="3092e2d86df75f78" memberName="accRaw" virtualName=""
-                explicitFocusOrder="0" pos="0 0 150 24" buttonText="Raw" connectedEdges="0"
-                needsCallback="1" radioGroupId="0" state="0"/>
+                explicitFocusOrder="0" pos="0 0 150 24" txtcol="ffffffff" buttonText="Raw"
+                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <TOGGLEBUTTON name="accRawFod" id="6b324c8bd37c15e6" memberName="accRawFod"
-                virtualName="" explicitFocusOrder="0" pos="24 24 168 24" buttonText="First Order Difference"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+                virtualName="" explicitFocusOrder="0" pos="24 24 168 24" txtcol="ffffffff"
+                buttonText="First Order Difference" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="0"/>
   <TOGGLEBUTTON name="accScaled" id="6ddd5ce18abdaa11" memberName="accScaled"
-                virtualName="" explicitFocusOrder="0" pos="0 56 150 24" buttonText="Scaled"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
+                virtualName="" explicitFocusOrder="0" pos="0 56 150 24" txtcol="ffffffff"
+                buttonText="Scaled" connectedEdges="0" needsCallback="1" radioGroupId="0"
+                state="1"/>
   <TOGGLEBUTTON name="accScaledFod" id="7517c36eb57d296e" memberName="accScaledFod"
-                virtualName="" explicitFocusOrder="0" pos="32 80 168 24" buttonText="First Order Difference"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+                virtualName="" explicitFocusOrder="0" pos="32 80 168 24" txtcol="ffffffff"
+                buttonText="First Order Difference" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="0"/>
   <SLIDER name="accFodbuffer" id="64d124c6eb1ee664" memberName="accFodbuffer"
           virtualName="" explicitFocusOrder="10" pos="352 24 150 24" min="0"
-          max="200" int="0" style="IncDecButtons" textBoxPos="TextBoxLeft"
+          max="200" int="1" style="IncDecButtons" textBoxPos="TextBoxLeft"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"
           needsCallback="1"/>
   <SLIDER name="accScaledFodbuffer" id="bb1644c04ccce054" memberName="accScaledFodbuffer"

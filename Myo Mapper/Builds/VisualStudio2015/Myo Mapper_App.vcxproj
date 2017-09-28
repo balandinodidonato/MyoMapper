@@ -149,6 +149,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\OSC\accOSCsettings.cpp"/>
+    <ClCompile Include="..\..\Source\OSC\emgOSCsettings.cpp"/>
+    <ClCompile Include="..\..\Source\OSC\gyroOSCsettings.cpp"/>
     <ClCompile Include="..\..\Source\OSC\orOSCsettings.cpp"/>
     <ClCompile Include="..\..\Source\OSC\OSC.cpp"/>
     <ClCompile Include="..\..\Source\OSC\OSCsettings.cpp"/>
@@ -1356,6 +1358,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\OSC\accOSCsettings.h"/>
+    <ClInclude Include="..\..\Source\OSC\emgOSCsettings.h"/>
+    <ClInclude Include="..\..\Source\OSC\gyroOSCsettings.h"/>
     <ClInclude Include="..\..\Source\OSC\orOSCsettings.h"/>
     <ClInclude Include="..\..\Source\OSC\OSC.h"/>
     <ClInclude Include="..\..\Source\OSC\OSCsettings.h"/>

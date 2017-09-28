@@ -20,10 +20,6 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "OSCsettings.h"
-#include "orOSCsettings.h"
-#include "accOSCsettings.h"
-#include "gyroOSCsettings.h"
 #include "emgOSCsettings.h"
 
 
@@ -31,18 +27,10 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-OSCsettings::OSCsettings ()
+emgOSCsettings::emgOSCsettings ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
-
-    addAndMakeVisible (oscSettingsTab = new TabbedComponent (TabbedButtonBar::TabsAtTop));
-    oscSettingsTab->setTabBarDepth (30);
-    oscSettingsTab->addTab (TRANS("Orientation"), Colours::lightgrey, new orOSCsettings(), true);
-    oscSettingsTab->addTab (TRANS("Accelerometer"), Colours::lightgrey, new accOSCsettings(), true);
-    oscSettingsTab->addTab (TRANS("Gyroscope"), Colours::lightgrey, new gyroOSCsettings(), true);
-    oscSettingsTab->addTab (TRANS("EMG"), Colours::lightgrey, new emgOSCsettings(), true);
-    oscSettingsTab->setCurrentTabIndex (0);
 
 
     //[UserPreSize]
@@ -55,12 +43,11 @@ OSCsettings::OSCsettings ()
     //[/Constructor]
 }
 
-OSCsettings::~OSCsettings()
+emgOSCsettings::~emgOSCsettings()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    oscSettingsTab = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -68,7 +55,7 @@ OSCsettings::~OSCsettings()
 }
 
 //==============================================================================
-void OSCsettings::paint (Graphics& g)
+void emgOSCsettings::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -79,12 +66,11 @@ void OSCsettings::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void OSCsettings::resized()
+void emgOSCsettings::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    oscSettingsTab->setBounds (0, 0, proportionOfWidth (1.0000f), proportionOfHeight (1.0000f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -104,23 +90,11 @@ void OSCsettings::resized()
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="OSCsettings" componentName=""
+<JUCER_COMPONENT documentType="Component" className="emgOSCsettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="600" initialHeight="400">
   <BACKGROUND backgroundColour="ff808080"/>
-  <TABBEDCOMPONENT name="oscSettingsTab" id="96fad8a2b41af81d" memberName="oscSettingsTab"
-                   virtualName="" explicitFocusOrder="0" pos="0 0 100% 100%" orientation="top"
-                   tabBarDepth="30" initialTab="0">
-    <TAB name="Orientation" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="orOSCsettings.cpp"/>
-    <TAB name="Accelerometer" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="accOSCsettings.cpp"/>
-    <TAB name="Gyroscope" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="gyroOSCsettings.cpp"/>
-    <TAB name="EMG" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="emgOSCsettings.cpp"/>
-  </TABBEDCOMPONENT>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

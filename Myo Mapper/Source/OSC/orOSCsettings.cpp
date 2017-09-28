@@ -35,27 +35,31 @@ orOSCsettings::orOSCsettings ()
     addAndMakeVisible (orQuaternion = new ToggleButton ("orQuaternion"));
     orQuaternion->setButtonText (TRANS("Quaternion"));
     orQuaternion->addListener (this);
+    orQuaternion->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (orRaw = new ToggleButton ("orRaw"));
     orRaw->setButtonText (CharPointer_UTF8 ("Raw (-\xcf\x80, \xcf\x80)"));
     orRaw->addListener (this);
+    orRaw->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (orScaled = new ToggleButton ("orScaled"));
     orScaled->setButtonText (TRANS("Scaled (0-1)"));
     orScaled->addListener (this);
     orScaled->setToggleState (true, dontSendNotification);
+    orScaled->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (orAcceleration = new ToggleButton ("orAcceleration"));
     orAcceleration->setButtonText (TRANS("Acceleration (0-1)"));
     orAcceleration->addListener (this);
+    orAcceleration->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (orVelocity = new ToggleButton ("orVelocity"));
     orVelocity->setButtonText (TRANS("Velocity (0-1)"));
     orVelocity->addListener (this);
+    orVelocity->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (orScaledFodbuffer = new Slider ("orScaledFodbuffer"));
     orScaledFodbuffer->setExplicitFocusOrder (10);
-    orScaledFodbuffer->setValue (10);
     orScaledFodbuffer->setRange (0, 200, 1);
     orScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
@@ -63,7 +67,6 @@ orOSCsettings::orOSCsettings ()
 
     addAndMakeVisible (orScaledSodbuffer = new Slider ("orScaledSodbuffer"));
     orScaledSodbuffer->setExplicitFocusOrder (10);
-    orScaledSodbuffer->setValue (10);
     orScaledSodbuffer->setRange (0, 200, 1);
     orScaledSodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledSodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
@@ -104,7 +107,7 @@ void orOSCsettings::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff404040));
+    g.fillAll (Colours::grey);
 
     {
         int x = 140, y = 132, width = 200, height = 30;
@@ -224,7 +227,7 @@ BEGIN_JUCER_METADATA
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="600" initialHeight="400">
-  <BACKGROUND backgroundColour="ff404040">
+  <BACKGROUND backgroundColour="ff808080">
     <TEXT pos="140 132 200 30" fill="solid: ffffffff" hasStroke="0" text="Analysis buffer Size"
           fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"
           justification="36"/>
@@ -233,20 +236,23 @@ BEGIN_JUCER_METADATA
           justification="36"/>
   </BACKGROUND>
   <TOGGLEBUTTON name="orQuaternion" id="3092e2d86df75f78" memberName="orQuaternion"
-                virtualName="" explicitFocusOrder="0" pos="8 8 150 24" buttonText="Quaternion"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+                virtualName="" explicitFocusOrder="0" pos="8 8 150 24" txtcol="ffffffff"
+                buttonText="Quaternion" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="0"/>
   <TOGGLEBUTTON name="orRaw" id="66f9071fdb46079e" memberName="orRaw" virtualName=""
-                explicitFocusOrder="0" pos="8 40 150 24" buttonText="Raw (-&#960;, &#960;)"
+                explicitFocusOrder="0" pos="8 40 150 24" txtcol="ffffffff" buttonText="Raw (-&#960;, &#960;)"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <TOGGLEBUTTON name="orScaled" id="27d8c1fd87053050" memberName="orScaled" virtualName=""
-                explicitFocusOrder="0" pos="8 72 150 24" buttonText="Scaled (0-1)"
+                explicitFocusOrder="0" pos="8 72 150 24" txtcol="ffffffff" buttonText="Scaled (0-1)"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
   <TOGGLEBUTTON name="orAcceleration" id="2d64a7feb7ed1cbe" memberName="orAcceleration"
-                virtualName="" explicitFocusOrder="0" pos="8 104 150 24" buttonText="Acceleration (0-1)"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+                virtualName="" explicitFocusOrder="0" pos="8 104 150 24" txtcol="ffffffff"
+                buttonText="Acceleration (0-1)" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="0"/>
   <TOGGLEBUTTON name="orVelocity" id="d384990740b50bd6" memberName="orVelocity"
-                virtualName="" explicitFocusOrder="0" pos="8 136 150 24" buttonText="Velocity (0-1)"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+                virtualName="" explicitFocusOrder="0" pos="8 136 150 24" txtcol="ffffffff"
+                buttonText="Velocity (0-1)" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="0"/>
   <SLIDER name="orScaledFodbuffer" id="bb1644c04ccce054" memberName="orScaledFodbuffer"
           virtualName="" explicitFocusOrder="10" pos="312 104 150 24" min="0"
           max="200" int="1" style="IncDecButtons" textBoxPos="TextBoxLeft"

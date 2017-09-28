@@ -250,6 +250,12 @@
     <ClCompile Include="..\..\Source\OSC\accOSCsettings.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\OSC\emgOSCsettings.cpp">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\OSC\gyroOSCsettings.cpp">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\OSC\orOSCsettings.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
@@ -1600,6 +1606,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\OSC\accOSCsettings.h">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\OSC\emgOSCsettings.h">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\OSC\gyroOSCsettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\OSC\orOSCsettings.h">
