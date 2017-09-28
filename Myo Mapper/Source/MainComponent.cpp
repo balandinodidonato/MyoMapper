@@ -1,5 +1,5 @@
 #include "MainComponent.h"
-#include "MyoData.h"
+#include "Myo/MyoData.h"
 
 MainComponent::MainComponent()
 :   selectedMyoID(0),
@@ -149,8 +149,8 @@ void MainComponent::timerCallback()
                  myoData[id].emgScaledAbsFobMavg,
                  myoData[id].emgZeroCross,
                  myoData[id].emgZeroCrossMavg,
-                 myoData[id].emgMin,
-                 myoData[id].emgMax,
+                 myoData[id].emgScaledAbsMin,
+                 myoData[id].emgScaledAbsMax,
                  myoData[id].emgMav,
                  myoData[id].emgMavMin,
                  myoData[id].emgMavMax,

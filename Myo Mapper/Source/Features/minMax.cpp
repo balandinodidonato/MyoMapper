@@ -25,8 +25,8 @@ void MinMax::setValues(Vector3D<float> Values, int Window){
     
     bufferSize3D = Window;
     buffer3D[counter3D] = Values;
-    min = 100000;
-    max = -100000;
+    min3D = {100000, 100000, 100000};
+    max3D = {-100000, -100000, -100000};
 
     for (unsigned int i=0; i<bufferSize3D; i++) {
         if (buffer3D[i].x < min3D.x) {

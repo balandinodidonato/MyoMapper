@@ -1,5 +1,5 @@
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "helpWindow.h"
+#include "HelpWindow.h"
 
 //==============================================================================
 HelpWindow::HelpWindow (const String& name, Colour backgroundColour, int buttonsNeeded)

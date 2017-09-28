@@ -36,8 +36,8 @@ struct MyoData
     std::array<float, 8> emgScaledAbsFobMavg;
     std::array<int, 8> emgZeroCross;
     std::array<int, 8> emgZeroCrossMavg;
-    std::array<float, 8> emgMin;
-    std::array<float, 8> emgMax;
+    std::array<float, 8> emgScaledAbsMin;
+    std::array<float, 8> emgScaledAbsMax;
     float emgMav;
     float mavFod;
     float mavFodMavg;

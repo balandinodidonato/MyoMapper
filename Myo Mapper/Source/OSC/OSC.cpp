@@ -1,6 +1,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "OSC.h"
-#include "MyoData.h"
+#include "../Myo/MyoData.h"
 
 OSC::OSC()
 :   vibrate (false),
@@ -93,8 +93,8 @@ void OSC::sendOSC (int id,
                    std::array<float, 8> emgScaledAbsFobMavg,
                    std::array<int, 8> emgZeroCross,
                    std::array<int, 8> emgZeroCrossMavg,
-                   std::array<float, 8> emgMin,
-                   std::array<float, 8> emgMax,
+                   std::array<float, 8> emgScaledAbsMin,
+                   std::array<float, 8> emgScaledAbsMax,
                    float emgMav,
                    float emgMavMin,
                    float emgMavMax,
@@ -263,23 +263,23 @@ void OSC::sendOSC (int id,
                  (float) emgScaledAbsFobMavg[6],
                  (float) emgScaledAbsFobMavg[7]);
     sender.send ("/myo" + ID + "/emg/scaled/abs/min",
-                 (float) emgMin[0],
-                 (float) emgMin[1],
-                 (float) emgMin[2],
-                 (float) emgMin[3],
-                 (float) emgMin[4],
-                 (float) emgMin[5],
-                 (float) emgMin[6],
-                 (float) emgMin[7]);
+                 (float) emgScaledAbsMin[0],
+                 (float) emgScaledAbsMin[1],
+                 (float) emgScaledAbsMin[2],
+                 (float) emgScaledAbsMin[3],
+                 (float) emgScaledAbsMin[4],
+                 (float) emgScaledAbsMin[5],
+                 (float) emgScaledAbsMin[6],
+                 (float) emgScaledAbsMin[7]);
     sender.send ("/myo" + ID + "/emg/scaled/abs/max",
-                 (float) emgMax[0],
-                 (float) emgMax[1],
-                 (float) emgMax[2],
-                 (float) emgMax[3],
-                 (float) emgMax[4],
-                 (float) emgMax[5],
-                 (float) emgMax[6],
-                 (float) emgMax[7]);
+                 (float) emgScaledAbsMax[0],
+                 (float) emgScaledAbsMax[1],
+                 (float) emgScaledAbsMax[2],
+                 (float) emgScaledAbsMax[3],
+                 (float) emgScaledAbsMax[4],
+                 (float) emgScaledAbsMax[5],
+                 (float) emgScaledAbsMax[6],
+                 (float) emgScaledAbsMax[7]);
     sender.send ("/myo" + ID + "/emg/mav/raw", (float) emgMav);
     sender.send ("/myo" + ID + "/emg/mav/mavg",(float) emgMavMavg);
     sender.send ("/myo" + ID + "/emg/mav/min", (float) emgMavMin);

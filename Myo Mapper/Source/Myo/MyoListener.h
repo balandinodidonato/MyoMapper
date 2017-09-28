@@ -2,14 +2,14 @@
 #define MYOLISTENER_H_INCLUDED
 
 #include "myo/myo.hpp"
-#include "Orientation.h"
+#include "../Orientation.h"
 #include "MyoData.h"
 #include <array>
-#include "MovingAverage.h"
-#include "Mav.h"
-#include "ScaleValues.h"
-#include "ZeroCrossingRate.h"
-#include "MinMax.h"
+#include "../Features/MovingAverage.h"
+#include "../Features/Mav.h"
+#include "../Features/ScaleValues.h"
+#include "../Features/ZeroCrossingRate.h"
+#include "../Features/MinMax.h"
 
 class MyoListener : public myo::DeviceListener
 {

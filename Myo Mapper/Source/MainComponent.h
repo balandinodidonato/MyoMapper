@@ -3,9 +3,9 @@
 
 #include "Orientation.h"
 #include "Settings.h"
-#include "MyoManager.h"
+#include "Myo/MyoManager.h"
 #include "Pose.h"
-#include "OSC.h"
+#include "OSC/OSC.h"
 #include "AboutWindow.h"
 #include "HelpWindow.h"
 #include "../JuceLibraryCode/JuceHeader.h"
