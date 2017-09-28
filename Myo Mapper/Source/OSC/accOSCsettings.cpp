@@ -56,6 +56,7 @@ accOSCsettings::accOSCsettings ()
     addAndMakeVisible (accFodbuffer = new Slider ("accFodbuffer"));
     accFodbuffer->setExplicitFocusOrder (10);
     accFodbuffer->setRange (0, 200, 1);
+    accFodbuffer->setValue(10);
     accFodbuffer->setSliderStyle (Slider::IncDecButtons);
     accFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     accFodbuffer->addListener (this);
@@ -63,6 +64,7 @@ accOSCsettings::accOSCsettings ()
     addAndMakeVisible (accScaledFodbuffer = new Slider ("accScaledFodbuffer"));
     accScaledFodbuffer->setExplicitFocusOrder (10);
     accScaledFodbuffer->setRange (0, 200, 1);
+    accScaledFodbuffer->setValue(10);
     accScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
     accScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     accScaledFodbuffer->addListener (this);
@@ -71,7 +73,7 @@ accOSCsettings::accOSCsettings ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (600, 400);
+    setSize (550, 500);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -214,7 +216,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="accOSCsettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="0" initialWidth="600" initialHeight="400">
+                 fixedSize="0" initialWidth="550" initialHeight="500">
   <BACKGROUND backgroundColour="ff808080">
     <TEXT pos="188 76 200 30" fill="solid: ffffffff" hasStroke="0" text="Analysis buffer Size"
           fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"

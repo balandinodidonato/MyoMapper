@@ -37,7 +37,7 @@ OSCsettings::OSCsettings ()
     //[/Constructor_pre]
 
     addAndMakeVisible (oscSettingsTab = new TabbedComponent (TabbedButtonBar::TabsAtTop));
-    oscSettingsTab->setTabBarDepth (30);
+    oscSettingsTab->setTabBarDepth (31);
     oscSettingsTab->addTab (TRANS("Orientation"), Colours::lightgrey, new orOSCsettings(), true);
     oscSettingsTab->addTab (TRANS("Accelerometer"), Colours::lightgrey, new accOSCsettings(), true);
     oscSettingsTab->addTab (TRANS("Gyroscope"), Colours::lightgrey, new gyroOSCsettings(), true);
@@ -48,7 +48,7 @@ OSCsettings::OSCsettings ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (600, 400);
+    setSize (550, 500);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -107,11 +107,11 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="OSCsettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="0" initialWidth="600" initialHeight="400">
+                 fixedSize="0" initialWidth="550" initialHeight="500">
   <BACKGROUND backgroundColour="ff808080"/>
   <TABBEDCOMPONENT name="oscSettingsTab" id="96fad8a2b41af81d" memberName="oscSettingsTab"
                    virtualName="" explicitFocusOrder="0" pos="0 0 100% 100%" orientation="top"
-                   tabBarDepth="30" initialTab="0">
+                   tabBarDepth="31" initialTab="0">
     <TAB name="Orientation" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
          constructorParams="" jucerComponentFile="orOSCsettings.cpp"/>
     <TAB name="Accelerometer" colour="ffd3d3d3" useJucerComp="1" contentClassName=""

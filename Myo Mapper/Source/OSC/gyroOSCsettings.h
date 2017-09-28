@@ -63,7 +63,9 @@ private:
     ScopedPointer<ToggleButton> gyroScaledAbs;
     ScopedPointer<ToggleButton> gyroRawFod;
     ScopedPointer<Slider> gyroRawFodbuffer;
-    ScopedPointer<Slider> gyroScaledFodbuffer;
+    ScopedPointer<Slider> gyroScaledMavgFodbufferSize;
+    ScopedPointer<ToggleButton> gyroFob;
+    ScopedPointer<ToggleButton> gyroFobMavg;
 
 
     //==============================================================================

@@ -285,7 +285,7 @@ void MainComponent::oscStreamingSettingsWindow()
                                                           DocumentWindow::allButtons);
 
     
-    Rectangle<int> area (0, 0, 520, 520);
+    Rectangle<int> area (0, 0, 550, 500);
     
     RectanglePlacement placement (RectanglePlacement::xMid
                                   | RectanglePlacement::yMid
@@ -295,7 +295,7 @@ void MainComponent::oscStreamingSettingsWindow()
                                                 .getMainDisplay().userArea.reduced (20)));
     oscSetWin->setBounds (result);
 
-    oscSetWin->setResizable (false, false);
+    oscSetWin->setResizable (true, true);
     oscSetWin->setUsingNativeTitleBar (true);
     oscSetWin->setVisible (true);
 }

@@ -56,22 +56,34 @@ gyroOSCsettings::gyroOSCsettings ()
     addAndMakeVisible (gyroRawFodbuffer = new Slider ("gyroRawFodbuffer"));
     gyroRawFodbuffer->setExplicitFocusOrder (10);
     gyroRawFodbuffer->setRange (0, 200, 1);
+    gyroRawFodbuffer->setValue(10);
     gyroRawFodbuffer->setSliderStyle (Slider::IncDecButtons);
     gyroRawFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     gyroRawFodbuffer->addListener (this);
 
-    addAndMakeVisible (gyroScaledFodbuffer = new Slider ("gyroScaledFodbuffer"));
-    gyroScaledFodbuffer->setExplicitFocusOrder (10);
-    gyroScaledFodbuffer->setRange (0, 200, 1);
-    gyroScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
-    gyroScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
-    gyroScaledFodbuffer->addListener (this);
+    addAndMakeVisible (gyroScaledMavgFodbufferSize = new Slider ("gyroScaledMavgFodbufferSize"));
+    gyroScaledMavgFodbufferSize->setExplicitFocusOrder (10);
+    gyroScaledMavgFodbufferSize->setRange (0, 200, 1);
+    gyroScaledMavgFodbufferSize->setValue(10);
+    gyroScaledMavgFodbufferSize->setSliderStyle (Slider::IncDecButtons);
+    gyroScaledMavgFodbufferSize->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    gyroScaledMavgFodbufferSize->addListener (this);
+
+    addAndMakeVisible (gyroFob = new ToggleButton ("gyroFob"));
+    gyroFob->setButtonText (TRANS("First Order Difference (0-1)"));
+    gyroFob->addListener (this);
+    gyroFob->setColour (ToggleButton::textColourId, Colours::white);
+
+    addAndMakeVisible (gyroFobMavg = new ToggleButton ("gyroFobMavg"));
+    gyroFobMavg->setButtonText (TRANS("Moving Average (0-1)"));
+    gyroFobMavg->addListener (this);
+    gyroFobMavg->setColour (ToggleButton::textColourId, Colours::white);
 
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (600, 400);
+    setSize (550, 500);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -88,7 +100,9 @@ gyroOSCsettings::~gyroOSCsettings()
     gyroScaledAbs = nullptr;
     gyroRawFod = nullptr;
     gyroRawFodbuffer = nullptr;
-    gyroScaledFodbuffer = nullptr;
+    gyroScaledMavgFodbufferSize = nullptr;
+    gyroFob = nullptr;
+    gyroFobMavg = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -104,7 +118,7 @@ void gyroOSCsettings::paint (Graphics& g)
     g.fillAll (Colours::grey);
 
     {
-        int x = 188, y = 20, width = 200, height = 30;
+        int x = 196, y = 20, width = 200, height = 30;
         String text (TRANS("Analysis buffer Size"));
         Colour fillColour = Colours::white;
         //[UserPaintCustomArguments] Customize the painting arguments here..
@@ -116,7 +130,7 @@ void gyroOSCsettings::paint (Graphics& g)
     }
 
     {
-        int x = 188, y = 92, width = 200, height = 30;
+        int x = 196, y = 148, width = 200, height = 30;
         String text (TRANS("Analysis buffer Size"));
         Colour fillColour = Colours::white;
         //[UserPaintCustomArguments] Customize the painting arguments here..
@@ -140,8 +154,10 @@ void gyroOSCsettings::resized()
     gyroScaled->setBounds (0, 72, 150, 24);
     gyroScaledAbs->setBounds (32, 96, 150, 24);
     gyroRawFod->setBounds (32, 24, 176, 24);
-    gyroRawFodbuffer->setBounds (352, 24, 150, 24);
-    gyroScaledFodbuffer->setBounds (352, 96, 150, 24);
+    gyroRawFodbuffer->setBounds (360, 24, 150, 24);
+    gyroScaledMavgFodbufferSize->setBounds (360, 152, 150, 24);
+    gyroFob->setBounds (32, 128, 184, 24);
+    gyroFobMavg->setBounds (64, 152, 184, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -171,6 +187,16 @@ void gyroOSCsettings::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_gyroRawFod] -- add your button handler code here..
         //[/UserButtonCode_gyroRawFod]
     }
+    else if (buttonThatWasClicked == gyroFob)
+    {
+        //[UserButtonCode_gyroFob] -- add your button handler code here..
+        //[/UserButtonCode_gyroFob]
+    }
+    else if (buttonThatWasClicked == gyroFobMavg)
+    {
+        //[UserButtonCode_gyroFobMavg] -- add your button handler code here..
+        //[/UserButtonCode_gyroFobMavg]
+    }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
@@ -186,10 +212,10 @@ void gyroOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
         //[UserSliderCode_gyroRawFodbuffer] -- add your slider handling code here..
         //[/UserSliderCode_gyroRawFodbuffer]
     }
-    else if (sliderThatWasMoved == gyroScaledFodbuffer)
+    else if (sliderThatWasMoved == gyroScaledMavgFodbufferSize)
     {
-        //[UserSliderCode_gyroScaledFodbuffer] -- add your slider handling code here..
-        //[/UserSliderCode_gyroScaledFodbuffer]
+        //[UserSliderCode_gyroScaledMavgFodbufferSize] -- add your slider handling code here..
+        //[/UserSliderCode_gyroScaledMavgFodbufferSize]
     }
 
     //[UsersliderValueChanged_Post]
@@ -214,12 +240,12 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="gyroOSCsettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="0" initialWidth="600" initialHeight="400">
+                 fixedSize="0" initialWidth="550" initialHeight="500">
   <BACKGROUND backgroundColour="ff808080">
-    <TEXT pos="188 20 200 30" fill="solid: ffffffff" hasStroke="0" text="Analysis buffer Size"
+    <TEXT pos="196 20 200 30" fill="solid: ffffffff" hasStroke="0" text="Analysis buffer Size"
           fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"
           justification="36"/>
-    <TEXT pos="188 92 200 30" fill="solid: ffffffff" hasStroke="0" text="Analysis buffer Size"
+    <TEXT pos="196 148 200 30" fill="solid: ffffffff" hasStroke="0" text="Analysis buffer Size"
           fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"
           justification="36"/>
   </BACKGROUND>
@@ -239,15 +265,23 @@ BEGIN_JUCER_METADATA
                 buttonText="First Order Difference" connectedEdges="0" needsCallback="1"
                 radioGroupId="0" state="0"/>
   <SLIDER name="gyroRawFodbuffer" id="64d124c6eb1ee664" memberName="gyroRawFodbuffer"
-          virtualName="" explicitFocusOrder="10" pos="352 24 150 24" min="0"
+          virtualName="" explicitFocusOrder="10" pos="360 24 150 24" min="0"
           max="200" int="1" style="IncDecButtons" textBoxPos="TextBoxLeft"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"
           needsCallback="1"/>
-  <SLIDER name="gyroScaledFodbuffer" id="f850faf57b6f750d" memberName="gyroScaledFodbuffer"
-          virtualName="" explicitFocusOrder="10" pos="352 96 150 24" min="0"
+  <SLIDER name="gyroScaledMavgFodbufferSize" id="f850faf57b6f750d" memberName="gyroScaledMavgFodbufferSize"
+          virtualName="" explicitFocusOrder="10" pos="360 152 150 24" min="0"
           max="200" int="1" style="IncDecButtons" textBoxPos="TextBoxLeft"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"
           needsCallback="1"/>
+  <TOGGLEBUTTON name="gyroFob" id="104e8c15f63609d" memberName="gyroFob" virtualName=""
+                explicitFocusOrder="0" pos="32 128 184 24" txtcol="ffffffff"
+                buttonText="First Order Difference (0-1)" connectedEdges="0"
+                needsCallback="1" radioGroupId="0" state="0"/>
+  <TOGGLEBUTTON name="gyroFobMavg" id="9c6311729d5aedb2" memberName="gyroFobMavg"
+                virtualName="" explicitFocusOrder="0" pos="64 152 184 24" txtcol="ffffffff"
+                buttonText="Moving Average (0-1)" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

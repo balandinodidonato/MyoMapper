@@ -61,6 +61,7 @@ orOSCsettings::orOSCsettings ()
     addAndMakeVisible (orScaledFodbuffer = new Slider ("orScaledFodbuffer"));
     orScaledFodbuffer->setExplicitFocusOrder (10);
     orScaledFodbuffer->setRange (0, 200, 1);
+    orScaledFodbuffer->setValue(10);
     orScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     orScaledFodbuffer->addListener (this);
@@ -68,6 +69,7 @@ orOSCsettings::orOSCsettings ()
     addAndMakeVisible (orScaledSodbuffer = new Slider ("orScaledSodbuffer"));
     orScaledSodbuffer->setExplicitFocusOrder (10);
     orScaledSodbuffer->setRange (0, 200, 1);
+    orScaledSodbuffer->setValue(10);
     orScaledSodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledSodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     orScaledSodbuffer->addListener (this);
@@ -76,7 +78,7 @@ orOSCsettings::orOSCsettings ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (600, 400);
+    setSize (550, 500);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -226,7 +228,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="orOSCsettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="0" initialWidth="600" initialHeight="400">
+                 fixedSize="0" initialWidth="550" initialHeight="500">
   <BACKGROUND backgroundColour="ff808080">
     <TEXT pos="140 132 200 30" fill="solid: ffffffff" hasStroke="0" text="Analysis buffer Size"
           fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"
