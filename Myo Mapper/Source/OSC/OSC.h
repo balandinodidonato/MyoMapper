@@ -3,6 +3,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Myo/MyoData.h"
+#include "OscDataSettings.h"
 
 class OSC    : public Component,
                private OSCReceiver,
@@ -23,7 +24,6 @@ public:
     void disconnectReceiver();
     
     void oscMessageReceived (const OSCMessage& message) override;
-    void getOSCMessage (const OSCMessage& message, String myoData);
     
     void setMyoIdReceiver (int ID);
     

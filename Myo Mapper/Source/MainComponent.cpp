@@ -1,6 +1,6 @@
 #include "MainComponent.h"
 #include "Myo/MyoData.h"
-#include "OSC/OSCdata.h"
+#include "OSC/OscDataSettings.h"
 
 MainComponent::MainComponent()
 :   selectedMyoID(0),
@@ -121,7 +121,6 @@ void MainComponent::timerCallback()
 
     osc.sendOSC (myoData[id]);
  
-    
     if (osc.vibrate && VibrationState)
     {
         myoManager.vibrate (osc.vibrationType, true);
