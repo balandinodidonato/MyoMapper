@@ -1362,6 +1362,7 @@
     <ClInclude Include="..\..\Source\OSC\gyroOSCsettings.h"/>
     <ClInclude Include="..\..\Source\OSC\orOSCsettings.h"/>
     <ClInclude Include="..\..\Source\OSC\OSC.h"/>
+    <ClInclude Include="..\..\Source\OSC\OSCdata.h"/>
     <ClInclude Include="..\..\Source\OSC\OSCsettings.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoData.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoListener.h"/>

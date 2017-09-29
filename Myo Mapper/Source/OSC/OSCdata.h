@@ -1,30 +1,35 @@
-#ifndef MYODATA_H_INCLUDED
-#define MYODATA_H_INCLUDED
+/*
+  ==============================================================================
 
-#include <array>
+    OSCdata.h
+    Created: 29 Sep 2017 4:58:46pm
+    Author:  Balandino Di Donato
 
-struct MyoData
-{
-    int ID;
+  ==============================================================================
+*/
+#include "../JuceLibraryCode/JuceHeader.h"
+
+#pragma once
+
+struct OscData {
+    int id;
     
     std::array<float, 4> quaternion;
     Vector3D<float> orientationRaw;
     Vector3D<float> orientationScaled;
-    Vector3D<float> orientationScaledFod;
-    Vector3D<float> orientationScaledSod;
+    Vector3D<float> orientationFod;
+    Vector3D<float> orientationSod;
     
     Vector3D<float> acc;
-    Vector3D<float> accScaled;
-    Vector3D<float> accScaledAbs;
     Vector3D<float> accFod;
+    Vector3D<float> accScaled;
     Vector3D<float> accScaledFod;
     Vector3D<float> accScaledFodMavg;
-
     
     Vector3D<float> gyro;
+    Vector3D<float> gyroFod;
     Vector3D<float> gyroScaled;
     Vector3D<float> gyroScaledAbs;
-    Vector3D<float> gyroFod;
     Vector3D<float> gyroScaledFod;
     Vector3D<float> gyroScaledFodMavg;
     Vector3D<int> gyroZeroCross;
@@ -41,15 +46,12 @@ struct MyoData
     std::array<float, 8> emgScaledAbsMin;
     std::array<float, 8> emgScaledAbsMax;
     float emgMav;
-    float mavFod;
-    float mavFodMavg;
-    float mavSod;
-    float emgMavMavg;
     float emgMavMin;
     float emgMavMax;
+    float emgMavFod;
+    float emgMavMavg;
+    float emgMavFodMavg;
     
     String pose;
     int poseID;
 };
-
-#endif  // MYODATA_H_INCLUDED

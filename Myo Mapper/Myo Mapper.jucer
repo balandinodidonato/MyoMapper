@@ -25,6 +25,7 @@
         <FILE id="fwKmcz" name="orOSCsettings.h" compile="0" resource="0" file="Source/OSC/orOSCsettings.h"/>
         <FILE id="xLw1eJ" name="OSC.cpp" compile="1" resource="0" file="Source/OSC/OSC.cpp"/>
         <FILE id="ioVgOh" name="OSC.h" compile="0" resource="0" file="Source/OSC/OSC.h"/>
+        <FILE id="mO2Etb" name="OSCdata.h" compile="0" resource="0" file="Source/OSC/OSCdata.h"/>
         <FILE id="enPDDS" name="OSCsettings.cpp" compile="1" resource="0" file="Source/OSC/OSCsettings.cpp"/>
         <FILE id="Jxtcvi" name="OSCsettings.h" compile="0" resource="0" file="Source/OSC/OSCsettings.h"/>
       </GROUP>

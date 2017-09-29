@@ -1620,6 +1620,9 @@
     <ClInclude Include="..\..\Source\OSC\OSC.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\OSC\OSCdata.h">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\OSC\OSCsettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
