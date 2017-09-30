@@ -156,6 +156,7 @@ void accOSCsettings::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == accRaw)
     {
         //[UserButtonCode_accRaw] -- add your button handler code here..
+        accRawStatus = accRaw->getToggleState();
         //[/UserButtonCode_accRaw]
     }
     else if (buttonThatWasClicked == accRawFod)
@@ -198,10 +199,13 @@ void accOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
     //[/UsersliderValueChanged_Post]
 }
 
-
-
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 //[/MiscUserCode]
+
+void accOSCsettings::setAccOsc(OscDataSettings &oscDataSettings){
+    oscDataSettings.accRaw = accRawStatus;
+}
+
 
 
 //==============================================================================

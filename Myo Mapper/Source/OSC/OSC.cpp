@@ -62,15 +62,17 @@ void OSC::setSender (String HostAddress, int Port)
     hostAddress = HostAddress;
 }
 
-void OSC::sendOSC (MyoData &myoData)
+void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
 {
     String ID = String (myoData.ID);
     
-    sender.send ("/myo" + ID + "/orientation/quaternion",
-                 (float) myoData.quaternion[0],
-                 (float) myoData.quaternion[1],
-                 (float) myoData.quaternion[2],
-                 (float) myoData.quaternion[3]);
+    if (oscDataSettings.quaternion) {
+        sender.send ("/myo" + ID + "/orientation/quaternion",
+                     (float) myoData.quaternion[0],
+                     (float) myoData.quaternion[1],
+                     (float) myoData.quaternion[2],
+                     (float) myoData.quaternion[3]);
+    }
     sender.send ("/myo" + ID + "/orientation/raw",
                  (float) myoData.orientationRaw.x,
                  (float) myoData.orientationRaw.y,
@@ -358,6 +360,14 @@ void OSC::oscMessageReceived (const OSCMessage& message)
 void OSC::setMyoIdReceiver(int ID)
 {
     Id = String(ID);
+}
+
+std::vector<OscDataSettings> OSC::getOscDataSettings () const
+{
+    std::vector<OscDataSettings> dataCopy;
+    dataCopy = oscDataSettings;
+    
+    return dataCopy;
 }
 
 

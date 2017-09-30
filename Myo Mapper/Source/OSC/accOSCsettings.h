@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "OscDataSettings.h"
 //[/Headers]
 
 
@@ -50,9 +51,9 @@ public:
     void resized() override;
     void buttonClicked (Button* buttonThatWasClicked) override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
-
-
-
+    
+    void setAccOsc(OscDataSettings &oscDataSettings);
+    
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     //[/UserVariables]
@@ -64,8 +65,9 @@ private:
     ScopedPointer<ToggleButton> accScaledFod;
     ScopedPointer<Slider> accFodbuffer;
     ScopedPointer<Slider> accScaledFodbuffer;
-
-
+    
+    bool accRawStatus;
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (accOSCsettings)
 };

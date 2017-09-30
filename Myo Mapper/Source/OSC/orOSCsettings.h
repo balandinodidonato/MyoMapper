@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "OscDataSettings.h"
 //[/Headers]
 
 
@@ -51,7 +52,7 @@ public:
     void buttonClicked (Button* buttonThatWasClicked) override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
-
+    void setOSC(OscDataSettings& oscDataSettings);
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
@@ -66,7 +67,7 @@ private:
     ScopedPointer<Slider> orScaledFodbuffer;
     ScopedPointer<Slider> orScaledSodbuffer;
 
-
+    bool quaternionStatus;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (orOSCsettings)
 };

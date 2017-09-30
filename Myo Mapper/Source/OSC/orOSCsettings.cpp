@@ -163,6 +163,7 @@ void orOSCsettings::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == orQuaternion)
     {
         //[UserButtonCode_orQuaternion] -- add your button handler code here..
+        quaternionStatus = orQuaternion->getToggleState();
         //[/UserButtonCode_orQuaternion]
     }
     else if (buttonThatWasClicked == orRaw)
@@ -210,7 +211,9 @@ void orOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
     //[/UsersliderValueChanged_Post]
 }
 
-
+void orOSCsettings::setOSC(OscDataSettings& oscDataSettings){
+    oscDataSettings.quaternion = quaternionStatus;
+}
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 //[/MiscUserCode]

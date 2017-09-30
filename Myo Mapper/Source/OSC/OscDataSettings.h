@@ -12,5 +12,6 @@
 #pragma once
 
 struct OscDataSettings{
-   
+    bool quaternion;
+    bool accRaw;
 };

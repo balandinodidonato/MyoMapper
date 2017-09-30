@@ -4,6 +4,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Myo/MyoData.h"
 #include "OscDataSettings.h"
+#include "orOSCsettings.h"
 
 class OSC    : public Component,
                private OSCReceiver,
@@ -16,7 +17,7 @@ public:
     
     void setSender (String HostAddress, int Port);
     void setReceiver (int Port);
-    void sendOSC (MyoData &myoData);
+    void sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings);
     
     void connectSender();
     void connectReceiver();
@@ -40,11 +41,15 @@ public:
     float value;
     
     bool reverseStatus;
+    
+    std::vector<OscDataSettings> getOscDataSettings () const;
 
 private:
     
     OSCSender sender;
     OSCReceiver receiver;
+    
+    orOSCsettings orOSCsetting;
     
     int oscPortSender;
     int oscPortReceiver;
@@ -59,6 +64,8 @@ private:
     
     String myoDataIn[4];
     String action[5];
+    
+    std::vector<OscDataSettings> oscDataSettings;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)

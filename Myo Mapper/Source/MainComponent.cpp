@@ -109,7 +109,8 @@ void MainComponent::timerCallback()
 {
     bool success = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (success);
-    
+    std::vector<OscDataSettings> oscDataSettings = osc.getOscDataSettings();
+
     if (! success) return;
     
     if (! selectedMyoID || selectedMyoID >= myoData.size()) return;
@@ -119,7 +120,7 @@ void MainComponent::timerCallback()
     orientation.setValues (myoData[id].orientationRaw);
     pose.setPoseLabel (myoData[id].pose + " - " + String (myoData[id].poseID));
 
-    osc.sendOSC (myoData[id]);
+    osc.sendOSC (myoData[id], oscDataSettings[id]);
  
     if (osc.vibrate && VibrationState)
     {
