@@ -68,7 +68,12 @@ private:
     ScopedPointer<Slider> orScaledFodbuffer;
     ScopedPointer<Slider> orScaledSodbuffer;
 
-    bool quaternionStatus;
+    bool quaternionTogle;
+    bool rawTogle;
+    bool scaledTogle;
+    bool accelerationTogle;
+    bool velocityTogle;
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OrOscSettings)
 };

@@ -170,12 +170,14 @@ void OrOscSettings::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == orQuaternion)
     {
         //[UserButtonCode_orQuaternion] -- add your button handler code here..
-        quaternionStatus = orQuaternion->getToggleState();
+        quaternionTogle = orQuaternion->getToggleState();
+        std::cout << "buttonThatWasClicked " << quaternionTogle << std::endl;
         //[/UserButtonCode_orQuaternion]
     }
     else if (buttonThatWasClicked == orRaw)
     {
         //[UserButtonCode_orRaw] -- add your button handler code here..
+        rawTogle = orRaw->getToggleState();
         //[/UserButtonCode_orRaw]
     }
     else if (buttonThatWasClicked == orScaled)
@@ -186,11 +188,13 @@ void OrOscSettings::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == orAcceleration)
     {
         //[UserButtonCode_orAcceleration] -- add your button handler code here..
+        accelerationTogle = orAcceleration->getToggleState();
         //[/UserButtonCode_orAcceleration]
     }
     else if (buttonThatWasClicked == orVelocity)
     {
         //[UserButtonCode_orVelocity] -- add your button handler code here..
+        velocityTogle = orVelocity->getToggleState();
         //[/UserButtonCode_orVelocity]
     }
 
@@ -219,8 +223,12 @@ void OrOscSettings::sliderValueChanged (Slider* sliderThatWasMoved)
 }
 
 void OrOscSettings::setOsc(OscDataSettings &oscDataSettings){
-    std::cout << quaternionStatus << std::endl;
-    oscDataSettings.orQuaternion = quaternionStatus;
+    
+    oscDataSettings.orQuaternion = quaternionTogle;
+    oscDataSettings.orRaw = rawTogle;
+    oscDataSettings.orScaled = scaledTogle;
+    oscDataSettings.orAcceleration = accelerationTogle;
+    oscDataSettings.orVelocity = orVelocity;
 }
 
 
