@@ -20,14 +20,14 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "orOSCsettings.h"
+#include "OrOscSettings.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
 
 //==============================================================================
-orOSCsettings::orOSCsettings ()
+OrOscSettings::OrOscSettings ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -85,7 +85,7 @@ orOSCsettings::orOSCsettings ()
     //[/Constructor]
 }
 
-orOSCsettings::~orOSCsettings()
+OrOscSettings::~OrOscSettings()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -104,7 +104,7 @@ orOSCsettings::~orOSCsettings()
 }
 
 //==============================================================================
-void orOSCsettings::paint (Graphics& g)
+void OrOscSettings::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -139,7 +139,7 @@ void orOSCsettings::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void orOSCsettings::resized()
+void OrOscSettings::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
@@ -155,7 +155,7 @@ void orOSCsettings::resized()
     //[/UserResized]
 }
 
-void orOSCsettings::buttonClicked (Button* buttonThatWasClicked)
+void OrOscSettings::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
@@ -191,7 +191,7 @@ void orOSCsettings::buttonClicked (Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
-void orOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
+void OrOscSettings::sliderValueChanged (Slider* sliderThatWasMoved)
 {
     //[UsersliderValueChanged_Pre]
     //[/UsersliderValueChanged_Pre]
@@ -211,7 +211,8 @@ void orOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
     //[/UsersliderValueChanged_Post]
 }
 
-void orOSCsettings::setOSC(OscDataSettings& oscDataSettings){
+void OrOscSettings::setOSC(OscDataSettings& oscDataSettings){
+    std::cout << oscDataSettings.quaternion << std::endl;
     oscDataSettings.quaternion = quaternionStatus;
 }
 
