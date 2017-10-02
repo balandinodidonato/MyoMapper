@@ -5,6 +5,8 @@
 
 struct MyoData
 {
+    int ID;
+    
     std::array<float, 4> quaternion;
     Vector3D<float> orientationRaw;
     Vector3D<float> orientationScaled;

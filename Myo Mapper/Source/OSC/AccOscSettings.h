@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "OscDataSettings.h"
 //[/Headers]
 
 
@@ -33,14 +34,14 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class accOSCsettings  : public Component,
+class AccOscSettings  : public Component,
                         public Button::Listener,
                         public Slider::Listener
 {
 public:
     //==============================================================================
-    accOSCsettings ();
-    ~accOSCsettings();
+    AccOscSettings ();
+    ~AccOscSettings();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -67,7 +68,7 @@ private:
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (accOSCsettings)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AccOscSettings)
 };
 
 //[EndFile] You can add extra defines here...

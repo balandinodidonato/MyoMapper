@@ -21,10 +21,10 @@
 //[/Headers]
 
 #include "OSCsettings.h"
-#include "orOSCsettings.h"
-#include "accOSCsettings.h"
-#include "gyroOSCsettings.h"
-#include "emgOSCsettings.h"
+#include "OrOscSettings.h"
+#include "AccOscSettings.h"
+#include "GyroOscSettings.h"
+#include "EmgOscSettings.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
@@ -38,10 +38,10 @@ OSCsettings::OSCsettings ()
 
     addAndMakeVisible (oscSettingsTab = new TabbedComponent (TabbedButtonBar::TabsAtTop));
     oscSettingsTab->setTabBarDepth (31);
-    oscSettingsTab->addTab (TRANS("Orientation"), Colours::lightgrey, new orOSCsettings(), true);
-    oscSettingsTab->addTab (TRANS("Accelerometer"), Colours::lightgrey, new accOSCsettings(), true);
-    oscSettingsTab->addTab (TRANS("Gyroscope"), Colours::lightgrey, new gyroOSCsettings(), true);
-    oscSettingsTab->addTab (TRANS("EMG"), Colours::lightgrey, new emgOSCsettings(), true);
+    oscSettingsTab->addTab (TRANS("Orientation"), Colours::lightgrey, new OrOscSettings(), true);
+    oscSettingsTab->addTab (TRANS("Accelerometer"), Colours::lightgrey, new AccOscSettings(), true);
+    oscSettingsTab->addTab (TRANS("Gyroscope"), Colours::lightgrey, new GyroOscSettings(), true);
+    oscSettingsTab->addTab (TRANS("EMG"), Colours::lightgrey, new EmgOscSettings(), true);
     oscSettingsTab->setCurrentTabIndex (0);
 
 

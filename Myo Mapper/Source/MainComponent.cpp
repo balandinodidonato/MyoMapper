@@ -1,5 +1,6 @@
 #include "MainComponent.h"
 #include "Myo/MyoData.h"
+#include "OSC/OscDataSettings.h"
 
 MainComponent::MainComponent()
 :   selectedMyoID(0),
@@ -108,7 +109,10 @@ void MainComponent::timerCallback()
 {
     bool success = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (success);
-    
+    osc.setNumMyos(myoManager.getMyoData(success).size());
+
+    std::vector<OscDataSettings> oscDataSettings = osc.getOscDataSettings();
+
     if (! success) return;
     
     if (! selectedMyoID || selectedMyoID >= myoData.size()) return;
@@ -118,50 +122,8 @@ void MainComponent::timerCallback()
     orientation.setValues (myoData[id].orientationRaw);
     pose.setPoseLabel (myoData[id].pose + " - " + String (myoData[id].poseID));
 
-    osc.sendOSC (id,
-                 
-                 myoData[id].quaternion,
-                 myoData[id].orientationRaw,
-                 orientation.getValue(),
-                 orientation.getFod(),
-                 orientation.getSod(),
-                 
-                 myoData[id].acc,
-                 myoData[id].accFod,
-                 myoData[id].accScaled,
-                 myoData[id].accScaledFod,
-                 myoData[id].accScaledFodMavg,
-                 
-                 myoData[id].gyro,
-                 myoData[id].gyroFod,
-                 myoData[id].gyroScaled,
-                 myoData[id].gyroScaledAbs,
-                 myoData[id].gyroScaledFod,
-                 myoData[id].gyroScaledFodMavg,
-                 myoData[id].gyroZeroCross,
-                 
-                 myoData[id].emgRaw,
-                 myoData[id].emgRawMavg,
-                 myoData[id].emgScaled,
-                 myoData[id].emgScaledAbs,
-                 myoData[id].emgScaledAbsMavg,
-                 myoData[id].emgScaledAbsFob,
-                 myoData[id].emgScaledAbsFobMavg,
-                 myoData[id].emgZeroCross,
-                 myoData[id].emgZeroCrossMavg,
-                 myoData[id].emgScaledAbsMin,
-                 myoData[id].emgScaledAbsMax,
-                 myoData[id].emgMav,
-                 myoData[id].emgMavMin,
-                 myoData[id].emgMavMax,
-                 myoData[id].mavFod,
-                 myoData[id].emgMavMavg,
-                 myoData[id].mavFodMavg,
-                 
-                 myoData[id].pose,
-                 myoData[id].poseID);
+    osc.sendOSC (myoData[id], oscDataSettings[id]);
  
-    
     if (osc.vibrate && VibrationState)
     {
         myoManager.vibrate (osc.vibrationType, true);

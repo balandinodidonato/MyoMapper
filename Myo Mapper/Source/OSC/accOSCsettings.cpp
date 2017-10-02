@@ -20,14 +20,14 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "accOSCsettings.h"
+#include "AccOscSettings.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
 
 //==============================================================================
-accOSCsettings::accOSCsettings ()
+AccOscSettings::AccOscSettings ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -56,7 +56,6 @@ accOSCsettings::accOSCsettings ()
     addAndMakeVisible (accFodbuffer = new Slider ("accFodbuffer"));
     accFodbuffer->setExplicitFocusOrder (10);
     accFodbuffer->setRange (0, 200, 1);
-    accFodbuffer->setValue(10);
     accFodbuffer->setSliderStyle (Slider::IncDecButtons);
     accFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     accFodbuffer->addListener (this);
@@ -64,7 +63,6 @@ accOSCsettings::accOSCsettings ()
     addAndMakeVisible (accScaledFodbuffer = new Slider ("accScaledFodbuffer"));
     accScaledFodbuffer->setExplicitFocusOrder (10);
     accScaledFodbuffer->setRange (0, 200, 1);
-    accScaledFodbuffer->setValue(10);
     accScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
     accScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     accScaledFodbuffer->addListener (this);
@@ -80,7 +78,7 @@ accOSCsettings::accOSCsettings ()
     //[/Constructor]
 }
 
-accOSCsettings::~accOSCsettings()
+AccOscSettings::~AccOscSettings()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -98,7 +96,7 @@ accOSCsettings::~accOSCsettings()
 }
 
 //==============================================================================
-void accOSCsettings::paint (Graphics& g)
+void AccOscSettings::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -133,7 +131,7 @@ void accOSCsettings::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void accOSCsettings::resized()
+void AccOscSettings::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
@@ -148,7 +146,7 @@ void accOSCsettings::resized()
     //[/UserResized]
 }
 
-void accOSCsettings::buttonClicked (Button* buttonThatWasClicked)
+void AccOscSettings::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
@@ -178,7 +176,7 @@ void accOSCsettings::buttonClicked (Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
-void accOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
+void AccOscSettings::sliderValueChanged (Slider* sliderThatWasMoved)
 {
     //[UsersliderValueChanged_Pre]
     //[/UsersliderValueChanged_Pre]
@@ -213,7 +211,7 @@ void accOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="accOSCsettings" componentName=""
+<JUCER_COMPONENT documentType="Component" className="AccOscSettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="550" initialHeight="500">

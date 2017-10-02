@@ -33,14 +33,14 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class emgOSCsettings  : public Component,
+class EmgOscSettings  : public Component,
                         public Button::Listener,
                         public Slider::Listener
 {
 public:
     //==============================================================================
-    emgOSCsettings ();
-    ~emgOSCsettings();
+    EmgOscSettings ();
+    ~EmgOscSettings();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -90,7 +90,7 @@ private:
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (emgOSCsettings)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EmgOscSettings)
 };
 
 //[EndFile] You can add extra defines here...

@@ -33,14 +33,14 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class gyroOSCsettings  : public Component,
+class GyroOscSettings  : public Component,
                          public Button::Listener,
                          public Slider::Listener
 {
 public:
     //==============================================================================
-    gyroOSCsettings ();
-    ~gyroOSCsettings();
+    GyroOscSettings ();
+    ~GyroOscSettings();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -69,7 +69,7 @@ private:
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (gyroOSCsettings)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GyroOscSettings)
 };
 
 //[EndFile] You can add extra defines here...

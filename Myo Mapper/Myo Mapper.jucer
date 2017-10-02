@@ -7,26 +7,32 @@
               reportAppUsage="1" splashScreenColour="Dark" cppLanguageStandard="11">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
-      <GROUP id="{D9E48CAC-8B2D-D443-E0F4-E1F11E42E28B}" name="OSC">
-        <FILE id="ymj3u3" name="accOSCsettings.cpp" compile="1" resource="0"
-              file="Source/OSC/accOSCsettings.cpp"/>
-        <FILE id="kCBpvA" name="accOSCsettings.h" compile="0" resource="0"
-              file="Source/OSC/accOSCsettings.h"/>
-        <FILE id="qaSW2b" name="emgOSCsettings.cpp" compile="1" resource="0"
-              file="Source/OSC/emgOSCsettings.cpp"/>
-        <FILE id="iRF5Br" name="emgOSCsettings.h" compile="0" resource="0"
-              file="Source/OSC/emgOSCsettings.h"/>
-        <FILE id="mxthWT" name="gyroOSCsettings.cpp" compile="1" resource="0"
-              file="Source/OSC/gyroOSCsettings.cpp"/>
-        <FILE id="ivhIrK" name="gyroOSCsettings.h" compile="0" resource="0"
-              file="Source/OSC/gyroOSCsettings.h"/>
-        <FILE id="dYznqa" name="orOSCsettings.cpp" compile="1" resource="0"
-              file="Source/OSC/orOSCsettings.cpp"/>
-        <FILE id="fwKmcz" name="orOSCsettings.h" compile="0" resource="0" file="Source/OSC/orOSCsettings.h"/>
-        <FILE id="xLw1eJ" name="OSC.cpp" compile="1" resource="0" file="Source/OSC/OSC.cpp"/>
-        <FILE id="ioVgOh" name="OSC.h" compile="0" resource="0" file="Source/OSC/OSC.h"/>
-        <FILE id="enPDDS" name="OSCsettings.cpp" compile="1" resource="0" file="Source/OSC/OSCsettings.cpp"/>
-        <FILE id="Jxtcvi" name="OSCsettings.h" compile="0" resource="0" file="Source/OSC/OSCsettings.h"/>
+      <GROUP id="{66114F2A-233F-D521-97F6-383BBDBB7AC0}" name="OSC">
+        <FILE id="g8d9Eb" name="AccOscSettings.cpp" compile="1" resource="0"
+              file="Source/OSC/AccOscSettings.cpp"/>
+        <FILE id="VdoQTp" name="AccOscSettings.h" compile="0" resource="0"
+              file="Source/OSC/AccOscSettings.h"/>
+        <FILE id="hctTUy" name="EmgOscSettings.cpp" compile="1" resource="0"
+              file="Source/OSC/EmgOscSettings.cpp"/>
+        <FILE id="yo16vU" name="EmgOscSettings.h" compile="0" resource="0"
+              file="Source/OSC/EmgOscSettings.h"/>
+        <FILE id="iKi46k" name="GyroOscSettings.cpp" compile="1" resource="0"
+              file="Source/OSC/GyroOscSettings.cpp"/>
+        <FILE id="KtoU0E" name="GyroOscSettings.h" compile="0" resource="0"
+              file="Source/OSC/GyroOscSettings.h"/>
+        <FILE id="JCMLrb" name="OrOscSettings.cpp" compile="1" resource="0"
+              file="Source/OSC/OrOscSettings.cpp"/>
+        <FILE id="gbrjez" name="OrOscSettings.h" compile="0" resource="0" file="Source/OSC/OrOscSettings.h"/>
+        <FILE id="yeM1Fz" name="OSC.cpp" compile="1" resource="0" file="Source/OSC/OSC.cpp"/>
+        <FILE id="oRxxB1" name="OSC.h" compile="0" resource="0" file="Source/OSC/OSC.h"/>
+        <FILE id="MuuGfu" name="OscDataSettings.h" compile="0" resource="0"
+              file="Source/OSC/OscDataSettings.h"/>
+        <FILE id="hKL4uR" name="OSCsettings.cpp" compile="1" resource="0" file="Source/OSC/OSCsettings.cpp"/>
+        <FILE id="c6FKnb" name="OSCsettings.h" compile="0" resource="0" file="Source/OSC/OSCsettings.h"/>
+        <FILE id="Kx5o4j" name="OSCstreamingSettings.cpp" compile="1" resource="0"
+              file="Source/OSC/OSCstreamingSettings.cpp"/>
+        <FILE id="cYRIgC" name="OSCstreamingSettings.h" compile="0" resource="0"
+              file="Source/OSC/OSCstreamingSettings.h"/>
       </GROUP>
       <GROUP id="{64B19B40-2616-4339-D467-FD4E7E7B5A36}" name="Myo">
         <FILE id="FiMC6c" name="MyoData.h" compile="0" resource="0" file="Source/Myo/MyoData.h"/>

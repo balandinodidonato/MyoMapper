@@ -63,6 +63,7 @@ void MyoListener::onPair (myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersio
     myoData.resize (knownMyos.size());
     myo->setStreamEmg (myo::Myo::streamEmgEnabled);
     myo->unlock (myo::Myo::unlockHold);
+    
 }
 
 // onOrientationData() is called whenever the Myo device provides its current orientation, which is represented
@@ -178,6 +179,7 @@ void MyoListener::onArmSync (myo::Myo* myo, uint64_t timestamp, myo::Arm arm, my
 void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* emg)
 {
     int myoID = getMyoID(myo);
+    myoData[myoID].ID = myoID;
     if (myoID == -1) return;
     
     

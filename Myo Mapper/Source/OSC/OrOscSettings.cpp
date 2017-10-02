@@ -20,14 +20,14 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "orOSCsettings.h"
+#include "OrOscSettings.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
 
 //==============================================================================
-orOSCsettings::orOSCsettings ()
+OrOscSettings::OrOscSettings ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -61,7 +61,6 @@ orOSCsettings::orOSCsettings ()
     addAndMakeVisible (orScaledFodbuffer = new Slider ("orScaledFodbuffer"));
     orScaledFodbuffer->setExplicitFocusOrder (10);
     orScaledFodbuffer->setRange (0, 200, 1);
-    orScaledFodbuffer->setValue(10);
     orScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     orScaledFodbuffer->addListener (this);
@@ -69,7 +68,6 @@ orOSCsettings::orOSCsettings ()
     addAndMakeVisible (orScaledSodbuffer = new Slider ("orScaledSodbuffer"));
     orScaledSodbuffer->setExplicitFocusOrder (10);
     orScaledSodbuffer->setRange (0, 200, 1);
-    orScaledSodbuffer->setValue(10);
     orScaledSodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledSodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     orScaledSodbuffer->addListener (this);
@@ -85,7 +83,7 @@ orOSCsettings::orOSCsettings ()
     //[/Constructor]
 }
 
-orOSCsettings::~orOSCsettings()
+OrOscSettings::~OrOscSettings()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -104,7 +102,7 @@ orOSCsettings::~orOSCsettings()
 }
 
 //==============================================================================
-void orOSCsettings::paint (Graphics& g)
+void OrOscSettings::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -139,7 +137,7 @@ void orOSCsettings::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void orOSCsettings::resized()
+void OrOscSettings::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
@@ -155,7 +153,7 @@ void orOSCsettings::resized()
     //[/UserResized]
 }
 
-void orOSCsettings::buttonClicked (Button* buttonThatWasClicked)
+void OrOscSettings::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
@@ -163,6 +161,7 @@ void orOSCsettings::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == orQuaternion)
     {
         //[UserButtonCode_orQuaternion] -- add your button handler code here..
+        quaternionStatus = orQuaternion->getToggleState();
         //[/UserButtonCode_orQuaternion]
     }
     else if (buttonThatWasClicked == orRaw)
@@ -190,7 +189,7 @@ void orOSCsettings::buttonClicked (Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
-void orOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
+void OrOscSettings::sliderValueChanged (Slider* sliderThatWasMoved)
 {
     //[UsersliderValueChanged_Pre]
     //[/UsersliderValueChanged_Pre]
@@ -210,6 +209,11 @@ void orOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
     //[/UsersliderValueChanged_Post]
 }
 
+void OrOscSettings::setOsc(OscDataSettings &oscDataSettings){
+    std::cout << quaternionStatus << std::endl;
+    oscDataSettings.orQuaternion = quaternionStatus;
+}
+
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
@@ -225,7 +229,7 @@ void orOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="orOSCsettings" componentName=""
+<JUCER_COMPONENT documentType="Component" className="OrOscSettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="550" initialHeight="500">
