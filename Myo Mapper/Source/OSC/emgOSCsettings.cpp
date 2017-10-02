@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
+EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -36,93 +36,111 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgRaw->setButtonText (TRANS("Raw (-127, 128)"));
     emgRaw->addListener (this);
     emgRaw->setColour (ToggleButton::textColourId, Colours::white);
+    emgRaw->setToggleState(oscDataSettings.emgRaw, dontSendNotification);
 
     addAndMakeVisible (emgRawMavg = new ToggleButton ("emgRawMavg"));
     emgRawMavg->setButtonText (TRANS("Moving Average"));
     emgRawMavg->addListener (this);
     emgRawMavg->setColour (ToggleButton::textColourId, Colours::white);
+    emgRawMavg->setToggleState(oscDataSettings.emgRawMavg, dontSendNotification);
 
     addAndMakeVisible (emgScaled = new ToggleButton ("emgScaled"));
     emgScaled->setButtonText (TRANS("Scaled (0, 1)"));
     emgScaled->addListener (this);
     emgScaled->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaled->setToggleState(oscDataSettings.emgScaled, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbs = new ToggleButton ("emgScaledAbs"));
     emgScaledAbs->setButtonText (TRANS("Absolute Value"));
     emgScaledAbs->addListener (this);
     emgScaledAbs->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbs->setToggleState(oscDataSettings.emgScaledAbs, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsMin = new ToggleButton ("emgScaledAbsMin"));
     emgScaledAbsMin->setButtonText (TRANS("Minimum"));
     emgScaledAbsMin->addListener (this);
     emgScaledAbsMin->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsMin->setToggleState(oscDataSettings.emgScaledAbsMin, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsMax = new ToggleButton ("emgScaledAbsMax"));
     emgScaledAbsMax->setButtonText (TRANS("Maximum"));
     emgScaledAbsMax->addListener (this);
     emgScaledAbsMax->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsMax->setToggleState(oscDataSettings.emgScaledAbsMax, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsFob = new ToggleButton ("emgScaledAbsFob"));
     emgScaledAbsFob->setButtonText (TRANS("First Order Difference"));
     emgScaledAbsFob->addListener (this);
     emgScaledAbsFob->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsFob->setToggleState(oscDataSettings.emgScaledAbsFob, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsFobMavg = new ToggleButton ("emgScaledAbsFobMavg"));
     emgScaledAbsFobMavg->setButtonText (TRANS("Moving Average"));
     emgScaledAbsFobMavg->addListener (this);
     emgScaledAbsFobMavg->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsFobMavg->setToggleState(oscDataSettings.emgScaledAbsFobMavg, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsMavg = new ToggleButton ("emgScaledAbsMavg"));
     emgScaledAbsMavg->setButtonText (TRANS("Moving Average"));
     emgScaledAbsMavg->addListener (this);
     emgScaledAbsMavg->setToggleState (true, dontSendNotification);
     emgScaledAbsMavg->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsMavg->setToggleState(oscDataSettings.emgScaledAbsMavg, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsMav = new ToggleButton ("emgScaledAbsMav"));
     emgScaledAbsMav->setButtonText (TRANS("Mean Absolute Value"));
     emgScaledAbsMav->addListener (this);
     emgScaledAbsMav->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsMav->setToggleState(oscDataSettings.emgScaledAbsMav, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsMavMavg = new ToggleButton ("emgScaledAbsMavMavg"));
     emgScaledAbsMavMavg->setButtonText (TRANS("Moving Average"));
     emgScaledAbsMavMavg->addListener (this);
     emgScaledAbsMavMavg->setToggleState (true, dontSendNotification);
     emgScaledAbsMavMavg->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsMavMavg->setToggleState(oscDataSettings.emgScaledAbsMavMavg, dontSendNotification);
 
     addAndMakeVisible (emgRawZcr = new ToggleButton ("emgRawZcr"));
     emgRawZcr->setButtonText (TRANS("Zero Crossing Rate"));
     emgRawZcr->addListener (this);
     emgRawZcr->setColour (ToggleButton::textColourId, Colours::white);
+    emgRawZcr->setToggleState(oscDataSettings.emgRawZcr, dontSendNotification);
 
     addAndMakeVisible (emgRawZcrMavg = new ToggleButton ("emgRawZcrMavg"));
     emgRawZcrMavg->setButtonText (TRANS("Moving Average"));
     emgRawZcrMavg->addListener (this);
     emgRawZcrMavg->setColour (ToggleButton::textColourId, Colours::white);
+    emgRawZcrMavg->setToggleState(oscDataSettings.emgRawZcrMavg, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsMavMin = new ToggleButton ("emgScaledAbsMavMin"));
     emgScaledAbsMavMin->setButtonText (TRANS("Minimum"));
     emgScaledAbsMavMin->addListener (this);
     emgScaledAbsMavMin->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsMavMin->setToggleState(oscDataSettings.emgScaledAbsMavMin, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsMavMax = new ToggleButton ("emgScaledAbsMavMax"));
     emgScaledAbsMavMax->setButtonText (TRANS("Maximum"));
     emgScaledAbsMavMax->addListener (this);
     emgScaledAbsMavMax->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsMavMax->setToggleState(oscDataSettings.emgScaledAbsMavMax, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsMavFob = new ToggleButton ("emgScaledAbsMavFob"));
     emgScaledAbsMavFob->setButtonText (TRANS("First Order Difference"));
     emgScaledAbsMavFob->addListener (this);
     emgScaledAbsMavFob->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsMavFob->setToggleState(oscDataSettings.emgScaledAbsMavFob, dontSendNotification);
 
     addAndMakeVisible (emgScaledAbsFobMavMavg = new ToggleButton ("emgScaledAbsFobMavMavg"));
     emgScaledAbsFobMavMavg->setButtonText (TRANS("Moving Average"));
     emgScaledAbsFobMavMavg->addListener (this);
     emgScaledAbsFobMavMavg->setColour (ToggleButton::textColourId, Colours::white);
+    emgScaledAbsFobMavMavg->setToggleState(oscDataSettings.emgScaledAbsFobMavMavg, dontSendNotification);
 
     addAndMakeVisible (handPose = new ToggleButton ("handPose"));
     handPose->setButtonText (TRANS("Hand Poses"));
     handPose->addListener (this);
     handPose->setColour (ToggleButton::textColourId, Colours::white);
+    handPose->setToggleState(oscDataSettings.handPose, dontSendNotification);
 
     addAndMakeVisible (emgRawMavgBuffer = new Slider ("emgRawMavgBuffer"));
     emgRawMavgBuffer->setExplicitFocusOrder (10);
@@ -130,6 +148,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgRawMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgRawMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgRawMavgBuffer->addListener (this);
+    emgRawMavgBuffer->setValue(oscDataSettings.emgRawMavgBuffer);
 
     addAndMakeVisible (emgRawZcrBuffer = new Slider ("emgRawZcrBuffer"));
     emgRawZcrBuffer->setExplicitFocusOrder (10);
@@ -137,6 +156,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgRawZcrBuffer->setSliderStyle (Slider::IncDecButtons);
     emgRawZcrBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgRawZcrBuffer->addListener (this);
+    emgRawZcrBuffer->setValue(oscDataSettings.emgRawZcrBuffer);
 
     addAndMakeVisible (emgRawZcrMavgBuffer = new Slider ("emgRawZcrMavgBuffer"));
     emgRawZcrMavgBuffer->setExplicitFocusOrder (10);
@@ -144,6 +164,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgRawZcrMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgRawZcrMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgRawZcrMavgBuffer->addListener (this);
+    emgRawZcrMavgBuffer->setValue(oscDataSettings.emgRawZcrMavgBuffer);
 
     addAndMakeVisible (emgScaledAbsMavgBuffer = new Slider ("emgScaledAbsMavgBuffer"));
     emgScaledAbsMavgBuffer->setExplicitFocusOrder (10);
@@ -151,6 +172,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgScaledAbsMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMavgBuffer->addListener (this);
+    emgScaledAbsMavgBuffer->setValue(oscDataSettings.emgScaledAbsMavgBuffer);
 
     addAndMakeVisible (emgScaledAbsMinS = new Slider ("emgScaledAbsMinS"));
     emgScaledAbsMinS->setExplicitFocusOrder (10);
@@ -158,6 +180,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgScaledAbsMinS->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMinS->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMinS->addListener (this);
+    emgScaledAbsMinS->setValue(oscDataSettings.emgScaledAbsMinS);
 
     addAndMakeVisible (emgScaledAbsMaxBuffer = new Slider ("emgScaledAbsMaxBuffer"));
     emgScaledAbsMaxBuffer->setExplicitFocusOrder (10);
@@ -165,6 +188,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgScaledAbsMaxBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMaxBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMaxBuffer->addListener (this);
+    emgScaledAbsMaxBuffer->setValue(oscDataSettings.emgScaledAbsMaxBuffer);
 
     addAndMakeVisible (emgScaledAbsFobMavgBuffer = new Slider ("emgScaledAbsFobMavgBuffer"));
     emgScaledAbsFobMavgBuffer->setExplicitFocusOrder (10);
@@ -172,6 +196,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgScaledAbsFobMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsFobMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsFobMavgBuffer->addListener (this);
+    emgScaledAbsFobMavgBuffer->setValue(oscDataSettings.emgScaledAbsFobMavgBuffer);
 
     addAndMakeVisible (emgScaledAbsMavMavgBuffer = new Slider ("emgScaledAbsMavMavgBuffer"));
     emgScaledAbsMavMavgBuffer->setExplicitFocusOrder (10);
@@ -179,6 +204,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgScaledAbsMavMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMavMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMavMavgBuffer->addListener (this);
+    emgScaledAbsMavMavgBuffer->setValue(oscDataSettings.emgScaledAbsMavMavgBuffer);
 
     addAndMakeVisible (emgScaledAbsMavMinBuffer = new Slider ("emgScaledAbsMavMinBuffer"));
     emgScaledAbsMavMinBuffer->setExplicitFocusOrder (10);
@@ -186,6 +212,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgScaledAbsMavMinBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMavMinBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMavMinBuffer->addListener (this);
+    emgScaledAbsMavMinBuffer->setValue(oscDataSettings.emgScaledAbsMavMinBuffer);
 
     addAndMakeVisible (emgScaledAbsMavMaxBuffer = new Slider ("emgScaledAbsMavMaxBuffer"));
     emgScaledAbsMavMaxBuffer->setExplicitFocusOrder (10);
@@ -193,6 +220,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgScaledAbsMavMaxBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMavMaxBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMavMaxBuffer->addListener (this);
+    emgScaledAbsMavMaxBuffer->setValue(oscDataSettings.emgScaledAbsMavMaxBuffer);
 
     addAndMakeVisible (emgScaledAbsFobMavMavgBuffer = new Slider ("emgScaledAbsFobMavMavgBuffer"));
     emgScaledAbsFobMavMavgBuffer->setExplicitFocusOrder (10);
@@ -200,6 +228,7 @@ EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
     emgScaledAbsFobMavMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsFobMavMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsFobMavMavgBuffer->addListener (this);
+    emgScaledAbsFobMavMavgBuffer->setValue(oscDataSettings.emgScaledAbsFobMavMavgBuffer);
 
 
     //[UserPreSize]
