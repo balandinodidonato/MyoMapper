@@ -36,22 +36,26 @@ AccOscSettings::AccOscSettings (OscDataSettings &oscDataSettings)
     accRaw->setButtonText (TRANS("Raw"));
     accRaw->addListener (this);
     accRaw->setColour (ToggleButton::textColourId, Colours::white);
+    accRaw->setToggleState(oscDataSettings.accRaw, dontSendNotification);
 
     addAndMakeVisible (accRawFod = new ToggleButton ("accRawFod"));
     accRawFod->setButtonText (TRANS("First Order Difference"));
     accRawFod->addListener (this);
     accRawFod->setColour (ToggleButton::textColourId, Colours::white);
+    accRawFod->setToggleState(oscDataSettings.accRawFod, dontSendNotification);
 
     addAndMakeVisible (accScaled = new ToggleButton ("accScaled"));
     accScaled->setButtonText (TRANS("Scaled"));
     accScaled->addListener (this);
     accScaled->setToggleState (true, dontSendNotification);
     accScaled->setColour (ToggleButton::textColourId, Colours::white);
+    accScaled->setToggleState(oscDataSettings.accScaled, dontSendNotification);
 
     addAndMakeVisible (accScaledFod = new ToggleButton ("accScaledFod"));
     accScaledFod->setButtonText (TRANS("First Order Difference"));
     accScaledFod->addListener (this);
     accScaledFod->setColour (ToggleButton::textColourId, Colours::white);
+    accScaledFod->setToggleState(oscDataSettings.accScaledFod, dontSendNotification);
 
     addAndMakeVisible (accFodbuffer = new Slider ("accFodbuffer"));
     accFodbuffer->setExplicitFocusOrder (10);
@@ -59,6 +63,7 @@ AccOscSettings::AccOscSettings (OscDataSettings &oscDataSettings)
     accFodbuffer->setSliderStyle (Slider::IncDecButtons);
     accFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     accFodbuffer->addListener (this);
+    accFodbuffer->setValue(oscDataSettings.accFodbuffer);
 
     addAndMakeVisible (accScaledFodbuffer = new Slider ("accScaledFodbuffer"));
     accScaledFodbuffer->setExplicitFocusOrder (10);
@@ -66,6 +71,7 @@ AccOscSettings::AccOscSettings (OscDataSettings &oscDataSettings)
     accScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
     accScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     accScaledFodbuffer->addListener (this);
+    accScaledFodbuffer->setValue(oscDataSettings.accScaledFodbuffer);
 
 
     //[UserPreSize]
