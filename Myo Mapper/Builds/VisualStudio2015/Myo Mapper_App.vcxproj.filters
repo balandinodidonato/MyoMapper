@@ -274,6 +274,9 @@
     <ClCompile Include="..\..\Source\MyoListener.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Windows\WindowList.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
@@ -1635,10 +1638,10 @@
     <ClInclude Include="..\..\Source\MyoListener.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\WindowList.h">
+    <ClInclude Include="..\..\Source\Windows\WindowDrawer.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\WindowSetter.h">
+    <ClInclude Include="..\..\Source\Windows\WindowList.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Windows\SettingsWindow.h">
