@@ -15,8 +15,10 @@ struct OscDataSettings{
     bool accRawFod = false;
     bool accScaled = true;
     bool accScaledFod = false;
-    int accFodbuffer = 10;
-    int accScaledFodbuffer = 10;
+    int accFodMavgBuffer = 10;
+    int accScaledFodMavgBuffer = 10;
+    bool accScaledFodMavg = false;
+    bool accRawFodMavg = false;
     
     bool gyroRaw = false;
     bool gyroScaled = true;

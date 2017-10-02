@@ -63,8 +63,10 @@ private:
     ScopedPointer<ToggleButton> accRawFod;
     ScopedPointer<ToggleButton> accScaled;
     ScopedPointer<ToggleButton> accScaledFod;
-    ScopedPointer<Slider> accFodbuffer;
-    ScopedPointer<Slider> accScaledFodbuffer;
+    ScopedPointer<Slider> accFodMavgBuffer;
+    ScopedPointer<Slider> accScaledFodMavgBuffer;
+    ScopedPointer<ToggleButton> accScaledFodMavg;
+    ScopedPointer<ToggleButton> accRawFodMavg;
 
 
     //==============================================================================
