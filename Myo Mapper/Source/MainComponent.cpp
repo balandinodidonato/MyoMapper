@@ -109,6 +109,8 @@ void MainComponent::timerCallback()
 {
     bool success = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (success);
+    osc.setNumMyos(myoManager.getMyoData(success).size());
+
     std::vector<OscDataSettings> oscDataSettings = osc.getOscDataSettings();
 
     if (! success) return;

@@ -43,6 +43,8 @@ public:
     bool reverseStatus;
     
     std::vector<OscDataSettings> getOscDataSettings () const;
+    void setNumMyos(unsigned int numMyos);
+
 
 private:
     

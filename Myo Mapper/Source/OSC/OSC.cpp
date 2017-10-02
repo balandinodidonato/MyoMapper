@@ -66,6 +66,7 @@ void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
 {
     String ID = String (myoData.ID);
     
+    std::cout << oscDataSettings.quaternion << std::endl;
     if (oscDataSettings.quaternion) {
         sender.send ("/myo" + ID + "/orientation/quaternion",
                      (float) myoData.quaternion[0],
@@ -364,12 +365,12 @@ void OSC::setMyoIdReceiver(int ID)
 
 std::vector<OscDataSettings> OSC::getOscDataSettings () const
 {
-    std::vector<OscDataSettings> dataCopy;
-    dataCopy = oscDataSettings;
-    
-    return dataCopy;
+    return oscDataSettings;
 }
 
-
+void OSC::setNumMyos(unsigned int numMyos)
+{
+    oscDataSettings.resize(numMyos);
+}
 
 
