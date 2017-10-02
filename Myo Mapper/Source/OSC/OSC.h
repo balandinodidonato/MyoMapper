@@ -4,7 +4,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Myo/MyoData.h"
 #include "OscDataSettings.h"
-#include "orOSCsettings.h"
+#include "OrOscSettings.h"
 
 class OSC    : public Component,
                private OSCReceiver,
@@ -51,7 +51,7 @@ private:
     OSCSender sender;
     OSCReceiver receiver;
     
-    orOSCsettings orOSCsetting;
+    OrOscSettings orOscSettings;
     
     int oscPortSender;
     int oscPortReceiver;

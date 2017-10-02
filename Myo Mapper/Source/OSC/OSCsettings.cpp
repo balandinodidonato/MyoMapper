@@ -21,7 +21,7 @@
 //[/Headers]
 
 #include "OSCsettings.h"
-#include "orOSCsettings.h"
+#include "OrOscSettings.h"
 #include "accOSCsettings.h"
 #include "gyroOSCsettings.h"
 #include "emgOSCsettings.h"
@@ -38,7 +38,7 @@ OSCsettings::OSCsettings ()
 
     addAndMakeVisible (oscSettingsTab = new TabbedComponent (TabbedButtonBar::TabsAtTop));
     oscSettingsTab->setTabBarDepth (31);
-    oscSettingsTab->addTab (TRANS("Orientation"), Colours::lightgrey, new orOSCsettings(), true);
+    oscSettingsTab->addTab (TRANS("Orientation"), Colours::lightgrey, new OrOscSettings(), true);
     oscSettingsTab->addTab (TRANS("Accelerometer"), Colours::lightgrey, new accOSCsettings(), true);
     oscSettingsTab->addTab (TRANS("Gyroscope"), Colours::lightgrey, new gyroOSCsettings(), true);
     oscSettingsTab->addTab (TRANS("EMG"), Colours::lightgrey, new emgOSCsettings(), true);
