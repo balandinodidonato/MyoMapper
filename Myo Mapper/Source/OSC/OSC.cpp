@@ -311,7 +311,7 @@ void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
     if (oscDataSettings.emgScaledAbsMavFob) {
     sender.send ("/myo" + ID + "/emg/mav/fod/raw", (float) myoData.mavFod);
     }
-    if (oscDataSettings.emgScaledAbsMavFob) {
+    if (oscDataSettings.emgScaledAbsFobMavMavg) {
     sender.send ("/myo" + ID + "/emg/mav/fod/mavg",(float) myoData.mavFodMavg);
     }
     if (oscDataSettings.handPose) {
