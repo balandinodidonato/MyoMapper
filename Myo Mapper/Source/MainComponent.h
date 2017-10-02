@@ -6,6 +6,7 @@
 #include "Myo/MyoManager.h"
 #include "Pose.h"
 #include "OSC/OSC.h"
+#include "OSC/OscDataSettings.h"
 #include "AboutWindow.h"
 #include "HelpWindow.h"
 #include "OscSettingsWindow.h"
@@ -66,6 +67,7 @@ private:
     
     MenuBarComponent menuBar;
 
+    OscDataSettings oscDataSettings;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
 
