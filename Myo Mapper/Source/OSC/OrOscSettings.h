@@ -52,7 +52,8 @@ public:
     void buttonClicked (Button* buttonThatWasClicked) override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
-    void setOSC(OscDataSettings& oscDataSettings);
+    void setOsc(OscDataSettings &oscDataSettings);
+
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.

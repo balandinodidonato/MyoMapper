@@ -148,12 +148,13 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\OSC\accOSCsettings.cpp"/>
-    <ClCompile Include="..\..\Source\OSC\emgOSCsettings.cpp"/>
-    <ClCompile Include="..\..\Source\OSC\gyroOSCsettings.cpp"/>
-    <ClCompile Include="..\..\Source\OSC\orOSCsettings.cpp"/>
+    <ClCompile Include="..\..\Source\OSC\AccOscSettings.cpp"/>
+    <ClCompile Include="..\..\Source\OSC\EmgOscSettings.cpp"/>
+    <ClCompile Include="..\..\Source\OSC\GyroOscSettings.cpp"/>
+    <ClCompile Include="..\..\Source\OSC\OrOscSettings.cpp"/>
     <ClCompile Include="..\..\Source\OSC\OSC.cpp"/>
     <ClCompile Include="..\..\Source\OSC\OSCsettings.cpp"/>
+    <ClCompile Include="..\..\Source\OSC\OSCstreamingSettings.cpp"/>
     <ClCompile Include="..\..\Source\Myo\MyoListener.cpp"/>
     <ClCompile Include="..\..\Source\Myo\MyoManager.cpp"/>
     <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp"/>
@@ -1357,13 +1358,14 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\OSC\accOSCsettings.h"/>
-    <ClInclude Include="..\..\Source\OSC\emgOSCsettings.h"/>
-    <ClInclude Include="..\..\Source\OSC\gyroOSCsettings.h"/>
-    <ClInclude Include="..\..\Source\OSC\orOSCsettings.h"/>
+    <ClInclude Include="..\..\Source\OSC\AccOscSettings.h"/>
+    <ClInclude Include="..\..\Source\OSC\EmgOscSettings.h"/>
+    <ClInclude Include="..\..\Source\OSC\GyroOscSettings.h"/>
+    <ClInclude Include="..\..\Source\OSC\OrOscSettings.h"/>
     <ClInclude Include="..\..\Source\OSC\OSC.h"/>
-    <ClInclude Include="..\..\Source\OSC\OSCdata.h"/>
+    <ClInclude Include="..\..\Source\OSC\OscDataSettings.h"/>
     <ClInclude Include="..\..\Source\OSC\OSCsettings.h"/>
+    <ClInclude Include="..\..\Source\OSC\OSCstreamingSettings.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoData.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoListener.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoManager.h"/>

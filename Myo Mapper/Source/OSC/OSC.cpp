@@ -66,9 +66,8 @@ void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
 {
     String ID = String (myoData.ID);
     
-    orOscSettings.setOSC(oscDataSettings);
+    orOscSettings.setOsc(oscDataSettings);
     
-    std::cout << oscDataSettings.quaternion << std::endl;
     if (oscDataSettings.quaternion) {
         sender.send ("/myo" + ID + "/orientation/quaternion",
                      (float) myoData.quaternion[0],

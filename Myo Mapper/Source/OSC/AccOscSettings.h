@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "OscDataSettings.h"
 //[/Headers]
 
 
@@ -33,14 +34,14 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class GyroOscSettings  : public Component,
-                         public Button::Listener,
-                         public Slider::Listener
+class AccOscSettings  : public Component,
+                        public Button::Listener,
+                        public Slider::Listener
 {
 public:
     //==============================================================================
-    GyroOscSettings ();
-    ~GyroOscSettings();
+    AccOscSettings ();
+    ~AccOscSettings();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -58,18 +59,16 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    ScopedPointer<ToggleButton> gyroRaw;
-    ScopedPointer<ToggleButton> gyroScaled;
-    ScopedPointer<ToggleButton> gyroScaledAbs;
-    ScopedPointer<ToggleButton> gyroRawFod;
-    ScopedPointer<Slider> gyroRawFodbuffer;
-    ScopedPointer<Slider> gyroScaledMavgFodbufferSize;
-    ScopedPointer<ToggleButton> gyroFob;
-    ScopedPointer<ToggleButton> gyroFobMavg;
+    ScopedPointer<ToggleButton> accRaw;
+    ScopedPointer<ToggleButton> accRawFod;
+    ScopedPointer<ToggleButton> accScaled;
+    ScopedPointer<ToggleButton> accScaledFod;
+    ScopedPointer<Slider> accFodbuffer;
+    ScopedPointer<Slider> accScaledFodbuffer;
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GyroOscSettings)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AccOscSettings)
 };
 
 //[EndFile] You can add extra defines here...

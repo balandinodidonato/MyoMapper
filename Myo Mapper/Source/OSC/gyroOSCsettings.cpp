@@ -20,14 +20,14 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "gyroOSCsettings.h"
+#include "GyroOscSettings.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
 
 //==============================================================================
-gyroOSCsettings::gyroOSCsettings ()
+GyroOscSettings::GyroOscSettings ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -56,7 +56,6 @@ gyroOSCsettings::gyroOSCsettings ()
     addAndMakeVisible (gyroRawFodbuffer = new Slider ("gyroRawFodbuffer"));
     gyroRawFodbuffer->setExplicitFocusOrder (10);
     gyroRawFodbuffer->setRange (0, 200, 1);
-    gyroRawFodbuffer->setValue(10);
     gyroRawFodbuffer->setSliderStyle (Slider::IncDecButtons);
     gyroRawFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     gyroRawFodbuffer->addListener (this);
@@ -64,7 +63,6 @@ gyroOSCsettings::gyroOSCsettings ()
     addAndMakeVisible (gyroScaledMavgFodbufferSize = new Slider ("gyroScaledMavgFodbufferSize"));
     gyroScaledMavgFodbufferSize->setExplicitFocusOrder (10);
     gyroScaledMavgFodbufferSize->setRange (0, 200, 1);
-    gyroScaledMavgFodbufferSize->setValue(10);
     gyroScaledMavgFodbufferSize->setSliderStyle (Slider::IncDecButtons);
     gyroScaledMavgFodbufferSize->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     gyroScaledMavgFodbufferSize->addListener (this);
@@ -90,7 +88,7 @@ gyroOSCsettings::gyroOSCsettings ()
     //[/Constructor]
 }
 
-gyroOSCsettings::~gyroOSCsettings()
+GyroOscSettings::~GyroOscSettings()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -110,7 +108,7 @@ gyroOSCsettings::~gyroOSCsettings()
 }
 
 //==============================================================================
-void gyroOSCsettings::paint (Graphics& g)
+void GyroOscSettings::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -145,7 +143,7 @@ void gyroOSCsettings::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void gyroOSCsettings::resized()
+void GyroOscSettings::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
@@ -162,7 +160,7 @@ void gyroOSCsettings::resized()
     //[/UserResized]
 }
 
-void gyroOSCsettings::buttonClicked (Button* buttonThatWasClicked)
+void GyroOscSettings::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
@@ -202,7 +200,7 @@ void gyroOSCsettings::buttonClicked (Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
-void gyroOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
+void GyroOscSettings::sliderValueChanged (Slider* sliderThatWasMoved)
 {
     //[UsersliderValueChanged_Pre]
     //[/UsersliderValueChanged_Pre]
@@ -237,7 +235,7 @@ void gyroOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="gyroOSCsettings" componentName=""
+<JUCER_COMPONENT documentType="Component" className="GyroOscSettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="550" initialHeight="500">

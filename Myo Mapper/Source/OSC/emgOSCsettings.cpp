@@ -20,14 +20,14 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "emgOSCsettings.h"
+#include "EmgOscSettings.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
 
 //==============================================================================
-emgOSCsettings::emgOSCsettings ()
+EmgOscSettings::EmgOscSettings ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -127,7 +127,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgRawMavgBuffer = new Slider ("emgRawMavgBuffer"));
     emgRawMavgBuffer->setExplicitFocusOrder (10);
     emgRawMavgBuffer->setRange (0, 200, 1);
-    emgRawMavgBuffer->setValue(10);
     emgRawMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgRawMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgRawMavgBuffer->addListener (this);
@@ -135,7 +134,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgRawZcrBuffer = new Slider ("emgRawZcrBuffer"));
     emgRawZcrBuffer->setExplicitFocusOrder (10);
     emgRawZcrBuffer->setRange (0, 200, 1);
-    emgRawZcrBuffer->setValue(10);
     emgRawZcrBuffer->setSliderStyle (Slider::IncDecButtons);
     emgRawZcrBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgRawZcrBuffer->addListener (this);
@@ -143,7 +141,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgRawZcrMavgBuffer = new Slider ("emgRawZcrMavgBuffer"));
     emgRawZcrMavgBuffer->setExplicitFocusOrder (10);
     emgRawZcrMavgBuffer->setRange (0, 200, 1);
-    emgRawZcrMavgBuffer->setValue(10);
     emgRawZcrMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgRawZcrMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgRawZcrMavgBuffer->addListener (this);
@@ -151,7 +148,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgScaledAbsMavgBuffer = new Slider ("emgScaledAbsMavgBuffer"));
     emgScaledAbsMavgBuffer->setExplicitFocusOrder (10);
     emgScaledAbsMavgBuffer->setRange (0, 200, 1);
-    emgScaledAbsMavgBuffer->setValue(10);
     emgScaledAbsMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMavgBuffer->addListener (this);
@@ -159,7 +155,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgScaledAbsMinS = new Slider ("emgScaledAbsMinS"));
     emgScaledAbsMinS->setExplicitFocusOrder (10);
     emgScaledAbsMinS->setRange (0, 200, 1);
-    emgScaledAbsMinS->setValue(10);
     emgScaledAbsMinS->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMinS->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMinS->addListener (this);
@@ -167,7 +162,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgScaledAbsMaxBuffer = new Slider ("emgScaledAbsMaxBuffer"));
     emgScaledAbsMaxBuffer->setExplicitFocusOrder (10);
     emgScaledAbsMaxBuffer->setRange (0, 200, 1);
-    emgScaledAbsMaxBuffer->setValue(10);
     emgScaledAbsMaxBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMaxBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMaxBuffer->addListener (this);
@@ -175,7 +169,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgScaledAbsFobMavgBuffer = new Slider ("emgScaledAbsFobMavgBuffer"));
     emgScaledAbsFobMavgBuffer->setExplicitFocusOrder (10);
     emgScaledAbsFobMavgBuffer->setRange (0, 200, 1);
-    emgScaledAbsFobMavgBuffer->setValue(10);
     emgScaledAbsFobMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsFobMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsFobMavgBuffer->addListener (this);
@@ -183,7 +176,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgScaledAbsMavMavgBuffer = new Slider ("emgScaledAbsMavMavgBuffer"));
     emgScaledAbsMavMavgBuffer->setExplicitFocusOrder (10);
     emgScaledAbsMavMavgBuffer->setRange (0, 200, 1);
-    emgScaledAbsMavMavgBuffer->setValue(10);
     emgScaledAbsMavMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMavMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMavMavgBuffer->addListener (this);
@@ -191,7 +183,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgScaledAbsMavMinBuffer = new Slider ("emgScaledAbsMavMinBuffer"));
     emgScaledAbsMavMinBuffer->setExplicitFocusOrder (10);
     emgScaledAbsMavMinBuffer->setRange (0, 200, 1);
-    emgScaledAbsMavMinBuffer->setValue(10);
     emgScaledAbsMavMinBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMavMinBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMavMinBuffer->addListener (this);
@@ -199,7 +190,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgScaledAbsMavMaxBuffer = new Slider ("emgScaledAbsMavMaxBuffer"));
     emgScaledAbsMavMaxBuffer->setExplicitFocusOrder (10);
     emgScaledAbsMavMaxBuffer->setRange (0, 200, 1);
-    emgScaledAbsMavMaxBuffer->setValue(10);
     emgScaledAbsMavMaxBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsMavMaxBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsMavMaxBuffer->addListener (this);
@@ -207,7 +197,6 @@ emgOSCsettings::emgOSCsettings ()
     addAndMakeVisible (emgScaledAbsFobMavMavgBuffer = new Slider ("emgScaledAbsFobMavMavgBuffer"));
     emgScaledAbsFobMavMavgBuffer->setExplicitFocusOrder (10);
     emgScaledAbsFobMavMavgBuffer->setRange (0, 200, 1);
-    emgScaledAbsFobMavMavgBuffer->setValue(10);
     emgScaledAbsFobMavMavgBuffer->setSliderStyle (Slider::IncDecButtons);
     emgScaledAbsFobMavMavgBuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     emgScaledAbsFobMavMavgBuffer->addListener (this);
@@ -223,7 +212,7 @@ emgOSCsettings::emgOSCsettings ()
     //[/Constructor]
 }
 
-emgOSCsettings::~emgOSCsettings()
+EmgOscSettings::~EmgOscSettings()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -264,7 +253,7 @@ emgOSCsettings::~emgOSCsettings()
 }
 
 //==============================================================================
-void emgOSCsettings::paint (Graphics& g)
+void EmgOscSettings::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -407,7 +396,7 @@ void emgOSCsettings::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void emgOSCsettings::resized()
+void EmgOscSettings::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
@@ -445,7 +434,7 @@ void emgOSCsettings::resized()
     //[/UserResized]
 }
 
-void emgOSCsettings::buttonClicked (Button* buttonThatWasClicked)
+void EmgOscSettings::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
@@ -545,7 +534,7 @@ void emgOSCsettings::buttonClicked (Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
-void emgOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
+void EmgOscSettings::sliderValueChanged (Slider* sliderThatWasMoved)
 {
     //[UsersliderValueChanged_Pre]
     //[/UsersliderValueChanged_Pre]
@@ -625,7 +614,7 @@ void emgOSCsettings::sliderValueChanged (Slider* sliderThatWasMoved)
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="emgOSCsettings" componentName=""
+<JUCER_COMPONENT documentType="Component" className="EmgOscSettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="550" initialHeight="500">

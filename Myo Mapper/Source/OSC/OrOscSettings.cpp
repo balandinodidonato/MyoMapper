@@ -61,7 +61,6 @@ OrOscSettings::OrOscSettings ()
     addAndMakeVisible (orScaledFodbuffer = new Slider ("orScaledFodbuffer"));
     orScaledFodbuffer->setExplicitFocusOrder (10);
     orScaledFodbuffer->setRange (0, 200, 1);
-    orScaledFodbuffer->setValue(10);
     orScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     orScaledFodbuffer->addListener (this);
@@ -69,7 +68,6 @@ OrOscSettings::OrOscSettings ()
     addAndMakeVisible (orScaledSodbuffer = new Slider ("orScaledSodbuffer"));
     orScaledSodbuffer->setExplicitFocusOrder (10);
     orScaledSodbuffer->setRange (0, 200, 1);
-    orScaledSodbuffer->setValue(10);
     orScaledSodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledSodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     orScaledSodbuffer->addListener (this);
@@ -211,10 +209,12 @@ void OrOscSettings::sliderValueChanged (Slider* sliderThatWasMoved)
     //[/UsersliderValueChanged_Post]
 }
 
-void OrOscSettings::setOSC(OscDataSettings& oscDataSettings){
-    std::cout << oscDataSettings.quaternion << std::endl;
+void OrOscSettings::setOsc(OscDataSettings &oscDataSettings){
+    std::cout << quaternionStatus << std::endl;
     oscDataSettings.quaternion = quaternionStatus;
 }
+
+
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 //[/MiscUserCode]
@@ -229,7 +229,7 @@ void OrOscSettings::setOSC(OscDataSettings& oscDataSettings){
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="orOSCsettings" componentName=""
+<JUCER_COMPONENT documentType="Component" className="OrOscSettings" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="550" initialHeight="500">

@@ -247,22 +247,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\OSC\accOSCsettings.cpp">
+    <ClCompile Include="..\..\Source\OSC\AccOscSettings.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\emgOSCsettings.cpp">
+    <ClCompile Include="..\..\Source\OSC\EmgOscSettings.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\gyroOSCsettings.cpp">
+    <ClCompile Include="..\..\Source\OSC\GyroOscSettings.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\orOSCsettings.cpp">
+    <ClCompile Include="..\..\Source\OSC\OrOscSettings.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\OSC\OSC.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\OSC\OSCsettings.cpp">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\OSC\OSCstreamingSettings.cpp">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Myo\MyoListener.cpp">
@@ -1605,25 +1608,28 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\OSC\accOSCsettings.h">
+    <ClInclude Include="..\..\Source\OSC\AccOscSettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\emgOSCsettings.h">
+    <ClInclude Include="..\..\Source\OSC\EmgOscSettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\gyroOSCsettings.h">
+    <ClInclude Include="..\..\Source\OSC\GyroOscSettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\orOSCsettings.h">
+    <ClInclude Include="..\..\Source\OSC\OrOscSettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\OSC\OSC.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\OSCdata.h">
+    <ClInclude Include="..\..\Source\OSC\OscDataSettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\OSC\OSCsettings.h">
+      <Filter>Myo Mapper\Source\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\OSC\OSCstreamingSettings.h">
       <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Myo\MyoData.h">
