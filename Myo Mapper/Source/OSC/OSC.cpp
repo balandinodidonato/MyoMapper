@@ -9,6 +9,7 @@ OSC::OSC()
     rescaleMIN (0),
     rescaleMaxTest (false),
     rescaleMAX (0),
+    orOscSettings(oscDataSettingss),
     oscPortSender (5432),
     oscPortReceiver (5431),
     hostAddress ("127.0.0.1"),

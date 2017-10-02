@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-OrOscSettings::OrOscSettings ()
+OrOscSettings::OrOscSettings (OscDataSettings &oscDataSettings)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -36,27 +36,34 @@ OrOscSettings::OrOscSettings ()
     orQuaternion->setButtonText (TRANS("Quaternion"));
     orQuaternion->addListener (this);
     orQuaternion->setColour (ToggleButton::textColourId, Colours::white);
+    orQuaternion->setToggleState(oscDataSettings.orQuaternion, dontSendNotification);
 
     addAndMakeVisible (orRaw = new ToggleButton ("orRaw"));
     orRaw->setButtonText (CharPointer_UTF8 ("Raw (-\xcf\x80, \xcf\x80)"));
     orRaw->addListener (this);
     orRaw->setColour (ToggleButton::textColourId, Colours::white);
+    orRaw->setToggleState(oscDataSettings.orRaw, dontSendNotification);
+
 
     addAndMakeVisible (orScaled = new ToggleButton ("orScaled"));
     orScaled->setButtonText (TRANS("Scaled (0-1)"));
     orScaled->addListener (this);
     orScaled->setToggleState (true, dontSendNotification);
     orScaled->setColour (ToggleButton::textColourId, Colours::white);
+    orScaled->setToggleState(oscDataSettings.orScaled, dontSendNotification);
 
     addAndMakeVisible (orAcceleration = new ToggleButton ("orAcceleration"));
     orAcceleration->setButtonText (TRANS("Acceleration (0-1)"));
     orAcceleration->addListener (this);
     orAcceleration->setColour (ToggleButton::textColourId, Colours::white);
+    orAcceleration->setToggleState(oscDataSettings.orAcceleration, dontSendNotification);
+
 
     addAndMakeVisible (orVelocity = new ToggleButton ("orVelocity"));
     orVelocity->setButtonText (TRANS("Velocity (0-1)"));
     orVelocity->addListener (this);
     orVelocity->setColour (ToggleButton::textColourId, Colours::white);
+    orVelocity->setToggleState(oscDataSettings.orVelocity, dontSendNotification);
 
     addAndMakeVisible (orScaledFodbuffer = new Slider ("orScaledFodbuffer"));
     orScaledFodbuffer->setExplicitFocusOrder (10);
@@ -64,6 +71,7 @@ OrOscSettings::OrOscSettings ()
     orScaledFodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     orScaledFodbuffer->addListener (this);
+    orScaledFodbuffer->setValue(oscDataSettings.orScaledFodbuffer);
 
     addAndMakeVisible (orScaledSodbuffer = new Slider ("orScaledSodbuffer"));
     orScaledSodbuffer->setExplicitFocusOrder (10);
@@ -71,6 +79,7 @@ OrOscSettings::OrOscSettings ()
     orScaledSodbuffer->setSliderStyle (Slider::IncDecButtons);
     orScaledSodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     orScaledSodbuffer->addListener (this);
+    orScaledSodbuffer->setValue(oscDataSettings.orScaledSodbuffer);
 
 
     //[UserPreSize]

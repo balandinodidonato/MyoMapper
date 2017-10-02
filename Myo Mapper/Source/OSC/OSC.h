@@ -69,6 +69,7 @@ private:
     
     std::vector<OscDataSettings> oscDataSettings;
     
+    OscDataSettings oscDataSettingss;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)
 };

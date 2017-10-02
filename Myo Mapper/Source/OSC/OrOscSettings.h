@@ -40,7 +40,7 @@ class OrOscSettings  : public Component,
 {
 public:
     //==============================================================================
-    OrOscSettings ();
+    OrOscSettings (OscDataSettings &oscDataSettings);
     ~OrOscSettings();
 
     //==============================================================================

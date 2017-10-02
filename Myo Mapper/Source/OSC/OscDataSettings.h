@@ -3,13 +3,13 @@
 #pragma once
 
 struct OscDataSettings{
-    bool orQuaternion;
-    bool orRaw;
-    bool orScaled;
-    bool orAcceleration;
-    bool orVelocity;
-    int orScaledFodbuffer;
-    int orScaledSodbuffer;
+    bool orQuaternion = false;
+    bool orRaw = false;
+    bool orScaled = true;
+    bool orAcceleration = false;
+    bool orVelocity = false;
+    int orScaledFodbuffer = 10;
+    int orScaledSodbuffer = 10;
     
     bool accRaw;
     bool accRawFod;

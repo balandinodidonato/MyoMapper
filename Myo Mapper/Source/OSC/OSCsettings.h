@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "OscDataSettings.h"
 //[/Headers]
 
 
@@ -56,7 +57,7 @@ private:
     //==============================================================================
     ScopedPointer<TabbedComponent> oscSettingsTab;
 
-
+    OscDataSettings oscDataSettings;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSCsettings)
 };
