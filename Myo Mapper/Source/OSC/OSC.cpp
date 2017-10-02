@@ -23,13 +23,13 @@ OSC::OSC()
     {
         String I = String(i);
         
-     //   receiver.addListener (this, "/myo" + I + action[0]);
+        receiver.addListener (this, "/myo" + I + action[0]);
         
         for (int y = 0; y < 4; ++y) // myo data
         {
             for (int z = 1; z < 5; ++z) //action
             {
-           //     receiver.addListener (this, "/myo" + I + myoDataIn[y] + action[z]);
+                receiver.addListener (this, "/myo" + I + myoDataIn[y] + action[z]);
             }
         }
     }
