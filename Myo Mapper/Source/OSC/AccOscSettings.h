@@ -40,7 +40,7 @@ class AccOscSettings  : public Component,
 {
 public:
     //==============================================================================
-    AccOscSettings ();
+    AccOscSettings (OscDataSettings &oscDataSettings);
     ~AccOscSettings();
 
     //==============================================================================

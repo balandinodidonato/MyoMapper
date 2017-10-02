@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-AccOscSettings::AccOscSettings ()
+AccOscSettings::AccOscSettings (OscDataSettings &oscDataSettings)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]

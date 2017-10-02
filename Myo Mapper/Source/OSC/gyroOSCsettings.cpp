@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-GyroOscSettings::GyroOscSettings ()
+GyroOscSettings::GyroOscSettings (OscDataSettings &oscDataSettings)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -36,22 +36,27 @@ GyroOscSettings::GyroOscSettings ()
     gyroRaw->setButtonText (TRANS("Raw"));
     gyroRaw->addListener (this);
     gyroRaw->setColour (ToggleButton::textColourId, Colours::white);
+    gyroRaw->setToggleState(oscDataSettings.gyroRaw, dontSendNotification);
 
     addAndMakeVisible (gyroScaled = new ToggleButton ("gyroScaled"));
     gyroScaled->setButtonText (TRANS("Scaled (0-1)"));
     gyroScaled->addListener (this);
     gyroScaled->setToggleState (true, dontSendNotification);
     gyroScaled->setColour (ToggleButton::textColourId, Colours::white);
+    gyroScaled->setToggleState(oscDataSettings.gyroScaled, dontSendNotification);
+
 
     addAndMakeVisible (gyroScaledAbs = new ToggleButton ("gyroScaledAbs"));
     gyroScaledAbs->setButtonText (TRANS("Abs (0-1)"));
     gyroScaledAbs->addListener (this);
     gyroScaledAbs->setColour (ToggleButton::textColourId, Colours::white);
+    gyroScaledAbs->setToggleState(oscDataSettings.gyroScaledAbs, dontSendNotification);
 
     addAndMakeVisible (gyroRawFod = new ToggleButton ("gyroRawFod"));
     gyroRawFod->setButtonText (TRANS("First Order Difference"));
     gyroRawFod->addListener (this);
     gyroRawFod->setColour (ToggleButton::textColourId, Colours::white);
+    gyroRawFod->setToggleState(oscDataSettings.gyroRawFod, dontSendNotification);
 
     addAndMakeVisible (gyroRawFodbuffer = new Slider ("gyroRawFodbuffer"));
     gyroRawFodbuffer->setExplicitFocusOrder (10);
@@ -59,6 +64,7 @@ GyroOscSettings::GyroOscSettings ()
     gyroRawFodbuffer->setSliderStyle (Slider::IncDecButtons);
     gyroRawFodbuffer->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     gyroRawFodbuffer->addListener (this);
+    gyroRawFodbuffer->setValue(oscDataSettings.gyroRawFodbuffer);
 
     addAndMakeVisible (gyroScaledMavgFodbufferSize = new Slider ("gyroScaledMavgFodbufferSize"));
     gyroScaledMavgFodbufferSize->setExplicitFocusOrder (10);
@@ -66,16 +72,19 @@ GyroOscSettings::GyroOscSettings ()
     gyroScaledMavgFodbufferSize->setSliderStyle (Slider::IncDecButtons);
     gyroScaledMavgFodbufferSize->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     gyroScaledMavgFodbufferSize->addListener (this);
+    gyroScaledMavgFodbufferSize->setValue(oscDataSettings.gyroScaledMavgFodbufferSize);
 
     addAndMakeVisible (gyroFob = new ToggleButton ("gyroFob"));
     gyroFob->setButtonText (TRANS("First Order Difference (0-1)"));
     gyroFob->addListener (this);
     gyroFob->setColour (ToggleButton::textColourId, Colours::white);
+    gyroFob->setToggleState(oscDataSettings.gyroFob, dontSendNotification);
 
     addAndMakeVisible (gyroFobMavg = new ToggleButton ("gyroFobMavg"));
     gyroFobMavg->setButtonText (TRANS("Moving Average (0-1)"));
     gyroFobMavg->addListener (this);
     gyroFobMavg->setColour (ToggleButton::textColourId, Colours::white);
+    gyroFobMavg->setToggleState(oscDataSettings.gyroFobMavg, dontSendNotification);
 
 
     //[UserPreSize]

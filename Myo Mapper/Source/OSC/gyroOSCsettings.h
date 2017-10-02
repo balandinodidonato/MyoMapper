@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "OscDataSettings.h"
 //[/Headers]
 
 
@@ -39,7 +40,7 @@ class GyroOscSettings  : public Component,
 {
 public:
     //==============================================================================
-    GyroOscSettings ();
+    GyroOscSettings (OscDataSettings &oscDataSettings);
     ~GyroOscSettings();
 
     //==============================================================================

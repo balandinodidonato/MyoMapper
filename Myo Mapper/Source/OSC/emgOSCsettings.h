@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "OscDataSettings.h"
 //[/Headers]
 
 
@@ -39,7 +40,7 @@ class EmgOscSettings  : public Component,
 {
 public:
     //==============================================================================
-    EmgOscSettings ();
+    EmgOscSettings (OscDataSettings &oscDataSettings);
     ~EmgOscSettings();
 
     //==============================================================================
@@ -66,7 +67,7 @@ private:
     ScopedPointer<ToggleButton> emgScaledAbsMax;
     ScopedPointer<ToggleButton> emgScaledAbsFob;
     ScopedPointer<ToggleButton> emgScaledAbsFobMavg;
-    ScopedPointer<ToggleButton> emgScaledAbsFobMavg2;
+    ScopedPointer<ToggleButton> emgScaledAbsMavg;
     ScopedPointer<ToggleButton> emgScaledAbsMav;
     ScopedPointer<ToggleButton> emgScaledAbsMavMavg;
     ScopedPointer<ToggleButton> emgRawZcr;

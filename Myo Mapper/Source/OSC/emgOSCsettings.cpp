@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-EmgOscSettings::EmgOscSettings ()
+EmgOscSettings::EmgOscSettings (OscDataSettings &oscDataSettings    )
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -72,11 +72,11 @@ EmgOscSettings::EmgOscSettings ()
     emgScaledAbsFobMavg->addListener (this);
     emgScaledAbsFobMavg->setColour (ToggleButton::textColourId, Colours::white);
 
-    addAndMakeVisible (emgScaledAbsFobMavg2 = new ToggleButton ("emgScaledAbsFobMavg"));
-    emgScaledAbsFobMavg2->setButtonText (TRANS("Moving Average"));
-    emgScaledAbsFobMavg2->addListener (this);
-    emgScaledAbsFobMavg2->setToggleState (true, dontSendNotification);
-    emgScaledAbsFobMavg2->setColour (ToggleButton::textColourId, Colours::white);
+    addAndMakeVisible (emgScaledAbsMavg = new ToggleButton ("emgScaledAbsMavg"));
+    emgScaledAbsMavg->setButtonText (TRANS("Moving Average"));
+    emgScaledAbsMavg->addListener (this);
+    emgScaledAbsMavg->setToggleState (true, dontSendNotification);
+    emgScaledAbsMavg->setColour (ToggleButton::textColourId, Colours::white);
 
     addAndMakeVisible (emgScaledAbsMav = new ToggleButton ("emgScaledAbsMav"));
     emgScaledAbsMav->setButtonText (TRANS("Mean Absolute Value"));
@@ -225,7 +225,7 @@ EmgOscSettings::~EmgOscSettings()
     emgScaledAbsMax = nullptr;
     emgScaledAbsFob = nullptr;
     emgScaledAbsFobMavg = nullptr;
-    emgScaledAbsFobMavg2 = nullptr;
+    emgScaledAbsMavg = nullptr;
     emgScaledAbsMav = nullptr;
     emgScaledAbsMavMavg = nullptr;
     emgRawZcr = nullptr;
@@ -409,7 +409,7 @@ void EmgOscSettings::resized()
     emgScaledAbsMax->setBounds (64, 216, 150, 24);
     emgScaledAbsFob->setBounds (64, 240, 150, 24);
     emgScaledAbsFobMavg->setBounds (96, 264, 150, 24);
-    emgScaledAbsFobMavg2->setBounds (64, 168, 150, 24);
+    emgScaledAbsMavg->setBounds (64, 168, 150, 24);
     emgScaledAbsMav->setBounds (64, 288, 150, 24);
     emgScaledAbsMavMavg->setBounds (96, 312, 150, 24);
     emgRawZcr->setBounds (32, 48, 150, 24);
@@ -479,10 +479,10 @@ void EmgOscSettings::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_emgScaledAbsFobMavg] -- add your button handler code here..
         //[/UserButtonCode_emgScaledAbsFobMavg]
     }
-    else if (buttonThatWasClicked == emgScaledAbsFobMavg2)
+    else if (buttonThatWasClicked == emgScaledAbsMavg)
     {
-        //[UserButtonCode_emgScaledAbsFobMavg2] -- add your button handler code here..
-        //[/UserButtonCode_emgScaledAbsFobMavg2]
+        //[UserButtonCode_emgScaledAbsMavg] -- add your button handler code here..
+        //[/UserButtonCode_emgScaledAbsMavg]
     }
     else if (buttonThatWasClicked == emgScaledAbsMav)
     {
@@ -684,7 +684,7 @@ BEGIN_JUCER_METADATA
                 virtualName="" explicitFocusOrder="0" pos="96 264 150 24" txtcol="ffffffff"
                 buttonText="Moving Average" connectedEdges="0" needsCallback="1"
                 radioGroupId="0" state="0"/>
-  <TOGGLEBUTTON name="emgScaledAbsFobMavg" id="f31d0fc60ce0fa96" memberName="emgScaledAbsFobMavg2"
+  <TOGGLEBUTTON name="emgScaledAbsMavg" id="f31d0fc60ce0fa96" memberName="emgScaledAbsMavg"
                 virtualName="" explicitFocusOrder="0" pos="64 168 150 24" txtcol="ffffffff"
                 buttonText="Moving Average" connectedEdges="0" needsCallback="1"
                 radioGroupId="0" state="1"/>
