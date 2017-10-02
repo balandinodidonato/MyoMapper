@@ -68,7 +68,7 @@ void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
     
     orOscSettings.setOsc(oscDataSettings);
     
-    if (oscDataSettings.quaternion) {
+    if (oscDataSettings.orQuaternion) {
         sender.send ("/myo" + ID + "/orientation/quaternion",
                      (float) myoData.quaternion[0],
                      (float) myoData.quaternion[1],

@@ -211,7 +211,7 @@ void OrOscSettings::sliderValueChanged (Slider* sliderThatWasMoved)
 
 void OrOscSettings::setOsc(OscDataSettings &oscDataSettings){
     std::cout << quaternionStatus << std::endl;
-    oscDataSettings.quaternion = quaternionStatus;
+    oscDataSettings.orQuaternion = quaternionStatus;
 }
 
 
