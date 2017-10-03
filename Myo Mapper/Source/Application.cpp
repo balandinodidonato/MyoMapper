@@ -79,8 +79,6 @@ void MyoMapperApplication::handleAsyncUpdate()
         createAppleMenu (appleMenu);
         MenuBarModel::setMacMainMenu (menuModel, &appleMenu);
     #endif
-    
-    
 }
 
 void MyoMapperApplication::shutdown()
@@ -161,6 +159,11 @@ void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
 
 void MyoMapperApplication::createFileMenu (PopupMenu& menu)
 {
+    #if ! JUCE_MAC
+        menu.addCommandItem (&getCommandManager(), CommandIDs::showPreferences);
+        menu.addSeparator();
+    #endif
+    
     menu.addCommandItem (&getCommandManager(), CommandIDs::newMapper);
     menu.addSeparator();
     menu.addCommandItem (&getCommandManager(), CommandIDs::openMapper);
@@ -168,10 +171,6 @@ void MyoMapperApplication::createFileMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapperAs);
     menu.addSeparator();
     menu.addCommandItem (&getCommandManager(), CommandIDs::quitMapper);
-    
-    #if ! JUCE_MAC
-        menu.addCommandItem (&getCommandManager(), CommandIDs::showPreferences);
-    #endif
 }
 
 void MyoMapperApplication::createViewMenu (PopupMenu& menu)
@@ -288,12 +287,12 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             break;
             
         case CommandIDs::showSettingsWindow:
-            result.setInfo ("Show Settings Window", "Show the settings panel", CommandCategories::windows, 0);
+            result.setInfo ("Show Mapper Settings", "Show the settings panel", CommandCategories::windows, 0);
             result.addDefaultKeypress ('s', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::newDisplayWindow:
-            result.setInfo ("New Window", "Create a new display window", CommandCategories::windows, 0);
+            result.setInfo ("New Visualiser Window", "Create a new display window", CommandCategories::windows, 0);
             result.addDefaultKeypress ('n', ModifierKeys::commandModifier);
             break;
             
@@ -412,7 +411,7 @@ void MyoMapperApplication::showSettingsWindow()
 
 void MyoMapperApplication::newDisplayWindow()
 {
-    // Create a new visual feedback window to monitor multiple myos
+    windowList->createNewFeedbackWindow();
 }
 
 void MyoMapperApplication::moveWindowsToFront()
