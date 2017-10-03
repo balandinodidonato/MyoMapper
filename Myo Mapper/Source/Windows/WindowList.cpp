@@ -43,7 +43,6 @@ void WindowList::getOrCreateSettingsWindow()
         auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
         
-        settingsWindow = nullptr;
         WindowDrawer* const w = new WindowDrawer ("MyoMapper - Settings",
                                                   new SettingsWindow(),
                                                   true,
@@ -108,5 +107,6 @@ void WindowList::changeListenerCallback (ChangeBroadcaster* source)
 //        settingsWindow == nullptr;
 //        windows.remove (windows.indexOf (settingsWindow));
         windows.removeObject (settingsWindow);
+        settingsWindow = nullptr;
     }
 }
