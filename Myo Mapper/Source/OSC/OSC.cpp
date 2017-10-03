@@ -77,245 +77,247 @@ void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
                      (float) myoData.quaternion[3]);
     }
     if (oscDataSettings.orRaw) {
-    sender.send ("/myo" + ID + "/orientation/raw",
-                 (float) myoData.orientationRaw.x,
-                 (float) myoData.orientationRaw.y,
-                 (float) myoData.orientationRaw.z);
+        sender.send ("/myo" + ID + "/orientation/raw",
+                     (float) myoData.orientationRaw.x,
+                     (float) myoData.orientationRaw.y,
+                     (float) myoData.orientationRaw.z);
     }
+
     if (oscDataSettings.orScaled) {
-    sender.send ("/myo" + ID + "/orientation/scaled",
-                 (float) myoData.orientationScaled.x,
-                 (float) myoData.orientationScaled.y,
-                 (float) myoData.orientationScaled.z);
+        sender.send ("/myo" + ID + "/orientation/scaled",
+                     (float) myoData.orientationScaled.x,
+                     (float) myoData.orientationScaled.y,
+                     (float) myoData.orientationScaled.z);
     }
     if (oscDataSettings.orVelocity) {
-    sender.send ("/myo" + ID + "/orientation/velocity",
-                 (float) myoData.orientationScaledFod.x,
-                 (float) myoData.orientationScaledFod.y,
-                 (float) myoData.orientationScaledFod.z);
+        sender.send ("/myo" + ID + "/orientation/velocity",
+                     (float) myoData.orientationScaledFod.x,
+                     (float) myoData.orientationScaledFod.y,
+                     (float) myoData.orientationScaledFod.z);
     }
     if (oscDataSettings.orAcceleration) {
-    sender.send ("/myo" + ID + "/orientation/acceleration",
-                 (float) myoData.orientationScaledSod.x,
-                 (float) myoData.orientationScaledSod.y,
-                 (float) myoData.orientationScaledSod.z);
+        sender.send ("/myo" + ID + "/orientation/acceleration",
+                     (float) myoData.orientationScaledSod.x,
+                     (float) myoData.orientationScaledSod.y,
+                     (float) myoData.orientationScaledSod.z);
     }
     
 
     if (oscDataSettings.accRaw) {
-    sender.send ("/myo" + ID + "/acceleration/raw/raw",
-                 (float) myoData.acc.x,
-                 (float) myoData.acc.y,
-                 (float) myoData.acc.z);
+        sender.send ("/myo" + ID + "/acceleration/raw/raw",
+                     (float) myoData.acc.x,
+                     (float) myoData.acc.y,
+                     (float) myoData.acc.z);
     }
     if (oscDataSettings.accRawFod) {
-    sender.send ("/myo" + ID + "/acceleration/raw/fod",
-                 (float) myoData.accFod.x,
-                 (float) myoData.accFod.y,
-                 (float) myoData.accFod.z);
+        sender.send ("/myo" + ID + "/acceleration/raw/fod",
+                     (float) myoData.accFod.x,
+                     (float) myoData.accFod.y,
+                     (float) myoData.accFod.z);
     }
     if (oscDataSettings.accScaled) {
-    sender.send ("/myo" + ID + "/acceleration/scaled/raw",
-                 (float) myoData.accScaled.x,
-                 (float) myoData.accScaled.y,
-                 (float) myoData.accScaled.z);
+        sender.send ("/myo" + ID + "/acceleration/scaled/raw",
+                     (float) myoData.accScaled.x,
+                     (float) myoData.accScaled.y,
+                     (float) myoData.accScaled.z);
+        
     }
     if (oscDataSettings.accScaledFod) {
-    sender.send ("/myo" + ID + "/acceleration/scaled/fod/raw",
-                 (float) myoData.accScaledFod.x,
-                 (float) myoData.accScaledFod.y,
-                 (float) myoData.accScaledFod.z);
+        sender.send ("/myo" + ID + "/acceleration/scaled/fod/raw",
+                     (float) myoData.accScaledFod.x,
+                     (float) myoData.accScaledFod.y,
+                     (float) myoData.accScaledFod.z);
     }
     if (oscDataSettings.accScaledFodMavg) {
-    sender.send ("/myo" + ID + "/acceleration/scaled/fod/mavg",
-                 (float) myoData.accScaledFodMavg.x,
-                 (float) myoData.accScaledFodMavg.y,
-                 (float) myoData.accScaledFodMavg.z);
+        sender.send ("/myo" + ID + "/acceleration/scaled/fod/mavg",
+                     (float) myoData.accScaledFodMavg.x,
+                     (float) myoData.accScaledFodMavg.y,
+                     (float) myoData.accScaledFodMavg.z);
     }
     
     if (oscDataSettings.gyroRaw) {
-    sender.send ("/myo" + ID + "/gyro/raw/raw",
-                 (float) myoData.gyro.x,
-                 (float) myoData.gyro.y,
-                 (float) myoData.gyro.z);
+        sender.send ("/myo" + ID + "/gyro/raw/raw",
+                     (float) myoData.gyro.x,
+                     (float) myoData.gyro.y,
+                     (float) myoData.gyro.z);
     }
     if (oscDataSettings.accRawFod) {
-    sender.send ("/myo" + ID + "/gyro/raw/fod",
-                 (float) myoData.gyroFod.x,
-                 (float) myoData.gyroFod.y,
-                 (float) myoData.gyroFod.z);
-    /*
-    sender.send ("/myo" + ID + "/gyro/raw/zeroCrossingRate",
-                 (int) myoData.gyroZeroCross.x,
-                 (int) myoData.gyroZeroCross.y,
-                 (int) myoData.gyroZeroCross.z);
-     */
+        sender.send ("/myo" + ID + "/gyro/raw/fod",
+                     (float) myoData.gyroFod.x,
+                     (float) myoData.gyroFod.y,
+                     (float) myoData.gyroFod.z);
+        /*
+         sender.send ("/myo" + ID + "/gyro/raw/zeroCrossingRate",
+                     (int) myoData.gyroZeroCross.x,
+                     (int) myoData.gyroZeroCross.y,
+                     (int) myoData.gyroZeroCross.z);
+         */
     }
     if (oscDataSettings.gyroScaled) {
-    sender.send ("/myo" + ID + "/gyro/scaled/raw",
-                 (float) myoData.gyroScaled.x,
-                 (float) myoData.gyroScaled.y,
-                 (float) myoData.gyroScaled.z);
+        sender.send ("/myo" + ID + "/gyro/scaled/raw",
+                     (float) myoData.gyroScaled.x,
+                     (float) myoData.gyroScaled.y,
+                     (float) myoData.gyroScaled.z);
     }
     if (oscDataSettings.gyroScaledAbs) {
-    sender.send ("/myo" + ID + "/gyro/scaled/abs",
-                 (float) myoData.gyroScaledAbs.x,
-                 (float) myoData.gyroScaledAbs.y,
-                 (float) myoData.gyroScaledAbs.z);
+        sender.send ("/myo" + ID + "/gyro/scaled/abs",
+                     (float) myoData.gyroScaledAbs.x,
+                     (float) myoData.gyroScaledAbs.y,
+                     (float) myoData.gyroScaledAbs.z);
 
-    /*
-    sender.send ("/myo" + ID + "/gyro/scaled/fod/raw",
-                 (float) myoData.gyroScaledFod.x,
-                 (float) myoData.gyroScaledFod.y,
-                 (float) myoData.gyroScaledFod.z);
-    sender.send ("/myo" + ID + "/gyro/scaled/fod/mavg",
-                 (float) myoData.gyroScaledFodMavg.x,
-                 (float) myoData.gyroScaledFodMavg.y,
-                 (float) myoData.gyroScaledFodMavg.z);
-    */
+        /*
+         sender.send ("/myo" + ID + "/gyro/scaled/fod/raw",
+                     (float) myoData.gyroScaledFod.x,
+                     (float) myoData.gyroScaledFod.y,
+                     (float) myoData.gyroScaledFod.z);
+         sender.send ("/myo" + ID + "/gyro/scaled/fod/mavg",
+                     (float) myoData.gyroScaledFodMavg.x,
+                     (float) myoData.gyroScaledFodMavg.y,
+                     (float) myoData.gyroScaledFodMavg.z);
+         */
     }
     
     if (oscDataSettings.emgRaw) {
-    sender.send ("/myo" + ID + "/emg/raw/raw",
-                 (int) myoData.emgRaw[0],
-                 (int) myoData.emgRaw[1],
-                 (int) myoData.emgRaw[2],
-                 (int) myoData.emgRaw[3],
-                 (int) myoData.emgRaw[4],
-                 (int) myoData.emgRaw[5],
-                 (int) myoData.emgRaw[6],
-                 (int) myoData.emgRaw[7]);
+        sender.send ("/myo" + ID + "/emg/raw/raw",
+                     (int) myoData.emgRaw[0],
+                     (int) myoData.emgRaw[1],
+                     (int) myoData.emgRaw[2],
+                     (int) myoData.emgRaw[3],
+                     (int) myoData.emgRaw[4],
+                     (int) myoData.emgRaw[5],
+                     (int) myoData.emgRaw[6],
+                     (int) myoData.emgRaw[7]);
     }
     if (oscDataSettings.emgRawMavg) {
-    sender.send ("/myo" + ID + "/emg/raw/mavg",
-                 (int) myoData.emgRawMavg[0],
-                 (int) myoData.emgRawMavg[1],
-                 (int) myoData.emgRawMavg[2],
-                 (int) myoData.emgRawMavg[3],
-                 (int) myoData.emgRawMavg[4],
-                 (int) myoData.emgRawMavg[5],
-                 (int) myoData.emgRawMavg[6],
-                 (int) myoData.emgRawMavg[7]);
+        sender.send ("/myo" + ID + "/emg/raw/mavg",
+                     (int) myoData.emgRawMavg[0],
+                     (int) myoData.emgRawMavg[1],
+                     (int) myoData.emgRawMavg[2],
+                     (int) myoData.emgRawMavg[3],
+                     (int) myoData.emgRawMavg[4],
+                     (int) myoData.emgRawMavg[5],
+                     (int) myoData.emgRawMavg[6],
+                     (int) myoData.emgRawMavg[7]);
     }
     if (oscDataSettings.emgRawZcr) {
-    sender.send ("/myo" + ID + "/emg/raw/emgZeroCross/raw",
-                 (int) myoData.emgZeroCross[0],
-                 (int) myoData.emgZeroCross[1],
-                 (int) myoData.emgZeroCross[2],
-                 (int) myoData.emgZeroCross[3],
-                 (int) myoData.emgZeroCross[4],
-                 (int) myoData.emgZeroCross[5],
-                 (int) myoData.emgZeroCross[6],
-                 (int) myoData.emgZeroCross[7]);
+        sender.send ("/myo" + ID + "/emg/raw/emgZeroCross/raw",
+                     (int) myoData.emgZeroCross[0],
+                     (int) myoData.emgZeroCross[1],
+                     (int) myoData.emgZeroCross[2],
+                     (int) myoData.emgZeroCross[3],
+                     (int) myoData.emgZeroCross[4],
+                     (int) myoData.emgZeroCross[5],
+                     (int) myoData.emgZeroCross[6],
+                     (int) myoData.emgZeroCross[7]);
     }
     if (oscDataSettings.emgRawZcrMavg) {
-    sender.send ("/myo" + ID + "/emg/raw/zeroCrossing/mavg",
-                 (int) myoData.emgZeroCrossMavg[0],
-                 (int) myoData.emgZeroCrossMavg[1],
-                 (int) myoData.emgZeroCrossMavg[2],
-                 (int) myoData.emgZeroCrossMavg[3],
-                 (int) myoData.emgZeroCrossMavg[4],
-                 (int) myoData.emgZeroCrossMavg[5],
-                 (int) myoData.emgZeroCrossMavg[6],
-                 (int) myoData.emgZeroCrossMavg[7]);
+        sender.send ("/myo" + ID + "/emg/raw/zeroCrossing/mavg",
+                     (int) myoData.emgZeroCrossMavg[0],
+                     (int) myoData.emgZeroCrossMavg[1],
+                     (int) myoData.emgZeroCrossMavg[2],
+                     (int) myoData.emgZeroCrossMavg[3],
+                     (int) myoData.emgZeroCrossMavg[4],
+                     (int) myoData.emgZeroCrossMavg[5],
+                     (int) myoData.emgZeroCrossMavg[6],
+                     (int) myoData.emgZeroCrossMavg[7]);
     }
     if (oscDataSettings.emgScaled) {
-    sender.send ("/myo" + ID + "/emg/scaled/raw",
-                 (float) myoData.emgScaled[0],
-                 (float) myoData.emgScaled[1],
-                 (float) myoData.emgScaled[2],
-                 (float) myoData.emgScaled[3],
-                 (float) myoData.emgScaled[4],
-                 (float) myoData.emgScaled[5],
-                 (float) myoData.emgScaled[6],
-                 (float) myoData.emgScaled[7]);
+        sender.send ("/myo" + ID + "/emg/scaled/raw",
+                     (float) myoData.emgScaled[0],
+                     (float) myoData.emgScaled[1],
+                     (float) myoData.emgScaled[2],
+                     (float) myoData.emgScaled[3],
+                     (float) myoData.emgScaled[4],
+                     (float) myoData.emgScaled[5],
+                     (float) myoData.emgScaled[6],
+                     (float) myoData.emgScaled[7]);
     }
     if (oscDataSettings.emgScaledAbs) {
-    sender.send ("/myo" + ID + "/emg/scaled/abs/raw",
-                 (float) myoData.emgScaledAbs[0],
-                 (float) myoData.emgScaledAbs[1],
-                 (float) myoData.emgScaledAbs[2],
-                 (float) myoData.emgScaledAbs[3],
-                 (float) myoData.emgScaledAbs[4],
-                 (float) myoData.emgScaledAbs[5],
-                 (float) myoData.emgScaledAbs[6],
-                 (float) myoData.emgScaledAbs[7]);
+        sender.send ("/myo" + ID + "/emg/scaled/abs/raw",
+                     (float) myoData.emgScaledAbs[0],
+                     (float) myoData.emgScaledAbs[1],
+                     (float) myoData.emgScaledAbs[2],
+                     (float) myoData.emgScaledAbs[3],
+                     (float) myoData.emgScaledAbs[4],
+                     (float) myoData.emgScaledAbs[5],
+                     (float) myoData.emgScaledAbs[6],
+                     (float) myoData.emgScaledAbs[7]);
     }
     if (oscDataSettings.emgScaledAbsMavg) {
-    sender.send ("/myo" + ID + "/emg/scaled/abs/mavg",
-                 (float) myoData.emgScaledAbsMavg[0],
-                 (float) myoData.emgScaledAbsMavg[1],
-                 (float) myoData.emgScaledAbsMavg[2],
-                 (float) myoData.emgScaledAbsMavg[3],
-                 (float) myoData.emgScaledAbsMavg[4],
-                 (float) myoData.emgScaledAbsMavg[5],
-                 (float) myoData.emgScaledAbsMavg[6],
-                 (float) myoData.emgScaledAbsMavg[7]);
+        sender.send ("/myo" + ID + "/emg/scaled/abs/mavg",
+                     (float) myoData.emgScaledAbsMavg[0],
+                     (float) myoData.emgScaledAbsMavg[1],
+                     (float) myoData.emgScaledAbsMavg[2],
+                     (float) myoData.emgScaledAbsMavg[3],
+                     (float) myoData.emgScaledAbsMavg[4],
+                     (float) myoData.emgScaledAbsMavg[5],
+                     (float) myoData.emgScaledAbsMavg[6],
+                     (float) myoData.emgScaledAbsMavg[7]);
     }
     if (oscDataSettings.emgScaledAbsFob) {
-    sender.send ("/myo" + ID + "/emg/scaled/abs/fob/raw",
-                 (float) myoData.emgScaledAbsFob[0],
-                 (float) myoData.emgScaledAbsFob[1],
-                 (float) myoData.emgScaledAbsFob[2],
-                 (float) myoData.emgScaledAbsFob[3],
-                 (float) myoData.emgScaledAbsFob[4],
-                 (float) myoData.emgScaledAbsFob[5],
-                 (float) myoData.emgScaledAbsFob[6],
-                 (float) myoData.emgScaledAbsFob[7]);
+        sender.send ("/myo" + ID + "/emg/scaled/abs/fob/raw",
+                     (float) myoData.emgScaledAbsFob[0],
+                     (float) myoData.emgScaledAbsFob[1],
+                     (float) myoData.emgScaledAbsFob[2],
+                     (float) myoData.emgScaledAbsFob[3],
+                     (float) myoData.emgScaledAbsFob[4],
+                     (float) myoData.emgScaledAbsFob[5],
+                     (float) myoData.emgScaledAbsFob[6],
+                     (float) myoData.emgScaledAbsFob[7]);
     }
     if (oscDataSettings.emgScaledAbsFobMavg) {
-    sender.send ("/myo" + ID + "/emg/scaled/abs/fob/mavg",
-                 (float) myoData.emgScaledAbsFobMavg[0],
-                 (float) myoData.emgScaledAbsFobMavg[1],
-                 (float) myoData.emgScaledAbsFobMavg[2],
-                 (float) myoData.emgScaledAbsFobMavg[3],
-                 (float) myoData.emgScaledAbsFobMavg[4],
-                 (float) myoData.emgScaledAbsFobMavg[5],
-                 (float) myoData.emgScaledAbsFobMavg[6],
-                 (float) myoData.emgScaledAbsFobMavg[7]);
+        sender.send ("/myo" + ID + "/emg/scaled/abs/fob/mavg",
+                     (float) myoData.emgScaledAbsFobMavg[0],
+                     (float) myoData.emgScaledAbsFobMavg[1],
+                     (float) myoData.emgScaledAbsFobMavg[2],
+                     (float) myoData.emgScaledAbsFobMavg[3],
+                     (float) myoData.emgScaledAbsFobMavg[4],
+                     (float) myoData.emgScaledAbsFobMavg[5],
+                     (float) myoData.emgScaledAbsFobMavg[6],
+                     (float) myoData.emgScaledAbsFobMavg[7]);
     }
     if (oscDataSettings.emgScaledAbsMin) {
-    sender.send ("/myo" + ID + "/emg/scaled/abs/min",
-                 (float) myoData.emgScaledAbsMin[0],
-                 (float) myoData.emgScaledAbsMin[1],
-                 (float) myoData.emgScaledAbsMin[2],
-                 (float) myoData.emgScaledAbsMin[3],
-                 (float) myoData.emgScaledAbsMin[4],
-                 (float) myoData.emgScaledAbsMin[5],
-                 (float) myoData.emgScaledAbsMin[6],
-                 (float) myoData.emgScaledAbsMin[7]);
+        sender.send ("/myo" + ID + "/emg/scaled/abs/min",
+                     (float) myoData.emgScaledAbsMin[0],
+                     (float) myoData.emgScaledAbsMin[1],
+                     (float) myoData.emgScaledAbsMin[2],
+                     (float) myoData.emgScaledAbsMin[3],
+                     (float) myoData.emgScaledAbsMin[4],
+                     (float) myoData.emgScaledAbsMin[5],
+                     (float) myoData.emgScaledAbsMin[6],
+                     (float) myoData.emgScaledAbsMin[7]);
     }
     if (oscDataSettings.emgScaledAbsMax) {
-    sender.send ("/myo" + ID + "/emg/scaled/abs/max",
-                 (float) myoData.emgScaledAbsMax[0],
-                 (float) myoData.emgScaledAbsMax[1],
-                 (float) myoData.emgScaledAbsMax[2],
-                 (float) myoData.emgScaledAbsMax[3],
-                 (float) myoData.emgScaledAbsMax[4],
-                 (float) myoData.emgScaledAbsMax[5],
-                 (float) myoData.emgScaledAbsMax[6],
-                 (float) myoData.emgScaledAbsMax[7]);
+        sender.send ("/myo" + ID + "/emg/scaled/abs/max",
+                     (float) myoData.emgScaledAbsMax[0],
+                     (float) myoData.emgScaledAbsMax[1],
+                     (float) myoData.emgScaledAbsMax[2],
+                     (float) myoData.emgScaledAbsMax[3],
+                     (float) myoData.emgScaledAbsMax[4],
+                     (float) myoData.emgScaledAbsMax[5],
+                     (float) myoData.emgScaledAbsMax[6],
+                     (float) myoData.emgScaledAbsMax[7]);
     }
     if (oscDataSettings.emgScaledAbsMav) {
-    sender.send ("/myo" + ID + "/emg/mav/raw", (float) myoData.emgMav);
+        sender.send ("/myo" + ID + "/emg/mav/raw", (float) myoData.emgMav);
     }
     if (oscDataSettings.emgScaledAbsMavMavg) {
-    sender.send ("/myo" + ID + "/emg/mav/mavg",(float) myoData.emgMavMavg);
+        sender.send ("/myo" + ID + "/emg/mav/mavg",(float) myoData.emgMavMavg);
     }
     if (oscDataSettings.emgScaledAbsMavMin) {
-    sender.send ("/myo" + ID + "/emg/mav/min", (float) myoData.emgMavMin);
+        sender.send ("/myo" + ID + "/emg/mav/min", (float) myoData.emgMavMin);
     }
     if (oscDataSettings.emgScaledAbsMavMax) {
-    sender.send ("/myo" + ID + "/emg/mav/max", (float) myoData.emgMavMax);
+        sender.send ("/myo" + ID + "/emg/mav/max", (float) myoData.emgMavMax);
     }
     if (oscDataSettings.emgScaledAbsMavFob) {
-    sender.send ("/myo" + ID + "/emg/mav/fod/raw", (float) myoData.mavFod);
+        sender.send ("/myo" + ID + "/emg/mav/fod/raw", (float) myoData.mavFod);
     }
     if (oscDataSettings.emgScaledAbsFobMavMavg) {
-    sender.send ("/myo" + ID + "/emg/mav/fod/mavg",(float) myoData.mavFodMavg);
+        sender.send ("/myo" + ID + "/emg/mav/fod/mavg",(float) myoData.mavFodMavg);
     }
     if (oscDataSettings.handPose) {
-    sender.send ("/myo" + ID + "/pose", (int) myoData.poseID, (String) myoData.pose);
+        sender.send ("/myo" + ID + "/pose", (int) myoData.poseID, (String) myoData.pose);
     }
 }
 
