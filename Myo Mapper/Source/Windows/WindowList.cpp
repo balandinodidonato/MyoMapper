@@ -51,6 +51,8 @@ void WindowList::getOrCreateSettingsWindow()
                                                   windowWidth * 0.3, windowHeight * 0.3,
                                                   windowWidth, windowHeight);
         settingsWindow = w;
+        w->addChangeListener (this);
+        windows.add (settingsWindow);
         //        w->setInitialWindowPosition();
     }
 }
@@ -87,26 +89,24 @@ void WindowList::forceCloseWindows()
 void WindowList::changeListenerCallback (ChangeBroadcaster* source)
 {
     WindowDrawer* w = dynamic_cast<WindowDrawer*> (source);
- 
     jassert (w != nullptr);
-    if (windows.contains (w) && w->windowWantsToClose() == true)
-    {
-        windows.remove (windows.indexOf (w));
-    }
-}
-
-void WindowList::closeFeedbackWindow (FeedbackWindow* w)
-{
-    jassert (windows.contains (w));
     
     #if ! JUCE_MAC
-    if (windows.size == 1)
+    if (windows.size() == 1)
     {
         JUCEApplicationBase::getInstance()->systemRequestedQuit();
     }
     #endif
     
-    windows.removeObject (w);
+    if (windows.contains (w) && w->windowWantsToClose() == true)
+    {
+        windows.remove (windows.indexOf (w));
+    }
+    
+    if (w == settingsWindow && w->windowWantsToClose() == true)
+    {
+//        settingsWindow == nullptr;
+//        windows.remove (windows.indexOf (settingsWindow));
+        windows.removeObject (settingsWindow);
+    }
 }
-
-void WindowList::closeSettingsWindow

@@ -11,6 +11,7 @@
 #pragma once
 
 class WindowList;
+class SettingsWindow;
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "WindowDrawer.h"
@@ -36,11 +37,9 @@ public:
     
     void forceCloseWindows();
     void askAllWindowsToClose();
-//    void closeWindow (Component&);
-    void closeFeedbackWindow (FeedbackWindow*);
     
     OwnedArray<Component> windows;
-    ScopedPointer<Component> settingsWindow;
+    Component* settingsWindow;
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowList)
 };
