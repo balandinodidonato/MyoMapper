@@ -10,10 +10,8 @@
 
 #pragma once
 
-class WindowList;
-
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "../Application.h"
+#include "WindowList.h"
 
 //==============================================================================
 /*
@@ -55,7 +53,4 @@ private:
     TextButton startButton;
     
     ToggleButton testButton;
-    
-    
-//    Label hostAddressTitle;
 };

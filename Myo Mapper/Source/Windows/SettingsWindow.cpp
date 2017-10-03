@@ -14,9 +14,10 @@
 //==============================================================================
 SettingsWindow::SettingsWindow()
 {
-    oscSendLabel.setJustificationType (Justification::verticallyCentred);
+//    addKeyListener (MyoMapperApplication::getCommandManager().getKeyMappings());
+    
+    oscSendLabel.setJustificationType (Justification::horizontallyCentred);
     oscSendLabel.setText ("OSC Send Port", dontSendNotification);
-    oscSendLabel.attachToComponent (&oscSendSetter, false);
     addAndMakeVisible (oscSendLabel);
     
     oscSendSetter.setRange (1, 9999, 1);
@@ -27,7 +28,6 @@ SettingsWindow::SettingsWindow()
     
     oscReceiveLabel.setJustificationType (Justification::verticallyCentred);
     oscReceiveLabel.setText ("OSC Receive Port", dontSendNotification);
-    oscReceiveLabel.attachToComponent (&oscReceiveSetter, false);
     addAndMakeVisible (oscReceiveLabel);
     
     oscReceiveSetter.setRange (1, 9999, 1);
@@ -75,23 +75,49 @@ SettingsWindow::~SettingsWindow()
 
 void SettingsWindow::paint (Graphics& g)
 {
-//    auto area = getScreenBounds();
-//    auto oscArea = area.removeFromTop (getHeight() * 0.03);
+    auto area = getLocalBounds().toFloat();
+    area.removeFromTop (area.proportionOfHeight(0.044));
+    auto oscRegion = area.removeFromTop (area.proportionOfHeight (0.244))
+                     .reduced (area.proportionOfWidth (0.078), 0);
+
+    auto oscRectangleWidth = area.proportionOfWidth (0.375);
+    auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
+    auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
     
-//    g.setColour (Colours::red);
-//    g.fillRect (oscArea.removeFromLeft (getWidth() * 0.097)
-//                            .removeFromTop(getHeight() * 0.042));
+    g.setColour (Colour::fromRGB (0, 129, 213));
+    g.drawRoundedRectangle (oscSendRegion, 10, 0.5);
+    g.drawRoundedRectangle (oscReceiveRegion, 10, 0.5);
 }
 
 void SettingsWindow::resized()
 {
-    oscSendLabel.setBounds (48.5, 23, 172.9, 20.2);
-    oscSendSetter.setBounds (59.3, 49.6, 146.9, 28.7);
-    oscReceiveLabel.setBounds (258.5, 23, 192.9, 20.2);
-    oscReceiveSetter.setBounds (274.9, 49.6, 159.8, 28.7);
+    auto area = getBounds();
+    area.removeFromTop (area.proportionOfHeight(0.044));
+    auto oscRegion = area.removeFromTop (area.proportionOfHeight (0.244))
+                     .reduced (area.proportionOfWidth (0.078), 0);
     
-    myoSelectorLabel.setBounds (146.1, 96.9, 57.6, 20);
-    myoSelectorSetter.setBounds (215, 93.3, 138.9, 30);
+    auto oscRectangleWidth = area.proportionOfWidth (0.375);
+    auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
+    auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
+    
+    oscSendRegion.removeFromTop (area.proportionOfHeight (0.029));
+    oscSendLabel.setBounds (oscSendRegion.removeFromTop (area.proportionOfHeight (0.067))
+    .reduced (area.proportionOfWidth (0.029), 0));
+    
+    area.removeFromBottom (area.proportionOfHeight (0.028));
+    
+    auto buttonRegion = area.removeFromBottom (area.proportionOfHeight (0.08));
+    
+    startButton.setBounds (buttonRegion.removeFromRight (area.proportionOfWidth (0.224))
+                           .reduced (area.proportionOfWidth (0.028), 0));
+    
+    
+//    oscSendSetter.setBounds (59.3, 49.6, 146.9, 28.7);
+//    oscReceiveLabel.setBounds (258.5, 23, 192.9, 20.2);
+//    oscReceiveSetter.setBounds (274.9, 49.6, 159.8, 28.7);
+    
+//    myoSelectorLabel.setBounds (146.1, 96.9, 57.6, 20);
+//    myoSelectorSetter.setBounds (215, 93.3, 138.9, 30);
     /*
     orientationToggle.setBounds (69.7, 224.3, 71.7, 41.7);
     accelerationToggle.setBounds (153.1, 224.3, 71.7, 41.7);
@@ -99,25 +125,17 @@ void SettingsWindow::resized()
     emgToggle.setBounds (319.7, 224.3, 71.7, 41.7);
     poseToggle.setBounds (403.1, 224.3, 71.7, 41.7);
     */
-    saveButton.setBounds (17.4, 267.7, 86.8, 24);
-    openButton.setBounds (121.5, 267.7, 86.8, 24);
-    hideOnStartupButton.setBounds (240.9, 267.7, 125.8, 23.3);
-    startButton.setBounds (399.3, 267.7, 86.6, 24);
-    
-//    testButton.setBounds (0, 0, 55.8, 100);
-//    auto area = getScreenBounds();
-//    auto oscArea = area.removeFromTop (getHeight() * 0.03);
-    
-//    oscSendLabel.setBounds (oscArea.removeFromLeft (getWidth() * 0.097)
-//                            .removeFromTop(getHeight() * 0.042));
-    
-    
+//    saveButton.setBounds (17.4, 267.7, 86.8, 24);
+//    openButton.setBounds (121.5, 267.7, 86.8, 24);
+//    hideOnStartupButton.setBounds (240.9, 267.7, 125.8, 23.3);
+//    startButton.setBounds (399.3, 267.7, 86.6, 24);
 }
 
 void SettingsWindow::buttonClicked (Button* button)
 {
     if (button == &startButton)
     {
-        MyoMapperApplication::getWindowList().createNewFeedbackWindow();
+        WindowList::getWindowList().createNewFeedbackWindow();
+//        WindowList
     }
 }
