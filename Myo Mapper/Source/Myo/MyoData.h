@@ -27,7 +27,6 @@ struct MyoData
     Vector3D<float> gyroFod;
     Vector3D<float> gyroScaledFod;
     Vector3D<float> gyroScaledFodMavg;
-    Vector3D<int> gyroZeroCross;
     
     std::array<int8_t, 8> emgRaw;
     std::array<int8_t, 8> emgRawMavg;

@@ -72,7 +72,6 @@ private:
 
     ScaleValues scaleGyro;
     FirstOrderDifference gyroFod;
-    ZeroCrossing gyroZeroCross;
     FirstOrderDifference gyroScaledFod;
     MovingAverage gyroScaledFodMavg;
 

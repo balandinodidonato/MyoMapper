@@ -146,12 +146,6 @@ void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
                      (float) myoData.gyroFod.x,
                      (float) myoData.gyroFod.y,
                      (float) myoData.gyroFod.z);
-        /*
-         sender.send ("/myo" + ID + "/gyro/raw/zeroCrossingRate",
-                     (int) myoData.gyroZeroCross.x,
-                     (int) myoData.gyroZeroCross.y,
-                     (int) myoData.gyroZeroCross.z);
-         */
     }
     if (oscDataSettings.gyroScaled) {
         sender.send ("/myo" + ID + "/gyro/scaled/raw",
