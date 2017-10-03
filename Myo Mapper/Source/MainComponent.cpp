@@ -120,6 +120,10 @@ void MainComponent::timerCallback()
     orientation.setValues (myoData[id].orientationRaw);
     pose.setPoseLabel (myoData[id].pose + " - " + String (myoData[id].poseID));
 
+    myoData[id].orientationScaled = orientation.getValue();
+    myoData[id].orientationScaledFod = orientation.getFod();
+    myoData[id].orientationScaledSod = orientation.getSod();
+    
     osc.sendOSC (myoData[id], oscDataSettings);
  
     if (osc.vibrate && VibrationState)
