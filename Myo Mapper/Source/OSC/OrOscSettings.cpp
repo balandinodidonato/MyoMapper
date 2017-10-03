@@ -171,7 +171,6 @@ void OrOscSettings::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_orQuaternion] -- add your button handler code here..
         quaternionTogle = orQuaternion->getToggleState();
-        std::cout << "buttonThatWasClicked " << quaternionTogle << std::endl;
         //[/UserButtonCode_orQuaternion]
     }
     else if (buttonThatWasClicked == orRaw)
@@ -183,6 +182,7 @@ void OrOscSettings::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == orScaled)
     {
         //[UserButtonCode_orScaled] -- add your button handler code here..
+        scaledTogle = orScaled->getToggleState();
         //[/UserButtonCode_orScaled]
     }
     else if (buttonThatWasClicked == orAcceleration)
