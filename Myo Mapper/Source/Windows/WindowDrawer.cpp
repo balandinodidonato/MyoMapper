@@ -23,6 +23,7 @@ WindowDrawer::WindowDrawer (const String& title,
 :   DialogWindow (title, Colours::white, true, true),
     owner (this)
 {
+    addKeyListener (MyoMapperApplication::getCommandManager().getKeyMappings());
     setUsingNativeTitleBar (true);
     setResizable (true, true);
     setResizeLimits (minWidth, minHeight, maxWidth, maxHeight);
