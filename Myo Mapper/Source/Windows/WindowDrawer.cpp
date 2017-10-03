@@ -20,8 +20,7 @@ WindowDrawer::WindowDrawer (const String& title,
                             int initWidth, int initHeight,
                             int minWidth, int minHeight,
                             int maxWidth, int maxHeight)
-:   DialogWindow (title, Colours::white, true, true),
-    owner (this)
+:   DialogWindow (title, Colours::white, true, true)
 {
     addKeyListener (MyoMapperApplication::getCommandManager().getKeyMappings());
     setUsingNativeTitleBar (true);
@@ -38,7 +37,6 @@ WindowDrawer::~WindowDrawer()
 void WindowDrawer::closeButtonPressed()
 {
     wantsToClose = true;
-//    owner = nullptr;
     sendChangeMessage();
 }
 
