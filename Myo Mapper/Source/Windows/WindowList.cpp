@@ -11,9 +11,19 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "WindowList.h"
 
+
+//bool WindowDrawer::wantsToClose;
+
 //==============================================================================
 WindowList::WindowList()
 {
+}
+
+WindowList& WindowList::getWindowList()
+{
+    WindowList* const winList = MyoMapperApplication::getApp().windowList;
+    jassert (winList != nullptr);
+    return *winList;
 }
 
 void WindowList::createInitialWindow()
@@ -21,6 +31,27 @@ void WindowList::createInitialWindow()
     if (windows.size() == 0)
     {
         getOrCreateSettingsWindow();
+    }
+}
+
+void WindowList::getOrCreateSettingsWindow()
+{
+    if (settingsWindow != nullptr)
+        settingsWindow->toFront (true);
+    else
+    {
+        auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
+        auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
+        
+        settingsWindow = nullptr;
+        WindowDrawer* const w = new WindowDrawer ("MyoMapper - Settings",
+                                                  new SettingsWindow(),
+                                                  true,
+                                                  windowWidth * 0.4, windowHeight * 0.4,
+                                                  windowWidth * 0.3, windowHeight * 0.3,
+                                                  windowWidth, windowHeight);
+        settingsWindow = w;
+        //        w->setInitialWindowPosition();
     }
 }
 
@@ -34,43 +65,37 @@ void WindowList::createNewFeedbackWindow()
     }
     else
     {
-        WindowSetter* const w = new WindowSetter ("Myo Mapper - Visualiser",
+        auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
+        auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
+        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Visualiser",
                                                   new FeedbackWindow(),
                                                   true,
-                                                  500, 500,
-                                                  100, 100,
-                                                  800, 800);
+                                                  windowWidth * 0.5, windowHeight * 0.5,
+                                                  windowWidth * 0.4, windowHeight * 0.4,
+                                                  windowWidth, windowHeight);
+        w->addChangeListener (this);
         windows.add (w);
-        
     }
 }
 
-void WindowList::getOrCreateSettingsWindow()
-{
-    if (MyoMapperApplication::getApp().settingsWindow != nullptr)
-        MyoMapperApplication::getApp().settingsWindow->toFront (true);
-    else
-    {
-        MyoMapperApplication::getApp().settingsWindow = nullptr;
-        WindowSetter* const w = new WindowSetter ("MyoMapper - Settings",
-                                                  new SettingsWindow(),
-                                                  true,
-                                                  500, 320,
-                                                  500, 320,
-                                                  1440, 960);
-
-        MyoMapperApplication::getApp().settingsWindow = w;
-        //        w->setInitialWindowPosition();
-    }
-
-}
 
 void WindowList::forceCloseWindows()
 {
     windows.clear();
 }
 
-void WindowList::closeWindow (WindowSetter* w)
+void WindowList::changeListenerCallback (ChangeBroadcaster* source)
+{
+    WindowDrawer* w = dynamic_cast<WindowDrawer*> (source);
+ 
+    jassert (w != nullptr);
+    if (windows.contains (w) && w->windowWantsToClose() == true)
+    {
+        windows.remove (windows.indexOf (w));
+    }
+}
+
+void WindowList::closeFeedbackWindow (FeedbackWindow* w)
 {
     jassert (windows.contains (w));
     
@@ -84,15 +109,4 @@ void WindowList::closeWindow (WindowSetter* w)
     windows.removeObject (w);
 }
 
-/*
-void WindowList::closeWindow (FeedbackWindow* w)
-{
-    jassert (windows.contains (w));
-    
-//#if ! JUCE_MAC
-    
-//#endif
-    
-//    windows.removeObject (w);
-}
- */
+void WindowList::closeSettingsWindow

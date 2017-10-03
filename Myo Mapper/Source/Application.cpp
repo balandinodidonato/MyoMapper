@@ -97,10 +97,11 @@ void MyoMapperApplication::shutdown()
 
 void MyoMapperApplication::systemRequestedQuit()
 {
-//    if (mainWindow != nullptr)
+//    if (settingsWindow != nullptr || windows.isEmpty() == false)
 //    {
-//        mainWindow = nullptr;
-        //            JUCEApplicationBase::quit();
+//        settingsWindow = nullptr;
+//    WindowList.closeAllWindows();
+//                    JUCEApplicationBase::quit();
 //    }
 //    else
         JUCEApplicationBase::quit();
@@ -126,13 +127,6 @@ ApplicationProperties& MyoMapperApplication::getAppProperties()
     ApplicationProperties* const appProp = getApp().appProperties;
     jassert (appProp != nullptr);
     return *appProp;
-}
-
-WindowList& MyoMapperApplication::getWindowList()
-{
-    WindowList* const winList = getApp().windowList;
-    jassert (winList != nullptr);
-    return *winList;
 }
 
 //==============================================================================
@@ -433,7 +427,7 @@ void MyoMapperApplication::hideAllWindows()
 
 void MyoMapperApplication::closeWindow()
 {
-    // Close currently selected window
+    
 }
 
 void MyoMapperApplication::closeAllWindows()

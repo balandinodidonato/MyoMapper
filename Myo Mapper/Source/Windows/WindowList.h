@@ -10,30 +10,37 @@
 
 #pragma once
 
+class WindowList;
+
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "WindowSetter.h"
+#include "WindowDrawer.h"
 #include "FeedbackWindow.h"
 #include "SettingsWindow.h"
+#include "../Application.h"
 
 //==============================================================================
 /*
 */
-class WindowList
+class WindowList    :  public ChangeListener
 {
 public:
     WindowList();
     
+    static WindowList& getWindowList();
+    
     void createInitialWindow();
-    void createNewFeedbackWindow();
     void getOrCreateSettingsWindow();
+    void createNewFeedbackWindow();
+    
+    void changeListenerCallback (ChangeBroadcaster*);
     
     void forceCloseWindows();
     void askAllWindowsToClose();
-    void closeWindow (WindowSetter*);
-//    void closeWindow (SettingsWindow*);
-    void closeWindow (FeedbackWindow*);
+//    void closeWindow (Component&);
+    void closeFeedbackWindow (FeedbackWindow*);
     
-    OwnedArray<WindowSetter> windows;
+    OwnedArray<Component> windows;
+    ScopedPointer<Component> settingsWindow;
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowList)
 };

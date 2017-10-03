@@ -27,7 +27,6 @@ public:
     static MyoMapperApplication&        getApp();
     static ApplicationCommandManager&   getCommandManager();
     static ApplicationProperties&       getAppProperties();
-    static WindowList&                  getWindowList();
     
     //==========================================================================
     const String getApplicationName() override      { return ProjectInfo::projectName; }
@@ -77,7 +76,7 @@ public:
     void showAboutWindow();
     void showDocumentationWindow();
     void showPreferencesWindow();
-    
+//    
 //    ==========================================================================
     MyoMapperLookAndFeel lookAndFeel;         // For new UI
     
@@ -90,7 +89,6 @@ public:
     
     // General floating window builder used to create these windows
     ScopedPointer<WindowList> windowList;
-    ScopedPointer<Component> settingsWindow;
 //    ScopedPointer<Component> aboutWindow, documentationWindow;
     
     

@@ -16,17 +16,20 @@
 //==============================================================================
 /*
 */
-class WindowDrawer  : public DialogWindow
+class WindowDrawer  : public DialogWindow,
+                      public ChangeBroadcaster
 {
 public:
     WindowDrawer (const String&, Component*, bool, int, int, int, int, int, int);
     ~WindowDrawer();
     
     void closeButtonPressed() override;
+    bool windowWantsToClose();
 
+    static bool wantsToClose;
+    
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowDrawer)
     
-    ScopedPointer<Component> owner;
-    Component* contentReturn;
+    Component* owner;
 };

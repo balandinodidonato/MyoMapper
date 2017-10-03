@@ -11,6 +11,8 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "WindowDrawer.h"
 
+bool WindowDrawer::wantsToClose;
+
 //==============================================================================
 WindowDrawer::WindowDrawer (const String& title,
                             Component* content,
@@ -26,17 +28,20 @@ WindowDrawer::WindowDrawer (const String& title,
     setResizeLimits (minWidth, minHeight, maxWidth, maxHeight);
     setContentOwned (content, false);
     setVisible (true);
-    contentReturn = content;
 }
-
 
 WindowDrawer::~WindowDrawer()
 {
 }
 
-
 void WindowDrawer::closeButtonPressed()
 {
-    WindowList::getWindowList().closeWindow (*contentReturn);
-    owner = nullptr;
+    wantsToClose = true;
+//    owner = nullptr;
+    sendChangeMessage();
+}
+
+bool WindowDrawer::windowWantsToClose()
+{
+    return WindowDrawer::wantsToClose;
 }
