@@ -66,8 +66,8 @@ void OSC::setSender (String HostAddress, int Port)
 void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
 {
     String ID = String (myoData.ID);
-    
-    orOscSettings.setOsc(oscDataSettings);
+        
+    std::cout << oscDataSettings.orQuaternion << std::endl;
     
     if (oscDataSettings.orQuaternion) {
         sender.send ("/myo" + ID + "/orientation/quaternion",

@@ -198,6 +198,7 @@ void OrOscSettings::buttonClicked (Button* buttonThatWasClicked)
         //[/UserButtonCode_orVelocity]
     }
 
+    setOsc(oscDataSettings);
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
 }
