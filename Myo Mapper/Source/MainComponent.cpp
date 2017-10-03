@@ -26,24 +26,6 @@ MainComponent::MainComponent()
     osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
     osc.connectSender();
     osc.connectReceiver();
-
-    /*
-    #if JUCE_MAC
-        setMacMainMenu (this);
-    #else
-        setMenuBar (this);
-    #endif
-    
-    addKeyListener (getCommandManager().getKeyMappings());
-    
-    #if JUCE_MAC
-        setMacMainMenu (this);
-    #else
-        setMenuBar (this);
-    #endif
-    
-    getCommandManager().setFirstCommandTarget (this);
-    */
     
     startTimer(25);
     
@@ -53,17 +35,11 @@ MainComponent::MainComponent()
 
 MainComponent::~MainComponent()
 {
-    // used
 //    MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("Myo ID", selectedMyoID);
-    
-    #if ! JUCE_MAC
-        setMenuBar (nullptr);
-    #endif
 }
 
 void MainComponent::paint(juce::Graphics &g)
 {
-    
     if (settingsPannel.getOSCsettingsStatusSender())
     {
         osc.disconnectSender();
@@ -195,28 +171,6 @@ void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 		osc.setMyoIdReceiver (selectedMyoID);
 	}
 
-}
-
-void MainComponent::AboutMyoMapperDialogWindow()
-{
-    AboutWindow* aboutWindow = new AboutWindow ("About Myo Mapper",
-                                                Colours::grey,
-                                                DocumentWindow::closeButton);
-    aboutWindow->addToDesktop();
-    
-    Rectangle<int> area (0, 0, 200, 200);
-    
-    RectanglePlacement placement (RectanglePlacement::xMid
-                                  | RectanglePlacement::yMid
-                                  | RectanglePlacement::doNotResize);
-    
-    Rectangle<int> result (placement.appliedTo (area, Desktop::getInstance().getDisplays()
-                                                .getMainDisplay().userArea.reduced (20)));
-    aboutWindow->setBounds (result);
-    
-    aboutWindow->setResizable (false, false);
-    aboutWindow->setUsingNativeTitleBar (true);
-    aboutWindow->setVisible (true);
 }
 
 void MainComponent::HelpDialogWindow()

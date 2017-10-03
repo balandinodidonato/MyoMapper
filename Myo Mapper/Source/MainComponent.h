@@ -6,7 +6,6 @@
 #include "MyoManager.h"
 #include "Pose.h"
 #include "OSC.h"
-#include "AboutWindow.h"
 #include "HelpWindow.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
@@ -30,21 +29,6 @@ public:
     void disconnectMyoAndOSC();
 
     Orientation orientation;
-    
-    enum MenuIDs {
-        AboutMyoMapper = 1000,
-        Preferences,
-        OpenSettingsFromFile,
-        SaveSettingsToFile,
-        AddMyo,
-        Quit,
-        ShowOrientation,
-        ShowEMGsMAV,
-        ShowPose,
-        onlineDocumentation
-    };
-    
-//    ApplicationCommandTarget* getNextCommandTarget() override;
     
     Settings settingsPannel;
     void setPanelVisibility (Component &component);
