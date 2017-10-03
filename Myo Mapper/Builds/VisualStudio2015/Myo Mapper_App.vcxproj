@@ -164,7 +164,6 @@
     <ClCompile Include="..\..\Source\Windows\FeedbackWindow.cpp"/>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp"/>
     <ClCompile Include="..\..\Source\HelpWindow.cpp"/>
-    <ClCompile Include="..\..\Source\AboutWindow.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\Application.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
@@ -1375,7 +1374,6 @@
     <ClInclude Include="..\..\Source\Windows\FeedbackWindow.h"/>
     <ClInclude Include="..\..\Source\AboutWindowContent.h"/>
     <ClInclude Include="..\..\Source\HelpWindow.h"/>
-    <ClInclude Include="..\..\Source\AboutWindow.h"/>
     <ClInclude Include="..\..\Source\Application.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\Settings.h"/>

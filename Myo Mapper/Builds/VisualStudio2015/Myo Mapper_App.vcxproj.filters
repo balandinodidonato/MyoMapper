@@ -292,9 +292,6 @@
     <ClCompile Include="..\..\Source\HelpWindow.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\AboutWindow.cpp">
-      <Filter>Myo Mapper\Source\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>Myo Mapper\Source</Filter>
     </ClCompile>
@@ -1654,9 +1651,6 @@
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\HelpWindow.h">
-      <Filter>Myo Mapper\Source\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\AboutWindow.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Application.h">

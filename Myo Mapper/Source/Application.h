@@ -76,9 +76,9 @@ public:
     void showAboutWindow();
     void showDocumentationWindow();
     void showPreferencesWindow();
-//    
+    
 //    ==========================================================================
-    MyoMapperLookAndFeel lookAndFeel;         // For new UI
+    MyoMapperLookAndFeel lookAndFeel;
     
     struct MainMenuBarModel;
     ScopedPointer<MainMenuBarModel> menuModel;
@@ -87,9 +87,9 @@ public:
     ScopedPointer<ApplicationCommandManager> commandManager;
     ScopedPointer<ApplicationProperties> appProperties;
     
-    // General floating window builder used to create these windows
+    // WindowDrawer used to create and manage these windows
     ScopedPointer<WindowList> windowList;
-//    ScopedPointer<Component> aboutWindow, documentationWindow;
+    ScopedPointer<Component> aboutWindow, documentationWindow;
     
     
 private:

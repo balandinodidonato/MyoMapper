@@ -69,8 +69,6 @@
               file="Source/AboutWindowContent.h"/>
         <FILE id="jmv4gh" name="HelpWindow.cpp" compile="1" resource="0" file="Source/HelpWindow.cpp"/>
         <FILE id="DKaHIH" name="HelpWindow.h" compile="0" resource="0" file="Source/HelpWindow.h"/>
-        <FILE id="Oedd8x" name="AboutWindow.cpp" compile="1" resource="0" file="Source/AboutWindow.cpp"/>
-        <FILE id="hn6pYz" name="AboutWindow.h" compile="0" resource="0" file="Source/AboutWindow.h"/>
       </GROUP>
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="DYDlAi" name="Application.cpp" compile="1" resource="0" file="Source/Application.cpp"/>

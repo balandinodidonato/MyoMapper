@@ -11,9 +11,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "WindowList.h"
 
-
-//bool WindowDrawer::wantsToClose;
-
 //==============================================================================
 WindowList::WindowList()
 {
@@ -52,7 +49,6 @@ void WindowList::getOrCreateSettingsWindow()
         settingsWindow = w;
         w->addChangeListener (this);
         windows.add (settingsWindow);
-        //        w->setInitialWindowPosition();
     }
 }
 
@@ -104,8 +100,6 @@ void WindowList::changeListenerCallback (ChangeBroadcaster* source)
     
     if (w == settingsWindow && w->windowWantsToClose() == true)
     {
-//        settingsWindow == nullptr;
-//        windows.remove (windows.indexOf (settingsWindow));
         windows.removeObject (settingsWindow);
         settingsWindow = nullptr;
     }
