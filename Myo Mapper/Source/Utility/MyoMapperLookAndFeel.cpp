@@ -69,7 +69,7 @@ void MyoMapperLookAndFeel::drawLabel (Graphics& g, Label& label)
     g.drawRect (label.getLocalBounds());
 }
 
-void MyoMapperLookAndFeel::drawToggleButton(juce::Graphics &g, juce::ToggleButton &button, bool isMouseOverButton, bool isButtonDown)
+void MyoMapperLookAndFeel::drawToggleButton (juce::Graphics &g, juce::ToggleButton &button, bool isMouseOverButton, bool isButtonDown)
 {
     const auto bounds = button.getLocalBounds().toFloat();
     
@@ -91,6 +91,7 @@ void MyoMapperLookAndFeel::drawToggleButton(juce::Graphics &g, juce::ToggleButto
     g.fillPath (toggleBack);
 }
 
+/*
 void MyoMapperLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, int height, float sliderPos,
                                              const float rotaryStartAngle, const float rotaryEndAngle, Slider& slider)
 {
@@ -157,7 +158,8 @@ void MyoMapperLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int widt
     g.setGradientFill (fillColour);
     g.strokePath (fillArc, PathStrokeType (lineWidth, PathStrokeType::curved, PathStrokeType::rounded));
 }
-
+*/
+ 
 void MyoMapperLookAndFeel::setupColours()
 {
     
