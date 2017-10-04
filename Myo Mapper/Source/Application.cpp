@@ -426,7 +426,17 @@ void MyoMapperApplication::hideAllWindows()
 
 void MyoMapperApplication::closeWindow()
 {
-    
+    for (int i = 0; i <= windowList->windows.size(); ++i)
+    {
+        Component* currentWindow = windowList->windows.operator[](i);
+        
+        if (currentWindow->hasKeyboardFocus(true) == true)
+        {
+            WindowDrawer* w = dynamic_cast<WindowDrawer*> (currentWindow);
+            windowList->closeWindow (w);
+
+        }
+    }
 }
 
 void MyoMapperApplication::closeAllWindows()
