@@ -21,7 +21,6 @@ class WindowDrawer  : public DialogWindow,
 {
 public:
     WindowDrawer (const String&, Component*, bool, int, int, int, int, int, int);
-    ~WindowDrawer();
     
     void closeButtonPressed() override;
     bool windowWantsToClose();

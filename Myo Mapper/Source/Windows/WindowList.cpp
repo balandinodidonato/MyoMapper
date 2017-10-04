@@ -83,15 +83,20 @@ void WindowList::forceCloseWindows()
 
 void WindowList::changeListenerCallback (ChangeBroadcaster* source)
 {
+    closeWindow (source);
+}
+
+void WindowList::closeWindow (ChangeBroadcaster* source)
+{
     WindowDrawer* w = dynamic_cast<WindowDrawer*> (source);
     jassert (w != nullptr);
     
-    #if ! JUCE_MAC
+#if ! JUCE_MAC
     if (windows.size() == 1)
     {
         JUCEApplicationBase::getInstance()->systemRequestedQuit();
     }
-    #endif
+#endif
     
     if (windows.contains (w) && w->windowWantsToClose() == true)
     {

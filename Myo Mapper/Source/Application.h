@@ -89,7 +89,7 @@ public:
     
     // WindowDrawer used to create and manage these windows
     ScopedPointer<WindowList> windowList;
-    ScopedPointer<Component> aboutWindow, documentationWindow;
+//    ScopedPointer<Component> aboutWindow, documentationWindow;
     
     
 private:

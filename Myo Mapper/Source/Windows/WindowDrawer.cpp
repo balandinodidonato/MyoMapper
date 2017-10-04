@@ -30,10 +30,6 @@ WindowDrawer::WindowDrawer (const String& title,
     setVisible (true);
 }
 
-WindowDrawer::~WindowDrawer()
-{
-}
-
 void WindowDrawer::closeButtonPressed()
 {
     wantsToClose = true;

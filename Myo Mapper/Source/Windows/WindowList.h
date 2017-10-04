@@ -34,6 +34,7 @@ public:
     void createNewFeedbackWindow();
     
     void changeListenerCallback (ChangeBroadcaster*);
+    void closeWindow (ChangeBroadcaster*);
     
     void forceCloseWindows();
     void askAllWindowsToClose();
