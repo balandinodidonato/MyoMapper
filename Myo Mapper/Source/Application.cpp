@@ -69,6 +69,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     triggerAsyncUpdate();
     
     windowList = new WindowList();
+    windowList->settingsWindow = nullptr;
     windowList->getOrCreateSettingsWindow();
 }
 
@@ -86,6 +87,7 @@ void MyoMapperApplication::shutdown()
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
     #endif
+    windowList->settingsWindow = nullptr;
     menuModel = nullptr;
     commandManager = nullptr;
     appProperties = nullptr;
