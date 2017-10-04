@@ -26,7 +26,7 @@ SettingsWindow::SettingsWindow()
     oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
     addAndMakeVisible (oscSendSetter);
     
-    oscReceiveLabel.setJustificationType (Justification::verticallyCentred);
+    oscReceiveLabel.setJustificationType (Justification::horizontallyCentred);
     oscReceiveLabel.setText ("OSC Receive Port", dontSendNotification);
     addAndMakeVisible (oscReceiveLabel);
     
@@ -36,6 +36,7 @@ SettingsWindow::SettingsWindow()
     oscReceiveSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
     addAndMakeVisible (oscReceiveSetter);
     
+    myoSelectorLabel.setJustificationType (Justification::left);
     myoSelectorLabel.setText ("Myo:", dontSendNotification);
     addAndMakeVisible (myoSelectorLabel);
     
@@ -76,55 +77,87 @@ SettingsWindow::~SettingsWindow()
 void SettingsWindow::paint (Graphics& g)
 {
     auto area = getLocalBounds().toFloat();
-    area.removeFromTop (area.proportionOfHeight(0.044));
-    auto oscRegion = area.removeFromTop (area.proportionOfHeight (0.244))
-                     .reduced (area.proportionOfWidth (0.078), 0);
+    auto windowSize = area;
+    area.removeFromTop (windowSize.proportionOfHeight(0.044));
+    auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.244))
+                     .reduced (windowSize.proportionOfWidth (0.078), 0);
 
-    auto oscRectangleWidth = area.proportionOfWidth (0.375);
+    auto oscRectangleWidth = windowSize.proportionOfWidth (0.375);
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
+    area.removeFromTop (windowSize.proportionOfHeight (0.022));
+    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.10))
+    .reduced (windowSize.proportionOfWidth (0.292), 0);
+    area.removeFromTop (windowSize.proportionOfHeight (0.045));
+    auto toggleRegion = area.removeFromTop (windowSize.proportionOfHeight (0.385))
+    .reduced (windowSize.proportionOfWidth (0.1105), 0);
     
     g.setColour (Colour::fromRGB (0, 129, 213));
     g.drawRoundedRectangle (oscSendRegion, 10, 0.5);
     g.drawRoundedRectangle (oscReceiveRegion, 10, 0.5);
+    
+    g.setColour (Colours::pink);
+    g.fillRect (toggleRegion);
 }
 
 void SettingsWindow::resized()
 {
     auto area = getBounds();
-    area.removeFromTop (area.proportionOfHeight(0.044));
-    auto oscRegion = area.removeFromTop (area.proportionOfHeight (0.244))
-                     .reduced (area.proportionOfWidth (0.078), 0);
+    auto windowSize = area;
+    area.removeFromTop (windowSize.proportionOfHeight (0.044));
+    auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.244))
+                     .reduced (windowSize.proportionOfWidth (0.078), 0);
     
-    auto oscRectangleWidth = area.proportionOfWidth (0.375);
+    auto oscRectangleWidth = windowSize.proportionOfWidth (0.375);
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
+    area.removeFromTop (windowSize.proportionOfHeight (0.022));
+    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.10))
+                            .reduced (windowSize.proportionOfWidth (0.292), 0);
+    area.removeFromTop (windowSize.proportionOfHeight (0.045));
+    auto toggleRegion = area.removeFromTop (windowSize.proportionOfHeight (0.385))
+                        .reduced (windowSize.proportionOfWidth (0.1105), 0);
+    area.removeFromTop (windowSize.proportionOfHeight (0.051));
+    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.08))
+                        .reduced (windowSize.proportionOfWidth (0.0315), 0);
     
-    oscSendRegion.removeFromTop (area.proportionOfHeight (0.029));
-    oscSendLabel.setBounds (oscSendRegion.removeFromTop (area.proportionOfHeight (0.067))
-    .reduced (area.proportionOfWidth (0.029), 0));
+    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.029));
+    oscSendLabel.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.067))
+                            .reduced (windowSize.proportionOfWidth (0.029), 0));
+    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.022));
+    oscSendSetter.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.096))
+                             .reduced (windowSize.proportionOfWidth (0.041), 0));
     
-    area.removeFromBottom (area.proportionOfHeight (0.028));
+    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.029));
+    oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.067))
+                               .reduced (windowSize.proportionOfWidth (0.029), 0));
+    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.022));
+    oscReceiveSetter.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.096))
+                             .reduced (windowSize.proportionOfWidth (0.041), 0));
     
-    auto buttonRegion = area.removeFromBottom (area.proportionOfHeight (0.08));
+    myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.108)));
+    myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.029));
+    myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.278)));
     
-    startButton.setBounds (buttonRegion.removeFromRight (area.proportionOfWidth (0.224))
-                           .reduced (area.proportionOfWidth (0.028), 0));
+    // Toggle Code goes here
     
+    saveButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
+    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.035));
+    openButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
+    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
+    hideOnStartupButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.252)));
+    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
+    startButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
     
-//    oscSendSetter.setBounds (59.3, 49.6, 146.9, 28.7);
-//    oscReceiveLabel.setBounds (258.5, 23, 192.9, 20.2);
-//    oscReceiveSetter.setBounds (274.9, 49.6, 159.8, 28.7);
+//    startButton.setBounds (buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.224))
+//                           .reduced (windowSize.proportionOfWidth (0.028), 0));
     
-//    myoSelectorLabel.setBounds (146.1, 96.9, 57.6, 20);
-//    myoSelectorSetter.setBounds (215, 93.3, 138.9, 30);
-    /*
-    orientationToggle.setBounds (69.7, 224.3, 71.7, 41.7);
-    accelerationToggle.setBounds (153.1, 224.3, 71.7, 41.7);
-    gyroToggle.setBounds (236.4, 224.3, 71.7, 41.7);
-    emgToggle.setBounds (319.7, 224.3, 71.7, 41.7);
-    poseToggle.setBounds (403.1, 224.3, 71.7, 41.7);
-    */
+//    orientationToggle.setBounds (69.7, 224.3, 71.7, 41.7);
+//    accelerationToggle.setBounds (153.1, 224.3, 71.7, 41.7);
+//    gyroToggle.setBounds (236.4, 224.3, 71.7, 41.7);
+//    emgToggle.setBounds (319.7, 224.3, 71.7, 41.7);
+//    poseToggle.setBounds (403.1, 224.3, 71.7, 41.7);
+    
 //    saveButton.setBounds (17.4, 267.7, 86.8, 24);
 //    openButton.setBounds (121.5, 267.7, 86.8, 24);
 //    hideOnStartupButton.setBounds (240.9, 267.7, 125.8, 23.3);
