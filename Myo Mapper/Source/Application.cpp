@@ -408,6 +408,7 @@ void MyoMapperApplication::enableFullscreen()
 
 void MyoMapperApplication::showSettingsWindow()
 {
+    
     windowList->getOrCreateSettingsWindow();
 }
 
@@ -428,15 +429,13 @@ void MyoMapperApplication::hideAllWindows()
 
 void MyoMapperApplication::closeWindow()
 {
-    for (int i = 0; i <= windowList->windows.size(); ++i)
+    for (int i = 0; i < windowList->windows.size(); ++i)
     {
         Component* currentWindow = windowList->windows.operator[](i);
-        
-        if (currentWindow->hasKeyboardFocus(true) == true)
+        if (currentWindow->hasKeyboardFocus (true) == true)
         {
             WindowDrawer* w = dynamic_cast<WindowDrawer*> (currentWindow);
-            windowList->closeWindow (w);
-
+            w->closeButtonPressed();
         }
     }
 }
