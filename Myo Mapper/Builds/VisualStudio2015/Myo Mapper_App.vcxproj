@@ -1806,8 +1806,8 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Source\Utility\Roboto-Light.ttf"/>
     <None Include="..\..\Source\Utility\Roboto-Medium.ttf"/>
+    <None Include="..\..\Source\Utility\Roboto-Thin.ttf"/>
     <None Include="..\..\Resources\icon.png"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\pnglib\libpng_readme.txt"/>

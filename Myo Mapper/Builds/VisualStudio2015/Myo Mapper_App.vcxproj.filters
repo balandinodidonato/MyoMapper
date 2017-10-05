@@ -2945,10 +2945,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Source\Utility\Roboto-Light.ttf">
+    <None Include="..\..\Source\Utility\Roboto-Medium.ttf">
       <Filter>Myo Mapper\Utility</Filter>
     </None>
-    <None Include="..\..\Source\Utility\Roboto-Medium.ttf">
+    <None Include="..\..\Source\Utility\Roboto-Thin.ttf">
       <Filter>Myo Mapper\Utility</Filter>
     </None>
     <None Include="..\..\Resources\icon.png">

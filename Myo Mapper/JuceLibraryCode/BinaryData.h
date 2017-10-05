@@ -8,11 +8,11 @@
 
 namespace BinaryData
 {
-    extern const char*   RobotoLight_ttf;
-    const int            RobotoLight_ttfSize = 170420;
-
     extern const char*   RobotoMedium_ttf;
     const int            RobotoMedium_ttfSize = 172064;
+
+    extern const char*   RobotoThin_ttf;
+    const int            RobotoThin_ttfSize = 171904;
 
     extern const char*   icon_png;
     const int            icon_pngSize = 67487;
