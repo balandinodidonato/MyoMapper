@@ -14,7 +14,7 @@
 //==============================================================================
 MyoMapperLookAndFeel::MyoMapperLookAndFeel()
 {
-    Font font = getFont ("light");
+    Font font = getFont ("thin");
     auto fontName = font.getTypefaceName();
     setDefaultSansSerifTypefaceName (fontName);
     setupColours();
@@ -26,10 +26,10 @@ MyoMapperLookAndFeel::~MyoMapperLookAndFeel()
 
 Font MyoMapperLookAndFeel::getFont (String fontWeight)
 {
-    if (fontWeight == "light")
+    if (fontWeight == "thin")
     {
-        return Font (Typeface::createSystemTypefaceFor (BinaryData::RobotoLight_ttf,
-                                                        BinaryData::RobotoLight_ttfSize));
+        return Font (Typeface::createSystemTypefaceFor (BinaryData::RobotoThin_ttf,
+                                                        BinaryData::RobotoThin_ttfSize));
         
     }
     else if (fontWeight == "medium")
