@@ -48,13 +48,13 @@ void WindowList::getOrCreateSettingsWindow()
                                                   windowWidth, windowHeight);
         settingsWindow = w;
         w->addChangeListener (this);
-        windows.add (settingsWindow);
+        windows.set (0, w);
     }
 }
 
 void WindowList::createNewFeedbackWindow()
 {
-    if (windows.size() >= 4)
+    if ((windows.contains (settingsWindow) == true && windows.size() >= 5) || (windows.contains (settingsWindow) == false && windows.size() >= 4))
     {
         AlertWindow::showMessageBoxAsync (AlertWindow::AlertIconType::QuestionIcon,
                                           "Myo Mapper",
