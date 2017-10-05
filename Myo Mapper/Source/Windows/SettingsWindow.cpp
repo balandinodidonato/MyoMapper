@@ -14,8 +14,6 @@
 //==============================================================================
 SettingsWindow::SettingsWindow()
 {
-//    addKeyListener (MyoMapperApplication::getCommandManager().getKeyMappings());
-    
     oscSendLabel.setJustificationType (Justification::horizontallyCentred);
     oscSendLabel.setText ("OSC Send Port", dontSendNotification);
     addAndMakeVisible (oscSendLabel);
@@ -149,19 +147,11 @@ void SettingsWindow::resized()
     buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
     startButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
     
-//    startButton.setBounds (buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.224))
-//                           .reduced (windowSize.proportionOfWidth (0.028), 0));
-    
 //    orientationToggle.setBounds (69.7, 224.3, 71.7, 41.7);
 //    accelerationToggle.setBounds (153.1, 224.3, 71.7, 41.7);
 //    gyroToggle.setBounds (236.4, 224.3, 71.7, 41.7);
 //    emgToggle.setBounds (319.7, 224.3, 71.7, 41.7);
 //    poseToggle.setBounds (403.1, 224.3, 71.7, 41.7);
-    
-//    saveButton.setBounds (17.4, 267.7, 86.8, 24);
-//    openButton.setBounds (121.5, 267.7, 86.8, 24);
-//    hideOnStartupButton.setBounds (240.9, 267.7, 125.8, 23.3);
-//    startButton.setBounds (399.3, 267.7, 86.6, 24);
 }
 
 void SettingsWindow::buttonClicked (Button* button)
