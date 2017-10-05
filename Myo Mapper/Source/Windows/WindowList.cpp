@@ -52,13 +52,13 @@ void WindowList::getOrCreateSettingsWindow()
     }
 }
 
-void WindowList::createNewFeedbackWindow()
+void WindowList::createNewVisualsWindow()
 {
     if ((windows.contains (settingsWindow) == true && windows.size() >= 5) || (windows.contains (settingsWindow) == false && windows.size() >= 4))
     {
         AlertWindow::showMessageBoxAsync (AlertWindow::AlertIconType::QuestionIcon,
                                           "Myo Mapper",
-                                          "Too many visual feedback windows");
+                                          "Visuals window already open");
     }
     else
     {

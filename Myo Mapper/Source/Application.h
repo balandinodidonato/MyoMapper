@@ -68,7 +68,7 @@ public:
     void windowZoomDecrease();
     void enableFullscreen();
     void showSettingsWindow();
-    void newDisplayWindow();
+    void newVisualsWindow();
     void moveWindowsToFront();
     void hideAllWindows();
     void closeWindow();

@@ -158,7 +158,7 @@ void SettingsWindow::buttonClicked (Button* button)
 {
     if (button == &startButton)
     {
-        WindowList::getWindowList().createNewFeedbackWindow();
+        WindowList::getWindowList().createNewVisualsWindow();
 //        WindowList
     }
 }

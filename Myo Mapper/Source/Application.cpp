@@ -186,7 +186,7 @@ void MyoMapperApplication::createViewMenu (PopupMenu& menu)
 void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::newDisplayWindow);
+    menu.addCommandItem (&getCommandManager(), CommandIDs::newVisualsWindow);
     menu.addSeparator();
     menu.addCommandItem (&getCommandManager(), CommandIDs::moveWindowsToFront);
     menu.addCommandItem (&getCommandManager(), CommandIDs::hideAllWindows);
@@ -232,7 +232,7 @@ void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
         CommandIDs::zoomDecrease,
         CommandIDs::enableFullscreen,
         CommandIDs::showSettingsWindow,
-        CommandIDs::newDisplayWindow,
+        CommandIDs::newVisualsWindow,
         CommandIDs::moveWindowsToFront,
         CommandIDs::hideAllWindows,
         CommandIDs::closeWindow,
@@ -293,9 +293,9 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             result.addDefaultKeypress ('s', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
-        case CommandIDs::newDisplayWindow:
-            result.setInfo ("New Visualiser Window", "Create a new display window", CommandCategories::windows, 0);
-            result.addDefaultKeypress ('n', ModifierKeys::commandModifier);
+        case CommandIDs::newVisualsWindow:
+            result.setInfo ("Show Visualiser", "Create a new display window", CommandCategories::windows, 0);
+            result.addDefaultKeypress ('v', ModifierKeys::commandModifier);
             break;
             
         case CommandIDs::moveWindowsToFront:
@@ -346,7 +346,7 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
         case CommandIDs::zoomDecrease:                  windowZoomDecrease(); break;
         case CommandIDs::enableFullscreen:              enableFullscreen(); break;
         case CommandIDs::showSettingsWindow:            showSettingsWindow(); break;
-        case CommandIDs::newDisplayWindow:              newDisplayWindow(); break;
+        case CommandIDs::newVisualsWindow:              newVisualsWindow(); break;
         case CommandIDs::moveWindowsToFront:            moveWindowsToFront(); break;
         case CommandIDs::hideAllWindows:                hideAllWindows(); break;
         case CommandIDs::closeWindow:                   closeWindow(); break;
@@ -412,9 +412,9 @@ void MyoMapperApplication::showSettingsWindow()
     windowList->getOrCreateSettingsWindow();
 }
 
-void MyoMapperApplication::newDisplayWindow()
+void MyoMapperApplication::newVisualsWindow()
 {
-    windowList->createNewFeedbackWindow();
+    windowList->createNewVisualsWindow();
 }
 
 void MyoMapperApplication::moveWindowsToFront()

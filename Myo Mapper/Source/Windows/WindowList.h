@@ -31,7 +31,7 @@ public:
     
     void createInitialWindow();
     void getOrCreateSettingsWindow();
-    void createNewFeedbackWindow();
+    void createNewVisualsWindow();
     
     void changeListenerCallback (ChangeBroadcaster*);
     void closeWindow (ChangeBroadcaster*);
