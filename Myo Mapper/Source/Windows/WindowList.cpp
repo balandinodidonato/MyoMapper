@@ -52,26 +52,31 @@ void WindowList::getOrCreateSettingsWindow()
     }
 }
 
-void WindowList::createNewVisualsWindow()
+void WindowList::getOrCreateVisualsWindow()
 {
-    if ((windows.contains (settingsWindow) == true && windows.size() >= 5) || (windows.contains (settingsWindow) == false && windows.size() >= 4))
+    if (visualsWindow != nullptr)
+        visualsWindow->toFront (true);
+    /*
+     else if ((windows.contains (settingsWindow) == true && windows.size() >= 2) || (windows.contains (settingsWindow) == false && windows.size() >= 1))
     {
         AlertWindow::showMessageBoxAsync (AlertWindow::AlertIconType::QuestionIcon,
                                           "Myo Mapper",
                                           "Visuals window already open");
     }
+     */
     else
     {
         auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Visualiser",
-                                                  new FeedbackWindow(),
-                                                  true,
+                                                  new VisualsWindow(),
+                                                  false,
                                                   windowWidth * 0.5, windowHeight * 0.5,
                                                   windowWidth * 0.4, windowHeight * 0.4,
                                                   windowWidth, windowHeight);
+        visualsWindow = w;
         w->addChangeListener (this);
-        windows.add (w);
+        windows.set (1, w);
     }
 }
 
@@ -98,9 +103,10 @@ void WindowList::closeWindow (ChangeBroadcaster* source)
     }
 #endif
     
-    if (windows.contains (w) && w->windowWantsToClose() == true)
+    if (w == visualsWindow && w->windowWantsToClose() == true)
     {
         windows.remove (windows.indexOf (w));
+        visualsWindow = nullptr;
     }
     
     if (w == settingsWindow && w->windowWantsToClose() == true)

@@ -15,7 +15,7 @@ class SettingsWindow;
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "WindowDrawer.h"
-#include "FeedbackWindow.h"
+#include "VisualsWindow.h"
 #include "SettingsWindow.h"
 #include "../Application.h"
 
@@ -31,7 +31,7 @@ public:
     
     void createInitialWindow();
     void getOrCreateSettingsWindow();
-    void createNewVisualsWindow();
+    void getOrCreateVisualsWindow();
     
     void changeListenerCallback (ChangeBroadcaster*);
     void closeWindow (ChangeBroadcaster*);
@@ -41,6 +41,7 @@ public:
     
     OwnedArray<Component> windows;
     Component* settingsWindow;
+    Component* visualsWindow;
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowList)
 };

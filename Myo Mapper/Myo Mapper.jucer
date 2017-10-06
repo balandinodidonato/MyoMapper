@@ -58,10 +58,9 @@
               file="Source/Windows/SettingsWindow.cpp"/>
         <FILE id="JcIkoU" name="SettingsWindow.h" compile="0" resource="0"
               file="Source/Windows/SettingsWindow.h"/>
-        <FILE id="wxMnHw" name="FeedbackWindow.cpp" compile="1" resource="0"
-              file="Source/Windows/FeedbackWindow.cpp"/>
-        <FILE id="PjttkR" name="FeedbackWindow.h" compile="0" resource="0"
-              file="Source/Windows/FeedbackWindow.h"/>
+        <FILE id="wxMnHw" name="VisualsWindow.cpp" compile="1" resource="0"
+              file="Source/Windows/VisualsWindow.cpp"/>
+        <FILE id="PjttkR" name="VisualsWindow.h" compile="0" resource="0" file="Source/Windows/VisualsWindow.h"/>
         <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
               file="Source/AboutWindowContent.cpp"/>
         <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"

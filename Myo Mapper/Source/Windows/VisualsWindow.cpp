@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    FeedbackWindow.cpp
+    VisualsWindow.cpp
     Created: 23 Sep 2017 6:36:45pm
     Author:  Jefferson Bledsoe
 
@@ -9,20 +9,24 @@
 */
 
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "FeedbackWindow.h"
+#include "VisualsWindow.h"
 
 //==============================================================================
-FeedbackWindow::FeedbackWindow()
+VisualsWindow::VisualsWindow()
 {
     
 }
 
-FeedbackWindow::~FeedbackWindow()
+VisualsWindow::~VisualsWindow()
 {
 }
 
-void FeedbackWindow::paint (Graphics& g)
+void VisualsWindow::paint (Graphics& g)
 {
+    auto area = getBounds();
+    auto windowSize = area;
+    area.removeFromTop (windowSize.proportionOfHeight (0.01));
+    
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
 
     g.setColour (Colours::grey);
@@ -30,11 +34,11 @@ void FeedbackWindow::paint (Graphics& g)
 
     g.setColour (Colours::white);
     g.setFont (14.0f);
-    g.drawText ("FeedbackWindow", getLocalBounds(),
+    g.drawText ("VisualsWindow", getLocalBounds(),
                 Justification::centred, true);   // draw some placeholder text
 }
 
-void FeedbackWindow::resized()
+void VisualsWindow::resized()
 {
     
 }

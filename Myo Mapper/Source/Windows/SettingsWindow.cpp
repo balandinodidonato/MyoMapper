@@ -105,7 +105,6 @@ void SettingsWindow::resized()
     area.removeFromTop (windowSize.proportionOfHeight (0.044));
     auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.244))
                      .reduced (windowSize.proportionOfWidth (0.078), 0);
-    
     auto oscRectangleWidth = windowSize.proportionOfWidth (0.375);
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
@@ -119,6 +118,7 @@ void SettingsWindow::resized()
     auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.08))
                         .reduced (windowSize.proportionOfWidth (0.0315), 0);
     
+    // Set send region bounds
     oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.029));
     oscSendLabel.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.067))
                             .reduced (windowSize.proportionOfWidth (0.029), 0));
@@ -126,6 +126,7 @@ void SettingsWindow::resized()
     oscSendSetter.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.096))
                              .reduced (windowSize.proportionOfWidth (0.041), 0));
     
+    // Set receive region bounds
     oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.029));
     oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.067))
                                .reduced (windowSize.proportionOfWidth (0.029), 0));
@@ -133,12 +134,12 @@ void SettingsWindow::resized()
     oscReceiveSetter.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.096))
                              .reduced (windowSize.proportionOfWidth (0.041), 0));
     
+    // Set myo selector region bounds
     myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.108)));
     myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.029));
     myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.278)));
     
-    // Toggle Code goes here
-    
+    // Set buttons region bounds
     saveButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
     buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.035));
     openButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
@@ -146,19 +147,13 @@ void SettingsWindow::resized()
     hideOnStartupButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.252)));
     buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
     startButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
-    
-//    orientationToggle.setBounds (69.7, 224.3, 71.7, 41.7);
-//    accelerationToggle.setBounds (153.1, 224.3, 71.7, 41.7);
-//    gyroToggle.setBounds (236.4, 224.3, 71.7, 41.7);
-//    emgToggle.setBounds (319.7, 224.3, 71.7, 41.7);
-//    poseToggle.setBounds (403.1, 224.3, 71.7, 41.7);
 }
 
 void SettingsWindow::buttonClicked (Button* button)
 {
     if (button == &startButton)
     {
-        WindowList::getWindowList().createNewVisualsWindow();
-//        WindowList
+        WindowList::getWindowList().getOrCreateVisualsWindow();
+//        Close the settings window
     }
 }

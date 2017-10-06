@@ -283,7 +283,7 @@
     <ClCompile Include="..\..\Source\Windows\SettingsWindow.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\FeedbackWindow.cpp">
+    <ClCompile Include="..\..\Source\Windows\VisualsWindow.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp">
@@ -1644,7 +1644,7 @@
     <ClInclude Include="..\..\Source\Windows\SettingsWindow.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\FeedbackWindow.h">
+    <ClInclude Include="..\..\Source\Windows\VisualsWindow.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AboutWindowContent.h">
