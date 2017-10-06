@@ -16,7 +16,7 @@ bool WindowDrawer::wantsToClose;
 //==============================================================================
 WindowDrawer::WindowDrawer (const String& title,
                             Component* content,
-                            bool shouldBeResizeable,
+                            bool setFixedAspectRatio,
                             int initWidth, int initHeight,
                             int minWidth, int minHeight,
                             int maxWidth, int maxHeight)
@@ -24,7 +24,19 @@ WindowDrawer::WindowDrawer (const String& title,
 {
     setUsingNativeTitleBar (true);
     setResizable (true, true);
-    setResizeLimits (minWidth, minHeight, maxWidth, maxHeight);
+    if (setFixedAspectRatio == true)
+    {
+        auto boundsConstrainer = new (ComponentBoundsConstrainer);
+        boundsConstrainer->setFixedAspectRatio (1.636);
+        boundsConstrainer->setMinimumSize (minWidth, minHeight);
+        boundsConstrainer->setMaximumSize (maxWidth, maxHeight);
+        boundsConstrainer->setMinimumOnscreenAmounts (maxHeight, maxWidth, maxHeight, maxWidth);
+        setConstrainer (boundsConstrainer);
+    }
+    else
+    {
+        setResizeLimits (minWidth, minHeight, maxWidth, maxHeight);
+    }
     setContentOwned (content, false);
     setVisible (true);
     addKeyListener (MyoMapperApplication::getCommandManager().getKeyMappings());
