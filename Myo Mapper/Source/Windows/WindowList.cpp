@@ -80,6 +80,26 @@ void WindowList::getOrCreateVisualsWindow()
     }
 }
 
+void WindowList::getOrCreateDataSelectorWindow()
+{
+    if (dataSelectorWindow != nullptr)
+        dataSelectorWindow->toFront (true);
+    else
+    {
+        auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
+        auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
+        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Visualiser",
+                                                  new DataSelectorWindow(),
+                                                  false,
+                                                  windowWidth * 0.5, windowHeight * 0.5,
+                                                  windowWidth * 0.4, windowHeight * 0.4,
+                                                  windowWidth, windowHeight);
+        dataSelectorWindow = w;
+        w->addChangeListener (this);
+        windows.set (1, w);
+    }
+}
+
 
 void WindowList::forceCloseWindows()
 {

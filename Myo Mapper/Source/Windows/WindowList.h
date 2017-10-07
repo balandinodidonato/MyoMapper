@@ -17,6 +17,7 @@ class SettingsWindow;
 #include "WindowDrawer.h"
 #include "VisualsWindow.h"
 #include "SettingsWindow.h"
+#include "DataSelectorWindow.h"
 #include "../Application.h"
 
 //==============================================================================
@@ -32,6 +33,7 @@ public:
     void createInitialWindow();
     void getOrCreateSettingsWindow();
     void getOrCreateVisualsWindow();
+    void getOrCreateDataSelectorWindow();
     
     void changeListenerCallback (ChangeBroadcaster*);
     void closeWindow (ChangeBroadcaster*);
@@ -42,6 +44,7 @@ public:
     OwnedArray<Component> windows;
     Component* settingsWindow;
     Component* visualsWindow;
+    Component* dataSelectorWindow;
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowList)
 };

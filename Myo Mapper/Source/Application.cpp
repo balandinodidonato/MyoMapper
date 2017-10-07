@@ -188,6 +188,7 @@ void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showVisualsWindow);
+    menu.addCommandItem (&getCommandManager(), CommandIDs::showDataWindow);
     menu.addSeparator();
     menu.addCommandItem (&getCommandManager(), CommandIDs::moveWindowsToFront);
     menu.addCommandItem (&getCommandManager(), CommandIDs::hideAllWindows);
@@ -234,6 +235,7 @@ void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
         CommandIDs::enableFullscreen,
         CommandIDs::showSettingsWindow,
         CommandIDs::showVisualsWindow,
+        CommandIDs::showDataWindow,
         CommandIDs::moveWindowsToFront,
         CommandIDs::hideAllWindows,
         CommandIDs::closeWindow,
@@ -299,6 +301,11 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             result.addDefaultKeypress ('v', ModifierKeys::commandModifier);
             break;
             
+        case CommandIDs::showDataWindow:
+            result.setInfo ("Show OSC Data Settings", "Shows the OSC data output window", CommandCategories::windows, 0);
+            result.addDefaultKeypress ('d', ModifierKeys::commandModifier);
+            break;
+            
         case CommandIDs::moveWindowsToFront:
             result.setInfo ("Bring All To Front", "Bring all windows to the front", CommandCategories::windows, 0);
             break;
@@ -348,6 +355,7 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
         case CommandIDs::enableFullscreen:              enableFullscreen(); break;
         case CommandIDs::showSettingsWindow:            showSettingsWindow(); break;
         case CommandIDs::showVisualsWindow:             showVisualsWindow(); break;
+        case CommandIDs::showDataWindow:                showDataWindow(); break;
         case CommandIDs::moveWindowsToFront:            moveWindowsToFront(); break;
         case CommandIDs::hideAllWindows:                hideAllWindows(); break;
         case CommandIDs::closeWindow:                   closeWindow(); break;
@@ -415,6 +423,11 @@ void MyoMapperApplication::showSettingsWindow()
 void MyoMapperApplication::showVisualsWindow()
 {
     windowList->getOrCreateVisualsWindow();
+}
+
+void MyoMapperApplication::showDataWindow()
+{
+    windowList->getOrCreateDataSelectorWindow();
 }
 
 void MyoMapperApplication::moveWindowsToFront()

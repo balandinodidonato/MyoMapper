@@ -25,11 +25,12 @@ namespace CommandIDs
         enableFullscreen                =   0x200012,
         
         showSettingsWindow              =   0x200020,
-        showVisualsWindow                =   0x200021,
-        moveWindowsToFront              =   0x200022,
-        hideAllWindows                  =   0x200023,
-        closeWindow                     =   0x200024,
-        closeAllWindows                 =   0x200025,
+        showVisualsWindow               =   0x200021,
+        showDataWindow                  =   0x200022,
+        moveWindowsToFront              =   0x200023,
+        hideAllWindows                  =   0x200024,
+        closeWindow                     =   0x200025,
+        closeAllWindows                 =   0x200026,
         
         showAboutWindow                 =   0x200030,
         showDocumentationWindow         =   0x200031,

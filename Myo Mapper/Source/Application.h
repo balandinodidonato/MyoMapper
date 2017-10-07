@@ -69,6 +69,7 @@ public:
     void enableFullscreen();
     void showSettingsWindow();
     void showVisualsWindow();
+    void showDataWindow();
     void moveWindowsToFront();
     void hideAllWindows();
     void closeWindow();
