@@ -49,11 +49,11 @@
         <FILE id="D0Y8rk" name="MyoListener.h" compile="0" resource="0" file="Source/MyoListener.h"/>
       </GROUP>
       <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="Windows">
+        <FILE id="NxmLWF" name="WindowList.cpp" compile="1" resource="0" file="Source/Windows/WindowList.cpp"/>
+        <FILE id="ekIkit" name="WindowList.h" compile="0" resource="0" file="Source/Windows/WindowList.h"/>
         <FILE id="wWLOUy" name="WindowDrawer.cpp" compile="1" resource="0"
               file="Source/Windows/WindowDrawer.cpp"/>
         <FILE id="WxTN0a" name="WindowDrawer.h" compile="0" resource="0" file="Source/Windows/WindowDrawer.h"/>
-        <FILE id="NxmLWF" name="WindowList.cpp" compile="1" resource="0" file="Source/Windows/WindowList.cpp"/>
-        <FILE id="ekIkit" name="WindowList.h" compile="0" resource="0" file="Source/Windows/WindowList.h"/>
         <FILE id="Ysd86j" name="SettingsWindow.cpp" compile="1" resource="0"
               file="Source/Windows/SettingsWindow.cpp"/>
         <FILE id="JcIkoU" name="SettingsWindow.h" compile="0" resource="0"
@@ -61,6 +61,10 @@
         <FILE id="wxMnHw" name="VisualsWindow.cpp" compile="1" resource="0"
               file="Source/Windows/VisualsWindow.cpp"/>
         <FILE id="PjttkR" name="VisualsWindow.h" compile="0" resource="0" file="Source/Windows/VisualsWindow.h"/>
+        <FILE id="nTA1tB" name="DataSelectorWindow.cpp" compile="1" resource="0"
+              file="Source/Windows/DataSelectorWindow.cpp"/>
+        <FILE id="q5YPm0" name="DataSelectorWindow.h" compile="0" resource="0"
+              file="Source/Windows/DataSelectorWindow.h"/>
         <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
               file="Source/AboutWindowContent.cpp"/>
         <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"

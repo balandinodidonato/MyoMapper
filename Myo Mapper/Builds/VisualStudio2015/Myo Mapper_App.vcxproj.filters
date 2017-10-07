@@ -274,16 +274,19 @@
     <ClCompile Include="..\..\Source\MyoListener.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp">
+    <ClCompile Include="..\..\Source\Windows\WindowList.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\WindowList.cpp">
+    <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Windows\SettingsWindow.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Windows\VisualsWindow.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\DataSelectorWindow.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp">
@@ -1635,16 +1638,19 @@
     <ClInclude Include="..\..\Source\MyoListener.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\WindowDrawer.h">
+    <ClInclude Include="..\..\Source\Windows\WindowList.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\WindowList.h">
+    <ClInclude Include="..\..\Source\Windows\WindowDrawer.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Windows\SettingsWindow.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Windows\VisualsWindow.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\DataSelectorWindow.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AboutWindowContent.h">

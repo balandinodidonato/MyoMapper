@@ -158,10 +158,11 @@
     <ClCompile Include="..\..\Source\SecondOrderDifference.cpp"/>
     <ClCompile Include="..\..\Source\MyoManager.cpp"/>
     <ClCompile Include="..\..\Source\MyoListener.cpp"/>
-    <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp"/>
     <ClCompile Include="..\..\Source\Windows\WindowList.cpp"/>
+    <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp"/>
     <ClCompile Include="..\..\Source\Windows\SettingsWindow.cpp"/>
     <ClCompile Include="..\..\Source\Windows\VisualsWindow.cpp"/>
+    <ClCompile Include="..\..\Source\Windows\DataSelectorWindow.cpp"/>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp"/>
     <ClCompile Include="..\..\Source\HelpWindow.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
@@ -1368,10 +1369,11 @@
     <ClInclude Include="..\..\Source\MyoData.h"/>
     <ClInclude Include="..\..\Source\MyoManager.h"/>
     <ClInclude Include="..\..\Source\MyoListener.h"/>
-    <ClInclude Include="..\..\Source\Windows\WindowDrawer.h"/>
     <ClInclude Include="..\..\Source\Windows\WindowList.h"/>
+    <ClInclude Include="..\..\Source\Windows\WindowDrawer.h"/>
     <ClInclude Include="..\..\Source\Windows\SettingsWindow.h"/>
     <ClInclude Include="..\..\Source\Windows\VisualsWindow.h"/>
+    <ClInclude Include="..\..\Source\Windows\DataSelectorWindow.h"/>
     <ClInclude Include="..\..\Source\AboutWindowContent.h"/>
     <ClInclude Include="..\..\Source\HelpWindow.h"/>
     <ClInclude Include="..\..\Source\Application.h"/>
