@@ -3,10 +3,13 @@
 
 #include "Orientation.h"
 #include "Settings.h"
-#include "MyoManager.h"
+#include "Myo/MyoManager.h"
 #include "Pose.h"
-#include "OSC.h"
+#include "OSC/OSC.h"
+#include "OSC/OscDataSettings.h"
+#include "AboutWindow.h"
 #include "HelpWindow.h"
+#include "OscSettingsWindow.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
@@ -35,6 +38,7 @@ public:
     
     void AboutMyoMapperDialogWindow();
     void HelpDialogWindow();
+    void oscStreamingSettingsWindow();
     void buttonClicked (Button* button) override;
     
     
@@ -54,6 +58,7 @@ private:
     
     MenuBarComponent menuBar;
 
+    OscDataSettings oscDataSettings;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
 
