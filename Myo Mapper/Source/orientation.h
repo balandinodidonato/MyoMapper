@@ -2,9 +2,9 @@
 #define MAPPING_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Features/Rescale.h"
-#include "Features/FirstOrderDifference.h"
-#include "Features/SecondOrderDifference.h"
+#include "Rescale.h"
+#include "FirstOrderDifference.h"
+#include "SecondOrderDifference.h"
 
 class Orientation   : public Component
                         

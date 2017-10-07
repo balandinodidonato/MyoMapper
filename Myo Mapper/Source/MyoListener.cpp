@@ -63,7 +63,6 @@ void MyoListener::onPair (myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersio
     myoData.resize (knownMyos.size());
     myo->setStreamEmg (myo::Myo::streamEmgEnabled);
     myo->unlock (myo::Myo::unlockHold);
-    
 }
 
 // onOrientationData() is called whenever the Myo device provides its current orientation, which is represented
@@ -103,21 +102,18 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
     int myoID = getMyoID(myo);
     if (myoID == -1) return;
    
-    myoData[myoID].acc.x = accel.x();
-    myoData[myoID].acc.y = accel.y();
-    myoData[myoID].acc.z = accel.z();
+    myoData[myoID].acceleration.x = accel.x();
+    myoData[myoID].acceleration.y = accel.y();
+    myoData[myoID].acceleration.z = accel.z();
 
-    scaleAcc.setScale(myoData[myoID].acc, 16, 0.03125);
-    myoData[myoID].accScaled = scaleAcc.getScaledVector3D();
+    scaleAcc.setScale(myoData[myoID].acceleration, 16, 0.03125);
+    myoData[myoID].accelerationScaled = scaleAcc.getScaledVector3D();
        
-    accFod.set3DValue (myoData[myoID].acc);
-    myoData[myoID].accFod = accFod.get3DValue();
+    accFod.set3DValue (myoData[myoID].acceleration);
+    myoData[myoID].accelerationFod = accFod.get3DValue();
     
-    accScaledFod.set3DValue (myoData[myoID].accScaled);
-    myoData[myoID].accScaledFod = accScaledFod.get3DValue();
-    
-    accScaledFodMavg.setValue(myoData[myoID].accScaledFod, 10);
-    myoData[myoID].accScaledFodMavg = accScaledFodMavg.getVector3D();
+    accScaledFod.set3DValue (myoData[myoID].accelerationScaled);
+    myoData[myoID].accelerationScaledFod = accScaledFod.get3DValue();
 }
 
 void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &gyro)
@@ -135,14 +131,14 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     scaleGyro.setAbs(myoData[myoID].gyroScaled, 1);
     myoData[myoID].gyroScaledAbs = scaleGyro.getAbsVector3D();
     
-    gyroFod.set3DValue (myoData[myoID].gyroScaled);
+    gyroFod.set3DValue (myoData[myoID].gyro);
     myoData[myoID].gyroFod = gyroFod.get3DValue();
     
     gyroScaledFod.set3DValue (myoData[myoID].gyroScaled);
     myoData[myoID].gyroScaledFod = gyroScaledFod.get3DValue();
     
-    gyroScaledFodMavg.setValue(myoData[myoID].gyroScaledFod, 10);
-    myoData[myoID].gyroScaledFodMavg = gyroScaledFodMavg.getVector3D();
+    gyroZeroCross.setValue(myoData[myoID].gyro, 50);
+    myoData[myoID].gyroZeroCross = gyroZeroCross.getVector();
 }
 
 
@@ -176,7 +172,6 @@ void MyoListener::onArmSync (myo::Myo* myo, uint64_t timestamp, myo::Arm arm, my
 void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* emg)
 {
     int myoID = getMyoID(myo);
-    myoData[myoID].ID = myoID;
     if (myoID == -1) return;
     
     
@@ -186,17 +181,11 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
     {
         myoData[myoID].emgRaw[i] = emg[i];
         
-        emgRawMavg[i].setValue(myoData[myoID].emgRaw[i], 10);
-        myoData[myoID].emgRawMavg[i] = emgRawMavg[i].getInt();
-        
         scaleEMG[i].setScale(emg[i], 127, 0.003921568627);
         myoData[myoID].emgScaled[i] = scaleEMG[i].getScaledFloat();
         
         emgZeroCross[i].setValue(emg[i], 200);
         myoData[myoID].emgZeroCross[i] = emgZeroCross[i].getInt();
-        
-        emgZeroCrossMavg[i].setValue(myoData[myoID].emgZeroCross[i], 10);
-        myoData[myoID].emgZeroCrossMavg[i] =  emgZeroCrossMavg[i].getInt();
         
         scaleEMG[i].setAbs(myoData[myoID].emgScaled[i], 1);
         myoData[myoID].emgScaledAbs[i] = scaleEMG[i].getFloatAbs();
@@ -211,8 +200,8 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
         myoData[myoID].emgScaledAbsMavg[i] = emgMavg[i].getFloat();
         
         emgMinMax[i].setValues(myoData[myoID].emgScaledAbs[i], 200); // window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
-        myoData[myoID].emgScaledAbsMin[i] = emgMinMax[i].getMin();
-        myoData[myoID].emgScaledAbsMax[i] = emgMinMax[i].getMax();
+        myoData[myoID].emgMin[i] = emgMinMax[i].getMin();
+        myoData[myoID].emgMax[i] = emgMinMax[i].getMax();
         
         
         emgMavMinMax.setValues(myoData[myoID].emgMav, 200);// window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz

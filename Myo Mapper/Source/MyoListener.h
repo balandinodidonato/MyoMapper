@@ -2,14 +2,14 @@
 #define MYOLISTENER_H_INCLUDED
 
 #include "myo/myo.hpp"
-#include "../Orientation.h"
+#include "Orientation.h"
 #include "MyoData.h"
 #include <array>
-#include "../Features/MovingAverage.h"
-#include "../Features/Mav.h"
-#include "../Features/ScaleValues.h"
-#include "../Features/ZeroCrossingRate.h"
-#include "../Features/MinMax.h"
+#include "MovingAverage.h"
+#include "Mav.h"
+#include "ScaleValues.h"
+#include "ZeroCrossingRate.h"
+#include "MinMax.h"
 
 class MyoListener : public myo::DeviceListener
 {
@@ -68,19 +68,16 @@ private:
     ScaleValues scaleAcc;
     FirstOrderDifference accFod;
     FirstOrderDifference accScaledFod;
-    MovingAverage accScaledFodMavg;
 
     ScaleValues scaleGyro;
     FirstOrderDifference gyroFod;
+    ZeroCrossing gyroZeroCross;
     FirstOrderDifference gyroScaledFod;
-    MovingAverage gyroScaledFodMavg;
 
-    MovingAverage emgRawMavg[8];
     ScaleValues scaleEMG[8];
     FirstOrderDifference emgScaledAbsFob[8];
     MovingAverage emgScaledAbsFobMavg[8];
     ZeroCrossing emgZeroCross[8];
-    MovingAverage emgZeroCrossMavg[8];
     MinMax emgMinMax[8];
 
     Mav emgMav;

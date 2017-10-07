@@ -17,65 +17,6 @@
       <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>
     </GROUP>
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
-      <GROUP id="{66114F2A-233F-D521-97F6-383BBDBB7AC0}" name="OSC">
-        <FILE id="g8d9Eb" name="AccOscSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/AccOscSettings.cpp"/>
-        <FILE id="VdoQTp" name="AccOscSettings.h" compile="0" resource="0"
-              file="Source/OSC/AccOscSettings.h"/>
-        <FILE id="hctTUy" name="EmgOscSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/EmgOscSettings.cpp"/>
-        <FILE id="yo16vU" name="EmgOscSettings.h" compile="0" resource="0"
-              file="Source/OSC/EmgOscSettings.h"/>
-        <FILE id="iKi46k" name="GyroOscSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/GyroOscSettings.cpp"/>
-        <FILE id="KtoU0E" name="GyroOscSettings.h" compile="0" resource="0"
-              file="Source/OSC/GyroOscSettings.h"/>
-        <FILE id="JCMLrb" name="OrOscSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/OrOscSettings.cpp"/>
-        <FILE id="gbrjez" name="OrOscSettings.h" compile="0" resource="0" file="Source/OSC/OrOscSettings.h"/>
-        <FILE id="yeM1Fz" name="OSC.cpp" compile="1" resource="0" file="Source/OSC/OSC.cpp"/>
-        <FILE id="oRxxB1" name="OSC.h" compile="0" resource="0" file="Source/OSC/OSC.h"/>
-        <FILE id="MuuGfu" name="OscDataSettings.h" compile="0" resource="0"
-              file="Source/OSC/OscDataSettings.h"/>
-        <FILE id="hKL4uR" name="OSCsettings.cpp" compile="1" resource="0" file="Source/OSC/OSCsettings.cpp"/>
-        <FILE id="c6FKnb" name="OSCsettings.h" compile="0" resource="0" file="Source/OSC/OSCsettings.h"/>
-        <FILE id="Kx5o4j" name="OSCstreamingSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/OSCstreamingSettings.cpp"/>
-        <FILE id="cYRIgC" name="OSCstreamingSettings.h" compile="0" resource="0"
-              file="Source/OSC/OSCstreamingSettings.h"/>
-      </GROUP>
-      <GROUP id="{64B19B40-2616-4339-D467-FD4E7E7B5A36}" name="Myo">
-        <FILE id="FiMC6c" name="MyoData.h" compile="0" resource="0" file="Source/Myo/MyoData.h"/>
-        <FILE id="u3SqLR" name="MyoListener.cpp" compile="1" resource="0" file="Source/Myo/MyoListener.cpp"/>
-        <FILE id="mqdeVA" name="MyoListener.h" compile="0" resource="0" file="Source/Myo/MyoListener.h"/>
-        <FILE id="yf7nsw" name="MyoManager.cpp" compile="1" resource="0" file="Source/Myo/MyoManager.cpp"/>
-        <FILE id="sAapYX" name="MyoManager.h" compile="0" resource="0" file="Source/Myo/MyoManager.h"/>
-      </GROUP>
-      <GROUP id="{9988B652-9800-78D6-D9D9-199046BB58B0}" name="Features">
-        <FILE id="zKnAHr" name="FirstOrderDifference.cpp" compile="1" resource="0"
-              file="Source/Features/FirstOrderDifference.cpp"/>
-        <FILE id="I9ttqd" name="FirstOrderDifference.h" compile="0" resource="0"
-              file="Source/Features/FirstOrderDifference.h"/>
-        <FILE id="wgtnGB" name="Mav.cpp" compile="1" resource="0" file="Source/Features/Mav.cpp"/>
-        <FILE id="x9UISH" name="Mav.h" compile="0" resource="0" file="Source/Features/Mav.h"/>
-        <FILE id="S2NNNM" name="minMax.cpp" compile="1" resource="0" file="Source/Features/minMax.cpp"/>
-        <FILE id="C0TiDx" name="MinMax.h" compile="0" resource="0" file="Source/Features/MinMax.h"/>
-        <FILE id="fFCZmQ" name="MovingAverage.cpp" compile="1" resource="0"
-              file="Source/Features/MovingAverage.cpp"/>
-        <FILE id="k24FfH" name="MovingAverage.h" compile="0" resource="0" file="Source/Features/MovingAverage.h"/>
-        <FILE id="UCwWcD" name="rescale.cpp" compile="1" resource="0" file="Source/Features/rescale.cpp"/>
-        <FILE id="S9wkr5" name="Rescale.h" compile="0" resource="0" file="Source/Features/Rescale.h"/>
-        <FILE id="pcnDZI" name="ScaleValues.cpp" compile="1" resource="0" file="Source/Features/ScaleValues.cpp"/>
-        <FILE id="EE70pQ" name="ScaleValues.h" compile="0" resource="0" file="Source/Features/ScaleValues.h"/>
-        <FILE id="sikBEI" name="SecondOrderDifference.cpp" compile="1" resource="0"
-              file="Source/Features/SecondOrderDifference.cpp"/>
-        <FILE id="gDsAjW" name="SecondOrderDifference.h" compile="0" resource="0"
-              file="Source/Features/SecondOrderDifference.h"/>
-        <FILE id="LyrZT8" name="ZeroCrossingRate.cpp" compile="1" resource="0"
-              file="Source/Features/ZeroCrossingRate.cpp"/>
-        <FILE id="qwbdyH" name="ZeroCrossingRate.h" compile="0" resource="0"
-              file="Source/Features/ZeroCrossingRate.h"/>
-      </GROUP>
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
       </GROUP>
@@ -120,11 +61,6 @@
         <FILE id="wxMnHw" name="VisualsWindow.cpp" compile="1" resource="0"
               file="Source/Windows/VisualsWindow.cpp"/>
         <FILE id="PjttkR" name="VisualsWindow.h" compile="0" resource="0" file="Source/Windows/VisualsWindow.h"/>
-      <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="MenuBar">
-        <FILE id="YCq08E" name="OscSettingsWindow.cpp" compile="1" resource="0"
-              file="Source/OscSettingsWindow.cpp"/>
-        <FILE id="UHa4pE" name="OscSettingsWindow.h" compile="0" resource="0"
-              file="Source/OscSettingsWindow.h"/>
         <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
               file="Source/AboutWindowContent.cpp"/>
         <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"

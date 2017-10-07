@@ -7,22 +7,12 @@
     </Filter>
     <Filter Include="Myo Mapper\Source\Resources">
       <UniqueIdentifier>{813689DA-F49E-6D7D-1EB4-89943506DF7E}</UniqueIdentifier>
-    <Filter Include="Myo Mapper\Source\OSC">
-      <UniqueIdentifier>{472BD08A-6F04-7F99-BFD6-85D9C6CC7EF7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Myo Mapper\Source\Myo">
       <UniqueIdentifier>{47829F43-28E0-7E37-F2C1-387A2A13B617}</UniqueIdentifier>
     </Filter>
     <Filter Include="Myo Mapper\Source\Windows">
       <UniqueIdentifier>{D0FDF861-AD88-9C73-55B2-8244AF04A0A6}</UniqueIdentifier>
-    <Filter Include="Myo Mapper\Source\Features">
-      <UniqueIdentifier>{C7944608-A55D-9BC8-5556-8FAA999C2937}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Myo Mapper\Source\Resources">
-      <UniqueIdentifier>{813689DA-F49E-6D7D-1EB4-89943506DF7E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Myo Mapper\Source\MenuBar">
-      <UniqueIdentifier>{96CC7397-9239-10AF-C33D-5930088CFFC5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Myo Mapper\Source">
       <UniqueIdentifier>{EC71C6D6-89BD-5883-9D66-53542463DA0B}</UniqueIdentifier>
@@ -259,45 +249,29 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\MinMax.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClCompile Include="..\..\Source\OSC\AccOscSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ZeroCrossingRate.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClCompile Include="..\..\Source\OSC\EmgOscSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ScaleValues.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClCompile Include="..\..\Source\OSC\GyroOscSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\FirstOrderDifference.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClCompile Include="..\..\Source\OSC\OrOscSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MovingAverage.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClCompile Include="..\..\Source\OSC\OSC.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Mav.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClCompile Include="..\..\Source\OSC\OSCsettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SecondOrderDifference.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClCompile Include="..\..\Source\OSC\OSCstreamingSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MyoManager.cpp">
-    <ClCompile Include="..\..\Source\Myo\MyoListener.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MyoListener.cpp">
-    <ClCompile Include="..\..\Source\Myo\MyoManager.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp">
@@ -311,33 +285,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Windows\VisualsWindow.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Features\Mav.cpp">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Features\minMax.cpp">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Features\MovingAverage.cpp">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Features\rescale.cpp">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Features\ScaleValues.cpp">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Features\SecondOrderDifference.cpp">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Features\ZeroCrossingRate.cpp">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\OscSettingsWindow.cpp">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\AboutWindowContent.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
@@ -1660,52 +1607,32 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\MinMax.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClInclude Include="..\..\Source\OSC\AccOscSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ZeroCrossingRate.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClInclude Include="..\..\Source\OSC\EmgOscSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ScaleValues.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClInclude Include="..\..\Source\OSC\GyroOscSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FirstOrderDifference.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClInclude Include="..\..\Source\OSC\OrOscSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MovingAverage.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClInclude Include="..\..\Source\OSC\OSC.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Mav.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClInclude Include="..\..\Source\OSC\OscDataSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SecondOrderDifference.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
-    <ClInclude Include="..\..\Source\OSC\OSCsettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MyoData.h">
-    <ClInclude Include="..\..\Source\OSC\OSCstreamingSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Myo\MyoData.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MyoManager.h">
-    <ClInclude Include="..\..\Source\Myo\MyoListener.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MyoListener.h">
-    <ClInclude Include="..\..\Source\Myo\MyoManager.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Windows\WindowDrawer.h">
@@ -1719,33 +1646,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Windows\VisualsWindow.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Features\FirstOrderDifference.h">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Features\Mav.h">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Features\MinMax.h">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Features\MovingAverage.h">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Features\Rescale.h">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Features\ScaleValues.h">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Features\SecondOrderDifference.h">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Features\ZeroCrossingRate.h">
-      <Filter>Myo Mapper\Source\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OscSettingsWindow.h">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AboutWindowContent.h">
       <Filter>Myo Mapper\Source\Windows</Filter>

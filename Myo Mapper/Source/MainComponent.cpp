@@ -1,6 +1,5 @@
 #include "MainComponent.h"
-#include "Myo/MyoData.h"
-#include "OSC/OscDataSettings.h"
+#include "MyoData.h"
 
 MainComponent::MainComponent()
 :   selectedMyoID (0)
@@ -92,8 +91,7 @@ void MainComponent::timerCallback()
 {
     bool success = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (success);
-    osc.setNumMyos(myoManager.getMyoData(success).size());
-
+    
     if (! success) return;
     
     if (! selectedMyoID || selectedMyoID >= myoData.size()) return;
@@ -103,12 +101,41 @@ void MainComponent::timerCallback()
     orientation.setValues (myoData[id].orientationRaw);
     pose.setPoseLabel (myoData[id].pose + " - " + String (myoData[id].poseID));
 
-    myoData[id].orientationScaled = orientation.getValue();
-    myoData[id].orientationScaledFod = orientation.getFod();
-    myoData[id].orientationScaledSod = orientation.getSod();
-    
-    osc.sendOSC (myoData[id], oscDataSettings);
+    osc.sendOSC (id,
+                 myoData[id].emgRaw,
+                 myoData[id].emgScaled,
+                 myoData[id].emgScaledAbs,
+                 myoData[id].emgScaledAbsMavg,
+                 myoData[id].emgScaledAbsFob,
+                 myoData[id].emgScaledAbsFobMavg,
+                 myoData[id].emgZeroCross,
+                 myoData[id].emgMin,
+                 myoData[id].emgMax,
+                 myoData[id].quaternion,
+                 myoData[id].emgMav,
+                 myoData[id].emgMavMin,
+                 myoData[id].emgMavMax,
+                 myoData[id].mavFod,
+                 myoData[id].emgMavMavg,
+                 myoData[id].mavFodMavg,
+                 myoData[id].gyro,
+                 myoData[id].gyroFod,
+                 myoData[id].gyroScaled,
+                 myoData[id].gyroScaledAbs,
+                 myoData[id].gyroScaledFod,
+                 myoData[id].gyroZeroCross,
+                 myoData[id].acceleration,
+                 myoData[id].accelerationFod,
+                 myoData[id].accelerationScaled,
+                 myoData[id].accelerationScaledFod,
+                 myoData[id].orientationRaw,
+                 orientation.getValue(),
+                 orientation.getFod(),
+                 orientation.getSod(),
+                 myoData[id].pose,
+                 myoData[id].poseID);
  
+    
     if (osc.vibrate && VibrationState)
     {
         myoManager.vibrate (osc.vibrationType, true);
@@ -166,26 +193,4 @@ void MainComponent::HelpDialogWindow()
     helpWindow->setResizable (false, false);
     helpWindow->setUsingNativeTitleBar (true);
     helpWindow->setVisible (true);
-}
-
-void MainComponent::oscStreamingSettingsWindow()
-{
-    OscSettingsWindow* oscSetWin = new OscSettingsWindow ("Myo Data",
-                                                          Colours::grey,
-                                                          DocumentWindow::allButtons);
-
-    
-    Rectangle<int> area (0, 0, 550, 500);
-    
-    RectanglePlacement placement (RectanglePlacement::xMid
-                                  | RectanglePlacement::yMid
-                                  | RectanglePlacement::doNotResize);
-    
-    Rectangle<int> result (placement.appliedTo (area, Desktop::getInstance().getDisplays()
-                                                .getMainDisplay().userArea.reduced (20)));
-    oscSetWin->setBounds (result);
-
-    oscSetWin->setResizable (true, true);
-    oscSetWin->setUsingNativeTitleBar (true);
-    oscSetWin->setVisible (true);
 }
