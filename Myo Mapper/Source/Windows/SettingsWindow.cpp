@@ -74,6 +74,8 @@ SettingsWindow::~SettingsWindow()
 
 void SettingsWindow::paint (Graphics& g)
 {
+    g.fillAll (Colour::fromRGB (245, 245, 245));
+    
     auto area = getLocalBounds().toFloat();
     auto windowSize = area;
     area.removeFromTop (windowSize.proportionOfHeight(0.044));
@@ -87,15 +89,12 @@ void SettingsWindow::paint (Graphics& g)
     auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.10))
     .reduced (windowSize.proportionOfWidth (0.292), 0);
     area.removeFromTop (windowSize.proportionOfHeight (0.045));
-    auto toggleRegion = area.removeFromTop (windowSize.proportionOfHeight (0.385))
-    .reduced (windowSize.proportionOfWidth (0.1105), 0);
+//    auto toggleRegion = area.removeFromTop (windowSize.proportionOfHeight (0.385))
+//    .reduced (windowSize.proportionOfWidth (0.1105), 0);
     
     g.setColour (Colour::fromRGB (0, 129, 213));
     g.drawRoundedRectangle (oscSendRegion, 10, 0.5);
     g.drawRoundedRectangle (oscReceiveRegion, 10, 0.5);
-    
-    g.setColour (Colours::pink);
-    g.fillRect (toggleRegion);
 }
 
 void SettingsWindow::resized()
@@ -112,10 +111,10 @@ void SettingsWindow::resized()
     auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.10))
                             .reduced (windowSize.proportionOfWidth (0.292), 0);
     area.removeFromTop (windowSize.proportionOfHeight (0.045));
-    auto toggleRegion = area.removeFromTop (windowSize.proportionOfHeight (0.385))
-                        .reduced (windowSize.proportionOfWidth (0.1105), 0);
+//    auto toggleRegion = area.removeFromTop (windowSize.proportionOfHeight (0.385))
+//                        .reduced (windowSize.proportionOfWidth (0.1105), 0);
     area.removeFromTop (windowSize.proportionOfHeight (0.051));
-    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.08))
+    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.10))
                         .reduced (windowSize.proportionOfWidth (0.0315), 0);
     
     // Set send region bounds
