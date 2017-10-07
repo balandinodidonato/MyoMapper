@@ -26,7 +26,7 @@ WindowDrawer::WindowDrawer (const String& title,
     setResizable (true, true);
     if (setFixedAspectRatio == true)
     {
-        auto boundsConstrainer = new (ComponentBoundsConstrainer);
+        boundsConstrainer = new (ComponentBoundsConstrainer);
         boundsConstrainer->setFixedAspectRatio (1.636);
         boundsConstrainer->setMinimumSize (minWidth, minHeight);
         boundsConstrainer->setMaximumSize (maxWidth, maxHeight);
