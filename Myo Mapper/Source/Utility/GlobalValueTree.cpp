@@ -25,9 +25,28 @@ GlobalValueTree::GlobalValueTree()
 void GlobalValueTree::createValueTree()
 {
     myoMapperGlobalData = new ValueTree ("MyoMapperData");
-    String orientationDataToggle = "true";
+    String orientationDataToggle = "Orientation_Data";
     ValueTree orientationData = ValueTree (orientationDataToggle);
-    orientationData.setProperty ("OnOff", 1, 0);
+    orientationData.setProperty ("On_Off", 1, 0);
+    
+    ValueTree orientationDataRaw = ValueTree ("Orientation_Data_Raw");
+    orientationDataRaw.setProperty ("On_Off", true, 0);
+    ValueTree orientationDataScaled = ValueTree ("Orientation_Data_Scaled");
+    orientationDataScaled.setProperty ("On_Off", true, 0);
+    ValueTree orientationDataQuaternion = ValueTree ("Orientation_Data_Quaternion");
+    orientationDataQuaternion.setProperty ("On_Off", true, 0);
+    ValueTree orientationDataAccel= ValueTree ("Orientation_Data_Acceleration");
+    orientationDataAccel.setProperty ("On_Off", true, 0);
+    orientationDataAccel.setProperty ("Analysis_Sample_Size", 10, 0);
+    ValueTree orientationDataVel = ValueTree ("Orientation_Data_Velocity");
+    orientationDataVel.setProperty ("On_Off", true, 0);
+    orientationDataVel.setProperty ("Analysis_Sample_Size", 10, 0);
+    
+    orientationData.addChild (orientationDataRaw, -1, 0);
+    orientationData.addChild (orientationDataScaled, -1, 0);
+    orientationData.addChild (orientationDataQuaternion, -1, 0);
+    orientationData.addChild (orientationDataAccel, -1, 0);
+    orientationData.addChild (orientationDataVel, -1, 0);
     
     myoMapperGlobalData->addChild (orientationData, -1, 0);
     myoMapperGlobalData->addListener (this);
@@ -35,8 +54,6 @@ void GlobalValueTree::createValueTree()
 
 void GlobalValueTree::writeSettingsToXml()
 {
-    DBG (myoMapperGlobalData->toXmlString());
-    
     XmlElement* xml = myoMapperGlobalData->createXml();
     
     String sep = File::separatorString;
