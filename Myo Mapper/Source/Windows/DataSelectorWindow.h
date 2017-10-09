@@ -11,8 +11,6 @@
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "../Utility/OscValueTree.h"
-#include "../Utility/OscValueTreeItem.h"
 
 //==============================================================================
 /*

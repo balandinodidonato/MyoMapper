@@ -14,6 +14,7 @@
 #include "Windows/WindowList.h"
 #include "Utility/CommandIDs.h"
 #include "Utility/MyoMapperLookAndFeel.h"
+#include "Utility/GlobalValueTree.h"
 
 //==============================================================================
 /*
@@ -86,6 +87,7 @@ public:
     
     // Document Manager Goes Here
     ScopedPointer<ApplicationCommandManager> commandManager;
+    GlobalValueTree* globalValueTree;
     ScopedPointer<ApplicationProperties> appProperties;
     
     // WindowDrawer used to create and manage these windows

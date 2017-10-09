@@ -7,11 +7,15 @@
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{84577E64-7EB8-4A2A-6BC4-1584DD875F14}" name="Utility">
-      <FILE id="eNRTqH" name="CommandIDs.h" compile="0" resource="0" file="Source/Utility/CommandIDs.h"/>
       <FILE id="p4ljyI" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"
             file="Source/Utility/MyoMapperLookAndFeel.cpp"/>
       <FILE id="J84YTa" name="MyoMapperLookAndFeel.h" compile="0" resource="0"
             file="Source/Utility/MyoMapperLookAndFeel.h"/>
+      <FILE id="eNRTqH" name="CommandIDs.h" compile="0" resource="0" file="Source/Utility/CommandIDs.h"/>
+      <FILE id="zy3PTp" name="GlobalValueTree.cpp" compile="1" resource="0"
+            file="Source/Utility/GlobalValueTree.cpp"/>
+      <FILE id="qUgbsi" name="GlobalValueTree.h" compile="0" resource="0"
+            file="Source/Utility/GlobalValueTree.h"/>
       <FILE id="XWiJgH" name="Roboto-Medium.ttf" compile="0" resource="1"
             file="Source/Utility/Roboto-Medium.ttf"/>
       <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>

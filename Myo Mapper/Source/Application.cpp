@@ -44,6 +44,8 @@ MyoMapperApplication::MyoMapperApplication()
 
 void MyoMapperApplication::initialise (const String& commandLine)
 {
+    
+//    OscValueTree::
     // Initialise settings file
     PropertiesFile::Options options;
     options.applicationName = "userSettings";
@@ -84,11 +86,12 @@ void MyoMapperApplication::handleAsyncUpdate()
 
 void MyoMapperApplication::shutdown()
 {
+    globalValueTree = nullptr;
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
     #endif
-    windowList->settingsWindow = nullptr;
-    windowList->visualsWindow = nullptr;
+//    windowList->settingsWindow = nullptr;
+//    windowList->visualsWindow = nullptr;
     menuModel = nullptr;
     commandManager = nullptr;
     appProperties = nullptr;
@@ -387,7 +390,8 @@ void MyoMapperApplication::openFile()
 
 void MyoMapperApplication::saveMapper()
 {
-    // Save mapper over currently selected file
+    globalValueTree->createValueTree();
+    globalValueTree->writeSettingsToXml();
 }
 
 void MyoMapperApplication::saveMapperAs()

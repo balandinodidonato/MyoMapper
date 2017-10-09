@@ -247,6 +247,9 @@
     <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
       <Filter>Myo Mapper\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Utility\GlobalValueTree.cpp">
+      <Filter>Myo Mapper\Utility</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MinMax.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
@@ -1602,10 +1605,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
+      <Filter>Myo Mapper\Utility</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
       <Filter>Myo Mapper\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
+    <ClInclude Include="..\..\Source\Utility\GlobalValueTree.h">
       <Filter>Myo Mapper\Utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MinMax.h">
