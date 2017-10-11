@@ -256,7 +256,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
     {
         case CommandIDs::newMapper:
             result.setInfo ("New", "Creates a new Myo Mapper project file", CommandCategories::general, 0);
-            result.addDefaultKeypress ('n', ModifierKeys::shiftModifier | ModifierKeys::commandModifier);
+            result.addDefaultKeypress ('n', ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::openMapper:
