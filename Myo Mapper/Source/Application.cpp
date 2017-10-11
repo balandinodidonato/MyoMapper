@@ -300,12 +300,12 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             
         case CommandIDs::showVisualsWindow:
             result.setInfo ("Show Visualiser", "Create a new display window", CommandCategories::windows, 0);
-            result.addDefaultKeypress ('v', ModifierKeys::commandModifier);
+            result.addDefaultKeypress ('v', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::showDataWindow:
             result.setInfo ("Show OSC Data Settings", "Shows the OSC data output window", CommandCategories::windows, 0);
-            result.addDefaultKeypress ('d', ModifierKeys::commandModifier);
+            result.addDefaultKeypress ('d', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::moveWindowsToFront:
@@ -319,7 +319,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             
         case CommandIDs::closeWindow:
             result.setInfo ("Close Window", "Close the currently selected window", CommandCategories::windows, 0);
-            result.addDefaultKeypress ('w', ModifierKeys::commandModifier);
+            result.addDefaultKeypress ('w', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::closeAllWindows:
