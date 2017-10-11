@@ -10,11 +10,12 @@
 
 #pragma once
 
+
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "Utility/GlobalValueTree.h"
+#include "Utility/MyoMapperLookAndFeel.h"
 #include "Windows/WindowList.h"
 #include "Utility/CommandIDs.h"
-#include "Utility/MyoMapperLookAndFeel.h"
-#include "Utility/GlobalValueTree.h"
 
 //==============================================================================
 /*

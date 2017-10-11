@@ -14,6 +14,9 @@
 //==============================================================================
 WindowList::WindowList()
 {
+    windows.set(0, settingsWindow);
+    windows.set(1, visualsWindow);
+    windows.set(2, dataSelectorWindow);
 }
 
 WindowList& WindowList::getWindowList()
@@ -25,16 +28,14 @@ WindowList& WindowList::getWindowList()
 
 void WindowList::createInitialWindow()
 {
-    if (windows.size() == 0)
-    {
+    jassert (windows.size() != 0);
         getOrCreateSettingsWindow();
-    }
 }
 
 void WindowList::getOrCreateSettingsWindow()
 {
-    if (settingsWindow != nullptr)
-        settingsWindow->toFront (true);
+    if (windows.operator[](0) != nullptr)
+        windows.operator[](0)->toFront (true);
     else
     {
         auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
@@ -48,22 +49,14 @@ void WindowList::getOrCreateSettingsWindow()
                                                   windowWidth, windowHeight);
         settingsWindow = w;
         w->addChangeListener (this);
-        windows.set (0, w);
+        windows.set (0, settingsWindow);
     }
 }
 
 void WindowList::getOrCreateVisualsWindow()
 {
-    if (visualsWindow != nullptr)
-        visualsWindow->toFront (true);
-    /*
-     else if ((windows.contains (settingsWindow) == true && windows.size() >= 2) || (windows.contains (settingsWindow) == false && windows.size() >= 1))
-    {
-        AlertWindow::showMessageBoxAsync (AlertWindow::AlertIconType::QuestionIcon,
-                                          "Myo Mapper",
-                                          "Visuals window already open");
-    }
-     */
+    if (windows.operator[](1) != nullptr)
+        windows.operator[](1)->toFront (true);
     else
     {
         auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
@@ -76,19 +69,19 @@ void WindowList::getOrCreateVisualsWindow()
                                                   windowWidth, windowHeight);
         visualsWindow = w;
         w->addChangeListener (this);
-        windows.set (1, w);
+        windows.set (1, visualsWindow);
     }
 }
 
 void WindowList::getOrCreateDataSelectorWindow()
 {
-    if (dataSelectorWindow != nullptr)
-        dataSelectorWindow->toFront (true);
+    if (windows.operator[](2) != nullptr)
+        windows.operator[](2)->toFront(true);
     else
     {
         auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
-        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Visualiser",
+        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - OSC Data",
                                                   new DataSelectorWindow(),
                                                   false,
                                                   windowWidth * 0.5, windowHeight * 0.5,
@@ -96,7 +89,7 @@ void WindowList::getOrCreateDataSelectorWindow()
                                                   windowWidth, windowHeight);
         dataSelectorWindow = w;
         w->addChangeListener (this);
-        windows.set (1, w);
+        windows.set (2, w);
     }
 }
 
@@ -116,22 +109,15 @@ void WindowList::closeWindow (ChangeBroadcaster* source)
     WindowDrawer* w = dynamic_cast<WindowDrawer*> (source);
     jassert (w != nullptr);
     
-#if ! JUCE_MAC
+    #if ! JUCE_MAC
     if (windows.size() == 1)
     {
         JUCEApplicationBase::getInstance()->systemRequestedQuit();
     }
-#endif
+    #endif
     
-    if (w == visualsWindow && w->windowWantsToClose() == true)
+    if (w->windowWantsToClose() == true)
     {
-        windows.remove (windows.indexOf (w));
-        visualsWindow = nullptr;
-    }
-    
-    if (w == settingsWindow && w->windowWantsToClose() == true)
-    {
-        windows.removeObject (settingsWindow);
-        settingsWindow = nullptr;
+        windows.set (windows.indexOf (w), nullptr);
     }
 }

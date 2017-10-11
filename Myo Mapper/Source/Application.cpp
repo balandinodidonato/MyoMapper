@@ -71,7 +71,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     triggerAsyncUpdate();
     
     windowList = new WindowList();
-    windowList->settingsWindow = nullptr;
+    windowList->windows.ensureStorageAllocated (3);
     windowList->getOrCreateSettingsWindow();
 }
 
@@ -90,11 +90,10 @@ void MyoMapperApplication::shutdown()
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
     #endif
-//    windowList->settingsWindow = nullptr;
-//    windowList->visualsWindow = nullptr;
     menuModel = nullptr;
     commandManager = nullptr;
     appProperties = nullptr;
+    windowList->windows.clear();
     windowList = nullptr;
     LookAndFeel::setDefaultLookAndFeel (nullptr);
 }
@@ -449,10 +448,12 @@ void MyoMapperApplication::closeWindow()
     for (int i = 0; i < windowList->windows.size(); ++i)
     {
         Component* currentWindow = windowList->windows.operator[](i);
-        if (currentWindow->hasKeyboardFocus (true) == true)
+        
+        if (currentWindow != nullptr && currentWindow->hasKeyboardFocus (true) == true)
         {
             WindowDrawer* w = dynamic_cast<WindowDrawer*> (currentWindow);
-            w->closeButtonPressed();
+            windowList->getWindowList().windows.set (windowList->getWindowList().windows.indexOf (w), nullptr);
+            return;
         }
     }
 }
