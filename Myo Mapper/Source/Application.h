@@ -95,7 +95,6 @@ public:
     ScopedPointer<WindowList> windowList;
 //    ScopedPointer<Component> aboutWindow, documentationWindow;
     
-    
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyoMapperApplication)
 };

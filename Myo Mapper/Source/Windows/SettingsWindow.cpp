@@ -101,37 +101,38 @@ void SettingsWindow::resized()
 {
     auto area = getBounds();
     auto windowSize = area;
+    auto windowSizeWidth = area;
     area.removeFromTop (windowSize.proportionOfHeight (0.044));
     auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.244))
-                     .reduced (windowSize.proportionOfWidth (0.078), 0);
-    auto oscRectangleWidth = windowSize.proportionOfWidth (0.375);
+                     .reduced (windowSizeWidth.proportionOfWidth (0.078), 0);
+    auto oscRectangleWidth = windowSizeWidth.proportionOfWidth (0.375);
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
     area.removeFromTop (windowSize.proportionOfHeight (0.022));
     auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.10))
-                            .reduced (windowSize.proportionOfWidth (0.292), 0);
-    area.removeFromTop (windowSize.proportionOfHeight (0.045));
+                            .reduced (windowSizeWidth.proportionOfWidth (0.292), 0);
+//    area.removeFromTop (windowSize.proportionOfHeight (0.045));
 //    auto toggleRegion = area.removeFromTop (windowSize.proportionOfHeight (0.385))
 //                        .reduced (windowSize.proportionOfWidth (0.1105), 0);
     area.removeFromTop (windowSize.proportionOfHeight (0.051));
     auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.10))
-                        .reduced (windowSize.proportionOfWidth (0.0315), 0);
+                        .reduced (windowSizeWidth.proportionOfWidth (0.0315), 0);
     
     // Set send region bounds
     oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.029));
     oscSendLabel.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.067))
-                            .reduced (windowSize.proportionOfWidth (0.029), 0));
+                            .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
     oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.022));
     oscSendSetter.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.096))
-                             .reduced (windowSize.proportionOfWidth (0.041), 0));
+                             .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
     
     // Set receive region bounds
     oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.029));
     oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.067))
-                               .reduced (windowSize.proportionOfWidth (0.029), 0));
+                               .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
     oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.022));
     oscReceiveSetter.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.096))
-                             .reduced (windowSize.proportionOfWidth (0.041), 0));
+                             .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
     
     // Set myo selector region bounds
     myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.108)));

@@ -23,19 +23,29 @@ VisualsWindow::~VisualsWindow()
 
 void VisualsWindow::paint (Graphics& g)
 {
-    auto area = getBounds();
+    auto r = getLocalBounds();
+    auto area = r.toFloat();
     auto windowSize = area;
     area.removeFromTop (windowSize.proportionOfHeight (0.01));
+    auto leftArea = area.removeFromLeft (windowSize.proportionOfWidth (0.7))
+                    .reduced (windowSize.proportionOfWidth (0.01));
+    auto rightArea = area.removeFromLeft (windowSize.proportionOfWidth (0.7))
+                    .reduced (windowSize.proportionOfWidth (0.01));
     
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
 
-    g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("VisualsWindow", getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
+    Path leftRect;
+    leftRect.addRoundedRectangle (leftArea, 5);
+    Path topRightRect;
+    topRightRect.addRoundedRectangle (rightArea.removeFromTop (windowSize.proportionOfHeight (0.46)), 5);
+    Path bottomRightRect;
+    topRightRect.addRoundedRectangle (rightArea.removeFromBottom (windowSize.proportionOfHeight (0.46)), 5);
+    
+    g.setColour (Colour::fromRGB (245, 245, 245));
+    g.fillPath (leftRect);
+    g.fillPath (topRightRect);
+    g.fillPath (bottomRightRect);
+//    g.drawRoundedRectangle (rightArea, 5.0f, 5.0f);
 }
 
 void VisualsWindow::resized()
