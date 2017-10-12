@@ -322,7 +322,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             
         case CommandIDs::closeWindow:
             result.setInfo ("Close Window", "Close the currently selected window", CommandCategories::windows, 0);
-            result.addDefaultKeypress ('w', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
+            result.addDefaultKeypress ('w', ModifierKeys::commandModifier);
             break;
             
         case CommandIDs::closeAllWindows:
@@ -437,7 +437,16 @@ void MyoMapperApplication::showDataWindow()
 
 void MyoMapperApplication::moveWindowsToFront()
 {
-    // Show all windows and move to the front of the screen
+//    windowList->getWindowList().windows.operator[](1)->toFront (true);
+    for (int i = 0; i < windowList->windows.size(); ++i)
+    {
+        Component* currentWindow = windowList->windows.operator[](i);
+
+        if (currentWindow != nullptr)
+        {
+            windowList->getWindowList().windows.operator[](i)->toFront (true);
+        }
+    }
 }
 
 void MyoMapperApplication::hideAllWindows()
