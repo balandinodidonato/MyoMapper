@@ -35,10 +35,11 @@ void GlobalValueTree::deleteGlobalValueTree()
 //    return *vt;
 //}
 
-void GlobalValueTree::createValueTree()
+ValueTree GlobalValueTree::createValueTree()
 {
     myoMapperGlobalData = ValueTree ("MyoMapperData");
     //=============================================
+    // Orientation Data
     
     ValueTree orData= ValueTree ("OrData");
     orData.setProperty ("name", "Orientation Data", 0);
@@ -56,11 +57,11 @@ void GlobalValueTree::createValueTree()
     ValueTree orDataVel = ValueTree ("OrVelocity");
     orDataVel.setProperty ("name", "Velocity Data", 0);
     orDataVel.setProperty (onOffTag, off, 0);
-    orDataVel.setProperty ("analysisSampleSize", 10, 0);
+    orDataVel.setProperty ("sampleSize", 10, 0);
     ValueTree orDataAccel= ValueTree ("OrAccel");
     orDataAccel.setProperty ("name", "Acceleration Data", 0);
     orDataAccel.setProperty (onOffTag, off, 0);
-    orDataAccel.setProperty ("analysisSampleSize", 10, 0);
+    orDataAccel.setProperty ("sampleSize", 10, 0);
     
     orData.addChild (orDataRaw, -1, 0);
     orData.addChild (orDataScaled, -1, 0);
@@ -68,6 +69,7 @@ void GlobalValueTree::createValueTree()
     orData.addChild (orDataVel, -1, 0);
     orData.addChild (orDataAccel, -1, 0);
     //=============================================
+    // Acceleration Data
     
     ValueTree accData= ValueTree ("AccData");
     accData.setProperty ("name", "Acceleration Data", 0);
@@ -79,21 +81,34 @@ void GlobalValueTree::createValueTree()
     ValueTree accDataRawFod = ValueTree ("AccRawFod");
     accDataRawFod.setProperty ("name", "Raw First Order Difference Data", 0);
     accDataRawFod.setProperty (onOffTag, off, 0);
+    ValueTree accDataRawFodMavg = ValueTree ("AccRawFodMavg");
+                                             accDataRawFodMavg.setProperty ("name", "Raw First Order Difference Moving Average", 0);
+    accDataRawFodMavg.setProperty (onOffTag, off, 0);
+    accDataRawFodMavg.setProperty ("sampleSize", 10, 0);
     ValueTree accDataScaled = ValueTree ("AccScaled");
     accDataScaled.setProperty ("name", "Scaled Data", 0);
     accDataScaled.setProperty (onOffTag, on, 0);
     ValueTree accDataScaledFod = ValueTree ("AccScaledFod");
     accDataScaledFod.setProperty ("name", "Scaled Second Order Difference Data", 0);
     accDataScaledFod.setProperty (onOffTag, off, 0);
+    ValueTree accDataScaledFodMavg = ValueTree ("AccScaledFodMavg");
+    accDataScaledFodMavg.setProperty ("name", "Scaled First Order Difference Moving Average", 0);
+    accDataScaledFodMavg.setProperty (onOffTag, off, 0);
+    accDataScaledFodMavg.setProperty ("sampleSize", 10, 0);
     
     accData.addChild (accDataRaw, -1, 0);
     accData.addChild (accDataRawFod, -1, 0);
+    accData.addChild (accDataRawFodMavg, -1, 0);
     accData.addChild (accDataScaled, -1, 0);
     accData.addChild (accDataScaledFod, -1, 0);
+    accData.addChild (accDataScaledFodMavg, -1, 0);
     //=============================================
+    // 
     
     myoMapperGlobalData.addChild (orData, -1, 0);
     myoMapperGlobalData.addChild (accData, -1, 0);
+    
+    return myoMapperGlobalData;
 }
 
 void GlobalValueTree::writeSettingsToXml()
