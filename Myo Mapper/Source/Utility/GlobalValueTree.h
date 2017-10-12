@@ -22,7 +22,7 @@ public:
 //    ~GlobalValueTree();
 
 //    static ValueTree getGlobalValueTree();
-    void createValueTree();
+    ValueTree createValueTree();
     void deleteGlobalValueTree();
     void writeSettingsToXml();
 
