@@ -19,7 +19,7 @@ public:
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData));
+        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData.getChildWithName ("OrData")));
         tree.setRootItemVisible (false);
     }
     
@@ -47,7 +47,7 @@ public:
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData));
+        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData.getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
     }
     
@@ -75,7 +75,7 @@ public:
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData));
+        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData.getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
     }
     
@@ -103,7 +103,7 @@ public:
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData));
+        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData.getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
     }
     
