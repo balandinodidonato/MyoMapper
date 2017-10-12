@@ -16,6 +16,7 @@ bool WindowDrawer::wantsToClose;
 //==============================================================================
 WindowDrawer::WindowDrawer (const String& title,
                             Component* content,
+                            bool setResizeable,
                             bool setFixedAspectRatio,
                             int initWidth, int initHeight,
                             int minWidth, int minHeight,
@@ -23,7 +24,7 @@ WindowDrawer::WindowDrawer (const String& title,
 :   DialogWindow (title, Colours::white, true, true)
 {
     setUsingNativeTitleBar (true);
-    setResizable (true, true);
+    setResizable (setResizeable, setResizeable);
     if (setFixedAspectRatio == true)
     {
         boundsConstrainer = new (ComponentBoundsConstrainer);
