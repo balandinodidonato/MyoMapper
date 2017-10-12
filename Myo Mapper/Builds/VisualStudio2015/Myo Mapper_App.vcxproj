@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\Utility\GlobalValueTree.cpp"/>
+    <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp"/>
     <ClCompile Include="..\..\Source\MinMax.cpp"/>
     <ClCompile Include="..\..\Source\ZeroCrossingRate.cpp"/>
     <ClCompile Include="..\..\Source\ScaleValues.cpp"/>
@@ -1361,6 +1362,7 @@
     <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\Utility\CommandIDs.h"/>
     <ClInclude Include="..\..\Source\Utility\GlobalValueTree.h"/>
+    <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h"/>
     <ClInclude Include="..\..\Source\MinMax.h"/>
     <ClInclude Include="..\..\Source\ZeroCrossingRate.h"/>
     <ClInclude Include="..\..\Source\ScaleValues.h"/>

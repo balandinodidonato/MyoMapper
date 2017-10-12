@@ -3,7 +3,7 @@
 
     GlobalValueTree.cpp
     Created: 8 Oct 2017 11:24:02pm
-    Author:  Jefferson Bledsoe
+    AuthorData:  Jefferson Bledsoe
 
   ==============================================================================
 */
@@ -13,111 +13,100 @@
 
 //=============================================================================
 
-const String onOffTag           = "OnOff";
+const String onOffTag           = "onOff";
+const bool on                   = true;
+const bool off                  = false;
+ValueTree GlobalValueTree::myoMapperGlobalData;
 
 //==============================================================================
 GlobalValueTree::GlobalValueTree()
 {
-    
-    
 }
+
+void GlobalValueTree::deleteGlobalValueTree()
+{
+    myoMapperGlobalData.removeAllChildren(0);
+}
+
+//ValueTree GlobalValueTree::getGlobalValueTree()
+//{
+//    return myoMapperGlobalData;
+//    jassert (vt != NULL);
+//    return *vt;
+//}
 
 void GlobalValueTree::createValueTree()
 {
-    myoMapperGlobalData = new ValueTree ("MyoMapperData");
-    String orientationDataToggle = "Orientation_Data";
-    ValueTree orientationData = ValueTree (orientationDataToggle);
-    orientationData.setProperty ("On_Off", 1, 0);
+    myoMapperGlobalData = ValueTree ("MyoMapperData");
+    //=============================================
     
-    ValueTree orientationDataRaw = ValueTree ("Orientation_Data_Raw");
-    orientationDataRaw.setProperty ("On_Off", true, 0);
-    ValueTree orientationDataScaled = ValueTree ("Orientation_Data_Scaled");
-    orientationDataScaled.setProperty ("On_Off", true, 0);
-    ValueTree orientationDataQuaternion = ValueTree ("Orientation_Data_Quaternion");
-    orientationDataQuaternion.setProperty ("On_Off", true, 0);
-    ValueTree orientationDataAccel= ValueTree ("Orientation_Data_Acceleration");
-    orientationDataAccel.setProperty ("On_Off", true, 0);
-    orientationDataAccel.setProperty ("Analysis_Sample_Size", 10, 0);
-    ValueTree orientationDataVel = ValueTree ("Orientation_Data_Velocity");
-    orientationDataVel.setProperty ("On_Off", true, 0);
-    orientationDataVel.setProperty ("Analysis_Sample_Size", 10, 0);
+    ValueTree orData= ValueTree ("OrData");
+    orData.setProperty ("name", "Orientation Data", 0);
+    orData.setProperty (onOffTag, on, 0);
     
-    orientationData.addChild (orientationDataRaw, -1, 0);
-    orientationData.addChild (orientationDataScaled, -1, 0);
-    orientationData.addChild (orientationDataQuaternion, -1, 0);
-    orientationData.addChild (orientationDataAccel, -1, 0);
-    orientationData.addChild (orientationDataVel, -1, 0);
+    ValueTree orDataRaw = ValueTree ("OrRaw");
+    orDataRaw.setProperty ("name", "Raw Data", 0);
+    orDataRaw.setProperty (onOffTag, off, 0);
+    ValueTree orDataScaled = ValueTree ("OrScaled");
+    orDataScaled.setProperty ("name", "Scaled Data", 0);
+    orDataScaled.setProperty (onOffTag, on, 0);
+    ValueTree orDataQuaternion = ValueTree ("OrQuaternion");
+    orDataQuaternion.setProperty ("name", "Quaternion Data", 0);
+    orDataQuaternion.setProperty (onOffTag, off, 0);
+    ValueTree orDataVel = ValueTree ("OrVelocity");
+    orDataVel.setProperty ("name", "Velocity Data", 0);
+    orDataVel.setProperty (onOffTag, off, 0);
+    orDataVel.setProperty ("analysisSampleSize", 10, 0);
+    ValueTree orDataAccel= ValueTree ("OrAccel");
+    orDataAccel.setProperty ("name", "Acceleration Data", 0);
+    orDataAccel.setProperty (onOffTag, off, 0);
+    orDataAccel.setProperty ("analysisSampleSize", 10, 0);
     
-    myoMapperGlobalData->addChild (orientationData, -1, 0);
-    myoMapperGlobalData->addListener (this);
+    orData.addChild (orDataRaw, -1, 0);
+    orData.addChild (orDataScaled, -1, 0);
+    orData.addChild (orDataQuaternion, -1, 0);
+    orData.addChild (orDataVel, -1, 0);
+    orData.addChild (orDataAccel, -1, 0);
+    //=============================================
+    
+    ValueTree accData= ValueTree ("AccData");
+    accData.setProperty ("name", "Acceleration Data", 0);
+    accData.setProperty (onOffTag, on, 0);
+    
+    ValueTree accDataRaw = ValueTree ("AccRaw");
+    accDataRaw.setProperty ("name", "Raw Data", 0);
+    accDataRaw.setProperty (onOffTag, off, 0);
+    ValueTree accDataRawFod = ValueTree ("AccRawFod");
+    accDataRawFod.setProperty ("name", "Raw First Order Difference Data", 0);
+    accDataRawFod.setProperty (onOffTag, off, 0);
+    ValueTree accDataScaled = ValueTree ("AccScaled");
+    accDataScaled.setProperty ("name", "Scaled Data", 0);
+    accDataScaled.setProperty (onOffTag, on, 0);
+    ValueTree accDataScaledFod = ValueTree ("AccScaledFod");
+    accDataScaledFod.setProperty ("name", "Scaled Second Order Difference Data", 0);
+    accDataScaledFod.setProperty (onOffTag, off, 0);
+    
+    accData.addChild (accDataRaw, -1, 0);
+    accData.addChild (accDataRawFod, -1, 0);
+    accData.addChild (accDataScaled, -1, 0);
+    accData.addChild (accDataScaledFod, -1, 0);
+    //=============================================
+    
+    myoMapperGlobalData.addChild (orData, -1, 0);
+    myoMapperGlobalData.addChild (accData, -1, 0);
 }
 
 void GlobalValueTree::writeSettingsToXml()
 {
-    XmlElement* xml = myoMapperGlobalData->createXml();
+    XmlElement* xml = myoMapperGlobalData.createXml();
     
     String sep = File::separatorString;
     String path = File::getSpecialLocation (File::userApplicationDataDirectory).getFullPathName();
     #if JUCE_MAC
-        path = path + sep + "Application Support" + sep + "Myo Mapper" + sep + "temporary.mapper";
+        path = path + sep + "Application Support" + sep + "Myo Mapper" + sep + "userSettings.mapper";
     #elif JUCE_WINDOWS
         path = path + sep + "Roaming" + sep + "Myo Mapper" + sep + "userSettings.mapper";
     #endif
     xml->writeToFile (File (path), String::empty);
     xml = nullptr;
 }
-
-
-
-/*
-class OscValueTreeItem      : public TreeViewItem,
-private ValueTree::Listener
-{
-public:
-    OscValueTreeItem (const ValueTree& vt)
-    :   tree (vt)
-    {
-        tree.addListener (this);
-    }
-    
-    String getUniqueName() const override
-    {
-        return tree["name"].toString();
-    }
-    
-    bool mightContainSubItems() override
-    {
-        return tree.getNumChildren() > 0;
-    }
-    
-    void itemOpennessChanged (bool isNowOpen) override
-    {
-        if (isNowOpen == true && getNumSubItems() == 0)
-        {
-            clearSubItems();
-            //            for (int i = 0; i < tree.getNumChildren(); ++i)
-            //                addSubItem (new OscValueTreeItem (tree.getChild (i), nullptr));
-        }
-    }
-    
-private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscValueTreeItem)
-    
-    ValueTree tree;
-    
-    void valueTreeChildAdded (ValueTree& parentTree, ValueTree&) override         { treeChildrenChanged (parentTree); }
-    void valueTreeChildRemoved (ValueTree& parentTree, ValueTree&, int) override  { treeChildrenChanged (parentTree); }
-    void valueTreeChildOrderChanged (ValueTree& parentTree, int, int) override    { treeChildrenChanged (parentTree); }
-    
-    void treeChildrenChanged (const ValueTree& parentTree)
-    {
-        if (parentTree == tree)
-        {
-            treeHasChanged();
-            setOpen (true);
-        }
-    }
-};
-*/
-
-

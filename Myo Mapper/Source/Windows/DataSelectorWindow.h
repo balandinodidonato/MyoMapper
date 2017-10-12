@@ -11,6 +11,8 @@
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "../Utility/GlobalValueTree.h"
+#include "../Utility/OscValueTreeItem.h"
 
 //==============================================================================
 /*
@@ -29,8 +31,8 @@ private:
     struct WindowTabBar;
     ScopedPointer<WindowTabBar> tabBar;
     
-    struct OrientationPage;
-    struct AccelerometerPage;
-    struct GyroscopePage;
-    struct EmgPage;
+    class OrientationPage;
+    class AccelerometerPage;
+    class GyroscopePage;
+    class EmgPage;
 };

@@ -73,6 +73,8 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList = new WindowList();
     windowList->windows.ensureStorageAllocated (3);
     windowList->getOrCreateSettingsWindow();
+    
+    globalValueTree->createValueTree();
 }
 
 void MyoMapperApplication::handleAsyncUpdate()
@@ -86,7 +88,8 @@ void MyoMapperApplication::handleAsyncUpdate()
 
 void MyoMapperApplication::shutdown()
 {
-    globalValueTree = nullptr;
+//    GlobalValueTree::getGlobalValueTree() = nullptr;
+//    globalValueTree = nullptr;
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
     #endif
@@ -389,7 +392,6 @@ void MyoMapperApplication::openFile()
 
 void MyoMapperApplication::saveMapper()
 {
-    globalValueTree->createValueTree();
     globalValueTree->writeSettingsToXml();
 }
 

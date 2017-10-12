@@ -250,6 +250,9 @@
     <ClCompile Include="..\..\Source\Utility\GlobalValueTree.cpp">
       <Filter>Myo Mapper\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp">
+      <Filter>Myo Mapper\Utility</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MinMax.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
@@ -1612,6 +1615,9 @@
       <Filter>Myo Mapper\Utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Utility\GlobalValueTree.h">
+      <Filter>Myo Mapper\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h">
       <Filter>Myo Mapper\Utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MinMax.h">

@@ -16,6 +16,10 @@
             file="Source/Utility/GlobalValueTree.cpp"/>
       <FILE id="qUgbsi" name="GlobalValueTree.h" compile="0" resource="0"
             file="Source/Utility/GlobalValueTree.h"/>
+      <FILE id="uLRebw" name="OscValueTreeItem.cpp" compile="1" resource="0"
+            file="Source/Utility/OscValueTreeItem.cpp"/>
+      <FILE id="rA4clq" name="OscValueTreeItem.h" compile="0" resource="0"
+            file="Source/Utility/OscValueTreeItem.h"/>
       <FILE id="XWiJgH" name="Roboto-Medium.ttf" compile="0" resource="1"
             file="Source/Utility/Roboto-Medium.ttf"/>
       <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>

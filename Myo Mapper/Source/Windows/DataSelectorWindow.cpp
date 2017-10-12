@@ -12,59 +12,115 @@
 #include "DataSelectorWindow.h"
 
 //==============================================================================
-struct DataSelectorWindow::OrientationPage  : public Component
+class DataSelectorWindow::OrientationPage  : public Component
 {
+public:
     OrientationPage()
-    {
-        
-    }
-};
-
-//==============================================================================
-struct DataSelectorWindow::AccelerometerPage  : public Component
-{
-    AccelerometerPage()
-    {
-        
-    }
-};
-
-//==============================================================================
-struct DataSelectorWindow::GyroscopePage  : public Component
-{
-    GyroscopePage()
-    {
-        
-    }
-};
-
-//==============================================================================
-struct DataSelectorWindow::EmgPage  : public Component
-{
-    TreeView tree;
-    
-    EmgPage()
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        
-        
+        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData));
+        tree.setRootItemVisible (false);
     }
     
     void paint (Graphics& g) override
     {
-        auto area = getLocalBounds();
-        auto left = area.removeFromLeft (proportionOfWidth (0.6));
-        
-        g.setColour (Colours::green);
-        g.fillRect (left);
+        //
     }
     
     void resized() override
     {
         auto area = getLocalBounds();
-        auto left = area.removeFromLeft (proportionOfWidth (0.6));
+        tree.setBounds (area.reduced (10));
     }
+    
+private:
+    TreeView tree;
+    ScopedPointer<TreeViewItem> rootItem;
+};
+
+//==============================================================================
+class DataSelectorWindow::AccelerometerPage  : public Component
+{
+public:
+    AccelerometerPage()
+    {
+        addAndMakeVisible (tree);
+        tree.setDefaultOpenness (true);
+        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData));
+        tree.setRootItemVisible (false);
+    }
+    
+    void paint (Graphics& g) override
+    {
+        //
+    }
+    
+    void resized() override
+    {
+        auto area = getLocalBounds();
+        tree.setBounds (area.reduced (10));
+    }
+    
+private:
+    TreeView tree;
+    ScopedPointer<TreeViewItem> rootItem;
+};
+
+//==============================================================================
+class DataSelectorWindow::GyroscopePage  : public Component
+{
+public:
+    GyroscopePage()
+    {
+        addAndMakeVisible (tree);
+        tree.setDefaultOpenness (true);
+        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData));
+        tree.setRootItemVisible (false);
+    }
+    
+    void paint (Graphics& g) override
+    {
+        //
+    }
+    
+    void resized() override
+    {
+        auto area = getLocalBounds();
+        tree.setBounds (area.reduced (10));
+    }
+    
+private:
+    TreeView tree;
+    ScopedPointer<TreeViewItem> rootItem;
+};
+
+//==============================================================================
+class DataSelectorWindow::EmgPage  : public Component
+{
+public:
+    EmgPage()
+    {
+        addAndMakeVisible (tree);
+        tree.setDefaultOpenness (true);
+        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData));
+        tree.setRootItemVisible (false);
+    }
+    
+    void paint (Graphics& g) override
+    {
+//
+    }
+    
+    void resized() override
+    {
+        auto area = getLocalBounds();
+        tree.setBounds (area.reduced (10));
+    }
+    
+private:
+    TreeView tree;
+    ScopedPointer<TreeViewItem> rootItem;
 };
 
 
