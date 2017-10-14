@@ -19,7 +19,8 @@
 
 
 class SettingsWindow    : public Component,
-                          private Button::Listener
+                          private Button::Listener,
+                          private ComboBox::Listener
 {
 public:
     SettingsWindow();
@@ -28,6 +29,7 @@ public:
     void paint (Graphics&) override;
     void resized() override;
     void buttonClicked (Button*) override;
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SettingsWindow)

@@ -157,3 +157,11 @@ void SettingsWindow::buttonClicked (Button* button)
 //        Close the settings window
     }
 }
+
+void SettingsWindow::comboBoxChanged (ComboBox *comboBoxThatHasChanged)
+{
+    if (comboBoxThatHasChanged == &myoSelectorSetter)
+    {
+        MyoMapperApplication::selectedMyo = myoSelectorSetter.getSelectedId();
+    }
+}
