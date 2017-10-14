@@ -21,8 +21,8 @@ public:
     GlobalValueTree();
 //    ~GlobalValueTree();
 
-//    static ValueTree getGlobalValueTree();
-    ValueTree createValueTree();
+    ValueTree getGlobalValueTree();
+    ValueTree setupValueTree();
     void deleteGlobalValueTree();
     void writeSettingsToXml();
 

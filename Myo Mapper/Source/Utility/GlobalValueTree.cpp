@@ -28,14 +28,14 @@ void GlobalValueTree::deleteGlobalValueTree()
     myoMapperGlobalData.removeAllChildren(0);
 }
 
-//ValueTree GlobalValueTree::getGlobalValueTree()
-//{
-//    return myoMapperGlobalData;
+ValueTree GlobalValueTree::getGlobalValueTree()
+{
+    return myoMapperGlobalData;
 //    jassert (vt != NULL);
 //    return *vt;
-//}
+}
 
-ValueTree GlobalValueTree::createValueTree()
+ValueTree GlobalValueTree::setupValueTree()
 {
     myoMapperGlobalData = ValueTree ("MyoMapperData");
     //=============================================
