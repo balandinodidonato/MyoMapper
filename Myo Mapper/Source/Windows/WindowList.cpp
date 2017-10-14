@@ -106,7 +106,6 @@ void WindowList::changeListenerCallback (ChangeBroadcaster* source)
         WindowDrawer* window = dynamic_cast<WindowDrawer*> (source);
         closeWindow (window);
     }
-    
 }
 
 void WindowList::closeWindow (WindowDrawer* window)

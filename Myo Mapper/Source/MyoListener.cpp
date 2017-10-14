@@ -101,44 +101,47 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
 {
     int myoID = getMyoID(myo);
     if (myoID == -1) return;
-   
-    myoData[myoID].acceleration.x = accel.x();
-    myoData[myoID].acceleration.y = accel.y();
-    myoData[myoID].acceleration.z = accel.z();
-
-    scaleAcc.setScale(myoData[myoID].acceleration, 16, 0.03125);
-    myoData[myoID].accelerationScaled = scaleAcc.getScaledVector3D();
-       
-    accFod.set3DValue (myoData[myoID].acceleration);
-    myoData[myoID].accelerationFod = accFod.get3DValue();
     
-    accScaledFod.set3DValue (myoData[myoID].accelerationScaled);
-    myoData[myoID].accelerationScaledFod = accScaledFod.get3DValue();
+    myoData[myoID].acc.x = accel.x();
+    myoData[myoID].acc.y = accel.y();
+    myoData[myoID].acc.z = accel.z();
+    
+    scaleAcc.setScale(myoData[myoID].acc, 16, 0.03125);
+    myoData[myoID].accScaled = scaleAcc.getScaledVector3D();
+    
+    accFod.set3DValue (myoData[myoID].acc);
+    myoData[myoID].accFod = accFod.get3DValue();
+    
+    accScaledFod.set3DValue (myoData[myoID].accScaled);
+    myoData[myoID].accScaledFod = accScaledFod.get3DValue();
+    
+    accScaledFodMavg.setValue(myoData[myoID].accScaledFod, 10);
+    myoData[myoID].accScaledFodMavg = accScaledFodMavg.getVector3D();
 }
 
 void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &gyro)
 {
     int myoID = getMyoID(myo);
     if (myoID == -1) return;
-   
+    
     myoData[myoID].gyro.x = gyro.x();
     myoData[myoID].gyro.y = gyro.y();
     myoData[myoID].gyro.z = gyro.z();
-
+    
     scaleGyro.setScale(myoData[myoID].gyro, 2000, 0.00025);
     myoData[myoID].gyroScaled = scaleGyro.getScaledVector3D();
-   
+    
     scaleGyro.setAbs(myoData[myoID].gyroScaled, 1);
     myoData[myoID].gyroScaledAbs = scaleGyro.getAbsVector3D();
     
-    gyroFod.set3DValue (myoData[myoID].gyro);
+    gyroFod.set3DValue (myoData[myoID].gyroScaled);
     myoData[myoID].gyroFod = gyroFod.get3DValue();
     
     gyroScaledFod.set3DValue (myoData[myoID].gyroScaled);
     myoData[myoID].gyroScaledFod = gyroScaledFod.get3DValue();
     
-    gyroZeroCross.setValue(myoData[myoID].gyro, 50);
-    myoData[myoID].gyroZeroCross = gyroZeroCross.getVector();
+    gyroScaledFodMavg.setValue(myoData[myoID].gyroScaledFod, 10);
+    myoData[myoID].gyroScaledFodMavg = gyroScaledFodMavg.getVector3D();
 }
 
 
@@ -147,7 +150,7 @@ void MyoListener::onPose (myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
     int poseID = 0;
     int myoID = getMyoID(myo);
     if(myoID == -1) return;
-  
+    
     if(pose==myo::Pose::unknown) poseID = -1;
     if(pose==myo::Pose::rest) poseID = 0;
     if(pose==myo::Pose::fist) poseID = 1;
@@ -155,7 +158,7 @@ void MyoListener::onPose (myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
     if(pose==myo::Pose::waveIn) poseID = 3;
     if(pose==myo::Pose::waveOut) poseID = 4;
     if(pose==myo::Pose::doubleTap) poseID = 5;
-
+    
     myoData[myoID].pose = pose.toString();
     myoData[myoID].poseID = poseID;
 }
