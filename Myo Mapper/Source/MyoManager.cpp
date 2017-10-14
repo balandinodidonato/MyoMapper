@@ -1,5 +1,4 @@
 #include "MyoManager.h"
-#include "MyoListener.h"
 
 MyoManager::MyoManager()
 :   Thread ("Myo Data Thread"),
@@ -70,14 +69,14 @@ void MyoManager::run()
     }
 }
 
-std::vector<MyoData> MyoManager::getMyoData (bool &success) const
+std::vector<MyoData> MyoManager::getMyoData (bool &getMyoDataSuccessful) const
 {
     std::vector<MyoData> dataCopy;
     
     if (tryEnterRead())
     {
         dataCopy = myoData;
-        success = true;
+        getMyoDataSuccessful = true;
         exitRead();
     }
     
