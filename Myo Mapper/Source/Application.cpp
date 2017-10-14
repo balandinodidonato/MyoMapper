@@ -44,9 +44,11 @@ MyoMapperApplication::MyoMapperApplication()
 
 void MyoMapperApplication::initialise (const String& commandLine)
 {
+    auto oscBufferFillHz = 200;
+    auto oscBufferFillSpeed = 1000 / oscBufferFillHz;
     
 //    OscValueTree::
-    // Initialise settings file
+    /*
     PropertiesFile::Options options;
     options.applicationName = "userSettings";
     options.folderName = ProjectInfo::projectName;
@@ -54,10 +56,11 @@ void MyoMapperApplication::initialise (const String& commandLine)
     options.osxLibrarySubFolder = "Application Support";
     appProperties = new ApplicationProperties();
     appProperties->setStorageParameters (options);
+     */
+    // Settings to be stored in this value tree
+    globalValueTree->createValueTree();
     
     LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
-    
-    // Draw Windows To Go Here
     
     // File manager initialisation to go here
     
@@ -74,7 +77,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList->windows.ensureStorageAllocated (3);
     windowList->getOrCreateSettingsWindow();
     
-    globalValueTree->createValueTree();
+    startTimer (oscBufferFillSpeed);
 }
 
 void MyoMapperApplication::handleAsyncUpdate()
@@ -489,5 +492,13 @@ void MyoMapperApplication::showPreferencesWindow()
     // Show the preferences window (moves on mac vs windows/ linux)s
 }
 
-
-
+void MyoMapperApplication::hiResTimerCallback()
+{
+    bool getMyoDataSuccessful = false;
+    std::vector <MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
+    
+    if (! getMyoDataSuccessful)
+        return;
+//    if (! selectedMyoID || selectedMyoID >= myoData.size())
+//        return;
+}

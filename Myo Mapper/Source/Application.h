@@ -16,12 +16,14 @@
 #include "Utility/MyoMapperLookAndFeel.h"
 #include "Windows/WindowList.h"
 #include "Utility/CommandIDs.h"
+#include "MyoManager.h"
 
 //==============================================================================
 /*
 */
 class MyoMapperApplication  : public JUCEApplication,
-                              private AsyncUpdater
+                              private AsyncUpdater,
+                              private HighResolutionTimer
 {
 public:
     MyoMapperApplication();
@@ -80,7 +82,10 @@ public:
     void showDocumentationWindow();
     void showPreferencesWindow();
     
-//    ==========================================================================
+    //==========================================================================
+    void hiResTimerCallback() override;
+    
+    //==========================================================================
     MyoMapperLookAndFeel lookAndFeel;
     
     struct MainMenuBarModel;
@@ -94,6 +99,8 @@ public:
     // WindowDrawer used to create and manage these windows
     ScopedPointer<WindowList> windowList;
 //    ScopedPointer<Component> aboutWindow, documentationWindow;
+    
+    MyoManager myoManager;
     
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyoMapperApplication)
