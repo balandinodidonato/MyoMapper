@@ -12,6 +12,7 @@
 
 class WindowList;
 class SettingsWindow;
+class WindowDrawer;
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "WindowDrawer.h"
@@ -36,7 +37,7 @@ public:
     void getOrCreateDataSelectorWindow();
     
     void changeListenerCallback (ChangeBroadcaster*);
-    void closeWindow (ChangeBroadcaster*);
+    void closeWindow (WindowDrawer*);
     
     void forceCloseWindows();
     void askAllWindowsToClose();
