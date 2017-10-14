@@ -58,7 +58,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     appProperties->setStorageParameters (options);
      */
     // Settings to be stored in this value tree
-    globalValueTree->createValueTree();
+    globalValueTree->setupValueTree();
     
     LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
     
@@ -492,13 +492,33 @@ void MyoMapperApplication::showPreferencesWindow()
     // Show the preferences window (moves on mac vs windows/ linux)s
 }
 
+//==============================================================================
+int MyoMapperApplication::selectedMyo;
+
 void MyoMapperApplication::hiResTimerCallback()
 {
     bool getMyoDataSuccessful = false;
     std::vector <MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
     
-    if (! getMyoDataSuccessful)
-        return;
-//    if (! selectedMyoID || selectedMyoID >= myoData.size())
+//    if (! getMyoDataSuccessful)
 //        return;
+//    if (! selectedMyo)
+//        return;
+    
+    if (globalValueTree->getGlobalValueTree().getChildWithName ("OrData").getPropertyAsValue ("onOff", 0) == true)
+    {
+        DBG ("Orientation");
+    }
+    if (globalValueTree->getGlobalValueTree().getChildWithName ("AccData").getPropertyAsValue ("onOff", 0) == true)
+    {
+        DBG ("Acceleration");
+    }
+    if (globalValueTree->getGlobalValueTree().getChildWithName ("GyroData").getPropertyAsValue ("onOff", 0) == true)
+    {
+        DBG ("Gyro");
+    }
+    if (globalValueTree->getGlobalValueTree().getChildWithName ("EmgData").getPropertyAsValue ("onOff", 0) == true)
+    {
+        DBG ("EMG");
+    }
 }

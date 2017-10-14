@@ -85,6 +85,9 @@ public:
     //==========================================================================
     void hiResTimerCallback() override;
     
+    MyoManager myoManager;
+    static int selectedMyo;
+    
     //==========================================================================
     MyoMapperLookAndFeel lookAndFeel;
     
@@ -99,8 +102,6 @@ public:
     // WindowDrawer used to create and manage these windows
     ScopedPointer<WindowList> windowList;
 //    ScopedPointer<Component> aboutWindow, documentationWindow;
-    
-    MyoManager myoManager;
     
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyoMapperApplication)
