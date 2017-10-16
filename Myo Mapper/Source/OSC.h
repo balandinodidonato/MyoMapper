@@ -2,6 +2,11 @@
 #define OSC_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "Myo/MyoData.h"
+#include "Utility/GlobalValueTree.h"
+// ValueTree can get/ set values now
+//#include "OscDataSettings.h"
+//#include "OrOscSettings.h"
 
 class OSC    : public Component,
                private OSCReceiver,
@@ -14,41 +19,7 @@ public:
     
     void setSender (String HostAddress, int Port);
     void setReceiver (int Port);
-    void sendOSC (int id,
-                  std::array<int8_t, 8> emgRaw,
-                  std::array<float, 8> emgScaled,
-                  std::array<float, 8> emgScaledAbs,
-                  std::array<float, 8> emgScaledAbsMavg,
-                  std::array<float, 8> emgScaledAbsFob,
-                  std::array<float, 8> emgScaledAbsFobMavg,
-                  std::array<int, 8> emgZeroCross,
-                  std::array<float, 8> emgMin,
-                  std::array<float, 8> emgMax,
-                  std::array<float, 4> quaternion,
-                  float emgMav,
-                  float emgMavMin,
-                  float emgMavMax,
-                  float emgMavFod,
-                  float emgMavMavg,
-                  float emgMavFodMavg,
-                  Vector3D<float> gyro,
-                  Vector3D<float> gyroFod,
-                  Vector3D<float> gyroScaled,
-                  Vector3D<float> gyroScaledAbs,
-                  Vector3D<float> gyroScaledFod,
-                  Vector3D<int> gyroZeroCross,
-                  
-                  Vector3D<float> acceleration,
-                  Vector3D<float> accelerationFod,
-                  Vector3D<float> accelerationScaled,
-                  Vector3D<float> accelerationScaledFod,
-                  
-                  Vector3D<float> orientationRaw,
-                  Vector3D<float> orientationScaled,
-                  Vector3D<float> orientationFod,
-                  Vector3D<float> orientationSod,
-                  String pose,
-                  int poseID);
+//    void sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings);
     
     void connectSender();
     void connectReceiver();
@@ -56,7 +27,6 @@ public:
     void disconnectReceiver();
     
     void oscMessageReceived (const OSCMessage& message) override;
-    void getOSCMessage (const OSCMessage& message, String myoData);
     
     void setMyoIdReceiver (int ID);
     
@@ -73,11 +43,17 @@ public:
     float value;
     
     bool reverseStatus;
+    
+//    std::vector<OscDataSettings> getOscDataSettings () const;
+    void setNumMyos(unsigned int numMyos);
+
 
 private:
     
     OSCSender sender;
     OSCReceiver receiver;
+    
+//    OrOscSettings orOscSettings;
     
     int oscPortSender;
     int oscPortReceiver;
@@ -93,6 +69,9 @@ private:
     String myoDataIn[4];
     String action[5];
     
+//    std::vector<OscDataSettings> oscDataSettings;
+    
+//    OscDataSettings oscDataSettingss;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)
 };

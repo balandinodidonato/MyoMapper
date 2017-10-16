@@ -5,12 +5,14 @@
 class SecondOrderDifference
 {
 public:
+    
     void setValue (float Value);
     float getValue();
     Vector3D<float> get3DValue();
     void set3DValue (Vector3D<float> Value3D);
     
 private:
+    
     float previousInputs[2];
     float input = 0;
     float sod = 0;

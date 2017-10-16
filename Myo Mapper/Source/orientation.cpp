@@ -46,14 +46,14 @@ Vector3D<float> Orientation::getValue()
     return orientationScaled;
 }
 
-Vector3D<float> Orientation::getFod(){
-    
+Vector3D<float> Orientation::getFod()
+{
     orientationFod.set3DValue (orientationScaled);
     return orientationFod.get3DValue();
 }
 
-Vector3D<float> Orientation::getSod(){
-    
+Vector3D<float> Orientation::getSod()
+{
     orientationSod.set3DValue (orientationScaled);
     return orientationSod.get3DValue();
 }
@@ -84,12 +84,6 @@ void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
             {
                 case 1:
                     rescaleYaw.setCalibrate(); break;
-//                case 2:
-//                    rescaleYaw.setMin(Value); break;
-//                case 3:
-//                    rescaleYaw.setMax(Value); break;
-//                case 4:
-//                    rescaleYaw.setReverse(ReverseStatus); break;
                 default:
                     break;
             }

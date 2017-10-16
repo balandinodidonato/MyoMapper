@@ -19,6 +19,7 @@ struct MyoData
     Vector3D<float> accFod;
     Vector3D<float> accScaledFod;
     Vector3D<float> accScaledFodMavg;
+
     
     Vector3D<float> gyro;
     Vector3D<float> gyroScaled;
@@ -51,4 +52,3 @@ struct MyoData
 };
 
 #endif  // MYODATA_H_INCLUDED
-

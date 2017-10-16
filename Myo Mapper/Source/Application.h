@@ -16,7 +16,7 @@
 #include "Utility/MyoMapperLookAndFeel.h"
 #include "Windows/WindowList.h"
 #include "Utility/CommandIDs.h"
-#include "MyoManager.h"
+#include "Myo/MyoManager.h"
 
 //==============================================================================
 /*

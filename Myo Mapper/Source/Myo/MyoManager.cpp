@@ -1,4 +1,5 @@
 #include "MyoManager.h"
+#include "MyoListener.h"
 
 MyoManager::MyoManager()
 :   Thread ("Myo Data Thread"),
@@ -36,10 +37,13 @@ bool MyoManager::connect()
                                           "Error",
                                           e.what(),
                                           "OK");
+        
     }
     
     if (myo)
+    {
         hub->addListener (&listener);
+    }
     else
     {
         std::cerr << "Error: Myo not found" << std::endl;
@@ -48,6 +52,7 @@ bool MyoManager::connect()
                                           "Myo not found",
                                           "Please, conncect the Myo armband and relaunch Myo Mapper.",
                                           "OK");
+        
     }
 
     return isConnected;
@@ -69,14 +74,14 @@ void MyoManager::run()
     }
 }
 
-std::vector<MyoData> MyoManager::getMyoData (bool &getMyoDataSuccessful) const
+std::vector<MyoData> MyoManager::getMyoData (bool &success) const
 {
     std::vector<MyoData> dataCopy;
     
     if (tryEnterRead())
     {
         dataCopy = myoData;
-        getMyoDataSuccessful = true;
+        success = true;
         exitRead();
     }
     

@@ -1,6 +1,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "OSC.h"
-#include "MyoData.h"
+
 
 OSC::OSC()
 :   vibrate (false),
@@ -9,6 +9,7 @@ OSC::OSC()
     rescaleMIN (0),
     rescaleMaxTest (false),
     rescaleMAX (0),
+//    orOscSettings(oscDataSettingss), Swap for globalValueTree
     oscPortSender (5432),
     oscPortReceiver (5431),
     hostAddress ("127.0.0.1"),
@@ -62,198 +63,259 @@ void OSC::setSender (String HostAddress, int Port)
     hostAddress = HostAddress;
 }
 
-void OSC::sendOSC (int id,
-                   std::array<int8_t, 8> emgRaw,
-                   std::array<float, 8> emgScaled,
-                   std::array<float, 8> emgScaledAbs,
-                   std::array<float, 8> emgScaledAbsMavg,
-                   std::array<float, 8> emgScaledAbsFob,
-                   std::array<float, 8> emgScaledAbsFobMavg,
-                   std::array<int, 8> emgZeroCross,
-                   std::array<float, 8> emgMin,
-                   std::array<float, 8> emgMax,
-                   std::array<float, 4> quaternion,
-                   float emgMav,
-                   float emgMavMin,
-                   float emgMavMax,
-                   float emgMavFod,
-                   float emgMavMavg,
-                   float emgMavFodMavg,
-                   Vector3D<float> gyro,
-                   Vector3D<float> gyroFod,
-                   Vector3D<float> gyroScaled,
-                   Vector3D<float> gyroScaledAbs,
-                   Vector3D<float> gyroScaledFod,
-                   Vector3D<int> gyroZeroCross,
-                   Vector3D<float> acceleration,
-                   Vector3D<float> accelerationFod,
-                   Vector3D<float> accelerationScaled,
-                   Vector3D<float> accelerationScaledFod,
-                   Vector3D<float> orientationRaw,
-                   Vector3D<float> orientationScaled,
-                   Vector3D<float> orientationFod,
-                   Vector3D<float> orientationSod,
-                   String pose,
-                   int poseID
-                  )
+/*
+void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
 {
-    String ID = String (id);
+    String ID = String (myoData.ID);
+        
+    std::cout << oscDataSettings.orQuaternion << std::endl;
     
-    sender.send ("/myo" + ID + "/orientation/quaternion",
-                 (float) quaternion[0],
-                 (float) quaternion[1],
-                 (float) quaternion[2],
-                 (float) quaternion[3]);
-    sender.send ("/myo" + ID + "/orientation/raw",
-                 (float) orientationRaw.x,
-                 (float) orientationRaw.y,
-                 (float) orientationRaw.z);
-    sender.send ("/myo" + ID + "/orientation/scaled",
-                 (float) orientationScaled.x,
-                 (float) orientationScaled.y,
-                 (float) orientationScaled.z);
-    sender.send ("/myo" + ID + "/orientation/velocity",
-                 (float) orientationFod.x,
-                 (float) orientationFod.y,
-                 (float) orientationFod.z);
-    sender.send ("/myo" + ID + "/orientation/acceleration",
-                 (float) orientationSod.x,
-                 (float) orientationSod.y,
-                 (float) orientationSod.z);
-    
-    sender.send ("/myo" + ID + "/gyro/raw",
-                 (float) gyro.x,
-                 (float) gyro.y,
-                 (float) gyro.z);
-    sender.send ("/myo" + ID + "/gyro/raw/fod",
-                 (float) gyroFod.x,
-                 (float) gyroFod.y,
-                 (float) gyroFod.z);
-    sender.send ("/myo" + ID + "/gyro/scaled",
-                 (float) gyroScaled.x,
-                 (float) gyroScaled.y,
-                 (float) gyroScaled.z);
-    sender.send ("/myo" + ID + "/gyro/scaled/abs",
-                 (float) gyroScaledAbs.x,
-                 (float) gyroScaledAbs.y,
-                 (float) gyroScaledAbs.z);
-    sender.send ("/myo" + ID + "/gyro/scaled/fod",
-                 (float) gyroScaledFod.x,
-                 (float) gyroScaledFod.y,
-                 (float) gyroScaledFod.z);
-    sender.send ("/myo" + ID + "/gyro/zeroCrossingRate",
-                 (int) gyroZeroCross.x,
-                 (int) gyroZeroCross.y,
-                 (int) gyroZeroCross.z);
-    
-    sender.send ("/myo" + ID + "/acceleration/raw",
-                 (float) acceleration.x,
-                 (float) acceleration.y,
-                 (float) acceleration.z);
-    sender.send ("/myo" + ID + "/acceleration/raw/fod",
-                 (float) accelerationFod.x,
-                 (float) accelerationFod.y,
-                 (float) accelerationFod.z);
-    sender.send ("/myo" + ID + "/acceleration/scaled",
-                 (float) accelerationScaled.x,
-                 (float) accelerationScaled.y,
-                 (float) accelerationScaled.z);
-    sender.send ("/myo" + ID + "/acceleration/scaled/fod",
-                 (float) accelerationScaledFod.x,
-                 (float) accelerationScaledFod.y,
-                 (float) accelerationScaledFod.z);
-    
-    sender.send ("/myo" + ID + "/emg/raw",
-                 (int) emgRaw[0],
-                 (int) emgRaw[1],
-                 (int) emgRaw[2],
-                 (int) emgRaw[3],
-                 (int) emgRaw[4],
-                 (int) emgRaw[5],
-                 (int) emgRaw[6],
-                 (int) emgRaw[7]);
-    sender.send ("/myo" + ID + "/emg/scaled",
-                 (float) emgScaled[0],
-                 (float) emgScaled[1],
-                 (float) emgScaled[2],
-                 (float) emgScaled[3],
-                 (float) emgScaled[4],
-                 (float) emgScaled[5],
-                 (float) emgScaled[6],
-                 (float) emgScaled[7]);
-    sender.send ("/myo" + ID + "/emg/scaled/abs",
-                 (float) emgScaledAbs[0],
-                 (float) emgScaledAbs[1],
-                 (float) emgScaledAbs[2],
-                 (float) emgScaledAbs[3],
-                 (float) emgScaledAbs[4],
-                 (float) emgScaledAbs[5],
-                 (float) emgScaledAbs[6],
-                 (float) emgScaledAbs[7]);
-    sender.send ("/myo" + ID + "/emg/scaled/abs/avg",
-                 (float) emgScaledAbsMavg[0],
-                 (float) emgScaledAbsMavg[1],
-                 (float) emgScaledAbsMavg[2],
-                 (float) emgScaledAbsMavg[3],
-                 (float) emgScaledAbsMavg[4],
-                 (float) emgScaledAbsMavg[5],
-                 (float) emgScaledAbsMavg[6],
-                 (float) emgScaledAbsMavg[7]);
-    sender.send ("/myo" + ID + "/emg/scaled/abs/fob",
-                 (float) emgScaledAbsFob[0],
-                 (float) emgScaledAbsFob[1],
-                 (float) emgScaledAbsFob[2],
-                 (float) emgScaledAbsFob[3],
-                 (float) emgScaledAbsFob[4],
-                 (float) emgScaledAbsFob[5],
-                 (float) emgScaledAbsFob[6],
-                 (float) emgScaledAbsFob[7]);
-    sender.send ("/myo" + ID + "/emg/scaled/abs/fob/mavg",
-                 (float) emgScaledAbsFobMavg[0],
-                 (float) emgScaledAbsFobMavg[1],
-                 (float) emgScaledAbsFobMavg[2],
-                 (float) emgScaledAbsFobMavg[3],
-                 (float) emgScaledAbsFobMavg[4],
-                 (float) emgScaledAbsFobMavg[5],
-                 (float) emgScaledAbsFobMavg[6],
-                 (float) emgScaledAbsFobMavg[7]);
-    sender.send ("/myo" + ID + "/emg/zeroCrossing",
-                 (float) emgZeroCross[0],
-                 (float) emgZeroCross[1],
-                 (float) emgZeroCross[2],
-                 (float) emgZeroCross[3],
-                 (float) emgZeroCross[4],
-                 (float) emgZeroCross[5],
-                 (float) emgZeroCross[6],
-                 (float) emgZeroCross[7]);
-    sender.send ("/myo" + ID + "/emg/min",
-                 (float) emgMin[0],
-                 (float) emgMin[1],
-                 (float) emgMin[2],
-                 (float) emgMin[3],
-                 (float) emgMin[4],
-                 (float) emgMin[5],
-                 (float) emgMin[6],
-                 (float) emgMin[7]);
-    sender.send ("/myo" + ID + "/emg/max",
-                 (float) emgMax[0],
-                 (float) emgMax[1],
-                 (float) emgMax[2],
-                 (float) emgMax[3],
-                 (float) emgMax[4],
-                 (float) emgMax[5],
-                 (float) emgMax[6],
-                 (float) emgMax[7]);
-    sender.send ("/myo" + ID + "/emg/mav", (float) emgMav);
-    sender.send ("/myo" + ID + "/emg/mav/mavg",(float) emgMavMavg);
-    sender.send ("/myo" + ID + "/emg/mav/min", (float) emgMavMin);
-    sender.send ("/myo" + ID + "/emg/mav/max", (float) emgMavMax);
-    sender.send ("/myo" + ID + "/emg/mav/fod", (float) emgMavFod);
-    sender.send ("/myo" + ID + "/emg/mav/fod/mavg",(float) emgMavFodMavg);
-    
-    sender.send ("/myo" + ID + "/pose", (int) poseID, (String) pose);
-}
+    if (oscDataSettings.orQuaternion) {
+        sender.send ("/myo" + ID + "/orientation/quaternion",
+                     (float) myoData.quaternion[0],
+                     (float) myoData.quaternion[1],
+                     (float) myoData.quaternion[2],
+                     (float) myoData.quaternion[3]);
+    }
+    if (oscDataSettings.orRaw) {
+        sender.send ("/myo" + ID + "/orientation/raw",
+                     (float) myoData.orientationRaw.x,
+                     (float) myoData.orientationRaw.y,
+                     (float) myoData.orientationRaw.z);
+    }
 
+    if (oscDataSettings.orScaled) {
+        sender.send ("/myo" + ID + "/orientation/scaled",
+                     (float) myoData.orientationScaled.x,
+                     (float) myoData.orientationScaled.y,
+                     (float) myoData.orientationScaled.z);
+    }
+    if (oscDataSettings.orVelocity) {
+        sender.send ("/myo" + ID + "/orientation/velocity",
+                     (float) myoData.orientationScaledFod.x,
+                     (float) myoData.orientationScaledFod.y,
+                     (float) myoData.orientationScaledFod.z);
+    }
+    if (oscDataSettings.orAcceleration) {
+        sender.send ("/myo" + ID + "/orientation/acceleration",
+                     (float) myoData.orientationScaledSod.x,
+                     (float) myoData.orientationScaledSod.y,
+                     (float) myoData.orientationScaledSod.z);
+    }
+    
+
+    if (oscDataSettings.accRaw) {
+        sender.send ("/myo" + ID + "/acceleration/raw/raw",
+                     (float) myoData.acc.x,
+                     (float) myoData.acc.y,
+                     (float) myoData.acc.z);
+    }
+    if (oscDataSettings.accRawFod) {
+        sender.send ("/myo" + ID + "/acceleration/raw/fod",
+                     (float) myoData.accFod.x,
+                     (float) myoData.accFod.y,
+                     (float) myoData.accFod.z);
+    }
+    if (oscDataSettings.accScaled) {
+        sender.send ("/myo" + ID + "/acceleration/scaled/raw",
+                     (float) myoData.accScaled.x,
+                     (float) myoData.accScaled.y,
+                     (float) myoData.accScaled.z);
+        
+    }
+    if (oscDataSettings.accScaledFod) {
+        sender.send ("/myo" + ID + "/acceleration/scaled/fod/raw",
+                     (float) myoData.accScaledFod.x,
+                     (float) myoData.accScaledFod.y,
+                     (float) myoData.accScaledFod.z);
+    }
+    if (oscDataSettings.accScaledFodMavg) {
+        sender.send ("/myo" + ID + "/acceleration/scaled/fod/mavg",
+                     (float) myoData.accScaledFodMavg.x,
+                     (float) myoData.accScaledFodMavg.y,
+                     (float) myoData.accScaledFodMavg.z);
+    }
+    
+    if (oscDataSettings.gyroRaw) {
+        sender.send ("/myo" + ID + "/gyro/raw/raw",
+                     (float) myoData.gyro.x,
+                     (float) myoData.gyro.y,
+                     (float) myoData.gyro.z);
+    }
+    if (oscDataSettings.accRawFod) {
+        sender.send ("/myo" + ID + "/gyro/raw/fod",
+                     (float) myoData.gyroFod.x,
+                     (float) myoData.gyroFod.y,
+                     (float) myoData.gyroFod.z);
+    }
+    if (oscDataSettings.gyroScaled) {
+        sender.send ("/myo" + ID + "/gyro/scaled/raw",
+                     (float) myoData.gyroScaled.x,
+                     (float) myoData.gyroScaled.y,
+                     (float) myoData.gyroScaled.z);
+    }
+    if (oscDataSettings.gyroScaledAbs) {
+        sender.send ("/myo" + ID + "/gyro/scaled/abs",
+                     (float) myoData.gyroScaledAbs.x,
+                     (float) myoData.gyroScaledAbs.y,
+                     (float) myoData.gyroScaledAbs.z);
+
+//
+//         sender.send ("/myo" + ID + "/gyro/scaled/fod/raw",
+//                     (float) myoData.gyroScaledFod.x,
+//                     (float) myoData.gyroScaledFod.y,
+//                     (float) myoData.gyroScaledFod.z);
+//         sender.send ("/myo" + ID + "/gyro/scaled/fod/mavg",
+//                     (float) myoData.gyroScaledFodMavg.x,
+//                     (float) myoData.gyroScaledFodMavg.y,
+//                     (float) myoData.gyroScaledFodMavg.z);
+//
+    }
+    
+    if (oscDataSettings.emgRaw) {
+        sender.send ("/myo" + ID + "/emg/raw/raw",
+                     (int) myoData.emgRaw[0],
+                     (int) myoData.emgRaw[1],
+                     (int) myoData.emgRaw[2],
+                     (int) myoData.emgRaw[3],
+                     (int) myoData.emgRaw[4],
+                     (int) myoData.emgRaw[5],
+                     (int) myoData.emgRaw[6],
+                     (int) myoData.emgRaw[7]);
+    }
+    if (oscDataSettings.emgRawMavg) {
+        sender.send ("/myo" + ID + "/emg/raw/mavg",
+                     (int) myoData.emgRawMavg[0],
+                     (int) myoData.emgRawMavg[1],
+                     (int) myoData.emgRawMavg[2],
+                     (int) myoData.emgRawMavg[3],
+                     (int) myoData.emgRawMavg[4],
+                     (int) myoData.emgRawMavg[5],
+                     (int) myoData.emgRawMavg[6],
+                     (int) myoData.emgRawMavg[7]);
+    }
+    if (oscDataSettings.emgRawZcr) {
+        sender.send ("/myo" + ID + "/emg/raw/emgZeroCross/raw",
+                     (int) myoData.emgZeroCross[0],
+                     (int) myoData.emgZeroCross[1],
+                     (int) myoData.emgZeroCross[2],
+                     (int) myoData.emgZeroCross[3],
+                     (int) myoData.emgZeroCross[4],
+                     (int) myoData.emgZeroCross[5],
+                     (int) myoData.emgZeroCross[6],
+                     (int) myoData.emgZeroCross[7]);
+    }
+    if (oscDataSettings.emgRawZcrMavg) {
+        sender.send ("/myo" + ID + "/emg/raw/zeroCrossing/mavg",
+                     (int) myoData.emgZeroCrossMavg[0],
+                     (int) myoData.emgZeroCrossMavg[1],
+                     (int) myoData.emgZeroCrossMavg[2],
+                     (int) myoData.emgZeroCrossMavg[3],
+                     (int) myoData.emgZeroCrossMavg[4],
+                     (int) myoData.emgZeroCrossMavg[5],
+                     (int) myoData.emgZeroCrossMavg[6],
+                     (int) myoData.emgZeroCrossMavg[7]);
+    }
+    if (oscDataSettings.emgScaled) {
+        sender.send ("/myo" + ID + "/emg/scaled/raw",
+                     (float) myoData.emgScaled[0],
+                     (float) myoData.emgScaled[1],
+                     (float) myoData.emgScaled[2],
+                     (float) myoData.emgScaled[3],
+                     (float) myoData.emgScaled[4],
+                     (float) myoData.emgScaled[5],
+                     (float) myoData.emgScaled[6],
+                     (float) myoData.emgScaled[7]);
+    }
+    if (oscDataSettings.emgScaledAbs) {
+        sender.send ("/myo" + ID + "/emg/scaled/abs/raw",
+                     (float) myoData.emgScaledAbs[0],
+                     (float) myoData.emgScaledAbs[1],
+                     (float) myoData.emgScaledAbs[2],
+                     (float) myoData.emgScaledAbs[3],
+                     (float) myoData.emgScaledAbs[4],
+                     (float) myoData.emgScaledAbs[5],
+                     (float) myoData.emgScaledAbs[6],
+                     (float) myoData.emgScaledAbs[7]);
+    }
+    if (oscDataSettings.emgScaledAbsMavg) {
+        sender.send ("/myo" + ID + "/emg/scaled/abs/mavg",
+                     (float) myoData.emgScaledAbsMavg[0],
+                     (float) myoData.emgScaledAbsMavg[1],
+                     (float) myoData.emgScaledAbsMavg[2],
+                     (float) myoData.emgScaledAbsMavg[3],
+                     (float) myoData.emgScaledAbsMavg[4],
+                     (float) myoData.emgScaledAbsMavg[5],
+                     (float) myoData.emgScaledAbsMavg[6],
+                     (float) myoData.emgScaledAbsMavg[7]);
+    }
+    if (oscDataSettings.emgScaledAbsFob) {
+        sender.send ("/myo" + ID + "/emg/scaled/abs/fob/raw",
+                     (float) myoData.emgScaledAbsFob[0],
+                     (float) myoData.emgScaledAbsFob[1],
+                     (float) myoData.emgScaledAbsFob[2],
+                     (float) myoData.emgScaledAbsFob[3],
+                     (float) myoData.emgScaledAbsFob[4],
+                     (float) myoData.emgScaledAbsFob[5],
+                     (float) myoData.emgScaledAbsFob[6],
+                     (float) myoData.emgScaledAbsFob[7]);
+    }
+    if (oscDataSettings.emgScaledAbsFobMavg) {
+        sender.send ("/myo" + ID + "/emg/scaled/abs/fob/mavg",
+                     (float) myoData.emgScaledAbsFobMavg[0],
+                     (float) myoData.emgScaledAbsFobMavg[1],
+                     (float) myoData.emgScaledAbsFobMavg[2],
+                     (float) myoData.emgScaledAbsFobMavg[3],
+                     (float) myoData.emgScaledAbsFobMavg[4],
+                     (float) myoData.emgScaledAbsFobMavg[5],
+                     (float) myoData.emgScaledAbsFobMavg[6],
+                     (float) myoData.emgScaledAbsFobMavg[7]);
+    }
+    if (oscDataSettings.emgScaledAbsMin) {
+        sender.send ("/myo" + ID + "/emg/scaled/abs/min",
+                     (float) myoData.emgScaledAbsMin[0],
+                     (float) myoData.emgScaledAbsMin[1],
+                     (float) myoData.emgScaledAbsMin[2],
+                     (float) myoData.emgScaledAbsMin[3],
+                     (float) myoData.emgScaledAbsMin[4],
+                     (float) myoData.emgScaledAbsMin[5],
+                     (float) myoData.emgScaledAbsMin[6],
+                     (float) myoData.emgScaledAbsMin[7]);
+    }
+    if (oscDataSettings.emgScaledAbsMax) {
+        sender.send ("/myo" + ID + "/emg/scaled/abs/max",
+                     (float) myoData.emgScaledAbsMax[0],
+                     (float) myoData.emgScaledAbsMax[1],
+                     (float) myoData.emgScaledAbsMax[2],
+                     (float) myoData.emgScaledAbsMax[3],
+                     (float) myoData.emgScaledAbsMax[4],
+                     (float) myoData.emgScaledAbsMax[5],
+                     (float) myoData.emgScaledAbsMax[6],
+                     (float) myoData.emgScaledAbsMax[7]);
+    }
+    if (oscDataSettings.emgScaledAbsMav) {
+        sender.send ("/myo" + ID + "/emg/mav/raw", (float) myoData.emgMav);
+    }
+    if (oscDataSettings.emgScaledAbsMavMavg) {
+        sender.send ("/myo" + ID + "/emg/mav/mavg",(float) myoData.emgMavMavg);
+    }
+    if (oscDataSettings.emgScaledAbsMavMin) {
+        sender.send ("/myo" + ID + "/emg/mav/min", (float) myoData.emgMavMin);
+    }
+    if (oscDataSettings.emgScaledAbsMavMax) {
+        sender.send ("/myo" + ID + "/emg/mav/max", (float) myoData.emgMavMax);
+    }
+    if (oscDataSettings.emgScaledAbsMavFob) {
+        sender.send ("/myo" + ID + "/emg/mav/fod/raw", (float) myoData.mavFod);
+    }
+    if (oscDataSettings.emgScaledAbsFobMavMavg) {
+        sender.send ("/myo" + ID + "/emg/mav/fod/mavg",(float) myoData.mavFodMavg);
+    }
+    if (oscDataSettings.handPose) {
+        sender.send ("/myo" + ID + "/pose", (int) myoData.poseID, (String) myoData.pose);
+    }
+}
+*/
 // ============== END SENDER ==============
 
 
@@ -366,6 +428,14 @@ void OSC::setMyoIdReceiver(int ID)
     Id = String(ID);
 }
 
+//std::vector<OscDataSettings> OSC::getOscDataSettings () const
+//{
+//    return oscDataSettings;
+//}
 
+void OSC::setNumMyos(unsigned int numMyos)
+{
+//    oscDataSettings.resize(numMyos);
+}
 
 

@@ -3,12 +3,14 @@
 class FirstOrderDifference
 {
 public:
+    
     void setValue (float Value);
     float getValue();
     Vector3D<float> get3DValue();
     void set3DValue (Vector3D<float> Value);
     
 private:
+    
     float previousInput;
     float input;
     float fod;

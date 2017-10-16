@@ -25,36 +25,40 @@
       <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>
     </GROUP>
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
+      <GROUP id="{A6AA3F79-9818-2AB2-1894-3DB32937990E}" name="Features">
+        <FILE id="eT99tu" name="FirstOrderDifference.cpp" compile="1" resource="0"
+              file="Source/Features/FirstOrderDifference.cpp"/>
+        <FILE id="GLLhUp" name="FirstOrderDifference.h" compile="0" resource="0"
+              file="Source/Features/FirstOrderDifference.h"/>
+        <FILE id="ddRWC6" name="Mav.cpp" compile="1" resource="0" file="Source/Features/Mav.cpp"/>
+        <FILE id="elJGXz" name="Mav.h" compile="0" resource="0" file="Source/Features/Mav.h"/>
+        <FILE id="hcmLaE" name="MinMax.cpp" compile="1" resource="0" file="Source/Features/MinMax.cpp"/>
+        <FILE id="bMwHiu" name="MinMax.h" compile="0" resource="0" file="Source/Features/MinMax.h"/>
+        <FILE id="isi6sd" name="MovingAverage.cpp" compile="1" resource="0"
+              file="Source/Features/MovingAverage.cpp"/>
+        <FILE id="UKZqci" name="MovingAverage.h" compile="0" resource="0" file="Source/Features/MovingAverage.h"/>
+        <FILE id="GIHvWF" name="Rescale.cpp" compile="1" resource="0" file="Source/Features/Rescale.cpp"/>
+        <FILE id="hD9BZ5" name="Rescale.h" compile="0" resource="0" file="Source/Features/Rescale.h"/>
+        <FILE id="brUY7n" name="ScaleValues.cpp" compile="1" resource="0" file="Source/Features/ScaleValues.cpp"/>
+        <FILE id="hNcTz7" name="ScaleValues.h" compile="0" resource="0" file="Source/Features/ScaleValues.h"/>
+        <FILE id="AZMgEF" name="SecondOrderDifference.cpp" compile="1" resource="0"
+              file="Source/Features/SecondOrderDifference.cpp"/>
+        <FILE id="miiWRt" name="SecondOrderDifference.h" compile="0" resource="0"
+              file="Source/Features/SecondOrderDifference.h"/>
+        <FILE id="qOjV79" name="ZeroCrossingRate.cpp" compile="1" resource="0"
+              file="Source/Features/ZeroCrossingRate.cpp"/>
+        <FILE id="nyTKWs" name="ZeroCrossingRate.h" compile="0" resource="0"
+              file="Source/Features/ZeroCrossingRate.h"/>
+      </GROUP>
+      <GROUP id="{64B19B40-2616-4339-D467-FD4E7E7B5A36}" name="Myo">
+        <FILE id="iEFTSS" name="MyoData.h" compile="0" resource="0" file="Source/Myo/MyoData.h"/>
+        <FILE id="ufeoPh" name="MyoListener.cpp" compile="1" resource="0" file="Source/Myo/MyoListener.cpp"/>
+        <FILE id="j7yzwl" name="MyoListener.h" compile="0" resource="0" file="Source/Myo/MyoListener.h"/>
+        <FILE id="JvWMSU" name="MyoManager.cpp" compile="1" resource="0" file="Source/Myo/MyoManager.cpp"/>
+        <FILE id="CMrxZQ" name="MyoManager.h" compile="0" resource="0" file="Source/Myo/MyoManager.h"/>
+      </GROUP>
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
-      </GROUP>
-      <GROUP id="{2098BAB5-B007-98E8-0BA2-8093E352BED8}" name="Myo">
-        <FILE id="T42mLD" name="MinMax.cpp" compile="1" resource="0" file="Source/MinMax.cpp"/>
-        <FILE id="ljTHeb" name="MinMax.h" compile="0" resource="0" file="Source/MinMax.h"/>
-        <FILE id="AJZywL" name="ZeroCrossingRate.cpp" compile="1" resource="0"
-              file="Source/ZeroCrossingRate.cpp"/>
-        <FILE id="jZ1n19" name="ZeroCrossingRate.h" compile="0" resource="0"
-              file="Source/ZeroCrossingRate.h"/>
-        <FILE id="sLSqHI" name="ScaleValues.cpp" compile="1" resource="0" file="Source/ScaleValues.cpp"/>
-        <FILE id="YaAR0t" name="ScaleValues.h" compile="0" resource="0" file="Source/ScaleValues.h"/>
-        <FILE id="F04npp" name="FirstOrderDifference.cpp" compile="1" resource="0"
-              file="Source/FirstOrderDifference.cpp"/>
-        <FILE id="l7l4TK" name="FirstOrderDifference.h" compile="0" resource="0"
-              file="Source/FirstOrderDifference.h"/>
-        <FILE id="kFmd2o" name="MovingAverage.cpp" compile="1" resource="0"
-              file="Source/MovingAverage.cpp"/>
-        <FILE id="Apy2sl" name="MovingAverage.h" compile="0" resource="0" file="Source/MovingAverage.h"/>
-        <FILE id="IsxgEn" name="Mav.cpp" compile="1" resource="0" file="Source/Mav.cpp"/>
-        <FILE id="qqJELz" name="Mav.h" compile="0" resource="0" file="Source/Mav.h"/>
-        <FILE id="CIAzqu" name="SecondOrderDifference.cpp" compile="1" resource="0"
-              file="Source/SecondOrderDifference.cpp"/>
-        <FILE id="tufhzi" name="SecondOrderDifference.h" compile="0" resource="0"
-              file="Source/SecondOrderDifference.h"/>
-        <FILE id="FO3vBI" name="MyoData.h" compile="0" resource="0" file="Source/MyoData.h"/>
-        <FILE id="POB1yB" name="MyoManager.cpp" compile="1" resource="0" file="Source/MyoManager.cpp"/>
-        <FILE id="EKeAn0" name="MyoManager.h" compile="0" resource="0" file="Source/MyoManager.h"/>
-        <FILE id="hCEqvO" name="MyoListener.cpp" compile="1" resource="0" file="Source/MyoListener.cpp"/>
-        <FILE id="D0Y8rk" name="MyoListener.h" compile="0" resource="0" file="Source/MyoListener.h"/>
       </GROUP>
       <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="Windows">
         <FILE id="NxmLWF" name="WindowList.cpp" compile="1" resource="0" file="Source/Windows/WindowList.cpp"/>
@@ -92,8 +96,6 @@
       <FILE id="cEBa54" name="Orientation.h" compile="0" resource="0" file="Source/Orientation.h"/>
       <FILE id="BDIoaP" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
       <FILE id="ptKlKy" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
-      <FILE id="q0Or2R" name="Rescale.cpp" compile="1" resource="0" file="Source/Rescale.cpp"/>
-      <FILE id="Gzqd6E" name="Rescale.h" compile="0" resource="0" file="Source/Rescale.h"/>
       <FILE id="lRkxqB" name="OSC.cpp" compile="1" resource="0" file="Source/OSC.cpp"/>
       <FILE id="TOvZW6" name="OSC.h" compile="0" resource="0" file="Source/OSC.h"/>
     </GROUP>

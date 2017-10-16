@@ -63,6 +63,7 @@ void MyoListener::onPair (myo::Myo* myo, uint64_t timestamp, myo::FirmwareVersio
     myoData.resize (knownMyos.size());
     myo->setStreamEmg (myo::Myo::streamEmgEnabled);
     myo->unlock (myo::Myo::unlockHold);
+    
 }
 
 // onOrientationData() is called whenever the Myo device provides its current orientation, which is represented
@@ -101,14 +102,14 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
 {
     int myoID = getMyoID(myo);
     if (myoID == -1) return;
-    
+   
     myoData[myoID].acc.x = accel.x();
     myoData[myoID].acc.y = accel.y();
     myoData[myoID].acc.z = accel.z();
-    
+
     scaleAcc.setScale(myoData[myoID].acc, 16, 0.03125);
     myoData[myoID].accScaled = scaleAcc.getScaledVector3D();
-    
+       
     accFod.set3DValue (myoData[myoID].acc);
     myoData[myoID].accFod = accFod.get3DValue();
     
@@ -123,14 +124,14 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
 {
     int myoID = getMyoID(myo);
     if (myoID == -1) return;
-    
+   
     myoData[myoID].gyro.x = gyro.x();
     myoData[myoID].gyro.y = gyro.y();
     myoData[myoID].gyro.z = gyro.z();
-    
+
     scaleGyro.setScale(myoData[myoID].gyro, 2000, 0.00025);
     myoData[myoID].gyroScaled = scaleGyro.getScaledVector3D();
-    
+   
     scaleGyro.setAbs(myoData[myoID].gyroScaled, 1);
     myoData[myoID].gyroScaledAbs = scaleGyro.getAbsVector3D();
     
@@ -150,7 +151,7 @@ void MyoListener::onPose (myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
     int poseID = 0;
     int myoID = getMyoID(myo);
     if(myoID == -1) return;
-    
+  
     if(pose==myo::Pose::unknown) poseID = -1;
     if(pose==myo::Pose::rest) poseID = 0;
     if(pose==myo::Pose::fist) poseID = 1;
@@ -158,7 +159,7 @@ void MyoListener::onPose (myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
     if(pose==myo::Pose::waveIn) poseID = 3;
     if(pose==myo::Pose::waveOut) poseID = 4;
     if(pose==myo::Pose::doubleTap) poseID = 5;
-    
+
     myoData[myoID].pose = pose.toString();
     myoData[myoID].poseID = poseID;
 }
@@ -175,6 +176,7 @@ void MyoListener::onArmSync (myo::Myo* myo, uint64_t timestamp, myo::Arm arm, my
 void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* emg)
 {
     int myoID = getMyoID(myo);
+    myoData[myoID].ID = myoID;
     if (myoID == -1) return;
     
     
@@ -184,11 +186,17 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
     {
         myoData[myoID].emgRaw[i] = emg[i];
         
+        emgRawMavg[i].setValue(myoData[myoID].emgRaw[i], 10);
+        myoData[myoID].emgRawMavg[i] = emgRawMavg[i].getInt();
+        
         scaleEMG[i].setScale(emg[i], 127, 0.003921568627);
         myoData[myoID].emgScaled[i] = scaleEMG[i].getScaledFloat();
         
         emgZeroCross[i].setValue(emg[i], 200);
         myoData[myoID].emgZeroCross[i] = emgZeroCross[i].getInt();
+        
+        emgZeroCrossMavg[i].setValue(myoData[myoID].emgZeroCross[i], 10);
+        myoData[myoID].emgZeroCrossMavg[i] =  emgZeroCrossMavg[i].getInt();
         
         scaleEMG[i].setAbs(myoData[myoID].emgScaled[i], 1);
         myoData[myoID].emgScaledAbs[i] = scaleEMG[i].getFloatAbs();
@@ -203,8 +211,8 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
         myoData[myoID].emgScaledAbsMavg[i] = emgMavg[i].getFloat();
         
         emgMinMax[i].setValues(myoData[myoID].emgScaledAbs[i], 200); // window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
-        myoData[myoID].emgMin[i] = emgMinMax[i].getMin();
-        myoData[myoID].emgMax[i] = emgMinMax[i].getMax();
+        myoData[myoID].emgScaledAbsMin[i] = emgMinMax[i].getMin();
+        myoData[myoID].emgScaledAbsMax[i] = emgMinMax[i].getMax();
         
         
         emgMavMinMax.setValues(myoData[myoID].emgMav, 200);// window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz

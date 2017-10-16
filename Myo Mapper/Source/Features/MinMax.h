@@ -4,14 +4,16 @@
 class MinMax
 {
 public:
-    void setValues (float Values, int bufferSize);
-    void setValues (Vector3D<float> Values, int bufferSize);
+    
+    void setValues(float Values, int bufferSize);
+    void setValues(Vector3D<float> Values, int bufferSize);
     float getMin();
     float getMax();
     Vector3D<float> getMin3D();
     Vector3D<float> getMax3D();
     
-private:
+private :
+    
     int counter = 0;
     float buffer[200];
     float min = 100000;

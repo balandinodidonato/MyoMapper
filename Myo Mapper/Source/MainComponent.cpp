@@ -1,20 +1,18 @@
 #include "MainComponent.h"
-#include "MyoData.h"
+#include "Myo/MyoData.h"
+//#include "OSC/OscDataSettings.h"
 
 MainComponent::MainComponent()
-:   selectedMyoID (0)
+:   selectedMyoID(0)
 {
     setSize (getParentWidth() * 0.4, getParentHeight());
-
     getLookAndFeel().setUsingNativeAlertWindows (true);
     
     addAndMakeVisible (orientation);
-    // used
-//    orientation.setVisible (MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Orientation", false));
+    orientation.setVisible (false);
     addAndMakeVisible (settingsPannel);
     addAndMakeVisible (pose);
-    // used
-//    pose.setVisible MyoMapperApplication::getAppProperties().getUserSettings()->getBoolValue ("Show Pose", false));
+    pose.setVisible (false);
     
     settingsPannel.showOrientation.addListener (this);
     settingsPannel.showPose.addListener (this);
@@ -28,18 +26,19 @@ MainComponent::MainComponent()
     osc.connectReceiver();
     
     startTimer(25);
-    
-    // used
-//    selectedMyoID = MyoMapperApplication::getAppProperties().getUserSettings()->getIntValue("Myo ID", 0);
 }
 
 MainComponent::~MainComponent()
 {
-//    MyoMapperApplication::getAppProperties().getUserSettings()->setValue ("Myo ID", selectedMyoID);
+    #if JUCE_MAC
+        MenuBarModel::setMacMainMenu (nullptr);
+    #endif
+    PopupMenu::dismissAllActiveMenus();
 }
 
 void MainComponent::paint(juce::Graphics &g)
 {
+    
     if (settingsPannel.getOSCsettingsStatusSender())
     {
         osc.disconnectSender();
@@ -74,6 +73,7 @@ void MainComponent::resized()
 
 void MainComponent::buttonClicked (Button* button)
 {
+    
     if (button == &settingsPannel.showOrientation)
         setPanelVisibility (orientation);
     if (button == &settingsPannel.showPose)
@@ -91,51 +91,25 @@ void MainComponent::timerCallback()
 {
     bool success = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (success);
-    
+    osc.setNumMyos(myoManager.getMyoData(success).size());
+
     if (! success) return;
     
     if (! selectedMyoID || selectedMyoID >= myoData.size()) return;
-    
+
     uint8 id = selectedMyoID;
-        
+    
+    // Update UI
     orientation.setValues (myoData[id].orientationRaw);
     pose.setPoseLabel (myoData[id].pose + " - " + String (myoData[id].poseID));
 
-    osc.sendOSC (id,
-                 myoData[id].emgRaw,
-                 myoData[id].emgScaled,
-                 myoData[id].emgScaledAbs,
-                 myoData[id].emgScaledAbsMavg,
-                 myoData[id].emgScaledAbsFob,
-                 myoData[id].emgScaledAbsFobMavg,
-                 myoData[id].emgZeroCross,
-                 myoData[id].emgMin,
-                 myoData[id].emgMax,
-                 myoData[id].quaternion,
-                 myoData[id].emgMav,
-                 myoData[id].emgMavMin,
-                 myoData[id].emgMavMax,
-                 myoData[id].mavFod,
-                 myoData[id].emgMavMavg,
-                 myoData[id].mavFodMavg,
-                 myoData[id].gyro,
-                 myoData[id].gyroFod,
-                 myoData[id].gyroScaled,
-                 myoData[id].gyroScaledAbs,
-                 myoData[id].gyroScaledFod,
-                 myoData[id].gyroZeroCross,
-                 myoData[id].acceleration,
-                 myoData[id].accelerationFod,
-                 myoData[id].accelerationScaled,
-                 myoData[id].accelerationScaledFod,
-                 myoData[id].orientationRaw,
-                 orientation.getValue(),
-                 orientation.getFod(),
-                 orientation.getSod(),
-                 myoData[id].pose,
-                 myoData[id].poseID);
- 
+    //
+    myoData[id].orientationScaled = orientation.getValue();
+    myoData[id].orientationScaledFod = orientation.getFod();
+    myoData[id].orientationScaledSod = orientation.getSod();
     
+//    osc.sendOSC (myoData[id], oscDataSettings);
+ 
     if (osc.vibrate && VibrationState)
     {
         myoManager.vibrate (osc.vibrationType, true);
@@ -171,26 +145,4 @@ void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 		osc.setMyoIdReceiver (selectedMyoID);
 	}
 
-}
-
-void MainComponent::HelpDialogWindow()
-{
-    HelpWindow* helpWindow = new HelpWindow ("Online Documentation",
-                                             Colours::grey,
-                                             DocumentWindow::closeButton);
-    helpWindow->addToDesktop();
-    
-    Rectangle<int> area (0, 0, 300, 150);
-    
-    RectanglePlacement placement (RectanglePlacement::xMid
-                                  | RectanglePlacement::yMid
-                                  | RectanglePlacement::doNotResize);
-    
-    Rectangle<int> result (placement.appliedTo (area, Desktop::getInstance().getDisplays()
-                                                .getMainDisplay().userArea.reduced (20)));
-    helpWindow->setBounds (result);
-    
-    helpWindow->setResizable (false, false);
-    helpWindow->setUsingNativeTitleBar (true);
-    helpWindow->setVisible (true);
 }
