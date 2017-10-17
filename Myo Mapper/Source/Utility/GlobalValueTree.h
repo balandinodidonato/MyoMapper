@@ -19,14 +19,25 @@ class GlobalValueTree   : public ValueTree::Listener
 {
 public:
     GlobalValueTree();
-//    ~GlobalValueTree();
+    ~GlobalValueTree();
 
-    ValueTree getGlobalValueTree();
+    ValueTree& getValueTree() const;
     ValueTree setupValueTree();
     void deleteGlobalValueTree();
     void writeSettingsToXml();
-
-    static ValueTree myoMapperGlobalData;
+    
+    void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged,
+                                   const Identifier& property);
+    void valueTreeChildAdded (ValueTree& parentTree,
+                              ValueTree& childWhichHasBeenAdded);
+    void valueTreeChildRemoved (ValueTree& parentTree,
+                                ValueTree& childWhichHasBeenRemoved,
+                                int indexFromWhichChildWasRemoved);
+    void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved,
+                                     int oldIndex, int newIndex);
+    void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged);
+//    ValueTree myoMapperGlobalData;
 private:
+    ScopedPointer<ValueTree> myoMapperGlobalData;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GlobalValueTree)
 };

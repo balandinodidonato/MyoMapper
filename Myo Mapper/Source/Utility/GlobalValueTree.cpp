@@ -16,32 +16,36 @@
 const String onOffTag           = "onOff";
 const bool on                   = true;
 const bool off                  = false;
-ValueTree GlobalValueTree::myoMapperGlobalData;
 
 //==============================================================================
 GlobalValueTree::GlobalValueTree()
 {
+    setupValueTree();
+}
+
+GlobalValueTree::~GlobalValueTree()
+{
+    deleteGlobalValueTree();
+    myoMapperGlobalData = nullptr;
+}
+
+ValueTree& GlobalValueTree::getValueTree() const
+{
+    return* myoMapperGlobalData;
 }
 
 void GlobalValueTree::deleteGlobalValueTree()
 {
-    myoMapperGlobalData.removeAllChildren(0);
-}
-
-ValueTree GlobalValueTree::getGlobalValueTree()
-{
-    return myoMapperGlobalData;
-//    jassert (vt != NULL);
-//    return *vt;
+    myoMapperGlobalData->removeAllChildren(0);
 }
 
 ValueTree GlobalValueTree::setupValueTree()
 {
-    myoMapperGlobalData = ValueTree ("MyoMapperData");
+    myoMapperGlobalData = new ValueTree ("MyoMapperData");
     //=============================================
     // Orientation Data
     
-    ValueTree orData= ValueTree ("OrData");
+    ValueTree orData = ValueTree ("OrData");
     orData.setProperty ("name", "Orientation Data", 0);
     orData.setProperty (onOffTag, on, 0);
     
@@ -105,15 +109,15 @@ ValueTree GlobalValueTree::setupValueTree()
     //=============================================
     // 
     
-    myoMapperGlobalData.addChild (orData, -1, 0);
-    myoMapperGlobalData.addChild (accData, -1, 0);
+    myoMapperGlobalData->addChild (orData, -1, 0);
+    myoMapperGlobalData->addChild (accData, -1, 0);
     
-    return myoMapperGlobalData;
+    return* myoMapperGlobalData;
 }
 
 void GlobalValueTree::writeSettingsToXml()
 {
-    XmlElement* xml = myoMapperGlobalData.createXml();
+    XmlElement* xml = myoMapperGlobalData->createXml();
     
     String sep = File::separatorString;
     String path = File::getSpecialLocation (File::userApplicationDataDirectory).getFullPathName();
@@ -124,4 +128,35 @@ void GlobalValueTree::writeSettingsToXml()
     #endif
     xml->writeToFile (File (path), String::empty);
     xml = nullptr;
+}
+
+//==============================================================================
+void GlobalValueTree::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged,
+                                                     const Identifier& property)
+{
+    return;
+}
+
+void GlobalValueTree::valueTreeChildAdded (ValueTree& parentTree,
+                                                ValueTree& childWhichHasBeenAdded)
+{
+    return;
+}
+
+void GlobalValueTree::valueTreeChildRemoved (ValueTree& parentTree,
+                                                  ValueTree& childWhichHasBeenRemoved,
+                                                  int indexFromWhichChildWasRemoved)
+{
+    return;
+}
+
+void GlobalValueTree::valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved,
+                                                       int oldIndex, int newIndex)
+{
+    return;
+}
+
+void GlobalValueTree::valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged)
+{
+    return;
 }
