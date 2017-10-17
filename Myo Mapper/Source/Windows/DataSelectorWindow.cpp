@@ -19,7 +19,7 @@ public:
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData.getChildWithName ("OrData")));
+//        tree.setRootItem (rootItem = new OscValueTreeItem (valueTree.getValueTree()->getChildWithName ("OrData")));
         tree.setRootItemVisible (false);
     }
     
@@ -43,12 +43,18 @@ private:
 class DataSelectorWindow::AccelerometerPage  : public Component
 {
 public:
-    AccelerometerPage()
+    AccelerometerPage (const DataSelectorWindow& w)
+//    AccelerometerPage()
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData.getChildWithName ("AccData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (w.valueTree.getValueTree().getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
+    }
+    
+    ~AccelerometerPage()
+    {
+//        w.valueTree.deleteGlobalValueTree();
     }
     
     void paint (Graphics& g) override
@@ -71,11 +77,11 @@ private:
 class DataSelectorWindow::GyroscopePage  : public Component
 {
 public:
-    GyroscopePage()
+    GyroscopePage (const DataSelectorWindow& w)
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData.getChildWithName ("AccData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (w.valueTree.getValueTree().getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
     }
     
@@ -99,11 +105,11 @@ private:
 class DataSelectorWindow::EmgPage  : public Component
 {
 public:
-    EmgPage()
+    EmgPage (const DataSelectorWindow& w)
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (GlobalValueTree::myoMapperGlobalData.getChildWithName ("AccData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (w.valueTree.getValueTree().getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
     }
     
@@ -132,9 +138,10 @@ struct DataSelectorWindow::WindowTabBar     : public TabbedComponent
     {
         auto backgroundColour = Colour::fromRGB (200, 200, 200);
         addTab (TRANS ("Orientation"),      backgroundColour, new OrientationPage(),    true);
-        addTab (TRANS ("Accelerometer"),    backgroundColour, new AccelerometerPage(),  true);
-        addTab (TRANS ("Gyroscope"),        backgroundColour, new GyroscopePage(),      true);
-        addTab (TRANS ("EMG"),              backgroundColour, new EmgPage(),            true);
+//        addTab (TRANS ("Accelerometer"),    backgroundColour, new AccelerometerPage (const DataSelectorWindow&),  true);
+//        addTab (TRANS ("Accelerometer"),    backgroundColour, new AccelerometerPage (const DataSelectorWindow&),  true);
+//        addTab (TRANS ("Gyroscope"),        backgroundColour, new GyroscopePage (const DataSelectorWindow&),      true);
+//        addTab (TRANS ("EMG"),              backgroundColour, new EmgPage (const DataSelectorWindow&),            true);
         setCurrentTabIndex (0);
     }
 };

@@ -10,6 +10,7 @@
 
 #pragma once
 
+
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../Utility/GlobalValueTree.h"
 #include "../Utility/OscValueTreeItem.h"
@@ -30,6 +31,8 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DataSelectorWindow)
     struct WindowTabBar;
     ScopedPointer<WindowTabBar> tabBar;
+    
+    const GlobalValueTree valueTree;
     
     class OrientationPage;
     class AccelerometerPage;

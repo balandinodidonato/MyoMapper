@@ -96,7 +96,7 @@ public:
     
     // Document Manager Goes Here
     ScopedPointer<ApplicationCommandManager> commandManager;
-    GlobalValueTree* globalValueTree;
+    ScopedPointer<GlobalValueTree> globalValueTree;
     ScopedPointer<ApplicationProperties> appProperties;
     
     // WindowDrawer used to create and manage these windows

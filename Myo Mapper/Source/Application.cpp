@@ -58,6 +58,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     appProperties->setStorageParameters (options);
      */
     // Settings to be stored in this value tree
+    globalValueTree = new GlobalValueTree();
     globalValueTree->setupValueTree();
     
     LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
@@ -91,7 +92,7 @@ void MyoMapperApplication::handleAsyncUpdate()
 
 void MyoMapperApplication::shutdown()
 {
-//    GlobalValueTree::getGlobalValueTree() = nullptr;
+    globalValueTree->deleteGlobalValueTree();
 //    globalValueTree = nullptr;
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
@@ -180,8 +181,10 @@ void MyoMapperApplication::createFileMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::openMapper);
     menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapper);
     menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapperAs);
-    menu.addSeparator();
-    menu.addCommandItem (&getCommandManager(), CommandIDs::quitMapper);
+    #if ! JUCE_MAC
+        menu.addSeparator();
+        menu.addCommandItem (&getCommandManager(), CommandIDs::quitMapper);
+    #endif
 }
 
 void MyoMapperApplication::createViewMenu (PopupMenu& menu)
@@ -505,19 +508,19 @@ void MyoMapperApplication::hiResTimerCallback()
 //    if (! selectedMyo)
 //        return;
     
-    if (globalValueTree->getGlobalValueTree().getChildWithName ("OrData").getPropertyAsValue ("onOff", 0) == true)
+    if (globalValueTree->getValueTree().getChildWithName ("OrData").getPropertyAsValue ("onOff", 0) == true)
     {
         DBG ("Orientation");
     }
-    if (globalValueTree->getGlobalValueTree().getChildWithName ("AccData").getPropertyAsValue ("onOff", 0) == true)
+    if (globalValueTree->getValueTree().getChildWithName ("AccData").getPropertyAsValue ("onOff", 0) == true)
     {
         DBG ("Acceleration");
     }
-    if (globalValueTree->getGlobalValueTree().getChildWithName ("GyroData").getPropertyAsValue ("onOff", 0) == true)
+    if (globalValueTree->getValueTree().getChildWithName ("GyroData").getPropertyAsValue ("onOff", 0) == true)
     {
         DBG ("Gyro");
     }
-    if (globalValueTree->getGlobalValueTree().getChildWithName ("EmgData").getPropertyAsValue ("onOff", 0) == true)
+    if (globalValueTree->getValueTree().getChildWithName ("EmgData").getPropertyAsValue ("onOff", 0) == true)
     {
         DBG ("EMG");
     }
