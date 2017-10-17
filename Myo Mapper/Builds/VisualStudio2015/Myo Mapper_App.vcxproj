@@ -175,6 +175,7 @@
     <ClCompile Include="..\..\Source\Orientation.cpp"/>
     <ClCompile Include="..\..\Source\Pose.cpp"/>
     <ClCompile Include="..\..\Source\OSC.cpp"/>
+    <ClCompile Include="..\..\Source\OscBuffer.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1387,6 +1388,7 @@
     <ClInclude Include="..\..\Source\Orientation.h"/>
     <ClInclude Include="..\..\Source\Pose.h"/>
     <ClInclude Include="..\..\Source\OSC.h"/>
+    <ClInclude Include="..\..\Source\OscBuffer.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_Array.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_ArrayAllocationBase.h"/>

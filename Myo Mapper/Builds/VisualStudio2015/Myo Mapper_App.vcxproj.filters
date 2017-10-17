@@ -328,6 +328,9 @@
     <ClCompile Include="..\..\Source\OSC.cpp">
       <Filter>Myo Mapper\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\OscBuffer.cpp">
+      <Filter>Myo Mapper\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.cpp">
       <Filter>Juce Modules\juce_core\containers</Filter>
     </ClCompile>
@@ -1693,6 +1696,9 @@
       <Filter>Myo Mapper\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\OSC.h">
+      <Filter>Myo Mapper\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\OscBuffer.h">
       <Filter>Myo Mapper\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.h">
