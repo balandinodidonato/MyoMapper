@@ -30,7 +30,6 @@ public:
     
     static MyoMapperApplication&        getApp();
     static ApplicationCommandManager&   getCommandManager();
-    static ApplicationProperties&       getAppProperties();
     
     //==========================================================================
     const String getApplicationName() override      { return ProjectInfo::projectName; }
@@ -39,11 +38,9 @@ public:
     
     //==========================================================================
     void initialise (const String& commandLine) override;
-    
+    void handleAsyncUpdate() override;
     void shutdown() override;
     void systemRequestedQuit() override;
-    
-    void handleAsyncUpdate() override;
     
     //==========================================================================
     MenuBarModel* getMenuModel();
@@ -97,11 +94,9 @@ public:
     // Document Manager Goes Here
     ScopedPointer<ApplicationCommandManager> commandManager;
     ScopedPointer<GlobalValueTree> globalValueTree;
-    ScopedPointer<ApplicationProperties> appProperties;
     
     // WindowDrawer used to create and manage these windows
     ScopedPointer<WindowList> windowList;
-//    ScopedPointer<Component> aboutWindow, documentationWindow;
     
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyoMapperApplication)

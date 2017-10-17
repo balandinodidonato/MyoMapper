@@ -47,17 +47,6 @@ void MyoMapperApplication::initialise (const String& commandLine)
     auto oscBufferFillHz = 200;
     auto oscBufferFillSpeed = 1000 / oscBufferFillHz;
     
-//    OscValueTree::
-    /*
-    PropertiesFile::Options options;
-    options.applicationName = "userSettings";
-    options.folderName = ProjectInfo::projectName;
-    options.filenameSuffix = ".mapper";
-    options.osxLibrarySubFolder = "Application Support";
-    appProperties = new ApplicationProperties();
-    appProperties->setStorageParameters (options);
-     */
-    // Settings to be stored in this value tree
     globalValueTree = new GlobalValueTree();
     globalValueTree->setupValueTree();
     
@@ -92,14 +81,13 @@ void MyoMapperApplication::handleAsyncUpdate()
 
 void MyoMapperApplication::shutdown()
 {
-    globalValueTree->deleteGlobalValueTree();
-//    globalValueTree = nullptr;
+    stopTimer();
+    globalValueTree = nullptr;
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
     #endif
     menuModel = nullptr;
     commandManager = nullptr;
-    appProperties = nullptr;
     windowList->windows.clear();
     windowList = nullptr;
     LookAndFeel::setDefaultLookAndFeel (nullptr);
@@ -107,13 +95,6 @@ void MyoMapperApplication::shutdown()
 
 void MyoMapperApplication::systemRequestedQuit()
 {
-//    if (settingsWindow != nullptr || windows.isEmpty() == false)
-//    {
-//        settingsWindow = nullptr;
-//    WindowList.closeAllWindows();
-//                    JUCEApplicationBase::quit();
-//    }
-//    else
         JUCEApplicationBase::quit();
 }
 
@@ -130,13 +111,6 @@ ApplicationCommandManager& MyoMapperApplication::getCommandManager()
     ApplicationCommandManager* const comMan = MyoMapperApplication::getApp().commandManager;
     jassert (comMan != nullptr);
     return *comMan;
-}
-
-ApplicationProperties& MyoMapperApplication::getAppProperties()
-{
-    ApplicationProperties* const appProp = getApp().appProperties;
-    jassert (appProp != nullptr);
-    return *appProp;
 }
 
 //==============================================================================
@@ -181,6 +155,7 @@ void MyoMapperApplication::createFileMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::openMapper);
     menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapper);
     menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapperAs);
+    
     #if ! JUCE_MAC
         menu.addSeparator();
         menu.addCommandItem (&getCommandManager(), CommandIDs::quitMapper);
@@ -225,37 +200,28 @@ void MyoMapperApplication::menuCommand (int menuItemID)
 }
 
 //==============================================================================
-/*
-ApplicationCommandTarget* MyoMapperApplication::getNextCommandTarget()
-{
-    // Search upwards through UI tree to find appropriate command target
-    return findFirstTargetParentComponent();
-}
-*/
-
 void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
 {
     // Return a list of commands the manager's target can perform
-    const CommandID id[] = {    CommandIDs::newMapper,
-        CommandIDs::openMapper,
-        CommandIDs::saveMapper,
-        CommandIDs::saveMapperAs,
-        CommandIDs::quitMapper,
-        CommandIDs::zoomIncrease,
-        CommandIDs::zoomDecrease,
-        CommandIDs::enableFullscreen,
-        CommandIDs::showSettingsWindow,
-        CommandIDs::showVisualsWindow,
-        CommandIDs::showDataWindow,
-        CommandIDs::moveWindowsToFront,
-        CommandIDs::hideAllWindows,
-        CommandIDs::closeWindow,
-        CommandIDs::closeAllWindows,
-        CommandIDs::showAboutWindow,
-        CommandIDs::showDocumentationWindow,
-        CommandIDs::showPreferences
+    const CommandID id[] = { CommandIDs::newMapper,
+                             CommandIDs::openMapper,
+                             CommandIDs::saveMapper,
+                             CommandIDs::saveMapperAs,
+                             CommandIDs::quitMapper,
+                             CommandIDs::zoomIncrease,
+                             CommandIDs::zoomDecrease,
+                             CommandIDs::enableFullscreen,
+                             CommandIDs::showSettingsWindow,
+                             CommandIDs::showVisualsWindow,
+                             CommandIDs::showDataWindow,
+                             CommandIDs::moveWindowsToFront,
+                             CommandIDs::hideAllWindows,
+                             CommandIDs::closeWindow,
+                             CommandIDs::closeAllWindows,
+                             CommandIDs::showAboutWindow,
+                             CommandIDs::showDocumentationWindow,
+                             CommandIDs::showPreferences
     };
-    
     commands.addArray (id, numElementsInArray (id));
 }
 
@@ -374,7 +340,7 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
         case CommandIDs::showAboutWindow:               showAboutWindow(); break;
         case CommandIDs::showDocumentationWindow:       showDocumentationWindow(); break;
         case CommandIDs::showPreferences:               showPreferencesWindow(); break;
-//        default:                                        return false;
+        default:                                        return false;
     }
     
     return true;
@@ -408,7 +374,7 @@ void MyoMapperApplication::saveMapperAs()
 
 void MyoMapperApplication::quitMapper()
 {
-    // Close all windows of current mapper and cleanly exit program
+    MyoMapperApplication::shutdown();
 }
 
 void MyoMapperApplication::windowZoomIncrease()
@@ -443,7 +409,6 @@ void MyoMapperApplication::showDataWindow()
 
 void MyoMapperApplication::moveWindowsToFront()
 {
-//    windowList->getWindowList().windows.operator[](1)->toFront (true);
     for (int i = 0; i < windowList->windows.size(); ++i)
     {
         Component* currentWindow = windowList->windows.operator[](i);
@@ -477,7 +442,17 @@ void MyoMapperApplication::closeWindow()
 
 void MyoMapperApplication::closeAllWindows()
 {
-    // Close all currently open windows
+    for (int i = 0; i < windowList->windows.size(); ++i)
+    {
+        Component* currentWindow = windowList->windows.operator[](i);
+        
+        if (currentWindow != nullptr)
+        {
+            WindowDrawer* w = dynamic_cast<WindowDrawer*> (currentWindow);
+            windowList->getWindowList().windows.set (windowList->getWindowList().windows.indexOf (w), nullptr);
+        }
+    }
+    return;
 }
 
 void MyoMapperApplication::showAboutWindow()

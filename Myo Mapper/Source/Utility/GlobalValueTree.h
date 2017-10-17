@@ -36,7 +36,7 @@ public:
     void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved,
                                      int oldIndex, int newIndex);
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged);
-//    ValueTree myoMapperGlobalData;
+    
 private:
     ScopedPointer<ValueTree> myoMapperGlobalData;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GlobalValueTree)
