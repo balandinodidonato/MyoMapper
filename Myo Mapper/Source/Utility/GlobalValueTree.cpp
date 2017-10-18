@@ -36,9 +36,9 @@ GlobalValueTree::~GlobalValueTree()
     myoMapperGlobalData = nullptr;
 }
 
-ValueTree& GlobalValueTree::getValueTree() const
+ValueTree GlobalValueTree::getValueTree() const
 {
-    return* myoMapperGlobalData;
+    return *myoMapperGlobalData;
 }
 
 void GlobalValueTree::deleteGlobalValueTree()
