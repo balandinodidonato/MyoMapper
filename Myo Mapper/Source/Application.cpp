@@ -471,6 +471,8 @@ void MyoMapperApplication::showPreferencesWindow()
 
 //==============================================================================
 int MyoMapperApplication::selectedMyo;
+int MyoMapperApplication::sendAddress;
+int MyoMapperApplication::receiveAddress;
 
 void MyoMapperApplication::hiResTimerCallback()
 {

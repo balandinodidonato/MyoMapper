@@ -84,6 +84,8 @@ public:
     //==========================================================================
     MyoManager myoManager;
     static int selectedMyo;
+    static int sendAddress;
+    static int receiveAddress;
     
     OSC osc;
     void hiResTimerCallback() override;
