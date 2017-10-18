@@ -20,7 +20,8 @@
 
 class SettingsWindow    : public Component,
                           private Button::Listener,
-                          private ComboBox::Listener
+                          private ComboBox::Listener,
+                          public ChangeBroadcaster
 {
 public:
     SettingsWindow();
@@ -43,14 +44,9 @@ private:
     Label myoSelectorLabel;
     ComboBox myoSelectorSetter;
     
-    ToggleButton orientationToggle;
-    ToggleButton accelerationToggle;
-    ToggleButton gyroToggle;
-    ToggleButton emgToggle;
-    ToggleButton poseToggle;
-    
     TextButton saveButton;
     TextButton openButton;
+    TextButton featuresButton;
     ToggleButton hideOnStartupButton;
     TextButton startButton;
     
