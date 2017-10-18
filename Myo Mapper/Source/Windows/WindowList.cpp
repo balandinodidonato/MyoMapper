@@ -44,7 +44,6 @@ void WindowList::getOrCreateSettingsWindow()
         WindowDrawer* const w = new WindowDrawer ("MyoMapper - Settings",
                                                   new SettingsWindow(),
                                                   true, true,
-                                                  windowWidth * 0.4, windowHeight * 0.4,
                                                   windowWidth * 0.3, windowHeight * 0.3,
                                                   windowWidth, windowHeight);
         settingsWindow = w;
@@ -64,7 +63,6 @@ void WindowList::getOrCreateVisualsWindow()
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Visualiser",
                                                   new VisualsWindow(),
                                                   true, false,
-                                                  windowWidth * 0.5, windowHeight * 0.5,
                                                   windowWidth * 0.4, windowHeight * 0.45,
                                                   windowWidth, windowHeight);
         visualsWindow = w;
@@ -84,7 +82,6 @@ void WindowList::getOrCreateDataSelectorWindow()
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - OSC Data",
                                                   new DataSelectorWindow(),
                                                   false, false,
-                                                  windowWidth * 0.5, windowHeight * 0.5,
                                                   windowWidth * 0.4, windowHeight * 0.4,
                                                   windowWidth, windowHeight);
         dataSelectorWindow = w;

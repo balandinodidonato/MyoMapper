@@ -18,7 +18,6 @@ WindowDrawer::WindowDrawer (const String& title,
                             Component* content,
                             bool setResizeable,
                             bool setFixedAspectRatio,
-                            int initWidth, int initHeight,
                             int minWidth, int minHeight,
                             int maxWidth, int maxHeight)
 :   DialogWindow (title, Colours::white, true, true)
@@ -28,7 +27,8 @@ WindowDrawer::WindowDrawer (const String& title,
     if (setFixedAspectRatio == true)
     {
         boundsConstrainer = new (ComponentBoundsConstrainer);
-        boundsConstrainer->setFixedAspectRatio (1.636);
+        auto aspectRatio = (double)maxWidth / (double)maxHeight;
+        boundsConstrainer->setFixedAspectRatio (aspectRatio);
         boundsConstrainer->setMinimumSize (minWidth, minHeight);
         boundsConstrainer->setMaximumSize (maxWidth, maxHeight);
         boundsConstrainer->setMinimumOnscreenAmounts (maxHeight, maxWidth, maxHeight, maxWidth);

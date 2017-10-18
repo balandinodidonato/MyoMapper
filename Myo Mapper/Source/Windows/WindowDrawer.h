@@ -20,7 +20,7 @@ class WindowDrawer  : public DialogWindow,
                       public ChangeBroadcaster
 {
 public:
-    WindowDrawer (const String&, Component*, bool, bool, int, int, int, int, int, int);
+    WindowDrawer (const String&, Component*, bool, bool, int, int, int, int);
     
     void closeButtonPressed() override;
     bool windowWantsToClose();
