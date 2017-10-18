@@ -20,7 +20,14 @@ const bool off                  = false;
 //==============================================================================
 GlobalValueTree::GlobalValueTree()
 {
-    setupValueTree();
+    if (myoMapperGlobalData == nullptr)
+    {
+        setupValueTree();
+    }
+    else
+    {
+        getValueTree();
+    }
 }
 
 GlobalValueTree::~GlobalValueTree()
@@ -51,20 +58,20 @@ ValueTree GlobalValueTree::setupValueTree()
     
     ValueTree orDataRaw = ValueTree ("OrRaw");
     orDataRaw.setProperty ("name", "Raw Data", 0);
-    orDataRaw.setProperty (onOffTag, off, 0);
+    orDataRaw.setProperty (onOffTag, on, 0);
     ValueTree orDataScaled = ValueTree ("OrScaled");
     orDataScaled.setProperty ("name", "Scaled Data", 0);
     orDataScaled.setProperty (onOffTag, on, 0);
     ValueTree orDataQuaternion = ValueTree ("OrQuaternion");
     orDataQuaternion.setProperty ("name", "Quaternion Data", 0);
-    orDataQuaternion.setProperty (onOffTag, off, 0);
+    orDataQuaternion.setProperty (onOffTag, on, 0);
     ValueTree orDataVel = ValueTree ("OrVelocity");
     orDataVel.setProperty ("name", "Velocity Data", 0);
-    orDataVel.setProperty (onOffTag, off, 0);
+    orDataVel.setProperty (onOffTag, on, 0);
     orDataVel.setProperty ("sampleSize", 10, 0);
     ValueTree orDataAccel= ValueTree ("OrAccel");
     orDataAccel.setProperty ("name", "Acceleration Data", 0);
-    orDataAccel.setProperty (onOffTag, off, 0);
+    orDataAccel.setProperty (onOffTag, on, 0);
     orDataAccel.setProperty ("sampleSize", 10, 0);
     
     orData.addChild (orDataRaw, -1, 0);
