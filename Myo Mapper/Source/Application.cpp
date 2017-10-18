@@ -480,8 +480,8 @@ void MyoMapperApplication::hiResTimerCallback()
 //    if (! getMyoDataSuccessful)
 //        DBG ("Did not receive Myo Data");
 //        return;
-    if (! selectedMyo)
-        return;
+//    if (! selectedMyo)
+//        return;
     
     osc.bufferOsc (myoData[selectedMyo]);
 }

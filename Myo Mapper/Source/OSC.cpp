@@ -77,10 +77,10 @@ void OSC::bufferOsc (MyoData &myoData)
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrRaw").getPropertyAsValue ("onOff", 0) == true)
         {
             DBG ("  Orientation Raw");
-//            oscBuffer.push_back (OSCMessage ("/myo" + ID + "/orientation/raw",
-//                                             (float) myoData.orientationRaw.x,
-//                                             (float) myoData.orientationRaw.y,
-//                                             (float) myoData.orientationRaw.z));
+            oscBuffer.push_back (OSCMessage ("/myo" + ID + "/orientation/raw",
+                                             (float) myoData.orientationRaw.x,
+                                             (float) myoData.orientationRaw.y,
+                                             (float) myoData.orientationRaw.z));
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrScaled").getPropertyAsValue ("onOff", 0) == true)
         {
@@ -112,12 +112,15 @@ void OSC::bufferOsc (MyoData &myoData)
         DBG ("EMG");
     }
     
-    //    DBG ("myoData: " + oscBuffer.);
+    DBG ("myoData " + (String)MyoMapperApplication::selectedMyo + ": Buffer Filled");
 }
 
 void OSC::sendOsc ()
 {
-//    sender.send (oscBuffer, hostAddress, oscPortSender);
+    for (int i = 0; i <= oscBuffer.size(); ++i)
+    {
+        sender.send (oscBuffer[i]);
+    }
 }
 /*
 void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
