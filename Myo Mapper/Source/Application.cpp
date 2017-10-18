@@ -48,7 +48,6 @@ void MyoMapperApplication::initialise (const String& commandLine)
     auto oscBufferFillSpeed = 1000 / oscBufferFillHz;
     
     globalValueTree = new GlobalValueTree();
-    globalValueTree->setupValueTree();
     
     LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
     
@@ -476,27 +475,14 @@ int MyoMapperApplication::selectedMyo;
 void MyoMapperApplication::hiResTimerCallback()
 {
     bool getMyoDataSuccessful = false;
-    std::vector <MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
+    std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
     
 //    if (! getMyoDataSuccessful)
+//        DBG ("Did not receive Myo Data");
 //        return;
-//    if (! selectedMyo)
-//        return;
+    if (! selectedMyo)
+        return;
     
-    if (globalValueTree->getValueTree().getChildWithName ("OrData").getPropertyAsValue ("onOff", 0) == true)
-    {
-        DBG ("Orientation");
-    }
-    if (globalValueTree->getValueTree().getChildWithName ("AccData").getPropertyAsValue ("onOff", 0) == true)
-    {
-        DBG ("Acceleration");
-    }
-    if (globalValueTree->getValueTree().getChildWithName ("GyroData").getPropertyAsValue ("onOff", 0) == true)
-    {
-        DBG ("Gyro");
-    }
-    if (globalValueTree->getValueTree().getChildWithName ("EmgData").getPropertyAsValue ("onOff", 0) == true)
-    {
-        DBG ("EMG");
-    }
+    osc.bufferOsc (myoData[selectedMyo]);
 }
+

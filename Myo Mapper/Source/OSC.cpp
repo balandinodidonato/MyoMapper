@@ -1,5 +1,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "OSC.h"
+#include "Application.h"
 
 
 OSC::OSC()
@@ -19,6 +20,9 @@ OSC::OSC()
     myoDataIn {"/yaw", "/pitch", "/roll", "/mav"},
     action {"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
 {
+    globalValueTree = new GlobalValueTree();
+    
+    
     for (int i = 1; i < 5; ++i) // id
     {
         String I = String(i);
@@ -63,11 +67,63 @@ void OSC::setSender (String HostAddress, int Port)
     hostAddress = HostAddress;
 }
 
+void OSC::bufferOsc (MyoData &myoData)
+{
+    String ID = String (MyoMapperApplication::selectedMyo);
+    
+    if (globalValueTree->getValueTree().getChildWithName ("OrData").getPropertyAsValue ("onOff", 0) == false)
+    {
+        DBG ("Orientation: ");
+        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrRaw").getPropertyAsValue ("onOff", 0) == true)
+        {
+            DBG ("  Orientation Raw");
+//            oscBuffer.push_back (OSCMessage ("/myo" + ID + "/orientation/raw",
+//                                             (float) myoData.orientationRaw.x,
+//                                             (float) myoData.orientationRaw.y,
+//                                             (float) myoData.orientationRaw.z));
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrScaled").getPropertyAsValue ("onOff", 0) == true)
+        {
+            DBG ("  Orientation Scaled");
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrQuaternion").getPropertyAsValue ("onOff", 0) == true)
+        {
+            DBG ("  Orientation Quaternion");
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrVelocity").getPropertyAsValue ("onOff", 0) == true)
+        {
+            DBG ("  Orientation Velocity");
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrAccel").getPropertyAsValue ("onOff", 0) == true)
+        {
+            DBG ("  Orientation Acceleration");
+        }
+    }
+    if (globalValueTree->getValueTree().getChildWithName ("AccData").getPropertyAsValue ("onOff", 0) == true)
+    {
+//        DBG ("Acceleration");
+    }
+    if (globalValueTree->getValueTree().getChildWithName ("GyroData").getPropertyAsValue ("onOff", 0) == true)
+    {
+        DBG ("Gyro");
+    }
+    if (globalValueTree->getValueTree().getChildWithName ("EmgData").getPropertyAsValue ("onOff", 0) == true)
+    {
+        DBG ("EMG");
+    }
+    
+    //    DBG ("myoData: " + oscBuffer.);
+}
+
+void OSC::sendOsc ()
+{
+//    sender.send (oscBuffer, hostAddress, oscPortSender);
+}
 /*
 void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
 {
     String ID = String (myoData.ID);
-        
+ 
     std::cout << oscDataSettings.orQuaternion << std::endl;
     
     if (oscDataSettings.orQuaternion) {

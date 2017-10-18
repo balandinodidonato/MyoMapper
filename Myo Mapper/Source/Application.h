@@ -17,6 +17,8 @@
 #include "Windows/WindowList.h"
 #include "Utility/CommandIDs.h"
 #include "Myo/MyoManager.h"
+//#include "Myo/MyoData.h"
+#include "OSC.h"
 
 //==============================================================================
 /*
@@ -80,10 +82,11 @@ public:
     void showPreferencesWindow();
     
     //==========================================================================
-    void hiResTimerCallback() override;
-    
     MyoManager myoManager;
     static int selectedMyo;
+    
+    OSC osc;
+    void hiResTimerCallback() override;
     
     //==========================================================================
     MyoMapperLookAndFeel lookAndFeel;

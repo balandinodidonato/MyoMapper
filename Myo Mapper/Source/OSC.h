@@ -19,6 +19,8 @@ public:
     
     void setSender (String HostAddress, int Port);
     void setReceiver (int Port);
+    void bufferOsc (MyoData &myoData);
+    void sendOsc();
 //    void sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings);
     
     void connectSender();
@@ -49,11 +51,12 @@ public:
 
 
 private:
-    
     OSCSender sender;
     OSCReceiver receiver;
     
 //    OrOscSettings orOscSettings;
+    ScopedPointer<GlobalValueTree> globalValueTree;
+    std::vector<OSCMessage> oscBuffer;
     
     int oscPortSender;
     int oscPortReceiver;
