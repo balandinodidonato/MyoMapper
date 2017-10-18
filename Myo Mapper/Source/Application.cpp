@@ -484,5 +484,6 @@ void MyoMapperApplication::hiResTimerCallback()
 //        return;
     
     osc.bufferOsc (myoData[selectedMyo]);
+    osc.sendOsc();
 }
 
