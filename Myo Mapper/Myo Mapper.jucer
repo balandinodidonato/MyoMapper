@@ -98,8 +98,6 @@
       <FILE id="ptKlKy" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
       <FILE id="lRkxqB" name="OSC.cpp" compile="1" resource="0" file="Source/OSC.cpp"/>
       <FILE id="TOvZW6" name="OSC.h" compile="0" resource="0" file="Source/OSC.h"/>
-      <FILE id="NznmKk" name="OscBuffer.cpp" compile="1" resource="0" file="Source/OscBuffer.cpp"/>
-      <FILE id="OmKFO7" name="OscBuffer.h" compile="0" resource="0" file="Source/OscBuffer.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
