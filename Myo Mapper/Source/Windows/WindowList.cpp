@@ -82,7 +82,7 @@ void WindowList::getOrCreateDataSelectorWindow()
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - OSC Data",
                                                   new DataSelectorWindow(),
                                                   false, false,
-                                                  windowWidth * 0.4, windowHeight * 0.4,
+                                                  windowWidth * 0.5, windowHeight * 0.5,
                                                   windowWidth, windowHeight);
         dataSelectorWindow = w;
         w->addChangeListener (this);
