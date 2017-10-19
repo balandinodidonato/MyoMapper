@@ -18,6 +18,7 @@ MyoMapperLookAndFeel::MyoMapperLookAndFeel()
     auto fontName = font.getTypefaceName();
     setDefaultSansSerifTypefaceName (fontName);
     setupColours();
+    setUsingNativeAlertWindows (true);
 }
 
 MyoMapperLookAndFeel::~MyoMapperLookAndFeel()
