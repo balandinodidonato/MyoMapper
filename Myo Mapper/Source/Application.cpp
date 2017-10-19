@@ -44,6 +44,8 @@ MyoMapperApplication::MyoMapperApplication()
 
 void MyoMapperApplication::initialise (const String& commandLine)
 {
+    sendAddress = 5432;
+    
     auto oscBufferFillHz = 200;
     auto oscBufferFillSpeed = 1000 / oscBufferFillHz;
     
@@ -66,6 +68,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList->windows.ensureStorageAllocated (3);
     windowList->getOrCreateSettingsWindow();
     
+    osc.connectSender();
     startTimer (oscBufferFillSpeed);
 }
 
