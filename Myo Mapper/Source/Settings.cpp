@@ -5,8 +5,8 @@ Settings::Settings()
 :   hostAddress ("127.0.0.1"),
     oscSettingsChangedSender (false),
     oscSettingsChangedReceiver (false),
-    oscPortSender (5432),
-    oscPortReceiver (5431)
+    oscPortSender (5432)
+//    oscPortReceiver (5431)
 {
     oscPortSliderSender.setRange (0, 9999, 1);
     // used

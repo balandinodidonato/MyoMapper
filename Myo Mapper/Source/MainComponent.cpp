@@ -1,6 +1,6 @@
 #include "MainComponent.h"
 #include "Myo/MyoData.h"
-//#include "OSC/OscDataSettings.h"
+
 
 MainComponent::MainComponent()
 :   selectedMyoID(0)
@@ -17,7 +17,7 @@ MainComponent::MainComponent()
     settingsPannel.showOrientation.addListener (this);
     settingsPannel.showPose.addListener (this);
     
-    settingsPannel.myoList.addListener (this);
+//    settingsPannel.myoList.addListener (this);
     myoManager.connect();
     myoManager.startPoll();
     
@@ -134,15 +134,4 @@ void MainComponent::disconnectMyoAndOSC()
     myoManager.disconnect();
     osc.disconnectSender();
     osc.disconnectReceiver();
-}
-
-
-void MainComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
-{
-	if (comboBoxThatHasChanged == &settingsPannel.myoList)
-	{
-		selectedMyoID = settingsPannel.myoList.getSelectedId();
-		osc.setMyoIdReceiver (selectedMyoID);
-	}
-
 }

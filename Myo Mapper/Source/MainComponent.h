@@ -18,7 +18,7 @@
 */
 class MainComponent    : public Component,
                          private Timer,
-                         private ComboBox::Listener,
+//                         private ComboBox::Listener,
                          private Button::Listener   // Added Listener for panel show/ hide buttons
 {
     
@@ -52,7 +52,7 @@ public:
 private:
 
     void timerCallback() override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
+//    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     
     MyoManager myoManager;
     Pose pose;
