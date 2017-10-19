@@ -132,12 +132,18 @@ void MyoMapperApplication::hiResTimerCallback()
     bool getMyoDataSuccessful = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
     
-        if (! getMyoDataSuccessful)
-            return;
-        if (selectedMyo == 0)
-        {
-            return;
-        }
+    if (getMyoDataSuccessful == false)
+    {
+        return;
+    }
+    if (selectedMyo < 1 || selectedMyo > 4)
+    {
+        return;
+    }
+    if (selectedMyo <= myoData.size())
+    {
+        return;
+    }
     
     osc->bufferOsc (myoData[(int)selectedMyo]);
     osc->sendOsc();
