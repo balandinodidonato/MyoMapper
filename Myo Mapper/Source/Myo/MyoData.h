@@ -33,8 +33,8 @@ struct MyoData
     std::array<float, 8> emgScaled;
     std::array<float, 8> emgScaledAbs;
     std::array<float, 8> emgScaledAbsMavg;
-    std::array<float, 8> emgScaledAbsFob;
-    std::array<float, 8> emgScaledAbsFobMavg;
+    std::array<float, 8> emgScaledAbsFod;
+    std::array<float, 8> emgScaledAbsFodMavg;
     std::array<int, 8> emgZeroCross;
     std::array<int, 8> emgZeroCrossMavg;
     std::array<float, 8> emgScaledAbsMin;

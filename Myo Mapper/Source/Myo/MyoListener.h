@@ -77,8 +77,8 @@ private:
 
     MovingAverage emgRawMavg[8];
     ScaleValues scaleEMG[8];
-    FirstOrderDifference emgScaledAbsFob[8];
-    MovingAverage emgScaledAbsFobMavg[8];
+    FirstOrderDifference emgScaledAbsFod[8];
+    MovingAverage emgScaledAbsFodMavg[8];
     ZeroCrossing emgZeroCross[8];
     MovingAverage emgZeroCrossMavg[8];
     MinMax emgMinMax[8];
