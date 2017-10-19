@@ -152,8 +152,7 @@ void SettingsWindow::buttonClicked (Button* button)
     if (button == &startButton)
     {
         WindowList::getWindowList().getOrCreateVisualsWindow();
-        sendChangeMessage();
-//        Close the settings window
+        sendChangeMessage(); // Close the settings window
     }
 }
 
@@ -162,7 +161,7 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     if (slider == &oscSendSetter)
     {
         MyoMapperApplication::sendPort = oscSendSetter.getValue();
-        sendChangeMessage();
+        sendChangeMessage(); // Set the application-wide OSC send port
     }
     if (slider == &oscReceiveSetter)
     {
@@ -175,7 +174,6 @@ void SettingsWindow::comboBoxChanged (ComboBox *comboBoxThatHasChanged)
     if (comboBoxThatHasChanged == &myoSelectorSetter)
     {
         MyoMapperApplication::selectedMyo = myoSelectorSetter.getSelectedId();
-        sendChangeMessage();
-        // Close settings Window
+        sendChangeMessage(); // Update the application-wide myo value
     }
 }
