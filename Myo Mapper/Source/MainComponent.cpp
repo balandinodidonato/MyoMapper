@@ -1,25 +1,9 @@
 #include "MainComponent.h"
 #include "Myo/MyoData.h"
 
-
 MainComponent::MainComponent()
-:   selectedMyoID(0)
 {
-    setSize (getParentWidth() * 0.4, getParentHeight());
-    getLookAndFeel().setUsingNativeAlertWindows (true);
-    
-    addAndMakeVisible (orientation);
-    orientation.setVisible (false);
-    addAndMakeVisible (settingsPannel);
-    addAndMakeVisible (pose);
-    pose.setVisible (false);
-    
-    settingsPannel.showOrientation.addListener (this);
-    settingsPannel.showPose.addListener (this);
-    
     osc.connectReceiver();
-    
-    startTimer(25);
 }
 
 MainComponent::~MainComponent()
@@ -32,7 +16,7 @@ MainComponent::~MainComponent()
 
 void MainComponent::paint(juce::Graphics &g)
 {
-    
+    /*
     if (settingsPannel.getOSCsettingsStatusSender())
     {
         osc.disconnectSender();
@@ -50,6 +34,7 @@ void MainComponent::paint(juce::Graphics &g)
     }
     
     g.fillAll(Colours::grey);
+     */
 }
 
 void MainComponent::timerCallback()
@@ -57,11 +42,7 @@ void MainComponent::timerCallback()
     bool success = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (success);
 
-    if (! success) return;
-    
-    if (! selectedMyoID || selectedMyoID >= myoData.size()) return;
-
-    uint8 id = selectedMyoID;
+    uint8 id = 1;
     
     // Update UI
     orientation.setValues (myoData[id].orientationRaw);
@@ -71,8 +52,6 @@ void MainComponent::timerCallback()
     myoData[id].orientationScaled = orientation.getValue();
     myoData[id].orientationScaledFod = orientation.getFod();
     myoData[id].orientationScaledSod = orientation.getSod();
-    
-//    osc.sendOSC (myoData[id], oscDataSettings);
  
     if (osc.vibrate && VibrationState)
     {

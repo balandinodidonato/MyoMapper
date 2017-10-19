@@ -17,9 +17,7 @@
 /*
 */
 class MainComponent    : public Component,
-                         private Timer,
-//                         private ComboBox::Listener,
-                         private Button::Listener   // Added Listener for panel show/ hide buttons
+                         private Timer
 {
     
 public:
@@ -32,19 +30,8 @@ public:
 
     Orientation orientation;
     
-    
-    enum MenuIDs {
-        AboutMyoMapper = 1000,
-        SettingsMyoData,
-        Quit,
-        onlineDocumentation
-    };
-    
     void AboutMyoMapperDialogWindow();
     void HelpDialogWindow();
-    void oscStreamingSettingsWindow();
-    void buttonClicked (Button* button) override;
-    void setPanelVisibility (Component &component);
     
     Settings settingsPannel;
     
@@ -52,13 +39,11 @@ public:
 private:
 
     void timerCallback() override;
-//    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     
     MyoManager myoManager;
     Pose pose;
     OSC osc;
     
-    int selectedMyoID;
     bool VibrationState = false;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
