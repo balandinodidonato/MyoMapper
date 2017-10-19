@@ -90,7 +90,9 @@ void MyoMapperApplication::handleAsyncUpdate()
 void MyoMapperApplication::shutdown()
 {
     stopTimer();
+    myoManager.disconnect();
     osc->disconnectSender();
+    osc->disconnectReceiver();
     globalValueTree = nullptr;
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
