@@ -2,7 +2,6 @@
 #include "OSC.h"
 #include "Application.h"
 
-
 OSC::OSC()
 :   vibrate (false),
     vibrationType ("null"),
@@ -10,14 +9,16 @@ OSC::OSC()
     rescaleMIN (0),
     rescaleMaxTest (false),
     rescaleMAX (0),
-    oscPortReceiver (5431),
+    sendPort (5432),
     hostAddress ("127.0.0.1"),
-    oscConnectionSender (false),
     oscConnectionReceiver (false),
-    Id ("0"),
     myoDataIn {"/yaw", "/pitch", "/roll", "/mav"},
     action {"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
 {
+//    sendPort = MyoMapperApplication::sendPort;
+    sendPort = 5432;
+    receivePort = MyoMapperApplication::receivePort;
+//    WindowList.addChangeListener (this);
     globalValueTree = new GlobalValueTree();
     
     for (int i = 1; i < 5; ++i) // id
@@ -44,23 +45,21 @@ OSC::~OSC()
 
 void OSC::connectSender()
 {
-    if (! sender.connect (hostAddress, MyoMapperApplication::sendAddress))
+    if (! sender.connect (hostAddress, sendPort))
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "OSC Sender",
-                                          "Myo Mapper could not connect to UDP port " + String(oscPortSender) + ".",
+                                          "Myo Mapper could not connect to UDP port " + (String)sendPort + ".",
                                           "OK");
-    oscConnectionSender = true;
 }
 
 void OSC::disconnectSender()
 {
     sender.disconnect();
-    oscConnectionSender = false;
 }
 
 void OSC::setSender (String HostAddress, int Port)
 {
-    oscPortSender = Port;
+    sendPort = Port;
     hostAddress = HostAddress;
 }
 
@@ -77,9 +76,9 @@ void OSC::bufferOsc (MyoData &myoData)
             OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/raw");
             message.addString ("Raw Data Sent");
             oscBuffer.push_back (message);
-//                                             (float) myoData.orientationRaw.x,
-//                                             (float) myoData.orientationRaw.y,
-//                                             (float) myoData.orientationRaw.z));
+            //            (float) myoData.orientationRaw.x;
+            //            (float) myoData.orientationRaw.y;
+            //            (float) myoData.orientationRaw.z;
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrScaled").getPropertyAsValue ("onOff", 0) == true)
         {
@@ -306,6 +305,12 @@ void OSC::sendOsc ()
     }
     oscBuffer.clear();
 }
+
+//void OSC::changeListenerCallback (ChangeBroadcaster* source)
+//{
+//
+//}
+
 /*
 void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
 {
@@ -559,9 +564,6 @@ void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
     }
 }
 */
-// ============== END SENDER ==============
-
-
 // ==============  RECEIVER  ==============
 
 void OSC::setReceiver (int Port){
@@ -587,7 +589,7 @@ void OSC::disconnectReceiver()
 
 void OSC::oscMessageReceived (const OSCMessage& message)
 {
-    
+    auto Id = (String) MyoMapperApplication::selectedMyo;
     // ---------------- Vibrate
     
     if (message.getAddressPattern() == "/myo" + Id + action[0])
@@ -645,7 +647,7 @@ void OSC::oscMessageReceived (const OSCMessage& message)
         {
             // ---------------- Set MinMax
             
-            String matchString = "/myo"+Id+myoDataIn[i]+action[y];
+            String matchString = "/myo" + Id + myoDataIn[i] + action[y];
             
             if (message.getAddressPattern() == matchString)
             {
@@ -666,10 +668,10 @@ void OSC::oscMessageReceived (const OSCMessage& message)
     }
 }
 
-void OSC::setMyoIdReceiver(int ID)
-{
-    Id = String(ID);
-}
+//void OSC::setMyoIdReceiver(int ID)
+//{
+//    Id = String(ID);
+//}
 
 //std::vector<OscDataSettings> OSC::getOscDataSettings () const
 //{

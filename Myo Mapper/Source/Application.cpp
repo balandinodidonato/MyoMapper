@@ -44,8 +44,6 @@ MyoMapperApplication::MyoMapperApplication()
 
 void MyoMapperApplication::initialise (const String& commandLine)
 {
-    sendAddress = 5432;
-    
     auto oscBufferFillHz = 200;
     auto oscBufferFillSpeed = 1000 / oscBufferFillHz;
     
@@ -65,10 +63,15 @@ void MyoMapperApplication::initialise (const String& commandLine)
     triggerAsyncUpdate();
     
     windowList = new WindowList();
+    windowList->addChangeListener (this);
     windowList->windows.ensureStorageAllocated (3);
     windowList->getOrCreateSettingsWindow();
     
-    osc.connectSender();
+    osc = new OSC();
+    sendPort = 5432;
+    osc->setSender ("127.0.0.1", sendPort);
+    osc->addChangeListener (this);
+    osc->connectSender();
     startTimer (oscBufferFillSpeed);
 }
 
@@ -84,6 +87,7 @@ void MyoMapperApplication::handleAsyncUpdate()
 void MyoMapperApplication::shutdown()
 {
     stopTimer();
+    osc->disconnectSender();
     globalValueTree = nullptr;
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
@@ -98,6 +102,37 @@ void MyoMapperApplication::shutdown()
 void MyoMapperApplication::systemRequestedQuit()
 {
         JUCEApplicationBase::quit();
+}
+
+//==============================================================================
+int MyoMapperApplication::selectedMyo;
+int MyoMapperApplication::sendPort;
+int MyoMapperApplication::receivePort;
+
+void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
+{
+    
+        if (source == dynamic_cast<WindowList*>(source))
+        {
+            osc->disconnectSender();
+            osc->setSender ("127.0.0.1", sendPort);
+            osc->connectSender();
+        }
+}
+
+void MyoMapperApplication::hiResTimerCallback()
+{
+    bool getMyoDataSuccessful = false;
+    std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
+    
+    //    if (! getMyoDataSuccessful)
+    //        DBG ("Did not receive Myo Data");
+    //        return;
+    //    if (! selectedMyo)
+    //        return;
+    
+    osc->bufferOsc (myoData[selectedMyo]);
+    osc->sendOsc();
 }
 
 //==============================================================================
@@ -471,24 +506,3 @@ void MyoMapperApplication::showPreferencesWindow()
 {
     // Show the preferences window (moves on mac vs windows/ linux)s
 }
-
-//==============================================================================
-int MyoMapperApplication::selectedMyo;
-int MyoMapperApplication::sendAddress;
-int MyoMapperApplication::receiveAddress;
-
-void MyoMapperApplication::hiResTimerCallback()
-{
-    bool getMyoDataSuccessful = false;
-    std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
-    
-//    if (! getMyoDataSuccessful)
-//        DBG ("Did not receive Myo Data");
-//        return;
-//    if (! selectedMyo)
-//        return;
-    
-    osc.bufferOsc (myoData[selectedMyo]);
-    osc.sendOsc();
-}
-

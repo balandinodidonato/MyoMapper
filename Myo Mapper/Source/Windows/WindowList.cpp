@@ -40,9 +40,10 @@ void WindowList::getOrCreateSettingsWindow()
     {
         auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
-        
+        auto window = new SettingsWindow();
+        window->addChangeListener (this);
         WindowDrawer* const w = new WindowDrawer ("MyoMapper - Settings",
-                                                  new SettingsWindow(),
+                                                  window,
                                                   true, true,
                                                   windowWidth * 0.3, windowHeight * 0.3,
                                                   windowWidth, windowHeight);
@@ -90,7 +91,6 @@ void WindowList::getOrCreateDataSelectorWindow()
     }
 }
 
-
 void WindowList::forceCloseWindows()
 {
     windows.clear();
@@ -98,6 +98,10 @@ void WindowList::forceCloseWindows()
 
 void WindowList::changeListenerCallback (ChangeBroadcaster* source)
 {
+    if (source == dynamic_cast<SettingsWindow*>(source))
+    {
+        sendChangeMessage();
+    }
     if (source == dynamic_cast<WindowDrawer*> (source))
     {
         WindowDrawer* window = dynamic_cast<WindowDrawer*> (source);

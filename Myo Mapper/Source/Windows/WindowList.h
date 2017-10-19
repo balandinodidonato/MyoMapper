@@ -11,7 +11,6 @@
 #pragma once
 
 class WindowList;
-class SettingsWindow;
 class WindowDrawer;
 
 #include "../JuceLibraryCode/JuceHeader.h"
@@ -24,7 +23,8 @@ class WindowDrawer;
 //==============================================================================
 /*
 */
-class WindowList    :  public ChangeListener
+class WindowList    :  public ChangeListener,
+                       public ChangeBroadcaster
 {
 public:
     WindowList();
@@ -43,9 +43,9 @@ public:
     void askAllWindowsToClose();
     
     OwnedArray<Component> windows;
+private:
     DataSelectorWindow::SafePointer<Component> settingsWindow;
     DataSelectorWindow::SafePointer<Component> visualsWindow;
     DataSelectorWindow::SafePointer<Component> dataSelectorWindow;
-private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowList)
 };

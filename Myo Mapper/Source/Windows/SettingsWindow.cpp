@@ -18,11 +18,11 @@ SettingsWindow::SettingsWindow()
     oscSendLabel.setText ("OSC Send Port", dontSendNotification);
     addAndMakeVisible (oscSendLabel);
     
+    oscSendSetter.addListener (this);
     oscSendSetter.setRange (1, 9999, 1);
     oscSendSetter.setValue (5432);
     oscSendSetter.setSliderStyle (Slider::IncDecButtons);
     oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
-    oscSendSetter.addListener (this);
     addAndMakeVisible (oscSendSetter);
     
     oscReceiveLabel.setJustificationType (Justification::horizontallyCentred);
@@ -162,10 +162,11 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     if (slider == &oscSendSetter)
     {
         MyoMapperApplication::sendPort = oscSendSetter.getValue();
+        sendChangeMessage();
     }
     if (slider == &oscReceiveSetter)
     {
-        MyoMapperApplication::sendPort = oscReceiveSetter.getValue();
+        MyoMapperApplication::receivePort = oscReceiveSetter.getValue();
     }
 }
 

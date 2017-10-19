@@ -10,7 +10,6 @@
 
 #pragma once
 
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Utility/GlobalValueTree.h"
 #include "Utility/MyoMapperLookAndFeel.h"
@@ -25,7 +24,9 @@
 */
 class MyoMapperApplication  : public JUCEApplication,
                               private AsyncUpdater,
-                              private HighResolutionTimer
+                              private HighResolutionTimer,
+                              public ChangeListener,
+                              public ChangeBroadcaster
 {
 public:
     MyoMapperApplication();
@@ -84,10 +85,11 @@ public:
     //==========================================================================
     MyoManager myoManager;
     static int selectedMyo;
-    static int sendAddress;
-    static int receiveAddress;
+    static int sendPort;
+    static int receivePort;
     
-    OSC osc;
+    ScopedPointer<OSC> osc;
+    void changeListenerCallback (ChangeBroadcaster* source) override;
     void hiResTimerCallback() override;
     
     //==========================================================================

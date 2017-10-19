@@ -4,13 +4,15 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Myo/MyoData.h"
 #include "Utility/GlobalValueTree.h"
+//#include "Windows/WindowList.h"
 // ValueTree can get/ set values now
 //#include "OscDataSettings.h"
 //#include "OrOscSettings.h"
 
 class OSC    : public Component,
                private OSCReceiver,
-               private OSCReceiver::ListenerWithOSCAddress<OSCReceiver::MessageLoopCallback>
+               private OSCReceiver::ListenerWithOSCAddress<OSCReceiver::MessageLoopCallback>,
+               public ChangeBroadcaster
 
 {
 public:
@@ -30,7 +32,7 @@ public:
     
     void oscMessageReceived (const OSCMessage& message) override;
     
-    void setMyoIdReceiver (int ID);
+//    void setMyoIdReceiver (int ID);
     
     bool vibrate;
     String vibrationType;
@@ -54,9 +56,13 @@ private:
     OSCSender sender;
     OSCReceiver receiver;
     
-//    OrOscSettings orOscSettings;
+    int sendPort;
+    int receivePort;
+    
     ScopedPointer<GlobalValueTree> globalValueTree;
     std::vector<OSCMessage> oscBuffer;
+    
+//    void changeListenerCallback (ChangeBroadcaster* source) override;
     
     int oscPortSender;
     int oscPortReceiver;
@@ -64,10 +70,9 @@ private:
     
     bool enableOSCvalue;
     
-    bool oscConnectionSender;
     bool oscConnectionReceiver;
     
-    String Id;
+//    String Id;
     
     String myoDataIn[4];
     String action[5];
