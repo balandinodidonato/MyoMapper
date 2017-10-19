@@ -16,7 +16,6 @@ MyoManager::~MyoManager()
 
 bool MyoManager::connect()
 {
-    disconnect();
     bool isConnected = false;
     
     try
@@ -32,10 +31,14 @@ bool MyoManager::connect()
     }
     catch (const std::exception& e)
     {
-        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                          "Error",
-                                          e.what(),
-                                          "OK");
+        String myoMessage = e.what();
+        AlertWindow::showMessageBox (AlertWindow::WarningIcon,
+                                     "Error",
+                                     myoMessage + "\n" +
+                                     "Myo Mapper will now close. " + "\n" +
+                                     "Please relaunch Myo Mapper with Myo Connect open and a Myo connected.");
+        
+        JUCEApplicationBase::quit();
     }
     if (hub != nullptr)
     {
