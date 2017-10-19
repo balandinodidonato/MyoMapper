@@ -21,6 +21,7 @@ OSC::OSC()
     action {"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
 {
     globalValueTree = new GlobalValueTree();
+    globalValueTree->setupValueTree();
     
     
     for (int i = 1; i < 5; ++i) // id
@@ -47,7 +48,7 @@ OSC::~OSC()
 
 void OSC::connectSender()
 {
-    if (! sender.connect (hostAddress, oscPortSender))
+    if (! sender.connect (hostAddress, MyoMapperApplication::sendAddress))
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "OSC Sender",
                                           "Myo Mapper could not connect to UDP port " + String(oscPortSender) + ".",
