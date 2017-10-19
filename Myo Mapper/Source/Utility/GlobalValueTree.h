@@ -21,7 +21,7 @@ public:
     GlobalValueTree();
     ~GlobalValueTree();
 
-    ValueTree getValueTree() const;
+    ValueTree& getValueTree() const;
     ValueTree setupValueTree();
     void deleteGlobalValueTree();
     void writeSettingsToXml();
