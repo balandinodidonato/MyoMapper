@@ -69,17 +69,10 @@ private:
     String hostAddress;
     
     bool enableOSCvalue;
-    
     bool oscConnectionReceiver;
-    
-//    String Id;
     
     String myoDataIn[4];
     String action[5];
-    
-//    std::vector<OscDataSettings> oscDataSettings;
-    
-//    OscDataSettings oscDataSettingss;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)
 };

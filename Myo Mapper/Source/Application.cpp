@@ -67,6 +67,9 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList->windows.ensureStorageAllocated (3);
     windowList->getOrCreateSettingsWindow();
     
+    myoManager.connect();
+    myoManager.startPoll();
+    
     osc = new OSC();
     sendPort = 5432;
     osc->setSender ("127.0.0.1", sendPort);
@@ -125,13 +128,14 @@ void MyoMapperApplication::hiResTimerCallback()
     bool getMyoDataSuccessful = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
     
-    //    if (! getMyoDataSuccessful)
-    //        DBG ("Did not receive Myo Data");
-    //        return;
-    //    if (! selectedMyo)
-    //        return;
+        if (! getMyoDataSuccessful)
+            return;
+        if (selectedMyo == 0)
+        {
+            return;
+        }
     
-    osc->bufferOsc (myoData[selectedMyo]);
+    osc->bufferOsc (myoData[(int)selectedMyo]);
     osc->sendOsc();
 }
 
