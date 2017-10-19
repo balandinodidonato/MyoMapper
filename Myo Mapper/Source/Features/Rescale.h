@@ -53,7 +53,6 @@ private:
     float input;
     float input1;
     String labelWidget;
-//    const long double PI = 3.141592653589793;
     const long double r2PI;
     int test = 0;
     String MyoIDString;

@@ -65,7 +65,7 @@ void OSC::setSender (String HostAddress, int Port)
 
 void OSC::bufferOsc (MyoData &myoData)
 {
-    String ID = String (MyoMapperApplication::selectedMyo);
+    String id = String (MyoMapperApplication::selectedMyo);
     
     auto tree = globalValueTree->getValueTree();
     
@@ -73,7 +73,7 @@ void OSC::bufferOsc (MyoData &myoData)
     {
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrRaw").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/raw");
+            OSCMessage message = OSCMessage ("/myo" + id + "/orientation/raw");
             message.addFloat32 ((float) myoData.orientationRaw.x);
             message.addFloat32 ((float) myoData.orientationRaw.y);
             message.addFloat32 ((float) myoData.orientationRaw.z);
@@ -81,26 +81,35 @@ void OSC::bufferOsc (MyoData &myoData)
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrScaled").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/scaled");
-            message.addString ("Orientation Scaled Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/orientation/scaled");
+            message.addFloat32 ((float) myoData.orientationScaled.x);
+            message.addFloat32 ((float) myoData.orientationScaled.y);
+            message.addFloat32 ((float) myoData.orientationScaled.z);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrQuaternion").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/quaternion");
-            message.addString ("Orientation Quaternion Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/orientation/quaternion");
+            message.addFloat32 ((float) myoData.quaternion[0]);
+            message.addFloat32 ((float) myoData.quaternion[1]);
+            message.addFloat32 ((float) myoData.quaternion[2]);
+            message.addFloat32 ((float) myoData.quaternion[3]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrVelocity").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/velocity");
-            message.addString ("Orientation Velocity Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/orientation/velocity");
+            message.addFloat32 ((float) myoData.orientationScaledFod.x);
+            message.addFloat32 ((float) myoData.orientationScaledFod.y);
+            message.addFloat32 ((float) myoData.orientationScaledFod.z);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrAccel").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/acceleration");
-            message.addString ("Orientation Acceleration Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/orientation/acceleration");
+            message.addFloat32 ((float) myoData.orientationScaledSod.x);
+            message.addFloat32 ((float) myoData.orientationScaledSod.y);
+            message.addFloat32 ((float) myoData.orientationScaledSod.z);
             oscBuffer.push_back (message);
         }
     }
@@ -108,38 +117,50 @@ void OSC::bufferOsc (MyoData &myoData)
     {
         if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccRaw").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/raw/raw");
-            message.addString ("Acceleration Raw Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/raw/raw");
+            message.addFloat32 ((float) myoData.acc.x);
+            message.addFloat32 ((float) myoData.acc.y);
+            message.addFloat32 ((float) myoData.acc.x);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccRawFod").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/raw/fod/raw");
-            message.addString ("Acceleration Raw FOD Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/raw/fod/raw");
+            message.addFloat32 ((float) myoData.accFod.x);
+            message.addFloat32 ((float) myoData.accFod.y);
+            message.addFloat32 ((float) myoData.accFod.z);
             oscBuffer.push_back (message);
         }
+        /*
         if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccRawFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/raw/fod/mavg");
-            message.addString ("Acceleration Raw FOD-Mavg Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/raw/fod/mavg");
+            DBG ("THIS DATA IS NOT NAMED CORRECTLY");
             oscBuffer.push_back (message);
         }
+         */
         if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccScaled").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/scaled/raw");
-            message.addString ("Acceleration Scaled Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/scaled/raw");
+            message.addFloat32 ((float) myoData.accScaled.x);
+            message.addFloat32 ((float) myoData.accScaled.y);
+            message.addFloat32 ((float) myoData.accScaled.z);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccScaledFod").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/scaled/fod/raw");
-            message.addString ("Acceleration Scaled FOD Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/scaled/fod/raw");
+            message.addFloat32 ((float) myoData.accScaledFod.x);
+            message.addFloat32 ((float) myoData.accScaledFod.y);
+            message.addFloat32 ((float) myoData.accScaledFod.z);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccScaledFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/scaled/fod/mavg");
-            message.addString ("Acceleration Scaled FOD-Mavg Data Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/scaled/fod/mavg");
+            message.addFloat32 ((float) myoData.accScaledFodMavg.x);
+            message.addFloat32 ((float) myoData.accScaledFodMavg.y);
+            message.addFloat32 ((float) myoData.accScaledFodMavg.z);
             oscBuffer.push_back (message);
         }
     }
@@ -147,38 +168,50 @@ void OSC::bufferOsc (MyoData &myoData)
     {
         if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroRaw").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/raw/raw");
-            message.addString ("Gyro Raw Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/gyro/raw/raw");
+            message.addFloat32 ((float) myoData.gyro.x);
+            message.addFloat32 ((float) myoData.gyro.y);
+            message.addFloat32 ((float) myoData.gyro.z);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroRawFod").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/raw/fod");
-            message.addString ("Gyro Raw FOD Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/gyro/raw/fod");
+            message.addFloat32 ((float) myoData.gyroFod.x);
+            message.addFloat32 ((float) myoData.gyroFod.y);
+            message.addFloat32 ((float) myoData.gyroFod.z);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaled").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/scaled/raw");
-            message.addString ("Gyro Scaled Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/gyro/scaled/raw");
+            message.addFloat32 ((float) myoData.gyroScaled.x);
+            message.addFloat32 ((float) myoData.gyroScaled.y);
+            message.addFloat32 ((float) myoData.gyroScaled.z);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaledAbs").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/scaled/abs");
-            message.addString ("Gyro Absolute Scaled Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/gyro/scaled/abs");
+            message.addFloat32 ((float) myoData.gyroScaledAbs.x);
+            message.addFloat32 ((float) myoData.gyroScaledAbs.y);
+            message.addFloat32 ((float) myoData.gyroScaledAbs.z);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaledFod").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/scaled/fod/raw");
-            message.addString ("Gyro Scaled FOD Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/gyro/scaled/fod/raw");
+            message.addFloat32 ((float) myoData.gyroScaledFod.x);
+            message.addFloat32 ((float) myoData.gyroScaledFod.y);
+            message.addFloat32 ((float) myoData.gyroScaledFod.z);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaledFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/scaled/fod/mavg");
-            message.addString ("Gyro Scaled FOD-Mavg Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/gyro/scaled/fod/mavg");
+            message.addFloat32 ((float) myoData.gyroScaledFodMavg.x);
+            message.addFloat32 ((float) myoData.gyroScaledFodMavg.y);
+            message.addFloat32 ((float) myoData.gyroScaledFodMavg.z);
             oscBuffer.push_back (message);
         }
     }
@@ -186,110 +219,194 @@ void OSC::bufferOsc (MyoData &myoData)
     {
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRaw").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/raw/raw");
-            message.addString ("EMG Raw Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/raw");
+            message.addFloat32 ((int) myoData.emgRaw[0]);
+            message.addFloat32 ((int) myoData.emgRaw[1]);
+            message.addFloat32 ((int) myoData.emgRaw[2]);
+            message.addFloat32 ((int) myoData.emgRaw[3]);
+            message.addFloat32 ((int) myoData.emgRaw[4]);
+            message.addFloat32 ((int) myoData.emgRaw[5]);
+            message.addFloat32 ((int) myoData.emgRaw[6]);
+            message.addFloat32 ((int) myoData.emgRaw[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawMavg").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/raw/mavg");
-            message.addString ("EMG Raw Mavg Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/mavg");
+            message.addFloat32 ((int) myoData.emgRawMavg[0]);
+            message.addFloat32 ((int) myoData.emgRawMavg[1]);
+            message.addFloat32 ((int) myoData.emgRawMavg[2]);
+            message.addFloat32 ((int) myoData.emgRawMavg[3]);
+            message.addFloat32 ((int) myoData.emgRawMavg[4]);
+            message.addFloat32 ((int) myoData.emgRawMavg[5]);
+            message.addFloat32 ((int) myoData.emgRawMavg[6]);
+            message.addFloat32 ((int) myoData.emgRawMavg[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawZcr").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/raw/zcr/raw");
-            message.addString ("EMG ZCR Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/zcr/raw");
+            message.addFloat32 ((int) myoData.emgZeroCross[0]);
+            message.addFloat32 ((int) myoData.emgZeroCross[1]);
+            message.addFloat32 ((int) myoData.emgZeroCross[2]);
+            message.addFloat32 ((int) myoData.emgZeroCross[3]);
+            message.addFloat32 ((int) myoData.emgZeroCross[4]);
+            message.addFloat32 ((int) myoData.emgZeroCross[5]);
+            message.addFloat32 ((int) myoData.emgZeroCross[6]);
+            message.addFloat32 ((int) myoData.emgZeroCross[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawZcrMavg").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/raw/zcr/mavg");
-            message.addString ("EMG ZCR Mavg Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/zcr/mavg");
+            message.addFloat32 ((int) myoData.emgZeroCrossMavg[0]);
+            message.addFloat32 ((int) myoData.emgZeroCrossMavg[1]);
+            message.addFloat32 ((int) myoData.emgZeroCrossMavg[2]);
+            message.addFloat32 ((int) myoData.emgZeroCrossMavg[3]);
+            message.addFloat32 ((int) myoData.emgZeroCrossMavg[4]);
+            message.addFloat32 ((int) myoData.emgZeroCrossMavg[5]);
+            message.addFloat32 ((int) myoData.emgZeroCrossMavg[6]);
+            message.addFloat32 ((int) myoData.emgZeroCrossMavg[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaled").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/raw");
-            message.addString ("EMG Scaled Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/raw");
+            message.addFloat32 ((float) myoData.emgScaled[0]);
+            message.addFloat32 ((float) myoData.emgScaled[1]);
+            message.addFloat32 ((float) myoData.emgScaled[2]);
+            message.addFloat32 ((float) myoData.emgScaled[3]);
+            message.addFloat32 ((float) myoData.emgScaled[4]);
+            message.addFloat32 ((float) myoData.emgScaled[5]);
+            message.addFloat32 ((float) myoData.emgScaled[6]);
+            message.addFloat32 ((float) myoData.emgScaled[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbs").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/raw");
-            message.addString ("EMG Absolute Scaled Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/raw");
+            message.addFloat32 ((float) myoData.emgScaledAbs[0]);
+            message.addFloat32 ((float) myoData.emgScaledAbs[1]);
+            message.addFloat32 ((float) myoData.emgScaledAbs[2]);
+            message.addFloat32 ((float) myoData.emgScaledAbs[3]);
+            message.addFloat32 ((float) myoData.emgScaledAbs[4]);
+            message.addFloat32 ((float) myoData.emgScaledAbs[5]);
+            message.addFloat32 ((float) myoData.emgScaledAbs[6]);
+            message.addFloat32 ((float) myoData.emgScaledAbs[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMin").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/min");
-            message.addString ("EMG Absolute Scaled Min Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/min");
+            message.addFloat32 ((float) myoData.emgScaledAbsMin[0]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMin[1]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMin[2]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMin[3]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMin[4]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMin[5]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMin[6]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMin[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMax").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/max");
-            message.addString ("EMG Absolute Scaled Max Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/max");
+            message.addFloat32 ((float) myoData.emgScaledAbsMax[0]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMax[1]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMax[2]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMax[3]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMax[4]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMax[5]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMax[6]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMax[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsFod").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/fod/raw");
-            message.addString ("EMG Absolute Scaled FOD Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/fod/raw");
+            message.addFloat32 ((float) myoData.emgScaledAbsFod[0]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFod[1]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFod[2]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFod[3]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFod[4]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFod[5]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFod[6]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFod[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/fod/mavg");
-            message.addString ("EMG Absolute Scaled FOD-Mavg Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/fod/mavg");
+            message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[0]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[1]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[2]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[3]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[4]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[5]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[6]);
+            message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavg").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mavg");
-            message.addString ("EMG Absolute Scaled Mavg Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mavg");
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[0]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[1]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[2]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[3]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[4]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[5]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[6]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMav").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/raw");
-            message.addString ("EMG Absolute Scaled MAV Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/raw");
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[0]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[1]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[2]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[3]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[4]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[5]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[6]);
+            message.addFloat32 ((float) myoData.emgScaledAbsMavg[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMavg").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/mavg");
-            message.addString ("EMG Absolute Scaled MAV-Mavg Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/mavg");
+            message.addFloat32 ((float) myoData.emgMav);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMin").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/min");
-            message.addString ("EMG Absolute Scaled MAV Min Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/min");
+            message.addFloat32 ((float) myoData.emgMavMin);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMax").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/max");
-            message.addString ("EMG Absolute Scaled MAV Max Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/max");
+            message.addFloat32 ((float) myoData.emgMavMax);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavFod").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/fod/raw");
-            message.addString ("EMG Absolute Scaled MAV FOD Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/fod/raw");
+            message.addFloat32 ((float) myoData.mavFod);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/fod/mavg");
-            message.addString ("EMG Absolute Scaled MAV FOD-Mavg Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/fod/mavg");
+            message.addFloat32 ((float) myoData.mavFodMavg);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("HandPose").getPropertyAsValue ("onOff", 0) == true)
         {
-            OSCMessage message = OSCMessage ("/myo" + ID + "/pose");
-            message.addString ("Hand Pose Sent");
+            OSCMessage message = OSCMessage ("/myo" + id + "/pose");
+            message.addString ((String) myoData.pose);
             oscBuffer.push_back (message);
         }
     }
@@ -304,261 +421,7 @@ void OSC::sendOsc ()
     oscBuffer.clear();
 }
 
-/*
-void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
-{
-    String ID = String (myoData.ID);
- 
-    std::cout << oscDataSettings.orQuaternion << std::endl;
-    
-    if (oscDataSettings.orQuaternion) {
-        sender.send ("/myo" + ID + "/orientation/quaternion",
-                     (float) myoData.quaternion[0],
-                     (float) myoData.quaternion[1],
-                     (float) myoData.quaternion[2],
-                     (float) myoData.quaternion[3]);
-    }
-    if (oscDataSettings.orRaw) {
-        sender.send ("/myo" + ID + "/orientation/raw",
-                     (float) myoData.orientationRaw.x,
-                     (float) myoData.orientationRaw.y,
-                     (float) myoData.orientationRaw.z);
-    }
-
-    if (oscDataSettings.orScaled) {
-        sender.send ("/myo" + ID + "/orientation/scaled",
-                     (float) myoData.orientationScaled.x,
-                     (float) myoData.orientationScaled.y,
-                     (float) myoData.orientationScaled.z);
-    }
-    if (oscDataSettings.orVelocity) {
-        sender.send ("/myo" + ID + "/orientation/velocity",
-                     (float) myoData.orientationScaledFod.x,
-                     (float) myoData.orientationScaledFod.y,
-                     (float) myoData.orientationScaledFod.z);
-    }
-    if (oscDataSettings.orAcceleration) {
-        sender.send ("/myo" + ID + "/orientation/acceleration",
-                     (float) myoData.orientationScaledSod.x,
-                     (float) myoData.orientationScaledSod.y,
-                     (float) myoData.orientationScaledSod.z);
-    }
-    
-
-    if (oscDataSettings.accRaw) {
-        sender.send ("/myo" + ID + "/acceleration/raw/raw",
-                     (float) myoData.acc.x,
-                     (float) myoData.acc.y,
-                     (float) myoData.acc.z);
-    }
-    if (oscDataSettings.accRawFod) {
-        sender.send ("/myo" + ID + "/acceleration/raw/fod",
-                     (float) myoData.accFod.x,
-                     (float) myoData.accFod.y,
-                     (float) myoData.accFod.z);
-    }
-    if (oscDataSettings.accScaled) {
-        sender.send ("/myo" + ID + "/acceleration/scaled/raw",
-                     (float) myoData.accScaled.x,
-                     (float) myoData.accScaled.y,
-                     (float) myoData.accScaled.z);
-        
-    }
-    if (oscDataSettings.accScaledFod) {
-        sender.send ("/myo" + ID + "/acceleration/scaled/fod/raw",
-                     (float) myoData.accScaledFod.x,
-                     (float) myoData.accScaledFod.y,
-                     (float) myoData.accScaledFod.z);
-    }
-    if (oscDataSettings.accScaledFodMavg) {
-        sender.send ("/myo" + ID + "/acceleration/scaled/fod/mavg",
-                     (float) myoData.accScaledFodMavg.x,
-                     (float) myoData.accScaledFodMavg.y,
-                     (float) myoData.accScaledFodMavg.z);
-    }
-    
-    if (oscDataSettings.gyroRaw) {
-        sender.send ("/myo" + ID + "/gyro/raw/raw",
-                     (float) myoData.gyro.x,
-                     (float) myoData.gyro.y,
-                     (float) myoData.gyro.z);
-    }
-    if (oscDataSettings.accRawFod) {
-        sender.send ("/myo" + ID + "/gyro/raw/fod",
-                     (float) myoData.gyroFod.x,
-                     (float) myoData.gyroFod.y,
-                     (float) myoData.gyroFod.z);
-    }
-    if (oscDataSettings.gyroScaled) {
-        sender.send ("/myo" + ID + "/gyro/scaled/raw",
-                     (float) myoData.gyroScaled.x,
-                     (float) myoData.gyroScaled.y,
-                     (float) myoData.gyroScaled.z);
-    }
-    if (oscDataSettings.gyroScaledAbs) {
-        sender.send ("/myo" + ID + "/gyro/scaled/abs",
-                     (float) myoData.gyroScaledAbs.x,
-                     (float) myoData.gyroScaledAbs.y,
-                     (float) myoData.gyroScaledAbs.z);
-
-//
-//         sender.send ("/myo" + ID + "/gyro/scaled/fod/raw",
-//                     (float) myoData.gyroScaledFod.x,
-//                     (float) myoData.gyroScaledFod.y,
-//                     (float) myoData.gyroScaledFod.z);
-//         sender.send ("/myo" + ID + "/gyro/scaled/fod/mavg",
-//                     (float) myoData.gyroScaledFodMavg.x,
-//                     (float) myoData.gyroScaledFodMavg.y,
-//                     (float) myoData.gyroScaledFodMavg.z);
-//
-    }
-    
-    if (oscDataSettings.emgRaw) {
-        sender.send ("/myo" + ID + "/emg/raw/raw",
-                     (int) myoData.emgRaw[0],
-                     (int) myoData.emgRaw[1],
-                     (int) myoData.emgRaw[2],
-                     (int) myoData.emgRaw[3],
-                     (int) myoData.emgRaw[4],
-                     (int) myoData.emgRaw[5],
-                     (int) myoData.emgRaw[6],
-                     (int) myoData.emgRaw[7]);
-    }
-    if (oscDataSettings.emgRawMavg) {
-        sender.send ("/myo" + ID + "/emg/raw/mavg",
-                     (int) myoData.emgRawMavg[0],
-                     (int) myoData.emgRawMavg[1],
-                     (int) myoData.emgRawMavg[2],
-                     (int) myoData.emgRawMavg[3],
-                     (int) myoData.emgRawMavg[4],
-                     (int) myoData.emgRawMavg[5],
-                     (int) myoData.emgRawMavg[6],
-                     (int) myoData.emgRawMavg[7]);
-    }
-    if (oscDataSettings.emgRawZcr) {
-        sender.send ("/myo" + ID + "/emg/raw/emgZeroCross/raw",
-                     (int) myoData.emgZeroCross[0],
-                     (int) myoData.emgZeroCross[1],
-                     (int) myoData.emgZeroCross[2],
-                     (int) myoData.emgZeroCross[3],
-                     (int) myoData.emgZeroCross[4],
-                     (int) myoData.emgZeroCross[5],
-                     (int) myoData.emgZeroCross[6],
-                     (int) myoData.emgZeroCross[7]);
-    }
-    if (oscDataSettings.emgRawZcrMavg) {
-        sender.send ("/myo" + ID + "/emg/raw/zeroCrossing/mavg",
-                     (int) myoData.emgZeroCrossMavg[0],
-                     (int) myoData.emgZeroCrossMavg[1],
-                     (int) myoData.emgZeroCrossMavg[2],
-                     (int) myoData.emgZeroCrossMavg[3],
-                     (int) myoData.emgZeroCrossMavg[4],
-                     (int) myoData.emgZeroCrossMavg[5],
-                     (int) myoData.emgZeroCrossMavg[6],
-                     (int) myoData.emgZeroCrossMavg[7]);
-    }
-    if (oscDataSettings.emgScaled) {
-        sender.send ("/myo" + ID + "/emg/scaled/raw",
-                     (float) myoData.emgScaled[0],
-                     (float) myoData.emgScaled[1],
-                     (float) myoData.emgScaled[2],
-                     (float) myoData.emgScaled[3],
-                     (float) myoData.emgScaled[4],
-                     (float) myoData.emgScaled[5],
-                     (float) myoData.emgScaled[6],
-                     (float) myoData.emgScaled[7]);
-    }
-    if (oscDataSettings.emgScaledAbs) {
-        sender.send ("/myo" + ID + "/emg/scaled/abs/raw",
-                     (float) myoData.emgScaledAbs[0],
-                     (float) myoData.emgScaledAbs[1],
-                     (float) myoData.emgScaledAbs[2],
-                     (float) myoData.emgScaledAbs[3],
-                     (float) myoData.emgScaledAbs[4],
-                     (float) myoData.emgScaledAbs[5],
-                     (float) myoData.emgScaledAbs[6],
-                     (float) myoData.emgScaledAbs[7]);
-    }
-    if (oscDataSettings.emgScaledAbsMavg) {
-        sender.send ("/myo" + ID + "/emg/scaled/abs/mavg",
-                     (float) myoData.emgScaledAbsMavg[0],
-                     (float) myoData.emgScaledAbsMavg[1],
-                     (float) myoData.emgScaledAbsMavg[2],
-                     (float) myoData.emgScaledAbsMavg[3],
-                     (float) myoData.emgScaledAbsMavg[4],
-                     (float) myoData.emgScaledAbsMavg[5],
-                     (float) myoData.emgScaledAbsMavg[6],
-                     (float) myoData.emgScaledAbsMavg[7]);
-    }
-    if (oscDataSettings.emgScaledAbsFob) {
-        sender.send ("/myo" + ID + "/emg/scaled/abs/fob/raw",
-                     (float) myoData.emgScaledAbsFob[0],
-                     (float) myoData.emgScaledAbsFob[1],
-                     (float) myoData.emgScaledAbsFob[2],
-                     (float) myoData.emgScaledAbsFob[3],
-                     (float) myoData.emgScaledAbsFob[4],
-                     (float) myoData.emgScaledAbsFob[5],
-                     (float) myoData.emgScaledAbsFob[6],
-                     (float) myoData.emgScaledAbsFob[7]);
-    }
-    if (oscDataSettings.emgScaledAbsFobMavg) {
-        sender.send ("/myo" + ID + "/emg/scaled/abs/fob/mavg",
-                     (float) myoData.emgScaledAbsFobMavg[0],
-                     (float) myoData.emgScaledAbsFobMavg[1],
-                     (float) myoData.emgScaledAbsFobMavg[2],
-                     (float) myoData.emgScaledAbsFobMavg[3],
-                     (float) myoData.emgScaledAbsFobMavg[4],
-                     (float) myoData.emgScaledAbsFobMavg[5],
-                     (float) myoData.emgScaledAbsFobMavg[6],
-                     (float) myoData.emgScaledAbsFobMavg[7]);
-    }
-    if (oscDataSettings.emgScaledAbsMin) {
-        sender.send ("/myo" + ID + "/emg/scaled/abs/min",
-                     (float) myoData.emgScaledAbsMin[0],
-                     (float) myoData.emgScaledAbsMin[1],
-                     (float) myoData.emgScaledAbsMin[2],
-                     (float) myoData.emgScaledAbsMin[3],
-                     (float) myoData.emgScaledAbsMin[4],
-                     (float) myoData.emgScaledAbsMin[5],
-                     (float) myoData.emgScaledAbsMin[6],
-                     (float) myoData.emgScaledAbsMin[7]);
-    }
-    if (oscDataSettings.emgScaledAbsMax) {
-        sender.send ("/myo" + ID + "/emg/scaled/abs/max",
-                     (float) myoData.emgScaledAbsMax[0],
-                     (float) myoData.emgScaledAbsMax[1],
-                     (float) myoData.emgScaledAbsMax[2],
-                     (float) myoData.emgScaledAbsMax[3],
-                     (float) myoData.emgScaledAbsMax[4],
-                     (float) myoData.emgScaledAbsMax[5],
-                     (float) myoData.emgScaledAbsMax[6],
-                     (float) myoData.emgScaledAbsMax[7]);
-    }
-    if (oscDataSettings.emgScaledAbsMav) {
-        sender.send ("/myo" + ID + "/emg/mav/raw", (float) myoData.emgMav);
-    }
-    if (oscDataSettings.emgScaledAbsMavMavg) {
-        sender.send ("/myo" + ID + "/emg/mav/mavg",(float) myoData.emgMavMavg);
-    }
-    if (oscDataSettings.emgScaledAbsMavMin) {
-        sender.send ("/myo" + ID + "/emg/mav/min", (float) myoData.emgMavMin);
-    }
-    if (oscDataSettings.emgScaledAbsMavMax) {
-        sender.send ("/myo" + ID + "/emg/mav/max", (float) myoData.emgMavMax);
-    }
-    if (oscDataSettings.emgScaledAbsMavFob) {
-        sender.send ("/myo" + ID + "/emg/mav/fod/raw", (float) myoData.mavFod);
-    }
-    if (oscDataSettings.emgScaledAbsFobMavMavg) {
-        sender.send ("/myo" + ID + "/emg/mav/fod/mavg",(float) myoData.mavFodMavg);
-    }
-    if (oscDataSettings.handPose) {
-        sender.send ("/myo" + ID + "/pose", (int) myoData.poseID, (String) myoData.pose);
-    }
-}
-*/
 // ==============  RECEIVER  ==============
-
 void OSC::setReceiver (int Port){
     oscPortReceiver = Port;
 }
