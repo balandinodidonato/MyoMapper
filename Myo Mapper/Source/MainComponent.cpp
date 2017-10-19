@@ -91,7 +91,6 @@ void MainComponent::timerCallback()
 {
     bool success = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (success);
-    osc.setNumMyos(myoManager.getMyoData(success).size());
 
     if (! success) return;
     

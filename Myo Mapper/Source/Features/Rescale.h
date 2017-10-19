@@ -45,11 +45,6 @@ private:
     Label inMinSliderLabel;
     Label inMaxSliderLabel;
     
-    OSCSender sender;
-    bool enableOSCvalue;
-    int oscPort;
-    String hostAddress;
-    
     float reversed;
     float calibrated;
     float offset;

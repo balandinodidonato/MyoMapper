@@ -23,7 +23,6 @@ public:
     void setReceiver (int Port);
     void bufferOsc (MyoData &myoData);
     void sendOsc();
-//    void sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings);
     
     void connectSender();
     void connectReceiver();
@@ -32,8 +31,6 @@ public:
     
     void oscMessageReceived (const OSCMessage& message) override;
     
-//    void setMyoIdReceiver (int ID);
-    
     bool vibrate;
     String vibrationType;
 
@@ -41,17 +38,12 @@ public:
 
     bool rescaleMinTest;
     int rescaleMIN;
-    
     bool rescaleMaxTest;
     int rescaleMAX;
     float value;
     
     bool reverseStatus;
     
-//    std::vector<OscDataSettings> getOscDataSettings () const;
-    void setNumMyos(unsigned int numMyos);
-
-
 private:
     OSCSender sender;
     OSCReceiver receiver;
@@ -62,13 +54,10 @@ private:
     ScopedPointer<GlobalValueTree> globalValueTree;
     std::vector<OSCMessage> oscBuffer;
     
-//    void changeListenerCallback (ChangeBroadcaster* source) override;
-    
     int oscPortSender;
     int oscPortReceiver;
     String hostAddress;
     
-    bool enableOSCvalue;
     bool oscConnectionReceiver;
     
     String myoDataIn[4];

@@ -503,7 +503,7 @@ void MyoMapperApplication::showAboutWindow()
 
 void MyoMapperApplication::showDocumentationWindow()
 {
-    // SHow the documentation window
+    // Show the documentation window
 }
 
 void MyoMapperApplication::showPreferencesWindow()

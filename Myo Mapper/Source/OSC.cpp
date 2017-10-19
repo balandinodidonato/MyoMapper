@@ -74,13 +74,11 @@ void OSC::bufferOsc (MyoData &myoData)
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrRaw").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/raw");
-//            message.addString ("Raw Data Sent");
             message.addFloat32 ((float) myoData.orientationRaw.x);
             message.addFloat32 ((float) myoData.orientationRaw.y);
             message.addFloat32 ((float) myoData.orientationRaw.z);
             oscBuffer.push_back (message);
         }
-        /*
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrScaled").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/scaled");
@@ -294,7 +292,6 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addString ("Hand Pose Sent");
             oscBuffer.push_back (message);
         }
-        */
     }
 }
 
@@ -306,11 +303,6 @@ void OSC::sendOsc ()
     }
     oscBuffer.clear();
 }
-
-//void OSC::changeListenerCallback (ChangeBroadcaster* source)
-//{
-//
-//}
 
 /*
 void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
@@ -668,20 +660,4 @@ void OSC::oscMessageReceived (const OSCMessage& message)
         }
     }
 }
-
-//void OSC::setMyoIdReceiver(int ID)
-//{
-//    Id = String(ID);
-//}
-
-//std::vector<OscDataSettings> OSC::getOscDataSettings () const
-//{
-//    return oscDataSettings;
-//}
-
-void OSC::setNumMyos(unsigned int numMyos)
-{
-//    oscDataSettings.resize(numMyos);
-}
-
 
