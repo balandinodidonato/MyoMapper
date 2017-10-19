@@ -116,13 +116,15 @@ int MyoMapperApplication::receivePort;
 
 void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 {
-    
+    if (selectedMyo != 0)
+    {
         if (source == dynamic_cast<WindowList*>(source))
         {
             osc->disconnectSender();
             osc->setSender ("127.0.0.1", sendPort);
             osc->connectSender();
         }
+    }
 }
 
 void MyoMapperApplication::hiResTimerCallback()
