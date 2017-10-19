@@ -19,8 +19,9 @@
 
 
 class SettingsWindow    : public Component,
-                          private Button::Listener,
-                          private ComboBox::Listener,
+                          public Button::Listener,
+                          public Slider::Listener,
+                          public ComboBox::Listener,
                           public ChangeBroadcaster
 {
 public:
@@ -30,6 +31,7 @@ public:
     void paint (Graphics&) override;
     void resized() override;
     void buttonClicked (Button*) override;
+    void sliderValueChanged (Slider*) override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
 private:

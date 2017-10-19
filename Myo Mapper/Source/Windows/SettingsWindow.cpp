@@ -22,6 +22,7 @@ SettingsWindow::SettingsWindow()
     oscSendSetter.setValue (5432);
     oscSendSetter.setSliderStyle (Slider::IncDecButtons);
     oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
+    oscSendSetter.addListener (this);
     addAndMakeVisible (oscSendSetter);
     
     oscReceiveLabel.setJustificationType (Justification::horizontallyCentred);
@@ -32,6 +33,7 @@ SettingsWindow::SettingsWindow()
     oscReceiveSetter.setValue (5431);
     oscReceiveSetter.setSliderStyle (Slider::IncDecButtons);
     oscReceiveSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
+    oscReceiveSetter.addListener (this);
     addAndMakeVisible (oscReceiveSetter);
     
     myoSelectorLabel.setJustificationType (Justification::left);
@@ -155,11 +157,24 @@ void SettingsWindow::buttonClicked (Button* button)
     }
 }
 
+void SettingsWindow::sliderValueChanged (Slider* slider)
+{
+    if (slider == &oscSendSetter)
+    {
+        MyoMapperApplication::sendPort = oscSendSetter.getValue();
+    }
+    if (slider == &oscReceiveSetter)
+    {
+        MyoMapperApplication::sendPort = oscReceiveSetter.getValue();
+    }
+}
+
 void SettingsWindow::comboBoxChanged (ComboBox *comboBoxThatHasChanged)
 {
     if (comboBoxThatHasChanged == &myoSelectorSetter)
     {
         MyoMapperApplication::selectedMyo = myoSelectorSetter.getSelectedId();
+        sendChangeMessage();
         // Close settings Window
     }
 }
