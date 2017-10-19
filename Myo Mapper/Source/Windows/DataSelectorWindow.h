@@ -32,8 +32,6 @@ private:
     struct WindowTabBar;
     ScopedPointer<WindowTabBar> tabBar;
     
-    const GlobalValueTree valueTree;
-    
     class OrientationPage;
     class AccelerometerPage;
     class GyroscopePage;

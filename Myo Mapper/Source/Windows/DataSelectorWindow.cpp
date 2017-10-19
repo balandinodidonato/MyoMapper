@@ -17,15 +17,15 @@ class DataSelectorWindow::OrientationPage  : public Component
 public:
     OrientationPage()
     {
+        globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-//        tree.setRootItem (rootItem = new OscValueTreeItem (valueTree.getValueTree()->getChildWithName ("OrData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("OrData")));
         tree.setRootItemVisible (false);
     }
     
     void paint (Graphics& g) override
     {
-        //
     }
     
     void resized() override
@@ -35,6 +35,7 @@ public:
     }
     
 private:
+    ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
 };
@@ -43,23 +44,17 @@ private:
 class DataSelectorWindow::AccelerometerPage  : public Component
 {
 public:
-    AccelerometerPage (const DataSelectorWindow& w)
-//    AccelerometerPage()
+    AccelerometerPage()
     {
+        globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (w.valueTree.getValueTree().getChildWithName ("AccData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
-    }
-    
-    ~AccelerometerPage()
-    {
-//        w.valueTree.deleteGlobalValueTree();
     }
     
     void paint (Graphics& g) override
     {
-        //
     }
     
     void resized() override
@@ -69,6 +64,7 @@ public:
     }
     
 private:
+    ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
 };
@@ -77,17 +73,17 @@ private:
 class DataSelectorWindow::GyroscopePage  : public Component
 {
 public:
-    GyroscopePage (const DataSelectorWindow& w)
+    GyroscopePage()
     {
+        globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (w.valueTree.getValueTree().getChildWithName ("AccData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("GyroData")));
         tree.setRootItemVisible (false);
     }
     
     void paint (Graphics& g) override
     {
-        //
     }
     
     void resized() override
@@ -97,6 +93,7 @@ public:
     }
     
 private:
+    ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
 };
@@ -105,17 +102,17 @@ private:
 class DataSelectorWindow::EmgPage  : public Component
 {
 public:
-    EmgPage (const DataSelectorWindow& w)
+    EmgPage()
     {
+        globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (w.valueTree.getValueTree().getChildWithName ("AccData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("EmgData")));
         tree.setRootItemVisible (false);
     }
     
     void paint (Graphics& g) override
     {
-//
     }
     
     void resized() override
@@ -125,6 +122,7 @@ public:
     }
     
 private:
+    ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
 };
@@ -138,10 +136,9 @@ struct DataSelectorWindow::WindowTabBar     : public TabbedComponent
     {
         auto backgroundColour = Colour::fromRGB (200, 200, 200);
         addTab (TRANS ("Orientation"),      backgroundColour, new OrientationPage(),    true);
-//        addTab (TRANS ("Accelerometer"),    backgroundColour, new AccelerometerPage (const DataSelectorWindow&),  true);
-//        addTab (TRANS ("Accelerometer"),    backgroundColour, new AccelerometerPage (const DataSelectorWindow&),  true);
-//        addTab (TRANS ("Gyroscope"),        backgroundColour, new GyroscopePage (const DataSelectorWindow&),      true);
-//        addTab (TRANS ("EMG"),              backgroundColour, new EmgPage (const DataSelectorWindow&),            true);
+        addTab (TRANS ("Accelerometer"),    backgroundColour, new AccelerometerPage (),  true);
+        addTab (TRANS ("Gyroscope"),        backgroundColour, new GyroscopePage(),      true);
+        addTab (TRANS ("EMG"),              backgroundColour, new EmgPage(),            true);
         setCurrentTabIndex (0);
     }
 };
