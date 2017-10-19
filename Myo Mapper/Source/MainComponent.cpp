@@ -17,12 +17,6 @@ MainComponent::MainComponent()
     settingsPannel.showOrientation.addListener (this);
     settingsPannel.showPose.addListener (this);
     
-//    settingsPannel.myoList.addListener (this);
-    myoManager.connect();
-    myoManager.startPoll();
-    
-    osc.setSender(settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
-    osc.connectSender();
     osc.connectReceiver();
     
     startTimer(25);
@@ -56,35 +50,6 @@ void MainComponent::paint(juce::Graphics &g)
     }
     
     g.fillAll(Colours::grey);
-}
-
-void MainComponent::resized()
-{
-    auto area = getLocalBounds().reduced (getHeight() * 0.01);
-    
-    settingsPannel.setBounds (area.removeFromTop (getHeight() * 0.24));
-    
-    if (orientation.isVisible() == true)
-    {
-        orientation.setBounds (area.removeFromTop (getHeight() * 0.63));
-    }
-    pose.setBounds (area.removeFromTop (getHeight() * 0.12));
-}
-
-void MainComponent::buttonClicked (Button* button)
-{
-    
-    if (button == &settingsPannel.showOrientation)
-        setPanelVisibility (orientation);
-    if (button == &settingsPannel.showPose)
-        setPanelVisibility (pose);
-    
-    resized();
-}
-
-void MainComponent::setPanelVisibility (Component &panel)
-{
-    panel.setVisible (!panel.isVisible());
 }
 
 void MainComponent::timerCallback()
