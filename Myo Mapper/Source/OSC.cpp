@@ -10,8 +10,6 @@ OSC::OSC()
     rescaleMIN (0),
     rescaleMaxTest (false),
     rescaleMAX (0),
-//    orOscSettings(oscDataSettingss), Swap for globalValueTree
-    oscPortSender (5432),
     oscPortReceiver (5431),
     hostAddress ("127.0.0.1"),
     oscConnectionSender (false),
@@ -21,8 +19,6 @@ OSC::OSC()
     action {"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
 {
     globalValueTree = new GlobalValueTree();
-    globalValueTree->setupValueTree();
-    
     
     for (int i = 1; i < 5; ++i) // id
     {
@@ -72,56 +68,243 @@ void OSC::bufferOsc (MyoData &myoData)
 {
     String ID = String (MyoMapperApplication::selectedMyo);
     
-    if (globalValueTree->getValueTree().getChildWithName ("OrData").getPropertyAsValue ("onOff", 0) == false)
+    auto tree = globalValueTree->getValueTree();
+    
+    if (globalValueTree->getValueTree().getChildWithName ("OrData").getPropertyAsValue ("onOff", 0) == true)
     {
-        DBG ("Orientation: ");
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrRaw").getPropertyAsValue ("onOff", 0) == true)
         {
-            DBG ("  Orientation Raw");
-            oscBuffer.push_back (OSCMessage ("/myo" + ID + "/orientation/raw",
-                                             (float) myoData.orientationRaw.x,
-                                             (float) myoData.orientationRaw.y,
-                                             (float) myoData.orientationRaw.z));
+            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/raw");
+            message.addString ("Raw Data Sent");
+            oscBuffer.push_back (message);
+//                                             (float) myoData.orientationRaw.x,
+//                                             (float) myoData.orientationRaw.y,
+//                                             (float) myoData.orientationRaw.z));
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrScaled").getPropertyAsValue ("onOff", 0) == true)
         {
-            DBG ("  Orientation Scaled");
+            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/scaled");
+            message.addString ("Orientation Scaled Data Sent");
+            oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrQuaternion").getPropertyAsValue ("onOff", 0) == true)
         {
-            DBG ("  Orientation Quaternion");
+            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/quaternion");
+            message.addString ("Orientation Quaternion Data Sent");
+            oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrVelocity").getPropertyAsValue ("onOff", 0) == true)
         {
-            DBG ("  Orientation Velocity");
+            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/velocity");
+            message.addString ("Orientation Velocity Data Sent");
+            oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrAccel").getPropertyAsValue ("onOff", 0) == true)
         {
-            DBG ("  Orientation Acceleration");
+            OSCMessage message = OSCMessage ("/myo" + ID + "/orientation/acceleration");
+            message.addString ("Orientation Acceleration Data Sent");
+            oscBuffer.push_back (message);
         }
     }
     if (globalValueTree->getValueTree().getChildWithName ("AccData").getPropertyAsValue ("onOff", 0) == true)
     {
-//        DBG ("Acceleration");
+        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccRaw").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/raw/raw");
+            message.addString ("Acceleration Raw Data Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccRawFod").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/raw/fod/raw");
+            message.addString ("Acceleration Raw FOD Data Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccRawFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/raw/fod/mavg");
+            message.addString ("Acceleration Raw FOD-Mavg Data Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccScaled").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/scaled/raw");
+            message.addString ("Acceleration Scaled Data Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccScaledFod").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/scaled/fod/raw");
+            message.addString ("Acceleration Scaled FOD Data Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccScaledFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/acceleration/scaled/fod/mavg");
+            message.addString ("Acceleration Scaled FOD-Mavg Data Sent");
+            oscBuffer.push_back (message);
+        }
     }
     if (globalValueTree->getValueTree().getChildWithName ("GyroData").getPropertyAsValue ("onOff", 0) == true)
     {
-        DBG ("Gyro");
+        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroRaw").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/raw/raw");
+            message.addString ("Gyro Raw Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroRawFod").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/raw/fod");
+            message.addString ("Gyro Raw FOD Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaled").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/scaled/raw");
+            message.addString ("Gyro Scaled Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaledAbs").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/scaled/abs");
+            message.addString ("Gyro Absolute Scaled Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaledFod").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/scaled/fod/raw");
+            message.addString ("Gyro Scaled FOD Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaledFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/gyro/scaled/fod/mavg");
+            message.addString ("Gyro Scaled FOD-Mavg Sent");
+            oscBuffer.push_back (message);
+        }
     }
     if (globalValueTree->getValueTree().getChildWithName ("EmgData").getPropertyAsValue ("onOff", 0) == true)
     {
-        DBG ("EMG");
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRaw").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/raw/raw");
+            message.addString ("EMG Raw Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawMavg").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/raw/mavg");
+            message.addString ("EMG Raw Mavg Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawZcr").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/raw/zcr/raw");
+            message.addString ("EMG ZCR Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawZcrMavg").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/raw/zcr/mavg");
+            message.addString ("EMG ZCR Mavg Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaled").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/raw");
+            message.addString ("EMG Scaled Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbs").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/raw");
+            message.addString ("EMG Absolute Scaled Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMin").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/min");
+            message.addString ("EMG Absolute Scaled Min Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMax").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/max");
+            message.addString ("EMG Absolute Scaled Max Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsFod").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/fod/raw");
+            message.addString ("EMG Absolute Scaled FOD Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/fod/mavg");
+            message.addString ("EMG Absolute Scaled FOD-Mavg Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavg").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mavg");
+            message.addString ("EMG Absolute Scaled Mavg Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMav").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/raw");
+            message.addString ("EMG Absolute Scaled MAV Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMavg").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/mavg");
+            message.addString ("EMG Absolute Scaled MAV-Mavg Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMin").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/min");
+            message.addString ("EMG Absolute Scaled MAV Min Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMax").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/max");
+            message.addString ("EMG Absolute Scaled MAV Max Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavFod").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/fod/raw");
+            message.addString ("EMG Absolute Scaled MAV FOD Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/emg/scaled/abs/mav/fod/mavg");
+            message.addString ("EMG Absolute Scaled MAV FOD-Mavg Sent");
+            oscBuffer.push_back (message);
+        }
+        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("HandPose").getPropertyAsValue ("onOff", 0) == true)
+        {
+            OSCMessage message = OSCMessage ("/myo" + ID + "/pose");
+            message.addString ("Hand Pose Sent");
+            oscBuffer.push_back (message);
+        }
+        
     }
-    
-    DBG ("myoData " + (String)MyoMapperApplication::selectedMyo + ": Buffer Filled");
 }
 
 void OSC::sendOsc ()
 {
-    for (int i = 0; i <= oscBuffer.size(); ++i)
+    for (int i = 0; i < oscBuffer.size(); ++i)
     {
-        sender.send (oscBuffer[i]);
+        sender.send (oscBuffer.at(i));
     }
+    oscBuffer.clear();
 }
 /*
 void OSC::sendOSC (MyoData &myoData, OscDataSettings &oscDataSettings)
