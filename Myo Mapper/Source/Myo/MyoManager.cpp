@@ -34,9 +34,8 @@ bool MyoManager::connect()
         String myoMessage = e.what();
         AlertWindow::showMessageBox (AlertWindow::WarningIcon,
                                      "Error",
-                                     myoMessage + "\n" +
-                                     "Myo Mapper will now close. " + "\n" +
-                                     "Please relaunch Myo Mapper with Myo Connect open and a Myo connected.");
+                                     myoMessage + " Myo Mapper will now close. " +
+                                     "\n" + "Please relaunch Myo Mapper with Myo Connect open.");
         
         JUCEApplicationBase::quit();
     }
