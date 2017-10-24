@@ -35,6 +35,8 @@ public:
     }
     
 private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OrientationPage)
+    
     ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
@@ -64,6 +66,8 @@ public:
     }
     
 private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AccelerometerPage)
+    
     ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
@@ -93,6 +97,8 @@ public:
     }
     
 private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GyroscopePage)
+    
     ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
@@ -122,6 +128,8 @@ public:
     }
     
 private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EmgPage)
+    
     ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
