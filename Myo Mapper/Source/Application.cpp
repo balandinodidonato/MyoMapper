@@ -140,7 +140,7 @@ void MyoMapperApplication::hiResTimerCallback()
     {
         return;
     }
-    if (selectedMyo <= myoData.size())
+    if (selectedMyo >= myoData.size())
     {
         return;
     }
