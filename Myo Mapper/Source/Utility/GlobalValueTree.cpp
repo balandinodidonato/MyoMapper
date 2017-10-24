@@ -77,10 +77,10 @@ ValueTree GlobalValueTree::setupValueTree()
     orDataAccel.setProperty (onOff, on, 0);
     orDataAccel.setProperty (sampleSize, tempSampSize, 0);
     
-    orData.addChild (orDataRaw, -1, 0);
-    orData.addChild (orDataScaled, -1, 0);
-    orData.addChild (orDataQuaternion, -1, 0);
-    orData.addChild (orDataVel, -1, 0);
+    orData.addChild (orDataRaw, 1, 0);
+    orData.addChild (orDataScaled, 1, 0);
+    orData.addChild (orDataQuaternion, 11, 0);
+    orData.addChild (orDataVel, 2, 0);
     orData.addChild (orDataAccel, -1, 0);
     //=============================================
     // Acceleration Data
@@ -111,11 +111,11 @@ ValueTree GlobalValueTree::setupValueTree()
     accDataScaledFodMavg.setProperty (sampleSize, tempSampSize, 0);
     
     accData.addChild (accDataRaw, -1, 0);
-    accData.addChild (accDataRawFod, -1, 0);
-    accData.addChild (accDataRawFodMavg, -1, 0);
+    accDataRaw.addChild (accDataRawFod, -1, 0);
+    accDataRawFod.addChild (accDataRawFodMavg, -1, 0);
     accData.addChild (accDataScaled, -1, 0);
-    accData.addChild (accDataScaledFod, -1, 0);
-    accData.addChild (accDataScaledFodMavg, -1, 0);
+    accDataScaled.addChild (accDataScaledFod, -1, 0);
+    accDataScaledFod.addChild (accDataScaledFodMavg, -1, 0);
     //=============================================
     // Gyro Data
     
@@ -145,11 +145,11 @@ ValueTree GlobalValueTree::setupValueTree()
     gyroDataScaledFodMavg.setProperty (sampleSize, tempSampSize, 0);
     
     gyroData.addChild (gyroDataRaw, -1, 0);
-    gyroData.addChild (gyroDataRawFod, -1, 0);
+    gyroDataRaw.addChild (gyroDataRawFod, -1, 0);
     gyroData.addChild (gyroDataScaled, -1, 0);
-    gyroData.addChild (gyroDataScaledAbs, -1, 0);
-    gyroData.addChild (gyroDataScaledFod, -1, 0);
-    gyroData.addChild (gyroDataScaledFodMavg, -1, 0);
+    gyroDataScaled.addChild (gyroDataScaledAbs, -1, 0);
+    gyroDataScaled.addChild (gyroDataScaledFod, -1, 0);
+    gyroDataScaledFod.addChild (gyroDataScaledFodMavg, -1, 0);
     //=============================================
     // EMG Data
     
@@ -243,22 +243,22 @@ ValueTree GlobalValueTree::setupValueTree()
     handPoseData.setProperty (onOff, on, 0);
     
     emgData.addChild (emgDataRaw, -1, 0);
-    emgData.addChild (emgDataRawMavg, -1, 0);
-    emgData.addChild (emgDataRawZcr, -1, 0);
-    emgData.addChild (emgDataRawZcrMavg, -1, 0);
+    emgDataRaw.addChild (emgDataRawMavg, -1, 0);
+    emgDataRaw.addChild (emgDataRawZcr, -1, 0);
+    emgDataRawZcr.addChild (emgDataRawZcrMavg, -1, 0);
     emgData.addChild (emgDataScaled, -1, 0);
-    emgData.addChild (emgDataScaledAbs, -1, 0);
-    emgData.addChild (emgDataScaledAbsMin, -1, 0);
-    emgData.addChild (emgDataScaledAbsMax, -1, 0);
-    emgData.addChild (emgDataScaledAbsFod, -1, 0);
-    emgData.addChild (emgDataScaledAbsFodMavg, -1, 0);
-    emgData.addChild (emgDataScaledAbsMavg, -1, 0);
-    emgData.addChild (emgDataScaledAbsMav, -1, 0);
-    emgData.addChild (emgDataScaledAbsMavMavg, -1, 0);
-    emgData.addChild (emgDataScaledAbsMavMin, -1, 0);
-    emgData.addChild (emgDataScaledAbsMavMax, -1, 0);
-    emgData.addChild (emgDataScaledAbsMavFod, -1, 0);
-    emgData.addChild (emgDataScaledAbsFodMavMavg, -1, 0);
+    emgDataScaled.addChild (emgDataScaledAbs, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsMin, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsMax, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsFod, -1, 0);
+    emgDataScaledAbsFod.addChild (emgDataScaledAbsFodMavg, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsMavg, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsMav, -1, 0);
+    emgDataScaledAbsMav.addChild (emgDataScaledAbsMavMavg, -1, 0);
+    emgDataScaledAbsMav.addChild (emgDataScaledAbsMavMin, -1, 0);
+    emgDataScaledAbsMav.addChild (emgDataScaledAbsMavMax, -1, 0);
+    emgDataScaledAbsMav.addChild (emgDataScaledAbsMavFod, -1, 0);
+    emgDataScaledAbsMavFod.addChild (emgDataScaledAbsFodMavMavg, -1, 0);
     emgData.addChild (handPoseData, -1, 0);
     
     //=============================================
