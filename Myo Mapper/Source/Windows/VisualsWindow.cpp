@@ -45,7 +45,6 @@ void VisualsWindow::paint (Graphics& g)
     g.fillPath (leftRect);
     g.fillPath (topRightRect);
     g.fillPath (bottomRightRect);
-//    g.drawRoundedRectangle (rightArea, 5.0f, 5.0f);
 }
 
 void VisualsWindow::resized()
