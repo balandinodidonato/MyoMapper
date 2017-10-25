@@ -25,7 +25,7 @@ public:
     ~MainComponent();
 
     void paint (Graphics& g) override;
-    void disconnectMyoAndOSC();
+//    void disconnectMyoAndOSC();
 
     Orientation orientation;
     

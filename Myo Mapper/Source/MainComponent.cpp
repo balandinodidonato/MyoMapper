@@ -71,10 +71,11 @@ void MainComponent::timerCallback()
         }
     }
 }
-
+/*
 void MainComponent::disconnectMyoAndOSC()
 {
     myoManager.disconnect();
     osc.disconnectSender();
     osc.disconnectReceiver();
 }
+*/
