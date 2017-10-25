@@ -44,10 +44,6 @@ public:
     
     void paint (Graphics& g) override
     {
-//        g.fillAll (Colours::pink);
-//        auto area = getLocalBounds().reduced (proportionOfHeight (0.01));
-//        g.setColour (Colours::pink);
-//        g.fillRect (area);
     }
     
     void resized() override
@@ -55,14 +51,12 @@ public:
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.035)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.6)));
-//        area.removeFromLeft (area.proportionOfWidth (0.4));
         slider.setBounds (area.removeFromRight (getParentWidth() * 0.3));
     }
     
     void buttonClicked (Button* button) override
     {
         tree.setProperty ("onOff", ! (tree.getProperty ("onOff", 0)), 0);
-        DBG (tree.getProperty ("onOff").toString());
     }
     
 private:
