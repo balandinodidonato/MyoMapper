@@ -22,6 +22,7 @@ public:
         tree.setDefaultOpenness (true);
         tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("OrData")));
         tree.setRootItemVisible (false);
+        tree.setOpenCloseButtonsVisible (false);
     }
     
     void paint (Graphics& g) override
@@ -50,9 +51,11 @@ public:
     {
         globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
+        tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
         tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
+        tree.setOpenCloseButtonsVisible (false);
     }
     
     void paint (Graphics& g) override
@@ -81,9 +84,11 @@ public:
     {
         globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
+        tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
         tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("GyroData")));
         tree.setRootItemVisible (false);
+        tree.setOpenCloseButtonsVisible (false);
     }
     
     void paint (Graphics& g) override
@@ -112,9 +117,11 @@ public:
     {
         globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
+        tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
         tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("EmgData")));
         tree.setRootItemVisible (false);
+        tree.setOpenCloseButtonsVisible (false);
     }
     
     void paint (Graphics& g) override
@@ -142,7 +149,7 @@ struct DataSelectorWindow::WindowTabBar     : public TabbedComponent
     WindowTabBar()
     :   TabbedComponent (TabbedButtonBar::TabsAtTop)
     {
-        auto backgroundColour = Colour::fromRGB (200, 200, 200);
+        auto backgroundColour = Colour::fromRGB (245, 245, 245);
         addTab (TRANS ("Orientation"),      backgroundColour, new OrientationPage(),    true);
         addTab (TRANS ("Accelerometer"),    backgroundColour, new AccelerometerPage (),  true);
         addTab (TRANS ("Gyroscope"),        backgroundColour, new GyroscopePage(),      true);
