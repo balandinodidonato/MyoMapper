@@ -37,6 +37,7 @@ public:
             slider.setRange (1, 100, 1);
             slider.setSliderStyle (Slider::SliderStyle::IncDecButtons);
             slider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
+            slider.setValue (tree.getProperty ("sampleSize", 0));
             slider.addListener (this);
             addAndMakeVisible (slider);
         }
@@ -57,6 +58,11 @@ public:
     void buttonClicked (Button* button) override
     {
         tree.setProperty ("onOff", ! (tree.getProperty ("onOff", 0)), 0);
+    }
+    
+    void sliderValueChanged (Slider* slider) override
+    {
+        tree.setProperty ("sampleSize", slider->getValue(), 0);
     }
     
 private:
