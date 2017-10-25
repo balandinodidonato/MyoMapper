@@ -96,7 +96,7 @@ void MyoMapperLookAndFeel::drawToggleButton (juce::Graphics &g, juce::ToggleButt
 void MyoMapperLookAndFeel::setupColours()
 {
     // Label colours
-    setColour (Label::textColourId, Colour::fromRGB (132, 147, 168));
+    setColour (Label::textColourId, Colour::fromRGB (112, 127, 148));
     
     // Inc/ Dec colours
     setColour (Slider::textBoxBackgroundColourId, Colours::white);
