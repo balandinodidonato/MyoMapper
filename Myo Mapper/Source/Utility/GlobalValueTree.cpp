@@ -180,7 +180,7 @@ ValueTree GlobalValueTree::setupValueTree()
     
     ValueTree emgDataScaled = ValueTree ("EmgScaled");
     emgDataScaled.setProperty (name, "Scaled Data", 0);
-    emgDataRaw.setProperty (onOff, on, 0);
+    emgDataScaled.setProperty (onOff, on, 0);
     
     ValueTree emgDataScaledAbs = ValueTree ("EmgScaledAbs");
     emgDataScaledAbs.setProperty (name, "Absolute Scaled Data", 0);
