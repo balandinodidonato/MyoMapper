@@ -60,7 +60,6 @@ public:
     
     void buttonClicked (Button* button) override
     {
-        auto togglePressed = tree.getPropertyAsValue("name", 0);
         tree.setProperty ("onOff", ! (tree.getProperty ("onOff", 0)), 0);
         DBG (tree.getProperty ("onOff").toString());
     }
