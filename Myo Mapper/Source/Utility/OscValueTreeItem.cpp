@@ -25,6 +25,7 @@ public:
         toggle.setLookAndFeel (&treeItemLookAndFeel);
         toggle.setColour (ToggleButton::tickColourId, Colours::black);
         toggle.setColour (ToggleButton::tickDisabledColourId, Colours::black);
+        toggle.setToggleState (tree.getProperty ("onOff", 0), dontSendNotification);
         toggle.addListener (this);
         
         slider.setValue (10);
@@ -59,7 +60,9 @@ public:
     
     void buttonClicked (Button* button) override
     {
-//        this.
+        auto togglePressed = tree.getPropertyAsValue("name", 0);
+        tree.setProperty ("onOff", ! (tree.getProperty ("onOff", 0)), 0);
+        DBG (tree.getProperty ("onOff").toString());
     }
     
 private:
