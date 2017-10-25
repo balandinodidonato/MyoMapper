@@ -21,12 +21,15 @@ class OscValueTreeItem  : public TreeViewItem,
 public:
     OscValueTreeItem (const ValueTree& v);
     String getUniqueName() const override;
+    Component* createItemComponent() override;
     bool mightContainSubItems() override;
     void paintItem (Graphics& g, int width, int height) override;
     void itemOpennessChanged (bool isNowOpen) override;
 
 private:
     ValueTree tree;
+    
+    class TreeItemComponent;
 
     void refreshSubItems()
     {
