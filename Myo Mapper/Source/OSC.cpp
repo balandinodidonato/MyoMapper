@@ -220,53 +220,53 @@ void OSC::bufferOsc (MyoData &myoData)
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRaw").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/raw");
-            message.addFloat32 ((int) myoData.emgRaw[0]);
-            message.addFloat32 ((int) myoData.emgRaw[1]);
-            message.addFloat32 ((int) myoData.emgRaw[2]);
-            message.addFloat32 ((int) myoData.emgRaw[3]);
-            message.addFloat32 ((int) myoData.emgRaw[4]);
-            message.addFloat32 ((int) myoData.emgRaw[5]);
-            message.addFloat32 ((int) myoData.emgRaw[6]);
-            message.addFloat32 ((int) myoData.emgRaw[7]);
+            message.addInt ((int) myoData.emgRaw[0]);
+            message.addInt ((int) myoData.emgRaw[1]);
+            message.addInt ((int) myoData.emgRaw[2]);
+            message.addInt ((int) myoData.emgRaw[3]);
+            message.addInt ((int) myoData.emgRaw[4]);
+            message.addInt ((int) myoData.emgRaw[5]);
+            message.addInt ((int) myoData.emgRaw[6]);
+            message.addInt ((int) myoData.emgRaw[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/mavg");
-            message.addFloat32 ((int) myoData.emgRawMavg[0]);
-            message.addFloat32 ((int) myoData.emgRawMavg[1]);
-            message.addFloat32 ((int) myoData.emgRawMavg[2]);
-            message.addFloat32 ((int) myoData.emgRawMavg[3]);
-            message.addFloat32 ((int) myoData.emgRawMavg[4]);
-            message.addFloat32 ((int) myoData.emgRawMavg[5]);
-            message.addFloat32 ((int) myoData.emgRawMavg[6]);
-            message.addFloat32 ((int) myoData.emgRawMavg[7]);
+            message.addInt ((int) myoData.emgRawMavg[0]);
+            message.addInt ((int) myoData.emgRawMavg[1]);
+            message.addInt ((int) myoData.emgRawMavg[2]);
+            message.addInt ((int) myoData.emgRawMavg[3]);
+            message.addInt ((int) myoData.emgRawMavg[4]);
+            message.addInt ((int) myoData.emgRawMavg[5]);
+            message.addInt ((int) myoData.emgRawMavg[6]);
+            message.addInt ((int) myoData.emgRawMavg[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawZcr").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/zcr/raw");
-            message.addFloat32 ((int) myoData.emgZeroCross[0]);
-            message.addFloat32 ((int) myoData.emgZeroCross[1]);
-            message.addFloat32 ((int) myoData.emgZeroCross[2]);
-            message.addFloat32 ((int) myoData.emgZeroCross[3]);
-            message.addFloat32 ((int) myoData.emgZeroCross[4]);
-            message.addFloat32 ((int) myoData.emgZeroCross[5]);
-            message.addFloat32 ((int) myoData.emgZeroCross[6]);
-            message.addFloat32 ((int) myoData.emgZeroCross[7]);
+            message.addInt ((int) myoData.emgZeroCross[0]);
+            message.addInt ((int) myoData.emgZeroCross[1]);
+            message.addInt ((int) myoData.emgZeroCross[2]);
+            message.addInt ((int) myoData.emgZeroCross[3]);
+            message.addInt ((int) myoData.emgZeroCross[4]);
+            message.addInt ((int) myoData.emgZeroCross[5]);
+            message.addInt ((int) myoData.emgZeroCross[6]);
+            message.addInt ((int) myoData.emgZeroCross[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawZcrMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/zcr/mavg");
-            message.addFloat32 ((int) myoData.emgZeroCrossMavg[0]);
-            message.addFloat32 ((int) myoData.emgZeroCrossMavg[1]);
-            message.addFloat32 ((int) myoData.emgZeroCrossMavg[2]);
-            message.addFloat32 ((int) myoData.emgZeroCrossMavg[3]);
-            message.addFloat32 ((int) myoData.emgZeroCrossMavg[4]);
-            message.addFloat32 ((int) myoData.emgZeroCrossMavg[5]);
-            message.addFloat32 ((int) myoData.emgZeroCrossMavg[6]);
-            message.addFloat32 ((int) myoData.emgZeroCrossMavg[7]);
+            message.addInt ((int) myoData.emgZeroCrossMavg[0]);
+            message.addInt ((int) myoData.emgZeroCrossMavg[1]);
+            message.addInt ((int) myoData.emgZeroCrossMavg[2]);
+            message.addInt ((int) myoData.emgZeroCrossMavg[3]);
+            message.addInt ((int) myoData.emgZeroCrossMavg[4]);
+            message.addInt ((int) myoData.emgZeroCrossMavg[5]);
+            message.addInt ((int) myoData.emgZeroCrossMavg[6]);
+            message.addInt ((int) myoData.emgZeroCrossMavg[7]);
             oscBuffer.push_back (message);
         }
         if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaled").getPropertyAsValue ("onOff", 0) == true)
