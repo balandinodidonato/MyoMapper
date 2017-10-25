@@ -13,7 +13,8 @@
 
 //==============================================================================
 class OscValueTreeItem::TreeItemComponent    : public Component,
-                                               public Button::Listener
+                                               public Button::Listener,
+                                               public Slider::Listener
 {
 public:
     TreeItemComponent(const ValueTree& v)
@@ -28,15 +29,15 @@ public:
         toggle.setToggleState (tree.getProperty ("onOff", 0), dontSendNotification);
         toggle.addListener (this);
         
-        slider.setValue (10);
-        slider.setRange (1, 100, 1);
-        slider.setSliderStyle (Slider::SliderStyle::IncDecButtons);
-        slider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
-        
         addAndMakeVisible (toggle);
         addAndMakeVisible (label);
         if (tree.hasProperty ("sampleSize"))
         {
+            slider.setValue (10);
+            slider.setRange (1, 100, 1);
+            slider.setSliderStyle (Slider::SliderStyle::IncDecButtons);
+            slider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
+            slider.addListener (this);
             addAndMakeVisible (slider);
         }
     }
