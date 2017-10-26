@@ -34,6 +34,9 @@ public:
     void sliderValueChanged (Slider*) override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
+    bool startButtonPressed();
+    void resetStartButtonPressed();
+    
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SettingsWindow)
     LookAndFeel_V3 toggleButtonLAF;
@@ -53,4 +56,6 @@ private:
     TextButton startButton;
     
     ToggleButton testButton;
+    
+    static bool startButtonClicked;
 };
