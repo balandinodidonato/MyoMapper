@@ -29,10 +29,10 @@ WindowList& WindowList::getWindowList()
 void WindowList::createInitialWindow()
 {
     jassert (windows.size() != 0);
-        getOrCreateSettingsWindow();
+        showOrCreateSettingsWindow();
 }
 
-void WindowList::getOrCreateSettingsWindow()
+void WindowList::showOrCreateSettingsWindow()
 {
     if (windows.operator[](0) != nullptr)
         windows.operator[](0)->toFront (true);
@@ -53,7 +53,7 @@ void WindowList::getOrCreateSettingsWindow()
     }
 }
 
-void WindowList::getOrCreateVisualsWindow()
+void WindowList::showOrCreateVisualsWindow()
 {
     if (windows.operator[](1) != nullptr)
         windows.operator[](1)->toFront (true);
@@ -72,7 +72,7 @@ void WindowList::getOrCreateVisualsWindow()
     }
 }
 
-void WindowList::getOrCreateDataSelectorWindow()
+void WindowList::showOrCreateDataSelectorWindow()
 {
     if (windows.operator[](2) != nullptr)
         windows.operator[](2)->toFront(true);

@@ -65,7 +65,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList = new WindowList();
     windowList->addChangeListener (this);
     windowList->windows.ensureStorageAllocated (3);
-    windowList->getOrCreateSettingsWindow();
+    windowList->showOrCreateSettingsWindow();
     
     myoManager.connect();
     myoManager.startPoll();
@@ -445,17 +445,17 @@ void MyoMapperApplication::enableFullscreen()
 
 void MyoMapperApplication::showSettingsWindow()
 {
-    windowList->getOrCreateSettingsWindow();
+    windowList->showOrCreateSettingsWindow();
 }
 
 void MyoMapperApplication::showVisualsWindow()
 {
-    windowList->getOrCreateVisualsWindow();
+    windowList->showOrCreateVisualsWindow();
 }
 
 void MyoMapperApplication::showDataWindow()
 {
-    windowList->getOrCreateDataSelectorWindow();
+    windowList->showOrCreateDataSelectorWindow();
 }
 
 void MyoMapperApplication::moveWindowsToFront()

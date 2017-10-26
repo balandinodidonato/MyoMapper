@@ -32,9 +32,9 @@ public:
     static WindowList& getWindowList();
     
     void createInitialWindow();
-    void getOrCreateSettingsWindow();
-    void getOrCreateVisualsWindow();
-    void getOrCreateDataSelectorWindow();
+    void showOrCreateSettingsWindow();
+    void showOrCreateVisualsWindow();
+    void showOrCreateDataSelectorWindow();
     
     void changeListenerCallback (ChangeBroadcaster*);
     void closeWindow (WindowDrawer*);
