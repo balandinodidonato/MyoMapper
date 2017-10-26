@@ -11,6 +11,8 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "SettingsWindow.h"
 
+bool SettingsWindow::startButtonClicked;
+
 //==============================================================================
 SettingsWindow::SettingsWindow()
 {
@@ -147,12 +149,22 @@ void SettingsWindow::resized()
     startButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
 }
 
+bool SettingsWindow::startButtonPressed()
+{
+    return SettingsWindow::startButtonClicked;
+}
+
+void SettingsWindow::resetStartButtonPressed()
+{
+    SettingsWindow::startButtonClicked = false;
+}
+
 void SettingsWindow::buttonClicked (Button* button)
 {
     if (button == &startButton)
     {
-        WindowList::getWindowList().getOrCreateVisualsWindow();
-        sendChangeMessage(); // Close the settings window
+        startButtonClicked = true;
+        sendChangeMessage(); // Close the settings window, start the program and open the visualiser
     }
 }
 
