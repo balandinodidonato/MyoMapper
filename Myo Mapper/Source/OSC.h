@@ -23,7 +23,6 @@ public:
     void bufferOsc (MyoData &myoData);
     void sendOsc();
     
-    void connectSender();
     void connectReceiver();
     void disconnectSender();
     void disconnectReceiver();

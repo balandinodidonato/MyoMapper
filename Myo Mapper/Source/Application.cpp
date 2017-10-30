@@ -76,7 +76,6 @@ void MyoMapperApplication::initialise (const String& commandLine)
     osc->connectSender (IPAddress::local().toString(), MyoMapperApplication::sendPort);
 //    osc->setReceiver (<#int Port#>)
     osc->addChangeListener (this);
-    osc->connectSender();
     startTimer (oscBufferFillSpeed);
 }
 

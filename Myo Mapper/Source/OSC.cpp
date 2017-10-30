@@ -33,28 +33,23 @@ OSC::OSC()
 
 OSC::~OSC()
 {
+    
 }
 
 // ==============   SENDER   ==============
-
-void OSC::connectSender()
+void OSC::connectSender (String hostAddress, int port)
 {
-    if (! sender.connect (hostAddress, sendPort))
+    if (sender.connect (hostAddress, port) == false)
+    {
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "OSC Sender",
-                                          "Myo Mapper could not connect to UDP port " + (String)sendPort + ".",
+                                          "Myo Mapper could not connect to UDP port " + (String)MyoMapperApplication::sendPort + ".",
                                           "OK");
+    }
 }
-
 void OSC::disconnectSender()
 {
     sender.disconnect();
-}
-
-void OSC::setSender (String hostAddress, int port)
-{
-    sendPort = port;
-    hostAddress = hostAddress;
 }
 
 void OSC::bufferOsc (MyoData &myoData)
