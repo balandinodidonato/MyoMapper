@@ -27,9 +27,6 @@ public:
     int getShowOrientation();
     int getShowPose();
     int getShowMav();
-    
-    bool getOSCsettingsStatusSender();
-    bool getOSCsettingsStatusReceiver();
 
     // Made ToggleButtons public for MainComponent::Button::Listener
     ToggleButton showOrientation;

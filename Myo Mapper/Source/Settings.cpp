@@ -181,23 +181,3 @@ int Settings::getShowPose()
 {
     return showPose.getToggleState();
 }
-
-bool Settings::getOSCsettingsStatusSender()
-{
-    return oscSettingsChangedSender;
-}
-
-void Settings::setOSCsettingsStatusSender (bool changeStatus)
-{
-    oscSettingsChangedSender = changeStatus;
-}
-
-bool Settings::getOSCsettingsStatusReceiver()
-{
-    return oscSettingsChangedReceiver;
-}
-
-void Settings::setOSCsettingsStatusReceiver (bool changeStatus)
-{
-    oscSettingsChangedReceiver = changeStatus;
-}

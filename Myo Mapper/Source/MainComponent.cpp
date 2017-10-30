@@ -3,38 +3,15 @@
 
 MainComponent::MainComponent()
 {
-    osc.connectReceiver();
 }
 
 MainComponent::~MainComponent()
 {
-    #if JUCE_MAC
-        MenuBarModel::setMacMainMenu (nullptr);
-    #endif
-    PopupMenu::dismissAllActiveMenus();
 }
 
 void MainComponent::paint(juce::Graphics &g)
 {
-    /*
-    if (settingsPannel.getOSCsettingsStatusSender())
-    {
-        osc.disconnectSender();
-        osc.setSender (settingsPannel.getHostAddress(), settingsPannel.getOSCPortSender());
-        settingsPannel.setOSCsettingsStatusSender (false);
-        osc.connectSender();
-    }
-
-    if (settingsPannel.getOSCsettingsStatusReceiver())
-    {
-        osc.disconnectReceiver();
-        osc.setReceiver (settingsPannel.getOSCPortReceiver());
-        settingsPannel.setOSCsettingsStatusReceiver (false);
-        osc.connectReceiver();
-    }
     
-    g.fillAll(Colours::grey);
-     */
 }
 
 void MainComponent::timerCallback()
@@ -71,11 +48,3 @@ void MainComponent::timerCallback()
         }
     }
 }
-/*
-void MainComponent::disconnectMyoAndOSC()
-{
-    myoManager.disconnect();
-    osc.disconnectSender();
-    osc.disconnectReceiver();
-}
-*/
