@@ -74,7 +74,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     sendPort = getSettingsTree().getChildWithName ("SendPort").getProperty ("portNumber");
     receivePort = getSettingsTree().getChildWithName ("ReceivePort").getProperty ("portNumber");
     osc->connectSender (IPAddress::local().toString(), MyoMapperApplication::sendPort);
-//    osc->setReceiver (<#int Port#>)
+    osc->connectReceiver (MyoMapperApplication::receivePort);
     osc->addChangeListener (this);
     startTimer (oscBufferFillSpeed);
 }
@@ -830,7 +830,13 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
     {
         sendPort = treeWhosePropertyHasChanged.getProperty (property);
         osc->disconnectSender();
-        osc->connectSender ("127.0.0.1", sendPort);
+        osc->connectSender (IPAddress::local().toString(), sendPort);
+    }
+    if (treeWhosePropertyHasChanged.hasType ("ReceivePort") == true)
+    {
+        receivePort = treeWhosePropertyHasChanged.getProperty (property);
+        osc->disconnectReceiver();
+        osc->connectReceiver (receivePort);
     }
 }
 
