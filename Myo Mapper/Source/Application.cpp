@@ -850,6 +850,10 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
         osc->disconnectReceiver();
         osc->connectReceiver (receivePort);
     }
+    if (treeWhosePropertyHasChanged.hasType ("SelectedMyo") == true)
+    {
+        selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
+    }
 }
 
 void MyoMapperApplication::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
