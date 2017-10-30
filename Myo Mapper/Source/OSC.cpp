@@ -56,7 +56,7 @@ void OSC::disconnectSender()
     sender.disconnect();
 }
 
-void OSC::setSender (String hostAddress, int [ort)
+void OSC::setSender (String hostAddress, int port)
 {
     sendPort = port;
     hostAddress = hostAddress;
