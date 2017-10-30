@@ -3,28 +3,22 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Myo/MyoData.h"
-//#include "Windows/WindowList.h"
-// ValueTree can get/ set values now
-//#include "OscDataSettings.h"
-//#include "OrOscSettings.h"
 
 class OSC    : public Component,
                private OSCReceiver,
                private OSCReceiver::ListenerWithOSCAddress<OSCReceiver::MessageLoopCallback>,
                public ChangeBroadcaster
-
 {
 public:
     OSC();
     ~OSC();
     
-    void connectSender (String HostAddress, int Port);
-    void setReceiver (int Port);
+    void connectSender (String hostAddress, int port);
+    void disconnectSender();
     void bufferOsc (MyoData &myoData);
     void sendOsc();
     
-    void connectReceiver();
-    void disconnectSender();
+    void connectReceiver (int port);
     void disconnectReceiver();
     
     void oscMessageReceived (const OSCMessage& message) override;
@@ -49,10 +43,6 @@ private:
     int receivePort;
     
     std::vector<OSCMessage> oscBuffer;
-    
-    int oscPortReceiver;
-    
-    bool oscConnectionReceiver;
     
     String myoDataIn[4];
     String action[5];

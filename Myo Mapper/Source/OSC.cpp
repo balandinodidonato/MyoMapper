@@ -9,7 +9,6 @@ OSC::OSC()
     rescaleMIN (0),
     rescaleMaxTest (false),
     rescaleMAX (0),
-    oscConnectionReceiver (false),
     myoDataIn {"/yaw", "/pitch", "/roll", "/mav"},
     action {"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
 {
@@ -412,25 +411,18 @@ void OSC::sendOsc ()
 }
 
 // ==============  RECEIVER  ==============
-void OSC::setReceiver (int Port){
-    oscPortReceiver = Port;
-}
-
-void OSC::connectReceiver()
+void OSC::connectReceiver (int port)
 {
-    if (! receiver.connect (oscPortReceiver))
+    if (receiver.connect (port) == false)
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "OSC Receiver",
-                                          "Myo Mapper could not connect to UDP port " + String(oscPortReceiver) + ".",
+                                          "Myo Mapper could not connect to UDP port " + (String)MyoMapperApplication::receivePort + ".",
                                           "OK");
-    
-    oscConnectionReceiver = true;
 }
 
 void OSC::disconnectReceiver()
 {
     receiver.disconnect();
-    oscConnectionReceiver = false;
 }
 
 void OSC::oscMessageReceived (const OSCMessage& message)
