@@ -9,16 +9,11 @@ OSC::OSC()
     rescaleMIN (0),
     rescaleMaxTest (false),
     rescaleMAX (0),
-    sendPort (5432),
-    hostAddress ("127.0.0.1"),
     oscConnectionReceiver (false),
     myoDataIn {"/yaw", "/pitch", "/roll", "/mav"},
     action {"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
 {
-//    sendPort = MyoMapperApplication::sendPort;
-    sendPort = 5432;
     receivePort = MyoMapperApplication::receivePort;
-//    WindowList.addChangeListener (this);
     
     for (int i = 1; i < 5; ++i) // id
     {

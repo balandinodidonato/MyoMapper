@@ -71,8 +71,10 @@ void MyoMapperApplication::initialise (const String& commandLine)
     myoManager.startPoll();
     
     osc = new OSC();
-    sendPort = 5432;
-    osc->setSender ("127.0.0.1", sendPort);
+    sendPort = getSettingsTree().getChildWithName ("SendPort").getProperty ("portNumber");
+    receivePort = 5431;
+    osc->connectSender (IPAddress::local().toString(), MyoMapperApplication::sendPort);
+//    osc->setReceiver (<#int Port#>)
     osc->addChangeListener (this);
     osc->connectSender();
     startTimer (oscBufferFillSpeed);
@@ -93,6 +95,7 @@ void MyoMapperApplication::shutdown()
     myoManager.disconnect();
     osc->disconnectSender();
     osc->disconnectReceiver();
+    rootTree.removeAllChildren (0);
     rootTree = ValueTree();
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
@@ -116,17 +119,14 @@ int MyoMapperApplication::receivePort;
 
 void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 {
-    if (selectedMyo != 0)
-    {
-        if (source == dynamic_cast<WindowList*>(source))
-        {
-            osc->disconnectSender();
-            osc->setSender ("127.0.0.1", sendPort);
-            osc->connectSender();
-        }
-    }
+//    SettingsWindow* win = dynamic_cast<SettingsWindow*>(source);
+//
+//    if (selectedMyo != 0 && win->startButtonPressed() == true)
+//    {
+//        win->resetStartButtonPressed();
+//    }
 }
-
+int counter = 0;
 void MyoMapperApplication::hiResTimerCallback()
 {
     bool getMyoDataSuccessful = false;
@@ -519,7 +519,7 @@ void MyoMapperApplication::showDocumentationWindow()
 
 void MyoMapperApplication::showPreferencesWindow()
 {
-    // Show the preferences window (moves on mac vs windows/ linux)s
+    // Show the preferences window (moves on mac vs windows/ linux)
 }
 
 //==============================================================================
@@ -531,6 +531,7 @@ ValueTree MyoMapperApplication::dataTree;
 const String onOff              = "onOff";
 const String name               = "name";
 const String sampleSize         = "sampleSize";
+const String portNumber         = "portNumber";
 const bool on                   = true;
 const bool off                  = false;
 const int tempSampSize          = 10;
@@ -541,7 +542,7 @@ void MyoMapperApplication::initialiseRootTree()
     rootTree = ValueTree ("MyoMapper");
     if (settingsTree.hasType ("Settings") == false)
     {
-        
+        initialiseSettingsTree();
     }
     if (dataTree.hasType ("Data") == false)
     {
@@ -549,12 +550,20 @@ void MyoMapperApplication::initialiseRootTree()
     }
     rootTree.addChild (settingsTree, -1, 0);
     rootTree.addChild (dataTree, -1, 0);
+    rootTree.addListener (this);
 }
 
 void MyoMapperApplication::initialiseSettingsTree()
 {
     settingsTree = ValueTree ("Settings");
-    // OSC Ports, show on start, etc
+    
+    //=============================================
+    // OSC Port Data
+    ValueTree sendPortTree = ValueTree ("SendPort");
+    sendPortTree.setProperty (name, "Send Port", 0);
+    sendPortTree.setProperty (portNumber, "5432", 0);
+    
+    settingsTree.addChild (sendPortTree, -1, 0);
 }
 
 void MyoMapperApplication::initialiseDataTree()
@@ -809,4 +818,35 @@ void MyoMapperApplication::writeRootTreeToXml()
     
     xml->writeToFile (File (path), String::empty);
     xml = nullptr;
+}
+
+//==============================================================================
+void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
+{
+    if (treeWhosePropertyHasChanged.hasType ("SendPort") == true)
+    {
+        sendPort = treeWhosePropertyHasChanged.getProperty (property);
+        osc->disconnectSender();
+        osc->connectSender ("127.0.0.1", sendPort);
+    }
+}
+
+void MyoMapperApplication::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
+{
+    
+}
+
+void MyoMapperApplication::valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved)
+{
+    
+}
+
+void MyoMapperApplication::valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex)
+{
+    
+}
+
+void MyoMapperApplication::valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged)
+{
+    
 }
