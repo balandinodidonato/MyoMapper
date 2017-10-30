@@ -1614,9 +1614,6 @@
     <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
       <Filter>Myo Mapper\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Utility\GlobalValueTree.h">
-      <Filter>Myo Mapper\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h">
       <Filter>Myo Mapper\Utility</Filter>
     </ClInclude>

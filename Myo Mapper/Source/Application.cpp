@@ -47,7 +47,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     auto oscBufferFillHz = 200;
     auto oscBufferFillSpeed = 1000 / oscBufferFillHz;
     
-    globalValueTree = new GlobalValueTree();
+    initialiseRootTree();
     
     LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
     
@@ -93,7 +93,7 @@ void MyoMapperApplication::shutdown()
     myoManager.disconnect();
     osc->disconnectSender();
     osc->disconnectReceiver();
-    globalValueTree = nullptr;
+    rootTree = ValueTree();
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
     #endif
@@ -147,6 +147,7 @@ void MyoMapperApplication::hiResTimerCallback()
     
     osc->bufferOsc (myoData[(int)selectedMyo]);
     osc->sendOsc();
+    counter++;
 }
 
 //==============================================================================
@@ -415,7 +416,7 @@ void MyoMapperApplication::openFile()
 
 void MyoMapperApplication::saveMapper()
 {
-    globalValueTree->writeSettingsToXml();
+    writeRootTreeToXml();
 }
 
 void MyoMapperApplication::saveMapperAs()

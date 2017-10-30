@@ -149,7 +149,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp"/>
-    <ClCompile Include="..\..\Source\Utility\GlobalValueTree.cpp"/>
     <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp"/>
     <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp"/>
     <ClCompile Include="..\..\Source\Features\Mav.cpp"/>
