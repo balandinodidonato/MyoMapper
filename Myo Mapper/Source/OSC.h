@@ -3,7 +3,6 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Myo/MyoData.h"
-#include "Utility/GlobalValueTree.h"
 //#include "Windows/WindowList.h"
 // ValueTree can get/ set values now
 //#include "OscDataSettings.h"
