@@ -56,10 +56,10 @@ void OSC::disconnectSender()
     sender.disconnect();
 }
 
-void OSC::setSender (String HostAddress, int Port)
+void OSC::setSender (String hostAddress, int [ort)
 {
-    sendPort = Port;
-    hostAddress = HostAddress;
+    sendPort = port;
+    hostAddress = hostAddress;
 }
 
 void OSC::bufferOsc (MyoData &myoData)
