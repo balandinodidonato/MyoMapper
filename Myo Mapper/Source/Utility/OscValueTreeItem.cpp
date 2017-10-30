@@ -17,7 +17,7 @@ class OscValueTreeItem::TreeItemComponent    : public Component,
                                                public Slider::Listener
 {
 public:
-    TreeItemComponent(const ValueTree& v)
+    TreeItemComponent (const ValueTree& v)
     :   tree (v)
     {
         label.setColour (Label::textColourId, Colours::black);

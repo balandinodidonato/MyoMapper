@@ -58,6 +58,4 @@ private:
     TextButton startButton;
     
     ToggleButton testButton;
-    
-    static bool startButtonClicked;
 };
