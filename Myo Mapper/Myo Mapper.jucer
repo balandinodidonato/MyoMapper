@@ -2,9 +2,10 @@
 
 <JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="2.5.13"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="5.1.2" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
+              jucerVersion="5.2.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
-              reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11">
+              reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
+              companyCopyright="Balandino Di Donato">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{84577E64-7EB8-4A2A-6BC4-1584DD875F14}" name="Utility">
       <FILE id="p4ljyI" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"
@@ -104,10 +105,12 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;, LD_RUNPATH_SEARCH_PATHS=&quot;@loader_path/../Frameworks&quot;"/>
+                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;, LD_RUNPATH_SEARCH_PATHS=&quot;@loader_path/../Frameworks&quot;"
+                       enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;"/>
+                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;"
+                       enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../../Applications/JUCE/modules"/>
@@ -124,9 +127,11 @@
             externalLibraries="myo32.lib&#10;myo64.lib">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="Myo Mapper"/>
+                       isDebug="1" optimisation="1" targetName="Myo Mapper" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="3" targetName="Myo Mapper"/>
+                       isDebug="0" optimisation="3" targetName="Myo Mapper" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0" linkTimeOptimisation="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_osc" path="C:\Program Files\JUCE\modules"/>
