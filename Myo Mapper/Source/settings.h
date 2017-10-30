@@ -33,11 +33,6 @@ public:
     ToggleButton showPose;
     ToggleButton showMav;
     
-    int getOSCPortSender();
-    int getOSCPortReceiver();
-    String getHostAddress();
-    int getSelectedMyo();
-    
 private:
     Slider oscPortSliderSender;
     Slider oscPortSliderReceiver;

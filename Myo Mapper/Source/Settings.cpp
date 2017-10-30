@@ -152,26 +152,6 @@ void Settings::labelTextChanged (juce::Label *labelThatHasChanged)
     }
 }
 
-int Settings::getOSCPortSender()
-{
-    return oscPortSender;
-}
-
-int Settings::getOSCPortReceiver()
-{
-    return oscPortReceiver;
-}
-
-String Settings::getHostAddress()
-{
-    return hostAddress;
-}
-
-int Settings::getSelectedMyo()
-{
-    return myoList.getSelectedId() - 1;
-}
-
 int Settings::getShowOrientation()
 {
     return showOrientation.getToggleState();
