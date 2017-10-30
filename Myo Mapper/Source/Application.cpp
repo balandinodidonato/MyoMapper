@@ -420,7 +420,17 @@ void MyoMapperApplication::saveMapper()
 
 void MyoMapperApplication::saveMapperAs()
 {
-    // Open file save panel and save mapper to new file
+    auto file = File::getCurrentWorkingDirectory().getChildFile ("MyoMapper.mapper");
+    FileChooser fileChooser ("Save Mapper As...",
+                             file,
+                             "*.mapper");
+    if (fileChooser.browseForFileToSave (true))
+    {
+        File chosenFile = fileChooser.getResult();
+//        FileOutputStream stream (chosenFile);
+        XmlElement* xml = getRootTree().createXml();
+        xml->writeToFile (chosenFile, String::empty);
+    }
 }
 
 void MyoMapperApplication::quitMapper()
