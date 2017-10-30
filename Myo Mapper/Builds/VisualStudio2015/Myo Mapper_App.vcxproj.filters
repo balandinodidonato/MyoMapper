@@ -250,9 +250,6 @@
     <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
       <Filter>Myo Mapper\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Utility\GlobalValueTree.cpp">
-      <Filter>Myo Mapper\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp">
       <Filter>Myo Mapper\Utility</Filter>
     </ClCompile>

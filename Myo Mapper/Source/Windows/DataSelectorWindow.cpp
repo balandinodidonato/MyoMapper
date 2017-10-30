@@ -11,16 +11,17 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "DataSelectorWindow.h"
 
+#include "../Application.h"
+
 //==============================================================================
 class DataSelectorWindow::OrientationPage  : public Component
 {
 public:
     OrientationPage()
     {
-        globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("OrData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getDataTree().getChildWithName ("OrData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -38,9 +39,9 @@ public:
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OrientationPage)
     
-    ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
+//    ScopedPointer<OscValueTreeItem> rootItem;
 };
 
 //==============================================================================
@@ -49,11 +50,10 @@ class DataSelectorWindow::AccelerometerPage  : public Component
 public:
     AccelerometerPage()
     {
-        globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
         tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("AccData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getDataTree().getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -71,7 +71,6 @@ public:
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AccelerometerPage)
     
-    ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
 };
@@ -82,11 +81,10 @@ class DataSelectorWindow::GyroscopePage  : public Component
 public:
     GyroscopePage()
     {
-        globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
         tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("GyroData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getDataTree().getChildWithName ("GyroData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -104,7 +102,6 @@ public:
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GyroscopePage)
     
-    ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
 };
@@ -115,11 +112,10 @@ class DataSelectorWindow::EmgPage  : public Component
 public:
     EmgPage()
     {
-        globalValueTree = new GlobalValueTree();
         addAndMakeVisible (tree);
         tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (globalValueTree->getValueTree().getChildWithName ("EmgData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getDataTree().getChildWithName ("EmgData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -137,7 +133,6 @@ public:
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EmgPage)
     
-    ScopedPointer<GlobalValueTree> globalValueTree;
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
 };

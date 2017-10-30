@@ -93,6 +93,21 @@ public:
     void hiResTimerCallback() override;
     
     //==========================================================================
+    static ValueTree rootTree;
+    static ValueTree settingsTree;
+    static ValueTree dataTree;
+    
+    void initialiseRootTree();
+    void initialiseSettingsTree();
+    void initialiseDataTree();
+    
+    static ValueTree getRootTree();
+    static ValueTree getSettingsTree();
+    static ValueTree getDataTree();
+    
+    void writeRootTreeToXml();
+    
+    //==========================================================================
     MyoMapperLookAndFeel lookAndFeel;
     
     struct MainMenuBarModel;
@@ -100,7 +115,6 @@ public:
     
     // Document Manager Goes Here
     ScopedPointer<ApplicationCommandManager> commandManager;
-    ScopedPointer<GlobalValueTree> globalValueTree;
     
     // WindowDrawer used to create and manage these windows
     ScopedPointer<WindowList> windowList;

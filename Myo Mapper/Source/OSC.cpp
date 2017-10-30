@@ -19,7 +19,6 @@ OSC::OSC()
     sendPort = 5432;
     receivePort = MyoMapperApplication::receivePort;
 //    WindowList.addChangeListener (this);
-    globalValueTree = new GlobalValueTree();
     
     for (int i = 1; i < 5; ++i) // id
     {
@@ -67,11 +66,12 @@ void OSC::bufferOsc (MyoData &myoData)
 {
     String id = String (MyoMapperApplication::selectedMyo);
     
-    auto tree = globalValueTree->getValueTree();
+    auto tree = MyoMapperApplication::getDataTree();
     
-    if (globalValueTree->getValueTree().getChildWithName ("OrData").getPropertyAsValue ("onOff", 0) == true)
+    if (tree.getChildWithName ("OrData").getPropertyAsValue ("onOff", 0) == true)
     {
-        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrRaw").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("OrData").getChildWithName ("OrRaw").getPropertyAsValue ("onOff", 0) == true)
+//        if (MyoMapperApplication::getAppTree().getValueTree().getChildWithName ("OrData").getChildWithName ("OrRaw").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/orientation/raw");
             message.addFloat32 ((float) myoData.orientationRaw.x);
@@ -79,7 +79,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.orientationRaw.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrScaled").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("OrData").getChildWithName ("OrScaled").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/orientation/scaled");
             message.addFloat32 ((float) myoData.orientationScaled.x);
@@ -87,7 +87,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.orientationScaled.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrQuaternion").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("OrData").getChildWithName ("OrQuaternion").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/orientation/quaternion");
             message.addFloat32 ((float) myoData.quaternion[0]);
@@ -96,7 +96,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.quaternion[3]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrVelocity").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("OrData").getChildWithName ("OrVelocity").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/orientation/velocity");
             message.addFloat32 ((float) myoData.orientationScaledFod.x);
@@ -104,7 +104,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.orientationScaledFod.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("OrData").getChildWithName ("OrAccel").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("OrData").getChildWithName ("OrAccel").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/orientation/acceleration");
             message.addFloat32 ((float) myoData.orientationScaledSod.x);
@@ -113,9 +113,9 @@ void OSC::bufferOsc (MyoData &myoData)
             oscBuffer.push_back (message);
         }
     }
-    if (globalValueTree->getValueTree().getChildWithName ("AccData").getPropertyAsValue ("onOff", 0) == true)
+    if (tree.getChildWithName ("AccData").getPropertyAsValue ("onOff", 0) == true)
     {
-        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccRaw").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("AccData").getChildWithName ("AccRaw").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/raw/raw");
             message.addFloat32 ((float) myoData.acc.x);
@@ -123,7 +123,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.acc.x);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccRawFod").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("AccData").getChildWithName ("AccRawFod").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/raw/fod/raw");
             message.addFloat32 ((float) myoData.accFod.x);
@@ -132,14 +132,14 @@ void OSC::bufferOsc (MyoData &myoData)
             oscBuffer.push_back (message);
         }
         /*
-        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccRawFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("AccData").getChildWithName ("AccRawFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/raw/fod/mavg");
             DBG ("THIS DATA IS NOT NAMED CORRECTLY");
             oscBuffer.push_back (message);
         }
          */
-        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccScaled").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("AccData").getChildWithName ("AccScaled").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/scaled/raw");
             message.addFloat32 ((float) myoData.accScaled.x);
@@ -147,7 +147,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.accScaled.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccScaledFod").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("AccData").getChildWithName ("AccScaledFod").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/scaled/fod/raw");
             message.addFloat32 ((float) myoData.accScaledFod.x);
@@ -155,7 +155,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.accScaledFod.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("AccData").getChildWithName ("AccScaledFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("AccData").getChildWithName ("AccScaledFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/scaled/fod/mavg");
             message.addFloat32 ((float) myoData.accScaledFodMavg.x);
@@ -164,9 +164,9 @@ void OSC::bufferOsc (MyoData &myoData)
             oscBuffer.push_back (message);
         }
     }
-    if (globalValueTree->getValueTree().getChildWithName ("GyroData").getPropertyAsValue ("onOff", 0) == true)
+    if (tree.getChildWithName ("GyroData").getPropertyAsValue ("onOff", 0) == true)
     {
-        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroRaw").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("GyroData").getChildWithName ("GyroRaw").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/gyro/raw/raw");
             message.addFloat32 ((float) myoData.gyro.x);
@@ -174,7 +174,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.gyro.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroRawFod").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("GyroData").getChildWithName ("GyroRawFod").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/gyro/raw/fod");
             message.addFloat32 ((float) myoData.gyroFod.x);
@@ -182,7 +182,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.gyroFod.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaled").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("GyroData").getChildWithName ("GyroScaled").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/gyro/scaled/raw");
             message.addFloat32 ((float) myoData.gyroScaled.x);
@@ -190,7 +190,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.gyroScaled.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaledAbs").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("GyroData").getChildWithName ("GyroScaledAbs").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/gyro/scaled/abs");
             message.addFloat32 ((float) myoData.gyroScaledAbs.x);
@@ -198,7 +198,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.gyroScaledAbs.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaledFod").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("GyroData").getChildWithName ("GyroScaledFod").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/gyro/scaled/fod/raw");
             message.addFloat32 ((float) myoData.gyroScaledFod.x);
@@ -206,7 +206,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.gyroScaledFod.z);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("GyroData").getChildWithName ("GyroScaledFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("GyroData").getChildWithName ("GyroScaledFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/gyro/scaled/fod/mavg");
             message.addFloat32 ((float) myoData.gyroScaledFodMavg.x);
@@ -215,9 +215,9 @@ void OSC::bufferOsc (MyoData &myoData)
             oscBuffer.push_back (message);
         }
     }
-    if (globalValueTree->getValueTree().getChildWithName ("EmgData").getPropertyAsValue ("onOff", 0) == true)
+    if (tree.getChildWithName ("EmgData").getPropertyAsValue ("onOff", 0) == true)
     {
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRaw").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgRaw").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/raw");
             message.addInt32 ((int) myoData.emgRaw[0]);
@@ -230,7 +230,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addInt32 ((int) myoData.emgRaw[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgRawMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/mavg");
             message.addInt32 ((int) myoData.emgRawMavg[0]);
@@ -243,7 +243,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addInt32 ((int) myoData.emgRawMavg[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawZcr").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgRawZcr").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/zcr/raw");
             message.addInt32 ((int) myoData.emgZeroCross[0]);
@@ -256,7 +256,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addInt32 ((int) myoData.emgZeroCross[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgRawZcrMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgRawZcrMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/zcr/mavg");
             message.addInt32 ((int) myoData.emgZeroCrossMavg[0]);
@@ -269,7 +269,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addInt32 ((int) myoData.emgZeroCrossMavg[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaled").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaled").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/raw");
             message.addFloat32 ((float) myoData.emgScaled[0]);
@@ -282,7 +282,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.emgScaled[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbs").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbs").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/raw");
             message.addFloat32 ((float) myoData.emgScaledAbs[0]);
@@ -295,7 +295,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.emgScaledAbs[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMin").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMin").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/min");
             message.addFloat32 ((float) myoData.emgScaledAbsMin[0]);
@@ -308,7 +308,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.emgScaledAbsMin[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMax").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMax").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/max");
             message.addFloat32 ((float) myoData.emgScaledAbsMax[0]);
@@ -321,7 +321,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.emgScaledAbsMax[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsFod").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsFod").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/fod/raw");
             message.addFloat32 ((float) myoData.emgScaledAbsFod[0]);
@@ -334,7 +334,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.emgScaledAbsFod[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/fod/mavg");
             message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[0]);
@@ -347,7 +347,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.emgScaledAbsFodMavg[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mavg");
             message.addFloat32 ((float) myoData.emgScaledAbsMavg[0]);
@@ -360,7 +360,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.emgScaledAbsMavg[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMav").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMav").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/raw");
             message.addFloat32 ((float) myoData.emgScaledAbsMavg[0]);
@@ -373,37 +373,37 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.emgScaledAbsMavg[7]);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/mavg");
             message.addFloat32 ((float) myoData.emgMav);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMin").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMin").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/min");
             message.addFloat32 ((float) myoData.emgMavMin);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMax").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavMax").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/max");
             message.addFloat32 ((float) myoData.emgMavMax);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavFod").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavFod").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/fod/raw");
             message.addFloat32 ((float) myoData.mavFod);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavFodMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("EmgScaledAbsMavFodMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/fod/mavg");
             message.addFloat32 ((float) myoData.mavFodMavg);
             oscBuffer.push_back (message);
         }
-        if (globalValueTree->getValueTree().getChildWithName ("EmgData").getChildWithName ("HandPose").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName ("EmgData").getChildWithName ("HandPose").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/pose");
             message.addString ((String) myoData.pose);

@@ -12,7 +12,6 @@
 
 
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "../Utility/GlobalValueTree.h"
 #include "../Utility/OscValueTreeItem.h"
 
 //==============================================================================

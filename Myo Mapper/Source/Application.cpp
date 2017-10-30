@@ -520,3 +520,292 @@ void MyoMapperApplication::showPreferencesWindow()
 {
     // Show the preferences window (moves on mac vs windows/ linux)s
 }
+
+//==============================================================================
+
+ValueTree MyoMapperApplication::rootTree;
+ValueTree MyoMapperApplication::settingsTree;
+ValueTree MyoMapperApplication::dataTree;
+
+const String onOff              = "onOff";
+const String name               = "name";
+const String sampleSize         = "sampleSize";
+const bool on                   = true;
+const bool off                  = false;
+const int tempSampSize          = 10;
+
+//==============================================================================
+void MyoMapperApplication::initialiseRootTree()
+{
+    rootTree = ValueTree ("MyoMapper");
+    if (settingsTree.hasType ("Settings") == false)
+    {
+        
+    }
+    if (dataTree.hasType ("Data") == false)
+    {
+        initialiseDataTree();
+    }
+    rootTree.addChild (settingsTree, -1, 0);
+    rootTree.addChild (dataTree, -1, 0);
+}
+
+void MyoMapperApplication::initialiseSettingsTree()
+{
+    settingsTree = ValueTree ("Settings");
+    // OSC Ports, show on start, etc
+}
+
+void MyoMapperApplication::initialiseDataTree()
+{
+    dataTree = ValueTree ("Data");
+    
+    //=============================================
+    // Orientation Data
+    ValueTree orData = ValueTree ("OrData");
+    orData.setProperty (name, "Orientation Data", 0);
+    orData.setProperty (onOff, on, 0);
+    
+    ValueTree orDataRaw = ValueTree ("OrRaw");
+    orDataRaw.setProperty (name, "Raw Data", 0);
+    orDataRaw.setProperty (onOff, on, 0);
+    ValueTree orDataScaled = ValueTree ("OrScaled");
+    orDataScaled.setProperty (name, "Scaled Data", 0);
+    orDataScaled.setProperty (onOff, on, 0);
+    ValueTree orDataQuaternion = ValueTree ("OrQuaternion");
+    orDataQuaternion.setProperty (name, "Quaternion Data", 0);
+    orDataQuaternion.setProperty (onOff, on, 0);
+    ValueTree orDataVel = ValueTree ("OrVelocity");
+    orDataVel.setProperty (name, "Velocity Data", 0);
+    orDataVel.setProperty (onOff, on, 0);
+    orDataVel.setProperty (sampleSize, tempSampSize, 0);
+    ValueTree orDataAccel= ValueTree ("OrAccel");
+    orDataAccel.setProperty (name, "Acceleration Data", 0);
+    orDataAccel.setProperty (onOff, on, 0);
+    orDataAccel.setProperty (sampleSize, tempSampSize, 0);
+    
+    orData.addChild (orDataRaw, 1, 0);
+    orData.addChild (orDataScaled, 1, 0);
+    orData.addChild (orDataQuaternion, 11, 0);
+    orData.addChild (orDataVel, 2, 0);
+    orData.addChild (orDataAccel, -1, 0);
+    
+    //=============================================
+    // Acceleration Data
+    ValueTree accData = ValueTree ("AccData");
+    accData.setProperty (name, "Acceleration Data", 0);
+    accData.setProperty (onOff, on, 0);
+    
+    ValueTree accDataRaw = ValueTree ("AccRaw");
+    accDataRaw.setProperty (name, "Raw Data", 0);
+    accDataRaw.setProperty (onOff, on, 0);
+    ValueTree accDataRawFod = ValueTree ("AccRawFod");
+    accDataRawFod.setProperty (name, "Raw First Order Difference Data", 0);
+    accDataRawFod.setProperty (onOff, on, 0);
+    ValueTree accDataRawFodMavg = ValueTree ("AccRawFodMavg");
+    accDataRawFodMavg.setProperty (name, "Raw First Order Difference Moving Average", 0);
+    accDataRawFodMavg.setProperty (onOff, on, 0);
+    accDataRawFodMavg.setProperty (sampleSize, tempSampSize, 0);
+    ValueTree accDataScaled = ValueTree ("AccScaled");
+    accDataScaled.setProperty (name, "Scaled Data", 0);
+    accDataScaled.setProperty (onOff, on, 0);
+    ValueTree accDataScaledFod = ValueTree ("AccScaledFod");
+    accDataScaledFod.setProperty (name, "Scaled First Order Difference Data", 0);
+    accDataScaledFod.setProperty (onOff, on, 0);
+    ValueTree accDataScaledFodMavg = ValueTree ("AccScaledFodMavg");
+    accDataScaledFodMavg.setProperty (name, "Scaled First Order Difference Moving Average", 0);
+    accDataScaledFodMavg.setProperty (onOff, on, 0);
+    accDataScaledFodMavg.setProperty (sampleSize, tempSampSize, 0);
+    
+    accData.addChild (accDataRaw, -1, 0);
+    accDataRaw.addChild (accDataRawFod, -1, 0);
+    accDataRawFod.addChild (accDataRawFodMavg, -1, 0);
+    accData.addChild (accDataScaled, -1, 0);
+    accDataScaled.addChild (accDataScaledFod, -1, 0);
+    accDataScaledFod.addChild (accDataScaledFodMavg, -1, 0);
+    
+    //=============================================
+    // Gyro Data
+    ValueTree gyroData = ValueTree ("GyroData");
+    gyroData.setProperty (name, "Gyro Data", 0);
+    gyroData.setProperty (onOff, on, 0);
+    
+    ValueTree gyroDataRaw = ValueTree ("GyroRaw");
+    gyroDataRaw.setProperty (name, "Raw Data", 0);
+    gyroDataRaw.setProperty (onOff, on, 0);
+    ValueTree gyroDataRawFod = ValueTree ("GyroRawFod");
+    gyroDataRawFod.setProperty (name, "Raw First Order Difference Data", 0);
+    gyroDataRawFod.setProperty (onOff, on, 0);
+    gyroDataRawFod.setProperty (sampleSize, tempSampSize, 0);
+    ValueTree gyroDataScaled = ValueTree ("GyroScaled");
+    gyroDataScaled.setProperty (name, "Scaled Data", 0);
+    gyroDataScaled.setProperty (onOff, on, 0);
+    ValueTree gyroDataScaledAbs = ValueTree ("GyroScaledAbs");
+    gyroDataScaledAbs.setProperty (name, "Absolute Scaled Data", 0);
+    gyroDataScaledAbs.setProperty (onOff, on, 0);
+    ValueTree gyroDataScaledFod = ValueTree ("GyroScaledFod");
+    gyroDataScaledFod.setProperty (name, "Scaled First Order Difference Data", 0);
+    gyroDataScaledFod.setProperty (onOff, on, 0);
+    ValueTree gyroDataScaledFodMavg = ValueTree ("GyroScaledFodMavg");
+    gyroDataScaledFodMavg.setProperty (name, "Scaled First Order Difference Moving Average", 0);
+    gyroDataScaledFodMavg.setProperty (onOff, on, 0);
+    gyroDataScaledFodMavg.setProperty (sampleSize, tempSampSize, 0);
+    
+    gyroData.addChild (gyroDataRaw, -1, 0);
+    gyroDataRaw.addChild (gyroDataRawFod, -1, 0);
+    gyroData.addChild (gyroDataScaled, -1, 0);
+    gyroDataScaled.addChild (gyroDataScaledAbs, -1, 0);
+    gyroDataScaled.addChild (gyroDataScaledFod, -1, 0);
+    gyroDataScaledFod.addChild (gyroDataScaledFodMavg, -1, 0);
+    
+    //=============================================
+    // EMG Data
+    ValueTree emgData = ValueTree ("EmgData");
+    emgData.setProperty (name, "EMG Data", 0);
+    emgData.setProperty (onOff, on, 0);
+    
+    ValueTree emgDataRaw = ValueTree ("EmgRaw");
+    emgDataRaw.setProperty (name, "Raw Data", 0);
+    emgDataRaw.setProperty (onOff, on, 0);
+    
+    ValueTree emgDataRawMavg = ValueTree ("EmgRawMavg");
+    emgDataRawMavg.setProperty (name, "Raw Moving Average Data", 0);
+    emgDataRawMavg.setProperty (onOff, on, 0);
+    emgDataRawMavg.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataRawZcr = ValueTree ("EmgRawZcr");
+    emgDataRawZcr.setProperty (name, "Raw Zero-Crossing Data", 0);
+    emgDataRawZcr.setProperty (onOff, on, 0);
+    emgDataRawZcr.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataRawZcrMavg = ValueTree ("EmgRawZcrMavg");
+    emgDataRawZcrMavg.setProperty (name, "Raw Zero-Crossing Moving Average Data", 0);
+    emgDataRawZcrMavg.setProperty (onOff, on, 0);
+    emgDataRawZcrMavg.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataScaled = ValueTree ("EmgScaled");
+    emgDataScaled.setProperty (name, "Scaled Data", 0);
+    emgDataScaled.setProperty (onOff, on, 0);
+    
+    ValueTree emgDataScaledAbs = ValueTree ("EmgScaledAbs");
+    emgDataScaledAbs.setProperty (name, "Absolute Scaled Data", 0);
+    emgDataScaledAbs.setProperty (onOff, on, 0);
+    
+    ValueTree emgDataScaledAbsMin = ValueTree ("EmgScaledAbsMin");
+    emgDataScaledAbsMin.setProperty (name, "Minimum Absolute Scaled Data", 0);
+    emgDataScaledAbsMin.setProperty (onOff, on, 0);
+    emgDataScaledAbsMin.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataScaledAbsMax = ValueTree ("EmgScaledAbsMax");
+    emgDataScaledAbsMax.setProperty (name, "Maximum Absolute Scaled Data", 0);
+    emgDataScaledAbsMax.setProperty (onOff, on, 0);
+    emgDataScaledAbsMax.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataScaledAbsFod = ValueTree ("EmgScaledAbsFod");
+    emgDataScaledAbsFod.setProperty (name, "Absolute Scaled First Order Difference Data", 0);
+    emgDataScaledAbsFod.setProperty (onOff, on, 0);
+    
+    ValueTree emgDataScaledAbsFodMavg = ValueTree ("EmgScaledAbsFodMavg");
+    emgDataScaledAbsFodMavg.setProperty (name, "Absolute Scaled First Order Difference Moving Average Data", 0);
+    emgDataScaledAbsFodMavg.setProperty (onOff, on, 0);
+    emgDataScaledAbsFodMavg.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataScaledAbsMavg = ValueTree ("EmgScaledAbsMavg");
+    emgDataScaledAbsMavg.setProperty (name, "Absolute Scaled Moving Average Data", 0);
+    emgDataScaledAbsMavg.setProperty (onOff, on, 0);
+    emgDataScaledAbsMavg.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataScaledAbsMav = ValueTree ("EmgScaledAbsMav");
+    emgDataScaledAbsMav.setProperty (name, "Absolute Scaled Mean Average Value Data", 0);
+    emgDataScaledAbsMav.setProperty (onOff, on, 0);
+    
+    ValueTree emgDataScaledAbsMavMavg = ValueTree ("EmgScaledAbsMavMavg");
+    emgDataScaledAbsMavMavg.setProperty (name, "Absolute Scaled Mean Average Value Moving Average Data", 0);
+    emgDataScaledAbsMavMavg.setProperty (onOff, on, 0);
+    emgDataScaledAbsMavMavg.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataScaledAbsMavMin = ValueTree ("EmgScaledAbsMavMin");
+    emgDataScaledAbsMavMin.setProperty (name, "Absolute Scaled Mean Average Value Minimum Data", 0);
+    emgDataScaledAbsMavMin.setProperty (onOff, on, 0);
+    emgDataScaledAbsMavMin.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataScaledAbsMavMax = ValueTree ("EmgScaledAbsMavMax");
+    emgDataScaledAbsMavMax.setProperty (name, "Absolute Scaled Mean Average Value Maximum Data", 0);
+    emgDataScaledAbsMavMax.setProperty (onOff, on, 0);
+    emgDataScaledAbsMavMax.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree emgDataScaledAbsMavFod = ValueTree ("EmgScaledAbsMavFod");
+    emgDataScaledAbsMavFod.setProperty (name, "Absolute Scaled Mean Average Value First Order Difference Data", 0);
+    emgDataScaledAbsMavFod.setProperty (onOff, on, 0);
+    
+    ValueTree emgDataScaledAbsFodMavMavg = ValueTree ("EmgScaledAbsMavFodMavg");
+    emgDataScaledAbsFodMavMavg.setProperty (name, "Absolute Scaled Mean Average Value First Order Difference Moving Average Data", 0);
+    emgDataScaledAbsFodMavMavg.setProperty (onOff, on, 0);
+    emgDataScaledAbsFodMavMavg.setProperty (sampleSize, tempSampSize, 0);
+    
+    ValueTree handPoseData = ValueTree ("HandPose");
+    handPoseData.setProperty (name, "Hand Pose Data", 0);
+    handPoseData.setProperty (onOff, on, 0);
+    
+    emgData.addChild (emgDataRaw, -1, 0);
+    emgDataRaw.addChild (emgDataRawMavg, -1, 0);
+    emgDataRaw.addChild (emgDataRawZcr, -1, 0);
+    emgDataRawZcr.addChild (emgDataRawZcrMavg, -1, 0);
+    emgData.addChild (emgDataScaled, -1, 0);
+    emgDataScaled.addChild (emgDataScaledAbs, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsMin, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsMax, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsFod, -1, 0);
+    emgDataScaledAbsFod.addChild (emgDataScaledAbsFodMavg, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsMavg, -1, 0);
+    emgDataScaledAbs.addChild (emgDataScaledAbsMav, -1, 0);
+    emgDataScaledAbsMav.addChild (emgDataScaledAbsMavMavg, -1, 0);
+    emgDataScaledAbsMav.addChild (emgDataScaledAbsMavMin, -1, 0);
+    emgDataScaledAbsMav.addChild (emgDataScaledAbsMavMax, -1, 0);
+    emgDataScaledAbsMav.addChild (emgDataScaledAbsMavFod, -1, 0);
+    emgDataScaledAbsMavFod.addChild (emgDataScaledAbsFodMavMavg, -1, 0);
+    emgData.addChild (handPoseData, -1, 0);
+    
+    //=============================================
+    dataTree.addChild (orData, -1, 0);
+    dataTree.addChild (accData, -1, 0);
+    dataTree.addChild (gyroData, -1, 0);
+    dataTree.addChild (emgData, -1, 0);
+}
+
+ValueTree MyoMapperApplication::getRootTree()
+{
+    ValueTree const vt = rootTree;
+    jassert (vt.isValid());
+    return vt;
+}
+
+ValueTree MyoMapperApplication::getSettingsTree()
+{
+    ValueTree const vt = settingsTree;
+    jassert (vt.isValid());
+    return vt;
+}
+
+ValueTree MyoMapperApplication::getDataTree()
+{
+    ValueTree const vt = dataTree;
+    jassert (vt.isValid());
+    return vt;
+}
+
+void MyoMapperApplication::writeRootTreeToXml()
+{
+    XmlElement* xml = getRootTree().createXml();
+    
+    auto sep = File::getSeparatorChar();
+    auto path = File::getSpecialLocation (File::userApplicationDataDirectory).getFullPathName();
+    #if JUCE_MAC
+        path = path + sep + "Application Support" + sep + "Myo Mapper" + sep + "userSettings.mapper";
+    #elif JUCE_WINDOWS
+        path = path + sep + "Roaming" + sep + "Myo Mapper" + sep + "userSettings.mapper";
+    #endif
+    
+    xml->writeToFile (File (path), String::empty);
+    xml = nullptr;
+}

@@ -1361,7 +1361,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\Utility\CommandIDs.h"/>
-    <ClInclude Include="..\..\Source\Utility\GlobalValueTree.h"/>
     <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h"/>
     <ClInclude Include="..\..\Source\Features\FirstOrderDifference.h"/>
     <ClInclude Include="..\..\Source\Features\Mav.h"/>

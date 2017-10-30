@@ -51,7 +51,6 @@ private:
     int sendPort;
     int receivePort;
     
-    ScopedPointer<GlobalValueTree> globalValueTree;
     std::vector<OSCMessage> oscBuffer;
     
     int oscPortSender;
