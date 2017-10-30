@@ -11,7 +11,7 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "SettingsWindow.h"
 
-bool SettingsWindow::startButtonClicked;
+#include "../Application.h"
 
 //==============================================================================
 SettingsWindow::SettingsWindow()

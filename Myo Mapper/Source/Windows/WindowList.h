@@ -10,15 +10,11 @@
 
 #pragma once
 
-class WindowList;
-class WindowDrawer;
-
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "WindowDrawer.h"
 #include "VisualsWindow.h"
 #include "SettingsWindow.h"
 #include "DataSelectorWindow.h"
-#include "../Application.h"
+#include "WindowDrawer.h"
 
 //==============================================================================
 /*

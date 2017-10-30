@@ -11,6 +11,8 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "WindowDrawer.h"
 
+#include "../Application.h"
+
 bool WindowDrawer::wantsToClose;
 
 //==============================================================================
