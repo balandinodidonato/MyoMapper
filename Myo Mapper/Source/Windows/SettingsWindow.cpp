@@ -22,7 +22,7 @@ SettingsWindow::SettingsWindow()
     
     oscSendSetter.addListener (this);
     oscSendSetter.setRange (1, 9999, 1);
-    oscSendSetter.setValue (MyoMapperApplication::getSettingsTree().getChildWithName ("SendPort").getProperty ("portNumber"));
+    oscSendSetter.setValue (MyoMapperApplication::getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
     oscSendSetter.setSliderStyle (Slider::IncDecButtons);
     oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
     addAndMakeVisible (oscSendSetter);
@@ -32,7 +32,7 @@ SettingsWindow::SettingsWindow()
     addAndMakeVisible (oscReceiveLabel);
     
     oscReceiveSetter.setRange (1, 9999, 1);
-    oscReceiveSetter.setValue (MyoMapperApplication::getSettingsTree().getChildWithName ("ReceivePort").getProperty ("portNumber"));
+    oscReceiveSetter.setValue (MyoMapperApplication::getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
     oscReceiveSetter.setSliderStyle (Slider::IncDecButtons);
     oscReceiveSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
     oscReceiveSetter.addListener (this);
@@ -46,6 +46,7 @@ SettingsWindow::SettingsWindow()
     myoSelectorSetter.addItem ("Myo 2", 2);
     myoSelectorSetter.addItem ("Myo 3", 3);
     myoSelectorSetter.addItem ("Myo 4", 4);
+    myoSelectorSetter.setSelectedId (MyoMapperApplication::getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
     myoSelectorSetter.setText ("Select Myo");
     myoSelectorSetter.addListener (this);
     addAndMakeVisible (myoSelectorSetter);

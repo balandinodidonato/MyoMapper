@@ -556,8 +556,9 @@ void MyoMapperApplication::initialiseSettingsTree()
 {
     settingsTree = ValueTree ("Settings");
     
-    //=============================================
-    // OSC Port Data
+    ValueTree selectedMyoTree = ValueTree ("SelectedMyo");
+    selectedMyoTree.setProperty (name, "Selected Myo", 0);
+    selectedMyoTree.setProperty ("myoId", "0", 0);
     ValueTree sendPortTree = ValueTree ("SendPort");
     sendPortTree.setProperty (name, "Send Port", 0);
     sendPortTree.setProperty (portNumber, "5432", 0);
@@ -565,6 +566,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     receivePortTree.setProperty (name, "Receive Port", 0);
     receivePortTree.setProperty (portNumber, "5431", 0);
     
+    settingsTree.addChild (selectedMyoTree, -1, 0);
     settingsTree.addChild (sendPortTree, -1, 0);
     settingsTree.addChild (receivePortTree, -1, 0);
 }
