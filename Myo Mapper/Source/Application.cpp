@@ -173,7 +173,7 @@ StringArray MyoMapperApplication::getMenuBarNames()
 {
     StringArray names;
     names.add ("File");
-    names.add ("View");
+//    names.add ("View");
     names.add ("Window");
     names.add ("Help");
     return StringArray (names);
@@ -184,7 +184,9 @@ void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
     if (menuName == "File")
         createFileMenu (menu);
     else if (menuName == "View")
-        createViewMenu(menu);
+    {
+//        createViewMenu(menu);
+    }
     else if (menuName == "Window")
         createWindowMenu(menu);
     else if (menuName == "Help")
@@ -373,6 +375,7 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
     switch (info.commandID)
     {
         case CommandIDs::newMapper:                     createNewMapper(); break;
+        case CommandIDs::openMapper:                    openFile(); break;
         case CommandIDs::saveMapper:                    saveMapper(); break;
         case CommandIDs::saveMapperAs:                  saveMapperAs(); break;
         case CommandIDs::quitMapper:                    quitMapper(); break;
