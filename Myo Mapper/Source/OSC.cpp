@@ -3,9 +3,7 @@
 #include "Application.h"
 
 OSC::OSC()
-:   vibrate (false),
-    vibrationType ("null"),
-    rescaleMinTest (false),
+:   rescaleMinTest (false),
     rescaleMIN (0),
     rescaleMaxTest (false),
     rescaleMAX (0),
@@ -32,10 +30,8 @@ OSC::OSC()
 
 OSC::~OSC()
 {
-    
 }
 
-// ==============   SENDER   ==============
 void OSC::connectSender (String hostAddress, int port)
 {
     if (sender.connect (hostAddress, port) == false)
@@ -410,7 +406,6 @@ void OSC::sendOsc ()
     oscBuffer.clear();
 }
 
-// ==============  RECEIVER  ==============
 void OSC::connectReceiver (int port)
 {
     if (receiver.connect (port) == false)
@@ -427,19 +422,21 @@ void OSC::disconnectReceiver()
 
 void OSC::oscMessageReceived (const OSCMessage& message)
 {
-    auto Id = (String) MyoMapperApplication::selectedMyo;
+    
+    auto Id = MyoMapperApplication::getSettingsTree().getChildWithName ("SendPort").getProperty ("portNumber").toString();
+    
     // ---------------- Vibrate
     
     if (message.getAddressPattern() == "/myo" + Id + action[0])
         if (message.size() == 1 && message[0].isString())
         {
-            vibrationType =  message[0].getString();
-            vibrate = true;
+            auto vibrationType =  message[0].getString();
+            myoManager.vibrate (vibrationType);
         }
     
     for (int i = 0; i < 4; ++i) // myoDataIn
     {
-        // ---------------- Centre
+        // ---------------- Calibrate
         
         if (message.getAddressPattern() == "/myo" + Id + myoDataIn[i] + action[1])
         {
@@ -483,7 +480,7 @@ void OSC::oscMessageReceived (const OSCMessage& message)
         
         for (int y = 2; y < 4; ++y) // action
         {
-            // ---------------- Set MinMax
+            // ---------------- Set MinMax Scaling
             
             String matchString = "/myo" + Id + myoDataIn[i] + action[y];
             

@@ -3,6 +3,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Myo/MyoData.h"
+#include "Myo/MyoManager.h"
 
 class OSC    : public Component,
                private OSCReceiver,

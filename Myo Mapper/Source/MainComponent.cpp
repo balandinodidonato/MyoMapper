@@ -29,12 +29,6 @@ void MainComponent::timerCallback()
     myoData[id].orientationScaled = orientation.getValue();
     myoData[id].orientationScaledFod = orientation.getFod();
     myoData[id].orientationScaledSod = orientation.getSod();
- 
-    if (osc.vibrate && VibrationState)
-    {
-        myoManager.vibrate (osc.vibrationType, true);
-        osc.vibrate = false;
-    }
 
     for (int i = 0; i < 4; ++i) // myoData
     {
