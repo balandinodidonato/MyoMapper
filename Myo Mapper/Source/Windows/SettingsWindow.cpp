@@ -184,9 +184,9 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
 
 void SettingsWindow::comboBoxChanged (ComboBox *comboBoxThatHasChanged)
 {
+    auto value = comboBoxThatHasChanged->getSelectedIdAsValue();
     if (comboBoxThatHasChanged == &myoSelectorSetter)
     {
-        MyoMapperApplication::selectedMyo = myoSelectorSetter.getSelectedId();
-        sendChangeMessage(); // Update the application-wide myo value
+        MyoMapperApplication::getSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
     }
 }
