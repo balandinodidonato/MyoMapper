@@ -24,7 +24,7 @@ SettingsWindow::SettingsWindow()
     oscSendSetter.setRange (1, 9999, 1);
     oscSendSetter.setValue (MyoMapperApplication::getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
     oscSendSetter.setSliderStyle (Slider::IncDecButtons);
-    oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable;
+    oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     addAndMakeVisible (oscSendSetter);
     
     oscReceiveLabel.setJustificationType (Justification::horizontallyCentred);
