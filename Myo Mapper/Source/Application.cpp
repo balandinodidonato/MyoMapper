@@ -373,7 +373,6 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
     switch (info.commandID)
     {
         case CommandIDs::newMapper:                     createNewMapper(); break;
-        case CommandIDs::openMapper:                    userFileOpenDialog(); break;
         case CommandIDs::saveMapper:                    saveMapper(); break;
         case CommandIDs::saveMapperAs:                  saveMapperAs(); break;
         case CommandIDs::quitMapper:                    quitMapper(); break;
