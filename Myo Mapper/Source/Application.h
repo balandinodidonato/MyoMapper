@@ -63,7 +63,6 @@ public:
     
     //==========================================================================
     void createNewMapper();
-    void userFileOpenDialog();
     void openFile();
     void saveMapper();
     void saveMapperAs();

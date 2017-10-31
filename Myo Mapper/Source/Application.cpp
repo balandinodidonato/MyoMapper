@@ -125,7 +125,7 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 //        win->resetStartButtonPressed();
 //    }
 }
-int counter = 0;
+
 void MyoMapperApplication::hiResTimerCallback()
 {
     bool getMyoDataSuccessful = false;
@@ -146,7 +146,6 @@ void MyoMapperApplication::hiResTimerCallback()
     
     osc->bufferOsc (myoData[(int)selectedMyo]);
     osc->sendOsc();
-    counter++;
 }
 
 //==============================================================================
@@ -401,11 +400,6 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
 void MyoMapperApplication::createNewMapper()
 {
     // Close current mapper and open new
-}
-
-void MyoMapperApplication::userFileOpenDialog()
-{
-    // Ask user to select file to open
 }
 
 void MyoMapperApplication::openFile()
