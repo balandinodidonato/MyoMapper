@@ -23,9 +23,6 @@ public:
     void disconnectReceiver();
     
     void oscMessageReceived (const OSCMessage& message) override;
-    
-    bool vibrate;
-    String vibrationType;
 
     bool map[4][5];
 
@@ -40,6 +37,7 @@ public:
 private:
     OSCSender sender;
     OSCReceiver receiver;
+    MyoManager myoManager;
     
     int receivePort;
     

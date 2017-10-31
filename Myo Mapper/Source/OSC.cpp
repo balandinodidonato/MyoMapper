@@ -422,12 +422,11 @@ void OSC::disconnectReceiver()
 
 void OSC::oscMessageReceived (const OSCMessage& message)
 {
-    
-    auto Id = MyoMapperApplication::getSettingsTree().getChildWithName ("SendPort").getProperty ("portNumber").toString();
-    
+    auto Id = MyoMapperApplication::getSettingsTree().getChildWithName ("SelectedMyo").getProperty ("myoId").toString();
+    DBG (String(Id));
     // ---------------- Vibrate
     
-    if (message.getAddressPattern() == "/myo" + Id + action[0])
+    if (message.getAddressPattern() == "/myo" + Id + "/vibrate")
         if (message.size() == 1 && message[0].isString())
         {
             auto vibrationType =  message[0].getString();
