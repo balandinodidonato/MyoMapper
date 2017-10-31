@@ -24,7 +24,7 @@ SettingsWindow::SettingsWindow()
     oscSendSetter.setRange (1, 9999, 1);
     oscSendSetter.setValue (MyoMapperApplication::getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
     oscSendSetter.setSliderStyle (Slider::IncDecButtons);
-    oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
+    oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable;
     addAndMakeVisible (oscSendSetter);
     
     oscReceiveLabel.setJustificationType (Justification::horizontallyCentred);
@@ -34,7 +34,7 @@ SettingsWindow::SettingsWindow()
     oscReceiveSetter.setRange (1, 9999, 1);
     oscReceiveSetter.setValue (MyoMapperApplication::getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
     oscReceiveSetter.setSliderStyle (Slider::IncDecButtons);
-    oscReceiveSetter.setIncDecButtonsMode (Slider::incDecButtonsDraggable_Vertical);
+    oscReceiveSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     oscReceiveSetter.addListener (this);
     addAndMakeVisible (oscReceiveSetter);
     
