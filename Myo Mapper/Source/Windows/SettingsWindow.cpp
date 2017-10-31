@@ -175,11 +175,10 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     if (slider == &oscSendSetter)
     {
         MyoMapperApplication::getSettingsTree().getChildWithName ("SendPort").setProperty ("portNumber", value, 0);
-//        sendChangeMessage(); // Set the application-wide OSC send port
     }
     if (slider == &oscReceiveSetter)
     {
-        MyoMapperApplication::receivePort = oscReceiveSetter.getValue();
+        MyoMapperApplication::getSettingsTree().getChildWithName ("ReceivePort").setProperty ("portNumber", value, 0);
     }
 }
 
