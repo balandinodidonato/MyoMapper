@@ -105,10 +105,10 @@ void WindowList::changeListenerCallback (ChangeBroadcaster* source)
         SettingsWindow* window = dynamic_cast<SettingsWindow*> (source);
         if (window->startButtonPressed() == true)
         {
-            windows.set (windows.indexOf (settingsWindow), nullptr);
-            getOrCreateVisualsWindow();
             sendChangeMessage();
-            window->resetStartButtonPressed();
+            showOrCreateVisualsWindow();
+            windows.set (windows.indexOf (settingsWindow), nullptr);
+            
         }
     }
 //    if (source == dynamic_cast<WindowDrawer*> (source))
