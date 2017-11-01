@@ -353,7 +353,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             
         case CommandIDs::showVisualsWindow:
             result.setInfo ("Show Visualiser", "Create a new display window", CommandCategories::windows, 0);
-            result.addDefaultKeypress ('v', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
+            result.addDefaultKeypress ('c', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::showDataWindow:
