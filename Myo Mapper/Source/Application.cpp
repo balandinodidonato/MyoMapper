@@ -37,7 +37,12 @@ struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
     }
 };
 
+
 //==============================================================================
+int MyoMapperApplication::selectedMyo;
+int MyoMapperApplication::sendPort;
+int MyoMapperApplication::receivePort;
+
 MyoMapperApplication::MyoMapperApplication()
 {
 }
@@ -112,9 +117,31 @@ void MyoMapperApplication::systemRequestedQuit()
 }
 
 //==============================================================================
-int MyoMapperApplication::selectedMyo;
-int MyoMapperApplication::sendPort;
-int MyoMapperApplication::receivePort;
+//void MyoMapperApplication::hiResTimerCallback()
+void MyoMapperApplication::timerCallback()
+{
+    bool getMyoDataSuccessful = false;
+    std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
+    
+    if (getMyoDataSuccessful == false)
+    {
+        return;
+    }
+    if (selectedMyo < 1 || selectedMyo > 4)
+    {
+        return;
+    }
+    if (selectedMyo >= myoData.size())
+    {
+        return;
+    }
+    
+    osc->bufferOsc (myoData[selectedMyo]);
+    osc->sendOsc();
+    
+    visuals.getOrientationPanel().setValues (myoData[selectedMyo].orientationRaw);
+    visuals.getPosePanel().setPoseLabel (myoData[selectedMyo].pose);
+}
 
 void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 {
@@ -145,31 +172,7 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
     }
 }
 
-//void MyoMapperApplication::hiResTimerCallback()
-void MyoMapperApplication::timerCallback()
-{
-    bool getMyoDataSuccessful = false;
-    std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
-    
-    if (getMyoDataSuccessful == false)
-    {
-        return;
-    }
-    if (selectedMyo < 1 || selectedMyo > 4)
-    {
-        return;
-    }
-    if (selectedMyo >= myoData.size())
-    {
-        return;
-    }
-    
-    osc->bufferOsc (myoData[selectedMyo]);
-    osc->sendOsc();
-    
-    visuals.getOrientationPanel().setValues (myoData[selectedMyo].orientationRaw);
-    visuals.getPosePanel().setPoseLabel (myoData[selectedMyo].pose);
-}
+
 
 //==============================================================================
 MyoMapperApplication& MyoMapperApplication::getApp()
