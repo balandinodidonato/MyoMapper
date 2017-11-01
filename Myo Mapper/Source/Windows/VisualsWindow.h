@@ -11,6 +11,8 @@
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "../Orientation.h"
+#include "../Pose.h"
 
 //==============================================================================
 /*
@@ -23,7 +25,13 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
+    
+    static Orientation& getOrientationPanel();
+    static Pose& getPosePanel();
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VisualsWindow)
+    
+    static ScopedPointer<Orientation> orientation;
+    static ScopedPointer<Pose> pose;
 };

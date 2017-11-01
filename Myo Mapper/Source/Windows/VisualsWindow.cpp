@@ -11,10 +11,16 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "VisualsWindow.h"
 
+ScopedPointer<Orientation> VisualsWindow::orientation;
+ScopedPointer<Pose> VisualsWindow::pose;
+
 //==============================================================================
 VisualsWindow::VisualsWindow()
 {
-    
+    orientation = new Orientation();
+    pose = new Pose();
+    addAndMakeVisible (orientation);
+    addAndMakeVisible (pose);
 }
 
 VisualsWindow::~VisualsWindow()
@@ -22,7 +28,7 @@ VisualsWindow::~VisualsWindow()
 }
 
 void VisualsWindow::paint (Graphics& g)
-{
+{/*
     auto r = getLocalBounds();
     auto area = r.toFloat();
     auto windowSize = area;
@@ -31,8 +37,6 @@ void VisualsWindow::paint (Graphics& g)
                     .reduced (windowSize.proportionOfWidth (0.01));
     auto rightArea = area.removeFromLeft (windowSize.proportionOfWidth (0.7))
                     .reduced (windowSize.proportionOfWidth (0.01));
-    
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
 
     Path leftRect;
     leftRect.addRoundedRectangle (leftArea, 5);
@@ -45,9 +49,27 @@ void VisualsWindow::paint (Graphics& g)
     g.fillPath (leftRect);
     g.fillPath (topRightRect);
     g.fillPath (bottomRightRect);
+  */
+    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
 }
 
 void VisualsWindow::resized()
 {
-    
+    orientation->setBounds (getLocalBounds().removeFromTop (proportionOfHeight (0.8)));
+    pose->setBounds (getLocalBounds().removeFromBottom (proportionOfHeight (0.2)));
+}
+
+
+Orientation& VisualsWindow::getOrientationPanel()
+{
+    Orientation* const panel = orientation;
+//    jassert (panel != nullptr);
+    return *panel;
+}
+
+Pose& VisualsWindow::getPosePanel()
+{
+    Pose* const panel = pose;
+    jassert (panel != nullptr);
+    return *panel;
 }

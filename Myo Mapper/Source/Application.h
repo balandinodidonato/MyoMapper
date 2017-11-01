@@ -23,7 +23,8 @@
 */
 class MyoMapperApplication  : public JUCEApplication,
                               private AsyncUpdater,
-                              private HighResolutionTimer,
+                              private Timer,
+//                              private HighResolutionTimer,
                               public ChangeListener,
                               public ChangeBroadcaster,
                               public ValueTree::Listener
@@ -89,7 +90,8 @@ public:
     
     ScopedPointer<OSC> osc;
     void changeListenerCallback (ChangeBroadcaster* source) override;
-    void hiResTimerCallback() override;
+    void timerCallback() override;
+//    void hiResTimerCallback() override;
     
     //==========================================================================
     static ValueTree rootTree;
@@ -111,6 +113,9 @@ public:
     void valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved) override;
     void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex) override;
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) override;
+    
+    //==========================================================================
+    VisualsWindow visuals;
     
     //==========================================================================
     MyoMapperLookAndFeel lookAndFeel;

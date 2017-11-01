@@ -126,7 +126,8 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 //    }
 }
 
-void MyoMapperApplication::hiResTimerCallback()
+//void MyoMapperApplication::hiResTimerCallback()
+void MyoMapperApplication::timerCallback()
 {
     bool getMyoDataSuccessful = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
