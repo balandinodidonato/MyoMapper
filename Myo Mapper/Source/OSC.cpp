@@ -217,7 +217,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addInt32 ((int) myoData.emgRaw[7]);
             oscBuffer.push_back (message);
         }
-        if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRaw").getChildWithName("EmgRawMavg").getPropertyAsValue ("onOff", 0) == true)
+        if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawMavg").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/emg/raw/mavg");
             message.addInt32 ((int) myoData.emgRawMavg[0]);
