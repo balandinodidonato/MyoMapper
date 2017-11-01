@@ -140,7 +140,7 @@ void MyoMapperApplication::timerCallback()
     osc->sendOsc();
     
     visuals.getOrientationPanel().setValues (myoData[selectedMyo].orientationRaw);
-    visuals.getPosePanel().setPoseLabel (myoData[selectedMyo].pose);
+    visuals.getPosePanel().setPoseLabel (myoData[selectedMyo].pose + " (" + static_cast<String>(myoData[selectedMyo].poseID) + ")");
 }
 
 void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
