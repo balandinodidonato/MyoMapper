@@ -40,6 +40,11 @@ public:
             slider.setValue (tree.getProperty ("sampleSize", 0));
             slider.addListener (this);
             addAndMakeVisible (slider);
+            
+            sliderLabel.setColour (Label::textColourId, Colours::black);
+            sliderLabel.setText ("Analysis Sample Size", dontSendNotification);
+            sliderLabel.attachToComponent (&slider, true);
+            addAndMakeVisible (sliderLabel);
         }
     }
     
@@ -51,8 +56,9 @@ public:
     {
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.035)));
-        label.setBounds (area.removeFromLeft (proportionOfWidth (0.6)));
-        slider.setBounds (area.removeFromRight (getParentWidth() * 0.3));
+        label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
+        slider.setBounds (area.removeFromRight (getParentWidth() * 0.4));
+        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.2));
     }
     
     void buttonClicked (Button* button) override
@@ -73,6 +79,7 @@ private:
     ToggleButton toggle;
     Label label;
     Slider slider;
+    Label sliderLabel;
 };
 
 //==============================================================================
