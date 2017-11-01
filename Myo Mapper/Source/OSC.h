@@ -14,12 +14,12 @@ public:
     OSC();
     ~OSC();
     
-    void connectSender (String hostAddress, int port);
+    bool connectSender (String hostAddress, int port);
     void disconnectSender();
     void bufferOsc (MyoData &myoData);
     void sendOsc();
     
-    void connectReceiver (int port);
+    bool connectReceiver (int port);
     void disconnectReceiver();
     
     void oscMessageReceived (const OSCMessage& message) override;

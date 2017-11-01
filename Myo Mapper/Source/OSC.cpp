@@ -32,7 +32,7 @@ OSC::~OSC()
 {
 }
 
-void OSC::connectSender (String hostAddress, int port)
+bool OSC::connectSender (String hostAddress, int port)
 {
     if (sender.connect (hostAddress, port) == false)
     {
@@ -40,7 +40,9 @@ void OSC::connectSender (String hostAddress, int port)
                                           "OSC Sender",
                                           "Myo Mapper could not connect to UDP port " + (String)MyoMapperApplication::sendPort + ".",
                                           "OK");
+        return false;
     }
+    return true;
 }
 void OSC::disconnectSender()
 {
@@ -406,13 +408,17 @@ void OSC::sendOsc ()
     oscBuffer.clear();
 }
 
-void OSC::connectReceiver (int port)
+bool OSC::connectReceiver (int port)
 {
     if (receiver.connect (port) == false)
+    {
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "OSC Receiver",
                                           "Myo Mapper could not connect to UDP port " + (String)MyoMapperApplication::receivePort + ".",
                                           "OK");
+        return false;
+    }
+    return true;
 }
 
 void OSC::disconnectReceiver()

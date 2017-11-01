@@ -13,6 +13,9 @@
 
 #include "../Application.h"
 
+bool SettingsWindow::startButtonClicked;
+bool SettingsWindow::featureButtonClicked;
+
 //==============================================================================
 SettingsWindow::SettingsWindow()
 {
@@ -150,14 +153,14 @@ void SettingsWindow::resized()
     startButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
 }
 
-bool SettingsWindow::startButtonPressed()
-{
-    return SettingsWindow::startButtonClicked;
-}
-
 void SettingsWindow::resetStartButtonPressed()
 {
     SettingsWindow::startButtonClicked = false;
+}
+
+void SettingsWindow::resetFeatureButtonPressed()
+{
+    SettingsWindow::featureButtonClicked = false;
 }
 
 void SettingsWindow::buttonClicked (Button* button)

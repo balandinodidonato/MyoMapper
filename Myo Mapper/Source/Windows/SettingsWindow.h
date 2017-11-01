@@ -34,9 +34,10 @@ public:
     void sliderValueChanged (Slider*) override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
-    bool startButtonClicked;
-    bool startButtonPressed();
+    static bool startButtonClicked;
     void resetStartButtonPressed();
+    static bool featureButtonClicked;
+    void resetFeatureButtonPressed();
     
     
 private:

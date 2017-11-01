@@ -44,8 +44,9 @@ MyoMapperApplication::MyoMapperApplication()
 
 void MyoMapperApplication::initialise (const String& commandLine)
 {
-    auto oscBufferFillHz = 200;
-    auto oscBufferFillSpeed = 1000 / oscBufferFillHz;
+    DBG (getCommandLineParameters());
+    auto oscBufferFillHz = 40;
+    oscBufferFillSpeed = 1000 / oscBufferFillHz;
     
     initialiseRootTree();
     
@@ -71,12 +72,11 @@ void MyoMapperApplication::initialise (const String& commandLine)
     myoManager.startPoll();
     
     osc = new OSC();
-    sendPort = getSettingsTree().getChildWithName ("SendPort").getProperty ("portNumber");
-    receivePort = getSettingsTree().getChildWithName ("ReceivePort").getProperty ("portNumber");
-    osc->connectSender (IPAddress::local().toString(), MyoMapperApplication::sendPort);
-    osc->connectReceiver (MyoMapperApplication::receivePort);
+    sendPort = getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber");
+    receivePort = getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
     osc->addChangeListener (this);
-    startTimer (oscBufferFillSpeed);
+    
+    selectedMyo = getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
 }
 
 void MyoMapperApplication::handleAsyncUpdate()
@@ -118,12 +118,26 @@ int MyoMapperApplication::receivePort;
 
 void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 {
-//    SettingsWindow* win = dynamic_cast<SettingsWindow*>(source);
-//
-//    if (selectedMyo != 0 && win->startButtonPressed() == true)
-//    {
-//        win->resetStartButtonPressed();
-//    }
+    if (selectedMyo == 0)
+    {
+        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                          "Error",
+                                          "No Myo selected in the settings window");
+    }
+    if (selectedMyo != 0 && SettingsWindow::startButtonClicked == true)
+    {
+        auto sendConnect = osc->connectSender (IPAddress::local().toString(), MyoMapperApplication::sendPort);
+        auto receiveConnect = osc->connectReceiver (MyoMapperApplication::receivePort);
+        if (sendConnect == true && receiveConnect == true)
+        {
+            auto settingsMessage = dynamic_cast<SettingsWindow*>(source);
+            windowList->showOrCreateVisualsWindow();
+            settingsMessage->resetStartButtonPressed();
+            windowList->windows.set (windowList->windows.indexOf (windowList->settingsWindow), nullptr);
+            startTimer (oscBufferFillSpeed);
+        }
+    }
+    if (SettingsWindow::featureButtonClicked)
 }
 
 //void MyoMapperApplication::hiResTimerCallback()
@@ -145,8 +159,11 @@ void MyoMapperApplication::timerCallback()
         return;
     }
     
-    osc->bufferOsc (myoData[(int)selectedMyo]);
+    osc->bufferOsc (myoData[selectedMyo]);
     osc->sendOsc();
+    
+    visuals.getOrientationPanel().setValues (myoData[selectedMyo].orientationRaw);
+    visuals.getPosePanel().setPoseLabel (myoData[selectedMyo].pose);
 }
 
 //==============================================================================
