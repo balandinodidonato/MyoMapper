@@ -47,7 +47,7 @@ void WindowList::showOrCreateSettingsWindow()
         WindowDrawer* const w = new WindowDrawer ("MyoMapper - Settings",
                                                   window,
                                                   true, true,
-                                                  windowWidth * 0.3, windowHeight * 0.3,
+                                                  windowWidth * 0.4, windowHeight * 0.4,
                                                   windowWidth, windowHeight);
         settingsWindow = w;
         w->addChangeListener (this);
@@ -63,10 +63,10 @@ void WindowList::showOrCreateVisualsWindow()
     {
         auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
-        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Visualiser",
+        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Controller",
                                                   new VisualsWindow(),
                                                   true, false,
-                                                  windowWidth * 0.4, windowHeight * 0.45,
+                                                  windowWidth * 0.5, windowHeight * 0.7,
                                                   windowWidth, windowHeight);
         visualsWindow = w;
         w->addChangeListener (this);

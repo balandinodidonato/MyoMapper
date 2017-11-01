@@ -30,6 +30,9 @@ Rescale::Rescale()
     
     addAndMakeVisible (reverse);
     reverse.addListener (this);
+    reverse.setColour (ToggleButton::tickColourId, Colours::black);
+    reverse.setColour (ToggleButton::tickDisabledColourId, Colours::black);
+    reverse.setColour (ToggleButton::textColourId, Colours::black);
     reverse.setButtonText ("Reverse");
 
     outMinSliderLabel.setText ("Out Min", dontSendNotification);

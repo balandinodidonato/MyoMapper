@@ -3,32 +3,55 @@
 
 Pose::Pose()
 {
+//    setLookAndFeel (&laf);
+    setColour (Label::textColourId, Colours::black);
+    titleLabel.setJustificationType (Justification::centred);
+    titleLabel.setText ("Pose", dontSendNotification);
+    
+    poseLabel.setJustificationType (Justification::centred);
+    poseLabel.setColour (Label::textColourId, Colours::black);
+    poseLabel.setText ("Myo Not Found", dontSendNotification);
+    
+    addAndMakeVisible (titleLabel);
     addAndMakeVisible (poseLabel);
-    poseLabel.setJustificationType (36);
 }
 
 Pose::~Pose()
 {
+    setLookAndFeel (nullptr);
 }
 
 void Pose::paint (Graphics& g)
 {
-    g.fillAll (Colours::lightgrey);   // clear the background
-    g.setColour (Colours::grey);
-    g.drawRoundedRectangle (0, 0, getWidth(), getHeight(), 5, 5);
+    auto area = getLocalBounds().toFloat();
+    auto cornerAndRoundness = area.getHeight() * 0.05;
     
-    g.setColour (Colours::white);
-    g.fillRoundedRectangle (10, getHeight() * 0.3, getWidth() - 22, getHeight() - 45, 5);
+    g.fillAll (Colour::fromRGB (128, 128, 128));
     
-    g.setColour (Colours::black);
-    g.setFont (getHeight() * 0.3);
-    g.drawText ("Pose", getLocalBounds(), Justification::centredTop, true);   // draw some placeholder text
+    Path backRect;
+    backRect.addRoundedRectangle (area.reduced (proportionOfHeight (0.035)), 5);
+    g.setColour (Colour::fromRGB (195, 195, 195));
+    g.fillPath (backRect);
+    
+    Path frontRect;
+    frontRect.addRoundedRectangle (area.removeFromBottom (proportionOfHeight (0.8)).reduced (proportionOfHeight (0.1)),
+                                   cornerAndRoundness);
+    g.setColour (Colour::fromRGB (245, 245, 245));
+    g.fillPath (frontRect);
+    
+//    g.drawRoundedRectangle (area.removeFromBottom (proportionOfHeight (0.6)), cornerAndRoundness, cornerAndRoundness);
+    
+//    g.fillAll
+//    g.setColour (Colours::white);
+//    g.fillRoundedRectangle (10, getHeight() * 0.3, getWidth() - 22, getHeight() - 45, 5);
 }
 
 void Pose::resized()
 {
-    poseLabel.setFont (getHeight() * 0.2);
-    poseLabel.setBounds (getX(), getHeight() * 0.35, getWidth() * 0.95, getHeight() * 0.5);
+    auto area = getLocalBounds();
+    titleLabel.setBounds (area.removeFromTop (proportionOfHeight (0.35)));
+    area.removeFromBottom (proportionOfHeight (0.1));
+    poseLabel.setBounds (area.reduced (0, proportionOfHeight (0.1)));
 }
 
 void Pose::setPoseLabel (String LabelText)
