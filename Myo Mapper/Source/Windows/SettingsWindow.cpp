@@ -61,6 +61,7 @@ SettingsWindow::SettingsWindow()
     addAndMakeVisible (openButton);
     
     featuresButton.setButtonText ("FEATURES...");
+    featuresButton.addListener (this);
     addAndMakeVisible (featuresButton);
     
     hideOnStartupButton.setLookAndFeel (&toggleButtonLAF);
@@ -169,6 +170,12 @@ void SettingsWindow::buttonClicked (Button* button)
     {
         startButtonClicked = true;
         sendChangeMessage(); // Close the settings window, start the program and open the visualiser
+    }
+    if (button == &featuresButton)
+    {
+        
+        featureButtonClicked = true;
+        sendChangeMessage();
     }
 }
 

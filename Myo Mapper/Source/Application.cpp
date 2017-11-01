@@ -118,7 +118,7 @@ int MyoMapperApplication::receivePort;
 
 void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 {
-    if (selectedMyo == 0)
+    if (selectedMyo == 0 && SettingsWindow::startButtonClicked == true)
     {
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "Error",
@@ -137,7 +137,12 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
             startTimer (oscBufferFillSpeed);
         }
     }
-    if (SettingsWindow::featureButtonClicked)
+    if (SettingsWindow::featureButtonClicked == true)
+    {
+        auto const settingsMessage = dynamic_cast<SettingsWindow*>(source);
+        windowList->showOrCreateDataSelectorWindow();
+        settingsMessage->resetFeatureButtonPressed();
+    }
 }
 
 //void MyoMapperApplication::hiResTimerCallback()

@@ -104,11 +104,11 @@ void WindowList::changeListenerCallback (ChangeBroadcaster* source)
     {
         sendChangeMessage();
     }
-//    if (source == dynamic_cast<WindowDrawer*> (source))
-//    {
-//        WindowDrawer* window = dynamic_cast<WindowDrawer*> (source);
-//        closeWindow (window);
-//    }
+    if (source == dynamic_cast<WindowDrawer*> (source))
+    {
+        WindowDrawer* window = dynamic_cast<WindowDrawer*> (source);
+        closeWindow (window);
+    }
 }
 
 void WindowList::closeWindow (WindowDrawer* window)
