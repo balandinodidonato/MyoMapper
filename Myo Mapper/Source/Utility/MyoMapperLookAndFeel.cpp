@@ -70,7 +70,7 @@ void MyoMapperLookAndFeel::drawLabel (Graphics& g, Label& label)
     
     g.drawRect (label.getLocalBounds());
 }
-
+/*
 void MyoMapperLookAndFeel::drawToggleButton (juce::Graphics &g, juce::ToggleButton &button, bool isMouseOverButton, bool isButtonDown)
 {
     const auto bounds = button.getLocalBounds().toFloat();
@@ -92,11 +92,17 @@ void MyoMapperLookAndFeel::drawToggleButton (juce::Graphics &g, juce::ToggleButt
     g.setColour (Colours::blue);
     g.fillPath (toggleBack);
 }
+ */
  
 void MyoMapperLookAndFeel::setupColours()
 {
     // Label colours
-    setColour (Label::textColourId, Colour::fromRGB (112, 127, 148));
+//    setColour (Label::textColourId, Colour::fromRGB (112, 127, 148));
+    setColour (Label::textColourId, Colours::black);
+    
+    // Slider colours
+    setColour (Slider::trackColourId, Colour::fromRGB (35, 35, 35));
+    setColour (Slider::thumbColourId, Colour::fromRGB (0, 129, 213));
     
     // Inc/ Dec colours
     setColour (Slider::textBoxBackgroundColourId, Colours::white);

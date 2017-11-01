@@ -22,8 +22,6 @@ public:
     ~MyoMapperLookAndFeel();
 
     void drawLabel (Graphics&, Label&) override;
-    void drawToggleButton (Graphics& g, ToggleButton& button,
-                           bool isMouseOverButton, bool isButtonDown) override;
 //    void drawRotarySlider (Graphics&, int x, int y, int width, int height,
 //                           float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle,
 //                           Slider&) override;
