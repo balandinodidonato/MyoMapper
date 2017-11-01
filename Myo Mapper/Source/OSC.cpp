@@ -393,7 +393,7 @@ void OSC::bufferOsc (MyoData &myoData)
         if (tree.getChildWithName("EmgData").getChildWithName("HandPose").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/pose");
-            message.addString ((String) myoData.pose);
+            message.addString (myoData.pose);
             oscBuffer.push_back (message);
         }
     }

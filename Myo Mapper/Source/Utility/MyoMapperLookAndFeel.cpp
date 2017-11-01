@@ -46,7 +46,7 @@ void MyoMapperLookAndFeel::drawLabel (Graphics& g, Label& label)
 {
     g.fillAll (label.findColour (Label::backgroundColourId));
     
-    if (! label.isBeingEdited())
+    if (label.isBeingEdited() == false)
     {
         Rectangle<int> textArea (label.getBorderSize().subtractedFrom (label.getLocalBounds()));
         

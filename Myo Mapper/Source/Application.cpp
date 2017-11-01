@@ -130,7 +130,7 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
         auto receiveConnect = osc->connectReceiver (MyoMapperApplication::receivePort);
         if (sendConnect == true && receiveConnect == true)
         {
-            auto settingsMessage = dynamic_cast<SettingsWindow*>(source);
+            auto const settingsMessage = dynamic_cast<SettingsWindow*>(source);
             windowList->showOrCreateVisualsWindow();
             settingsMessage->resetStartButtonPressed();
             windowList->windows.set (windowList->windows.indexOf (windowList->settingsWindow), nullptr);

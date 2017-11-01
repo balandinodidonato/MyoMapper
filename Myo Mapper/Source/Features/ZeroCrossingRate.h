@@ -4,9 +4,9 @@
 class ZeroCrossing
 {
 public:
-    void setValue(float Value, int BufferSize);
-    void setValue(int Value, int BufferSize);
-    void setValue(Vector3D<float> Value, int BufferSize);
+    void setValue (float Value, int BufferSize);
+    void setValue (int Value, int BufferSize);
+    void setValue (Vector3D<float> Value, int BufferSize);
     int getFloat();
     int getInt();
     Vector3D<int> getVector();
