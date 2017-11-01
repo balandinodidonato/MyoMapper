@@ -424,7 +424,21 @@ void MyoMapperApplication::createNewMapper()
 
 void MyoMapperApplication::openFile()
 {
-    // Open selected file
+    FileChooser fileChooser ("Open Mapper",
+                             File::nonexistent,
+                             "*.mapper");
+    
+//    auto val = fileChooser.browseForFileToOpen();
+    
+    if (fileChooser.browseForFileToOpen() == true)
+    {
+        File chosenFile = fileChooser.getResult();
+        
+        XmlElement* xmlFile = XmlDocument(chosenFile).getDocumentElement();
+        ValueTree fileValueTree = ValueTree::fromXml (*xmlFile);
+        getRootTree() = fileValueTree;
+        
+    }
 }
 
 void MyoMapperApplication::saveMapper()
@@ -438,13 +452,13 @@ void MyoMapperApplication::saveMapperAs()
     FileChooser fileChooser ("Save Mapper As...",
                              file,
                              "*.mapper");
-    if (fileChooser.browseForFileToSave (true))
+    if (fileChooser.browseForFileToSave (true) == true)
     {
         File chosenFile = fileChooser.getResult();
 //        FileOutputStream stream (chosenFile);
         XmlElement* xml = getRootTree().createXml();
         xml->writeToFile (chosenFile, String::empty);
-    }
+     }
 }
 
 void MyoMapperApplication::quitMapper()
