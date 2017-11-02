@@ -49,8 +49,8 @@ SettingsWindow::SettingsWindow()
     myoSelectorSetter.addItem ("Myo 2", 2);
     myoSelectorSetter.addItem ("Myo 3", 3);
     myoSelectorSetter.addItem ("Myo 4", 4);
+    myoSelectorSetter.addItem ("No Myo Selected", 5);
     myoSelectorSetter.setSelectedId (MyoMapperApplication::getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
-    myoSelectorSetter.setText ("Select Myo");
     myoSelectorSetter.addListener (this);
     addAndMakeVisible (myoSelectorSetter);
     
