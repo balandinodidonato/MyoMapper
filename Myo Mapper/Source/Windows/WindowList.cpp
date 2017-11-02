@@ -40,8 +40,9 @@ void WindowList::showOrCreateSettingsWindow()
         windows.operator[](0)->toFront (true);
     else
     {
-        auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
-        auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
+        auto mousePosition = Desktop::getInstance().getMousePosition();
+        auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
+        auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
         auto window = new SettingsWindow();
         window->addChangeListener (this);
         WindowDrawer* const w = new WindowDrawer ("MyoMapper - Settings",
@@ -61,8 +62,9 @@ void WindowList::showOrCreateVisualsWindow()
         windows.operator[](1)->toFront (true);
     else
     {
-        auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
-        auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
+        auto mousePosition = Desktop::getInstance().getMousePosition();
+        auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
+        auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Controller",
                                                   new VisualsWindow(),
                                                   true, false,
@@ -80,8 +82,9 @@ void WindowList::showOrCreateDataSelectorWindow()
         windows.operator[](2)->toFront(true);
     else
     {
-        auto windowHeight = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight();
-        auto windowWidth = Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth();
+        auto mousePosition = Desktop::getInstance().getMousePosition();
+        auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
+        auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - OSC Data",
                                                   new DataSelectorWindow(),
                                                   false, false,
