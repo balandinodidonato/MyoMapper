@@ -74,7 +74,6 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList->showOrCreateSettingsWindow();
     
     myoManager.connect();
-    myoManager.startPoll();
     
     osc = new OSC();
     sendPort = getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber");
@@ -157,25 +156,28 @@ void MyoMapperApplication::timerCallback()
 
 void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 {
-    if (selectedMyo == 0 && SettingsWindow::startButtonClicked == true)
+    if ((selectedMyo == 0 || selectedMyo > 4) && SettingsWindow::startButtonClicked == true)
     {
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "Error",
-                                          "No Myo selected in the settings window");
+                                          "No Myo selected");
     }
-    if (selectedMyo != 0 && SettingsWindow::startButtonClicked == true)
+    if (selectedMyo > 0 && selectedMyo < 5 && SettingsWindow::startButtonClicked == true)
     {
         auto sendConnect = osc->connectSender (IPAddress::local().toString(), MyoMapperApplication::sendPort);
         auto receiveConnect = osc->connectReceiver (MyoMapperApplication::receivePort);
         if (sendConnect == true && receiveConnect == true)
         {
             auto const settingsMessage = dynamic_cast<SettingsWindow*>(source);
-            windowList->showOrCreateVisualsWindow();
             settingsMessage->resetStartButtonPressed();
-            windowList->windows.set (windowList->windows.indexOf (windowList->settingsWindow), nullptr);
+            myoManager.startPoll();
             startTimer (oscBufferFillSpeed);
+            windowList->showOrCreateVisualsWindow();
+            windowList->windows.set (windowList->windows.indexOf (windowList->settingsWindow), nullptr);
+            
         }
     }
+    
     if (SettingsWindow::featureButtonClicked == true)
     {
         auto const settingsMessage = dynamic_cast<SettingsWindow*>(source);
