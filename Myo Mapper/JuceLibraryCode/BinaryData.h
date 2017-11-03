@@ -8,14 +8,14 @@
 
 namespace BinaryData
 {
+    extern const char*   icon_png;
+    const int            icon_pngSize = 67487;
+
     extern const char*   RobotoMedium_ttf;
     const int            RobotoMedium_ttfSize = 172064;
 
     extern const char*   RobotoThin_ttf;
     const int            RobotoThin_ttfSize = 171904;
-
-    extern const char*   icon_png;
-    const int            icon_pngSize = 67487;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

@@ -7,20 +7,6 @@
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
               companyCopyright="Balandino Di Donato">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
-    <GROUP id="{84577E64-7EB8-4A2A-6BC4-1584DD875F14}" name="Utility">
-      <FILE id="p4ljyI" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"
-            file="Source/Utility/MyoMapperLookAndFeel.cpp"/>
-      <FILE id="J84YTa" name="MyoMapperLookAndFeel.h" compile="0" resource="0"
-            file="Source/Utility/MyoMapperLookAndFeel.h"/>
-      <FILE id="eNRTqH" name="CommandIDs.h" compile="0" resource="0" file="Source/Utility/CommandIDs.h"/>
-      <FILE id="uLRebw" name="OscValueTreeItem.cpp" compile="1" resource="0"
-            file="Source/Utility/OscValueTreeItem.cpp"/>
-      <FILE id="rA4clq" name="OscValueTreeItem.h" compile="0" resource="0"
-            file="Source/Utility/OscValueTreeItem.h"/>
-      <FILE id="XWiJgH" name="Roboto-Medium.ttf" compile="0" resource="1"
-            file="Source/Utility/Roboto-Medium.ttf"/>
-      <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>
-    </GROUP>
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <GROUP id="{A6AA3F79-9818-2AB2-1894-3DB32937990E}" name="Features">
         <FILE id="eT99tu" name="FirstOrderDifference.cpp" compile="1" resource="0"
@@ -56,8 +42,27 @@
       </GROUP>
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
+        <FILE id="XWiJgH" name="Roboto-Medium.ttf" compile="0" resource="1"
+              file="Source/Utility/Roboto-Medium.ttf"/>
+        <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>
+      </GROUP>
+      <GROUP id="{4AF52558-3327-10F9-BED0-547457225CB8}" name="UI">
+        <FILE id="p4ljyI" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/Utility/MyoMapperLookAndFeel.cpp"/>
+        <FILE id="J84YTa" name="MyoMapperLookAndFeel.h" compile="0" resource="0"
+              file="Source/Utility/MyoMapperLookAndFeel.h"/>
+        <FILE id="uLRebw" name="OscValueTreeItem.cpp" compile="1" resource="0"
+              file="Source/Utility/OscValueTreeItem.cpp"/>
+        <FILE id="rA4clq" name="OscValueTreeItem.h" compile="0" resource="0"
+              file="Source/Utility/OscValueTreeItem.h"/>
       </GROUP>
       <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="Windows">
+        <GROUP id="{E0179DF0-0E30-5370-B33E-35764F717E47}" name="Panels">
+          <FILE id="bkctpE" name="Orientation.cpp" compile="1" resource="0" file="Source/Orientation.cpp"/>
+          <FILE id="cEBa54" name="Orientation.h" compile="0" resource="0" file="Source/Orientation.h"/>
+          <FILE id="BDIoaP" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
+          <FILE id="ptKlKy" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
+        </GROUP>
         <FILE id="NxmLWF" name="WindowList.cpp" compile="1" resource="0" file="Source/Windows/WindowList.cpp"/>
         <FILE id="ekIkit" name="WindowList.h" compile="0" resource="0" file="Source/Windows/WindowList.h"/>
         <FILE id="wWLOUy" name="WindowDrawer.cpp" compile="1" resource="0"
@@ -82,17 +87,9 @@
         <FILE id="DKaHIH" name="HelpWindow.h" compile="0" resource="0" file="Source/HelpWindow.h"/>
       </GROUP>
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="eNRTqH" name="CommandIDs.h" compile="0" resource="0" file="Source/Utility/CommandIDs.h"/>
       <FILE id="DYDlAi" name="Application.cpp" compile="1" resource="0" file="Source/Application.cpp"/>
       <FILE id="vTYesi" name="Application.h" compile="0" resource="0" file="Source/Application.h"/>
-      <FILE id="Vath7r" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
-      <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="Ot6Nk3" name="Settings.cpp" compile="1" resource="0" file="Source/Settings.cpp"/>
-      <FILE id="h8i1pe" name="Settings.h" compile="0" resource="0" file="Source/Settings.h"/>
-      <FILE id="bkctpE" name="Orientation.cpp" compile="1" resource="0" file="Source/Orientation.cpp"/>
-      <FILE id="cEBa54" name="Orientation.h" compile="0" resource="0" file="Source/Orientation.h"/>
-      <FILE id="BDIoaP" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
-      <FILE id="ptKlKy" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
       <FILE id="lRkxqB" name="OSC.cpp" compile="1" resource="0" file="Source/OSC.cpp"/>
       <FILE id="TOvZW6" name="OSC.h" compile="0" resource="0" file="Source/OSC.h"/>
     </GROUP>

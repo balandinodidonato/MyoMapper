@@ -2,9 +2,6 @@
 
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Myo Mapper\Utility">
-      <UniqueIdentifier>{547E4C02-41ED-AD2C-4DA7-9B451B66989F}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Myo Mapper\Source\Features">
       <UniqueIdentifier>{C7944608-A55D-9BC8-5556-8FAA999C2937}</UniqueIdentifier>
     </Filter>
@@ -13,6 +10,12 @@
     </Filter>
     <Filter Include="Myo Mapper\Source\Resources">
       <UniqueIdentifier>{813689DA-F49E-6D7D-1EB4-89943506DF7E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Myo Mapper\Source\UI">
+      <UniqueIdentifier>{57A13DA9-3E9A-9757-3A4A-998034C828C2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Myo Mapper\Source\Windows\Panels">
+      <UniqueIdentifier>{DB503FC2-272C-9B77-D211-EB0B81BF304A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Myo Mapper\Source\Windows">
       <UniqueIdentifier>{D0FDF861-AD88-9C73-55B2-8244AF04A0A6}</UniqueIdentifier>
@@ -247,12 +250,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
-      <Filter>Myo Mapper\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp">
-      <Filter>Myo Mapper\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClCompile>
@@ -283,6 +280,18 @@
     <ClCompile Include="..\..\Source\Myo\MyoManager.cpp">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
+      <Filter>Myo Mapper\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp">
+      <Filter>Myo Mapper\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Orientation.cpp">
+      <Filter>Myo Mapper\Source\Windows\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Pose.cpp">
+      <Filter>Myo Mapper\Source\Windows\Panels</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Windows\WindowList.cpp">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
@@ -308,18 +317,6 @@
       <Filter>Myo Mapper\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Application.cpp">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\MainComponent.cpp">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Settings.cpp">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Orientation.cpp">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Pose.cpp">
       <Filter>Myo Mapper\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\OSC.cpp">
@@ -1617,15 +1614,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
-      <Filter>Myo Mapper\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
-      <Filter>Myo Mapper\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h">
-      <Filter>Myo Mapper\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Features\FirstOrderDifference.h">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClInclude>
@@ -1659,6 +1647,18 @@
     <ClInclude Include="..\..\Source\Myo\MyoManager.h">
       <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
+      <Filter>Myo Mapper\Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h">
+      <Filter>Myo Mapper\Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Orientation.h">
+      <Filter>Myo Mapper\Source\Windows\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Pose.h">
+      <Filter>Myo Mapper\Source\Windows\Panels</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Windows\WindowList.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
@@ -1680,19 +1680,10 @@
     <ClInclude Include="..\..\Source\HelpWindow.h">
       <Filter>Myo Mapper\Source\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
+      <Filter>Myo Mapper\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Application.h">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\MainComponent.h">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Settings.h">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Orientation.h">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Pose.h">
       <Filter>Myo Mapper\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\OSC.h">
@@ -2972,13 +2963,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resources\icon.png">
+      <Filter>Myo Mapper\Source\Resources</Filter>
+    </None>
     <None Include="..\..\Source\Utility\Roboto-Medium.ttf">
-      <Filter>Myo Mapper\Utility</Filter>
+      <Filter>Myo Mapper\Source\Resources</Filter>
     </None>
     <None Include="..\..\Source\Utility\Roboto-Thin.ttf">
-      <Filter>Myo Mapper\Utility</Filter>
-    </None>
-    <None Include="..\..\Resources\icon.png">
       <Filter>Myo Mapper\Source\Resources</Filter>
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt">

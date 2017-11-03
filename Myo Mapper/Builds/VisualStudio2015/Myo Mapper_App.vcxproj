@@ -153,8 +153,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp"/>
-    <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp"/>
     <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp"/>
     <ClCompile Include="..\..\Source\Features\Mav.cpp"/>
     <ClCompile Include="..\..\Source\Features\MinMax.cpp"/>
@@ -165,6 +163,10 @@
     <ClCompile Include="..\..\Source\Features\ZeroCrossingRate.cpp"/>
     <ClCompile Include="..\..\Source\Myo\MyoListener.cpp"/>
     <ClCompile Include="..\..\Source\Myo\MyoManager.cpp"/>
+    <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp"/>
+    <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp"/>
+    <ClCompile Include="..\..\Source\Orientation.cpp"/>
+    <ClCompile Include="..\..\Source\Pose.cpp"/>
     <ClCompile Include="..\..\Source\Windows\WindowList.cpp"/>
     <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp"/>
     <ClCompile Include="..\..\Source\Windows\SettingsWindow.cpp"/>
@@ -174,10 +176,6 @@
     <ClCompile Include="..\..\Source\HelpWindow.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\Application.cpp"/>
-    <ClCompile Include="..\..\Source\MainComponent.cpp"/>
-    <ClCompile Include="..\..\Source\Settings.cpp"/>
-    <ClCompile Include="..\..\Source\Orientation.cpp"/>
-    <ClCompile Include="..\..\Source\Pose.cpp"/>
     <ClCompile Include="..\..\Source\OSC.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
@@ -1372,9 +1370,6 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h"/>
-    <ClInclude Include="..\..\Source\Utility\CommandIDs.h"/>
-    <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h"/>
     <ClInclude Include="..\..\Source\Features\FirstOrderDifference.h"/>
     <ClInclude Include="..\..\Source\Features\Mav.h"/>
     <ClInclude Include="..\..\Source\Features\MinMax.h"/>
@@ -1386,6 +1381,10 @@
     <ClInclude Include="..\..\Source\Myo\MyoData.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoListener.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoManager.h"/>
+    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h"/>
+    <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h"/>
+    <ClInclude Include="..\..\Source\Orientation.h"/>
+    <ClInclude Include="..\..\Source\Pose.h"/>
     <ClInclude Include="..\..\Source\Windows\WindowList.h"/>
     <ClInclude Include="..\..\Source\Windows\WindowDrawer.h"/>
     <ClInclude Include="..\..\Source\Windows\SettingsWindow.h"/>
@@ -1393,11 +1392,8 @@
     <ClInclude Include="..\..\Source\Windows\DataSelectorWindow.h"/>
     <ClInclude Include="..\..\Source\AboutWindowContent.h"/>
     <ClInclude Include="..\..\Source\HelpWindow.h"/>
+    <ClInclude Include="..\..\Source\Utility\CommandIDs.h"/>
     <ClInclude Include="..\..\Source\Application.h"/>
-    <ClInclude Include="..\..\Source\MainComponent.h"/>
-    <ClInclude Include="..\..\Source\Settings.h"/>
-    <ClInclude Include="..\..\Source\Orientation.h"/>
-    <ClInclude Include="..\..\Source\Pose.h"/>
     <ClInclude Include="..\..\Source\OSC.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_Array.h"/>
@@ -1825,9 +1821,9 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resources\icon.png"/>
     <None Include="..\..\Source\Utility\Roboto-Medium.ttf"/>
     <None Include="..\..\Source\Utility\Roboto-Thin.ttf"/>
-    <None Include="..\..\Resources\icon.png"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\pnglib\libpng_readme.txt"/>
     <None Include=".\icon.ico"/>
