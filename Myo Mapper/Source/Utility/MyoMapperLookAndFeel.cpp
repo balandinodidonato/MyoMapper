@@ -101,7 +101,6 @@ Button* MyoMapperLookAndFeel::createSliderButton (Slider&, const bool isIncremen
 {
     return new TextButton (isIncrement ? ">" : "<", String());
 }
- */
  
 void MyoMapperLookAndFeel::setupColours()
 {
