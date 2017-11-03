@@ -20,7 +20,7 @@ void Orientation::paint (juce::Graphics &g)
     g.drawRoundedRectangle (0, 0, getWidth(), getHeight(), 5, 5);
     g.setColour (Colours::black);
     g.setFont (getHeight() * 0.06);
-    g.drawText ("Orientation", getLocalBounds(), Justification::centredTop, true);
+    g.drawText ("Orientation", int(getWidth()*0.5)-int(getWidth()*0.15), int(getHeight()*0.0005), int(getWidth()*0.3), int(getHeight()*0.08), juce::Justification::horizontallyCentred, true);
 }
 
 void Orientation::resized()
