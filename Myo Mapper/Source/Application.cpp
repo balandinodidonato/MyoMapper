@@ -138,6 +138,10 @@ void MyoMapperApplication::timerCallback()
     osc->bufferOsc (myoData[selectedMyo]);
     osc->sendOsc();
     
+        myoData[selectedMyo].orientationScaled = visuals.getOrientationPanel().getValue();
+        myoData[selectedMyo].orientationScaledFod = visuals.getOrientationPanel().getFod();
+        myoData[selectedMyo].orientationScaledSod = visuals.getOrientationPanel().getSod();
+    
     visuals.getOrientationPanel().setValues (myoData[selectedMyo].orientationRaw);
     visuals.getPosePanel().setPoseLabel (myoData[selectedMyo].pose + " (" + static_cast<String>(myoData[selectedMyo].poseID) + ")");
     
