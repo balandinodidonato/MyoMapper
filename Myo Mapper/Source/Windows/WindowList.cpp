@@ -65,7 +65,7 @@ void WindowList::showOrCreateVisualsWindow()
         auto mousePosition = Desktop::getInstance().getMousePosition();
         auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
-        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Controller",
+        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Status",
                                                   new VisualsWindow(),
                                                   true, false,
                                                   windowWidth * 0.5, windowHeight * 0.7,
