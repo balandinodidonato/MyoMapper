@@ -135,16 +135,15 @@ void MyoMapperApplication::timerCallback()
         return;
     }
     
-    osc->bufferOsc (myoData[selectedMyo]);
-    osc->sendOsc();
-    
     visuals.getOrientationPanel().setValues (myoData[selectedMyo].orientationRaw);
+    visuals.getPosePanel().setPoseLabel (myoData[selectedMyo].pose + " (" + static_cast<String>(myoData[selectedMyo].poseID) + ")");
     
     myoData[selectedMyo].orientationScaled = visuals.getOrientationPanel().getValue();
     myoData[selectedMyo].orientationScaledFod = visuals.getOrientationPanel().getFod();
     myoData[selectedMyo].orientationScaledSod = visuals.getOrientationPanel().getSod();
     
-    visuals.getPosePanel().setPoseLabel (myoData[selectedMyo].pose + " (" + static_cast<String>(myoData[selectedMyo].poseID) + ")");
+    osc->bufferOsc (myoData[selectedMyo]);
+    osc->sendOsc();
     
     for (int i = 0; i < 4; ++i) // myoData
     {
