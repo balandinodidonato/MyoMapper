@@ -25,6 +25,8 @@ public:
 //    void drawRotarySlider (Graphics&, int x, int y, int width, int height,
 //                           float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle,
 //                           Slider&) override;
+    Button* createSliderButton (Slider&, bool isIncrement) override;
+    void drawButtonText (Graphics& g, TextButton& button, bool /*isMouseOverButton*/, bool /*isButtonDown*/) override;
     
     void setupColours();
     Font getFont (String fontWidth);
