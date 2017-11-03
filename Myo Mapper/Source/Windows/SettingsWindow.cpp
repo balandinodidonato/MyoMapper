@@ -57,10 +57,10 @@ SettingsWindow::SettingsWindow()
     saveButton.setButtonText ("SAVE");
     addAndMakeVisible (saveButton);
     
-    openButton.setButtonText ("OPEN...");
+    openButton.setButtonText ("OPEN");
     addAndMakeVisible (openButton);
     
-    featuresButton.setButtonText ("FEATURES...");
+    featuresButton.setButtonText ("FEATURES");
     featuresButton.addListener (this);
     addAndMakeVisible (featuresButton);
     
