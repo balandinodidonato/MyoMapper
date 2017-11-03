@@ -27,7 +27,9 @@ public:
 //                           Slider&) override;
     Button* createSliderButton (Slider&, bool isIncrement) override;
     void drawButtonText (Graphics& g, TextButton& button, bool /*isMouseOverButton*/, bool /*isButtonDown*/) override;
-    
+    void drawLinearSlider (Graphics&, int x, int y, int width, int height,
+                           float sliderPos, float minSliderPos, float maxSliderPos,
+                           const Slider::SliderStyle, Slider&) override;
     void setupColours();
     Font getFont (String fontWidth);
     
