@@ -42,7 +42,7 @@ public:
             addAndMakeVisible (slider);
             
             sliderLabel.setColour (Label::textColourId, Colours::black);
-            sliderLabel.setText ("Analysis Sample Size", dontSendNotification);
+            sliderLabel.setText ("Buffer Size", dontSendNotification);
             sliderLabel.attachToComponent (&slider, true);
             addAndMakeVisible (sliderLabel);
         }
