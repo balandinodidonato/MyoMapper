@@ -99,103 +99,77 @@ void MyoMapperLookAndFeel::drawButtonText (Graphics& g, TextButton& button, bool
 
 Button* MyoMapperLookAndFeel::createSliderButton (Slider&, const bool isIncrement)
 {
-    return new TextButton (isIncrement ? ">" : "<", String());
+    return new TextButton (isIncrement ? "+" : "-", String());
 }
 
-void MyoMapperLookAndFeel::drawLinearSlider (Graphics& g, int x, int y, int width, int height,
-                                       float sliderPos,
-                                       float minSliderPos,
-                                       float maxSliderPos,
-                                       const Slider::SliderStyle style, Slider& slider)
+//<<<<<<< Updated upstream
+
+Slider::SliderLayout MyoMapperLookAndFeel::getSliderLayout (Slider& slider)
 {
-    if (slider.isBar())
-    {
-        g.setColour (slider.findColour (Slider::trackColourId));
-        g.fillRect (slider.isHorizontal() ? Rectangle<float> (static_cast<float> (x), y + 0.5f, sliderPos - x, height - 1.0f)
-                    : Rectangle<float> (x + 0.5f, sliderPos, width - 1.0f, y + (height - sliderPos)));
-    }
+    // 1. compute the actually visible textBox size from the slider textBox size and some additional constraints
+    
+    int minXSpace = 0;
+    int minYSpace = 0;
+    
+    Slider::TextEntryBoxPosition textBoxPos = slider.getTextBoxPosition();
+    
+    Rectangle<int> localBounds = slider.getLocalBounds();
+    
+    if (textBoxPos == Slider::TextBoxLeft || textBoxPos == Slider::TextBoxRight)
+        minXSpace = localBounds.getWidth() * 0.5;
     else
+        minYSpace = 15;
+    
+    const int textBoxWidth = localBounds.getWidth() - minXSpace;
+    const int textBoxHeight = jmax (0, jmax (slider.getTextBoxHeight(), localBounds.getHeight() - minYSpace));
+    
+    Slider::SliderLayout layout;
+    
+    // 2. set the textBox bounds
+    
+    if (textBoxPos != Slider::NoTextBox)
     {
-        const auto isTwoVal   = (style == Slider::SliderStyle::TwoValueVertical   || style == Slider::SliderStyle::TwoValueHorizontal);
-        const auto isThreeVal = (style == Slider::SliderStyle::ThreeValueVertical || style == Slider::SliderStyle::ThreeValueHorizontal);
-        
-        const auto trackWidth = jmin (6.0f, slider.isHorizontal() ? height * 0.25f : width * 0.25f);
-        
-        const Point<float> startPoint (slider.isHorizontal() ? x : x + width * 0.5f,
-                                       slider.isHorizontal() ? y + height * 0.5f : height + y);
-        
-        const Point<float> endPoint (slider.isHorizontal() ? width + x : startPoint.x,
-                                     slider.isHorizontal() ? startPoint.y : y);
-        
-        Path backgroundTrack;
-        backgroundTrack.startNewSubPath (startPoint);
-        backgroundTrack.lineTo (endPoint);
-        g.setColour (slider.findColour (Slider::backgroundColourId));
-        g.strokePath (backgroundTrack, PathStrokeType (trackWidth, PathStrokeType::curved, PathStrokeType::rounded));
-        
-        Path valueTrack;
-        Point<float> minPoint, maxPoint, thumbPoint;
-        
-        if (isTwoVal || isThreeVal)
+        if (slider.isBar())
         {
-            minPoint = { slider.isHorizontal() ? minSliderPos : width * 0.5f,
-                slider.isHorizontal() ? height * 0.5f : minSliderPos };
-            
-            if (isThreeVal)
-                thumbPoint = { slider.isHorizontal() ? sliderPos : width * 0.5f,
-                    slider.isHorizontal() ? height * 0.5f : sliderPos };
-            
-            maxPoint = { slider.isHorizontal() ? maxSliderPos : width * 0.5f,
-                slider.isHorizontal() ? height * 0.5f : maxSliderPos };
+            layout.textBoxBounds = localBounds;
         }
         else
         {
-            const auto kx = slider.isHorizontal() ? sliderPos : (x + width * 0.5f);
-            const auto ky = slider.isHorizontal() ? (y + height * 0.5f) : sliderPos;
+            layout.textBoxBounds.setWidth (textBoxWidth);
+            layout.textBoxBounds.setHeight (textBoxHeight);
             
-            minPoint = startPoint;
-            maxPoint = { kx, ky };
-        }
-        
-        const auto thumbWidth = trackWidth * 2.0f;
-        
-        valueTrack.startNewSubPath (minPoint);
-        valueTrack.lineTo (isThreeVal ? thumbPoint : maxPoint);
-        g.setColour (slider.findColour (Slider::trackColourId));
-        g.strokePath (valueTrack, PathStrokeType (trackWidth, PathStrokeType::curved, PathStrokeType::rounded));
-        
-        if (! isTwoVal)
-        {
-            g.setColour (slider.findColour (Slider::thumbColourId));
-            g.fillEllipse (Rectangle<float> (thumbWidth, thumbWidth).withCentre (isThreeVal ? thumbPoint : maxPoint));
-        }
-        
-        if (isTwoVal || isThreeVal)
-        {
-            const auto sr = jmin (trackWidth, (slider.isHorizontal() ? height : width) * 0.4f);
-            const auto pointerColour = slider.findColour (Slider::thumbColourId);
+            if (textBoxPos == Slider::TextBoxLeft)           layout.textBoxBounds.setX (0);
+            else if (textBoxPos == Slider::TextBoxRight)     layout.textBoxBounds.setX (localBounds.getWidth() - textBoxWidth);
+            else /* above or below -> centre horizontally */ layout.textBoxBounds.setX ((localBounds.getWidth() - textBoxWidth) / 2);
             
-            if (slider.isHorizontal())
-            {
-                drawPointer (g, minSliderPos - sr,
-                             jmax (0.0f, y + height * 0.5f - trackWidth * 2.0f),
-                             trackWidth * 2.0f, pointerColour, 2);
-                
-                drawPointer (g, maxSliderPos - trackWidth,
-                             jmin (y + height - trackWidth * 2.0f, y + height * 0.5f),
-                             trackWidth * 2.0f, pointerColour, 4);
-            }
-            else
-            {
-                drawPointer (g, jmax (0.0f, x + width * 0.5f - trackWidth * 2.0f),
-                             minSliderPos - trackWidth,
-                             trackWidth * 2.0f, pointerColour, 1);
-                
-                drawPointer (g, jmin (x + width - trackWidth * 2.0f, x + width * 0.5f), maxSliderPos - sr,
-                             trackWidth * 2.0f, pointerColour, 3);
-            }
+            if (textBoxPos == Slider::TextBoxAbove)          layout.textBoxBounds.setY (0);
+            else if (textBoxPos == Slider::TextBoxBelow)     layout.textBoxBounds.setY (localBounds.getHeight() - textBoxHeight);
+            else /* left or right -> centre vertically */    layout.textBoxBounds.setY ((localBounds.getHeight() - textBoxHeight) / 2);
         }
     }
+    
+    // 3. set the slider bounds
+    
+    layout.sliderBounds = localBounds;
+    
+    if (slider.isBar())
+    {
+        layout.sliderBounds.reduce (1, 1);   // bar border
+    }
+    else
+    {
+        if (textBoxPos == Slider::TextBoxLeft)       layout.sliderBounds.removeFromLeft (textBoxWidth);
+        else if (textBoxPos == Slider::TextBoxRight) layout.sliderBounds.removeFromRight (textBoxWidth);
+        else if (textBoxPos == Slider::TextBoxAbove) layout.sliderBounds.removeFromTop (textBoxHeight);
+        else if (textBoxPos == Slider::TextBoxBelow) layout.sliderBounds.removeFromBottom (textBoxHeight);
+        
+        const int thumbIndent = getSliderThumbRadius (slider);
+        
+        if (slider.isHorizontal())    layout.sliderBounds.reduce (thumbIndent, 0);
+        else if (slider.isVertical()) layout.sliderBounds.reduce (0, thumbIndent);
+    }
+    
+    return layout;
 }
  
 void MyoMapperLookAndFeel::setupColours()
