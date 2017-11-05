@@ -57,7 +57,7 @@ Rescale::Rescale()
     
     outMinSlider.setRange (-1.0, 2.0, 0.001);
     outMinSlider.setValue (0.0);
-    outMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsNotDraggable;
+    outMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsNotDraggable);
     outMinSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (outMinSlider);
     
