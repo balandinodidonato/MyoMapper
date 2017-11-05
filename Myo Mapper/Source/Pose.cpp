@@ -30,7 +30,7 @@ void Pose::paint (Graphics& g)
     
     Path backRect;
     backRect.addRoundedRectangle (area.reduced (proportionOfHeight (0.035)), cornerAndRoundness);
-    g.setColour (Colour::fromRGB (195, 195, 195));
+    g.setColour (Colour::fromRGB (205, 205, 205));
     g.fillPath (backRect);
     
     Path frontRect;
