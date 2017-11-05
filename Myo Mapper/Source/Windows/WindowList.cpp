@@ -70,7 +70,7 @@ void WindowList::showOrCreateVisualsWindow()
                             " - Myo " + (String)MyoMapperApplication::selectedMyo : " - No Myo Selected";
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Status" + windowAppend,
                                                   new VisualsWindow(),
-                                                  true, false,
+                                                  true, true,
                                                   windowWidth * 0.5, windowHeight * 0.7,
                                                   windowWidth, windowHeight);
         visualsWindow = w;
