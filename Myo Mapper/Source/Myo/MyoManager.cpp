@@ -90,7 +90,10 @@ std::vector<MyoData> MyoManager::getMyoData (bool &success) const
 
 void MyoManager::disconnect()
 {
-    myo->lock();
+    if (myo != nullptr)
+    {
+        myo->lock();
+    }
     myo = nullptr;
     
     if (!hub)
