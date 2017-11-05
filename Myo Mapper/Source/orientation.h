@@ -102,9 +102,10 @@ private:
             
             return layout;
         }
-    private:
     };
     OrientationLookAndFeel laf;
+    
+    Label titleLabel;
     
     Rescale rescaleYaw;
     Rescale rescalePitch;

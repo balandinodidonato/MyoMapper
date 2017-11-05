@@ -2,6 +2,11 @@
 
 Orientation::Orientation()
 {
+    setColour (Label::textColourId, Colours::black);
+    titleLabel.setJustificationType (Justification::centredTop);
+    titleLabel.setText ("Orientation", dontSendNotification);
+    addAndMakeVisible (titleLabel);
+    
     rescaleYaw.setLookAndFeel (&laf);
     rescalePitch.setLookAndFeel (&laf);
     rescaleRoll.setLookAndFeel (&laf);
@@ -18,19 +23,30 @@ Orientation::Orientation()
 
 void Orientation::paint (juce::Graphics &g)
 {
-    g.fillAll (Colours::lightgrey);
-    g.setColour (Colours::grey);
-    g.drawRoundedRectangle (0, 0, getWidth(), getHeight(), 5, 5);
-    g.setColour (Colours::black);
-    g.setFont (getHeight() * 0.06);
-    g.drawText ("Orientation", int(getWidth()*0.5)-int(getWidth()*0.15), int(getHeight()*0.0005), int(getWidth()*0.3), int(getHeight()*0.08), juce::Justification::horizontallyCentred, true);
+    auto area = getLocalBounds();
+    auto cornerAndRoundness = area.getHeight() * 0.013;
+    
+    g.fillAll (Colour::fromRGB (128, 128, 128));
+    
+    Path backRect;
+    backRect.addRoundedRectangle (area.reduced (proportionOfHeight (0.008)), cornerAndRoundness);
+    g.setColour (Colour::fromRGB (195, 195, 195));
+    g.fillPath (backRect);
 }
 
 void Orientation::resized()
 {
-    rescaleYaw.setBounds (10, getHeight() * 0.07, getRight() - 30, getHeight() * 0.29);
-    rescalePitch.setBounds (rescaleYaw.getX(), rescaleYaw.getBottom() + 7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
-    rescaleRoll.setBounds (rescaleYaw.getX(), rescalePitch.getBottom() + 7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
+    auto area = getLocalBounds();
+    titleLabel.setBounds (area.removeFromTop (proportionOfHeight (0.1)));
+    auto scaleArea = area;
+    rescaleYaw.setBounds (area.removeFromTop (proportionOfHeight (0.285))
+                          .reduced (scaleArea.proportionOfHeight (0.024), 0));
+    area.removeFromTop (scaleArea.proportionOfHeight (0.015));
+    rescalePitch.setBounds (area.removeFromTop (proportionOfHeight (0.285))
+                            .reduced (scaleArea.proportionOfHeight (0.024), 0));
+    area.removeFromTop (scaleArea.proportionOfHeight (0.015));
+    rescaleRoll.setBounds (area.removeFromTop (proportionOfHeight (0.285))
+                           .reduced (scaleArea.proportionOfHeight (0.024), 0));
 }
 
 void Orientation::setValues (Vector3D<float> Orientation)

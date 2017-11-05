@@ -15,6 +15,10 @@ Rescale::Rescale()
     outMin (0),
     outMax (1)
 {
+    setColour (Label::textColourId, Colours::black);
+    titleLabel.setJustificationType (Justification::centred);
+    titleLabel.setText (labelWidget, dontSendNotification);
+    
     addAndMakeVisible (calibrate);
     calibrate.setButtonText ("Calibrate");
     calibrate.addListener (this);
@@ -82,16 +86,23 @@ Rescale::Rescale()
 
 void Rescale::paint(juce::Graphics &g)
 {
-    g.fillAll (Colours::white);   // clear the background
-    g.setColour (Colours::white);
-    g.drawRoundedRectangle (0, 0, getWidth(), getHeight(), 3, 3);
+    auto area = getLocalBounds();
+    auto cornerAndRoundness = area.getHeight() * 0.05;
+    g.setColour (Colour::fromRGB (245, 245, 245));
+    Path rect;
+    rect.addRoundedRectangle (area.reduced (proportionOfHeight (0.015)), cornerAndRoundness);
+    g.fillPath (rect);
     g.setColour (Colours::black);
     g.setFont (getHeight() * 0.17);
-    g.drawText (labelWidget, getLocalBounds(), Justification::centredTop, true);   // draw some placeholder text
+    g.drawText (labelWidget, getLocalBounds(), Justification::centredTop, true);
 }
 
 void Rescale::resized()
 {
+    auto area = getLocalBounds();
+    auto top = area.removeFromTop (proportionOfHeight (0.7));
+//    mmSlider.setBounds (area.reduced (proportionOfWidth (0.2), 0));
+//    calibrate.setBounds (area.removeFromLeft));
     calibrate.setBounds (10, 25, getWidth() * 0.2, getHeight() * 0.3);
     reverse.setBounds (calibrate.getRight() + getWidth() * 0.02,
                        calibrate.getY(),

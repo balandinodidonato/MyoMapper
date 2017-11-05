@@ -3,7 +3,6 @@
 
 Pose::Pose()
 {
-//    setLookAndFeel (&laf);
     setColour (Label::textColourId, Colours::black);
     titleLabel.setJustificationType (Justification::centred);
     titleLabel.setText ("Pose", dontSendNotification);
@@ -38,18 +37,13 @@ void Pose::paint (Graphics& g)
                                    cornerAndRoundness);
     g.setColour (Colour::fromRGB (245, 245, 245));
     g.fillPath (frontRect);
-    
-//    g.drawRoundedRectangle (area.removeFromBottom (proportionOfHeight (0.6)), cornerAndRoundness, cornerAndRoundness);
-    
-//    g.fillAll
-//    g.setColour (Colours::white);
-//    g.fillRoundedRectangle (10, getHeight() * 0.3, getWidth() - 22, getHeight() - 45, 5);
 }
 
 void Pose::resized()
 {
     auto area = getLocalBounds();
-    titleLabel.setBounds (area.removeFromTop (proportionOfHeight (0.35)));
+    titleLabel.setBounds (area.removeFromTop (proportionOfHeight (0.35))
+                          .reduced (0, proportionOfHeight (0.02)));
     area.removeFromBottom (proportionOfHeight (0.1));
     poseLabel.setBounds (area.reduced (0, proportionOfHeight (0.1)));
 }

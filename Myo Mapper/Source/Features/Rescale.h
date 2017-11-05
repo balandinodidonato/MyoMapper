@@ -29,6 +29,8 @@ public:
     
 private:
     
+    Label titleLabel;
+    
     TextButton calibrate;
     Slider mmSlider;
     Label mmSliderLabel;
