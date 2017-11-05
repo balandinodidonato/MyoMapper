@@ -57,25 +57,25 @@ Rescale::Rescale()
     
     outMinSlider.setRange (-1.0, 2.0, 0.001);
     outMinSlider.setValue (0.0);
-    outMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
+    outMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsNotDraggable;
     outMinSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (outMinSlider);
     
     outMaxSlider.setRange (-1.0, 2.0, 0.001);
     outMaxSlider.setValue (0.0);
-    outMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
+    outMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsNotDraggable);
     outMaxSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (outMaxSlider);
     
     inMinSlider.setRange (0, 1, 0.001);
     inMinSlider.setValue (0);
-    inMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
+    inMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsNotDraggable);
     inMinSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (inMinSlider);
   
     inMaxSlider.setRange (0, 1, 0.001);
     inMaxSlider.setValue (1);
-    inMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
+    inMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsNotDraggable);
     inMaxSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (inMaxSlider);
 }
