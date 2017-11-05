@@ -42,7 +42,7 @@ SettingsWindow::SettingsWindow()
     addAndMakeVisible (oscReceiveSetter);
     
     myoSelectorLabel.setJustificationType (Justification::left);
-    myoSelectorLabel.setText ("Use Myo:", dontSendNotification);
+    myoSelectorLabel.setText ("Selected Myo:", dontSendNotification);
     addAndMakeVisible (myoSelectorLabel);
     
     myoSelectorSetter.addItem ("Myo 1", 1);
@@ -115,8 +115,8 @@ void SettingsWindow::resized()
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
     area.removeFromTop (windowSize.proportionOfHeight (0.07));
-    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.155))
-                            .reduced (windowSizeWidth.proportionOfWidth (0.15), 0);
+    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
+                            .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
     area.removeFromTop (windowSize.proportionOfHeight (0.07));
     auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.14))
                         .reduced (windowSizeWidth.proportionOfWidth (0.0315), 0);
@@ -139,7 +139,7 @@ void SettingsWindow::resized()
                              .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
     
     // Set myo selector region bounds
-    myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.257)));
+    myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.287)));
     myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.033));
     myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.401))
                                  .reduced (0, windowSize.proportionOfHeight (0.01)));
