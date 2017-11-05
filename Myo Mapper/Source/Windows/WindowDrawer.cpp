@@ -22,7 +22,6 @@ WindowDrawer::WindowDrawer (const String& title,
                             bool setFixedAspectRatio,
                             int minWidth, int minHeight,
                             int maxWidth, int maxHeight)
-:   DialogWindow (title, Colours::white, true, true)
 :   DialogWindow (title, Colours::white, false, true)
 {
     setUsingNativeTitleBar (true);
@@ -30,7 +29,7 @@ WindowDrawer::WindowDrawer (const String& title,
     if (setFixedAspectRatio == true)
     {
         boundsConstrainer = new (ComponentBoundsConstrainer);
-        auto aspectRatio = (double)maxWidth / (double)maxHeight;
+        auto aspectRatio = (double)minWidth / (double)minHeight;
         boundsConstrainer->setFixedAspectRatio (aspectRatio);
         boundsConstrainer->setMinimumSize (minWidth, minHeight);
         boundsConstrainer->setMaximumSize (maxWidth, maxHeight);
