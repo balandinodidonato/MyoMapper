@@ -11,9 +11,6 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "VisualsWindow.h"
 
-ScopedPointer<Orientation> VisualsWindow::orientation;
-ScopedPointer<Pose> VisualsWindow::pose;
-
 //==============================================================================
 VisualsWindow::VisualsWindow()
 {
