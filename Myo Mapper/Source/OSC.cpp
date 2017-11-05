@@ -53,7 +53,7 @@ void OSC::bufferOsc (MyoData &myoData)
 {
     String id = String (MyoMapperApplication::selectedMyo);
     
-    auto tree = MyoMapperApplication::getDataTree();
+    auto tree = MyoMapperApplication::getApp().getDataTree();
     
     if (tree.getChildWithName("OrData").getPropertyAsValue ("onOff", 0) == true)
     {
@@ -428,7 +428,7 @@ void OSC::disconnectReceiver()
 
 void OSC::oscMessageReceived (const OSCMessage& message)
 {
-    auto Id = MyoMapperApplication::getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId").toString();
+    auto Id = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId").toString();
     DBG (String(Id));
     // ---------------- Vibrate
     

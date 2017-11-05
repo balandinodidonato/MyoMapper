@@ -94,17 +94,17 @@ public:
 //    void hiResTimerCallback() override;
     
     //==========================================================================
-    static ValueTree rootTree;
-    static ValueTree settingsTree;
-    static ValueTree dataTree;
+    ValueTree rootTree;
+    ValueTree settingsTree;
+    ValueTree dataTree;
     
     void initialiseRootTree();
     void initialiseSettingsTree();
     void initialiseDataTree();
     
-    static ValueTree getRootTree();
-    static ValueTree getSettingsTree();
-    static ValueTree getDataTree();
+    ValueTree getRootTree();
+    ValueTree getSettingsTree();
+    ValueTree getDataTree();
     
     void writeRootTreeToXml();
     

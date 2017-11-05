@@ -17,7 +17,6 @@ Pose::Pose()
 
 Pose::~Pose()
 {
-    setLookAndFeel (nullptr);
 }
 
 void Pose::paint (Graphics& g)

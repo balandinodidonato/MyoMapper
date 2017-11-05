@@ -21,7 +21,7 @@ public:
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getDataTree().getChildWithName ("OrData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getApp().getDataTree().getChildWithName ("OrData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -53,7 +53,7 @@ public:
         addAndMakeVisible (tree);
         tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getDataTree().getChildWithName ("AccData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getApp().getDataTree().getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -84,7 +84,7 @@ public:
         addAndMakeVisible (tree);
         tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getDataTree().getChildWithName ("GyroData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getApp().getDataTree().getChildWithName ("GyroData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -115,7 +115,7 @@ public:
         addAndMakeVisible (tree);
         tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getDataTree().getChildWithName ("EmgData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getApp().getDataTree().getChildWithName ("EmgData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }

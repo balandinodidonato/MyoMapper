@@ -587,10 +587,6 @@ void MyoMapperApplication::showPreferencesWindow()
 
 //==============================================================================
 
-ValueTree MyoMapperApplication::rootTree;
-ValueTree MyoMapperApplication::settingsTree;
-ValueTree MyoMapperApplication::dataTree;
-
 const String onOff              = "onOff";
 const String name               = "name";
 const String sampleSize         = "sampleSize";

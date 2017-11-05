@@ -25,7 +25,7 @@ SettingsWindow::SettingsWindow()
     
     oscSendSetter.addListener (this);
     oscSendSetter.setRange (1, 9999, 1);
-    oscSendSetter.setValue (MyoMapperApplication::getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
+    oscSendSetter.setValue (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
     oscSendSetter.setSliderStyle (Slider::IncDecButtons);
     oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     addAndMakeVisible (oscSendSetter);
@@ -35,7 +35,7 @@ SettingsWindow::SettingsWindow()
     addAndMakeVisible (oscReceiveLabel);
     
     oscReceiveSetter.setRange (1, 9999, 1);
-    oscReceiveSetter.setValue (MyoMapperApplication::getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
+    oscReceiveSetter.setValue (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
     oscReceiveSetter.setSliderStyle (Slider::IncDecButtons);
     oscReceiveSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     oscReceiveSetter.addListener (this);
@@ -50,7 +50,7 @@ SettingsWindow::SettingsWindow()
     myoSelectorSetter.addItem ("Myo 3", 3);
     myoSelectorSetter.addItem ("Myo 4", 4);
     myoSelectorSetter.addItem ("No Myo Selected", 5);
-    myoSelectorSetter.setSelectedId (MyoMapperApplication::getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
+    myoSelectorSetter.setSelectedId (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
     myoSelectorSetter.addListener (this);
     addAndMakeVisible (myoSelectorSetter);
     
@@ -184,11 +184,11 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     auto value = slider->getValue();
     if (slider == &oscSendSetter)
     {
-        MyoMapperApplication::getSettingsTree().getChildWithName ("SendPort").setProperty ("portNumber", value, 0);
+        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SendPort").setProperty ("portNumber", value, 0);
     }
     if (slider == &oscReceiveSetter)
     {
-        MyoMapperApplication::getSettingsTree().getChildWithName ("ReceivePort").setProperty ("portNumber", value, 0);
+        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("ReceivePort").setProperty ("portNumber", value, 0);
     }
 }
 
@@ -197,6 +197,6 @@ void SettingsWindow::comboBoxChanged (ComboBox *comboBoxThatHasChanged)
     auto value = comboBoxThatHasChanged->getSelectedIdAsValue();
     if (comboBoxThatHasChanged == &myoSelectorSetter)
     {
-        MyoMapperApplication::getSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
+        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
     }
 }
