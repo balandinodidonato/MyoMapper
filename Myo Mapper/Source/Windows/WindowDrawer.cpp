@@ -23,6 +23,7 @@ WindowDrawer::WindowDrawer (const String& title,
                             int minWidth, int minHeight,
                             int maxWidth, int maxHeight)
 :   DialogWindow (title, Colours::white, true, true)
+:   DialogWindow (title, Colours::white, false, true)
 {
     setUsingNativeTitleBar (true);
     setResizable (setResizeable, setResizeable);
