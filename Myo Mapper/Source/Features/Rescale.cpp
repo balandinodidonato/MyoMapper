@@ -134,7 +134,7 @@ void Rescale::buttonClicked (juce::Button *button)
 {
     if (button == &calibrate)
     {
-        setCalibrate();
+        //to recall OrCalibration::setCalibrate
     }
 }
 
@@ -142,36 +142,34 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
 {
     if (slider == &mmSlider)
     {
-        outMin = mmSlider.getMinValue();
-        outMax = mmSlider.getMaxValue();
-        outMaxSlider.setValue (outMax);
-        outMinSlider.setValue (outMin);
+        // outMin's tree value = mmSlider.getMinValue();
+        // outMax's tree value = mmSlider.getMaxValue();
+        // outMaxSlider.setValue (outMin's tree value);
+        // outMinSlider.setValue (outMax's tree value);
     }
     
 else if (slider == &outMinSlider)
     {
-        outMin = outMinSlider.getValue();
-		mmSlider.setMinValue (outMin);
+       // outMin's tree value = outMinSlider.getValue();
     }
     
     if (slider == &outMaxSlider)
     {
-        outMax = outMaxSlider.getValue();
-		mmSlider.setMaxValue (outMax);
+         // outMax's tree value = outMaxSlider.getValue();
 	}
     
     else if (slider == &inMinSlider)
     {
-        inMin = inMinSlider.getValue();
+         // inMin's tree value = inMinSlider.getValue();
     }
     
     if (slider == &inMaxSlider)
     {
-        inMax = inMaxSlider.getValue();
+         // inMax's tree value = inMaxSlider.getValue();
     }
 }
 
-void Rescale::setReverse (bool Status)
+void Rescale::setReverse (bool Status) // Value is the one from tree
 {
     reverse.setToggleState (Status, dontSendNotification);
     reverse.setState (juce::Button::buttonDown);
@@ -181,17 +179,6 @@ void Rescale::setLabelWidget (juce::String LabelWidget)
 {
     labelWidget = LabelWidget;
     mmSliderLabel.setText (labelWidget, dontSendNotification);
-}
-
-void Rescale::setTargetValue (float TargetValue)
-{
-    targetValue = TargetValue;
-}
-
-void Rescale::setCalibrate()
-{
-    offset = scaled;
-    test = 1;
 }
 
 void Rescale::setMin (float Value)
@@ -204,41 +191,15 @@ void Rescale::setMax (float Value)
     mmSlider.setMaxValue(Value);
 }
 
-void Rescale::setValue (float Value)
+void Rescale::setValue (float Value) // the value in input are the myo yaw, pitch roll scaled from myo.
 {
     input = Value;
-    
-    // scale between 0 and 1
-    scaled = (input + juce::double_Pi) / (2 * juce::double_Pi); // scale input from -PI,PI to 0,1
-    
-								// limit input
-	calibrated = std::max (scaled, inMin); // limit lower values
-	calibrated = std::min (scaled, inMax); // limit maximum values
-
-    // calibrate
-    input1 = 1 - offset;
-    calibrated = scaled + input1;
-    calibrated = calibrated + (targetValue * test);
-    
-    // mod
-    calibrated = calibrated * 10000000;
-    calibrated = (float) ((int)(calibrated) % (int)10000000);
-    calibrated = calibrated * 0.0000001;
-
-    // reverse values
     if (reverse.getToggleStateValue() == true)
     {
-        calibrated = 1 - calibrated;
+        //reverse = 1; edits value of tree
     }
     
-    // scale output
-    calibrated = jmap (calibrated, inMin, inMax, outMin, outMax);
-    mmSlider.setValue (calibrated);
-}
-
-float Rescale::getValue()
-{
-    return calibrated;
+    mmSlider.setValue (input);
 }
 
 
