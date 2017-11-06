@@ -46,8 +46,8 @@ void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin,
 
 void OrScaling::setCalibrate (float Offset)
 {
-    test = 1;
     offset = Offset;
+    test = 1;
 }
 
 float OrScaling::getValue()
