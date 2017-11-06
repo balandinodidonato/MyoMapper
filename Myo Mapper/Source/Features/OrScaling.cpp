@@ -37,7 +37,7 @@ void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin,
     calibrated = calibrated * 0.0000001;
     
     // reverse value
-    calibrated = reverse - calibrated;
+    calibrated = std::abs(reverse - calibrated);
     
     
     // scale output
