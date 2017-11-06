@@ -50,7 +50,8 @@ private:
     Slider oscReceiveSetter;
     
     Label myoSelectorLabel;
-    ComboBox myoSelectorSetter;
+    Slider myoSelectorSetter;
+//    ComboBox myoSelectorSetter;
     
     TextButton saveButton;
     TextButton openButton;

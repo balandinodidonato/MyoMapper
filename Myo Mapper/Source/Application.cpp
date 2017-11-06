@@ -160,13 +160,13 @@ void MyoMapperApplication::timerCallback()
 
 void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 {
-    if ((selectedMyo == 0 || selectedMyo > 4) && SettingsWindow::startButtonClicked == true)
+    if ((selectedMyo == 0 || selectedMyo > 20) && SettingsWindow::startButtonClicked == true)
     {
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "Error",
                                           "No Myo selected");
     }
-    if (selectedMyo > 0 && selectedMyo < 5 && SettingsWindow::startButtonClicked == true)
+    if (selectedMyo > 0 && selectedMyo <= 20 && SettingsWindow::startButtonClicked == true)
     {
         auto sendConnect = osc->connectSender (IPAddress::local().toString(), MyoMapperApplication::sendPort);
         auto receiveConnect = osc->connectReceiver (MyoMapperApplication::receivePort);
@@ -618,14 +618,13 @@ void MyoMapperApplication::initialiseSettingsTree()
     
     ValueTree selectedMyoTree = ValueTree ("SelectedMyo");
     selectedMyoTree.setProperty (name, "Selected Myo", 0);
-    selectedMyoTree.setProperty ("myoId", "0", 0);
+    selectedMyoTree.setProperty ("myoId", "1", 0);
     ValueTree sendPortTree = ValueTree ("SendPort");
     sendPortTree.setProperty (name, "Send Port", 0);
     sendPortTree.setProperty (portNumber, "5432", 0);
     ValueTree receivePortTree = ValueTree ("ReceivePort");
     receivePortTree.setProperty (name, "Receive Port", 0);
     receivePortTree.setProperty (portNumber, "5431", 0);
-    
     settingsTree.addChild (selectedMyoTree, -1, 0);
     settingsTree.addChild (sendPortTree, -1, 0);
     settingsTree.addChild (receivePortTree, -1, 0);

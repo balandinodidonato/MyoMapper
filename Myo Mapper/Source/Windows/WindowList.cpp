@@ -66,8 +66,7 @@ void WindowList::showOrCreateVisualsWindow()
         auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
         auto myoSelected = static_cast<int> (MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SelectedMyo").getProperty ("myoId"));
-        auto windowAppend = (myoSelected == 1 || myoSelected == 2 || myoSelected == 3 || myoSelected == 4) ?
-                            " - Myo " + (String)MyoMapperApplication::selectedMyo : " - No Myo Selected";
+        auto windowAppend = (myoSelected != 0) ? " - Myo " + (String)MyoMapperApplication::selectedMyo : " - No Myo Selected";
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Status" + windowAppend,
                                                   new VisualsWindow(),
                                                   true, true,

@@ -45,14 +45,21 @@ SettingsWindow::SettingsWindow()
     myoSelectorLabel.setText ("Selected Myo:", dontSendNotification);
     addAndMakeVisible (myoSelectorLabel);
     
-    myoSelectorSetter.addItem ("Myo 1", 1);
-    myoSelectorSetter.addItem ("Myo 2", 2);
-    myoSelectorSetter.addItem ("Myo 3", 3);
-    myoSelectorSetter.addItem ("Myo 4", 4);
-    myoSelectorSetter.addItem ("No Myo Selected", 5);
-    myoSelectorSetter.setSelectedId (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
+    myoSelectorSetter.setRange (1, 20, 1);
+    myoSelectorSetter.setValue (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
+    myoSelectorSetter.setSliderStyle (Slider::IncDecButtons);
+    myoSelectorSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     myoSelectorSetter.addListener (this);
     addAndMakeVisible (myoSelectorSetter);
+    
+//    myoSelectorSetter.addItem ("Myo 1", 1);
+//    myoSelectorSetter.addItem ("Myo 2", 2);
+//    myoSelectorSetter.addItem ("Myo 3", 3);
+//    myoSelectorSetter.addItem ("Myo 4", 4);
+//    myoSelectorSetter.addItem ("No Myo Selected", 5);
+//    myoSelectorSetter.setSelectedId (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
+//    myoSelectorSetter.addListener (this);
+//    addAndMakeVisible (myoSelectorSetter);
     
     saveButton.setButtonText ("SAVE");
     addAndMakeVisible (saveButton);
@@ -145,13 +152,17 @@ void SettingsWindow::resized()
                                  .reduced (0, windowSize.proportionOfHeight (0.01)));
     
     // Set buttons region bounds
-    saveButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
-    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.035));
-    openButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
-    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
-    featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.252)));
-    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
-    startButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
+//    saveButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
+//    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.035));
+//    openButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
+//    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
+//    featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.252)));
+//    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
+//    startButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
+    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.2));
+    featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.222)));
+    buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.2));
+    startButton.setBounds (buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.174)));
 }
 
 void SettingsWindow::resetStartButtonPressed()
@@ -184,19 +195,23 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     auto value = slider->getValue();
     if (slider == &oscSendSetter)
     {
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SendPort").setProperty ("portNumber", value, 0);
+        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SendPort").setProperty ("portNumber", value, 0);
     }
     if (slider == &oscReceiveSetter)
     {
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("ReceivePort").setProperty ("portNumber", value, 0);
+        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("ReceivePort").setProperty ("portNumber", value, 0);
+    }
+    if (slider == &myoSelectorSetter)
+    {
+        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
     }
 }
 
 void SettingsWindow::comboBoxChanged (ComboBox *comboBoxThatHasChanged)
 {
     auto value = comboBoxThatHasChanged->getSelectedIdAsValue();
-    if (comboBoxThatHasChanged == &myoSelectorSetter)
-    {
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
-    }
+//    if (comboBoxThatHasChanged == &myoSelectorSetter)
+//    {
+//        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
+//    }
 }
