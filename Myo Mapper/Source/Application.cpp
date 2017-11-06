@@ -629,15 +629,42 @@ void MyoMapperApplication::initialiseSettingsTree()
     ValueTree receivePortTree = ValueTree ("ReceivePort");
     receivePortTree.setProperty (name, "Receive Port", 0);
     receivePortTree.setProperty (portNumber, "5431", 0);
+    
+    // Add trees for storing scaling data
+    ValueTree dataScalingTree = ValueTree ("DataScaling");
+    dataScalingTree.setProperty (name, "Data Scaling", 0);
+    dataScalingTree.setProperty ("offset", 0.0f, 0);
+    
+    ValueTree yawScalingTree = ValueTree ("YawScaling");
+    yawScalingTree.setProperty (name, "Yaw Scaling", 0);
+    yawScalingTree.setProperty ("inMin", 0.0f, 0);
+    yawScalingTree.setProperty ("inMax", 1.0f, 0);
+    yawScalingTree.setProperty ("outMin", 0.0f, 0);
+    yawScalingTree.setProperty ("outMax", 1.0f, 0);
+    yawScalingTree.setProperty ("reverse", off, 0);
+    ValueTree pitchScalingTree = ValueTree ("PitchScaling");
+    pitchScalingTree.setProperty (name, "Pitch Scaling", 0);
+    pitchScalingTree.setProperty ("inMin", 0.0f, 0);
+    pitchScalingTree.setProperty ("inMax", 1.0f, 0);
+    pitchScalingTree.setProperty ("outMin", 0.0f, 0);
+    pitchScalingTree.setProperty ("outMax", 1.0f, 0);
+    pitchScalingTree.setProperty ("reverse", off, 0);
+    ValueTree rollScalingTree = ValueTree ("RollScaling");
+    rollScalingTree.setProperty (name, "Roll Scaling", 0);
+    rollScalingTree.setProperty ("inMin", 0.0f, 0);
+    rollScalingTree.setProperty ("inMax", 1.0f, 0);
+    rollScalingTree.setProperty ("outMin", 0.0f, 0);
+    rollScalingTree.setProperty ("outMax", 1.0f, 0);
+    rollScalingTree.setProperty ("reverse", off, 0);
+    
+    dataScalingTree.addChild (yawScalingTree, -1, 0);
+    dataScalingTree.addChild (pitchScalingTree, -1, 0);
+    dataScalingTree.addChild (rollScalingTree, -1, 0);
+    
     settingsTree.addChild (selectedMyoTree, -1, 0);
     settingsTree.addChild (sendPortTree, -1, 0);
     settingsTree.addChild (receivePortTree, -1, 0);
-    
-    // Add trees for storing scaling data
-    
-    
-    
-    
+    settingsTree.addChild (dataScalingTree, -1, 0);
 }
 
 void MyoMapperApplication::initialiseDataTree()
