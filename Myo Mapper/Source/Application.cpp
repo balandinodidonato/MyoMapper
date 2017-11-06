@@ -11,6 +11,8 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Application.h"
 
+#include "Windows/VisualsWindow.h"
+
 //==============================================================================
 struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
 {
