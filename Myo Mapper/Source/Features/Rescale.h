@@ -24,7 +24,6 @@ public:
     void setTargetValue (float TargetValue);
     void setMin (float Value);
     void setMax (float Value);
-    void setCalibrate();
     void setReverse (bool Status);
     
 private:
