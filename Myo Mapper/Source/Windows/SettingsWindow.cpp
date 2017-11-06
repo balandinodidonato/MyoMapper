@@ -20,7 +20,7 @@ bool SettingsWindow::featureButtonClicked;
 SettingsWindow::SettingsWindow()
 {
     oscSendLabel.setJustificationType (Justification::horizontallyCentred);
-    oscSendLabel.setText ("OSC Send Port", dontSendNotification);
+    oscSendLabel.setText ("Send Port", dontSendNotification);
     addAndMakeVisible (oscSendLabel);
     
     oscSendSetter.addListener (this);
@@ -31,7 +31,7 @@ SettingsWindow::SettingsWindow()
     addAndMakeVisible (oscSendSetter);
     
     oscReceiveLabel.setJustificationType (Justification::horizontallyCentred);
-    oscReceiveLabel.setText ("OSC Receive Port", dontSendNotification);
+    oscReceiveLabel.setText ("Receive Port", dontSendNotification);
     addAndMakeVisible (oscReceiveLabel);
     
     oscReceiveSetter.setRange (1, 9999, 1);
