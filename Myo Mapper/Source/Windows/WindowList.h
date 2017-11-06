@@ -39,9 +39,10 @@ public:
     void askAllWindowsToClose();
     
     OwnedArray<Component> windows;
-    DataSelectorWindow::SafePointer<Component> settingsWindow;
-    DataSelectorWindow::SafePointer<Component> visualsWindow;
-    DataSelectorWindow::SafePointer<Component> dataSelectorWindow;
+    DataSelectorWindow::SafePointer<WindowDrawer> settingsWindow;
+    DataSelectorWindow::SafePointer<WindowDrawer> visualsWindow;
+    DataSelectorWindow::SafePointer<VisualsWindow> visualsWindowContent;
+    DataSelectorWindow::SafePointer<WindowDrawer> dataSelectorWindow;
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowList)
 };

@@ -67,11 +67,13 @@ void WindowList::showOrCreateVisualsWindow()
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
         auto myoSelected = static_cast<int> (MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SelectedMyo").getProperty ("myoId"));
         auto windowAppend = (myoSelected != 0) ? " - Myo " + (String)MyoMapperApplication::selectedMyo : " - No Myo Selected";
+        auto window = new VisualsWindow();
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Status" + windowAppend,
-                                                  new VisualsWindow(),
+                                                  window,
                                                   true, true,
                                                   windowWidth * 0.5, windowHeight * 0.7,
                                                   windowWidth, windowHeight);
+        visualsWindowContent = window;
         visualsWindow = w;
         w->addChangeListener (this);
         windows.set (1, visualsWindow);

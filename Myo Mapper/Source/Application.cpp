@@ -135,15 +135,17 @@ void MyoMapperApplication::timerCallback()
         return;
     }
     
-    visuals.getOrientationPanel().setValues (myoData[selectedMyo].orientationRaw);
-    visuals.getPosePanel().setPoseLabel (myoData[selectedMyo].pose + " (" + static_cast<String>(myoData[selectedMyo].poseID) + ")");
+    auto visuals = windowList->visualsWindowContent;
     
-    myoData[selectedMyo].orientationScaled = visuals.getOrientationPanel().getValue();
-    myoData[selectedMyo].orientationScaledFod = visuals.getOrientationPanel().getFod();
-    myoData[selectedMyo].orientationScaledSod = visuals.getOrientationPanel().getSod();
+    myoData[selectedMyo].orientationScaled = visuals->getOrientationPanel().getValue();
+    myoData[selectedMyo].orientationScaledFod = visuals->getOrientationPanel().getFod();
+    myoData[selectedMyo].orientationScaledSod = visuals->getOrientationPanel().getSod();
     
     osc->bufferOsc (myoData[selectedMyo]);
     osc->sendOsc();
+    
+    visuals->getOrientationPanel().setValues (myoData[selectedMyo].orientationRaw);
+    visuals->getPosePanel().setPoseLabel (myoData[selectedMyo].pose + " (" + static_cast<String>(myoData[selectedMyo].poseID) + ")");
     
     for (int i = 0; i < 4; ++i) // myoData
     {
@@ -151,7 +153,7 @@ void MyoMapperApplication::timerCallback()
         {
             if (osc->map[i][y])
             {
-                visuals.getOrientationPanel().map (i, y, osc->value, osc->reverseStatus);
+                visuals->getOrientationPanel().map (i, y, osc->value, osc->reverseStatus);
                 osc->map[i][y] = false;
             }
         }

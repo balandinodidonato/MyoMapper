@@ -115,9 +115,6 @@ public:
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) override;
     
     //==========================================================================
-    VisualsWindow visuals;
-    
-    //==========================================================================
     MyoMapperLookAndFeel lookAndFeel;
     
     struct MainMenuBarModel;
