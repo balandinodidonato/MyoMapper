@@ -86,6 +86,29 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     yaw = atan2 (2.0f * (quat.w() * quat.z() + quat.x() * quat.y()),
                  1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
     
+    auto tree = MyoMapperApplication::getApp().getSettingsTree();
+    auto yawTree = tree.getChildWithName("DataScaling").getChildWithName ("YawScaling");
+    auto pitchTree = tree.getChildWithName("DataScaling").getChildWithName ("PitchScaling");
+    auto rollTree = tree.getChildWithName("DataScaling").getChildWithName ("RollScaling");
+    
+    yawScaler.setValue (yaw,
+                        yawTree.getProperty ("inMin"),
+                        yawTree.getProperty ("inMax"),
+                        yawTree.getProperty ("outMin"),
+                        yawTree.getProperty ("outMax"),
+                        yawTree.getProperty ("reverse"));
+    pitchScaler.setValue (pitch,
+                          pitchTree.getProperty ("inMin"),
+                          pitchTree.getProperty ("inMax"),
+                          pitchTree.getProperty ("outMin"),
+                          pitchTree.getProperty ("outMax"),
+                          pitchTree.getProperty ("reverse"));
+    rollScaler.setValue (roll,
+                        rollTree.getProperty ("inMin"),
+                        rollTree.getProperty ("inMax"),
+                        rollTree.getProperty ("outMin"),
+                        rollTree.getProperty ("outMax"),
+                        rollTree.getProperty ("reverse"));
     
     int myoID = getMyoID(myo);
     if (myoID == -1)
@@ -98,6 +121,12 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     myoData[myoID].quaternion[1] = quat.y();
     myoData[myoID].quaternion[2] = quat.z();
     myoData[myoID].quaternion[3] = quat.w();
+    myoData[myoID].orientationScaled.x = yawScaler.getValue();
+    myoData[myoID].orientationScaled.y = pitchScaler.getValue();
+    myoData[myoID].orientationScaled.z = rollScaler.getValue();
+    
+  //  myoData[myoID].orientationScaledFod = visuals->getOrientationPanel().getFod();
+  //  myoData[myoID].orientationScaledSod = visuals->getOrientationPanel().getSod();
 }
 
 void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &accel)
