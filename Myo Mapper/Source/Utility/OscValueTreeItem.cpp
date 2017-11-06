@@ -57,8 +57,8 @@ public:
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.035)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
-        slider.setBounds (area.removeFromRight (getParentWidth() * 0.4));
-        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.2));
+        slider.setBounds (area.removeFromRight (getParentWidth() * 0.3));
+        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.1));
     }
     
     void buttonClicked (Button* button) override
