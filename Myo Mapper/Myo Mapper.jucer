@@ -20,6 +20,8 @@
         <FILE id="isi6sd" name="MovingAverage.cpp" compile="1" resource="0"
               file="Source/Features/MovingAverage.cpp"/>
         <FILE id="UKZqci" name="MovingAverage.h" compile="0" resource="0" file="Source/Features/MovingAverage.h"/>
+        <FILE id="TumpiY" name="OrScaling.cpp" compile="1" resource="0" file="Source/Features/OrScaling.cpp"/>
+        <FILE id="acZCnp" name="OrScaling.h" compile="0" resource="0" file="Source/Features/OrScaling.h"/>
         <FILE id="GIHvWF" name="Rescale.cpp" compile="1" resource="0" file="Source/Features/Rescale.cpp"/>
         <FILE id="hD9BZ5" name="Rescale.h" compile="0" resource="0" file="Source/Features/Rescale.h"/>
         <FILE id="brUY7n" name="ScaleValues.cpp" compile="1" resource="0" file="Source/Features/ScaleValues.cpp"/>
