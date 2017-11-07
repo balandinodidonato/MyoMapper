@@ -26,10 +26,6 @@ public:
 
     bool map[4][5];
 
-    bool rescaleMinTest;
-    int rescaleMIN;
-    bool rescaleMaxTest;
-    int rescaleMAX;
     float value;
     
     bool reverseStatus;
