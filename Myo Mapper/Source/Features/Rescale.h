@@ -2,10 +2,12 @@
 #define RESCALE_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "OrScaling.h"
 
 class Rescale    : public Component,
                    public Button::Listener,
-                   public Slider::Listener
+                   public Slider::Listener,
+                   private ValueTree::Listener
 {
 public:
     
@@ -20,8 +22,6 @@ public:
     void resized() override;
     void setLabelTitle (String LabelWidget);
     void setValue (float Value);
-    float getValue();
-    void setTargetValue (float TargetValue);
     void setMin (float Value);
     void setMax (float Value);
     void setReverse (bool Status);
@@ -49,7 +49,6 @@ private:
     float reversed;
     float calibrated;
     float offset;
-    float targetValue = 0.5;
     float scaled;
     float input;
     float input1;
@@ -57,11 +56,14 @@ private:
     const long double r2PI;
     int test = 0;
     String MyoIDString;
-    float inMin;
-    float inMax;
-    float outMin;
-    float outMax;
     
+    OrScaling scaler;
+    
+    void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property) override;
+    void valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded) override;
+    void valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved) override;
+    void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex) override;
+    void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) override;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Rescale)
 };
