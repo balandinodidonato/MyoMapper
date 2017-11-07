@@ -638,7 +638,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     yawScalingTree.setProperty ("inMax", 1.0f, 0);
     yawScalingTree.setProperty ("outMin", 0.0f, 0);
     yawScalingTree.setProperty ("outMax", 1.0f, 0);
-    yawScalingTree.setProperty ("reverse", off, 0);
+    yawScalingTree.setProperty ("reverse", on, 0);
     ValueTree pitchScalingTree = ValueTree ("PitchScaling");
     pitchScalingTree.setProperty (name, "Pitch Scaling", 0);
     pitchScalingTree.setProperty ("inMin", 0.0f, 0);
