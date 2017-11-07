@@ -175,7 +175,7 @@ void Rescale::setReverse (bool Status) // Value is the one from tree
     reverse.setState (juce::Button::buttonDown);
 }
 
-void Rescale::setLabelWidget (juce::String LabelWidget)
+void Rescale::setLabelTitle (juce::String LabelWidget)
 {
     labelWidget = LabelWidget;
     mmSliderLabel.setText (labelWidget, dontSendNotification);

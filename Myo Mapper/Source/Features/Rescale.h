@@ -18,7 +18,7 @@ public:
     void  buttonClicked (Button* button) override;
     void sliderValueChanged (Slider* slider) override;
     void resized() override;
-    void setLabelWidget (String LabelWidget);
+    void setLabelTitle (String LabelWidget);
     void setValue (float Value);
     float getValue();
     void setTargetValue (float TargetValue);
