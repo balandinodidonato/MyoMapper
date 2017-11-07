@@ -100,8 +100,6 @@ void MyoMapperApplication::shutdown()
     myoManager.disconnect();
     osc->disconnectSender();
     osc->disconnectReceiver();
-    rootTree.removeAllChildren (0);
-    rootTree = ValueTree();
     #if JUCE_MAC
         MenuBarModel::setMacMainMenu (nullptr);
     #endif
