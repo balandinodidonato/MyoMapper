@@ -22,11 +22,8 @@ public:
     Vector3D<float> getValue();
     Vector3D<float> getFod(); // Fod = First order difference
     Vector3D<float> getSod(); // Sod = Second order difference
-    float getYaw();
-    float getPitch();
-    float getRoll();
     
-    void map (int myoData, int Action, float Value, bool ReverseStatus);
+//    void map (int myoData, int Action, float Value, bool ReverseStatus);
     
 private:
     class OrientationLookAndFeel    : public MyoMapperLookAndFeel

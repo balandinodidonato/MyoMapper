@@ -3,11 +3,7 @@
 #include "Application.h"
 
 OSC::OSC()
-:   rescaleMinTest (false),
-    rescaleMIN (0),
-    rescaleMaxTest (false),
-    rescaleMAX (0),
-    myoDataIn {"/yaw", "/pitch", "/roll", "/mav"},
+:   myoDataIn {"/yaw", "/pitch", "/roll", "/mav"},
     action {"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
 {
     receivePort = MyoMapperApplication::receivePort;
