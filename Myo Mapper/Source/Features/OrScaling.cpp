@@ -18,6 +18,7 @@ void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin,
     inMax = InMax;
     outMin = OutMin;
     outMax = OutMax;
+    reverse = Reverse;
     
     // scale between 0 and 1
     scaled = (inValue + PI) / (2 * PI); // scale input from -PI,PI to 0,1
