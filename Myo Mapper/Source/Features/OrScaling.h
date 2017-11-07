@@ -14,7 +14,7 @@
 class OrScaling{
 public:
     void setValue (float Value, float InMin, float InMax, float OutMin, float OutMax, int Reverse);
-    void setCalibrate (float offset);
+    void setCalibrate ();
     
     float getValue();
     
