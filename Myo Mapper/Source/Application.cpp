@@ -88,9 +88,10 @@ void MyoMapperApplication::initialise (const String& commandLine)
 void MyoMapperApplication::handleAsyncUpdate()
 {
     #if JUCE_MAC
-        PopupMenu appleMenu;
-        createAppleMenu (appleMenu);
-        MenuBarModel::setMacMainMenu (menuModel, &appleMenu);
+//        PopupMenu appleMenu;
+//        createAppleMenu (appleMenu);
+//        MenuBarModel::setMacMainMenu (menuModel, &appleMenu);
+    MenuBarModel::setMacMainMenu (menuModel);
     #endif
 }
 
@@ -217,7 +218,7 @@ MenuBarModel* MyoMapperApplication::getMenuModel()
 StringArray MyoMapperApplication::getMenuBarNames()
 {
     StringArray names;
-    names.add ("File");
+//    names.add ("File");
 //    names.add ("View");
     names.add ("Window");
     names.add ("Help");
@@ -227,7 +228,9 @@ StringArray MyoMapperApplication::getMenuBarNames()
 void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
 {
     if (menuName == "File")
-        createFileMenu (menu);
+    {
+//        createFileMenu (menu);
+    }
     else if (menuName == "View")
     {
 //        createViewMenu(menu);
@@ -272,9 +275,9 @@ void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showVisualsWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showDataWindow);
-    menu.addSeparator();
-    menu.addCommandItem (&getCommandManager(), CommandIDs::moveWindowsToFront);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::hideAllWindows);
+//    menu.addSeparator();
+//    menu.addCommandItem (&getCommandManager(), CommandIDs::moveWindowsToFront);
+//    menu.addCommandItem (&getCommandManager(), CommandIDs::hideAllWindows);
     menu.addSeparator();
     menu.addCommandItem (&getCommandManager(), CommandIDs::closeWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::closeAllWindows);
@@ -300,24 +303,25 @@ void MyoMapperApplication::menuCommand (int menuItemID)
 void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
 {
     // Return a list of commands the manager's target can perform
-    const CommandID id[] = { CommandIDs::newMapper,
-                             CommandIDs::openMapper,
-                             CommandIDs::saveMapper,
-                             CommandIDs::saveMapperAs,
-                             CommandIDs::quitMapper,
-                             CommandIDs::zoomIncrease,
-                             CommandIDs::zoomDecrease,
-                             CommandIDs::enableFullscreen,
+    const CommandID id[] = {
+//                             CommandIDs::newMapper,
+//                             CommandIDs::openMapper,
+//                             CommandIDs::saveMapper,
+//                             CommandIDs::saveMapperAs,
+//                             CommandIDs::quitMapper,
+//                             CommandIDs::zoomIncrease,
+//                             CommandIDs::zoomDecrease,
+//                             CommandIDs::enableFullscreen,
                              CommandIDs::showSettingsWindow,
                              CommandIDs::showVisualsWindow,
                              CommandIDs::showDataWindow,
-                             CommandIDs::moveWindowsToFront,
-                             CommandIDs::hideAllWindows,
+//                             CommandIDs::moveWindowsToFront,
+//                             CommandIDs::hideAllWindows,
                              CommandIDs::closeWindow,
                              CommandIDs::closeAllWindows,
                              CommandIDs::showAboutWindow,
                              CommandIDs::showDocumentationWindow,
-                             CommandIDs::showPreferences
+//                             CommandIDs::showPreferences
     };
     commands.addArray (id, numElementsInArray (id));
 }
@@ -325,7 +329,7 @@ void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
 void MyoMapperApplication::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
 {
     switch (commandID)
-    {
+    {/*
         case CommandIDs::newMapper:
             result.setInfo ("New", "Creates a new Myo Mapper project file", CommandCategories::general, 0);
             result.addDefaultKeypress ('n', ModifierKeys::shiftModifier);
@@ -364,7 +368,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             result.setInfo ("Enable Fullscreen", "Toggle between fullscreen mode", CommandCategories::view, 0);
             result.addDefaultKeypress ('f', ModifierKeys::shiftModifier | ModifierKeys::commandModifier);
             break;
-            
+            */
         case CommandIDs::showSettingsWindow:
             result.setInfo ("Show Mapper Settings", "Show the settings panel", CommandCategories::windows, 0);
             result.addDefaultKeypress ('s', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
@@ -419,19 +423,19 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
 {
     switch (info.commandID)
     {
-        case CommandIDs::newMapper:                     createNewMapper(); break;
-        case CommandIDs::openMapper:                    openFile(); break;
-        case CommandIDs::saveMapper:                    saveMapper(); break;
-        case CommandIDs::saveMapperAs:                  saveMapperAs(); break;
-        case CommandIDs::quitMapper:                    quitMapper(); break;
-        case CommandIDs::zoomIncrease:                  windowZoomIncrease(); break;
-        case CommandIDs::zoomDecrease:                  windowZoomDecrease(); break;
-        case CommandIDs::enableFullscreen:              enableFullscreen(); break;
+//        case CommandIDs::newMapper:                     createNewMapper(); break;
+//        case CommandIDs::openMapper:                    openFile(); break;
+//        case CommandIDs::saveMapper:                    saveMapper(); break;
+//        case CommandIDs::saveMapperAs:                  saveMapperAs(); break;
+//        case CommandIDs::quitMapper:                    quitMapper(); break;
+//        case CommandIDs::zoomIncrease:                  windowZoomIncrease(); break;
+//        case CommandIDs::zoomDecrease:                  windowZoomDecrease(); break;
+//        case CommandIDs::enableFullscreen:              enableFullscreen(); break;
         case CommandIDs::showSettingsWindow:            showSettingsWindow(); break;
         case CommandIDs::showVisualsWindow:             showVisualsWindow(); break;
         case CommandIDs::showDataWindow:                showDataWindow(); break;
-        case CommandIDs::moveWindowsToFront:            moveWindowsToFront(); break;
-        case CommandIDs::hideAllWindows:                hideAllWindows(); break;
+//        case CommandIDs::moveWindowsToFront:            moveWindowsToFront(); break;
+//        case CommandIDs::hideAllWindows:                hideAllWindows(); break;
         case CommandIDs::closeWindow:                   closeWindow(); break;
         case CommandIDs::closeAllWindows:               closeAllWindows(); break;
         case CommandIDs::showAboutWindow:               showAboutWindow(); break;
