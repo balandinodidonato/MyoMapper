@@ -13,12 +13,9 @@ Orientation::Orientation()
     addAndMakeVisible (rescaleYaw);
     addAndMakeVisible (rescalePitch);
     addAndMakeVisible (rescaleRoll);
-    rescaleYaw.setLabelWidget ("Yaw");
-    rescalePitch.setLabelWidget ("Pitch");
-    rescaleRoll.setLabelWidget ("Roll");
-    rescaleYaw.setTargetValue (0.5);
-    rescalePitch.setTargetValue (0.5);
-    rescaleRoll.setTargetValue (0.5);
+    rescaleYaw.setLabelTitle ("Yaw");
+    rescalePitch.setLabelTitle ("Pitch");
+    rescaleRoll.setLabelTitle ("Roll");
 }
 
 void Orientation::paint (juce::Graphics &g)
@@ -58,10 +55,6 @@ void Orientation::setValues (Vector3D<float> Orientation)
 
 Vector3D<float> Orientation::getValue()
 {
-    orientationScaled.x = rescaleYaw.getValue();
-    orientationScaled.y = rescalePitch.getValue();
-    orientationScaled.z = rescaleRoll.getValue();
-    
     return orientationScaled;
 }
 
@@ -77,22 +70,7 @@ Vector3D<float> Orientation::getSod()
     return orientationSod.get3DValue();
 }
 
-
-float Orientation::getYaw()
-{
-    return rescaleYaw.getValue();
-}
-
-float Orientation::getPitch()
-{
-    return rescalePitch.getValue();
-}
-
-float Orientation::getRoll()
-{
-    return rescaleRoll.getValue();
-}
-
+/*
 // Recal functions from OSC data in input
 void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
 {
@@ -102,7 +80,7 @@ void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
             switch (Action)
             {
                 case 1:
-                    rescaleYaw.setCalibrate(); break;
+//                    rescaleYaw.setCalibrate(); break;
                 default:
                     break;
             }
@@ -111,7 +89,7 @@ void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
             switch (Action)
             {
                 case 1:
-                    rescalePitch.setCalibrate(); break;
+//                    rescalePitch.setCalibrate(); break;
 //                case 2:
 //                    rescalePitch.setMin(Value); break;
 //                case 3:
@@ -126,7 +104,7 @@ void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
             switch (Action)
             {
                 case 1:
-                    rescaleRoll.setCalibrate(); break;
+//                    rescaleRoll.setCalibrate(); break;
 //                case 2:
 //                    rescaleRoll.setMin(Value); break;
 //                case 3:
@@ -140,4 +118,4 @@ void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
             break;
     }
 }
-
+*/
