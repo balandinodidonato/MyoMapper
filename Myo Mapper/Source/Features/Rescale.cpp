@@ -207,7 +207,7 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
     
     if (slider == &inMaxSlider)
     {
-        if (inMaxSlider.getValue() <= inMaxSlider.getValue())
+        if (inMaxSlider.getValue() <= inMinSlider.getValue())
         {
             inMaxSlider.setValue (inMinSlider.getValue() + 0.001);
             AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
