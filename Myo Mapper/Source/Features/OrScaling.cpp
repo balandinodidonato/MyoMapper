@@ -45,9 +45,9 @@ void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin,
     calibrated = jmap (calibrated, inMin, inMax, outMin, outMax);
 }
 
-void OrScaling::setCalibrate (float Offset)
+void OrScaling::setCalibrate ()
 {
-    offset = Offset;
+    offset = scaled;
     test = 1;
 }
 
