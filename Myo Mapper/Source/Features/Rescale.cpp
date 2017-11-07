@@ -24,14 +24,15 @@ Rescale::Rescale()
     addAndMakeVisible (mmSlider);
     mmSlider.setSliderStyle (juce::Slider::ThreeValueHorizontal);
     mmSlider.setRange (-1.0, 2.0);
-    mmSlider.setMinValue (tree.getChildWithName(labelWidget+"Scaling").getProperty ("outMin"));
-    mmSlider.setMaxValue (tree.getChildWithName(labelWidget+"Scaling").getProperty ("outMax"));
+    mmSlider.setMinValue (0);
+    mmSlider.setMaxValue (1.0);
     mmSlider.addListener (this);
     addAndMakeVisible (mmSliderLabel);
 //    mmSliderLabel.attachToComponent (&mmSlider, true);
     
     addAndMakeVisible (reverse);
     reverse.addListener (this);
+    reverse.setToggleState (true, dontSendNotification);
     reverse.setColour (ToggleButton::tickColourId, Colours::black);
     reverse.setColour (ToggleButton::tickDisabledColourId, Colours::black);
     reverse.setColour (ToggleButton::textColourId, Colours::black);
@@ -58,30 +59,28 @@ Rescale::Rescale()
     inMaxSlider.addListener (this);
     
     outMinSlider.setRange (-1.0, 2.0, 0.001);
-    outMinSlider.setValue (tree.getChildWithName(labelWidget+"Scaling").getProperty ("outMin"));
+    outMinSlider.setValue (0);
     outMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     outMinSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (outMinSlider);
     
     outMaxSlider.setRange (-1.0, 2.0, 0.001);
-    outMaxSlider.setValue (tree.getChildWithName(labelWidget+"Scaling").getProperty ("outMax"));
+    outMaxSlider.setValue (1);
     outMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     outMaxSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (outMaxSlider);
     
     inMinSlider.setRange (0, 1, 0.001);
-    inMinSlider.setValue (tree.getChildWithName(labelWidget+"Scaling").getProperty ("inMin"));
+    inMinSlider.setValue (0);
     inMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     inMinSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (inMinSlider);
   
     inMaxSlider.setRange (0, 1, 0.001);
-//        + tree.getChildWithName(labelWidget+"Scaling").getProperty ("outMax").toString());
-    inMaxSlider.setValue (tree.getChildWithName(labelWidget+"Scaling").getProperty ("inMax"));
+    inMaxSlider.setValue (1);
     inMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     inMaxSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (inMaxSlider);
-    DBG (labelWidget + tree.getChildWithName(labelWidget+"Scaling").getProperty ("outMax").toString());
 }
 
 void Rescale::paint(juce::Graphics &g)
@@ -159,7 +158,6 @@ void Rescale::buttonClicked (juce::Button *button)
     tree.addListener (this);
     if (button == &calibrate)
     {
-        
         scaler.setCalibrate ();
     }
     if (button == &reverse)
