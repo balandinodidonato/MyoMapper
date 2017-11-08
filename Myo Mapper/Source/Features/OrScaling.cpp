@@ -10,9 +10,9 @@
 
 #include "OrScaling.h"
 
-void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin, float OutMax, int Reverse)
+void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin, float OutMax, int Reverse, float OffSet)
 {
-    
+    offset = OffSet;
     inValue = InValue;
     inMin = InMin;
     inMax = InMax;
