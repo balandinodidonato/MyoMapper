@@ -3,10 +3,10 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class HelpWindow    : public DocumentWindow
+class HelpWindow    : public Component
 {
 public:
-    HelpWindow (const String& name, Colour backgroundColour, int buttonsNeeded);
+    HelpWindow();
     ~HelpWindow();
 
     void paint (Graphics&) override;
@@ -14,8 +14,6 @@ public:
 
 private:
     
-    void closeButtonPressed() override;
-        
     HyperlinkButton wiki;
     HyperlinkButton sourceCode;
     HyperlinkButton support;

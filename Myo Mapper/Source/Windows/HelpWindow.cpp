@@ -2,9 +2,8 @@
 #include "HelpWindow.h"
 
 //==============================================================================
-HelpWindow::HelpWindow (const String& name, Colour backgroundColour, int buttonsNeeded)
-:   DocumentWindow (name, backgroundColour, buttonsNeeded),
-    wiki ("Wiki", URL ("https://github.com/balandinodidonato/MyoMapper/wiki")),
+HelpWindow::HelpWindow ()
+:   wiki ("Wiki", URL ("https://github.com/balandinodidonato/MyoMapper/wiki")),
     sourceCode ("Source Code", URL ("https://github.com/balandinodidonato/MyoMapper/")),
     support("Ask the developper", URL ("info@balandinodidonato.com"))
 {
@@ -34,9 +33,4 @@ void HelpWindow::resized()
     
     support.setFont (Font::plain, true);
     support.setBounds (wiki.getX(), sourceCode.getBottom() + space, wiki.getWidth(), wiki.getHeight());
-}
-
-void HelpWindow::closeButtonPressed()
-{
-    delete this;
 }

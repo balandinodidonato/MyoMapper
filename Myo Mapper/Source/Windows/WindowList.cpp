@@ -136,14 +136,15 @@ void WindowList::showOrCreateHelpWindow()
         auto mousePosition = Desktop::getInstance().getMousePosition();
         auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
-//        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Help",
-//                                                  new HelpWindow(),
-//                                                  false, false,
-//                                                  windowWidth * 0.2, windowHeight * 0.2,
-//                                                  windowWidth * 0.2, windowHeight * 0.2);
-//        helpWindow = w;
-//        w->addChangeListener (this);
-//        windows.set (4, w);
+        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Help",
+                                                  new HelpWindow(),
+                                                  false, false,
+                                                  windowWidth * 0.2, windowHeight * 0.2,
+                                                  windowWidth * 0.2, windowHeight * 0.2,
+                                                  true);
+        helpWindow = w;
+        w->addChangeListener (this);
+        windows.set (4, w);
     }
 }
 
