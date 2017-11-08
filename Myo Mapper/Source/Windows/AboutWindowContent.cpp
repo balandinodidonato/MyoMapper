@@ -2,8 +2,8 @@
 
 AboutWindowContent::AboutWindowContent ()
 :
-hyperLinkAcknowledgements ("Acknowledgements", URL ("https://github.com/balandinodidonato/MyoMapper/wiki")),
-hyperLinkLicense ("License", URL ("https://github.com/balandinodidonato/MyoMapper/"))
+hyperLinkAcknowledgements ("Acknowledgements", URL ("https://github.com/balandinodidonato/MyoMapper/wiki/Acknowledgements")),
+hyperLinkLicense ("License", URL ("https://github.com/balandinodidonato/MyoMapper/wiki/License"))
 {
     addAndMakeVisible (appName = new Label ("appName", TRANS ("MyoMapper")));
     appName->setFont (Font (22.00f, Font::plain));
