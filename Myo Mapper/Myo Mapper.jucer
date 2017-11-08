@@ -2,111 +2,114 @@
 
 <JUCERPROJECT id="m7UYPj" name="Myo Mapper" projectType="guiapp" version="2.5.13"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="5.1.2" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
-              companyEmail="info@balandinodidonato.com" displaySplashScreen="1"
-              reportAppUsage="1" splashScreenColour="Dark" cppLanguageStandard="11">
+              jucerVersion="5.2.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
+              companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
+              reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
+              companyCopyright="Balandino Di Donato">
   <MAINGROUP id="G7OLDm" name="Myo Mapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
-      <GROUP id="{66114F2A-233F-D521-97F6-383BBDBB7AC0}" name="OSC">
-        <FILE id="g8d9Eb" name="AccOscSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/AccOscSettings.cpp"/>
-        <FILE id="VdoQTp" name="AccOscSettings.h" compile="0" resource="0"
-              file="Source/OSC/AccOscSettings.h"/>
-        <FILE id="hctTUy" name="EmgOscSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/EmgOscSettings.cpp"/>
-        <FILE id="yo16vU" name="EmgOscSettings.h" compile="0" resource="0"
-              file="Source/OSC/EmgOscSettings.h"/>
-        <FILE id="iKi46k" name="GyroOscSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/GyroOscSettings.cpp"/>
-        <FILE id="KtoU0E" name="GyroOscSettings.h" compile="0" resource="0"
-              file="Source/OSC/GyroOscSettings.h"/>
-        <FILE id="JCMLrb" name="OrOscSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/OrOscSettings.cpp"/>
-        <FILE id="gbrjez" name="OrOscSettings.h" compile="0" resource="0" file="Source/OSC/OrOscSettings.h"/>
-        <FILE id="yeM1Fz" name="OSC.cpp" compile="1" resource="0" file="Source/OSC/OSC.cpp"/>
-        <FILE id="oRxxB1" name="OSC.h" compile="0" resource="0" file="Source/OSC/OSC.h"/>
-        <FILE id="MuuGfu" name="OscDataSettings.h" compile="0" resource="0"
-              file="Source/OSC/OscDataSettings.h"/>
-        <FILE id="hKL4uR" name="OSCsettings.cpp" compile="1" resource="0" file="Source/OSC/OSCsettings.cpp"/>
-        <FILE id="c6FKnb" name="OSCsettings.h" compile="0" resource="0" file="Source/OSC/OSCsettings.h"/>
-        <FILE id="Kx5o4j" name="OSCstreamingSettings.cpp" compile="1" resource="0"
-              file="Source/OSC/OSCstreamingSettings.cpp"/>
-        <FILE id="cYRIgC" name="OSCstreamingSettings.h" compile="0" resource="0"
-              file="Source/OSC/OSCstreamingSettings.h"/>
+      <GROUP id="{A6AA3F79-9818-2AB2-1894-3DB32937990E}" name="Features">
+        <FILE id="eT99tu" name="FirstOrderDifference.cpp" compile="1" resource="0"
+              file="Source/Features/FirstOrderDifference.cpp"/>
+        <FILE id="GLLhUp" name="FirstOrderDifference.h" compile="0" resource="0"
+              file="Source/Features/FirstOrderDifference.h"/>
+        <FILE id="ddRWC6" name="Mav.cpp" compile="1" resource="0" file="Source/Features/Mav.cpp"/>
+        <FILE id="elJGXz" name="Mav.h" compile="0" resource="0" file="Source/Features/Mav.h"/>
+        <FILE id="hcmLaE" name="MinMax.cpp" compile="1" resource="0" file="Source/Features/MinMax.cpp"/>
+        <FILE id="bMwHiu" name="MinMax.h" compile="0" resource="0" file="Source/Features/MinMax.h"/>
+        <FILE id="isi6sd" name="MovingAverage.cpp" compile="1" resource="0"
+              file="Source/Features/MovingAverage.cpp"/>
+        <FILE id="UKZqci" name="MovingAverage.h" compile="0" resource="0" file="Source/Features/MovingAverage.h"/>
+        <FILE id="TumpiY" name="OrScaling.cpp" compile="1" resource="0" file="Source/Features/OrScaling.cpp"/>
+        <FILE id="acZCnp" name="OrScaling.h" compile="0" resource="0" file="Source/Features/OrScaling.h"/>
+        <FILE id="GIHvWF" name="Rescale.cpp" compile="1" resource="0" file="Source/Features/Rescale.cpp"/>
+        <FILE id="hD9BZ5" name="Rescale.h" compile="0" resource="0" file="Source/Features/Rescale.h"/>
+        <FILE id="brUY7n" name="ScaleValues.cpp" compile="1" resource="0" file="Source/Features/ScaleValues.cpp"/>
+        <FILE id="hNcTz7" name="ScaleValues.h" compile="0" resource="0" file="Source/Features/ScaleValues.h"/>
+        <FILE id="AZMgEF" name="SecondOrderDifference.cpp" compile="1" resource="0"
+              file="Source/Features/SecondOrderDifference.cpp"/>
+        <FILE id="miiWRt" name="SecondOrderDifference.h" compile="0" resource="0"
+              file="Source/Features/SecondOrderDifference.h"/>
+        <FILE id="qOjV79" name="ZeroCrossingRate.cpp" compile="1" resource="0"
+              file="Source/Features/ZeroCrossingRate.cpp"/>
+        <FILE id="nyTKWs" name="ZeroCrossingRate.h" compile="0" resource="0"
+              file="Source/Features/ZeroCrossingRate.h"/>
       </GROUP>
       <GROUP id="{64B19B40-2616-4339-D467-FD4E7E7B5A36}" name="Myo">
-        <FILE id="FiMC6c" name="MyoData.h" compile="0" resource="0" file="Source/Myo/MyoData.h"/>
-        <FILE id="u3SqLR" name="MyoListener.cpp" compile="1" resource="0" file="Source/Myo/MyoListener.cpp"/>
-        <FILE id="mqdeVA" name="MyoListener.h" compile="0" resource="0" file="Source/Myo/MyoListener.h"/>
-        <FILE id="yf7nsw" name="MyoManager.cpp" compile="1" resource="0" file="Source/Myo/MyoManager.cpp"/>
-        <FILE id="sAapYX" name="MyoManager.h" compile="0" resource="0" file="Source/Myo/MyoManager.h"/>
-      </GROUP>
-      <GROUP id="{9988B652-9800-78D6-D9D9-199046BB58B0}" name="Features">
-        <FILE id="zKnAHr" name="FirstOrderDifference.cpp" compile="1" resource="0"
-              file="Source/Features/FirstOrderDifference.cpp"/>
-        <FILE id="I9ttqd" name="FirstOrderDifference.h" compile="0" resource="0"
-              file="Source/Features/FirstOrderDifference.h"/>
-        <FILE id="wgtnGB" name="Mav.cpp" compile="1" resource="0" file="Source/Features/Mav.cpp"/>
-        <FILE id="x9UISH" name="Mav.h" compile="0" resource="0" file="Source/Features/Mav.h"/>
-        <FILE id="S2NNNM" name="minMax.cpp" compile="1" resource="0" file="Source/Features/minMax.cpp"/>
-        <FILE id="C0TiDx" name="MinMax.h" compile="0" resource="0" file="Source/Features/MinMax.h"/>
-        <FILE id="fFCZmQ" name="MovingAverage.cpp" compile="1" resource="0"
-              file="Source/Features/MovingAverage.cpp"/>
-        <FILE id="k24FfH" name="MovingAverage.h" compile="0" resource="0" file="Source/Features/MovingAverage.h"/>
-        <FILE id="UCwWcD" name="rescale.cpp" compile="1" resource="0" file="Source/Features/rescale.cpp"/>
-        <FILE id="S9wkr5" name="Rescale.h" compile="0" resource="0" file="Source/Features/Rescale.h"/>
-        <FILE id="pcnDZI" name="ScaleValues.cpp" compile="1" resource="0" file="Source/Features/ScaleValues.cpp"/>
-        <FILE id="EE70pQ" name="ScaleValues.h" compile="0" resource="0" file="Source/Features/ScaleValues.h"/>
-        <FILE id="sikBEI" name="SecondOrderDifference.cpp" compile="1" resource="0"
-              file="Source/Features/SecondOrderDifference.cpp"/>
-        <FILE id="gDsAjW" name="SecondOrderDifference.h" compile="0" resource="0"
-              file="Source/Features/SecondOrderDifference.h"/>
-        <FILE id="LyrZT8" name="ZeroCrossingRate.cpp" compile="1" resource="0"
-              file="Source/Features/ZeroCrossingRate.cpp"/>
-        <FILE id="qwbdyH" name="ZeroCrossingRate.h" compile="0" resource="0"
-              file="Source/Features/ZeroCrossingRate.h"/>
+        <FILE id="iEFTSS" name="MyoData.h" compile="0" resource="0" file="Source/Myo/MyoData.h"/>
+        <FILE id="ufeoPh" name="MyoListener.cpp" compile="1" resource="0" file="Source/Myo/MyoListener.cpp"/>
+        <FILE id="j7yzwl" name="MyoListener.h" compile="0" resource="0" file="Source/Myo/MyoListener.h"/>
+        <FILE id="JvWMSU" name="MyoManager.cpp" compile="1" resource="0" file="Source/Myo/MyoManager.cpp"/>
+        <FILE id="CMrxZQ" name="MyoManager.h" compile="0" resource="0" file="Source/Myo/MyoManager.h"/>
       </GROUP>
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
+        <FILE id="XWiJgH" name="Roboto-Medium.ttf" compile="0" resource="1"
+              file="Source/Utility/Roboto-Medium.ttf"/>
+        <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>
       </GROUP>
-      <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="MenuBar">
-        <FILE id="YCq08E" name="OscSettingsWindow.cpp" compile="1" resource="0"
-              file="Source/OscSettingsWindow.cpp"/>
-        <FILE id="UHa4pE" name="OscSettingsWindow.h" compile="0" resource="0"
-              file="Source/OscSettingsWindow.h"/>
-        <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
-              file="Source/AboutWindowContent.cpp"/>
-        <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"
-              file="Source/AboutWindowContent.h"/>
-        <FILE id="jmv4gh" name="HelpWindow.cpp" compile="1" resource="0" file="Source/HelpWindow.cpp"/>
-        <FILE id="DKaHIH" name="HelpWindow.h" compile="0" resource="0" file="Source/HelpWindow.h"/>
-        <FILE id="Oedd8x" name="AboutWindow.cpp" compile="1" resource="0" file="Source/AboutWindow.cpp"/>
-        <FILE id="hn6pYz" name="AboutWindow.h" compile="0" resource="0" file="Source/AboutWindow.h"/>
+      <GROUP id="{4AF52558-3327-10F9-BED0-547457225CB8}" name="UI">
+        <FILE id="p4ljyI" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/Utility/MyoMapperLookAndFeel.cpp"/>
+        <FILE id="J84YTa" name="MyoMapperLookAndFeel.h" compile="0" resource="0"
+              file="Source/Utility/MyoMapperLookAndFeel.h"/>
+        <FILE id="uLRebw" name="OscValueTreeItem.cpp" compile="1" resource="0"
+              file="Source/Utility/OscValueTreeItem.cpp"/>
+        <FILE id="rA4clq" name="OscValueTreeItem.h" compile="0" resource="0"
+              file="Source/Utility/OscValueTreeItem.h"/>
+      </GROUP>
+      <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="Windows">
+        <GROUP id="{E0179DF0-0E30-5370-B33E-35764F717E47}" name="Panels">
+          <FILE id="bkctpE" name="Orientation.cpp" compile="1" resource="0" file="Source/Orientation.cpp"/>
+          <FILE id="cEBa54" name="Orientation.h" compile="0" resource="0" file="Source/Orientation.h"/>
+          <FILE id="BDIoaP" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
+          <FILE id="ptKlKy" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
+        </GROUP>
+        <FILE id="NxmLWF" name="WindowList.cpp" compile="1" resource="0" file="Source/Windows/WindowList.cpp"/>
+        <FILE id="ekIkit" name="WindowList.h" compile="0" resource="0" file="Source/Windows/WindowList.h"/>
+        <FILE id="wWLOUy" name="WindowDrawer.cpp" compile="1" resource="0"
+              file="Source/Windows/WindowDrawer.cpp"/>
+        <FILE id="WxTN0a" name="WindowDrawer.h" compile="0" resource="0" file="Source/Windows/WindowDrawer.h"/>
+        <FILE id="Ysd86j" name="SettingsWindow.cpp" compile="1" resource="0"
+              file="Source/Windows/SettingsWindow.cpp"/>
+        <FILE id="JcIkoU" name="SettingsWindow.h" compile="0" resource="0"
+              file="Source/Windows/SettingsWindow.h"/>
+        <FILE id="wxMnHw" name="VisualsWindow.cpp" compile="1" resource="0"
+              file="Source/Windows/VisualsWindow.cpp"/>
+        <FILE id="PjttkR" name="VisualsWindow.h" compile="0" resource="0" file="Source/Windows/VisualsWindow.h"/>
+        <FILE id="nTA1tB" name="DataSelectorWindow.cpp" compile="1" resource="0"
+              file="Source/Windows/DataSelectorWindow.cpp"/>
+        <FILE id="q5YPm0" name="DataSelectorWindow.h" compile="0" resource="0"
+              file="Source/Windows/DataSelectorWindow.h"/>
+        <FILE id="f7bNA7" name="AboutWindowContent.cpp" compile="1" resource="0"
+              file="Source/Windows/AboutWindowContent.cpp"/>
+        <FILE id="rIDZto" name="AboutWindowContent.h" compile="0" resource="0"
+              file="Source/Windows/AboutWindowContent.h"/>
+        <FILE id="cI15VJ" name="HelpWindow.cpp" compile="1" resource="0" file="Source/Windows/HelpWindow.cpp"/>
+        <FILE id="u1cEmi" name="HelpWindow.h" compile="0" resource="0" file="Source/Windows/HelpWindow.h"/>
       </GROUP>
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-      <FILE id="Vath7r" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
-      <FILE id="YVM1So" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="Ot6Nk3" name="Settings.cpp" compile="1" resource="0" file="Source/Settings.cpp"/>
-      <FILE id="h8i1pe" name="Settings.h" compile="0" resource="0" file="Source/Settings.h"/>
-      <FILE id="bkctpE" name="Orientation.cpp" compile="1" resource="0" file="Source/Orientation.cpp"/>
-      <FILE id="cEBa54" name="Orientation.h" compile="0" resource="0" file="Source/Orientation.h"/>
-      <FILE id="BDIoaP" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
-      <FILE id="ptKlKy" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
+      <FILE id="eNRTqH" name="CommandIDs.h" compile="0" resource="0" file="Source/Utility/CommandIDs.h"/>
+      <FILE id="DYDlAi" name="Application.cpp" compile="1" resource="0" file="Source/Application.cpp"/>
+      <FILE id="vTYesi" name="Application.h" compile="0" resource="0" file="Source/Application.h"/>
+      <FILE id="lRkxqB" name="OSC.cpp" compile="1" resource="0" file="Source/OSC.cpp"/>
+      <FILE id="TOvZW6" name="OSC.h" compile="0" resource="0" file="Source/OSC.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="" extraLinkerFlags=""
                extraCompilerFlags="" extraFrameworks="myo" smallIcon="WFoxze"
                bigIcon="WFoxze" postbuildCommand="dst=${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Frameworks&#10;mkdir -p &quot;${dst}&quot;"
-               vst3Folder="" rtasFolder="" aaxFolder="">
+               vst3Folder="" rtasFolder="" aaxFolder="" documentExtensions=".mapper">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;, LD_RUNPATH_SEARCH_PATHS=&quot;@loader_path/../Frameworks&quot;"/>
+                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;, LD_RUNPATH_SEARCH_PATHS=&quot;@loader_path/../Frameworks&quot;"
+                       enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;"/>
+                       customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;"
+                       enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../../Applications/JUCE/modules"/>
@@ -123,9 +126,11 @@
             externalLibraries="myo32.lib&#10;myo64.lib">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="Myo Mapper"/>
+                       isDebug="1" optimisation="1" targetName="Myo Mapper" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="3" targetName="Myo Mapper"/>
+                       isDebug="0" optimisation="3" targetName="Myo Mapper" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0" linkTimeOptimisation="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_osc" path="C:\Program Files\JUCE\modules"/>

@@ -2,78 +2,54 @@
 
 Orientation::Orientation()
 {
+    setColour (Label::textColourId, Colours::black);
+    titleLabel.setJustificationType (Justification::centredTop);
+    titleLabel.setText ("Orientation", dontSendNotification);
+    addAndMakeVisible (titleLabel);
+    
     addAndMakeVisible (rescaleYaw);
     addAndMakeVisible (rescalePitch);
     addAndMakeVisible (rescaleRoll);
-    rescaleYaw.setLabelWidget ("Yaw");
-    rescalePitch.setLabelWidget ("Pitch");
-    rescaleRoll.setLabelWidget ("Roll");
-    rescaleYaw.setTargetValue (0.5);
-    rescalePitch.setTargetValue (0.5);
-    rescaleRoll.setTargetValue (0.5);
+    rescaleYaw.setLabelTitle ("Yaw");
+    rescalePitch.setLabelTitle ("Pitch");
+    rescaleRoll.setLabelTitle ("Roll");
 }
 
 void Orientation::paint (juce::Graphics &g)
 {
-    g.fillAll (Colours::lightgrey);
-    g.setColour (Colours::grey);
-    g.drawRoundedRectangle (0, 0, getWidth(), getHeight(), 5, 5);
-    g.setColour (Colours::black);
-    g.setFont (getHeight() * 0.06);
-    g.drawText ("Orientation", getLocalBounds(), Justification::centredTop, true);
+    auto area = getLocalBounds();
+    auto cornerAndRoundness = area.getHeight() * 0.013;
+    g.fillAll (Colour::fromRGB (245, 245, 245));
 }
 
 void Orientation::resized()
 {
-    rescaleYaw.setBounds (10, getHeight() * 0.07, getRight() - 30, getHeight() * 0.29);
-    rescalePitch.setBounds (rescaleYaw.getX(), rescaleYaw.getBottom() + 7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
-    rescaleRoll.setBounds (rescaleYaw.getX(), rescalePitch.getBottom() + 7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
+    auto area = getLocalBounds();
+    titleLabel.setBounds (area.removeFromTop (proportionOfHeight (0.1)));
+    auto scaleArea = area;
+    rescaleYaw.setBounds (area.removeFromTop (proportionOfHeight (0.285))
+                          .reduced (scaleArea.proportionOfHeight (0.024), 0));
+    area.removeFromTop (scaleArea.proportionOfHeight (0.015));
+    rescalePitch.setBounds (area.removeFromTop (proportionOfHeight (0.285))
+                            .reduced (scaleArea.proportionOfHeight (0.024), 0));
+    area.removeFromTop (scaleArea.proportionOfHeight (0.015));
+    rescaleRoll.setBounds (area.removeFromTop (proportionOfHeight (0.285))
+                           .reduced (scaleArea.proportionOfHeight (0.024), 0));
 }
 
-void Orientation::setValues (Vector3D<float> Orientation)
+void Orientation::setValues (Vector3D<float> Orientation, Vector3D<float> OrientationRaw)
 {
-    rescaleYaw.setValue (Orientation.x);
-    rescalePitch.setValue (Orientation.y);
-    rescaleRoll.setValue (Orientation.z);
+    rescaleYaw.setValue (Orientation.x, OrientationRaw.x);
+    rescalePitch.setValue (Orientation.y, OrientationRaw.y);
+    rescaleRoll.setValue (Orientation.z, OrientationRaw.z);
 }
 
 Vector3D<float> Orientation::getValue()
 {
-    orientationScaled.x = rescaleYaw.getValue();
-    orientationScaled.y = rescalePitch.getValue();
-    orientationScaled.z = rescaleRoll.getValue();
-    
     return orientationScaled;
 }
 
-Vector3D<float> Orientation::getFod(){
-    
-    orientationFod.set3DValue (orientationScaled);
-    return orientationFod.get3DValue();
-}
-
-Vector3D<float> Orientation::getSod(){
-    
-    orientationSod.set3DValue (orientationScaled);
-    return orientationSod.get3DValue();
-}
-
-
-float Orientation::getYaw()
-{
-    return rescaleYaw.getValue();
-}
-
-float Orientation::getPitch()
-{
-    return rescalePitch.getValue();
-}
-
-float Orientation::getRoll()
-{
-    return rescaleRoll.getValue();
-}
-
+/*
 // Recal functions from OSC data in input
 void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
 {
@@ -83,13 +59,7 @@ void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
             switch (Action)
             {
                 case 1:
-                    rescaleYaw.setCalibrate(); break;
-//                case 2:
-//                    rescaleYaw.setMin(Value); break;
-//                case 3:
-//                    rescaleYaw.setMax(Value); break;
-//                case 4:
-//                    rescaleYaw.setReverse(ReverseStatus); break;
+//                    rescaleYaw.setCalibrate(); break;
                 default:
                     break;
             }
@@ -98,7 +68,7 @@ void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
             switch (Action)
             {
                 case 1:
-                    rescalePitch.setCalibrate(); break;
+//                    rescalePitch.setCalibrate(); break;
 //                case 2:
 //                    rescalePitch.setMin(Value); break;
 //                case 3:
@@ -113,7 +83,7 @@ void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
             switch (Action)
             {
                 case 1:
-                    rescaleRoll.setCalibrate(); break;
+//                    rescaleRoll.setCalibrate(); break;
 //                case 2:
 //                    rescaleRoll.setMin(Value); break;
 //                case 3:
@@ -127,4 +97,4 @@ void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
             break;
     }
 }
-
+*/

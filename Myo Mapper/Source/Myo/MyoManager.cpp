@@ -16,14 +16,13 @@ MyoManager::~MyoManager()
 
 bool MyoManager::connect()
 {
-    disconnect();
     bool isConnected = false;
     
     try
     {
-        if ((hub = new myo::Hub ("com.yourcompany.MyoMapper")))
+        hub = new myo::Hub ("com.balandino.MyoMapper");
+        if (hub != nullptr)
         {
-            std::cout << "Attempting to find a Myo..." << std::endl;
             myo = hub->waitForMyo (10000);
             listener.knownMyos.push_back (myo);
             myo->setStreamEmg (myo::Myo::streamEmgEnabled);
@@ -32,29 +31,30 @@ bool MyoManager::connect()
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
-        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                          "Error",
-                                          e.what(),
-                                          "OK");
+        String myoMessage = e.what();
+        AlertWindow::showMessageBox (AlertWindow::WarningIcon,
+                                     "Error",
+                                     myoMessage + " Myo Mapper will now close. " +
+                                     "\n" + "Please relaunch Myo Mapper with Myo Connect open.");
         
+        JUCEApplicationBase::quit();
     }
-    
-    if (myo)
+    if (hub != nullptr)
     {
-        hub->addListener (&listener);
+        if (myo != nullptr)
+        {
+            hub->addListener (&listener);
+        }
+        else
+        {
+            disconnect();
+            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                              "Myo not found",
+                                              "Please, conncect the Myo armband and relaunch Myo Mapper.",
+                                              "OK");
+            
+        }
     }
-    else
-    {
-        std::cerr << "Error: Myo not found" << std::endl;
-        disconnect();
-        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                          "Myo not found",
-                                          "Please, conncect the Myo armband and relaunch Myo Mapper.",
-                                          "OK");
-        
-    }
-
     return isConnected;
 }
 
@@ -90,6 +90,10 @@ std::vector<MyoData> MyoManager::getMyoData (bool &success) const
 
 void MyoManager::disconnect()
 {
+    if (myo != nullptr)
+    {
+        myo->lock();
+    }
     myo = nullptr;
     
     if (!hub)
@@ -113,12 +117,18 @@ void MyoManager::stopPoll()
     stopThread (1000);
 }
 
-void MyoManager::vibrate (String VibrationType, bool State)
+void MyoManager::vibrate (String VibrationType)
 {
-    if (VibrationType == "long" && State==true)
+    if (VibrationType == "long")
+    {
         myo->vibrate (myo::Myo::vibrationLong);
-    if (VibrationType == "medium" && State==true)
+    }
+    if (VibrationType == "medium")
+    {
         myo->vibrate (myo::Myo::vibrationMedium);
-    if (VibrationType == "short" && State==true)
+    }
+    if (VibrationType == "short")
+    {
         myo->vibrate (myo::Myo::vibrationShort);
+    }
 }

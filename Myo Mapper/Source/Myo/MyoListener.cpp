@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "../Application.h"
+
 // Classes that inherit from myo::DeviceListener can be used to receive events from Myo devices. DeviceListener
 // provides several virtual functions for handling different kinds of events. If you do not override an event, the
 // default behavior is to do nothing.
@@ -84,6 +86,32 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     yaw = atan2 (2.0f * (quat.w() * quat.z() + quat.x() * quat.y()),
                  1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
     
+    auto tree = MyoMapperApplication::getApp().getSettingsTree();
+    auto yawTree = tree.getChildWithName("DataScaling").getChildWithName ("YawScaling");
+    auto pitchTree = tree.getChildWithName("DataScaling").getChildWithName ("PitchScaling");
+    auto rollTree = tree.getChildWithName("DataScaling").getChildWithName ("RollScaling");
+        
+    yawScaler.setValue (yaw,
+                        yawTree.getProperty ("inMin"),
+                        yawTree.getProperty ("inMax"),
+                        yawTree.getProperty ("outMin"),
+                        yawTree.getProperty ("outMax"),
+                        yawTree.getProperty ("reverse"),
+                        yawTree.getProperty ("offset"));
+    pitchScaler.setValue (pitch,
+                          pitchTree.getProperty ("inMin"),
+                          pitchTree.getProperty ("inMax"),
+                          pitchTree.getProperty ("outMin"),
+                          pitchTree.getProperty ("outMax"),
+                          pitchTree.getProperty ("reverse"),
+                          pitchTree.getProperty ("offset"));
+    rollScaler.setValue (roll,
+                         rollTree.getProperty ("inMin"),
+                         rollTree.getProperty ("inMax"),
+                         rollTree.getProperty ("outMin"),
+                         rollTree.getProperty ("outMax"),
+                         rollTree.getProperty ("reverse"),
+                         rollTree.getProperty ("offset"));
     
     int myoID = getMyoID(myo);
     if (myoID == -1)
@@ -96,6 +124,16 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     myoData[myoID].quaternion[1] = quat.y();
     myoData[myoID].quaternion[2] = quat.z();
     myoData[myoID].quaternion[3] = quat.w();
+    myoData[myoID].orientationScaled.x = yawScaler.getValue();
+    myoData[myoID].orientationScaled.y = pitchScaler.getValue();
+    myoData[myoID].orientationScaled.z = rollScaler.getValue();
+    orFod.set3DValue(myoData[myoID].orientationScaled);
+    myoData[myoID].orientationScaledFod = orFod.get3DValue();
+    orSod.set3DValue(myoData[myoID].orientationScaled);
+    myoData[myoID].orientationScaledFod = orSod.get3DValue();
+    
+  //  myoData[myoID].orientationScaledFod = visuals->getOrientationPanel().getFod();
+  //  myoData[myoID].orientationScaledSod = visuals->getOrientationPanel().getSod();
 }
 
 void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &accel)
@@ -107,7 +145,7 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
     myoData[myoID].acc.y = accel.y();
     myoData[myoID].acc.z = accel.z();
 
-    scaleAcc.setScale(myoData[myoID].acc, 16, 0.03125);
+    scaleAcc.setScale (myoData[myoID].acc, 16, 0.03125);
     myoData[myoID].accScaled = scaleAcc.getScaledVector3D();
        
     accFod.set3DValue (myoData[myoID].acc);
@@ -116,7 +154,7 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
     accScaledFod.set3DValue (myoData[myoID].accScaled);
     myoData[myoID].accScaledFod = accScaledFod.get3DValue();
     
-    accScaledFodMavg.setValue(myoData[myoID].accScaledFod, 10);
+    accScaledFodMavg.setValue (myoData[myoID].accScaledFod, 10);
     myoData[myoID].accScaledFodMavg = accScaledFodMavg.getVector3D();
 }
 
@@ -129,10 +167,10 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     myoData[myoID].gyro.y = gyro.y();
     myoData[myoID].gyro.z = gyro.z();
 
-    scaleGyro.setScale(myoData[myoID].gyro, 2000, 0.00025);
+    scaleGyro.setScale (myoData[myoID].gyro, 2000, 0.00025);
     myoData[myoID].gyroScaled = scaleGyro.getScaledVector3D();
    
-    scaleGyro.setAbs(myoData[myoID].gyroScaled, 1);
+    scaleGyro.setAbs (myoData[myoID].gyroScaled, 1);
     myoData[myoID].gyroScaledAbs = scaleGyro.getAbsVector3D();
     
     gyroFod.set3DValue (myoData[myoID].gyroScaled);
@@ -141,11 +179,8 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     gyroScaledFod.set3DValue (myoData[myoID].gyroScaled);
     myoData[myoID].gyroScaledFod = gyroScaledFod.get3DValue();
     
-    gyroScaledFodMavg.setValue(myoData[myoID].gyroScaledFod, 10);
+    gyroScaledFodMavg.setValue (myoData[myoID].gyroScaledFod, 10);
     myoData[myoID].gyroScaledFodMavg = gyroScaledFodMavg.getVector3D();
-    
-    gyroZeroCross.setValue(myoData[myoID].gyro, 50);
-    myoData[myoID].gyroZeroCross = gyroZeroCross.getVector();
 }
 
 
@@ -153,15 +188,15 @@ void MyoListener::onPose (myo::Myo* myo, uint64_t timestamp, myo::Pose pose)
 {
     int poseID = 0;
     int myoID = getMyoID(myo);
-    if(myoID == -1) return;
+    if (myoID == -1) return;
   
-    if(pose==myo::Pose::unknown) poseID = -1;
-    if(pose==myo::Pose::rest) poseID = 0;
-    if(pose==myo::Pose::fist) poseID = 1;
-    if(pose==myo::Pose::fingersSpread) poseID = 2;
-    if(pose==myo::Pose::waveIn) poseID = 3;
-    if(pose==myo::Pose::waveOut) poseID = 4;
-    if(pose==myo::Pose::doubleTap) poseID = 5;
+    if (pose==myo::Pose::unknown) poseID = -1;
+    if (pose==myo::Pose::rest) poseID = 0;
+    if (pose==myo::Pose::fist) poseID = 1;
+    if (pose==myo::Pose::fingersSpread) poseID = 2;
+    if (pose==myo::Pose::waveIn) poseID = 3;
+    if (pose==myo::Pose::waveOut) poseID = 4;
+    if (pose==myo::Pose::doubleTap) poseID = 5;
 
     myoData[myoID].pose = pose.toString();
     myoData[myoID].poseID = poseID;
@@ -182,60 +217,63 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
     myoData[myoID].ID = myoID;
     if (myoID == -1) return;
     
-    
     emgSum = 0; // reset value for AVG
     
     for (size_t i = 0; i < 8; ++i)
     {
-        myoData[myoID].emgRaw[i] = emg[i];
+        auto tree = MyoMapperApplication::getApp().getDataTree();
         
-        emgRawMavg[i].setValue(myoData[myoID].emgRaw[i], 10);
+        myoData[myoID].emgRaw[i] = emg[i];
+        emgRawMavg[i].setValue (myoData[myoID].emgRaw[i],
+                               tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawMavg").getProperty ("sampleSize"));
         myoData[myoID].emgRawMavg[i] = emgRawMavg[i].getInt();
         
-        scaleEMG[i].setScale(emg[i], 127, 0.003921568627);
+        scaleEMG[i].setScale (emg[i], 127, 0.003921568627);
         myoData[myoID].emgScaled[i] = scaleEMG[i].getScaledFloat();
         
-        emgZeroCross[i].setValue(emg[i], 200);
+        emgZeroCross[i].setValue (emg[i], 200);
         myoData[myoID].emgZeroCross[i] = emgZeroCross[i].getInt();
         
-        emgZeroCrossMavg[i].setValue(myoData[myoID].emgZeroCross[i], 10);
+        emgZeroCrossMavg[i].setValue (myoData[myoID].emgZeroCross[i],
+                                     tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getProperty ("sampleSize"));
         myoData[myoID].emgZeroCrossMavg[i] =  emgZeroCrossMavg[i].getInt();
         
-        scaleEMG[i].setAbs(myoData[myoID].emgScaled[i], 1);
+        scaleEMG[i].setAbs (myoData[myoID].emgScaled[i], 1);
         myoData[myoID].emgScaledAbs[i] = scaleEMG[i].getFloatAbs();
         
-        emgScaledAbsFob[i].setValue(myoData[myoID].emgScaled[i]);
-        myoData[myoID].emgScaledAbsFob[i] = emgScaledAbsFob[i].getValue();
+        emgScaledAbsFod[i].setValue (myoData[myoID].emgScaled[i]);
+        myoData[myoID].emgScaledAbsFod[i] = emgScaledAbsFod[i].getValue();
         
-        emgScaledAbsFobMavg[i].setValue(myoData[myoID].emgScaledAbsFob[i], 10);
-        myoData[myoID].emgScaledAbsFobMavg[i] = emgScaledAbsFobMavg[i].getFloat();
+        emgScaledAbsFodMavg[i].setValue (myoData[myoID].emgScaledAbsFod[i],
+                                    tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsFod").getChildWithName("EmgScaledAbsFodMavg").getProperty ("sampleSize"));
+        myoData[myoID].emgScaledAbsFodMavg[i] = emgScaledAbsFodMavg[i].getFloat();
         
-        emgMavg[i].setValue(myoData[myoID].emgScaledAbs[i], 10);
+        emgMavg[i].setValue (myoData[myoID].emgScaledAbs[i], tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMavg").getProperty ("sampleSize"));
         myoData[myoID].emgScaledAbsMavg[i] = emgMavg[i].getFloat();
         
-        emgMinMax[i].setValues(myoData[myoID].emgScaledAbs[i], 200); // window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
+        // Question
+        emgMinMax[i].setValues (myoData[myoID].emgScaledAbs[i], 200); // window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
         myoData[myoID].emgScaledAbsMin[i] = emgMinMax[i].getMin();
         myoData[myoID].emgScaledAbsMax[i] = emgMinMax[i].getMax();
         
-        
-        emgMavMinMax.setValues(myoData[myoID].emgMav, 200);// window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
+        // Question
+        emgMavMinMax.setValues (myoData[myoID].emgMav, 200);// window is set to 200 to calculate the min and max over a second. emg data are streamed at a sample rate of 200Hz
         myoData[myoID].emgMavMin = emgMavMinMax.getMin();
         myoData[myoID].emgMavMax = emgMavMinMax.getMax();
-
     }
     
-    emgMav.setValue(myoData[myoID].emgScaledAbs);
+    emgMav.setValue (myoData[myoID].emgScaledAbs);
     myoData[myoID].emgMav = emgMav.getValue();
-
-    emgMavMavg.setValue(myoData[myoID].emgMav, 10);
+    
+    emgMavMavg.setValue (myoData[myoID].emgMav, 10);
     myoData[myoID].emgMavMavg = emgMavMavg.getFloat();
     
     emgMavFod.setValue (myoData[myoID].emgMav);
     myoData[myoID].mavFod = emgMavFod.getValue();
     
-    emgMavFodMavg.setValue(myoData[myoID].mavFod, 10);
+    emgMavFodMavg.setValue (myoData[myoID].mavFod, 10);
     myoData[myoID].mavFodMavg = emgMavFodMavg.getFloat();
-   
+    
     emgMavSod.setValue (myoData[myoID].emgMav);
     myoData[myoID].mavSod = emgMavSod.getValue();
 }

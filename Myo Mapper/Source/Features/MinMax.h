@@ -5,8 +5,8 @@ class MinMax
 {
 public:
     
-    void setValues(float Values, int bufferSize);
-    void setValues(Vector3D<float> Values, int bufferSize);
+    void setValues (float Values, int bufferSize);
+    void setValues (Vector3D<float> Values, int bufferSize);
     float getMin();
     float getMax();
     Vector3D<float> getMin3D();

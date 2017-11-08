@@ -2,20 +2,23 @@
 
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Myo Mapper\Source\OSC">
-      <UniqueIdentifier>{472BD08A-6F04-7F99-BFD6-85D9C6CC7EF7}</UniqueIdentifier>
+    <Filter Include="Myo Mapper\Source\Features">
+      <UniqueIdentifier>{C7944608-A55D-9BC8-5556-8FAA999C2937}</UniqueIdentifier>
     </Filter>
     <Filter Include="Myo Mapper\Source\Myo">
       <UniqueIdentifier>{47829F43-28E0-7E37-F2C1-387A2A13B617}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Myo Mapper\Source\Features">
-      <UniqueIdentifier>{C7944608-A55D-9BC8-5556-8FAA999C2937}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Myo Mapper\Source\Resources">
       <UniqueIdentifier>{813689DA-F49E-6D7D-1EB4-89943506DF7E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Myo Mapper\Source\MenuBar">
-      <UniqueIdentifier>{96CC7397-9239-10AF-C33D-5930088CFFC5}</UniqueIdentifier>
+    <Filter Include="Myo Mapper\Source\UI">
+      <UniqueIdentifier>{57A13DA9-3E9A-9757-3A4A-998034C828C2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Myo Mapper\Source\Windows\Panels">
+      <UniqueIdentifier>{DB503FC2-272C-9B77-D211-EB0B81BF304A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Myo Mapper\Source\Windows">
+      <UniqueIdentifier>{D0FDF861-AD88-9C73-55B2-8244AF04A0A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Myo Mapper\Source">
       <UniqueIdentifier>{EC71C6D6-89BD-5883-9D66-53542463DA0B}</UniqueIdentifier>
@@ -247,46 +250,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\OSC\AccOscSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\EmgOscSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\GyroOscSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\OrOscSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\OSC.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\OSCsettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\OSC\OSCstreamingSettings.cpp">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Myo\MyoListener.cpp">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Myo\MyoManager.cpp">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Features\Mav.cpp">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Features\minMax.cpp">
+    <ClCompile Include="..\..\Source\Features\MinMax.cpp">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Features\MovingAverage.cpp">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Features\rescale.cpp">
+    <ClCompile Include="..\..\Source\Features\OrScaling.cpp">
+      <Filter>Myo Mapper\Source\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Features\Rescale.cpp">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Features\ScaleValues.cpp">
@@ -298,31 +277,52 @@
     <ClCompile Include="..\..\Source\Features\ZeroCrossingRate.cpp">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\OscSettingsWindow.cpp">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+    <ClCompile Include="..\..\Source\Myo\MyoListener.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\AboutWindowContent.cpp">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+    <ClCompile Include="..\..\Source\Myo\MyoManager.cpp">
+      <Filter>Myo Mapper\Source\Myo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\HelpWindow.cpp">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+    <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
+      <Filter>Myo Mapper\Source\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\AboutWindow.cpp">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+    <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp">
+      <Filter>Myo Mapper\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Orientation.cpp">
+      <Filter>Myo Mapper\Source\Windows\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Pose.cpp">
+      <Filter>Myo Mapper\Source\Windows\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\WindowList.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\SettingsWindow.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\VisualsWindow.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\DataSelectorWindow.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\AboutWindowContent.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\HelpWindow.cpp">
+      <Filter>Myo Mapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>Myo Mapper\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\MainComponent.cpp">
+    <ClCompile Include="..\..\Source\Application.cpp">
       <Filter>Myo Mapper\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Settings.cpp">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Orientation.cpp">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Pose.cpp">
+    <ClCompile Include="..\..\Source\OSC.cpp">
       <Filter>Myo Mapper\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.cpp">
@@ -1468,6 +1468,9 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\misc\juce_PreferencesPanel.cpp">
       <Filter>Juce Modules\juce_gui_extra\misc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\misc\juce_PushNotifications.cpp">
+      <Filter>Juce Modules\juce_gui_extra\misc</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\misc\juce_RecentlyOpenedFilesList.cpp">
       <Filter>Juce Modules\juce_gui_extra\misc</Filter>
     </ClCompile>
@@ -1477,7 +1480,13 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\misc\juce_SystemTrayIconComponent.cpp">
       <Filter>Juce Modules\juce_gui_extra\misc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\native\juce_android_PushNotifications.cpp">
+      <Filter>Juce Modules\juce_gui_extra\native</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\native\juce_android_WebBrowserComponent.cpp">
+      <Filter>Juce Modules\juce_gui_extra\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\native\juce_ios_PushNotifications.cpp">
       <Filter>Juce Modules\juce_gui_extra\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\native\juce_ios_UIViewComponent.mm">
@@ -1608,39 +1617,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\OSC\AccOscSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\EmgOscSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\GyroOscSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\OrOscSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\OSC.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\OscDataSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\OSCsettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OSC\OSCstreamingSettings.h">
-      <Filter>Myo Mapper\Source\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Myo\MyoData.h">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Myo\MyoListener.h">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Myo\MyoManager.h">
-      <Filter>Myo Mapper\Source\Myo</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Features\FirstOrderDifference.h">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClInclude>
@@ -1651,6 +1627,9 @@
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Features\MovingAverage.h">
+      <Filter>Myo Mapper\Source\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Features\OrScaling.h">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Features\Rescale.h">
@@ -1665,28 +1644,55 @@
     <ClInclude Include="..\..\Source\Features\ZeroCrossingRate.h">
       <Filter>Myo Mapper\Source\Features</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\OscSettingsWindow.h">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+    <ClInclude Include="..\..\Source\Myo\MyoData.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\AboutWindowContent.h">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+    <ClInclude Include="..\..\Source\Myo\MyoListener.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\HelpWindow.h">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+    <ClInclude Include="..\..\Source\Myo\MyoManager.h">
+      <Filter>Myo Mapper\Source\Myo</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\AboutWindow.h">
-      <Filter>Myo Mapper\Source\MenuBar</Filter>
+    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
+      <Filter>Myo Mapper\Source\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\MainComponent.h">
-      <Filter>Myo Mapper\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Settings.h">
-      <Filter>Myo Mapper\Source</Filter>
+    <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h">
+      <Filter>Myo Mapper\Source\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Orientation.h">
-      <Filter>Myo Mapper\Source</Filter>
+      <Filter>Myo Mapper\Source\Windows\Panels</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Pose.h">
+      <Filter>Myo Mapper\Source\Windows\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\WindowList.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\WindowDrawer.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\SettingsWindow.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\VisualsWindow.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\DataSelectorWindow.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\AboutWindowContent.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\HelpWindow.h">
+      <Filter>Myo Mapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
+      <Filter>Myo Mapper\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Application.h">
+      <Filter>Myo Mapper\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\OSC.h">
       <Filter>Myo Mapper\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.h">
@@ -2082,7 +2088,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\juce_core.h">
       <Filter>Juce Modules\juce_core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_core\juce_core.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_core\juce_core.h">
       <Filter>Juce Modules\juce_core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_data_structures\app_properties\juce_ApplicationProperties.h">
@@ -2112,7 +2118,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_data_structures\juce_data_structures.h">
       <Filter>Juce Modules\juce_data_structures</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_data_structures\juce_data_structures.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_data_structures\juce_data_structures.h">
       <Filter>Juce Modules\juce_data_structures</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\broadcasters\juce_ActionBroadcaster.h">
@@ -2187,7 +2193,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\juce_events.h">
       <Filter>Juce Modules\juce_events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_events\juce_events.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_events\juce_events.h">
       <Filter>Juce Modules\juce_events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_graphics\colour\juce_Colour.h">
@@ -2361,7 +2367,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_graphics\juce_graphics.h">
       <Filter>Juce Modules\juce_graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_graphics\juce_graphics.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_graphics\juce_graphics.h">
       <Filter>Juce Modules\juce_graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\application\juce_Application.h">
@@ -2769,7 +2775,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\juce_gui_basics.h">
       <Filter>Juce Modules\juce_gui_basics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_basics\juce_gui_basics.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_basics\juce_gui_basics.h">
       <Filter>Juce Modules\juce_gui_basics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\code_editor\juce_CodeDocument.h">
@@ -2829,6 +2835,9 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\misc\juce_PreferencesPanel.h">
       <Filter>Juce Modules\juce_gui_extra\misc</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\misc\juce_PushNotifications.h">
+      <Filter>Juce Modules\juce_gui_extra\misc</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\misc\juce_RecentlyOpenedFilesList.h">
       <Filter>Juce Modules\juce_gui_extra\misc</Filter>
     </ClInclude>
@@ -2847,7 +2856,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>Juce Modules\juce_gui_extra</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>Juce Modules\juce_gui_extra</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_opengl\geometry\juce_Draggable3DOrientation.h">
@@ -2916,7 +2925,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_opengl\juce_opengl.h">
       <Filter>Juce Modules\juce_opengl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_opengl\juce_opengl.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_opengl\juce_opengl.h">
       <Filter>Juce Modules\juce_opengl</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_osc\osc\juce_OSCAddress.h">
@@ -2946,7 +2955,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_osc\juce_osc.h">
       <Filter>Juce Modules\juce_osc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Applications\JUCE\modules\juce_osc\juce_osc.h">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Applications\JUCE\modules\juce_osc\juce_osc.h">
       <Filter>Juce Modules\juce_osc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
@@ -2961,6 +2970,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Resources\icon.png">
+      <Filter>Myo Mapper\Source\Resources</Filter>
+    </None>
+    <None Include="..\..\Source\Utility\Roboto-Medium.ttf">
+      <Filter>Myo Mapper\Source\Resources</Filter>
+    </None>
+    <None Include="..\..\Source\Utility\Roboto-Thin.ttf">
       <Filter>Myo Mapper\Source\Resources</Filter>
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt">

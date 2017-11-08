@@ -5,9 +5,10 @@
 #include "Features/Rescale.h"
 #include "Features/FirstOrderDifference.h"
 #include "Features/SecondOrderDifference.h"
+#include "Utility/MyoMapperLookAndFeel.h"
 
 class Orientation   : public Component
-                        
+
 {
 public:
     Orientation();
@@ -16,18 +17,13 @@ public:
     
     void paint (Graphics& g) override;
     void resized() override;
-    void setValues (Vector3D<float>);
-   
-    Vector3D<float> getValue();
-    Vector3D<float> getFod(); // Fod = First order difference
-    Vector3D<float> getSod(); // Sod = Second order difference
-    float getYaw();
-    float getPitch();
-    float getRoll();
+    void setValues (Vector3D<float>, Vector3D<float>);
     
-    void map (int myoData, int Action, float Value, bool ReverseStatus);
-
+    Vector3D<float> getValue();
+    
 private:
+    
+    Label titleLabel;
     
     Rescale rescaleYaw;
     Rescale rescalePitch;
@@ -38,7 +34,7 @@ private:
     Vector3D<float> orientationScaled;
     Vector3D<float> FodScaled;
     Vector3D<float> SodScaled;
-
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Orientation)
 };
 

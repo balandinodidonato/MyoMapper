@@ -27,15 +27,14 @@ struct MyoData
     Vector3D<float> gyroFod;
     Vector3D<float> gyroScaledFod;
     Vector3D<float> gyroScaledFodMavg;
-    Vector3D<int> gyroZeroCross;
     
     std::array<int8_t, 8> emgRaw;
     std::array<int8_t, 8> emgRawMavg;
     std::array<float, 8> emgScaled;
     std::array<float, 8> emgScaledAbs;
     std::array<float, 8> emgScaledAbsMavg;
-    std::array<float, 8> emgScaledAbsFob;
-    std::array<float, 8> emgScaledAbsFobMavg;
+    std::array<float, 8> emgScaledAbsFod;
+    std::array<float, 8> emgScaledAbsFodMavg;
     std::array<int, 8> emgZeroCross;
     std::array<int, 8> emgZeroCrossMavg;
     std::array<float, 8> emgScaledAbsMin;

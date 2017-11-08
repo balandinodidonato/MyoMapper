@@ -8,9 +8,9 @@ class MovingAverage
 {
 public:
     
-    void setValue(int Value, int NSamplesAvg);
-    void setValue(float Value, int NSamplesAvg);
-    void setValue(Vector3D<float> Value3d, int NSamplesAvg);
+    void setValue (int Value, int NSamplesAvg);
+    void setValue (float Value, int NSamplesAvg);
+    void setValue (Vector3D<float> Value3d, int NSamplesAvg);
     
     int getInt();
     float getFloat();

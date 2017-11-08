@@ -10,6 +10,7 @@
 #include "../Features/ScaleValues.h"
 #include "../Features/ZeroCrossingRate.h"
 #include "../Features/MinMax.h"
+#include "../Features/OrScaling.h"
 
 class MyoListener : public myo::DeviceListener
 {
@@ -65,6 +66,13 @@ private:
     
     int numberOfMyos;
     
+    OrScaling yawScaler;
+    OrScaling pitchScaler;
+    OrScaling rollScaler;
+    FirstOrderDifference orFod;
+    FirstOrderDifference orSod;
+
+    
     ScaleValues scaleAcc;
     FirstOrderDifference accFod;
     FirstOrderDifference accScaledFod;
@@ -72,14 +80,13 @@ private:
 
     ScaleValues scaleGyro;
     FirstOrderDifference gyroFod;
-    ZeroCrossing gyroZeroCross;
     FirstOrderDifference gyroScaledFod;
     MovingAverage gyroScaledFodMavg;
 
     MovingAverage emgRawMavg[8];
     ScaleValues scaleEMG[8];
-    FirstOrderDifference emgScaledAbsFob[8];
-    MovingAverage emgScaledAbsFobMavg[8];
+    FirstOrderDifference emgScaledAbsFod[8];
+    MovingAverage emgScaledAbsFodMavg[8];
     ZeroCrossing emgZeroCross[8];
     MovingAverage emgZeroCrossMavg[8];
     MinMax emgMinMax[8];
