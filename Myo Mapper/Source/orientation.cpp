@@ -46,11 +46,11 @@ void Orientation::resized()
                            .reduced (scaleArea.proportionOfHeight (0.024), 0));
 }
 
-void Orientation::setValues (Vector3D<float> Orientation)
+void Orientation::setValues (Vector3D<float> orientation)
 {
-    rescaleYaw.setValue (Orientation.x, /* here goes the yaw raw value */);
-    rescalePitch.setValue (Orientation.y, /* here goes the pitch raw value */);
-    rescaleRoll.setValue (Orientation.z, /* here goes the roll raw value */);
+    rescaleYaw.setValue (orientation.x, /* here goes the yaw raw value */);
+    rescalePitch.setValue (orientation.y, /* here goes the pitch raw value */);
+    rescaleRoll.setValue (orientation.z, /* here goes the roll raw value */);
 }
 
 Vector3D<float> Orientation::getValue()
