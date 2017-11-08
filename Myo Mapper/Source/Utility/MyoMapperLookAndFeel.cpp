@@ -52,7 +52,7 @@ void MyoMapperLookAndFeel::drawLabel (Graphics& g, Label& label)
         
         const float alpha = label.isEnabled() ? 1.0f : 0.5f;
         Font font (getLabelFont (label));
-        font.setSizeAndStyle (textArea.getHeight(), Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
+        font.setSizeAndStyle (textArea.getHeight()*0.6, Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
         
         g.setColour (label.findColour (Label::textColourId).withMultipliedAlpha (alpha));
         g.setFont (font);
@@ -60,6 +60,9 @@ void MyoMapperLookAndFeel::drawLabel (Graphics& g, Label& label)
         g.drawFittedText (label.getText(), textArea, label.getJustificationType(),
                           jmax (1, (int) (textArea.getHeight() / font.getHeight())),
                           label.getMinimumHorizontalScale());
+        
+        label.setJustificationType(Justification::verticallyCentred);
+        label.setJustificationType(Justification::horizontallyCentred);
         
         g.setColour (label.findColour (Label::outlineColourId).withMultipliedAlpha (alpha));
     }

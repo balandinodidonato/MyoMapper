@@ -38,7 +38,12 @@ AboutWindowContent::AboutWindowContent ()
     hyperlinkButtonJeff->setButtonText (TRANS ("Jefferson Bledsoe"));
     hyperlinkButtonJeff->setFont (Font (20.0f, Font::plain), false);
 
-
+    addAndMakeVisible (hyperlinkButtonJamie = new HyperlinkButton (TRANS ((String)CharPointer_UTF8 ("\xc2\xa9") + "Jamie Bullock"),
+                                                                  URL ("https://jamiebullock.com")));
+    hyperlinkButtonJamie->setTooltip (TRANS ("JamieBullock\n"));
+    hyperlinkButtonJamie->setButtonText (TRANS ("Jamie Bullock"));
+    hyperlinkButtonJamie->setFont (Font (20.0f, Font::plain), false);
+    
     setSize (1000, 200);
 
     MemoryInputStream stream (BinaryData::icon_png, BinaryData::icon_pngSize, false);
@@ -61,15 +66,17 @@ void AboutWindowContent::paint (Graphics& g)
 
 void AboutWindowContent::resized()
 {
-    auto area = getLocalBounds().reduced (proportionOfWidth (0.2), 0);
+    auto area = getLocalBounds().reduced (proportionOfWidth (0.1), 0);
     auto winSize = area;
     appName->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.16)));
     version->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
-    image->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.4)));
-    area.removeFromTop (winSize.proportionOfHeight (0.04));
-    hyperlinkButton->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
-    hyperlinkButtonJeff->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
-    date->setBounds (area.removeFromBottom (winSize.proportionOfHeight (0.1)));
+    image->setBounds (area.removeFromTop (area.proportionOfHeight (0.4)));
+    area.removeFromTop (area.proportionOfHeight (0.04));
+    hyperlinkButton->setBounds (area.removeFromTop (area.proportionOfHeight (0.3)));
+    area.removeFromTop (area.proportionOfHeight (0.04));
+    hyperlinkButtonJeff->setBounds (area.removeFromTop (area.proportionOfHeight (0.3)));
+    hyperlinkButtonJamie->setBounds (area.removeFromTop (area.proportionOfHeight (0.3)));
+    date->setBounds (area.removeFromTop (area.proportionOfHeight (0.3)));
     /*
     appName->setBounds (25, 8, 150, 24);
     version->setBounds (appName->getX(), appName->getBottom() + 3, 150, 17);
