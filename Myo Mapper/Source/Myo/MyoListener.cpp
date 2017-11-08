@@ -97,24 +97,21 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
                         yawTree.getProperty ("outMin"),
                         yawTree.getProperty ("outMax"),
                         yawTree.getProperty ("reverse"),
-                        yawTree.getProperty ("offset"),
-                        yawTree.getProperty ("test"));
+                        yawTree.getProperty ("offset"));
     pitchScaler.setValue (pitch,
                           pitchTree.getProperty ("inMin"),
                           pitchTree.getProperty ("inMax"),
                           pitchTree.getProperty ("outMin"),
                           pitchTree.getProperty ("outMax"),
                           pitchTree.getProperty ("reverse"),
-                          pitchTree.getProperty ("offset"),
-                          pitchTree.getProperty ("test"));
+                          pitchTree.getProperty ("offset"));
     rollScaler.setValue (roll,
                          rollTree.getProperty ("inMin"),
                          rollTree.getProperty ("inMax"),
                          rollTree.getProperty ("outMin"),
                          rollTree.getProperty ("outMax"),
                          rollTree.getProperty ("reverse"),
-                         rollTree.getProperty ("offset"),
-                         rollTree.getProperty ("test"));
+                         rollTree.getProperty ("offset"));
     
     int myoID = getMyoID(myo);
     if (myoID == -1)
