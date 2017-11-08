@@ -130,7 +130,10 @@ void WindowList::showOrCreateAboutWindow()
 void WindowList::showOrCreateHelpWindow()
 {
     if (windows.operator[](4) != nullptr)
+    {
         windows.operator[](4)->toFront(true);
+        windows.operator[](3)->setAlwaysOnTop (true);
+    }
     else
     {
         auto mousePosition = Desktop::getInstance().getMousePosition();
