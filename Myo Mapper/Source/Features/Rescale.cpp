@@ -96,7 +96,7 @@ void Rescale::resized()
     auto top = area.removeFromTop (proportionOfHeight (0.68));
     auto bottom = area;
     titleLabel.setText (labelWidget, dontSendNotification);
-    titleLabel.setBounds (top.removeFromTop (area.proportionOfHeight (0.65)));
+    titleLabel.setBounds (top.removeFromTop (area.proportionOfHeight (0.9)));
     
     mmSlider.setBounds (bottom.reduced (proportionOfWidth (0.05), proportionOfHeight (0.07)));
     calibrate.setBounds (top.removeFromLeft (area.proportionOfWidth (0.23))
