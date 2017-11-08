@@ -66,9 +66,10 @@ void AboutWindowContent::resized()
     appName->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.16)));
     version->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
     image->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.4)));
+    area.removeFromTop (winSize.proportionOfHeight (0.04));
     hyperlinkButton->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
     hyperlinkButtonJeff->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
-    date->setBounds (area);
+    date->setBounds (area.removeFromBottom (winSize.proportionOfHeight (0.1)));
     /*
     appName->setBounds (25, 8, 150, 24);
     version->setBounds (appName->getX(), appName->getBottom() + 3, 150, 17);
