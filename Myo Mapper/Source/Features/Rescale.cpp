@@ -155,6 +155,12 @@ void Rescale::buttonClicked (juce::Button *button)
     {
         MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling")
         .getChildWithName(labelWidget+"Scaling").setProperty ("offset", scaled, 0);
+        
+        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling")
+        .getChildWithName(labelWidget+"Scaling").setProperty ("test", 1, 0);
+        
+      //  std::cout << labelWidget << " - " << scaled << std::endl;
+
     }
     if (button == &reverse)
     {

@@ -17,7 +17,7 @@ public:
     
     void paint (Graphics& g) override;
     void resized() override;
-    void setValues (Vector3D<float>);
+    void setValues (Vector3D<float>, Vector3D<float>);
     
     Vector3D<float> getValue();
     Vector3D<float> getFod(); // Fod = First order difference
