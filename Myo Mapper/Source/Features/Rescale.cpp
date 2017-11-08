@@ -86,7 +86,8 @@ void Rescale::paint(juce::Graphics &g)
     Path rect;
     rect.addRoundedRectangle (area.reduced (proportionOfHeight (0.015)), cornerAndRoundness);
     g.fillPath (rect);
-    g.setColour (Colours::black);
+    g.setColour (Colour::fromRGB (0, 129, 213));
+    g.strokePath (rect, PathStrokeType (cornerAndRoundness / 4));
 }
 
 void Rescale::resized()
