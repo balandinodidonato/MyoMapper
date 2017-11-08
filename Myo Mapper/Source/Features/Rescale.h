@@ -20,7 +20,7 @@ public:
     void sliderValueChanged (Slider* slider) override;
     void resized() override;
     void setLabelTitle (String LabelWidget);
-    void setValue (float Value);
+    void setValue (float Value, float MyoData);
     void setMin (float Value);
     void setMax (float Value);
     void setReverse (bool Status);
@@ -46,7 +46,9 @@ private:
     Label inMaxSliderLabel;
     
     float input = 0;
-   
+    float scaled = 0;
+    double PI = 3.141592653589793;
+
     String labelWidget;
     String MyoIDString;
     

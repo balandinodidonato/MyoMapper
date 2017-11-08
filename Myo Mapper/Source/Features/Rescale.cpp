@@ -154,7 +154,7 @@ void Rescale::buttonClicked (juce::Button *button)
     if (button == &calibrate)
     {
         MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling")
-        .getChildWithName(labelWidget+"Scaling").setProperty ("offset", input, 0);
+        .getChildWithName(labelWidget+"Scaling").setProperty ("offset", scaled, 0);
     }
     if (button == &reverse)
     {
@@ -237,8 +237,9 @@ void Rescale::setMax (float Value)
     mmSlider.setMaxValue(Value);
 }
 
-void Rescale::setValue (float Value) // the vaalue in input are the myo yaw, pitch roll scaled from myo.
+void Rescale::setValue (float Value, float MyoOrData) // the vaalue in input are the myo yaw, pitch roll scaled from myo.
 {
+    scaled = (MyoOrData + PI) / (2 * PI);
     input = Value;
     mmSlider.setValue (input);
 }

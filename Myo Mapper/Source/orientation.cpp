@@ -48,9 +48,9 @@ void Orientation::resized()
 
 void Orientation::setValues (Vector3D<float> Orientation)
 {
-    rescaleYaw.setValue (Orientation.x);
-    rescalePitch.setValue (Orientation.y);
-    rescaleRoll.setValue (Orientation.z);
+    rescaleYaw.setValue (Orientation.x, /* here goes the yaw raw value */);
+    rescalePitch.setValue (Orientation.y, /* here goes the pitch raw value */);
+    rescaleRoll.setValue (Orientation.z, /* here goes the roll raw value */);
 }
 
 Vector3D<float> Orientation::getValue()
