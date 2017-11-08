@@ -11,7 +11,8 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class OrScaling{
+class OrScaling
+{
 public:
     void setValue (float Value, float InMin, float InMax, float OutMin, float OutMax, int Reverse, float OffSet);
     void setCalibrate ();
