@@ -1,19 +1,8 @@
-/*
-  ==============================================================================
-
-    DataSelectorWindow.cpp
-    Created: 7 Oct 2017 1:25:25am
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "DataSelectorWindow.h"
 
 #include "../Application.h"
 
-//==============================================================================
 class DataSelectorWindow::OrientationPage  : public Component
 {
 public:
@@ -41,10 +30,8 @@ private:
     
     TreeView tree;
     ScopedPointer<TreeViewItem> rootItem;
-//    ScopedPointer<OscValueTreeItem> rootItem;
 };
 
-//==============================================================================
 class DataSelectorWindow::AccelerometerPage  : public Component
 {
 public:
@@ -76,6 +63,7 @@ private:
 };
 
 //==============================================================================
+
 class DataSelectorWindow::GyroscopePage  : public Component
 {
 public:
@@ -107,6 +95,7 @@ private:
 };
 
 //==============================================================================
+
 class DataSelectorWindow::EmgPage  : public Component
 {
 public:
@@ -137,8 +126,6 @@ private:
     ScopedPointer<TreeViewItem> rootItem;
 };
 
-
-//==============================================================================
 struct DataSelectorWindow::WindowTabBar     : public TabbedComponent
 {
     WindowTabBar()
@@ -153,7 +140,6 @@ struct DataSelectorWindow::WindowTabBar     : public TabbedComponent
     }
 };
 
-//==============================================================================
 DataSelectorWindow::DataSelectorWindow()
 {
     tabBar = new (WindowTabBar);

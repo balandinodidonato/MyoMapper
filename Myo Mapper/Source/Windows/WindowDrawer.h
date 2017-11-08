@@ -1,20 +1,7 @@
-/*
-  ==============================================================================
-
-    WindowDrawer.h
-    Created: 2 Oct 2017 4:29:44pm
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
-//==============================================================================
-/*
-*/
 class WindowDrawer  : public DialogWindow,
                       public ChangeBroadcaster
 {

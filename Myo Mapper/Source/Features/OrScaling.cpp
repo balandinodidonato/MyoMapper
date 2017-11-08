@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    OrScaling.cpp
-    Created: 6 Nov 2017 3:02:02pm
-    Author:  Balandino Di Donato
-
-  ==============================================================================
-*/
-
 #include "OrScaling.h"
 
 void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin, float OutMax, int Reverse, float OffSet)

@@ -1,7 +1,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "HelpWindow.h"
 
-//==============================================================================
 HelpWindow::HelpWindow ()
 :   wiki ("Wiki", URL ("https://github.com/balandinodidonato/MyoMapper/wiki")),
     sourceCode ("Source Code", URL ("https://github.com/balandinodidonato/MyoMapper/")),

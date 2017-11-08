@@ -1,19 +1,7 @@
-/*
-  ==============================================================================
-
-    WindowsList.cpp
-    Created: 22 Sep 2017 3:51:10am
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "WindowList.h"
-
 #include "../Application.h"
 
-//==============================================================================
 WindowList::WindowList()
 {
     windows.set(0, settingsWindow);

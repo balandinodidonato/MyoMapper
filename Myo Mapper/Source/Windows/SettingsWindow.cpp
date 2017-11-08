@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    SettingsWindow.cpp
-    Created: 22 Sep 2017 5:08:54pm
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "SettingsWindow.h"
 
@@ -16,7 +6,6 @@
 bool SettingsWindow::startButtonClicked;
 bool SettingsWindow::featureButtonClicked;
 
-//==============================================================================
 SettingsWindow::SettingsWindow()
 {
     oscSendLabel.setJustificationType (Justification::horizontallyCentred);
@@ -51,15 +40,6 @@ SettingsWindow::SettingsWindow()
     myoSelectorSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     myoSelectorSetter.addListener (this);
     addAndMakeVisible (myoSelectorSetter);
-    
-//    myoSelectorSetter.addItem ("Myo 1", 1);
-//    myoSelectorSetter.addItem ("Myo 2", 2);
-//    myoSelectorSetter.addItem ("Myo 3", 3);
-//    myoSelectorSetter.addItem ("Myo 4", 4);
-//    myoSelectorSetter.addItem ("No Myo Selected", 5);
-//    myoSelectorSetter.setSelectedId (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
-//    myoSelectorSetter.addListener (this);
-//    addAndMakeVisible (myoSelectorSetter);
     
     saveButton.setButtonText ("SAVE");
     addAndMakeVisible (saveButton);
@@ -150,15 +130,6 @@ void SettingsWindow::resized()
     myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.033));
     myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.401))
                                  .reduced (0, windowSize.proportionOfHeight (0.01)));
-    
-    // Set buttons region bounds
-//    saveButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
-//    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.035));
-//    openButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
-//    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
-//    featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.252)));
-//    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.065));
-//    startButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.174)));
     buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.2));
     featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.222)));
     buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.2));
@@ -205,13 +176,4 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     {
         MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
     }
-}
-
-void SettingsWindow::comboBoxChanged (ComboBox *comboBoxThatHasChanged)
-{
-    auto value = comboBoxThatHasChanged->getSelectedIdAsValue();
-//    if (comboBoxThatHasChanged == &myoSelectorSetter)
-//    {
-//        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
-//    }
 }

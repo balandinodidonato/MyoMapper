@@ -113,15 +113,6 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.accFod.z);
             oscBuffer.push_back (message);
         }
-        /*
-         // Balandino will add it to the MyoData feature later :)
-        if (tree.getChildWithName("AccData").getChildWithName("AccRawFodMavg").getPropertyAsValue ("onOff", 0) == true)
-        {
-            OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/raw/fod/mavg");
-            DBG ("THIS DATA IS NOT NAMED CORRECTLY");
-            oscBuffer.push_back (message);
-        }
-         */
         if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getPropertyAsValue ("onOff", 0) == true)
         {
             OSCMessage message = OSCMessage ("/myo" + id + "/acceleration/scaled");

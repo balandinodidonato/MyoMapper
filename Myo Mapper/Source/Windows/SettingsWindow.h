@@ -1,27 +1,11 @@
-/*
-  ==============================================================================
-
-    SettingsWindow.h
-    Created: 22 Sep 2017 5:08:54pm
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "WindowList.h"
 
-//==============================================================================
-/*
-*/
-
-
 class SettingsWindow    : public Component,
                           public Button::Listener,
                           public Slider::Listener,
-                          public ComboBox::Listener,
                           public ChangeBroadcaster
 {
 public:
@@ -32,7 +16,6 @@ public:
     void resized() override;
     void buttonClicked (Button*) override;
     void sliderValueChanged (Slider*) override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
     static bool startButtonClicked;
     void resetStartButtonPressed();
@@ -51,7 +34,6 @@ private:
     
     Label myoSelectorLabel;
     Slider myoSelectorSetter;
-//    ComboBox myoSelectorSetter;
     
     TextButton saveButton;
     TextButton openButton;

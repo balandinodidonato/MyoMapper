@@ -1,19 +1,8 @@
-/*
-  ==============================================================================
-
-    Application.cpp
-    Created: 21 Sep 2017 11:33:33pm
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Application.h"
 
 #include "Windows/VisualsWindow.h"
 
-//==============================================================================
 struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
 {
     MainMenuBarModel()

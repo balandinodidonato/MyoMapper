@@ -1,17 +1,6 @@
-/*
- ==============================================================================
- 
- OscValueTreeItem.cpp
- Created: 12 Oct 2017 1:53:46am
- Author:  Jefferson Bledsoe
- 
- ==============================================================================
- */
-
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "OscValueTreeItem.h"
 
-//==============================================================================
 class OscValueTreeItem::TreeItemComponent    : public Component,
                                                public Button::Listener,
                                                public Slider::Listener
@@ -82,7 +71,6 @@ private:
     Label sliderLabel;
 };
 
-//==============================================================================
 OscValueTreeItem::OscValueTreeItem (const ValueTree& v)
 : tree (v)
 {

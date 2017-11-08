@@ -1,21 +1,9 @@
-/*
-  ==============================================================================
-
-    WindowDrawer.cpp
-    Created: 2 Oct 2017 4:29:44pm
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "WindowDrawer.h"
-
 #include "../Application.h"
 
 bool WindowDrawer::wantsToClose;
 
-//==============================================================================
 WindowDrawer::WindowDrawer (const String& title,
                             Component* content,
                             bool setResizeable,

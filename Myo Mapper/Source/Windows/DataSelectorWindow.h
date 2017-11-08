@@ -1,22 +1,9 @@
-/*
-  ==============================================================================
-
-    DataSelectorWindow.h
-    Created: 7 Oct 2017 1:25:25am
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #pragma once
 
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../Utility/OscValueTreeItem.h"
 
-//==============================================================================
-/*
-*/
 class DataSelectorWindow    : public Component,
                               public ChangeBroadcaster
 {

@@ -1,22 +1,9 @@
-/*
-  ==============================================================================
-
-    VisualsWindow.h
-    Created: 23 Sep 2017 6:36:45pm
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../Orientation.h"
 #include "../Pose.h"
 
-//==============================================================================
-/*
-*/
 class VisualsWindow    : public Component
 {
 public:

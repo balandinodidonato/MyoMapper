@@ -1,20 +1,6 @@
-/*
- ==============================================================================
- 
-    OscValueTreeItem.h
-    Created: 12 Oct 2017 01:59:02am
-    Author:  Jefferson Bledsoe
- 
-  ==============================================================================
- */
-
 #pragma once
-
 #include "../../JuceLibraryCode/JuceHeader.h"
 
-//==============================================================================
-/*
- */
 class OscValueTreeItem  : public TreeViewItem,
                           private ValueTree::Listener
 {

@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    Application.h
-    Created: 21 Sep 2017 11:33:33pm
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
@@ -15,12 +5,8 @@
 #include "Windows/WindowList.h"
 #include "Utility/CommandIDs.h"
 #include "Myo/MyoManager.h"
-//#include "Myo/MyoData.h"
 #include "OSC.h"
 
-//==============================================================================
-/*
-*/
 class MyoMapperApplication  : public JUCEApplication,
                               private AsyncUpdater,
                               private Timer,

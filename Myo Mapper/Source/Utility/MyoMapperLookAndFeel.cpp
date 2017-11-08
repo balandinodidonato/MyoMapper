@@ -1,17 +1,6 @@
-/*
-  ==============================================================================
-
-    MyoMapperLookAndFeel.cpp
-    Created: 22 Sep 2017 2:51:21pm
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "MyoMapperLookAndFeel.h"
 
-//==============================================================================
 MyoMapperLookAndFeel::MyoMapperLookAndFeel()
 {
     Font font = getFont ("thin");
@@ -105,8 +94,6 @@ Button* MyoMapperLookAndFeel::createSliderButton (Slider&, const bool isIncremen
     return new TextButton (isIncrement ? "+" : "-", String());
 }
 
-//<<<<<<< Updated upstream
-
 Slider::SliderLayout MyoMapperLookAndFeel::getSliderLayout (Slider& slider)
 {
     // 1. compute the actually visible textBox size from the slider textBox size and some additional constraints
@@ -177,21 +164,16 @@ Slider::SliderLayout MyoMapperLookAndFeel::getSliderLayout (Slider& slider)
  
 void MyoMapperLookAndFeel::setupColours()
 {
-    // Label colours
-//    setColour (Label::textColourId, Colour::fromRGB (112, 127, 148));
     setColour (Label::textColourId, Colours::black);
     
-    // Slider colours
     setColour (Slider::trackColourId, Colour::fromRGB (35, 35, 35));
     setColour (Slider::thumbColourId, Colour::fromRGB (0, 129, 213));
     
-    // Inc/ Dec colours
     setColour (Slider::textBoxBackgroundColourId, Colours::white);
     setColour (Slider::textBoxTextColourId, Colour::fromRGB (84, 101, 126));
     setColour (Slider::textBoxOutlineColourId, Colour::fromRGB (0, 129, 213));
     setColour (Slider::textBoxHighlightColourId, Colour::fromRGB (181, 211, 245));
     
-    // Combo box colours
     setColour (ComboBox::backgroundColourId, Colour::fromRGB (236, 239, 244));
     setColour (ComboBox::textColourId, Colour::fromRGB (132, 147, 168));
     setColour (ComboBox::outlineColourId, Colour::fromRGB (201, 210, 223));
@@ -201,12 +183,9 @@ void MyoMapperLookAndFeel::setupColours()
     setColour (PopupMenu::highlightedBackgroundColourId, Colour::fromRGB(131, 147, 167));
     setColour (PopupMenu::highlightedTextColourId, Colours::white);
     
-    // Text button colours
     setColour (TextButton::buttonColourId, Colour::fromRGB (0, 129, 213));
     setColour (TextButton::textColourOffId, Colours::white);
     setColour (TextButton::buttonOnColourId, Colour::fromRGB (0, 114, 188));
-    setColour (TextButton::textColourOnId, Colours::white);
-//    setColour (Button::ColourId, Colour::fromRGB (0, 129, 213));
-    
+    setColour (TextButton::textColourOnId, Colours::white);    
 }
 

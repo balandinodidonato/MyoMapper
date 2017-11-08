@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    WindowsList.h
-    Created: 22 Sep 2017 3:51:10am
-    Author:  Jefferson Bledsoe
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
@@ -18,9 +8,6 @@
 #include "HelpWindow.h"
 #include "WindowDrawer.h"
 
-//==============================================================================
-/*
-*/
 class WindowList    :  public ChangeListener,
                        public ChangeBroadcaster
 {
