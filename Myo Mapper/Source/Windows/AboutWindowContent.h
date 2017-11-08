@@ -19,8 +19,13 @@ private:
     ScopedPointer<ImageComponent> image;
     ScopedPointer<Label> version;
     ScopedPointer<Label> date;
-    ScopedPointer<HyperlinkButton> hyperLinkAcknowledgements;
-    ScopedPointer<HyperlinkButton> hyperLinkLicense;
+    //ScopedPointer<HyperlinkButton> hyperLinkAcknowledgements;
+    //ScopedPointer<HyperlinkButton> hyperLinkLicense;
+    
+    HyperlinkButton hyperLinkAcknowledgements;
+    HyperlinkButton hyperLinkLicense;
+
+
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AboutWindowContent)
 };

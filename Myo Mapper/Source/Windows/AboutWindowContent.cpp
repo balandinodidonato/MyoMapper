@@ -1,6 +1,9 @@
 #include "AboutWindowContent.h"
 
 AboutWindowContent::AboutWindowContent ()
+:
+hyperLinkAcknowledgements ("Acknowledgements", URL ("https://github.com/balandinodidonato/MyoMapper/wiki")),
+hyperLinkLicense ("License", URL ("https://github.com/balandinodidonato/MyoMapper/"))
 {
     addAndMakeVisible (appName = new Label ("appName", TRANS ("MyoMapper")));
     appName->setFont (Font (22.00f, Font::plain));
@@ -26,20 +29,12 @@ AboutWindowContent::AboutWindowContent ()
     date->setColour (TextEditor::textColourId, Colours::black);
     date->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    addAndMakeVisible (hyperLinkAcknowledgements = new HyperlinkButton (TRANS ("Acknowledgements"),
-                                                              URL ("https://github.com/balandinodidonato/MyoMapper/wiki/Acknowledgements")));
-    hyperLinkAcknowledgements->setTooltip (TRANS ("Acknowledgements\n"));
-    hyperLinkAcknowledgements->setButtonText (TRANS ("Acknowledgements"));
-    hyperLinkAcknowledgements->setFont (Font (20.0f, Font::plain), false);
-    
-    addAndMakeVisible (hyperLinkLicense = new HyperlinkButton (TRANS ("License"),
-                                                              URL ("https://github.com/balandinodidonato/MyoMapper/wiki/License")));
-    hyperLinkLicense->setTooltip (TRANS ("License\n"));
-    hyperLinkLicense->setButtonText (TRANS ("License"));
-    hyperLinkLicense->setFont (Font (20.0f, Font::plain), false);
+    hyperLinkAcknowledgements.setColour (HyperlinkButton::textColourId, Colours::black);
+    Component::addAndMakeVisible (hyperLinkAcknowledgements);
+    hyperLinkLicense.setColour (HyperlinkButton::textColourId, Colours::black);
+    Component::addAndMakeVisible (hyperLinkLicense);
 
-
-    setSize (800, 200);
+    setSize (1000, 200);
 
     MemoryInputStream stream (BinaryData::icon_png, BinaryData::icon_pngSize, false);
     image->setImage (ImageFileFormat::loadFrom (stream));
@@ -51,7 +46,6 @@ AboutWindowContent::~AboutWindowContent()
     image = nullptr;
     version = nullptr;
     date = nullptr;
-    hyperLinkAcknowledgements = nullptr;
 }
 
 void AboutWindowContent::paint (Graphics& g)
@@ -67,8 +61,8 @@ void AboutWindowContent::resized()
     version->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
     image->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.4)));
     area.removeFromTop (winSize.proportionOfHeight (0.04));
-    hyperLinkAcknowledgements->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
-    hyperLinkLicense->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
+    hyperLinkAcknowledgements.setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
+    hyperLinkLicense.setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
     date->setBounds (area.removeFromBottom (winSize.proportionOfHeight (0.3)));
 
 }
