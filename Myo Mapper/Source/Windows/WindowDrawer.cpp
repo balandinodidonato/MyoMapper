@@ -44,7 +44,6 @@ WindowDrawer::WindowDrawer (const String& title,
     
     if (centreOfWindow == true)
     {
-        auto display = Desktop::getInstance().getComponent (0);
         auto comp = getActiveTopLevelWindow();
         centreAroundComponent (comp, minWidth, minHeight);
     }
