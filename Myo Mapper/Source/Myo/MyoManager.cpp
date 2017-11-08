@@ -16,45 +16,32 @@ MyoManager::~MyoManager()
 
 bool MyoManager::connect()
 {
+    disconnect();
     bool isConnected = false;
     
     try
     {
-        hub = new myo::Hub ("com.balandino.MyoMapper");
-        if (hub != nullptr)
+        if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
         {
-            myo = hub->waitForMyo (10000);
-            listener.knownMyos.push_back (myo);
-            myo->setStreamEmg (myo::Myo::streamEmgEnabled);
-            myo->unlock (myo::Myo::unlockHold);
+            std::cout << "Attempting to find a Myo..." << std::endl;
+            myo = hub->waitForMyo(10000);
+            listener.knownMyos.push_back(myo);
+            myo->setStreamEmg(myo::Myo::streamEmgEnabled);
+            myo->unlock(myo::Myo::unlockHold);
+            hub->addListener(&listener);
         }
     }
     catch (const std::exception& e)
     {
-        String myoMessage = e.what();
-        AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-                                     "Error",
-                                     myoMessage + " Myo Mapper will now close. " +
-                                     "\n" + "Please relaunch Myo Mapper with Myo Connect open.");
-        
-        JUCEApplicationBase::quit();
+        std::cerr << "Error: Myo not found" << std::endl;
+        disconnect();
+        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                          "Myo not found",
+                                          "Conncect a Myo armband before opening Myo Mapper.",
+                                          "OK");
     }
-    if (hub != nullptr)
-    {
-        if (myo != nullptr)
-        {
-            hub->addListener (&listener);
-        }
-        else
-        {
-            disconnect();
-            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                              "Myo not found",
-                                              "Please, conncect the Myo armband and relaunch Myo Mapper.",
-                                              "OK");
-            
-        }
-    }
+    
+    
     return isConnected;
 }
 
