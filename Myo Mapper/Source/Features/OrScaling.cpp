@@ -30,7 +30,7 @@ void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin,
     // calibrate
     input1 = 1 - offset;
     calibrated = scaled + input1;
-    calibrated = calibrated + (0.5 * test);
+    calibrated = calibrated + 0.5;
     
     // mod
     calibrated = calibrated * 10000000;
@@ -48,7 +48,6 @@ void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin,
 void OrScaling::setCalibrate ()
 {
     offset = scaled;
-    test = 1;
 }
 
 float OrScaling::getValue()
