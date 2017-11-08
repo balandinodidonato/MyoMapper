@@ -14,6 +14,8 @@
 #include "VisualsWindow.h"
 #include "SettingsWindow.h"
 #include "DataSelectorWindow.h"
+#include "AboutWindowContent.h"
+#include "HelpWindow.h"
 #include "WindowDrawer.h"
 
 //==============================================================================
@@ -31,6 +33,8 @@ public:
     void showOrCreateSettingsWindow();
     void showOrCreateVisualsWindow();
     void showOrCreateDataSelectorWindow();
+    void showOrCreateAboutWindow();
+    void showOrCreateHelpWindow();
     
     void changeListenerCallback (ChangeBroadcaster*);
     void closeWindow (WindowDrawer*);
@@ -43,6 +47,8 @@ public:
     DataSelectorWindow::SafePointer<WindowDrawer> visualsWindow;
     DataSelectorWindow::SafePointer<VisualsWindow> visualsWindowContent;
     DataSelectorWindow::SafePointer<WindowDrawer> dataSelectorWindow;
+    DataSelectorWindow::SafePointer<WindowDrawer> aboutWindow;
+    DataSelectorWindow::SafePointer<WindowDrawer> helpWindow;
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowList)
 };

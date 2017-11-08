@@ -577,12 +577,12 @@ void MyoMapperApplication::closeAllWindows()
 
 void MyoMapperApplication::showAboutWindow()
 {
-    // Show the 'About this product' window
+    windowList->showOrCreateAboutWindow();
 }
 
 void MyoMapperApplication::showDocumentationWindow()
 {
-    // Show the documentation window
+    windowList->showOrCreateHelpWindow();
 }
 
 void MyoMapperApplication::showPreferencesWindow()

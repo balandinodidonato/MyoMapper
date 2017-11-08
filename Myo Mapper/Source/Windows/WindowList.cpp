@@ -49,7 +49,8 @@ void WindowList::showOrCreateSettingsWindow()
                                                   window,
                                                   true, true,
                                                   windowWidth * 0.4, windowHeight * 0.4,
-                                                  windowWidth, windowHeight);
+                                                  windowWidth, windowHeight,
+                                                  false);
         settingsWindow = w;
         w->addChangeListener (this);
         windows.set (0, settingsWindow);
@@ -72,7 +73,8 @@ void WindowList::showOrCreateVisualsWindow()
                                                   window,
                                                   true, true,
                                                   windowWidth * 0.5, windowHeight * 0.7,
-                                                  windowWidth, windowHeight);
+                                                  windowWidth, windowHeight,
+                                                  false);
         visualsWindowContent = window;
         visualsWindow = w;
         w->addChangeListener (this);
@@ -93,10 +95,55 @@ void WindowList::showOrCreateDataSelectorWindow()
                                                   new DataSelectorWindow(),
                                                   false, false,
                                                   windowWidth * 0.5, windowHeight * 0.5,
-                                                  windowWidth, windowHeight);
+                                                  windowWidth, windowHeight,
+                                                  false);
         dataSelectorWindow = w;
         w->addChangeListener (this);
         windows.set (2, w);
+    }
+}
+
+void WindowList::showOrCreateAboutWindow()
+{
+    if (windows.operator[](3) != nullptr)
+    {
+        windows.operator[](3)->toFront(true);
+        windows.operator[](3)->setAlwaysOnTop (true);
+    }
+    else
+    {
+        auto mousePosition = Desktop::getInstance().getMousePosition();
+        auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
+        auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
+        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - About",
+                                                  new AboutWindowContent(),
+                                                  false, false,
+                                                  windowWidth * 0.3, windowHeight * 0.3,
+                                                  windowWidth * 0.3, windowHeight * 0.3,
+                                                  true);
+        aboutWindow = w;
+        w->addChangeListener (this);
+        windows.set (3, w);
+    }
+}
+
+void WindowList::showOrCreateHelpWindow()
+{
+    if (windows.operator[](4) != nullptr)
+        windows.operator[](4)->toFront(true);
+    else
+    {
+        auto mousePosition = Desktop::getInstance().getMousePosition();
+        auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
+        auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
+//        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Help",
+//                                                  new HelpWindow(),
+//                                                  false, false,
+//                                                  windowWidth * 0.2, windowHeight * 0.2,
+//                                                  windowWidth * 0.2, windowHeight * 0.2);
+//        helpWindow = w;
+//        w->addChangeListener (this);
+//        windows.set (4, w);
     }
 }
 

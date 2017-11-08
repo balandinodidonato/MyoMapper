@@ -81,12 +81,12 @@
               file="Source/Windows/DataSelectorWindow.cpp"/>
         <FILE id="q5YPm0" name="DataSelectorWindow.h" compile="0" resource="0"
               file="Source/Windows/DataSelectorWindow.h"/>
-        <FILE id="SNQiRy" name="AboutWindowContent.cpp" compile="1" resource="0"
-              file="Source/AboutWindowContent.cpp"/>
-        <FILE id="VRGaJ4" name="AboutWindowContent.h" compile="0" resource="0"
-              file="Source/AboutWindowContent.h"/>
-        <FILE id="jmv4gh" name="HelpWindow.cpp" compile="1" resource="0" file="Source/HelpWindow.cpp"/>
-        <FILE id="DKaHIH" name="HelpWindow.h" compile="0" resource="0" file="Source/HelpWindow.h"/>
+        <FILE id="f7bNA7" name="AboutWindowContent.cpp" compile="1" resource="0"
+              file="Source/Windows/AboutWindowContent.cpp"/>
+        <FILE id="rIDZto" name="AboutWindowContent.h" compile="0" resource="0"
+              file="Source/Windows/AboutWindowContent.h"/>
+        <FILE id="cI15VJ" name="HelpWindow.cpp" compile="1" resource="0" file="Source/Windows/HelpWindow.cpp"/>
+        <FILE id="u1cEmi" name="HelpWindow.h" compile="0" resource="0" file="Source/Windows/HelpWindow.h"/>
       </GROUP>
       <FILE id="S8zj64" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="eNRTqH" name="CommandIDs.h" compile="0" resource="0" file="Source/Utility/CommandIDs.h"/>

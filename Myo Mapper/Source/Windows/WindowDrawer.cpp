@@ -21,7 +21,8 @@ WindowDrawer::WindowDrawer (const String& title,
                             bool setResizeable,
                             bool setFixedAspectRatio,
                             int minWidth, int minHeight,
-                            int maxWidth, int maxHeight)
+                            int maxWidth, int maxHeight,
+                            bool centreOfWindow)
 :   DialogWindow (title, Colours::white, false, true)
 {
     setUsingNativeTitleBar (true);
@@ -39,6 +40,13 @@ WindowDrawer::WindowDrawer (const String& title,
     else
     {
         setResizeLimits (minWidth, minHeight, maxWidth, maxHeight);
+    }
+    
+    if (centreOfWindow == true)
+    {
+        auto display = Desktop::getInstance().getComponent (0);
+        auto comp = getActiveTopLevelWindow();
+        centreAroundComponent (comp, minWidth, minHeight);
     }
     setContentOwned (content, false);
     setVisible (true);
