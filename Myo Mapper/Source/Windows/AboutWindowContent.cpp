@@ -33,7 +33,7 @@ AboutWindowContent::AboutWindowContent ()
     hyperlinkButton->setFont (Font (20.0f, Font::plain), false);
     
     addAndMakeVisible (hyperlinkButtonJeff = new HyperlinkButton (TRANS ((String)CharPointer_UTF8 ("\xc2\xa9") + "Jefferson Bledsoe"),
-                                                              URL ("https://twitter.com/Jeff_Bledsoe")));
+                                                              URL ("https://github.com/J-Bledsoe")));
     hyperlinkButtonJeff->setTooltip (TRANS ("JeffersonBledsoe\n"));
     hyperlinkButtonJeff->setButtonText (TRANS ("Jefferson Bledsoe"));
     hyperlinkButtonJeff->setFont (Font (20.0f, Font::plain), false);
@@ -63,7 +63,7 @@ void AboutWindowContent::resized()
 {
     auto area = getLocalBounds().reduced (proportionOfWidth (0.2), 0);
     auto winSize = area;
-    appName->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.2)));
+    appName->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.16)));
     version->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
     image->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.4)));
     hyperlinkButton->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
