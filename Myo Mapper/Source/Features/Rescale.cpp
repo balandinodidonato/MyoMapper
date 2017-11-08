@@ -4,12 +4,7 @@
 #include "../Application.h"
 
 Rescale::Rescale()
-:   calibrated (0),
-    offset (0),
-    scaled (0),
-    input (0),
-    r2PI (1 / (2 * double_Pi)),
-    test (0)
+:   input (0)
 {
     setColour (Label::textColourId, Colours::black);
     titleLabel.setJustificationType (Justification::centred);
@@ -32,7 +27,7 @@ Rescale::Rescale()
     
     addAndMakeVisible (reverse);
     reverse.addListener (this);
-    reverse.setToggleState (true, dontSendNotification);
+    reverse.setToggleState (false, dontSendNotification);
     reverse.setColour (ToggleButton::tickColourId, Colours::black);
     reverse.setColour (ToggleButton::tickDisabledColourId, Colours::black);
     reverse.setColour (ToggleButton::textColourId, Colours::black);
@@ -158,7 +153,7 @@ void Rescale::buttonClicked (juce::Button *button)
     tree.addListener (this);
     if (button == &calibrate)
     {
-        /* Offset tree value */ = input;
+        tree.setProperty ("offset", input, 0);
     }
     if (button == &reverse)
     {

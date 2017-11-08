@@ -634,6 +634,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     // Add trees for storing scaling data
     ValueTree dataScalingTree = ValueTree ("DataScaling");
     dataScalingTree.setProperty (name, "Data Scaling", 0);
+    dataScalingTree.setProperty ("offset", 0, 0);
     
     ValueTree yawScalingTree = ValueTree ("YawScaling");
     yawScalingTree.setProperty (name, "Yaw Scaling", 0);

@@ -90,25 +90,27 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     auto yawTree = tree.getChildWithName("DataScaling").getChildWithName ("YawScaling");
     auto pitchTree = tree.getChildWithName("DataScaling").getChildWithName ("PitchScaling");
     auto rollTree = tree.getChildWithName("DataScaling").getChildWithName ("RollScaling");
-    
     yawScaler.setValue (yaw,
                         yawTree.getProperty ("inMin"),
                         yawTree.getProperty ("inMax"),
                         yawTree.getProperty ("outMin"),
                         yawTree.getProperty ("outMax"),
-                        yawTree.getProperty ("reverse"));
+                        yawTree.getProperty ("reverse"),
+                        (float)tree.getProperty ("offset"));
     pitchScaler.setValue (pitch,
                           pitchTree.getProperty ("inMin"),
                           pitchTree.getProperty ("inMax"),
                           pitchTree.getProperty ("outMin"),
                           pitchTree.getProperty ("outMax"),
-                          pitchTree.getProperty ("reverse"));
+                          pitchTree.getProperty ("reverse"),
+                          (float)tree.getProperty ("offset"));
     rollScaler.setValue (roll,
-                        rollTree.getProperty ("inMin"),
-                        rollTree.getProperty ("inMax"),
-                        rollTree.getProperty ("outMin"),
-                        rollTree.getProperty ("outMax"),
-                        rollTree.getProperty ("reverse"));
+                         rollTree.getProperty ("inMin"),
+                         rollTree.getProperty ("inMax"),
+                         rollTree.getProperty ("outMin"),
+                         rollTree.getProperty ("outMax"),
+                         rollTree.getProperty ("reverse"),
+                         (float)tree.getProperty ("offset"));
     
     int myoID = getMyoID(myo);
     if (myoID == -1)
