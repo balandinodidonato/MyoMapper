@@ -2,7 +2,6 @@
 #define RESCALE_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "OrScaling.h"
 
 class Rescale    : public Component,
                    public Button::Listener,
@@ -46,18 +45,10 @@ private:
     Label inMinSliderLabel;
     Label inMaxSliderLabel;
     
-    float reversed;
-    float calibrated;
-    float offset;
-    float scaled;
-    float input;
-    float input1;
+    float input = 0;
+   
     String labelWidget;
-    const long double r2PI;
-    int test = 0;
     String MyoIDString;
-    
-    OrScaling scaler;
     
     void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property) override;
     void valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded) override;

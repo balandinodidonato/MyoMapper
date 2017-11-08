@@ -158,7 +158,7 @@ void Rescale::buttonClicked (juce::Button *button)
     tree.addListener (this);
     if (button == &calibrate)
     {
-        scaler.setCalibrate ();
+        /* Offset tree value */ = input;
     }
     if (button == &reverse)
     {
