@@ -795,7 +795,7 @@ void MyoMapperApplication::initialiseDataTree()
     emgDataScaledAbs.setProperty (onOff, on, 0);
     
     ValueTree emgDataScaledAbsMin = ValueTree ("EmgScaledAbsMin");
-    emgDataScaledAbsMin.setProperty (name, "Minimum  Data", 0);
+    emgDataScaledAbsMin.setProperty (name, "Minimum", 0);
     emgDataScaledAbsMin.setProperty (onOff, off, 0);
     emgDataScaledAbsMin.setProperty (sampleSize, tempSampSize, 0);
     
@@ -828,7 +828,7 @@ void MyoMapperApplication::initialiseDataTree()
     emgDataScaledAbsMavMavg.setProperty (sampleSize, tempSampSize, 0);
     
     ValueTree emgDataScaledAbsMavMin = ValueTree ("EmgScaledAbsMavMin");
-    emgDataScaledAbsMavMin.setProperty (name, "Minimum Data", 0);
+    emgDataScaledAbsMavMin.setProperty (name, "Minimum", 0);
     emgDataScaledAbsMavMin.setProperty (onOff, off, 0);
     emgDataScaledAbsMavMin.setProperty (sampleSize, tempSampSize, 0);
     
