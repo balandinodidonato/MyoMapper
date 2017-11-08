@@ -58,18 +58,6 @@ Vector3D<float> Orientation::getValue()
     return orientationScaled;
 }
 
-Vector3D<float> Orientation::getFod()
-{
-    orientationFod.set3DValue (orientationScaled);
-    return orientationFod.get3DValue();
-}
-
-Vector3D<float> Orientation::getSod()
-{
-    orientationSod.set3DValue (orientationScaled);
-    return orientationSod.get3DValue();
-}
-
 /*
 // Recal functions from OSC data in input
 void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
