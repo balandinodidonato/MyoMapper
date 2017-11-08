@@ -19,32 +19,27 @@ AboutWindowContent::AboutWindowContent ()
     version->setColour (TextEditor::textColourId, Colours::black);
     version->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    addAndMakeVisible (date = new Label ("date", TRANS ("2017")));
+    addAndMakeVisible (date = new Label ("date", TRANS (  ((String)CharPointer_UTF8 ("\xc2\xa9"))+"2017")));
     date->setFont (Font (9.00f, Font::plain));
     date->setJustificationType (Justification::centred);
     date->setEditable (false, false, false);
     date->setColour (TextEditor::textColourId, Colours::black);
     date->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    addAndMakeVisible (hyperlinkButton = new HyperlinkButton (TRANS ((String)CharPointer_UTF8 ("\xc2\xa9") + "Balandino Di Donato"),
-                                                              URL ("http://www.balandinodidonato.com/")));
-    hyperlinkButton->setTooltip (TRANS ("balandinoDiDonato\n"));
-    hyperlinkButton->setButtonText (TRANS ("Balandino Di Donato"));
-    hyperlinkButton->setFont (Font (20.0f, Font::plain), false);
+    addAndMakeVisible (hyperLinkAcknowledgements = new HyperlinkButton (TRANS ("Acknowledgements"),
+                                                              URL ("https://github.com/balandinodidonato/MyoMapper/wiki/Acknowledgements")));
+    hyperLinkAcknowledgements->setTooltip (TRANS ("Acknowledgements\n"));
+    hyperLinkAcknowledgements->setButtonText (TRANS ("Acknowledgements"));
+    hyperLinkAcknowledgements->setFont (Font (20.0f, Font::plain), false);
     
-    addAndMakeVisible (hyperlinkButtonJeff = new HyperlinkButton (TRANS ((String)CharPointer_UTF8 ("\xc2\xa9") + "Jefferson Bledsoe"),
-                                                              URL ("https://github.com/J-Bledsoe")));
-    hyperlinkButtonJeff->setTooltip (TRANS ("JeffersonBledsoe\n"));
-    hyperlinkButtonJeff->setButtonText (TRANS ("Jefferson Bledsoe"));
-    hyperlinkButtonJeff->setFont (Font (20.0f, Font::plain), false);
+    addAndMakeVisible (hyperLinkLicense = new HyperlinkButton (TRANS ("License"),
+                                                              URL ("https://github.com/balandinodidonato/MyoMapper/wiki/License")));
+    hyperLinkLicense->setTooltip (TRANS ("License\n"));
+    hyperLinkLicense->setButtonText (TRANS ("License"));
+    hyperLinkLicense->setFont (Font (20.0f, Font::plain), false);
 
-    addAndMakeVisible (hyperlinkButtonJamie = new HyperlinkButton (TRANS ((String)CharPointer_UTF8 ("\xc2\xa9") + "Jamie Bullock"),
-                                                                  URL ("https://jamiebullock.com")));
-    hyperlinkButtonJamie->setTooltip (TRANS ("JamieBullock\n"));
-    hyperlinkButtonJamie->setButtonText (TRANS ("Jamie Bullock"));
-    hyperlinkButtonJamie->setFont (Font (20.0f, Font::plain), false);
-    
-    setSize (1000, 200);
+
+    setSize (800, 200);
 
     MemoryInputStream stream (BinaryData::icon_png, BinaryData::icon_pngSize, false);
     image->setImage (ImageFileFormat::loadFrom (stream));
@@ -56,7 +51,7 @@ AboutWindowContent::~AboutWindowContent()
     image = nullptr;
     version = nullptr;
     date = nullptr;
-    hyperlinkButton = nullptr;
+    hyperLinkAcknowledgements = nullptr;
 }
 
 void AboutWindowContent::paint (Graphics& g)
@@ -66,23 +61,14 @@ void AboutWindowContent::paint (Graphics& g)
 
 void AboutWindowContent::resized()
 {
-    auto area = getLocalBounds().reduced (proportionOfWidth (0.1), 0);
+    auto area = getLocalBounds().reduced (proportionOfWidth (0.2), 0);
     auto winSize = area;
     appName->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.16)));
     version->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
-    image->setBounds (area.removeFromTop (area.proportionOfHeight (0.4)));
-    area.removeFromTop (area.proportionOfHeight (0.04));
-    hyperlinkButton->setBounds (area.removeFromTop (area.proportionOfHeight (0.3)));
-    area.removeFromTop (area.proportionOfHeight (0.04));
-    hyperlinkButtonJeff->setBounds (area.removeFromTop (area.proportionOfHeight (0.3)));
-    hyperlinkButtonJamie->setBounds (area.removeFromTop (area.proportionOfHeight (0.3)));
-    date->setBounds (area.removeFromTop (area.proportionOfHeight (0.3)));
-    /*
-    appName->setBounds (25, 8, 150, 24);
-    version->setBounds (appName->getX(), appName->getBottom() + 3, 150, 17);
-    image->setBounds (getWidth() * 0.24, version->getBottom() + 5, getWidth() * 0.5, getHeight() * 0.5);
-    copyright->setBounds (appName->getX() - 6, image->getBottom() + 3, 23, 23);
-    hyperlinkButton->setBounds (copyright->getRight(), copyright->getY() + 3, 105, 17);
-    date->setBounds (hyperlinkButton->getRight(), copyright->getY(), 36, 23);
-     */
+    image->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.4)));
+    area.removeFromTop (winSize.proportionOfHeight (0.04));
+    hyperLinkAcknowledgements->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
+    hyperLinkLicense->setBounds (area.removeFromTop (winSize.proportionOfHeight (0.1)));
+    date->setBounds (area.removeFromBottom (winSize.proportionOfHeight (0.3)));
+
 }
