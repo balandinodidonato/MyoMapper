@@ -17,13 +17,12 @@ Rescale::Rescale()
     calibrate.addListener (this);
     
     addAndMakeVisible (mmSlider);
+    mmSlider.setLookAndFeel (&laf);
     mmSlider.setSliderStyle (juce::Slider::ThreeValueHorizontal);
     mmSlider.setRange (-1.0, 2.0);
     mmSlider.setMinValue (0);
     mmSlider.setMaxValue (1.0);
     mmSlider.addListener (this);
-    addAndMakeVisible (mmSliderLabel);
-//    mmSliderLabel.attachToComponent (&mmSlider, true);
     
     addAndMakeVisible (reverse);
     reverse.addListener (this);
@@ -34,22 +33,18 @@ Rescale::Rescale()
     reverse.setButtonText ("Reverse");
 
     outMinSliderLabel.setText ("Out Min", dontSendNotification);
-    outMinSliderLabel.attachToComponent (&outMinSlider, true);
     addAndMakeVisible (outMinSliderLabel);
     outMinSlider.addListener (this);
     
     outMaxSliderLabel.setText ("Out Max", dontSendNotification);
-    outMaxSliderLabel.attachToComponent (&outMaxSlider, true);
     addAndMakeVisible (outMaxSliderLabel);
     outMaxSlider.addListener (this);
 
     inMinSliderLabel.setText ("In Min", dontSendNotification);
-    inMinSliderLabel.attachToComponent (&inMinSlider, true);
     addAndMakeVisible (inMinSliderLabel);
     inMinSlider.addListener (this);
     
     inMaxSliderLabel.setText ("In Max", dontSendNotification);
-    inMaxSliderLabel.attachToComponent (&inMaxSlider, true);
     addAndMakeVisible (inMaxSliderLabel);
     inMaxSlider.addListener (this);
     
@@ -78,6 +73,11 @@ Rescale::Rescale()
     addAndMakeVisible (inMaxSlider);
 }
 
+Rescale::~Rescale()
+{
+    mmSlider.setLookAndFeel (nullptr);
+}
+
 void Rescale::paint(juce::Graphics &g)
 {
     auto area = getLocalBounds();
@@ -87,26 +87,6 @@ void Rescale::paint(juce::Graphics &g)
     rect.addRoundedRectangle (area.reduced (proportionOfHeight (0.015)), cornerAndRoundness);
     g.fillPath (rect);
     g.setColour (Colours::black);
-    
-    /*
-    auto top = area.removeFromTop (proportionOfHeight (0.68));
-    auto bottom = area;
-    
-    auto title = top.removeFromTop (area.proportionOfHeight (0.65));
-    g.setColour (Colours::red);
-    g.fillRect (title);
-    
-    auto calibrate = top.removeFromLeft (area.proportionOfWidth (0.23))
-                    .removeFromTop (area.proportionOfHeight (0.9));
-    g.setColour (Colours::green);
-    g.fillRect (calibrate);
-    
-    auto reverse = top.removeFromLeft (area.proportionOfWidth (0.12))
-                    .removeFromTop (area.proportionOfHeight (0.6));;
-    g.setColour (Colours::purple);
-    g.fillRect (reverse);
-    
-     */
 }
 
 void Rescale::resized()
@@ -118,33 +98,37 @@ void Rescale::resized()
     titleLabel.setBounds (top.removeFromTop (area.proportionOfHeight (0.65)));
     
     mmSlider.setBounds (bottom.reduced (proportionOfWidth (0.05), proportionOfHeight (0.07)));
-//    calibrate.setBounds (area.removeFromLeft));
-    calibrate.setBounds (10, 25, getWidth() * 0.2, getHeight() * 0.3);
-    reverse.setBounds (calibrate.getRight() + getWidth() * 0.02,
-                       calibrate.getY(),
-                       getWidth() * 0.15,
-                       calibrate.getHeight() * 0.6);
-    inMinSlider.setBounds (reverse.getRight() + getWidth() * 0.1,
-                           reverse.getY(),
-                           getWidth() * 0.18,
-                           getHeight() * 0.15);
-    outMinSlider.setBounds (inMinSlider.getRight() + getWidth() * 0.13,
-                            inMinSlider.getY(),
-                            inMinSlider.getWidth(),
-                            inMinSlider.getHeight());
-    inMaxSlider.setBounds (inMinSlider.getX(),
-                           reverse.getBottom() + reverse.getHeight() * 0.5,
-                           inMinSlider.getWidth(),
-                           inMinSlider.getHeight());
-    outMaxSlider.setBounds (outMinSlider.getX(),
-                            inMaxSlider.getY(),
-                            outMinSlider.getWidth(),
-                            outMinSlider.getHeight());
-//    mmSlider.setBounds (calibrate.getX(),
-//                        calibrate.getBottom() + 25,
-//                        getWidth() * 0.95,
-//                        getHeight() * 0.2);
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("DataScaling");
+    calibrate.setBounds (top.removeFromLeft (area.proportionOfWidth (0.23))
+                         .removeFromTop (area.proportionOfHeight (0.9))
+                         .reduced (area.proportionOfWidth (0.01), 0));
+    reverse.setBounds (top.removeFromLeft (area.proportionOfWidth (0.12))
+                       .removeFromTop (area.proportionOfHeight (0.6)));
+    
+    auto inArea = top.removeFromLeft (top.proportionOfWidth (0.5));
+    
+    auto inMin = (inArea.removeFromTop (inArea.proportionOfHeight (0.48))
+                  .removeFromLeft (inArea.proportionOfWidth (0.95)));
+    inMinSliderLabel.setBounds (inMin.removeFromLeft (inMin.proportionOfWidth (0.37)));
+    inMinSlider.setBounds (inMin);
+    inArea.removeFromTop (inArea.proportionOfHeight (0.02));
+    
+    auto inMax = (inArea.removeFromBottom (inArea.proportionOfHeight (0.94))
+                  .removeFromLeft (inArea.proportionOfWidth (0.95)));
+    inMaxSliderLabel.setBounds (inMax.removeFromLeft (inMax.proportionOfWidth (0.37)));
+    inMaxSlider.setBounds (inMax);
+    
+    auto outArea = top;
+    
+    auto outMin = (outArea.removeFromTop (outArea.proportionOfHeight (0.48))
+                  .removeFromLeft (outArea.proportionOfWidth (0.95)));
+    outMinSliderLabel.setBounds (outMin.removeFromLeft (outMin.proportionOfWidth (0.37)));
+    outMinSlider.setBounds (outMin);
+    outArea.removeFromTop (outArea.proportionOfHeight (0.02));
+    
+    auto outMax = (outArea.removeFromBottom (outArea.proportionOfHeight (0.94))
+                  .removeFromLeft (outArea.proportionOfWidth (0.95)));
+    outMaxSliderLabel.setBounds (outMax.removeFromLeft (outMax.proportionOfWidth (0.37)));
+    outMaxSlider.setBounds (outMax);
 }
 
 void Rescale::buttonClicked (juce::Button *button)

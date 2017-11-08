@@ -7,9 +7,6 @@ Orientation::Orientation()
     titleLabel.setText ("Orientation", dontSendNotification);
     addAndMakeVisible (titleLabel);
     
-    rescaleYaw.setLookAndFeel (&laf);
-    rescalePitch.setLookAndFeel (&laf);
-    rescaleRoll.setLookAndFeel (&laf);
     addAndMakeVisible (rescaleYaw);
     addAndMakeVisible (rescalePitch);
     addAndMakeVisible (rescaleRoll);
