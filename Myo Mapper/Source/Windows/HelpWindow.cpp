@@ -7,8 +7,11 @@ HelpWindow::HelpWindow ()
     sourceCode ("Source Code", URL ("https://github.com/balandinodidonato/MyoMapper/")),
     support("Ask the developper", URL ("info@balandinodidonato.com"))
 {
+    wiki.setColour (HyperlinkButton::textColourId, Colours::black);
     Component::addAndMakeVisible (wiki);
+    sourceCode.setColour (HyperlinkButton::textColourId, Colours::black);
     Component::addAndMakeVisible (sourceCode);
+    support.setColour (HyperlinkButton::textColourId, Colours::black);
     Component::addAndMakeVisible (support);
 }
 
@@ -18,19 +21,19 @@ HelpWindow::~HelpWindow()
 
 void HelpWindow::paint (Graphics& g)
 {
-    g.fillAll (Colours::grey);   // clear the background
+    auto area = getLocalBounds();
+    g.fillAll (Colour::fromRGB (245, 245, 245));   // clear the background
+    g.setColour (Colour::fromRGB (215, 215, 215));
+    g.drawHorizontalLine (area.getHeight() / 3, area.getX(), area.getWidth());
+    g.drawHorizontalLine (area.getHeight() * 2 / 3, area.getX(), area.getWidth());
 }
 
 void HelpWindow::resized()
 {
-    int space = getHeight() * 0.1;
-        
-    wiki.setFont (Font::plain, true);
-    wiki.setBounds (0, space, getWidth(), getHeight() * 0.2);
-    
-    sourceCode.setFont (Font::plain, true);
-    sourceCode.setBounds (wiki.getX(), wiki.getBottom() + space, wiki.getWidth(), wiki.getHeight());
-    
-    support.setFont (Font::plain, true);
-    support.setBounds (wiki.getX(), sourceCode.getBottom() + space, wiki.getWidth(), wiki.getHeight());
+    auto area = getLocalBounds();
+    wiki.setBounds (area.removeFromTop (area.getHeight() / 3)
+                    .reduced (proportionOfWidth (0.03)));
+    sourceCode.setBounds (area.removeFromTop (area.proportionOfHeight (0.5))
+                          .reduced (proportionOfWidth (0.03)));
+    support.setBounds (area.reduced (proportionOfWidth (0.03)));
 }
