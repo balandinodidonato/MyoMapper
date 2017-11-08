@@ -130,6 +130,10 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     myoData[myoID].orientationScaled.x = yawScaler.getValue();
     myoData[myoID].orientationScaled.y = pitchScaler.getValue();
     myoData[myoID].orientationScaled.z = rollScaler.getValue();
+    orFod.set3DValue(myoData[myoID].orientationScaled);
+    myoData[myoID].orientationScaledFod = orFod.get3DValue();
+    orSod.set3DValue(myoData[myoID].orientationScaled);
+    myoData[myoID].orientationScaledFod = orSod.get3DValue();
     
   //  myoData[myoID].orientationScaledFod = visuals->getOrientationPanel().getFod();
   //  myoData[myoID].orientationScaledSod = visuals->getOrientationPanel().getSod();

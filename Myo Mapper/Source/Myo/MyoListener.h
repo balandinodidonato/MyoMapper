@@ -69,6 +69,10 @@ private:
     OrScaling yawScaler;
     OrScaling pitchScaler;
     OrScaling rollScaler;
+    FirstOrderDifference orFod;
+    FirstOrderDifference orSod;
+
+    
     ScaleValues scaleAcc;
     FirstOrderDifference accFod;
     FirstOrderDifference accScaledFod;
