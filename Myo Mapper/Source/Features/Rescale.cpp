@@ -153,7 +153,8 @@ void Rescale::buttonClicked (juce::Button *button)
     tree.addListener (this);
     if (button == &calibrate)
     {
-        tree.setProperty ("offset", input, 0);
+        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling")
+        .getChildWithName(labelWidget+"Scaling").setProperty ("offset", input, 0);
     }
     if (button == &reverse)
     {
