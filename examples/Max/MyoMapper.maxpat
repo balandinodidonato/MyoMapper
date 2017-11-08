@@ -80,7 +80,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 83.5, 224.0, 264.0, 20.0 ],
+					"patching_rect" : [ 173.5, 224.0, 264.0, 20.0 ],
 					"style" : "",
 					"text" : "<- Double click to visualise all incoming data"
 				}
@@ -217,9 +217,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 47.5, 224.0, 34.0, 22.0 ],
+					"patching_rect" : [ 47.5, 224.0, 125.0, 22.0 ],
 					"style" : "",
-					"text" : "print"
+					"text" : "print OSC_messages"
 				}
 
 			}

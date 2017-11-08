@@ -1,64 +1,76 @@
-#N canvas 363 200 684 495 10;
-#X obj 13 101 oscparse;
-#X obj 13 123 list trim;
-#X obj 13 79 netreceive -u -b;
-#X obj 13 12 loadbang;
-#X obj 13 145 route myo\$1;
-#X msg 13 57 listen \$1;
-#X obj 13 34 i \$2;
-#X text 302 2 Settings:;
-#X obj 13 167 route orientation acceleration gyro EMG pose, f 105
-;
-#X text 318 18 \$1 - Myo number;
-#X text 318 28 \$2 - OSC port;
-#X obj 13 440 s orientRaw\$1;
-#X obj 29 304 s accRaw\$1;
-#X obj 77 284 s accScaled\$1;
-#X obj 175 242 s accRawWfl\$1;
-#X obj 126 264 s accScaledWfl\$1;
-#X obj 29 212 route raw scaled scaledWfL rawWfL;
-#X obj 263 413 s gyroRaw\$1;
-#X obj 311 393 s gyroScaled\$1;
-#X obj 360 374 s gyroScaledWfl\$1;
-#X obj 409 351 s gyroRawWfl\$1;
-#X obj 263 321 route raw scaled scaledWfL rawWfL;
-#X obj 336 295 s emgRaw\$1;
-#X obj 379 275 s emgScaled\$1;
-#X obj 423 255 s emgScaledAbs\$1;
-#X obj 467 235 s emgMav\$1;
-#X obj 511 215 s emgMavWfl\$1;
-#X obj 336 193 route raw scaled scaledAbs mav mavWfL;
-#X obj 599 191 s pose\$1;
-#X obj 13 339 route raw scaled scaledWfL quaternion;
-#X obj 136 376 s orientQuaternion\$1;
-#X obj 122 400 s orientScaledWfl\$1;
-#X obj 67 420 s orientScaled\$1;
+#N canvas 363 200 666 569 10;
+#X obj 13 223 oscparse;
+#X obj 13 245 list trim;
+#X obj 13 201 netreceive -u -b;
+#X obj 13 113 loadbang;
+#X msg 13 179 listen \$1;
+#X floatatom 13 158 5 0 0 1 OSC_port - -, f 5;
+#X obj 21 272 print OSC_messages;
+#X obj 13 322 route orientation emg pose, f 105;
+#X symbolatom 431 369 10 0 0 0 Pose: - -, f 10;
+#X text 136 273 <- Print all OSC messages in input;
+#X obj 13 344 route scaled;
+#X obj 13 366 unpack f f f;
+#X obj 13 388 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4408 1;
+#X obj 47 388 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 210 1;
+#X obj 82 388 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 264 1;
+#X text 9 523 Yaw;
+#X text 37 523 Pitch;
+#X text 77 523 Roll;
+#X obj 222 344 route scaled;
+#X obj 222 410 vsl 15 128 0 1 0 0 empty empty empty 0 20 0 10 -262144
+-1 -1 847 1;
+#X obj 240 410 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 329 1;
+#X obj 258 410 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1880 1;
+#X obj 222 366 route abs;
+#X obj 222 388 unpack f f f f f f f f;
+#X obj 277 410 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2361 1;
+#X obj 295 410 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 269 1;
+#X obj 314 410 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 189 1;
+#X obj 332 410 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 259 1;
+#X obj 351 410 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 309 1;
+#X text 198 543 EMG 1 2 3 4 5 6 7 8;
+#X obj 13 135 i 5432;
+#X obj 13 297 route myo1;
+#X obj 431 346 symbol;
+#X text 12 6 Myo Mapper;
+#X text 12 23 Myo A small example of how import Myo data into Max using
+Myo Mapper 3 For more info visit http://www.balandinodidonato.com/myomapper/
+or contac Myo Mapper's the developer: info@balandinodidonato.com;
 #X connect 0 0 1 0;
-#X connect 1 0 4 0;
+#X connect 1 0 6 0;
+#X connect 1 0 31 0;
 #X connect 2 0 0 0;
-#X connect 3 0 6 0;
-#X connect 4 0 8 0;
-#X connect 5 0 2 0;
-#X connect 6 0 5 0;
-#X connect 8 0 29 0;
-#X connect 8 1 16 0;
-#X connect 8 2 21 0;
-#X connect 8 3 27 0;
-#X connect 8 4 28 0;
-#X connect 16 0 12 0;
-#X connect 16 1 13 0;
-#X connect 16 2 15 0;
-#X connect 16 3 14 0;
-#X connect 21 0 17 0;
-#X connect 21 1 18 0;
-#X connect 21 2 19 0;
-#X connect 21 3 20 0;
-#X connect 27 0 22 0;
-#X connect 27 1 23 0;
-#X connect 27 2 24 0;
-#X connect 27 3 25 0;
-#X connect 27 4 26 0;
-#X connect 29 0 11 0;
-#X connect 29 1 32 0;
-#X connect 29 2 31 0;
-#X connect 29 3 30 0;
+#X connect 3 0 30 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X connect 7 0 10 0;
+#X connect 7 1 18 0;
+#X connect 7 2 32 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 11 1 13 0;
+#X connect 11 2 14 0;
+#X connect 18 0 22 0;
+#X connect 22 0 23 0;
+#X connect 23 0 19 0;
+#X connect 23 1 20 0;
+#X connect 23 2 21 0;
+#X connect 23 3 24 0;
+#X connect 23 4 25 0;
+#X connect 23 5 26 0;
+#X connect 23 6 27 0;
+#X connect 23 7 28 0;
+#X connect 30 0 5 0;
+#X connect 31 0 7 0;
+#X connect 32 0 8 0;
