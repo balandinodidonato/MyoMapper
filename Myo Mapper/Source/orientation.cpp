@@ -19,13 +19,7 @@ void Orientation::paint (juce::Graphics &g)
 {
     auto area = getLocalBounds();
     auto cornerAndRoundness = area.getHeight() * 0.013;
-    
-    g.fillAll (Colour::fromRGB (128, 128, 128));
-    
-    Path backRect;
-    backRect.addRoundedRectangle (area.reduced (proportionOfHeight (0.008)), cornerAndRoundness);
-    g.setColour (Colour::fromRGB (195, 195, 195));
-    g.fillPath (backRect);
+    g.fillAll (Colour::fromRGB (245, 245, 245));
 }
 
 void Orientation::resized()
