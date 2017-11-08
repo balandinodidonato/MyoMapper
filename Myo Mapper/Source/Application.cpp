@@ -285,8 +285,8 @@ void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
 
 void MyoMapperApplication::createHelpMenu (PopupMenu& menu)
 {
-    menu.addCommandItem (&getCommandManager(), CommandIDs::showAboutWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showDocumentationWindow);
+    menu.addCommandItem (&getCommandManager(), CommandIDs::showAboutWindow);
 }
 
 void MyoMapperApplication::createAppleMenu (PopupMenu& menu)
@@ -407,7 +407,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             break;
             
         case CommandIDs::showDocumentationWindow:
-            result.setInfo ("Documentation", "Show a window to navigate to documentation", CommandCategories::windows, 0);
+            result.setInfo ("Help", "Show a window to navigate to documentation", CommandCategories::windows, 0);
             break;
             
         case CommandIDs::showPreferences:
