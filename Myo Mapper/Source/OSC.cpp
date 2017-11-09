@@ -2,10 +2,11 @@
 #include "OSC.h"
 #include "Application.h"
 #include "Features/Rescale.h"
+#include "Orientation.h"
 
 OSC::OSC()
 :   myoDataIn {"Yaw", "Pitch", "Roll", "Mav"},
-    action {"vibrate", "centre", "setMin", "setMax", "reverse"}
+    action {"vibrate", "calibrate", "setMin", "setMax", "reverse"}
 {
     receivePort = MyoMapperApplication::receivePort;
     
@@ -49,6 +50,10 @@ void OSC::disconnectSender()
 void OSC::bufferOsc (MyoData &myoData)
 {
     String id = String (MyoMapperApplication::selectedMyo);
+ 
+    orScaled.x = (myoData.orientationRaw.x + PI) / (2 * PI); // for passing variable to orientationScaled data to sender
+    orScaled.y = (myoData.orientationRaw.y + PI) / (2 * PI); // for passing variable to orientationScaled data to sender
+    orScaled.z = (myoData.orientationRaw.z + PI) / (2 * PI); // for passing variable to orientationScaled data to sender
     
     auto tree = MyoMapperApplication::getApp().getDataTree();
     
@@ -60,6 +65,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.orientationRaw.x);
             message.addFloat32 ((float) myoData.orientationRaw.y);
             message.addFloat32 ((float) myoData.orientationRaw.z);
+
             oscBuffer.push_back (message);
         }
         if (tree.getChildWithName("OrData").getChildWithName("OrScaled").getPropertyAsValue ("onOff", 0) == true)
@@ -68,6 +74,7 @@ void OSC::bufferOsc (MyoData &myoData)
             message.addFloat32 ((float) myoData.orientationScaled.x);
             message.addFloat32 ((float) myoData.orientationScaled.y);
             message.addFloat32 ((float) myoData.orientationScaled.z);
+            
             oscBuffer.push_back (message);
         }
         if (tree.getChildWithName("OrData").getChildWithName("OrQuaternion").getPropertyAsValue ("onOff", 0) == true)
@@ -432,13 +439,17 @@ void OSC::oscMessageReceived (const OSCMessage& message)
     {
         // ---------------- Calibrate
         
-        if (message.getAddressPattern() == "/myo" + Id + myoDataIn[i] + action[1])
+        if (message.getAddressPattern() == "/myo" + Id + "/" + myoDataIn[i] + "/" + action[1])
         {
             if (message.size() == 1 && message[0].isString())
             {
-                if (message[0].getString() == "centre")
+                if (message[0].getString() == "calibrate")
                 {
-                    map[i][1] = true;
+                    if(myoDataIn[i] == "Yaw")
+                    {
+                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
+                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.x, 0);
+                    }
                 }
             }
         }
@@ -461,11 +472,11 @@ void OSC::oscMessageReceived (const OSCMessage& message)
             {
                 if (message[0].getFloat32() == 1)
                 {
-                    reverseStatus = true;
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 1, 0);
                 }
                 else if (message[0].getFloat32() == 0)
                 {
-                    reverseStatus = false;
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 0, 0);
                 }
             }
             map[i][4] = true;

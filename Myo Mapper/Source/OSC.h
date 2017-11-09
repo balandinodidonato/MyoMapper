@@ -37,6 +37,10 @@ private:
     
     int receivePort;
     
+    Vector3D<float> orScaled;
+    
+    double PI = 3.141592653589793;
+    
     std::vector<OSCMessage> oscBuffer;
     
     String myoDataIn[4];
