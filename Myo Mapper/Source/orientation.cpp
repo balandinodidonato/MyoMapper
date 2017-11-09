@@ -45,72 +45,90 @@ void Orientation::setValues (Vector3D<float> Orientation, Vector3D<float> Orient
     
 }
 
-void Orientation::updateYawReverse()
-{
-    rescaleYaw.setReverse();
-}
-
-void Orientation::updatePitchReverse()
-{
-    rescalePitch.setReverse();
-}
-
-void Orientation::updateRollReverse()
-{
-    rescaleRoll.setReverse();
-}
-
 Vector3D<float> Orientation::getValue()
 {
     return orientationScaled;
 }
 
-/*
-// Recal functions from OSC data in input
-void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
+
+//////////////////////////////////////////////////////////////////////////////
+
+void Orientation::setReverseYaw()
 {
-    switch (myoData)
-    {
-        case 0:
-            switch (Action)
-            {
-                case 1:
-//                    rescaleYaw.setCalibrate(); break;
-                default:
-                    break;
-            }
-            break;
-        case 1:
-            switch (Action)
-            {
-                case 1:
-//                    rescalePitch.setCalibrate(); break;
-//                case 2:
-//                    rescalePitch.setMin(Value); break;
-//                case 3:
-//                    rescalePitch.setMax(Value); break;
-//                case 4:
-//                    rescalePitch.setReverse(ReverseStatus); break;
-                default:
-                    break;
-            }
-            break;
-        case 2:
-            switch (Action)
-            {
-                case 1:
-//                    rescaleRoll.setCalibrate(); break;
-//                case 2:
-//                    rescaleRoll.setMin(Value); break;
-//                case 3:
-//                    rescaleRoll.setMax(Value); break;
-//                case 4:
-//                    rescaleRoll.setReverse(ReverseStatus); break;
-                default:
-                    break;
-            }
-        default:
-            break;
-    }
+    rescaleYaw.setReverse();
 }
-*/
+
+void Orientation::setReversePitch()
+{
+    rescalePitch.setReverse();
+}
+
+void Orientation::setReverseRoll()
+{
+    rescaleRoll.setReverse();
+}
+
+void Orientation::setInMinYaw()
+{
+    rescaleYaw.setInMin();
+}
+
+void Orientation::setInMaxYaw()
+{
+    rescaleYaw.setInMax();
+}
+
+void Orientation::setOutMinYaw()
+{
+    rescaleYaw.setOutMin();
+}
+
+void Orientation::setOutMaxYaw()
+{
+    rescaleYaw.setOutMax();
+}
+
+
+void Orientation::setInMinPitch()
+{
+    rescalePitch.setInMin();
+}
+
+void Orientation::setInMaxPitch()
+{
+    rescalePitch.setInMax();
+}
+
+void Orientation::setOutMinPitch()
+{
+    rescalePitch.setOutMin();
+}
+
+void Orientation::setOutMaxPitch()
+{
+    rescalePitch.setOutMax();
+}
+
+
+void Orientation::setInMinRoll()
+{
+    rescaleRoll.setInMin();
+}
+
+void Orientation::setInMaxRoll()
+{
+    rescaleRoll.setInMax();
+}
+
+void Orientation::setOutMinRoll()
+{
+    rescaleRoll.setOutMin();
+}
+
+void Orientation::setOutMaxRoll()
+{
+    rescaleRoll.setOutMax();
+}
+
+
+

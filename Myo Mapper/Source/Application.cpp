@@ -937,17 +937,64 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
     }
     if (treeWhosePropertyHasChanged.hasType ("YawScaling") == true)
     {
-        visuals->getOrientationPanel().updateYawReverse();
+        if (property.toString() == "reverse") {
+            visuals->getOrientationPanel().setReverseYaw();
+        }
+        if (property.toString() == "inMin") {
+            visuals->getOrientationPanel().setInMinYaw();
+        }
+        if (property.toString() == "inMax") {
+            visuals->getOrientationPanel().setInMaxYaw();
+        }
+        if (property.toString() == "outMin") {
+            visuals->getOrientationPanel().setOutMinYaw();
+        }
+        if (property.toString() == "outMax") {
+            visuals->getOrientationPanel().setOutMaxYaw();
+        }
     }
     if (treeWhosePropertyHasChanged.hasType ("PitchScaling") == true)
     {
-        visuals->getOrientationPanel().updatePitchReverse();
+         if (property.toString() == "reverse") {
+             visuals->getOrientationPanel().setReversePitch();
+         }
+        /*
+        if (property.toString() == "inMin") {
+            visuals->getOrientationPanel().setInMinPitch();
+        }
+        if (property.toString() == "inMax") {
+            visuals->getOrientationPanel().setInMaxPitch();
+        }
+        if (property.toString() == "outMin") {
+            visuals->getOrientationPanel().setOutMinPitch();
+        }
+        if (property.toString() == "outMax") {
+            visuals->getOrientationPanel().setOutMaxPitch();
+        }
+         */
     }
     if (treeWhosePropertyHasChanged.hasType ("RollScaling") == true)
     {
-        auto visualsLocal = visuals;
-        visualsLocal->getOrientationPanel().updateRollReverse();
+        if (property.toString() == "reverse") {
+            visuals->getOrientationPanel().setReverseRoll();
+        }
+        /*
+        if (property.toString() == "inMin") {
+            visuals->getOrientationPanel().setInMinRoll();
+        }
+        if (property.toString() == "inMax") {
+           
+            visuals->getOrientationPanel().setInMaxRoll();
+        }
+        if (property.toString() == "outMin") {
+            visuals->getOrientationPanel().setOutMinRoll();
+        }
+        if (property.toString() == "outMax") {
+            visuals->getOrientationPanel().setOutMaxRoll();
+        }
+         */
     }
+    
 }
 
 void MyoMapperApplication::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)

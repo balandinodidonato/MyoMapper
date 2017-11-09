@@ -44,7 +44,7 @@ private:
     std::vector<OSCMessage> oscBuffer;
     
     String myoDataIn[4];
-    String action[5];
+    String action[7];
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSC)
 };

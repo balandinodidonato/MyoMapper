@@ -2,11 +2,10 @@
 #include "OSC.h"
 #include "Application.h"
 #include "Features/Rescale.h"
-#include "Orientation.h"
 
 OSC::OSC()
 :   myoDataIn {"Yaw", "Pitch", "Roll", "Mav"},
-    action {"vibrate", "calibrate", "setMin", "setMax", "reverse"}
+    action {"vibrate", "calibrate", "reverse", "inMin", "inMax", "outMin", "outMax"}
 {
     receivePort = MyoMapperApplication::receivePort;
     
@@ -18,7 +17,7 @@ OSC::OSC()
         
         for (int y = 0; y < 4; ++y) // myo data
         {
-            for (int z = 1; z < 5; ++z) //action
+            for (int z = 0; z < 7; ++z) //action
             {
                 receiver.addListener (this, "/myo" + I + "/" + myoDataIn[y] + "/" + action[z]);
             }
@@ -431,8 +430,8 @@ void OSC::oscMessageReceived (const OSCMessage& message)
     if (message.getAddressPattern() == "/myo" + Id + "/vibrate")
         if (message.size() == 1 && message[0].isString())
         {
-            auto vibrationType =  message[0].getString();
-            myoManager.vibrate (vibrationType);
+          //  auto vibrationType =  message[0].getString();
+         //   myoManager.vibrate (vibrationType);
         }
     
     for (int i = 0; i < 4; ++i) // myoDataIn
@@ -465,7 +464,7 @@ void OSC::oscMessageReceived (const OSCMessage& message)
         }
         
         // ---------------- Reverse
-        if (message.getAddressPattern() == "/myo" + Id + "/" + myoDataIn[i] + "/" + action[4])
+        if (message.getAddressPattern() == "/myo" + Id + "/" + myoDataIn[i] + "/" + action[2])
         {
             if (message.size() == 1 && message[0].isInt32())
             {
@@ -492,25 +491,21 @@ void OSC::oscMessageReceived (const OSCMessage& message)
             map[i][4] = true;
         }
         
-        for (int y = 2; y < 4; ++y) // action
+        for (int y = 3; y < 7; ++y) // action
         {
             // ---------------- Set MinMax Scaling
-            
-            String matchString = "/myo" + Id + "/" + myoDataIn[i] + "/" + action[y];
-            
-            if (message.getAddressPattern() == matchString)
+            if (message.getAddressPattern() == "/myo" + Id + "/" + myoDataIn[i] + "/" + action[y])
             {
                 if (message.size() == 1)
                 {
                     if (message[0].isInt32())
                     {
-                        value = message[0].isInt32();
+                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], message[0].getInt32(), 0);
                     }
                     else if (message[0].isFloat32())
                     {
-                        value = message[0].getFloat32();
+                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], message[0].getFloat32(), 0);
                     }
-                    map[i][y] = true;
                 }
             }
         }

@@ -18,9 +18,25 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void setValues (Vector3D<float>, Vector3D<float>);
-    void updateYawReverse();
-    void updatePitchReverse();
-    void updateRollReverse();
+    
+    void setReverseYaw();
+    void setReversePitch();
+    void setReverseRoll();
+    
+    void setInMinYaw();
+    void setInMaxYaw();
+    void setOutMinYaw();
+    void setOutMaxYaw();
+    
+    void setInMinPitch();
+    void setInMaxPitch();
+    void setOutMinPitch();
+    void setOutMaxPitch();
+    
+    void setInMinRoll();
+    void setInMaxRoll();
+    void setOutMinRoll();
+    void setOutMaxRoll();
     
     Vector3D<float> getValue();
     

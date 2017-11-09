@@ -182,13 +182,13 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
     else if (slider ==&inMinSlider)
     {
         inMin = inMinSlider.getValue();
-        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", inMin, 0);
+        tree.getChildWithName(labelWidget+"Scaling").setProperty ("inMin", inMin, 0);
     }
     
     if (slider ==&inMaxSlider)
     {
         inMax = inMaxSlider.getValue();
-        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", inMax, 0);
+        tree.getChildWithName(labelWidget+"Scaling").setProperty ("inMax", inMax, 0);
     }
 }
 
@@ -241,29 +241,30 @@ void Rescale::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, 
 void Rescale::setInMin()
 {
     auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
-    float inMin = tree.getProperty("inMin");
-    mmSlider.setMinValue (inMin);
-
+    inMin = tree.getProperty("inMin");
+    inMinSlider.setValue(inMin);
 }
 
 void Rescale::setInMax()
 {
     auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
-    float inMax = tree.getProperty("inMax");
-    outMinSlider.setValue (inMax);
+    inMax = tree.getProperty("inMax");
+    inMaxSlider.setValue (inMax);
 }
 
 void Rescale::setOutMin()
 {
     auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
-    float outMin = tree.getProperty("outMin");
-    mmSlider.setMaxValue (outMin);
+    outMin = tree.getProperty("outMin");
+    mmSlider.setMinValue (outMin);
+    outMinSlider.setValue(outMin);
 }
 
 void Rescale::setOutMax()
 {
     auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
-    float outMax = tree.getProperty("outMax");
+    outMax = tree.getProperty("outMax");
+    mmSlider.setValue(outMax);
     outMaxSlider.setValue (outMax);
 }
 
