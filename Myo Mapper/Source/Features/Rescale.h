@@ -64,9 +64,9 @@ private:
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) override;
     
     
-    float inMax = 0;
+    float inMax = 1;
     float inMin = 0;
-    float outMax = 0;
+    float outMax = 1;
     float outMin = 0;
 
     

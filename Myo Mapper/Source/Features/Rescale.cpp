@@ -181,14 +181,33 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
     
     else if (slider ==&inMinSlider)
     {
-        inMin = inMinSlider.getValue();
-        tree.getChildWithName(labelWidget+"Scaling").setProperty ("inMin", inMin, 0);
+        if (inMinSlider.getValue() >= inMaxSlider.getValue())
+        {
+            inMinSlider.setValue (inMinSlider.getValue() - 0.001);
+            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                              "Error",
+                                              "Input minimum cannot be the same or greater than input maximum");
+        }
+        else{
+            inMin = inMinSlider.getValue();
+            tree.getChildWithName(labelWidget+"Scaling").setProperty ("inMin", inMin, 0);
+        }
     }
     
     if (slider ==&inMaxSlider)
     {
-        inMax = inMaxSlider.getValue();
-        tree.getChildWithName(labelWidget+"Scaling").setProperty ("inMax", inMax, 0);
+        if (inMaxSlider.getValue() <= inMinSlider.getValue())
+        {
+            inMaxSlider.setValue (inMinSlider.getValue() + 0.001);
+            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                              "Error",
+                                              "Input maximum cannot be the same or less than input minimum");
+        }
+        else
+        {
+            inMax = inMaxSlider.getValue();
+            tree.getChildWithName(labelWidget+"Scaling").setProperty ("inMax", inMax, 0);
+        }
     }
 }
 
