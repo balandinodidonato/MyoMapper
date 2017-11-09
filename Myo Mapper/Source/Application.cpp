@@ -632,6 +632,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     yawScalingTree.setProperty ("outMax", 1.0f, 0);
     yawScalingTree.setProperty ("reverse", off, 0);
     yawScalingTree.setProperty ("offset", 0, 0);
+    yawScalingTree.setProperty ("test", 0, 0);
     ValueTree pitchScalingTree = ValueTree ("PitchScaling");
     pitchScalingTree.setProperty (name, "Pitch Scaling", 0);
     pitchScalingTree.setProperty ("inMin", 0.0f, 0);
@@ -640,6 +641,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     pitchScalingTree.setProperty ("outMax", 1.0f, 0);
     pitchScalingTree.setProperty ("reverse", off, 0);
     pitchScalingTree.setProperty ("offset", 0, 0);
+    pitchScalingTree.setProperty ("test", 0, 0);
     ValueTree rollScalingTree = ValueTree ("RollScaling");
     rollScalingTree.setProperty (name, "Roll Scaling", 0);
     rollScalingTree.setProperty ("inMin", 0.0f, 0);
@@ -648,6 +650,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     rollScalingTree.setProperty ("outMax", 1.0f, 0);
     rollScalingTree.setProperty ("reverse", off, 0);
     rollScalingTree.setProperty ("offset", 0, 0);
+    rollScalingTree.setProperty ("test", 0, 0);
     
     dataScalingTree.addChild (yawScalingTree, -1, 0);
     dataScalingTree.addChild (pitchScalingTree, -1, 0);

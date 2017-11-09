@@ -1,6 +1,6 @@
 #include "OrScaling.h"
 
-void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin, float OutMax, int Reverse, float OffSet)
+void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin, float OutMax, int Reverse, float OffSet, int Test)
 {
     offset = OffSet;
     inValue = InValue;
@@ -9,6 +9,7 @@ void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin,
     outMin = OutMin;
     outMax = OutMax;
     reverse = Reverse;
+    test = Test;
     
     // scale between 0 and 1
     scaled = (inValue + PI) / (2 * PI); // scale input from -PI,PI to 0,1
@@ -20,7 +21,7 @@ void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin,
     // calibrate
     input1 = 1 - offset;
     calibrated = scaled + input1;
-    calibrated = calibrated - 0.5;
+    calibrated = calibrated - (0.5 * test);
     
     // mod
     calibrated = calibrated * 10000000;
