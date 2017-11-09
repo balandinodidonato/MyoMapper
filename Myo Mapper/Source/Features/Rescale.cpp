@@ -154,51 +154,41 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
 {
     auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("DataScaling");
     tree.addListener (this);
+    
     if (slider == &mmSlider)
     {
-        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", mmSlider.getMinValue(), 0);
-        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMax", mmSlider.getMaxValue(), 0);
+        outMin = mmSlider.getMinValue();
+        outMax = mmSlider.getMaxValue();
+        outMaxSlider.setValue(outMax);
+        outMinSlider.setValue(outMin);
+        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", outMin, 0);
+        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMax", outMax, 0);
     }
     
-    else if (slider == &outMinSlider)
+    else if (slider ==&outMinSlider)
     {
-       tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", outMinSlider.getValue(), 0);
+        outMin = outMinSlider.getValue();
+        mmSlider.setMinValue(outMin);
+        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", outMin, 0);
     }
     
-    if (slider == &outMaxSlider)
+    if (slider ==&outMaxSlider)
     {
-        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMax", outMaxSlider.getValue(), 0);
-	}
-    
-    else if (slider == &inMinSlider)
-    {
-        if (inMinSlider.getValue() >= outMaxSlider.getValue())
-        {
-            inMinSlider.setValue (inMinSlider.getValue() - 0.001);
-            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                              "Error",
-                                              "Input minimum cannot be the same or greater than output maximum");
-        }
-        if (inMinSlider.getValue() >= inMaxSlider.getValue())
-        {
-            inMinSlider.setValue (inMinSlider.getValue() - 0.001);
-            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                              "Error",
-                                              "Input minimum cannot be the same or greater than input maximum");
-        }
-         tree.getChildWithName(labelWidget+"Scaling").setProperty ("inMin", inMinSlider.getValue(), 0);
+        outMax = outMaxSlider.getValue();
+        mmSlider.setMaxValue(outMax);
+        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMax", outMax, 0);
     }
     
-    if (slider == &inMaxSlider)
+    else if (slider ==&inMinSlider)
     {
-        if (inMaxSlider.getValue() <= inMinSlider.getValue())
-        {
-            inMaxSlider.setValue (inMinSlider.getValue() + 0.001);
-            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                              "Error",
-                                              "Input maximum cannot be the same or less than input minimum");
-        }
-         tree.getChildWithName(labelWidget+"Scaling").setProperty ("inMax", inMaxSlider.getValue(), 0);
+        inMin = inMinSlider.getValue();
+        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", inMin, 0);
+    }
+    
+    if (slider ==&inMaxSlider)
+    {
+        inMax = inMaxSlider.getValue();
+        tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", inMax, 0);
     }
 }
 
@@ -246,6 +236,35 @@ void Rescale::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, 
     }
     if (treeWhosePropertyHasChanged.hasType (labelWidget+"Scaling"))
     resized();
+}
+
+void Rescale::setInMin()
+{
+    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    float inMin = tree.getProperty("inMin");
+    mmSlider.setMinValue (inMin);
+
+}
+
+void Rescale::setInMax()
+{
+    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    float inMax = tree.getProperty("inMax");
+    outMinSlider.setValue (inMax);
+}
+
+void Rescale::setOutMin()
+{
+    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    float outMin = tree.getProperty("outMin");
+    mmSlider.setMaxValue (outMin);
+}
+
+void Rescale::setOutMax()
+{
+    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    float outMax = tree.getProperty("outMax");
+    outMaxSlider.setValue (outMax);
 }
 
 void Rescale::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)

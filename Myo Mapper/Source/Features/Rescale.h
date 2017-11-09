@@ -25,6 +25,10 @@ public:
     void setMin (float Value);
     void setMax (float Value);
     void setReverse ();
+    void setInMin();
+    void setInMax();
+    void setOutMin();
+    void setOutMax();
     
 private:
     
@@ -59,6 +63,12 @@ private:
     void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex) override;
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) override;
     
+    
+    float inMax = 0;
+    float inMin = 0;
+    float outMax = 0;
+    float outMin = 0;
+
     
     class OrientationLookAndFeel    : public MyoMapperLookAndFeel
     {
