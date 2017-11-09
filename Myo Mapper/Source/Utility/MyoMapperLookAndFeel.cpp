@@ -165,8 +165,7 @@ Slider::SliderLayout MyoMapperLookAndFeel::getSliderLayout (Slider& slider)
 void MyoMapperLookAndFeel::setupColours()
 {
     setColour (Label::textColourId, Colours::black);
-    setColour (Label::textWhenEditingColourId, Colours::black);
-    setColour (Label::ColourId, Colours::black);
+    setColour (Label::textWhenEditingColourId, Colour::fromRGB (84, 101, 126));
     
     setColour (Slider::trackColourId, Colour::fromRGB (35, 35, 35));
     setColour (Slider::thumbColourId, Colour::fromRGB (0, 129, 213));
