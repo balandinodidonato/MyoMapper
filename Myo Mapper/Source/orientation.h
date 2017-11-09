@@ -18,6 +18,9 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void setValues (Vector3D<float>, Vector3D<float>);
+    void updateYawReverse();
+    void updatePitchReverse();
+    void updateRollReverse();
     
     Vector3D<float> getValue();
     

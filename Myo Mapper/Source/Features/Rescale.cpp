@@ -202,10 +202,12 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
     }
 }
 
-void Rescale::setReverse (bool Status) // Value is the one from tree
+void Rescale::setReverse() // Value is the one from tree
 {
-    // OSC Receive
-    reverse.setToggleState (Status, dontSendNotification);
+    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    bool val = tree.getProperty("reverse");
+    
+    reverse.setToggleState (val, dontSendNotification);
     reverse.setState (juce::Button::buttonDown);
 }
 
@@ -241,7 +243,6 @@ void Rescale::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, 
         outMinSlider.setValue (treeWhosePropertyHasChanged.getProperty ("outMin"));
         mmSlider.setMaxValue (treeWhosePropertyHasChanged.getProperty ("outMax"));
         outMaxSlider.setValue (treeWhosePropertyHasChanged.getProperty ("outMax"));
-//        mmSlider.setValue (
     }
     if (treeWhosePropertyHasChanged.hasType (labelWidget+"Scaling"))
     resized();

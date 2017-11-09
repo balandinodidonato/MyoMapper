@@ -24,7 +24,7 @@ public:
     void setValue (float Value, float MyoData);
     void setMin (float Value);
     void setMax (float Value);
-    void setReverse (bool Status);
+    void setReverse ();
     
 private:
     

@@ -125,7 +125,7 @@ void MyoMapperApplication::timerCallback()
         return;
     }
     
-    auto visuals = windowList->visualsWindowContent;
+    visuals = windowList->visualsWindowContent;
     
     osc->bufferOsc (myoData[selectedMyo]);
     osc->sendOsc();
@@ -931,6 +931,19 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
     if (treeWhosePropertyHasChanged.hasType ("SelectedMyo") == true)
     {
         selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
+    }
+    if (treeWhosePropertyHasChanged.hasType ("YawScaling") == true)
+    {
+        visuals->getOrientationPanel().updateYawReverse();
+    }
+    if (treeWhosePropertyHasChanged.hasType ("PitchScaling") == true)
+    {
+        visuals->getOrientationPanel().updatePitchReverse();
+    }
+    if (treeWhosePropertyHasChanged.hasType ("RollScaling") == true)
+    {
+        auto visualsLocal = visuals;
+        visualsLocal->getOrientationPanel().updateRollReverse();
     }
 }
 

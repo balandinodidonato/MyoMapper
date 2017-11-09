@@ -42,6 +42,22 @@ void Orientation::setValues (Vector3D<float> Orientation, Vector3D<float> Orient
     rescaleYaw.setValue (Orientation.x, OrientationRaw.x);
     rescalePitch.setValue (Orientation.y, OrientationRaw.y);
     rescaleRoll.setValue (Orientation.z, OrientationRaw.z);
+    
+}
+
+void Orientation::updateYawReverse()
+{
+    rescaleYaw.setReverse();
+}
+
+void Orientation::updatePitchReverse()
+{
+    rescalePitch.setReverse();
+}
+
+void Orientation::updateRollReverse()
+{
+    rescaleRoll.setReverse();
 }
 
 Vector3D<float> Orientation::getValue()

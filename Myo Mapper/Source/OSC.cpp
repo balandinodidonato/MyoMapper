@@ -1,10 +1,11 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "OSC.h"
 #include "Application.h"
+#include "Features/Rescale.h"
 
 OSC::OSC()
-:   myoDataIn {"/yaw", "/pitch", "/roll", "/mav"},
-    action {"/vibrate", "/centre", "/setMin", "/setMax", "/reverse"}
+:   myoDataIn {"Yaw", "Pitch", "Roll", "Mav"},
+    action {"vibrate", "centre", "setMin", "setMax", "reverse"}
 {
     receivePort = MyoMapperApplication::receivePort;
     
@@ -18,7 +19,7 @@ OSC::OSC()
         {
             for (int z = 1; z < 5; ++z) //action
             {
-                receiver.addListener (this, "/myo" + I + myoDataIn[y] + action[z]);
+                receiver.addListener (this, "/myo" + I + "/" + myoDataIn[y] + "/" + action[z]);
             }
         }
     }
@@ -416,7 +417,8 @@ void OSC::disconnectReceiver()
 void OSC::oscMessageReceived (const OSCMessage& message)
 {
     auto Id = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId").toString();
-    DBG (String(Id));
+    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling");
+    
     // ---------------- Vibrate
     
     if (message.getAddressPattern() == "/myo" + Id + "/vibrate")
@@ -442,18 +444,17 @@ void OSC::oscMessageReceived (const OSCMessage& message)
         }
         
         // ---------------- Reverse
-        
-        if (message.getAddressPattern() == "/myo" + Id + myoDataIn[i] + action[4])
+        if (message.getAddressPattern() == "/myo" + Id + "/" + myoDataIn[i] + "/" + action[4])
         {
             if (message.size() == 1 && message[0].isInt32())
             {
                 if (message[0].getInt32() == 1)
                 {
-                    reverseStatus = true;
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 1, 0);
                 }
                 else if (message[0].getInt32() == 0)
                 {
-                    reverseStatus = false;
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 0, 0);
                 }
             }
             else if (message.size() == 1 && message[0].isFloat32())
@@ -474,7 +475,7 @@ void OSC::oscMessageReceived (const OSCMessage& message)
         {
             // ---------------- Set MinMax Scaling
             
-            String matchString = "/myo" + Id + myoDataIn[i] + action[y];
+            String matchString = "/myo" + Id + "/" + myoDataIn[i] + "/" + action[y];
             
             if (message.getAddressPattern() == matchString)
             {
