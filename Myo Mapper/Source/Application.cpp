@@ -66,12 +66,13 @@ void MyoMapperApplication::initialise (const String& commandLine)
     
     myoManager.connect();
     
+    selectedMyo = getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
+
     osc = new OSC();
     sendPort = getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber");
     receivePort = getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
     osc->addChangeListener (this);
     
-    selectedMyo = getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
 }
 
 void MyoMapperApplication::handleAsyncUpdate()
@@ -958,7 +959,7 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
          if (property.toString() == "reverse") {
              visuals->getOrientationPanel().setReversePitch();
          }
-        /*
+        
         if (property.toString() == "inMin") {
             visuals->getOrientationPanel().setInMinPitch();
         }
@@ -971,14 +972,14 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
         if (property.toString() == "outMax") {
             visuals->getOrientationPanel().setOutMaxPitch();
         }
-         */
+        
     }
     if (treeWhosePropertyHasChanged.hasType ("RollScaling") == true)
     {
         if (property.toString() == "reverse") {
             visuals->getOrientationPanel().setReverseRoll();
         }
-        /*
+        
         if (property.toString() == "inMin") {
             visuals->getOrientationPanel().setInMinRoll();
         }
@@ -992,7 +993,6 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
         if (property.toString() == "outMax") {
             visuals->getOrientationPanel().setOutMaxRoll();
         }
-         */
     }
     
 }
