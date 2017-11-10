@@ -930,27 +930,30 @@ void MyoMapperApplication::writeRootTreeToXml()
 //==============================================================================
 void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
-    if (treeWhosePropertyHasChanged.hasType ("SendPort") == true)
+    if (isInitialising() == false)
     {
-        osc->disconnectSender();
-        sendPort = treeWhosePropertyHasChanged.getProperty (property);
-        osc->connectSender (hostAddress, sendPort);
-    }
-    if (treeWhosePropertyHasChanged.hasType ("HostAddress") == true)
-    {
-        osc->disconnectSender();
-        hostAddress = treeWhosePropertyHasChanged.getProperty (property);
-        osc->connectSender (hostAddress, sendPort);
-    }
-    if (treeWhosePropertyHasChanged.hasType ("ReceivePort") == true)
-    {
-        osc->disconnectReceiver();
-        receivePort = treeWhosePropertyHasChanged.getProperty (property);
-        osc->connectReceiver (receivePort);
-    }
-    if (treeWhosePropertyHasChanged.hasType ("SelectedMyo") == true)
-    {
-        selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
+        if (treeWhosePropertyHasChanged.hasType ("SendPort") == true)
+        {
+            osc->disconnectSender();
+            sendPort = treeWhosePropertyHasChanged.getProperty (property);
+            osc->connectSender (hostAddress, sendPort);
+        }
+        if (treeWhosePropertyHasChanged.hasType ("HostAddress") == true)
+        {
+            osc->disconnectSender();
+            hostAddress = treeWhosePropertyHasChanged.getProperty (property);
+            osc->connectSender (hostAddress, sendPort);
+        }
+        if (treeWhosePropertyHasChanged.hasType ("ReceivePort") == true)
+        {
+            osc->disconnectReceiver();
+            receivePort = treeWhosePropertyHasChanged.getProperty (property);
+            osc->connectReceiver (receivePort);
+        }
+        if (treeWhosePropertyHasChanged.hasType ("SelectedMyo") == true)
+        {
+            selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
+        }
     }
     if (treeWhosePropertyHasChanged.hasType ("YawScaling") == true)
     {
