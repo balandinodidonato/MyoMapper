@@ -486,6 +486,7 @@ void OSC::oscMessageReceived (const OSCMessage& message)
                 else if (message[0].getFloat32() == 0)
                 {
                     MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 0, 0);
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").getProperty("inMax");
                 }
             }
             map[i][4] = true;
@@ -498,13 +499,44 @@ void OSC::oscMessageReceived (const OSCMessage& message)
             {
                 if (message.size() == 1)
                 {
+                    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling");
+                    float inMax = tree.getProperty("inMax");
+                    float inMin = tree.getProperty("inMin");
+                    
                     if (message[0].isInt32())
                     {
-                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], message[0].getInt32(), 0);
+                        if(y == 3 && message[0].getInt32() >= inMax)
+                        {
+                            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                                              "Error",
+                                                              "Input minimum cannot be equal or greater than input maximum");
+                        }
+                        else if(y == 4 && message[0].getInt32() <= inMin)
+                        {
+                            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                                              "Error",
+                                                              "Input maximum cannot be equal or less than input minimum");
+                        }
+                        else
+                            MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], message[0].getInt32(), 0);
+                        
                     }
                     else if (message[0].isFloat32())
                     {
-                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], message[0].getFloat32(), 0);
+                        if(y == 3 && message[0].getFloat32() >= inMax)
+                        {
+                            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                                              "Error",
+                                                              "Input minimum cannot be equal or greater than input maximum");
+                        }
+                        else if(y == 4 && message[0].getFloat32() <= inMin)
+                        {
+                            AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                                              "Error",
+                                                              "Input maximum cannot be equal or less than input minimum");
+                        }
+                        else
+                            MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], message[0].getFloat32(), 0);
                     }
                 }
             }
