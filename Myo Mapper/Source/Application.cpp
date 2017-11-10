@@ -628,7 +628,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     
     ValueTree receivePortTree = ValueTree ("ReceivePort");
     receivePortTree.setProperty (name, "Receive Port", 0);
-    receivePortTree.setProperty (portNumber, "5431", 0);
+    receivePortTree.setProperty (portNumber, "5433", 0);
     
     // Add trees for storing scaling data
     ValueTree dataScalingTree = ValueTree ("DataScaling");
