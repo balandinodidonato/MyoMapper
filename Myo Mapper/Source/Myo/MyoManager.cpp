@@ -25,10 +25,10 @@ bool MyoManager::connect()
         {
             std::cout << "Attempting to find a Myo..." << std::endl;
             myo = hub->waitForMyo(10000);
-            listener.knownMyos.push_back(myo);
-            myo->setStreamEmg(myo::Myo::streamEmgEnabled);
-            myo->unlock(myo::Myo::unlockHold);
             hub->addListener(&listener);
+            listener.knownMyos.push_back(myo);
+            myo->unlock(myo::Myo::unlockHold);
+            myo->setStreamEmg(myo::Myo::streamEmgEnabled);
         }
     }
     catch (const std::exception& e)
