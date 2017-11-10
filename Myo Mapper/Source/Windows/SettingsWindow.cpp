@@ -35,8 +35,8 @@ hostAddress("127.0.0.1")
     hostAddressTitleLabel.setText ("Host Address:", dontSendNotification);
     addAndMakeVisible(hostAddressTitleLabel);
     
-    setHostAddressLabel.setText (hostAddress, dontSendNotification);
-    setHostAddressLabel.setEditable(true);
+    setHostAddressLabel.setText(MyoMapperApplication::getApp().getSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
+                                , dontSendNotification);    setHostAddressLabel.setEditable(true);
     addAndMakeVisible(setHostAddressLabel);
     setHostAddressLabel.addListener(this);
     
