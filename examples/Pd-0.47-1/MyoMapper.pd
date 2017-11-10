@@ -1,0 +1,122 @@
+#N canvas 146 163 737 463 10;
+#X obj 21 132 print OSC_messages;
+#X obj 13 182 route orientation emg pose, f 58;
+#X text 136 133 <- Print all OSC messages in input;
+#X obj 13 204 route scaled;
+#X obj 13 248 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 617 1;
+#X obj 47 248 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6267 1;
+#X obj 82 248 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6674 1;
+#X text 9 383 Yaw;
+#X text 37 383 Pitch;
+#X text 77 383 Roll;
+#X obj 128 204 route scaled;
+#X obj 128 290 vsl 15 128 0 1 0 0 empty empty empty 0 20 0 10 -262144
+-1 -1 209 1;
+#X obj 146 290 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 249 1;
+#X obj 164 290 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1454 1;
+#X obj 183 290 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1663 1;
+#X obj 201 290 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 737 1;
+#X obj 220 290 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 189 1;
+#X obj 238 290 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 139 1;
+#X obj 257 290 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 149 1;
+#X text 104 423 EMG 1 2 3 4 5 6 7 8;
+#X obj 13 157 route myo1;
+#X text 12 6 Myo Mapper;
+#N canvas 0 22 679 368 oscSender 0;
+#X obj 138 31 loadbang;
+#X floatatom 213 100 5 0 0 1 OSC_port - -, f 5;
+#X obj 213 77 i 5431;
+#X msg 138 148 127.0.0.1;
+#X obj 138 53 t b b;
+#X obj 213 119 t b i;
+#X msg 138 195 connect \$1 \$2;
+#X obj 138 317 netsend -u -b;
+#X obj 138 172 pack s f, f 13;
+#X msg 145 216 disconnect \$1 \$2;
+#X text 38 148 Host IP Address:;
+#X obj 155 239 r oscToMyoMapper;
+#X obj 155 267 list prepend send;
+#X obj 155 292 list trim;
+#X obj 314 307 print;
+#X obj 314 285 oscparse;
+#X obj 323 257 list trim;
+#X connect 0 0 4 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 8 0;
+#X connect 4 0 3 0;
+#X connect 4 1 2 0;
+#X connect 5 0 3 0;
+#X connect 5 1 8 1;
+#X connect 6 0 7 0;
+#X connect 8 0 6 0;
+#X connect 9 0 7 0;
+#X connect 11 0 12 0;
+#X connect 11 0 16 0;
+#X connect 12 0 13 0;
+#X connect 13 0 7 0;
+#X connect 15 0 14 0;
+#X connect 16 0 15 0;
+#X restore 425 358 pd oscSender;
+#X symbolatom 297 229 10 0 0 0 Pose: - -, f 10;
+#X obj 297 206 symbol;
+#X obj 128 268 unpack 0 0 0 0 0 0 0 0;
+#X obj 13 226 unpack 0 0 0;
+#X obj 128 226 route abs;
+#X obj 128 248 route mavg;
+#N canvas 0 22 211 271 oscReceiver 0;
+#X obj 14 148 oscparse;
+#X obj 14 170 list trim;
+#X obj 14 126 netreceive -u -b;
+#X obj 14 38 loadbang;
+#X msg 14 104 listen \$1;
+#X floatatom 14 83 5 0 0 1 OSC_port - -, f 5;
+#X obj 14 60 i 5432;
+#X obj 14 192 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 0 0;
+#X connect 3 0 6 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X connect 6 0 5 0;
+#X restore 13 103 pd oscReceiver;
+#X text 12 23 An example of how import Myo data into Pure Data using
+Myo Mapper 3 For more info visit http://www.balandinodidonato.com/myomapper/
+or contac Myo Mapper's the developer: info@balandinodidonato.com;
+#X text 410 127 Set scaling Myo Mapper parmeters via OSC here;
+#X obj 425 151 scalingSettings Yaw;
+#X obj 425 221 scalingSettings Pitch;
+#X obj 425 291 scalingSettings Roll;
+#X connect 1 0 3 0;
+#X connect 1 1 10 0;
+#X connect 1 2 24 0;
+#X connect 3 0 26 0;
+#X connect 10 0 27 0;
+#X connect 20 0 1 0;
+#X connect 24 0 23 0;
+#X connect 25 0 11 0;
+#X connect 25 1 12 0;
+#X connect 25 2 13 0;
+#X connect 25 3 14 0;
+#X connect 25 4 15 0;
+#X connect 25 5 16 0;
+#X connect 25 6 17 0;
+#X connect 25 7 18 0;
+#X connect 26 0 4 0;
+#X connect 26 1 5 0;
+#X connect 26 2 6 0;
+#X connect 27 0 28 0;
+#X connect 28 0 25 0;
+#X connect 29 0 20 0;
+#X connect 29 0 0 0;
