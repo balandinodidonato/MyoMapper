@@ -7,6 +7,8 @@ bool SettingsWindow::startButtonClicked;
 bool SettingsWindow::featureButtonClicked;
 
 SettingsWindow::SettingsWindow()
+:
+hostAddress("127.0.0.1")
 {
     oscSendLabel.setJustificationType (Justification::horizontallyCentred);
     oscSendLabel.setText ("OSC Send Port", dontSendNotification);
@@ -30,6 +32,14 @@ SettingsWindow::SettingsWindow()
     oscReceiveSetter.addListener (this);
     addAndMakeVisible (oscReceiveSetter);
     
+    hostAddressTitleLabel.setText ("Host Address:", dontSendNotification);
+    addAndMakeVisible(hostAddressTitleLabel);
+    
+    setHostAddressLabel.setText (hostAddress, dontSendNotification);
+    setHostAddressLabel.setEditable(true);
+    addAndMakeVisible(setHostAddressLabel);
+    setHostAddressLabel.addListener(this);
+    
     myoSelectorLabel.setJustificationType (Justification::left);
     myoSelectorLabel.setText ("Selected Myo:", dontSendNotification);
     addAndMakeVisible (myoSelectorLabel);
@@ -41,19 +51,19 @@ SettingsWindow::SettingsWindow()
     myoSelectorSetter.addListener (this);
     addAndMakeVisible (myoSelectorSetter);
     
-    saveButton.setButtonText ("SAVE");
-    addAndMakeVisible (saveButton);
+    //saveButton.setButtonText ("SAVE");
+    //addAndMakeVisible (saveButton);
     
-    openButton.setButtonText ("OPEN");
-    addAndMakeVisible (openButton);
+    //openButton.setButtonText ("OPEN");
+    //addAndMakeVisible (openButton);
     
     featuresButton.setButtonText ("FEATURES");
     featuresButton.addListener (this);
     addAndMakeVisible (featuresButton);
     
-    hideOnStartupButton.setLookAndFeel (&toggleButtonLAF);
-    hideOnStartupButton.setButtonText ("Hide On Startup");
-    addAndMakeVisible (hideOnStartupButton);
+    //hideOnStartupButton.setLookAndFeel (&toggleButtonLAF);
+    //hideOnStartupButton.setButtonText ("Hide On Startup");
+    //addAndMakeVisible (hideOnStartupButton);
     
     startButton.setButtonText ("START");
     startButton.addListener (this);
@@ -71,8 +81,8 @@ void SettingsWindow::paint (Graphics& g)
     auto area = getLocalBounds().toFloat();
     auto windowSize = area;
     area.removeFromTop (windowSize.proportionOfHeight(0.078));
-    auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429))
-                     .reduced (windowSize.proportionOfWidth (0.078), 0);
+    auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    auto oscHostRegion = area.removeFromTop(windowSize.proportionOfHeight (0.1)).reduced (windowSize.proportionOfWidth (0.078), 0);
 
     auto oscRectangleWidth = windowSize.proportionOfWidth (0.375);
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
@@ -102,6 +112,8 @@ void SettingsWindow::resized()
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
     area.removeFromTop (windowSize.proportionOfHeight (0.07));
+    auto myoHostAddresRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
+    .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
     auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
                             .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
     area.removeFromTop (windowSize.proportionOfHeight (0.07));
@@ -117,7 +129,6 @@ void SettingsWindow::resized()
     oscSendSetter.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
                              .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
     
-    // Set receive region bounds
     oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.05));
     oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
                                .reduced (windowSizeWidth.proportionOfWidth (0.019), 0));
@@ -125,7 +136,12 @@ void SettingsWindow::resized()
     oscReceiveSetter.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
                              .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
     
-    // Set myo selector region bounds
+    hostAddressTitleLabel.setBounds (myoHostAddresRegion.removeFromLeft (windowSize.proportionOfWidth (0)));
+    hostAddressTitleLabel.setBounds (myoHostAddresRegion.removeFromLeft (windowSize.proportionOfWidth (0.401)).reduced (0, windowSize.proportionOfHeight (0.01)));
+    
+    setHostAddressLabel.setBounds (myoHostAddresRegion.removeFromLeft (windowSize.proportionOfWidth (0.1)));
+    setHostAddressLabel.setBounds (myoHostAddresRegion.removeFromLeft (windowSize.proportionOfWidth (0.401)).reduced (0, windowSize.proportionOfHeight (0.01)));
+    
     myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.287)));
     myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.033));
     myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.401))
@@ -160,6 +176,21 @@ void SettingsWindow::buttonClicked (Button* button)
         sendChangeMessage();
     }
 }
+
+
+void SettingsWindow::labelTextChanged(juce::Label *labelThatHasChanged)
+{
+    if (labelThatHasChanged == &setHostAddressLabel)
+    {
+        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("HostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
+    }
+}
+
+String SettingsWindow::getHostAddress()
+{
+    return hostAddress;
+}
+
 
 void SettingsWindow::sliderValueChanged (Slider* slider)
 {

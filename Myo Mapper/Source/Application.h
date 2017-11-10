@@ -73,6 +73,7 @@ public:
     static int selectedMyo;
     static int sendPort;
     static int receivePort;
+    static String hostAddress;
     
     ScopedPointer<OSC> osc;
     void changeListenerCallback (ChangeBroadcaster* source) override;
@@ -114,7 +115,7 @@ public:
     
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyoMapperApplication)
-    
+
     int oscBufferFillSpeed;
     VisualsWindow* visuals;
 };

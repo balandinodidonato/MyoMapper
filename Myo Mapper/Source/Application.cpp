@@ -33,6 +33,7 @@ struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
 int MyoMapperApplication::selectedMyo;
 int MyoMapperApplication::sendPort;
 int MyoMapperApplication::receivePort;
+String MyoMapperApplication::hostAddress;
 
 MyoMapperApplication::MyoMapperApplication()
 {
@@ -69,6 +70,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     selectedMyo = getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
 
     osc = new OSC();
+    hostAddress = getSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress");
     sendPort = getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber");
     receivePort = getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
     osc->addChangeListener (this);
@@ -160,7 +162,7 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
     }
     if (selectedMyo > 0 && selectedMyo <= 20 && SettingsWindow::startButtonClicked == true)
     {
-        auto sendConnect = osc->connectSender (IPAddress::local().toString(), MyoMapperApplication::sendPort);
+        auto sendConnect = osc->connectSender (MyoMapperApplication::hostAddress, MyoMapperApplication::sendPort);
         auto receiveConnect = osc->connectReceiver (MyoMapperApplication::receivePort);
         if (sendConnect == true && receiveConnect == true)
         {
@@ -530,10 +532,10 @@ void MyoMapperApplication::moveWindowsToFront()
     }
 }
 
-void MyoMapperApplication::hideAllWindows()
-{
+//void MyoMapperApplication::hideAllWindows()
+//{
     // Hide all windows (minimise or hidden)
-}
+//}
 
 void MyoMapperApplication::closeWindow()
 {
@@ -585,6 +587,7 @@ void MyoMapperApplication::showPreferencesWindow()
 const String onOff              = "onOff";
 const String name               = "name";
 const String sampleSize         = "sampleSize";
+//const String hostAddress         = "hostAddress";
 const String portNumber         = "portNumber";
 const bool on                   = true;
 const bool off                  = false;
@@ -614,9 +617,15 @@ void MyoMapperApplication::initialiseSettingsTree()
     ValueTree selectedMyoTree = ValueTree ("SelectedMyo");
     selectedMyoTree.setProperty (name, "Selected Myo", 0);
     selectedMyoTree.setProperty ("myoId", "1", 0);
+    
+    ValueTree hostAddressTree = ValueTree ("HostAddress");
+    hostAddressTree.setProperty (name, "Host Address", 0);
+    hostAddressTree.setProperty ("hostAddress", "127.0.0.1", 0);
+
     ValueTree sendPortTree = ValueTree ("SendPort");
     sendPortTree.setProperty (name, "Send Port", 0);
     sendPortTree.setProperty (portNumber, "5432", 0);
+    
     ValueTree receivePortTree = ValueTree ("ReceivePort");
     receivePortTree.setProperty (name, "Receive Port", 0);
     receivePortTree.setProperty (portNumber, "5431", 0);
@@ -659,6 +668,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     
     settingsTree.addChild (selectedMyoTree, -1, 0);
     settingsTree.addChild (sendPortTree, -1, 0);
+    settingsTree.addChild (hostAddressTree, -1, 0);
     settingsTree.addChild (receivePortTree, -1, 0);
     settingsTree.addChild (dataScalingTree, -1, 0);
 }
@@ -922,14 +932,20 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
 {
     if (treeWhosePropertyHasChanged.hasType ("SendPort") == true)
     {
-        sendPort = treeWhosePropertyHasChanged.getProperty (property);
         osc->disconnectSender();
-        osc->connectSender (IPAddress::local().toString(), sendPort);
+        sendPort = treeWhosePropertyHasChanged.getProperty (property);
+        osc->connectSender (hostAddress, sendPort);
+    }
+    if (treeWhosePropertyHasChanged.hasType ("HostAddress") == true)
+    {
+        osc->disconnectSender();
+        hostAddress = treeWhosePropertyHasChanged.getProperty (property);
+        osc->connectSender (hostAddress, sendPort);
     }
     if (treeWhosePropertyHasChanged.hasType ("ReceivePort") == true)
     {
-        receivePort = treeWhosePropertyHasChanged.getProperty (property);
         osc->disconnectReceiver();
+        receivePort = treeWhosePropertyHasChanged.getProperty (property);
         osc->connectReceiver (receivePort);
     }
     if (treeWhosePropertyHasChanged.hasType ("SelectedMyo") == true)

@@ -6,7 +6,8 @@
 class SettingsWindow    : public Component,
                           public Button::Listener,
                           public Slider::Listener,
-                          public ChangeBroadcaster
+                          public ChangeBroadcaster,
+                          public Label::Listener
 {
 public:
     SettingsWindow();
@@ -16,21 +17,29 @@ public:
     void resized() override;
     void buttonClicked (Button*) override;
     void sliderValueChanged (Slider*) override;
+    void labelTextChanged(juce::Label *labelThatHasChanged) override;
 
     static bool startButtonClicked;
     void resetStartButtonPressed();
     static bool featureButtonClicked;
     void resetFeatureButtonPressed();
+
+    String getHostAddress();
     
-    
+
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SettingsWindow)
     LookAndFeel_V3 toggleButtonLAF;
     
     Label oscSendLabel;
     Slider oscSendSetter;
+    
     Label oscReceiveLabel;
     Slider oscReceiveSetter;
+    
+    Label setHostAddressLabel;
+    Label hostAddressTitleLabel;
+    String hostAddress;
     
     Label myoSelectorLabel;
     Slider myoSelectorSetter;
@@ -40,6 +49,6 @@ private:
     TextButton featuresButton;
     ToggleButton hideOnStartupButton;
     TextButton startButton;
-    
+        
     ToggleButton testButton;
 };
