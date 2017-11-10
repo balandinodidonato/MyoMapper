@@ -13,7 +13,7 @@ OSC::OSC()
     {
         String I = String(i);
         
-        receiver.addListener (this, "/myo" + I + action[0]);
+        receiver.addListener (this, "/myo" + I + "/" + action[0]);
         
         for (int y = 0; y < 4; ++y) // myo data
         {
