@@ -1,4 +1,4 @@
-#include "Orientation.h"
+#include "orientation.h"
 
 Orientation::Orientation()
 {
@@ -18,7 +18,6 @@ Orientation::Orientation()
 void Orientation::paint (juce::Graphics &g)
 {
     auto area = getLocalBounds();
-    auto cornerAndRoundness = area.getHeight() * 0.013;
     g.fillAll (Colour::fromRGB (245, 245, 245));
 }
 

@@ -29,7 +29,6 @@ void Pose::paint (Graphics& g)
     Path frontRect;
     frontRect.addRoundedRectangle (area.removeFromBottom (proportionOfHeight (0.7)).reduced (proportionOfHeight (0.1)), cornerAndRoundness);
     
-    auto rectangleCorner = area.getHeight() * 0.02;
     auto lineThickness = area.getHeight() * 0.05;
     g.setColour (Colour::fromRGB (0, 129, 213));
     g.strokePath (frontRect, PathStrokeType (lineThickness));
