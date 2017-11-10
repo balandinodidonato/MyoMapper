@@ -186,7 +186,7 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
             inMinSlider.setValue (inMinSlider.getValue() - 0.001);
             AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                               "Error",
-                                              "Input minimum cannot be the same or greater than input maximum");
+                                              "Input minimum cannot be equal or greater than input maximum");
         }
         else{
             inMin = inMinSlider.getValue();
@@ -201,7 +201,7 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
             inMaxSlider.setValue (inMinSlider.getValue() + 0.001);
             AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                               "Error",
-                                              "Input maximum cannot be the same or less than input minimum");
+                                              "Input maximum cannot be equal or less than input minimum");
         }
         else
         {
