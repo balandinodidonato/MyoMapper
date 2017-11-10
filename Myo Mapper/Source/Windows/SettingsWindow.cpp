@@ -11,7 +11,7 @@ SettingsWindow::SettingsWindow()
 hostAddress("127.0.0.1")
 {
     oscSendLabel.setJustificationType (Justification::horizontallyCentred);
-    oscSendLabel.setText ("OSC Send Port", dontSendNotification);
+    oscSendLabel.setText ("OSC Sender", dontSendNotification);
     addAndMakeVisible (oscSendLabel);
     
     oscSendSetter.addListener (this);
@@ -22,8 +22,16 @@ hostAddress("127.0.0.1")
     addAndMakeVisible (oscSendSetter);
     
     oscReceiveLabel.setJustificationType (Justification::horizontallyCentred);
-    oscReceiveLabel.setText ("OSC Receive Port", dontSendNotification);
+    oscReceiveLabel.setText ("OSC Receiver", dontSendNotification);
     addAndMakeVisible (oscReceiveLabel);
+    
+    oscReceivePortLabel.setJustificationType (Justification::horizontallyCentred);
+    oscReceivePortLabel.setText ("Port:", dontSendNotification);
+    addAndMakeVisible (oscReceivePortLabel);
+    
+    oscSendPortLabel.setJustificationType (Justification::horizontallyCentred);
+    oscSendPortLabel.setText ("Port:", dontSendNotification);
+    addAndMakeVisible (oscSendPortLabel);
     
     oscReceiveSetter.setRange (1, 9999, 1);
     oscReceiveSetter.setValue (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
@@ -32,7 +40,7 @@ hostAddress("127.0.0.1")
     oscReceiveSetter.addListener (this);
     addAndMakeVisible (oscReceiveSetter);
     
-    hostAddressTitleLabel.setText ("Host Address:", dontSendNotification);
+    hostAddressTitleLabel.setText ("IP Address:", dontSendNotification);
     addAndMakeVisible(hostAddressTitleLabel);
     
     setHostAddressLabel.setText(MyoMapperApplication::getApp().getSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
@@ -112,8 +120,6 @@ void SettingsWindow::resized()
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
     area.removeFromTop (windowSize.proportionOfHeight (0.07));
-    auto myoHostAddresRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
-    .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
     auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
                             .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
     area.removeFromTop (windowSize.proportionOfHeight (0.07));
@@ -122,25 +128,28 @@ void SettingsWindow::resized()
     // Bottom border = 0.009
     
     // Set send region bounds
-    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.05));
-    oscSendLabel.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
-                            .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
-    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.068));
-    oscSendSetter.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
+    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.02));
+    oscSendLabel.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.1))
+                            .reduced (windowSizeWidth.proportionOfWidth (0.02), 0));
+    oscSendPortLabel.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.08))
+                                   .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
+    oscSendSetter.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.08))
                              .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
     
-    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.05));
-    oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
-                               .reduced (windowSizeWidth.proportionOfWidth (0.019), 0));
-    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.068));
-    oscReceiveSetter.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
+    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.02));
+    
+    oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.1))
+                               .reduced (windowSizeWidth.proportionOfWidth (0.02), 0));
+    oscReceivePortLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.08))
+                                   .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
+    oscReceiveSetter.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.08))
                              .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
+    hostAddressTitleLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.08))
+                                     .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
     
-    hostAddressTitleLabel.setBounds (myoHostAddresRegion.removeFromLeft (windowSize.proportionOfWidth (0)));
-    hostAddressTitleLabel.setBounds (myoHostAddresRegion.removeFromLeft (windowSize.proportionOfWidth (0.401)).reduced (0, windowSize.proportionOfHeight (0.01)));
-    
-    setHostAddressLabel.setBounds (myoHostAddresRegion.removeFromLeft (windowSize.proportionOfWidth (0.1)));
-    setHostAddressLabel.setBounds (myoHostAddresRegion.removeFromLeft (windowSize.proportionOfWidth (0.401)).reduced (0, windowSize.proportionOfHeight (0.01)));
+    setHostAddressLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.1))
+                                   .reduced (windowSizeWidth.proportionOfWidth (0.1), 0));
+
     
     myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.287)));
     myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.033));
@@ -150,6 +159,8 @@ void SettingsWindow::resized()
     featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.222)));
     buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.2));
     startButton.setBounds (buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.174)));
+    
+   
 }
 
 void SettingsWindow::resetStartButtonPressed()

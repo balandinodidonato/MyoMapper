@@ -32,9 +32,11 @@ private:
     LookAndFeel_V3 toggleButtonLAF;
     
     Label oscSendLabel;
+    Label oscSendPortLabel;
     Slider oscSendSetter;
     
     Label oscReceiveLabel;
+    Label oscReceivePortLabel;
     Slider oscReceiveSetter;
     
     Label setHostAddressLabel;
