@@ -117,14 +117,15 @@ void SettingsWindow::resized()
     auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429))
                      .reduced (windowSizeWidth.proportionOfWidth (0.078), 0);
     auto oscRectangleWidth = windowSizeWidth.proportionOfWidth (0.375);
+    
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
+    auto oscSendTitleRegion = oscSendRegion.removeFromTop(oscSendRegion.proportionOfHeight(0.3));
+    auto oscSendLeftSide = oscSendRegion.removeFromLeft(oscSendRegion.proportionOfWidth(0.45));
     
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
     auto oscReceiveTitleRegion = oscReceiveRegion.removeFromTop(oscReceiveRegion.proportionOfHeight(0.3));
-    auto oscReceiveLeftSide = oscReceiveRegion.removeFromLeft(oscReceiveRegion.proportionOfWidth(0.5));
-    auto oscReceivePortRegion = oscReceiveRegion.removeFromTop(oscSendRegion.proportionOfHeight(0.3));
-    auto oscReceiveHostAddressRegion = oscReceiveRegion.removeFromTop(oscSendRegion.proportionOfHeight(0.3));
-
+    auto oscReceiveLeftSide = oscReceiveRegion.removeFromLeft(oscReceiveRegion.proportionOfWidth(0.45));
+    
     area.removeFromTop (windowSize.proportionOfHeight (0.07));
     auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
                             .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
@@ -134,26 +135,25 @@ void SettingsWindow::resized()
     // Bottom border = 0.009
     
     // Set send region bounds
-    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.02));
-    oscSendLabel.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.1))
-                            .reduced (windowSizeWidth.proportionOfWidth (0.02), 0));
-    oscSendPortLabel.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.08))
-                                   .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
-    oscSendSetter.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.08))
-                             .reduced (windowSizeWidth.proportionOfWidth (0.041), 0));
+    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.011));
     
-    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.02));
+    oscSendLabel.setBounds (oscSendTitleRegion);
     
+    oscSendPortLabel.setBounds (oscSendLeftSide.removeFromTop (windowSize.proportionOfHeight (0.1)));
+    oscSendLeftSide.removeFromTop(windowSize.proportionOfHeight (0.05));
+    hostAddressTitleLabel.setBounds (oscSendLeftSide.removeFromTop (windowSize.proportionOfHeight (0.1)));
+    
+    oscSendSetter.setBounds (oscSendRegion.removeFromTop(oscSendRegion.proportionOfHeight(0.25)));
+    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.07));
+    setHostAddressLabel.setBounds (oscSendRegion.removeFromTop(oscSendRegion.proportionOfHeight(0.6)));
+    
+    
+    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.01));
     oscReceiveLabel.setBounds (oscReceiveTitleRegion);
-    oscReceiveSetter.setBounds (oscReceivePortRegion);
-    setHostAddressLabel.setBounds (oscReceiveHostAddressRegion);
-    
     oscReceivePortLabel.setBounds (oscReceiveLeftSide.removeFromTop (windowSize.proportionOfHeight (0.1)));
     oscReceiveLeftSide.removeFromTop(windowSize.proportionOfHeight (0.05));
-    hostAddressTitleLabel.setBounds (oscReceiveLeftSide.removeFromTop (windowSize.proportionOfHeight (0.1)));
+    oscReceiveSetter.setBounds (oscReceiveRegion.removeFromTop(oscReceiveRegion.proportionOfHeight(0.25)));
     
-   
-
     
     myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.287)));
     myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.033));
