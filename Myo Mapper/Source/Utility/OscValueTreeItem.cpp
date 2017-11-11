@@ -39,6 +39,11 @@ public:
             addAndMakeVisible (sliderLabel);
         }
     }
+    ~TreeItemComponent()
+    {
+        label.setLookAndFeel (nullptr);
+        sliderLabel.setLookAndFeel (nullptr);
+    }
     
     void paint (Graphics& g) override
     {
