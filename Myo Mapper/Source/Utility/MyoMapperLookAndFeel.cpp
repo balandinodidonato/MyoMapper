@@ -67,7 +67,7 @@ void MyoMapperLookAndFeel::drawButtonText (Graphics& g, TextButton& button, bool
 {
     Font font (getTextButtonFont (button, button.getHeight()));
     Rectangle<int> textArea (button.getBounds());
-    font.setSizeAndStyle (int(textArea.getHeight()/1.5), Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
+    font.setSizeAndStyle (int(textArea.getHeight()/1.7), Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
     g.setFont (font);
     
     

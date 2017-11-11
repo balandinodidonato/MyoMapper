@@ -93,7 +93,7 @@ private:
                 
                 const float alpha = label.isEnabled() ? 1.0f : 0.5f;
                 Font font (getLabelFont (label));
-                font.setSizeAndStyle (textArea.getHeight()*0.8, Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
+                font.setSizeAndStyle (int(textArea.getHeight()*1.2), Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
                 
                 g.setColour (label.findColour (Label::textColourId).withMultipliedAlpha (alpha));
                 g.setFont (font);
