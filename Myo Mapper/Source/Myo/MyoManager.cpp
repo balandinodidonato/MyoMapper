@@ -21,22 +21,23 @@ bool MyoManager::connect()
  
         try
         {
-            if (hub == NULL)
-            {
-                disconnect();
-                AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-                                             "Myo not found",
-                                             "Open Myo Connect and connect a Myo armband before opening Myo Mapper." ,
-                                             "OK");
-                JUCEApplicationBase::quit();
-            }
-            
-            else if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
+            if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
             {
                 myo = hub->waitForMyo(10000);
-                hub->addListener(&listener);
-                listener.knownMyos.push_back(myo);
-                
+                if (hub == NULL)
+                {
+                    disconnect();
+                    AlertWindow::showMessageBox (AlertWindow::WarningIcon,
+                                                 "Myo not found",
+                                                 "Open Myo Connect and connect a Myo armband before opening Myo Mapper." ,
+                                                 "OK");
+                    JUCEApplicationBase::quit();
+                }
+                else
+                {
+                    hub->addListener(&listener);
+                    listener.knownMyos.push_back(myo);
+                }
             }
         }
         catch (const std::exception& e)
