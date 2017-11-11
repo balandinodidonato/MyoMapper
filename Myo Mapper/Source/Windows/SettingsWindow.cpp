@@ -25,10 +25,12 @@ hostAddress("127.0.0.1")
     oscReceiveLabel.setText ("OSC Receiver", dontSendNotification);
     addAndMakeVisible (oscReceiveLabel);
     
+    oscReceivePortLabel.setLookAndFeel (&laf);
     oscReceivePortLabel.setJustificationType (Justification::left);
     oscReceivePortLabel.setText ("Port:", dontSendNotification);
     addAndMakeVisible (oscReceivePortLabel);
     
+    oscSendPortLabel.setLookAndFeel (&laf);
     oscSendPortLabel.setJustificationType (Justification::left);
     oscSendPortLabel.setText ("Port:", dontSendNotification);
     addAndMakeVisible (oscSendPortLabel);
@@ -53,6 +55,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(setHostAddressLabel);
     setHostAddressLabel.addListener(this);
     
+    myoSelectorLabel.setLookAndFeel (&laf);
     myoSelectorLabel.setJustificationType (Justification::left);
     myoSelectorLabel.setText ("Selected Myo:", dontSendNotification);
     addAndMakeVisible (myoSelectorLabel);
@@ -84,7 +87,9 @@ hostAddress("127.0.0.1")
 }
 
 SettingsWindow::~SettingsWindow()
-{
+{oscReceivePortLabel.setLookAndFeel (nullptr);
+    oscSendPortLabel.setLookAndFeel (nullptr);
+    myoSelectorLabel.setLookAndFeel (nullptr);
 }
 
 void SettingsWindow::paint (Graphics& g)
