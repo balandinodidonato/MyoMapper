@@ -103,7 +103,7 @@ void Rescale::resized()
                          .removeFromTop (area.proportionOfHeight (0.9))
                          .reduced (area.proportionOfWidth (0.01), 0));
     reverse.setBounds (top.removeFromLeft (area.proportionOfWidth (0.12))
-                       .removeFromTop (area.proportionOfHeight (0.6)));
+                       .removeFromTop (area.proportionOfHeight (0.9)));
     
     auto inArea = top.removeFromLeft (top.proportionOfWidth (0.5));
     
