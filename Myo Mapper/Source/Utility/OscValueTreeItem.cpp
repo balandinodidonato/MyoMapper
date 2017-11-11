@@ -10,6 +10,7 @@ public:
     :   tree (v)
     {
         label.setColour (Label::textColourId, Colours::black);
+        label.setJustificationType (Justification::centred);
         label.setText (tree["name"], dontSendNotification);
         
         toggle.setLookAndFeel (&treeItemLookAndFeel);
@@ -31,6 +32,7 @@ public:
             addAndMakeVisible (slider);
             
             sliderLabel.setColour (Label::textColourId, Colours::black);
+            sliderLabel.setJustificationType (Justification::centred);
             sliderLabel.setText ("Buffer Size", dontSendNotification);
             sliderLabel.attachToComponent (&slider, true);
             addAndMakeVisible (sliderLabel);

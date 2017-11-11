@@ -142,14 +142,12 @@ struct DataSelectorWindow::WindowTabBar     : public TabbedComponent
 
 DataSelectorWindow::DataSelectorWindow()
 {
-    setLookAndFeel (&laf);
     tabBar = new (WindowTabBar);
     addAndMakeVisible (tabBar);
 }
 
 DataSelectorWindow::~DataSelectorWindow()
 {
-    setLookAndFeel (nullptr);
 }
 
 void DataSelectorWindow::paint (Graphics& g)
