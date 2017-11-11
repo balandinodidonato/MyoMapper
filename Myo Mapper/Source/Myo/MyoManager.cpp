@@ -35,11 +35,10 @@ bool MyoManager::connect()
     {
         std::cerr << "Error: Myo not found" << std::endl;
         disconnect();
-        AlertWindow::showMessageBox (AlertWindow::WarningIcon,
+        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "Myo not found",
                                           "Conncect a Myo armband before opening Myo Mapper.",
                                           "OK");
-        JUCEApplicationBase::quit();
     }
     
     
