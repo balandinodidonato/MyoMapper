@@ -46,6 +46,9 @@ hostAddress("127.0.0.1")
     setHostAddressLabel.setJustificationType (Justification::centred);
     setHostAddressLabel.setText(MyoMapperApplication::getApp().getSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
                                 , dontSendNotification);    setHostAddressLabel.setEditable(true);
+    setHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
+    setHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
+    setHostAddressLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
     addAndMakeVisible(setHostAddressLabel);
     setHostAddressLabel.addListener(this);
     
