@@ -159,8 +159,6 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
     {
         outMin = mmSlider.getMinValue();
         outMax = mmSlider.getMaxValue();
-        outMaxSlider.setValue(outMax);
-        outMinSlider.setValue(outMin);
         tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", outMin, 0);
         tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMax", outMax, 0);
     }
@@ -168,14 +166,12 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
     else if (slider ==&outMinSlider)
     {
         outMin = outMinSlider.getValue();
-        mmSlider.setMinValue(outMin);
         tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMin", outMin, 0);
     }
     
     if (slider ==&outMaxSlider)
     {
         outMax = outMaxSlider.getValue();
-        mmSlider.setMaxValue(outMax);
         tree.getChildWithName(labelWidget+"Scaling").setProperty ("outMax", outMax, 0);
     }
     
@@ -283,7 +279,7 @@ void Rescale::setOutMax()
 {
     auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
     outMax = tree.getProperty("outMax");
-    mmSlider.setValue(outMax);
+    mmSlider.setMaxValue(outMax);
     outMaxSlider.setValue (outMax);
 }
 
