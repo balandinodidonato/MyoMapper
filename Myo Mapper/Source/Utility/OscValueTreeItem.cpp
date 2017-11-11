@@ -10,7 +10,7 @@ public:
     :   tree (v)
     {
         label.setColour (Label::textColourId, Colours::black);
-        label.setJustificationType (Justification::centred);
+        label.setJustificationType (Justification::left);
         label.setText (tree["name"], dontSendNotification);
         
         toggle.setLookAndFeel (&treeItemLookAndFeel);
