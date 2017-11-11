@@ -18,14 +18,14 @@ Font MyoMapperLookAndFeel::getFont (String fontWeight)
 {
     if (fontWeight == "thin")
     {
-        return Font (Typeface::createSystemTypefaceFor (BinaryData::Brandon_thin_otf,
-                                                        BinaryData::Brandon_thin_otfSize));
+        return Font (Typeface::createSystemTypefaceFor (BinaryData::RobotoThin_ttf,
+                                                        BinaryData::RobotoThin_ttfSize));
         
     }
     else if (fontWeight == "medium")
     {
-        return Font (Typeface::createSystemTypefaceFor (BinaryData::Brandon_med_otf,
-                                                        BinaryData::Brandon_med_otfSize));
+        return Font (Typeface::createSystemTypefaceFor (BinaryData::RobotoMedium_ttf,
+                                                        BinaryData::RobotoMedium_ttfSize));
     }
     
     return -1;
@@ -41,7 +41,7 @@ void MyoMapperLookAndFeel::drawLabel (Graphics& g, Label& label)
         
         const float alpha = label.isEnabled() ? 1.0f : 0.5f;
         Font font (getLabelFont (label));
-        font.setSizeAndStyle (textArea.getHeight(), Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
+        font.setSizeAndStyle (textArea.getHeight()*0.6, Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
         
         g.setColour (label.findColour (Label::textColourId).withMultipliedAlpha (alpha));
         g.setFont (font);
@@ -67,7 +67,7 @@ void MyoMapperLookAndFeel::drawButtonText (Graphics& g, TextButton& button, bool
 {
     Font font (getTextButtonFont (button, button.getHeight()));
     Rectangle<int> textArea (button.getBounds());
-    font.setSizeAndStyle (int(textArea.getHeight()/1.7), Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
+    font.setSizeAndStyle (textArea.getHeight() / 2 - 5, Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
     g.setFont (font);
     
     

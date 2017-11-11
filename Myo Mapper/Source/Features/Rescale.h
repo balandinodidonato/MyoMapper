@@ -64,10 +64,10 @@ private:
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) override;
     
     
-    float inMax = 1;
-    float inMin = 0;
-    float outMax = 1;
-    float outMin = 0;
+    float inMax;
+    float inMin;
+    float outMax;
+    float outMin;
 
     
     class OrientationLookAndFeel    : public MyoMapperLookAndFeel

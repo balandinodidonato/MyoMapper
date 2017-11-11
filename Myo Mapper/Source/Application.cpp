@@ -74,6 +74,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     receivePort = getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
     osc->addChangeListener (this);
     
+    
 }
 
 void MyoMapperApplication::handleAsyncUpdate()
