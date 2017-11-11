@@ -43,6 +43,7 @@ hostAddress("127.0.0.1")
     hostAddressTitleLabel.setText ("IP Address:", dontSendNotification);
     addAndMakeVisible(hostAddressTitleLabel);
     
+    setHostAddressLabel.setJustificationType (Justification::centred);
     setHostAddressLabel.setText(MyoMapperApplication::getApp().getSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
                                 , dontSendNotification);    setHostAddressLabel.setEditable(true);
     addAndMakeVisible(setHostAddressLabel);
