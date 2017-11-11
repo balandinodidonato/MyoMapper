@@ -2975,6 +2975,12 @@
     <None Include="..\..\Source\Utility\Roboto-Medium.ttf">
       <Filter>Myo Mapper\Source\Resources</Filter>
     </None>
+    <None Include="..\..\..\..\Library\Fonts\Brandon_thin.otf">
+      <Filter>Myo Mapper\Source\Resources</Filter>
+    </None>
+    <None Include="..\MacOSX\Brandon_med.otf">
+      <Filter>Myo Mapper\Source\Resources</Filter>
+    </None>
     <None Include="..\..\Source\Utility\Roboto-Thin.ttf">
       <Filter>Myo Mapper\Source\Resources</Filter>
     </None>

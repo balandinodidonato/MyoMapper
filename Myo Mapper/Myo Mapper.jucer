@@ -46,6 +46,9 @@
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
         <FILE id="XWiJgH" name="Roboto-Medium.ttf" compile="0" resource="1"
               file="Source/Utility/Roboto-Medium.ttf"/>
+        <FILE id="BatRei" name="Brandon_thin.otf" compile="0" resource="1"
+              file="../../Library/Fonts/Brandon_thin.otf"/>
+        <FILE id="qg0oas" name="Brandon_med.otf" compile="0" resource="1" file="Builds/MacOSX/Brandon_med.otf"/>
         <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>
       </GROUP>
       <GROUP id="{4AF52558-3327-10F9-BED0-547457225CB8}" name="UI">

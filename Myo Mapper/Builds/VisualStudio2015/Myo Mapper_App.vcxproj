@@ -1825,6 +1825,8 @@
   <ItemGroup>
     <None Include="..\..\Resources\icon.png"/>
     <None Include="..\..\Source\Utility\Roboto-Medium.ttf"/>
+    <None Include="..\..\..\..\Library\Fonts\Brandon_thin.otf"/>
+    <None Include="..\MacOSX\Brandon_med.otf"/>
     <None Include="..\..\Source\Utility\Roboto-Thin.ttf"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\pnglib\libpng_readme.txt"/>
