@@ -28,7 +28,6 @@ struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
     }
 };
 
-
 //==============================================================================
 int MyoMapperApplication::selectedMyo;
 int MyoMapperApplication::sendPort;
@@ -367,7 +366,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
             break;
             
         case CommandIDs::showVisualsWindow:
-            result.setInfo ("Show Status", "Create a new display window", CommandCategories::windows, 0);
+            result.setInfo ("Show Myo Status", "Create a new display window", CommandCategories::windows, 0);
             result.addDefaultKeypress ('c', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
