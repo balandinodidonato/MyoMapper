@@ -115,6 +115,7 @@ void SettingsWindow::paint (Graphics& g)
 
 void SettingsWindow::resized()
 {
+ /*
     auto area = getBounds();
     auto windowSize = area;
     auto windowSizeWidth = area;
@@ -168,8 +169,60 @@ void SettingsWindow::resized()
     featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.222)));
     buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.2));
     startButton.setBounds (buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.174)));
+    */
+    auto area = getBounds();
+    auto windowSize = area;
+    auto windowSizeWidth = area;
+    area.removeFromTop (windowSize.proportionOfHeight (0.078));
+    auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429))
+    .reduced (windowSizeWidth.proportionOfWidth (0.078), 0);
+    auto oscRectangleWidth = windowSizeWidth.proportionOfWidth (0.375);
+    auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
+    auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
+    area.removeFromTop (windowSize.proportionOfHeight (0.07));
+    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
+    .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
+    area.removeFromTop (windowSize.proportionOfHeight (0.07));
+    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.14))
+    .reduced (windowSizeWidth.proportionOfWidth (0.0315), 0);
+    // Bottom border = 0.009
     
-   
+    // Set send region bounds
+    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
+    oscSendLabel.setBounds (oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
+                            .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
+    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.018));
+    auto sendPortRegion = oscSendRegion.removeFromTop (proportionOfHeight (0.1))
+                          .reduced (oscSendRegion.proportionOfWidth (0.04), 0);
+    oscSendPortLabel.setBounds (sendPortRegion.removeFromLeft (sendPortRegion.proportionOfWidth (0.3)));
+    oscSendSetter.setBounds (sendPortRegion.reduced (oscSendRegion.proportionOfWidth (0.02), sendPortRegion.proportionOfHeight (0.05)));
+    oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.038));
+    auto hostRegion = oscSendRegion.removeFromTop (proportionOfHeight (0.1))
+                      .reduced (oscSendRegion.proportionOfWidth (0.04), 0);
+    hostAddressTitleLabel.setBounds (hostRegion.removeFromLeft (hostRegion.proportionOfWidth (0.4)));
+    setHostAddressLabel.setBounds (hostRegion
+                                   .reduced (oscSendRegion.proportionOfWidth (0.03), hostRegion.proportionOfHeight (0.05)));
+    
+    // Set receive region bounds
+    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
+    oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
+                               .reduced (windowSizeWidth.proportionOfWidth (0.019), 0));
+    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.018));
+    
+    auto ReceivePortRegion = oscReceiveRegion.removeFromTop (proportionOfHeight (0.1))
+    .reduced (oscReceiveRegion.proportionOfWidth (0.04), 0);
+    oscReceivePortLabel.setBounds (ReceivePortRegion.removeFromLeft (ReceivePortRegion.proportionOfWidth (0.3)));
+    oscReceiveSetter.setBounds (ReceivePortRegion.reduced (oscReceiveRegion.proportionOfWidth (0.02), ReceivePortRegion.proportionOfHeight (0.05)));
+    
+    // Set myo selector region bounds
+    myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.287)));
+    myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.033));
+    myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.401))
+                                 .reduced (0, windowSize.proportionOfHeight (0.01)));
+    buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.2));
+    featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.222)));
+    buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.2));
+    startButton.setBounds (buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.174)));
 }
 
 void SettingsWindow::resetStartButtonPressed()
