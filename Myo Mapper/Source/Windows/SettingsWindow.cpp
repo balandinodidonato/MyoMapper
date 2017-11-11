@@ -25,11 +25,11 @@ hostAddress("127.0.0.1")
     oscReceiveLabel.setText ("OSC Receiver", dontSendNotification);
     addAndMakeVisible (oscReceiveLabel);
     
-    oscReceivePortLabel.setJustificationType (Justification::horizontallyCentred);
+    oscReceivePortLabel.setJustificationType (Justification::left);
     oscReceivePortLabel.setText ("Port:", dontSendNotification);
     addAndMakeVisible (oscReceivePortLabel);
     
-    oscSendPortLabel.setJustificationType (Justification::horizontallyCentred);
+    oscSendPortLabel.setJustificationType (Justification::left);
     oscSendPortLabel.setText ("Port:", dontSendNotification);
     addAndMakeVisible (oscSendPortLabel);
     
@@ -40,6 +40,7 @@ hostAddress("127.0.0.1")
     oscReceiveSetter.addListener (this);
     addAndMakeVisible (oscReceiveSetter);
     
+    hostAddressTitleLabel.setJustificationType (Justification::left);
     hostAddressTitleLabel.setText ("IP Address:", dontSendNotification);
     addAndMakeVisible(hostAddressTitleLabel);
     
