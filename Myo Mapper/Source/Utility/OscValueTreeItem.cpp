@@ -52,10 +52,10 @@ public:
     void resized() override
     {
         auto area = getLocalBounds();
-        toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.035)));
-        label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
-        slider.setBounds (area.removeFromRight (getParentWidth() * 0.3));
-        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.1));
+        toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
+        label.setBounds (area.removeFromLeft (proportionOfWidth (0.4)));
+        slider.setBounds (area.removeFromRight (getParentWidth() * 0.25));
+        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.17));
     }
     
     void buttonClicked (Button* button) override
@@ -93,7 +93,7 @@ private:
                 
                 const float alpha = label.isEnabled() ? 1.0f : 0.5f;
                 Font font (getLabelFont (label));
-                font.setSizeAndStyle (textArea.getHeight()*0.6, Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
+                font.setSizeAndStyle (textArea.getHeight()*0.8, Font::FontStyleFlags::plain, 1.0f, font.getExtraKerningFactor());
                 
                 g.setColour (label.findColour (Label::textColourId).withMultipliedAlpha (alpha));
                 g.setFont (font);
