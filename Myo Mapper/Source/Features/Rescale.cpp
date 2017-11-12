@@ -92,6 +92,8 @@ void Rescale::paint(juce::Graphics &g)
 
 void Rescale::resized()
 {
+    
+    
     auto area = getLocalBounds();
     auto top = area.removeFromTop (proportionOfHeight (0.68));
     auto bottom = area;

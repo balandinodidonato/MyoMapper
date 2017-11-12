@@ -43,10 +43,11 @@
         <FILE id="CMrxZQ" name="MyoManager.h" compile="0" resource="0" file="Source/Myo/MyoManager.h"/>
       </GROUP>
       <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
+        <FILE id="FSnZwI" name="Brandon_reg_it.otf" compile="0" resource="1"
+              file="Source/Utility/Brandon_reg_it.otf"/>
+        <FILE id="GoqPiX" name="Brandon_thin_it.otf" compile="0" resource="1"
+              file="Source/Utility/Brandon_thin_it.otf"/>
         <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
-        <FILE id="XWiJgH" name="Roboto-Medium.ttf" compile="0" resource="1"
-              file="Source/Utility/Roboto-Medium.ttf"/>
-        <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>
       </GROUP>
       <GROUP id="{4AF52558-3327-10F9-BED0-547457225CB8}" name="UI">
         <FILE id="p4ljyI" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"

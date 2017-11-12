@@ -2969,13 +2969,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\Utility\Brandon_reg_it.otf">
+      <Filter>Myo Mapper\Source\Resources</Filter>
+    </None>
+    <None Include="..\..\Source\Utility\Brandon_thin_it.otf">
+      <Filter>Myo Mapper\Source\Resources</Filter>
+    </None>
     <None Include="..\..\Resources\icon.png">
-      <Filter>Myo Mapper\Source\Resources</Filter>
-    </None>
-    <None Include="..\..\Source\Utility\Roboto-Medium.ttf">
-      <Filter>Myo Mapper\Source\Resources</Filter>
-    </None>
-    <None Include="..\..\Source\Utility\Roboto-Thin.ttf">
       <Filter>Myo Mapper\Source\Resources</Filter>
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt">
