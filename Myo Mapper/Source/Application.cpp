@@ -80,9 +80,6 @@ void MyoMapperApplication::initialise (const String& commandLine)
 void MyoMapperApplication::handleAsyncUpdate()
 {
     #if JUCE_MAC
-//        PopupMenu appleMenu;
-//        createAppleMenu (appleMenu);
-//        MenuBarModel::setMacMainMenu (menuModel, &appleMenu);
     MenuBarModel::setMacMainMenu (menuModel);
     #endif
 }
@@ -109,7 +106,6 @@ void MyoMapperApplication::systemRequestedQuit()
 }
 
 //==============================================================================
-//void MyoMapperApplication::hiResTimerCallback()
 void MyoMapperApplication::timerCallback()
 {
     bool getMyoDataSuccessful = false;
@@ -137,18 +133,6 @@ void MyoMapperApplication::timerCallback()
     {
         visuals->getOrientationPanel().setValues (myoData[selectedMyo].orientationScaled, myoData[selectedMyo].orientationRaw);
         visuals->getPosePanel().setPoseLabel (myoData[selectedMyo].pose + " (" + static_cast<String>(myoData[selectedMyo].poseID) + ")");
-    }
-    
-    for (int i = 0; i < 4; ++i) // myoData
-    {
-        for (int y = 1; y < 5; ++y) // action
-        {
-            if (osc->map[i][y])
-            {
-//                visuals->getOrientationPanel().map (i, y, osc->value, osc->reverseStatus);
-                osc->map[i][y] = false;
-            }
-        }
     }
 }
 
@@ -210,8 +194,6 @@ MenuBarModel* MyoMapperApplication::getMenuModel()
 StringArray MyoMapperApplication::getMenuBarNames()
 {
     StringArray names;
-//    names.add ("File");
-//    names.add ("View");
     names.add ("Window");
     names.add ("Help");
     return StringArray (names);
@@ -219,15 +201,7 @@ StringArray MyoMapperApplication::getMenuBarNames()
 
 void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
 {
-    if (menuName == "File")
-    {
-//        createFileMenu (menu);
-    }
-    else if (menuName == "View")
-    {
-//        createViewMenu(menu);
-    }
-    else if (menuName == "Window")
+    if (menuName == "Window")
         createWindowMenu(menu);
     else if (menuName == "Help")
         createHelpMenu(menu);
@@ -267,9 +241,6 @@ void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showVisualsWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showDataWindow);
-//    menu.addSeparator();
-//    menu.addCommandItem (&getCommandManager(), CommandIDs::moveWindowsToFront);
-//    menu.addCommandItem (&getCommandManager(), CommandIDs::hideAllWindows);
     menu.addSeparator();
     menu.addCommandItem (&getCommandManager(), CommandIDs::closeWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::closeAllWindows);
@@ -296,24 +267,13 @@ void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
 {
     // Return a list of commands the manager's target can perform
     const CommandID id[] = {
-//                             CommandIDs::newMapper,
-//                             CommandIDs::openMapper,
-//                             CommandIDs::saveMapper,
-//                             CommandIDs::saveMapperAs,
-//                             CommandIDs::quitMapper,
-//                             CommandIDs::zoomIncrease,
-//                             CommandIDs::zoomDecrease,
-//                             CommandIDs::enableFullscreen,
                              CommandIDs::showSettingsWindow,
                              CommandIDs::showVisualsWindow,
                              CommandIDs::showDataWindow,
-//                             CommandIDs::moveWindowsToFront,
-//                             CommandIDs::hideAllWindows,
                              CommandIDs::closeWindow,
                              CommandIDs::closeAllWindows,
                              CommandIDs::showAboutWindow,
                              CommandIDs::showDocumentationWindow,
-//                             CommandIDs::showPreferences
     };
     commands.addArray (id, numElementsInArray (id));
 }
@@ -321,46 +281,7 @@ void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
 void MyoMapperApplication::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
 {
     switch (commandID)
-    {/*
-        case CommandIDs::newMapper:
-            result.setInfo ("New", "Creates a new Myo Mapper project file", CommandCategories::general, 0);
-            result.addDefaultKeypress ('n', ModifierKeys::shiftModifier);
-            break;
-            
-        case CommandIDs::openMapper:
-            result.setInfo ("Open...", "Opens a Myo Mapper project file", CommandCategories::general, 0);
-            result.addDefaultKeypress ('o', ModifierKeys::commandModifier);
-            break;
-            
-        case CommandIDs::saveMapper:
-            result.setInfo ("Save", "Save the current project to the currently open file", CommandCategories::general, 0);
-            result.addDefaultKeypress ('s', ModifierKeys::commandModifier);
-            break;
-            
-        case CommandIDs::saveMapperAs:
-            result.setInfo ("Save As...", "Save a copy of the current project to a new file", CommandCategories::general, 0);
-            break;
-            
-        case CommandIDs::quitMapper:
-            result.setInfo ("Quit", "Close Myo Mapper and quit the application", CommandCategories::general, 0);
-            result.addDefaultKeypress ('q', ModifierKeys::commandModifier);
-            break;
-            
-        case CommandIDs::zoomIncrease:
-            result.setInfo ("Zoom In", "Increase the size of the content", CommandCategories::view, 0);
-            result.addDefaultKeypress ('+', ModifierKeys::commandModifier);
-            break;
-            
-        case CommandIDs::zoomDecrease:
-            result.setInfo ("Zoom Out", "Decrease the size of the content", CommandCategories::view, 0);
-            result.addDefaultKeypress ('-', ModifierKeys::commandModifier);
-            break;
-            
-        case CommandIDs::enableFullscreen:
-            result.setInfo ("Enable Fullscreen", "Toggle between fullscreen mode", CommandCategories::view, 0);
-            result.addDefaultKeypress ('f', ModifierKeys::shiftModifier | ModifierKeys::commandModifier);
-            break;
-            */
+    {
         case CommandIDs::showSettingsWindow:
             result.setInfo ("Show Mapper Settings", "Show the settings panel", CommandCategories::windows, 0);
             result.addDefaultKeypress ('s', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
@@ -415,19 +336,9 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
 {
     switch (info.commandID)
     {
-//        case CommandIDs::newMapper:                     createNewMapper(); break;
-//        case CommandIDs::openMapper:                    openFile(); break;
-//        case CommandIDs::saveMapper:                    saveMapper(); break;
-//        case CommandIDs::saveMapperAs:                  saveMapperAs(); break;
-//        case CommandIDs::quitMapper:                    quitMapper(); break;
-//        case CommandIDs::zoomIncrease:                  windowZoomIncrease(); break;
-//        case CommandIDs::zoomDecrease:                  windowZoomDecrease(); break;
-//        case CommandIDs::enableFullscreen:              enableFullscreen(); break;
         case CommandIDs::showSettingsWindow:            showSettingsWindow(); break;
         case CommandIDs::showVisualsWindow:             showVisualsWindow(); break;
         case CommandIDs::showDataWindow:                showDataWindow(); break;
-//        case CommandIDs::moveWindowsToFront:            moveWindowsToFront(); break;
-//        case CommandIDs::hideAllWindows:                hideAllWindows(); break;
         case CommandIDs::closeWindow:                   closeWindow(); break;
         case CommandIDs::closeAllWindows:               closeAllWindows(); break;
         case CommandIDs::showAboutWindow:               showAboutWindow(); break;
@@ -531,11 +442,6 @@ void MyoMapperApplication::moveWindowsToFront()
         }
     }
 }
-
-//void MyoMapperApplication::hideAllWindows()
-//{
-    // Hide all windows (minimise or hidden)
-//}
 
 void MyoMapperApplication::closeWindow()
 {
