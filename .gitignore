@@ -67,6 +67,7 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+/ToDo.md
 >>>>>>> release-2
 >>>>>>> develop
 Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/project.pbxproj
