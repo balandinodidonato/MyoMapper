@@ -19,46 +19,39 @@ bool MyoManager::connect()
     disconnect();
     bool isConnected = false;
  
-        try
+    if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
+    {
+        myo = hub->waitForMyo(10000);
+        if (hub == NULL)
         {
-            if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
-            {
-                myo = hub->waitForMyo(10000);
-                if (hub == NULL)
-                {
-                    disconnect();
-                    AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-                                                 "Myo not found",
-                                                 "Open Myo Connect and connect a Myo armband before opening Myo Mapper." ,
-                                                 "OK");
-                    JUCEApplicationBase::quit();
-                }
-                else
-                {
-                    hub->addListener(&listener);
-                    listener.knownMyos.push_back(myo);
-                }
-            }
+            disconnect();
+            AlertWindow::showMessageBox (AlertWindow::WarningIcon,
+                                         "Myo not found",
+                                         "Open Myo Connect and connect a Myo armband before opening Myo Mapper." ,
+                                         "OK");
+            JUCEApplicationBase::quit();
         }
-        catch (const std::exception& e)
+        else
         {
-            if (myo == NULL)
-            {
-                disconnect();
-                AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-                                             "Myo not found",
-                                             "Conncect a Myo armband before opening Myo Mapper.",
-                                             "OK");
-                JUCEApplicationBase::quit();
-            }
-            else
-            {
-                myo->unlock(myo::Myo::unlockHold);
-                myo->setStreamEmg(myo::Myo::streamEmgEnabled);
-                return isConnected;
-            }
-            
+            hub->addListener(&listener);
+            listener.knownMyos.push_back(myo);
         }
+    }
+    if (myo == NULL)
+    {
+        disconnect();
+        AlertWindow::showMessageBox (AlertWindow::WarningIcon,
+                                     "Myo not found",
+                                     "Conncect a Myo armband before opening Myo Mapper.",
+                                     "OK");
+        JUCEApplicationBase::quit();
+    }
+    else
+    {
+        myo->unlock(myo::Myo::unlockHold);
+        myo->setStreamEmg(myo::Myo::streamEmgEnabled);
+        return isConnected;
+    }
 }
 
 void MyoManager::run()
