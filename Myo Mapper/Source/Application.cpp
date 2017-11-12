@@ -64,7 +64,6 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList->windows.ensureStorageAllocated (3);
     windowList->showOrCreateSettingsWindow();
     
-    myoManager.connect();
     
     selectedMyo = getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
 
@@ -74,7 +73,8 @@ void MyoMapperApplication::initialise (const String& commandLine)
     receivePort = getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
     osc->addChangeListener (this);
     
-    
+    myoManager.connect();
+
 }
 
 void MyoMapperApplication::handleAsyncUpdate()
