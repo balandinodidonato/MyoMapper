@@ -21,7 +21,7 @@ bool MyoManager::connect()
  
     if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
     {
-        myo = hub->waitForMyo(10000);
+        myo = hub->waitForMyo(1000);
         if (hub == NULL)
         {
             disconnect();
