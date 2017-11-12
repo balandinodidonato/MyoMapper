@@ -3,8 +3,16 @@
 
 Pose::Pose()
 {
-    addAndMakeVisible(poseLabel);
-    poseLabel.setJustificationType(36);
+    setColour (Label::textColourId, Colours::black);
+    titleLabel.setJustificationType (Justification::centred);
+    titleLabel.setText ("Pose", dontSendNotification);
+    
+    poseLabel.setJustificationType (Justification::centred);
+    poseLabel.setColour (Label::textColourId, Colours::black);
+    poseLabel.setText ("Myo Not Found", dontSendNotification);
+    
+    addAndMakeVisible (titleLabel);
+    addAndMakeVisible (poseLabel);
 }
 
 Pose::~Pose()
@@ -13,26 +21,28 @@ Pose::~Pose()
 
 void Pose::paint (Graphics& g)
 {
-    g.fillAll(Colours::lightgrey);   // clear the background
-    g.setColour(Colours::grey);
-    g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
+    auto area = getLocalBounds().toFloat();
+    auto cornerAndRoundness = area.getHeight() * 0.05;
     
-    g.setColour(Colours::white);
-    g.fillRoundedRectangle(10, getHeight()*0.3, getWidth()-22, getHeight()-45, 5);
+    g.fillAll (Colour::fromRGB (245, 245, 245));
     
-    g.setColour(Colours::black);
-    g.setFont(getHeight()*0.3);
-    g.drawText("Pose", getLocalBounds(),
-               Justification::centredTop, true);   // draw some placeholder text
+    Path frontRect;
+    frontRect.addRoundedRectangle (area.removeFromBottom (proportionOfHeight (0.7)).reduced (proportionOfHeight (0.1)), cornerAndRoundness);
+    
+    auto lineThickness = area.getHeight() * 0.05;
+    g.setColour (Colour::fromRGB (0, 129, 213));
+    g.strokePath (frontRect, PathStrokeType (lineThickness));
 }
 
 void Pose::resized()
 {
-    poseLabel.setFont(getHeight()*0.2);
-    poseLabel.setBounds(getX(), getHeight()*0.35, getWidth()*0.95, getHeight()*0.5);
+    auto area = getLocalBounds();
+    titleLabel.setBounds (area.removeFromTop (proportionOfHeight (0.45)).reduced (0, proportionOfHeight (0.02)));
+    area.removeFromBottom (proportionOfHeight (0.1));
+    poseLabel.setBounds (area.reduced (0, proportionOfHeight (0.07)));
 }
 
-void Pose::setPoseLabel(String LabelText)
+void Pose::setPoseLabel (String LabelText)
 {
-    poseLabel.setText(LabelText, dontSendNotification);
+    poseLabel.setText (LabelText, dontSendNotification);
 }

@@ -11,10 +11,12 @@ public:
 
     void paint (Graphics&);
     void resized();
-    void setPoseLabel(String LabelText);
+    void setPoseLabel (String LabelText);
         
 private:
-    Label poseLabel;    
+    Label titleLabel;
+    Label poseLabel;
+    LookAndFeel_V4 laf;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Pose)
 };

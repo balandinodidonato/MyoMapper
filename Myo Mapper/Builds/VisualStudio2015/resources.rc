@@ -7,17 +7,18 @@
 #include <windows.h>
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION  2,5,12,0
+FILEVERSION  3,0,0,0
 BEGIN
   BLOCK "StringFileInfo"
   BEGIN
     BLOCK "040904E4"
     BEGIN
       VALUE "CompanyName",  "Balandino Di Donato\0"
+      VALUE "LegalCopyright",  "Balandino Di Donato\0"
       VALUE "FileDescription",  "Myo Mapper\0"
-      VALUE "FileVersion",  "2.5.12\0"
+      VALUE "FileVersion",  "3.0\0"
       VALUE "ProductName",  "Myo Mapper\0"
-      VALUE "ProductVersion",  "2.5.12\0"
+      VALUE "ProductVersion",  "3.0\0"
     END
   END
 

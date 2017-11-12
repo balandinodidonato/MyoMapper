@@ -1,108 +1,133 @@
 #include "orientation.h"
-#include "../modules/juce_core/containers/juce_Array.h"
 
 Orientation::Orientation()
 {
-    addAndMakeVisible(rescaleYaw);
-    addAndMakeVisible(rescalePitch);
-    addAndMakeVisible(rescaleRoll);
-    rescaleYaw.setLabelWidget("Yaw");
-    rescalePitch.setLabelWidget("Pitch");
-    rescaleRoll.setLabelWidget("Roll");
-    rescaleYaw.setTargetValue(0.5),
-    rescalePitch.setTargetValue(0.5);
-    rescaleRoll.setTargetValue(0.5);
+    setColour (Label::textColourId, Colours::black);
+    titleLabel.setJustificationType (Justification::centredTop);
+    titleLabel.setText ("Orientation", dontSendNotification);
+    addAndMakeVisible (titleLabel);
+    
+    addAndMakeVisible (rescaleYaw);
+    addAndMakeVisible (rescalePitch);
+    addAndMakeVisible (rescaleRoll);
+    rescaleYaw.setLabelTitle ("Yaw");
+    rescalePitch.setLabelTitle ("Pitch");
+    rescaleRoll.setLabelTitle ("Roll");
 }
 
-void Orientation::paint(juce::Graphics &g)
+void Orientation::paint (juce::Graphics &g)
 {
-    g.fillAll(Colours::lightgrey);
-    g.setColour(Colours::grey);
-    g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
-    g.setColour(Colours::black);
-    g.setFont(getHeight()*0.06);
-    g.drawText("Orientation", getLocalBounds(), Justification::centredTop, true); 
+    auto area = getLocalBounds();
+    g.fillAll (Colour::fromRGB (245, 245, 245));
 }
 
 void Orientation::resized()
 {
-    rescaleYaw.setBounds(10, getHeight()*0.07, getRight()-30, getHeight()*0.29);
-    rescalePitch.setBounds(rescaleYaw.getX(), rescaleYaw.getBottom()+7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
-    rescaleRoll.setBounds(rescaleYaw.getX(), rescalePitch.getBottom()+7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
+    auto area = getLocalBounds();
+    titleLabel.setBounds (area.removeFromTop (proportionOfHeight (0.1)));
+    auto scaleArea = area;
+    rescaleYaw.setBounds (area.removeFromTop (proportionOfHeight (0.285))
+                          .reduced (scaleArea.proportionOfHeight (0.024), 0));
+    area.removeFromTop (scaleArea.proportionOfHeight (0.015));
+    rescalePitch.setBounds (area.removeFromTop (proportionOfHeight (0.285))
+                            .reduced (scaleArea.proportionOfHeight (0.024), 0));
+    area.removeFromTop (scaleArea.proportionOfHeight (0.015));
+    rescaleRoll.setBounds (area.removeFromTop (proportionOfHeight (0.285))
+                           .reduced (scaleArea.proportionOfHeight (0.024), 0));
 }
 
-void Orientation::setValues(Vector3D< float > Orientation)
+void Orientation::setValues (Vector3D<float> Orientation, Vector3D<float> OrientationRaw)
 {
-    rescaleYaw.setValue(Orientation.x);
-    rescalePitch.setValue(Orientation.y);
-    rescaleRoll.setValue(Orientation.z);
+    rescaleYaw.setValue (Orientation.x, OrientationRaw.x);
+    rescalePitch.setValue (Orientation.y, OrientationRaw.y);
+    rescaleRoll.setValue (Orientation.z, OrientationRaw.z);
+    
 }
 
 Vector3D<float> Orientation::getValue()
 {
-    orientationScaled.x = rescaleYaw.getValue();
-    orientationScaled.y = rescalePitch.getValue();
-    orientationScaled.z = rescaleRoll.getValue();
-    
     return orientationScaled;
 }
 
-Vector3D<float> Orientation::getWl(){
-    
-    orientationWl.set3DValue(orientationScaled);
-    return orientationWl.get3DValue();
+
+//////////////////////////////////////////////////////////////////////////////
+
+void Orientation::setReverseYaw()
+{
+    rescaleYaw.setReverse();
 }
 
-float Orientation::getYaw()
+void Orientation::setReversePitch()
 {
-    return rescaleYaw.getValue();
+    rescalePitch.setReverse();
 }
 
-float Orientation::getPitch()
+void Orientation::setReverseRoll()
 {
-    return rescalePitch.getValue();
+    rescaleRoll.setReverse();
 }
 
-float Orientation::getRoll()
+void Orientation::setInMinYaw()
 {
-    return rescaleRoll.getValue();
+    rescaleYaw.setInMin();
 }
 
-// Recal functions from OSC data in input
-void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
+void Orientation::setInMaxYaw()
 {
-    switch (myoData) {
-        case 0:
-            switch (Action) {
-                case 1: rescaleYaw.setCalibrate(); break;
-                //case 2: rescaleYaw.setMin(Value); break;
-                //case 3: rescaleYaw.setMax(Value); break;
-                //case 4: rescaleYaw.setReverse(ReverseStatus); break;
-                default:
-                    break;
-            }
-            break;
-        case 1:
-            switch (Action) {
-                case 1: rescalePitch.setCalibrate(); break;
-                //case 2: rescalePitch.setMin(Value); break;
-                //case 3: rescalePitch.setMax(Value); break;
-                //case 4: rescalePitch.setReverse(ReverseStatus); break;
-                default:
-                    break;
-            }
-            break;
-        case 2:
-            switch (Action) {
-                case 1: rescaleRoll.setCalibrate(); break;
-                //case 2: rescaleRoll.setMin(Value); break;
-                //case 3: rescaleRoll.setMax(Value); break;
-                //case 4: rescaleRoll.setReverse(ReverseStatus); break;
-                default:
-                    break;
-            }
-        default:
-        break;
-    }
+    rescaleYaw.setInMax();
 }
+
+void Orientation::setOutMinYaw()
+{
+    rescaleYaw.setOutMin();
+}
+
+void Orientation::setOutMaxYaw()
+{
+    rescaleYaw.setOutMax();
+}
+
+
+void Orientation::setInMinPitch()
+{
+    rescalePitch.setInMin();
+}
+
+void Orientation::setInMaxPitch()
+{
+    rescalePitch.setInMax();
+}
+
+void Orientation::setOutMinPitch()
+{
+    rescalePitch.setOutMin();
+}
+
+void Orientation::setOutMaxPitch()
+{
+    rescalePitch.setOutMax();
+}
+
+
+void Orientation::setInMinRoll()
+{
+    rescaleRoll.setInMin();
+}
+
+void Orientation::setInMaxRoll()
+{
+    rescaleRoll.setInMax();
+}
+
+void Orientation::setOutMinRoll()
+{
+    rescaleRoll.setOutMin();
+}
+
+void Orientation::setOutMaxRoll()
+{
+    rescaleRoll.setOutMax();
+}
+
+
 

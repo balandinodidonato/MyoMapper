@@ -2,14 +2,13 @@
 #define MAPPING_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "rescale.h"
-#include "waveformLength.h"
+#include "Features/Rescale.h"
+#include "Features/FirstOrderDifference.h"
+#include "Features/SecondOrderDifference.h"
+#include "Utility/MyoMapperLookAndFeel.h"
 
-//==============================================================================
-/*
- */
 class Orientation   : public Component
-                        
+
 {
 public:
     Orientation();
@@ -18,25 +17,42 @@ public:
     
     void paint (Graphics& g) override;
     void resized() override;
-    void setValues (Vector3D< float >);
-   
-    Vector3D<float> getValue();
-    Vector3D<float> getWl();
-    float getYaw();
-    float getPitch();
-    float getRoll();
+    void setValues (Vector3D<float>, Vector3D<float>);
     
-    void map(int myoData, int Action, float Value, bool ReverseStatus);
-
+    void setReverseYaw();
+    void setReversePitch();
+    void setReverseRoll();
+    
+    void setInMinYaw();
+    void setInMaxYaw();
+    void setOutMinYaw();
+    void setOutMaxYaw();
+    
+    void setInMinPitch();
+    void setInMaxPitch();
+    void setOutMinPitch();
+    void setOutMaxPitch();
+    
+    void setInMinRoll();
+    void setInMaxRoll();
+    void setOutMinRoll();
+    void setOutMaxRoll();
+    
+    Vector3D<float> getValue();
+    
 private:
+    
+    Label titleLabel;
     
     Rescale rescaleYaw;
     Rescale rescalePitch;
     Rescale rescaleRoll;
-    WaveformLength orientationWl;
+    FirstOrderDifference orientationFod;
+    SecondOrderDifference orientationSod;
     
     Vector3D<float> orientationScaled;
-    Vector3D<float> wfLScaled;
+    Vector3D<float> FodScaled;
+    Vector3D<float> SodScaled;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Orientation)
 };

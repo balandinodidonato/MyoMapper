@@ -10,8 +10,7 @@
 
 */
 
-#ifndef __APPHEADERFILE_M7UYPJ__
-#define __APPHEADERFILE_M7UYPJ__
+#pragma once
 
 #include "AppConfig.h"
 
@@ -36,9 +35,7 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "Myo Mapper";
-    const char* const  versionString  = "2.5.12";
-    const int          versionNumber  = 0x2050c;
+    const char* const  versionString  = "3.0";
+    const int          versionNumber  = 0x30000;
 }
 #endif
-
-#endif   // __APPHEADERFILE_M7UYPJ__

@@ -8,7 +8,7 @@
     <key>CFBundleIconFile</key>
     <string>Icon.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <string>com.balandinodidonato.MyoMapper</string>
     <key>CFBundleName</key>
     <string>Myo Mapper</string>
     <key>CFBundleDisplayName</key>
@@ -18,12 +18,29 @@
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>2.5.12</string>
+    <string>3.0</string>
     <key>CFBundleVersion</key>
-    <string>2.5.12</string>
+    <string>3.0</string>
     <key>NSHumanReadableCopyright</key>
     <string>Balandino Di Donato</string>
     <key>NSHighResolutionCapable</key>
     <true/>
+    <key>CFBundleDocumentTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeExtensions</key>
+        <array>
+          <string>mapper</string>
+        </array>
+        <key>CFBundleTypeName</key>
+        <string>mapper</string>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleTypeIconFile</key>
+        <string>Icon</string>
+        <key>NSPersistentStoreTypeKey</key>
+        <string>XML</string>
+      </dict>
+    </array>
   </dict>
 </plist>
