@@ -2,10 +2,12 @@
 #include "MyoListener.h"
 
 MyoManager::MyoManager()
-:   Thread ("Myo Data Thread"),
-    hub (nullptr),
-    myo (nullptr)
+:
+Thread("Myo Data Thread"),
+hub(nullptr),
+myo(nullptr)
 {
+    
 }
 
 MyoManager::~MyoManager()
@@ -18,40 +20,44 @@ bool MyoManager::connect()
 {
     disconnect();
     bool isConnected = false;
- 
-    if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
+    
+    try
     {
-        myo = hub->waitForMyo(1000);
-        if (hub == NULL)
+        if ((hub = new myo::Hub("com.yourcompany.MyoMapper")))
         {
-            disconnect();
-            AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-                                         "Myo not found",
-                                         "Open Myo Connect and connect a Myo armband before opening Myo Mapper." ,
-                                         "OK");
-            JUCEApplicationBase::quit();
-        }
-        else
-        {
-            hub->addListener(&listener);
-            listener.knownMyos.push_back(myo);
+            std::cout << "Attempting to find a Myo..." << std::endl;
+            myo = hub->waitForMyo(1000);
+            if (myo)
+            {
+                hub->addListener(&listener);
+                listener.knownMyos.push_back(myo);
+                myo->setStreamEmg(myo::Myo::streamEmgEnabled);
+                myo->unlock(myo::Myo::unlockHold);
+            }
+            else
+            {
+                std::cerr << "Error: Myo not found" << std::endl;
+                AlertWindow::showMessageBox (AlertWindow::WarningIcon,
+                                             "Myo not found",
+                                             "Conncect a Myo armband before opening Myo Mapper.",
+                                             "OK");
+                disconnect();
+                JUCEApplication::quit();
+            }
         }
     }
-    if (myo == NULL)
+    catch (const std::exception& e)
     {
-        disconnect();
+        std::cerr << "Error: " << e.what() << std::endl;
         AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-                                     "Myo not found",
-                                     "Conncect a Myo armband before opening Myo Mapper.",
+                                     "Error",
+                                     "Open Myo Connect and connect a Myo armband before launching Myo Mapper.",
                                      "OK");
-        JUCEApplicationBase::quit();
+        disconnect();
+        JUCEApplication::quit();
     }
-    else
-    {
-        myo->unlock(myo::Myo::unlockHold);
-        myo->setStreamEmg(myo::Myo::streamEmgEnabled);
-        return isConnected;
-    }
+    
+    return isConnected;
 }
 
 void MyoManager::run()
@@ -60,7 +66,7 @@ void MyoManager::run()
     
     while (!threadShouldExit())
     {
-        hub->runOnce (20);
+        hub->runOnce(20);
         
         if (tryEnterWrite())
         {
@@ -70,7 +76,7 @@ void MyoManager::run()
     }
 }
 
-std::vector<MyoData> MyoManager::getMyoData (bool &success) const
+std::vector<MyoData> MyoManager::getMyoData(bool &success) const
 {
     std::vector<MyoData> dataCopy;
     
@@ -86,10 +92,6 @@ std::vector<MyoData> MyoManager::getMyoData (bool &success) const
 
 void MyoManager::disconnect()
 {
-    if (myo != nullptr)
-    {
-        myo->lock();
-    }
     myo = nullptr;
     
     if (!hub)
@@ -98,33 +100,28 @@ void MyoManager::disconnect()
     }
     stopPoll();
     // It's safe to call removeListener() for a not-added listener
-    hub->removeListener (&listener);
+    hub->removeListener(&listener);
     delete hub;
     hub = nullptr;
 }
 
-void MyoManager::startPoll() 
+void MyoManager::startPoll()
 {
     startThread();
 }
 
 void MyoManager::stopPoll()
 {
-    stopThread (1000);
+    stopThread(1000);
 }
 
-void MyoManager::vibrate (String VibrationType)
+void MyoManager::vibrate(String VibrationType)
 {
-    if (VibrationType == "long")
-    {
-        myo->vibrate (myo::Myo::vibrationLong);
-    }
-    if (VibrationType == "medium")
-    {
-        myo->vibrate (myo::Myo::vibrationMedium);
-    }
-    if (VibrationType == "short")
-    {
-        myo->vibrate (myo::Myo::vibrationShort);
-    }
+    if(VibrationType == "long")
+        myo->vibrate(myo::Myo::vibrationLong);
+    if(VibrationType == "medium")
+        myo->vibrate(myo::Myo::vibrationMedium);
+    if(VibrationType == "short")
+        myo->vibrate(myo::Myo::vibrationShort);
 }
+
