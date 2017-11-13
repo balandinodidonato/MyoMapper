@@ -161,11 +161,53 @@ Slider::SliderLayout MyoMapperLookAndFeel::getSliderLayout (Slider& slider)
     
     return layout;
 }
+
+void MyoMapperLookAndFeel::drawMenuBarBackground (Graphics& g, int width, int height,
+	bool, MenuBarComponent& menuBar)
+{
+	const auto colour = Colours::white.withAlpha(0.4f);
+
+	Rectangle<int> r(width, height);
+
+	g.setColour(colour.contrasting(0.15f));
+	g.fillRect(r.removeFromTop(1));
+	g.fillRect(r.removeFromBottom(1));
+
+	//g.setGradientFill(ColourGradient(colour, 0, 0, colour.darker(0.2f), 0, (float)height, false));
+	g.setGradientFill(ColourGradient(colour, 0, 0, colour, 0, (float)height, false));
+	g.fillRect(r);
+}
+
+void MyoMapperLookAndFeel::drawMenuBarItem (Graphics& g, int width, int height,
+	int itemIndex, const String& itemText,
+	bool isMouseOverItem, bool isMenuOpen,
+	bool /*isMouseOverBar*/, MenuBarComponent& menuBar)
+{
+	if (!menuBar.isEnabled())
+	{
+		g.setColour (Colours::black.withMultipliedAlpha(0.5f));
+	}
+	else if (isMenuOpen || isMouseOverItem)
+	{
+		g.fillAll (Colour::fromRGB (0, 120, 215).withMultipliedAlpha (0.5f));
+		g.setColour (Colours::black);
+	}
+	else
+	{
+		g.setColour (Colours::black);
+	}
+
+	g.setFont (getMenuBarFont(menuBar, itemIndex, itemText));
+	g.drawFittedText (itemText, 0, 0, width, height, Justification::centred, 1);
+}
  
 void MyoMapperLookAndFeel::setupColours()
 {
     setColour (Label::textColourId, Colours::black);
     setColour (Label::textWhenEditingColourId, Colour::fromRGB (84, 101, 126));
+
+	setColour (PopupMenu::headerTextColourId, Colours::black);
+	setColour (PopupMenu::textColourId, Colours::black);
     
     setColour (Slider::trackColourId, Colour::fromRGB (35, 35, 35));
     setColour (Slider::thumbColourId, Colour::fromRGB (0, 129, 213));
