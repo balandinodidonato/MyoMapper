@@ -134,9 +134,6 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     myoData[myoID].orientationScaledFod = orFod.get3DValue();
     orSod.set3DValue(myoData[myoID].orientationScaled);
     myoData[myoID].orientationScaledFod = orSod.get3DValue();
-    
-  //  myoData[myoID].orientationScaledFod = visuals->getOrientationPanel().getFod();
-  //  myoData[myoID].orientationScaledSod = visuals->getOrientationPanel().getSod();
 }
 
 void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &accel)
