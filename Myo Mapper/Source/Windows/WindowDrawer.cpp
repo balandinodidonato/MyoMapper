@@ -14,6 +14,9 @@ WindowDrawer::WindowDrawer (const String& title,
 :   DialogWindow (title, Colours::white, false, true)
 {
     setUsingNativeTitleBar (true);
+	#if ! JUCE_MAC
+		setMenuBar(MyoMapperApplication::getApp().getMenuModel());
+	#endif
     setResizable (setResizeable, setResizeable);
     if (setFixedAspectRatio == true)
     {

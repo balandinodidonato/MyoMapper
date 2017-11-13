@@ -96,7 +96,7 @@ void SettingsWindow::paint (Graphics& g)
 {
     g.fillAll (Colour::fromRGB (245, 245, 245));
     
-    auto area = getLocalBounds().toFloat();
+    auto area = getBounds().toFloat();
     auto windowSize = area;
     area.removeFromTop (windowSize.proportionOfHeight(0.078));
     auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429)).reduced (windowSize.proportionOfWidth (0.078), 0);
