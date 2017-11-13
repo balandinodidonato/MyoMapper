@@ -142,6 +142,14 @@ void WindowList::showOrCreateHelpWindow()
 void WindowList::forceCloseWindows()
 {
     windows.clear();
+#if ! JUCE_MAC
+	if (getWindowList().windows.operator[](1) == nullptr &&
+		getWindowList().windows.operator[](2) == nullptr &&
+		getWindowList().windows.operator[](3) == nullptr)
+	{
+		MyoMapperApplication::quit();
+	}
+#endif
 }
 
 void WindowList::changeListenerCallback (ChangeBroadcaster* source)
@@ -172,4 +180,12 @@ void WindowList::closeWindow (WindowDrawer* window)
     {
         windows.set (windows.indexOf (window), nullptr);
     }
+#if ! JUCE_MAC
+	if (windows.operator[](1) == nullptr &&
+		windows.operator[](2) == nullptr &&
+		windows.operator[](3) == nullptr)
+	{
+		MyoMapperApplication::quit();
+	}
+#endif
 }

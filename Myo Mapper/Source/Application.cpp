@@ -547,6 +547,14 @@ void MyoMapperApplication::closeWindow()
         {
             WindowDrawer* w = dynamic_cast<WindowDrawer*> (currentWindow);
             windowList->getWindowList().windows.set (windowList->getWindowList().windows.indexOf (w), nullptr);
+#if ! JUCE_MAC
+			if (windowList->getWindowList().windows.operator[](1) == nullptr &&
+				windowList->getWindowList().windows.operator[](2) == nullptr &&
+				windowList->getWindowList().windows.operator[](3) == nullptr)
+			{
+				MyoMapperApplication::quit();
+			}
+#endif
             return;
         }
     }
@@ -564,6 +572,14 @@ void MyoMapperApplication::closeAllWindows()
             windowList->getWindowList().windows.set (windowList->getWindowList().windows.indexOf (w), nullptr);
         }
     }
+#if ! JUCE_MAC
+	if (windowList->getWindowList().windows.operator[](1) == nullptr &&
+		windowList->getWindowList().windows.operator[](2) == nullptr &&
+		windowList->getWindowList().windows.operator[](3) == nullptr)
+	{
+		MyoMapperApplication::quit();
+	}
+#endif
     return;
 }
 
