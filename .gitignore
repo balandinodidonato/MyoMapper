@@ -3,6 +3,8 @@ MyoMapper/application.macosx
 MyoMapper/application.windows32
 MyoMapper/application.windows64
 Myo Mapper/Builds/VisualStudio2017/.vs
+Myo Mapper/Builds/*/x64
+
 <<<<<<< HEAD
 <<<<<<< HEAD
 MyoMapper/MyoMapper.windows64.zip
