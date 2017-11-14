@@ -29,15 +29,9 @@ void OrScaling::setValue (float InValue, float InMin, float InMax, float OutMin,
     calibrated = calibrated * 0.0000001;
     
     // reverse value
-    if(reverse==1)
-    {
-        calibrated = reverse - calibrated;
-        calibrated = jmap (calibrated, inMin, inMax, outMin, outMax);
-    }
-    else
-    {
-        calibrated = jmap (calibrated, inMin, inMax, outMin, outMax);
-    }
+    calibrated = std::abs(reverse - calibrated);
+    calibrated = jmap (calibrated, inMin, inMax, outMin, outMax);
+  
 }
 
 float OrScaling::getValue()

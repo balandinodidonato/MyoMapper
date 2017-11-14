@@ -470,12 +470,26 @@ void OSC::oscMessageReceived (const OSCMessage& message)
         {
             if (message.size() == 1 && message[0].isInt32())
             {
-        
-                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", message[0].isInt32(), 0);
+                if (message[0].getInt32() == 1)
+                {
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 1, 0);
+                }
+                else if (message[0].getInt32() == 0)
+                {
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 0, 0);
+                }
             }
             else if (message.size() == 1 && message[0].isFloat32())
             {
-                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", message[0].isFloat32(), 0);
+                if (message[0].getFloat32() == 1)
+                {
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 1, 0);
+                }
+                else if (message[0].getFloat32() == 0)
+                {
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 0, 0);
+                    MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").getProperty("inMax");
+                }
             }
             map[i][4] = true;
         }
