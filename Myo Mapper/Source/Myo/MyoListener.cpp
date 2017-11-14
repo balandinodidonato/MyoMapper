@@ -78,13 +78,9 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     using std::max;
     using std::min;
     // Calculate Euler angles (roll, pitch, and yaw) from the unit quaternion.
-    roll = atan2 (2.0f * (quat.w() * quat.x() + quat.y() * quat.z()),
-                  1.0f - 2.0f * (quat.x() * quat.x() + quat.y() * quat.y()));
-    pitch = asin (max (-1.0f,
-                       min (1.0f,
-                            2.0f * (quat.w() * quat.y() - quat.z() * quat.x()))));
-    yaw = atan2 (2.0f * (quat.w() * quat.z() + quat.x() * quat.y()),
-                 1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
+    roll = atan2 (2.0f * (quat.w() * quat.x() + quat.y() * quat.z()), 1.0f - 2.0f * (quat.x() * quat.x() + quat.y() * quat.y()));
+    pitch = asin(max(-1.0f, min(1.0f, 2.0f * (quat.w() * quat.y() - quat.z() * quat.x()))))*2;
+    yaw = atan2 (2.0f * (quat.w() * quat.z() + quat.x() * quat.y()), 1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
     
     auto tree = MyoMapperApplication::getApp().getSettingsTree();
     auto yawTree = tree.getChildWithName("DataScaling").getChildWithName ("YawScaling");
