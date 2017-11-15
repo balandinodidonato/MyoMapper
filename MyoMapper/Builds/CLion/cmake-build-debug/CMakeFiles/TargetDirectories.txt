@@ -1,0 +1,3 @@
+/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles/APP.dir
