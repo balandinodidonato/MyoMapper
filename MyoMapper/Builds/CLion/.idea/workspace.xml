@@ -12,11 +12,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e605b181-b683-40a4-afe7-a91efa90dc98" name="Default" comment="clean up">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/Myo Mapper.app/Contents/MacOS/Myo Mapper" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Rescale.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/OSC.cpp.o" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Myo Mapper.app/Contents/MacOS/Myo Mapper" afterPath="$PROJECT_DIR$/cmake-build-debug/Myo Mapper.app/Contents/MacOS/Myo Mapper" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/CXX.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/CXX.includecache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/DependInfo.cmake" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/build.make" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/cmake_clean.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/depend.internal" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/depend.make" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/flags.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/flags.make" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/link.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/progress.make" />
@@ -183,7 +199,7 @@
       <workItem from="1510779356331" duration="365000" />
       <workItem from="1511349643463" duration="44000" />
       <workItem from="1511349794290" duration="8000" />
-      <workItem from="1511350341305" duration="4607000" />
+      <workItem from="1511350341305" duration="4654000" />
     </task>
     <task id="LOCAL-00001" summary="CLion settings">
       <created>1510779518450</created>
@@ -196,7 +212,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6355000" />
+    <option name="totallyTimeSpent" value="6402000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="0" />
