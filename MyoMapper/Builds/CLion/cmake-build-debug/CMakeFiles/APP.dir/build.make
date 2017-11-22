@@ -57,7 +57,940 @@ include CMakeFiles/APP.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/APP.dir/flags.make
 
-CMakeFiles/APP.dir/requires:
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o: /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o: /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o: /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o: /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o: /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o: /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o: /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o
+
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o: CMakeFiles/APP.dir/flags.make
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o: /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o -c /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp > CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.i
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp -o CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.s
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o.requires:
+
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o.requires
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o.provides: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o.requires
+	$(MAKE) -f CMakeFiles/APP.dir/build.make CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o.provides.build
+.PHONY : CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o.provides
+
+CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o.provides.build: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o
+
+
+# Object files for target APP
+APP_OBJECTS = \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o" \
+"CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o"
+
+# External object files for target APP
+APP_EXTERNAL_OBJECTS =
+
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/build.make
+Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper: CMakeFiles/APP.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/balandinodidonato/MyoMapper/MyoMapper/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX executable \"Myo Mapper.app/Contents/MacOS/Myo Mapper\""
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/APP.dir/link.txt --verbose=$(VERBOSE)
+
+# Rule to build all files generated by this target.
+CMakeFiles/APP.dir/build: Myo\ Mapper.app/Contents/MacOS/Myo\ Mapper
+
+.PHONY : CMakeFiles/APP.dir/build
+
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o.requires
+CMakeFiles/APP.dir/requires: CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o.requires
 
 .PHONY : CMakeFiles/APP.dir/requires
 

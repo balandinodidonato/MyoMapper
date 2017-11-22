@@ -4271,8 +4271,6 @@ juce_osc/juce_osc.cpp
 /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/JuceHeader.h
 Application.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.h
-Windows/VisualsWindow.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.h
 
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.h
 ../JuceLibraryCode/JuceHeader.h
@@ -4285,8 +4283,26 @@ Utility/CommandIDs.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/CommandIDs.h
 Myo/MyoManager.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.h
-OSC.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/OSC.h
+DataStreaming/OSC.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.h
+
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp
+../JuceLibraryCode/JuceHeader.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/JuceLibraryCode/JuceHeader.h
+../DataStreaming/OSC.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.h
+../Application.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.h
+../Windows/Rescale.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.h
+
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.h
+../JuceLibraryCode/JuceHeader.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/JuceLibraryCode/JuceHeader.h
+../Myo/MyoData.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoData.h
+../Myo/MyoManager.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.h
 
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp
 FirstOrderDifference.h
@@ -4335,20 +4351,6 @@ OrScaling.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.h
 ../JuceLibraryCode/JuceHeader.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/JuceLibraryCode/JuceHeader.h
-
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Rescale.cpp
-Rescale.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Rescale.h
-algorithm
--
-../Application.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.h
-
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Rescale.h
-../JuceLibraryCode/JuceHeader.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/JuceLibraryCode/JuceHeader.h
-../Utility/MyoMapperLookAndFeel.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.h
 
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp
 ScaleValues.h
@@ -4407,8 +4409,8 @@ vector
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.h
 myo/myo.hpp
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/myo/myo.hpp
-../orientation.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/orientation.h
+../Orientation.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.h
 MyoData.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoData.h
 array
@@ -4438,27 +4440,21 @@ MyoListener.h
 MyoData.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoData.h
 
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/OSC.cpp
-../JuceLibraryCode/JuceHeader.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/JuceHeader.h
-OSC.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/OSC.h
-Application.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.h
-Features/Rescale.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Rescale.h
-
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/OSC.h
-../JuceLibraryCode/JuceHeader.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/JuceHeader.h
-Myo/MyoData.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoData.h
-Myo/MyoManager.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.h
-
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp
-orientation.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/orientation.h
+Orientation.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.h
+
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.h
+../JuceLibraryCode/JuceHeader.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/JuceHeader.h
+Windows/Rescale.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.h
+Features/FirstOrderDifference.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.h
+Features/SecondOrderDifference.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.h
+Utility/MyoMapperLookAndFeel.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.h
 
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp
 ../JuceLibraryCode/JuceHeader.h
@@ -4528,6 +4524,20 @@ HelpWindow.h
 ../JuceLibraryCode/JuceHeader.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/JuceLibraryCode/JuceHeader.h
 
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp
+Rescale.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.h
+algorithm
+-
+../Application.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.h
+
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.h
+../JuceLibraryCode/JuceHeader.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/JuceLibraryCode/JuceHeader.h
+../Utility/MyoMapperLookAndFeel.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.h
+
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp
 ../../JuceLibraryCode/JuceHeader.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/JuceHeader.h
@@ -4551,8 +4561,8 @@ VisualsWindow.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.h
 ../../JuceLibraryCode/JuceHeader.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/JuceHeader.h
-../orientation.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/orientation.h
+../Orientation.h
+/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.h
 ../Pose.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.h
 
@@ -4591,16 +4601,4 @@ HelpWindow.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.h
 WindowDrawer.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.h
-
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/orientation.h
-../JuceLibraryCode/JuceHeader.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/JuceHeader.h
-Features/Rescale.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Rescale.h
-Features/FirstOrderDifference.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.h
-Features/SecondOrderDifference.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.h
-Utility/MyoMapperLookAndFeel.h
-/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.h
 
