@@ -1,20 +1,27 @@
 # Myo Mapper
-Myo Mapper maps Thalmic's [Myo armband](https://www.myo.com) data into Open Sound Control (OSC) messages. Moreover, it rescales, centre and extracts features from Myo raw data.
+Myo Mapper is a free and open source cross-platform application, written using [JUCE](https://juce.com), to map [Myo armband](https://www.myo.com) data to OSC messages. Myo Mapper represents a “quick and easy” solution for experimenting without requiring any programming knowledge.
 
-Myo Mapper is developed by [Balandino Di Donato](http://www.balandinodidonato.com) at [Integra Lab](http://www.integra.io/lab).
+### [**Web Page**](http://www.balandinodidonato.com/myomapper/) - [**DOWNLOAD**](https://github.com/balandinodidonato/MyoMapper/releases)
 
-### Acknowledgment
+## Key Features
+- Easy-calibration to overcome yaw data drift (Nymoen et al. 2015)
+- Scales myo data to facilitate the Myo use in musical applications
+- Feature extraction of moving average, min, max, absolute value, first and second order difference, zero crossing rate, EMG mean absolute value (MAV).
+
+## Acknowledgements
+
+Myo Mapper is a software supported by [Integra Lab](http://integra.io).
+
+### Team:
+- [Balandino Di Donato](http://www.balandinodidonato.com), creator
+- [Jefferson Bledsoe](https://twitter.com/Jeff_Bledsoe), developer
 - [Jamie Bullock](http://jamiebullock.com/), developer
-
-### [**DOWNLOAD**](https://github.com/balandinodidonato/MyoMapper/releases)
-
-### [**DOCUMENTATION**](https://github.com/balandinodidonato/MyoMapper/wiki)
 
 ---
 
 ## License
 
-Copyright (c)  2016 - Integra Lab
+Copyright (c)  2017 - Balandino Di Donato
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,3 +40,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+

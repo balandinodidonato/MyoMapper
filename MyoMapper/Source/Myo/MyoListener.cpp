@@ -78,13 +78,9 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     using std::max;
     using std::min;
     // Calculate Euler angles (roll, pitch, and yaw) from the unit quaternion.
-    roll = atan2 (2.0f * (quat.w() * quat.x() + quat.y() * quat.z()),
-                  1.0f - 2.0f * (quat.x() * quat.x() + quat.y() * quat.y()));
-    pitch = asin (max (-1.0f,
-                       min (1.0f,
-                            2.0f * (quat.w() * quat.y() - quat.z() * quat.x()))));
-    yaw = atan2 (2.0f * (quat.w() * quat.z() + quat.x() * quat.y()),
-                 1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
+    roll = atan2 (2.0f * (quat.w() * quat.x() + quat.y() * quat.z()), 1.0f - 2.0f * (quat.x() * quat.x() + quat.y() * quat.y()));
+    pitch = asin(max(-1.0f, min(1.0f, 2.0f * (quat.w() * quat.y() - quat.z() * quat.x()))));
+    yaw = atan2 (2.0f * (quat.w() * quat.z() + quat.x() * quat.y()), 1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
     
     auto tree = MyoMapperApplication::getApp().getSettingsTree();
     auto yawTree = tree.getChildWithName("DataScaling").getChildWithName ("YawScaling");
@@ -99,7 +95,7 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
                         yawTree.getProperty ("reverse"),
                         yawTree.getProperty ("offset"),
                         yawTree.getProperty ("test"));
-    pitchScaler.setValue (pitch,
+    pitchScaler.setValue (pitch*2,
                           pitchTree.getProperty ("inMin"),
                           pitchTree.getProperty ("inMax"),
                           pitchTree.getProperty ("outMin"),
@@ -134,9 +130,6 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     myoData[myoID].orientationScaledFod = orFod.get3DValue();
     orSod.set3DValue(myoData[myoID].orientationScaled);
     myoData[myoID].orientationScaledFod = orSod.get3DValue();
-    
-  //  myoData[myoID].orientationScaledFod = visuals->getOrientationPanel().getFod();
-  //  myoData[myoID].orientationScaledSod = visuals->getOrientationPanel().getSod();
 }
 
 void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &accel)

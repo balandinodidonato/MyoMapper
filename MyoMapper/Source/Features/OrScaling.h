@@ -10,16 +10,16 @@ public:
     float getValue();
     
 private:
-    float inValue = 0;
-    float inMin = 0;
-    float inMax = 1;
-    float outMin = 0;
-    float outMax = 1;
-    float scaled = 0;
-    float calibrated = 0;
-    float input1 = 0;
-    bool test = 0;
-    float offset = 0;
-    double PI = 3.141592653589793;
-    int reverse = 0;
+    float input;
+    float inMin;
+    float inMax;
+    float outMin;
+    float outMax;
+    float scaled;
+    float calibrated;
+    float input1;
+    int test;
+    float offset;
+    float PI = 3.141592653589793;
+    int reverse;
 };

@@ -446,18 +446,20 @@ void OSC::oscMessageReceived (const OSCMessage& message)
                 {
                     if(myoDataIn[i] == "Yaw")
                     {
-                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                         MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.x, 0);
+                        
+                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                     }
                     if(myoDataIn[i] == "Pitch")
                     {
-                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                         MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.y, 0);
+                        
+                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                     }
                     if(myoDataIn[i] == "Roll")
                     {
-                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                         MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.z, 0);
+                        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                     }
                 }
             }

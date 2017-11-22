@@ -244,10 +244,10 @@ void Rescale::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, 
     auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("DataScaling");
     if (treeWhosePropertyHasChanged.hasType (labelWidget+"Scaling") == true)
     {
-        mmSlider.setMinValue (treeWhosePropertyHasChanged.getProperty ("outMin"));
-        outMinSlider.setValue (treeWhosePropertyHasChanged.getProperty ("outMin"));
-        mmSlider.setMaxValue (treeWhosePropertyHasChanged.getProperty ("outMax"));
-        outMaxSlider.setValue (treeWhosePropertyHasChanged.getProperty ("outMax"));
+    //    mmSlider.setMinValue (treeWhosePropertyHasChanged.getProperty ("outMin"));
+   //     outMinSlider.setValue (treeWhosePropertyHasChanged.getProperty ("outMin"));
+    //    mmSlider.setMaxValue (treeWhosePropertyHasChanged.getProperty ("outMax"));
+    //    outMaxSlider.setValue (treeWhosePropertyHasChanged.getProperty ("outMax"));
     }
     if (treeWhosePropertyHasChanged.hasType (labelWidget+"Scaling"))
     resized();
