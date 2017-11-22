@@ -1,43 +1,5 @@
-file(REMOVE_RECURSE
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/FirstOrderDifference.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Mav.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MinMax.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/MovingAverage.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Rescale.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ScaleValues.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/SecondOrderDifference.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/ZeroCrossingRate.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/MyoMapperLookAndFeel.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Utility/OscValueTreeItem.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Pose.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowDrawer.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/SettingsWindow.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/DataSelectorWindow.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/AboutWindowContent.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/HelpWindow.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/OSC.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/BinaryData.cpp.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_data_structures.mm.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_events.mm.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_graphics.mm.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_basics.mm.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_gui_extra.mm.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_opengl.mm.o"
-  "CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_osc.cpp.o"
-  "Myo Mapper.pdb"
-  "Myo Mapper.app/Contents/MacOS/Myo Mapper"
-)
 
 # Per-language clean rules from dependency scanning.
-foreach(lang C CXX)
+foreach(lang )
   include(CMakeFiles/APP.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

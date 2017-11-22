@@ -26,8 +26,6 @@ add_executable (APP
     "../../Source/Features/MovingAverage.h"
     "../../Source/Features/OrScaling.cpp"
     "../../Source/Features/OrScaling.h"
-    "../../Source/Features/Rescale.cpp"
-    "../../Source/Features/Rescale.h"
     "../../Source/Features/ScaleValues.cpp"
     "../../Source/Features/ScaleValues.h"
     "../../Source/Features/SecondOrderDifference.cpp"
@@ -64,12 +62,14 @@ add_executable (APP
     "../../Source/Windows/AboutWindowContent.h"
     "../../Source/Windows/HelpWindow.cpp"
     "../../Source/Windows/HelpWindow.h"
+    "../../Source/Windows/Rescale.cpp"
+    "../../Source/Windows/Rescale.h"
+    "../../Source/DataStreaming/OSC.cpp"
+    "../../Source/DataStreaming/OSC.h"
     "../../Source/Main.cpp"
     "../../Source/Utility/CommandIDs.h"
     "../../Source/Application.cpp"
     "../../Source/Application.h"
-    "../../Source/OSC.cpp"
-    "../../Source/OSC.h"
     "../../JuceLibraryCode/modules/juce_core/containers/juce_AbstractFifo.cpp"
     "../../JuceLibraryCode/modules/juce_core/containers/juce_AbstractFifo.h"
     "../../JuceLibraryCode/modules/juce_core/containers/juce_Array.h"
@@ -933,7 +933,6 @@ set_source_files_properties ("../../Source/Features/Mav.h" PROPERTIES HEADER_FIL
 set_source_files_properties ("../../Source/Features/MinMax.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Features/MovingAverage.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Features/OrScaling.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Features/Rescale.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Features/ScaleValues.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Features/SecondOrderDifference.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Features/ZeroCrossingRate.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -954,9 +953,10 @@ set_source_files_properties ("../../Source/Windows/VisualsWindow.h" PROPERTIES H
 set_source_files_properties ("../../Source/Windows/DataSelectorWindow.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Windows/AboutWindowContent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Windows/HelpWindow.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Windows/Rescale.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/DataStreaming/OSC.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Utility/CommandIDs.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Application.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/OSC.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_core/containers/juce_AbstractFifo.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_core/containers/juce_AbstractFifo.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_core/containers/juce_Array.h" PROPERTIES HEADER_FILE_ONLY TRUE)

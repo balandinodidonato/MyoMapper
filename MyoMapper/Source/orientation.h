@@ -2,7 +2,7 @@
 #define MAPPING_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Features/Rescale.h"
+#include "Windows/Rescale.h"
 #include "Features/FirstOrderDifference.h"
 #include "Features/SecondOrderDifference.h"
 #include "Utility/MyoMapperLookAndFeel.h"

@@ -5,7 +5,7 @@
 #include "Windows/WindowList.h"
 #include "Utility/CommandIDs.h"
 #include "Myo/MyoManager.h"
-#include "OSC.h"
+#include "DataStreaming/OSC.h"
 
 class MyoMapperApplication  : public JUCEApplication,
                               private AsyncUpdater,

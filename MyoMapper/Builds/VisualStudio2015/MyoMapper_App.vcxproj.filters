@@ -20,6 +20,9 @@
     <Filter Include="MyoMapper\Source\Windows">
       <UniqueIdentifier>{62B374EB-303D-473D-9212-3DCBBF957AA1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MyoMapper\Source\DataStreaming">
+      <UniqueIdentifier>{B6819706-B5B3-2985-CFB3-D43CABC84E28}</UniqueIdentifier>
+    </Filter>
     <Filter Include="MyoMapper\Source">
       <UniqueIdentifier>{FCF70CAE-CCA1-38B4-E0C2-391BCD6DBD23}</UniqueIdentifier>
     </Filter>
@@ -265,9 +268,6 @@
     <ClCompile Include="..\..\Source\Features\OrScaling.cpp">
       <Filter>MyoMapper\Source\Features</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Features\Rescale.cpp">
-      <Filter>MyoMapper\Source\Features</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Features\ScaleValues.cpp">
       <Filter>MyoMapper\Source\Features</Filter>
     </ClCompile>
@@ -316,13 +316,16 @@
     <ClCompile Include="..\..\Source\Windows\HelpWindow.cpp">
       <Filter>MyoMapper\Source\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Windows\Rescale.cpp">
+      <Filter>MyoMapper\Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DataStreaming\OSC.cpp">
+      <Filter>MyoMapper\Source\DataStreaming</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>MyoMapper\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Application.cpp">
-      <Filter>MyoMapper\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\OSC.cpp">
       <Filter>MyoMapper\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.cpp">
@@ -1632,9 +1635,6 @@
     <ClInclude Include="..\..\Source\Features\OrScaling.h">
       <Filter>MyoMapper\Source\Features</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Features\Rescale.h">
-      <Filter>MyoMapper\Source\Features</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Features\ScaleValues.h">
       <Filter>MyoMapper\Source\Features</Filter>
     </ClInclude>
@@ -1686,13 +1686,16 @@
     <ClInclude Include="..\..\Source\Windows\HelpWindow.h">
       <Filter>MyoMapper\Source\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Windows\Rescale.h">
+      <Filter>MyoMapper\Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DataStreaming\OSC.h">
+      <Filter>MyoMapper\Source\DataStreaming</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Utility\CommandIDs.h">
       <Filter>MyoMapper\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Application.h">
-      <Filter>MyoMapper\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OSC.h">
       <Filter>MyoMapper\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.h">
