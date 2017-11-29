@@ -4391,17 +4391,7 @@ array
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp
 MyoListener.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.h
-array
--
-iostream
--
 sstream
--
-stdexcept
--
-string
--
-vector
 -
 ../Application.h
 /Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.h
