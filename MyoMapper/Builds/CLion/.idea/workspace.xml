@@ -11,37 +11,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e605b181-b683-40a4-afe7-a91efa90dc98" name="Default" comment="clean up">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/Rescale.cpp.o" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/Rescale.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/OSC.cpp.o" afterPath="" />
+    <list default="true" id="e605b181-b683-40a4-afe7-a91efa90dc98" name="Default" comment="Fixes issue #39&#10;-&#10;https://github.com/balandinodidonato/MyoMapper/issues/39">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/JuceLibraryCode/include_juce_core.mm.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Application.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Features/OrScaling.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Main.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/DataStreaming/OSC.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoListener.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Myo/MyoManager.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Orientation.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/VisualsWindow.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/Users/balandinodidonato/MyoMapper/MyoMapper/Source/Windows/WindowList.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Myo Mapper.app/Contents/MacOS/Myo Mapper" afterPath="$PROJECT_DIR$/cmake-build-debug/Myo Mapper.app/Contents/MacOS/Myo Mapper" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/CXX.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/CXX.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/DependInfo.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/depend.internal" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/depend.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/flags.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/flags.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/link.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/APP.dir/progress.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/MyoMapper.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/MyoMapper.cbp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../Source/Application.cpp" afterPath="$PROJECT_DIR$/../../Source/Application.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../Source/Myo/MyoListener.cpp" afterPath="$PROJECT_DIR$/../../Source/Myo/MyoListener.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,15 +41,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Application.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../Source/Application.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1099">
-              <caret line="755" column="25" lean-forward="false" selection-start-line="755" selection-start-column="25" selection-end-line="755" selection-end-column="25" />
+            <state relative-caret-position="4457">
+              <caret line="961" column="16" lean-forward="true" selection-start-line="961" selection-start-column="16" selection-end-line="961" selection-end-column="16" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
                 <element signature="e#15174#15419#0" expanded="true" />
                 <element signature="e#15922#16157#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OSC.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../Source/DataStreaming/OSC.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="99" column="72" lean-forward="true" selection-start-line="99" selection-start-column="72" selection-end-line="99" selection-end-column="72" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyoListener.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../Source/Myo/MyoListener.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,6 +87,8 @@
       <find>onOff</find>
       <find>orDataRaw</find>
       <find>writeRootTreeToXml</find>
+      <find>orientation</find>
+      <find>Sod</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/../..</dir>
@@ -101,6 +103,8 @@
       <list>
         <option value="$PROJECT_DIR$/../../Source/Myo/MyoManager.cpp" />
         <option value="$PROJECT_DIR$/../../Source/Application.cpp" />
+        <option value="$PROJECT_DIR$/../../Source/DataStreaming/OSC.cpp" />
+        <option value="$PROJECT_DIR$/../../Source/Myo/MyoListener.cpp" />
       </list>
     </option>
   </component>
@@ -110,10 +114,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1440" />
-    <option name="height" value="874" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -141,12 +144,25 @@
             <path>
               <item name="MyoMapper" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="MyoMapper" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="Source" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyoMapper" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="MyoMapper" type="462c0819:PsiDirectoryNode" />
               <item name="Source" type="462c0819:PsiDirectoryNode" />
+              <item name="DataStreaming" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyoMapper" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="MyoMapper" type="462c0819:PsiDirectoryNode" />
+              <item name="Source" type="462c0819:PsiDirectoryNode" />
+              <item name="Features" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyoMapper" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="MyoMapper" type="462c0819:PsiDirectoryNode" />
+              <item name="Source" type="462c0819:PsiDirectoryNode" />
+              <item name="Myo" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -170,7 +186,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.APP">
+  <component name="RunManager" selected="Application.Build All">
     <configuration name="APP" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MyoMapper" TARGET_NAME="APP" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MyoMapper" RUN_TARGET_NAME="APP">
       <envs />
     </configuration>
@@ -199,7 +215,8 @@
       <workItem from="1510779356331" duration="365000" />
       <workItem from="1511349643463" duration="44000" />
       <workItem from="1511349794290" duration="8000" />
-      <workItem from="1511350341305" duration="4654000" />
+      <workItem from="1511350341305" duration="5837000" />
+      <workItem from="1511965762778" duration="1630000" />
     </task>
     <task id="LOCAL-00001" summary="CLion settings">
       <created>1510779518450</created>
@@ -212,23 +229,23 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6402000" />
+    <option name="totallyTimeSpent" value="9215000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="874" extended-state="0" />
+    <frame x="0" y="22" width="1440" height="874" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15694444" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31047383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18703242" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32793018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3990025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -248,13 +265,36 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="CLion settings" />
     <MESSAGE value="clean up" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean up" />
+    <MESSAGE value="Fixes issue #39&#10;-&#10;https://github.com/balandinodidonato/MyoMapper/issues/39" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes issue #39&#10;-&#10;https://github.com/balandinodidonato/MyoMapper/issues/39" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../../Source/Main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Source/Application.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13200">
+          <caret line="880" column="74" lean-forward="true" selection-start-line="880" selection-start-column="74" selection-end-line="880" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#15174#15419#0" expanded="true" />
+            <element signature="e#15922#16157#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../Source/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -302,13 +342,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Source/OSC.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Source/OSC.cpp" />
     <entry file="file://$PROJECT_DIR$/../../Source/Myo/MyoManager.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -340,13 +374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Source/Myo/MyoListener.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Source/Myo/MyoManager.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -354,13 +381,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Source/OSC.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Source/OSC.cpp" />
     <entry file="file://$PROJECT_DIR$/../../Source/Application.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -381,12 +402,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../Source/Application.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1099">
-          <caret line="755" column="25" lean-forward="false" selection-start-line="755" selection-start-column="25" selection-end-line="755" selection-end-column="25" />
+        <state relative-caret-position="4457">
+          <caret line="961" column="16" lean-forward="true" selection-start-line="961" selection-start-column="16" selection-end-line="961" selection-end-column="16" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
             <element signature="e#15174#15419#0" expanded="true" />
             <element signature="e#15922#16157#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Source/DataStreaming/OSC.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="99" column="72" lean-forward="true" selection-start-line="99" selection-start-column="72" selection-end-line="99" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Source/Myo/MyoListener.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
