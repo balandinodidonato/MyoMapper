@@ -20,8 +20,15 @@ public:
         toggle.setToggleState (tree.getProperty ("onOff", 0), dontSendNotification);
         toggle.addListener (this);
         
+        toggleWek.setColour (ToggleButton::tickColourId, Colours::black);
+        toggleWek.setColour (ToggleButton::tickDisabledColourId, Colours::black);
+        toggleWek.setToggleState (tree.getProperty ("wekinator", 0), dontSendNotification);
+        toggleWek.addListener (this);
+        
         addAndMakeVisible (toggle);
+        addAndMakeVisible (toggleWek);
         addAndMakeVisible (label);
+        
         if (tree.hasProperty ("sampleSize"))
         {
             slider.setValue (10);
@@ -54,8 +61,9 @@ public:
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.4)));
-        slider.setBounds (area.removeFromRight (getParentWidth() * 0.25));
-        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.17));
+        slider.setBounds (area.removeFromLeft (getParentWidth() * 0.25));
+        sliderLabel.setBounds (area.removeFromLeft (getParentWidth() * 0.17));
+        toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.17));
     }
     
     void buttonClicked (Button* button) override
@@ -73,6 +81,8 @@ private:
     
     ValueTree tree;
     ToggleButton toggle;
+    ToggleButton toggleWek;
+
     Label label;
     Slider slider;
     Label sliderLabel;
