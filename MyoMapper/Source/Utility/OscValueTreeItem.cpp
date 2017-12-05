@@ -25,10 +25,16 @@ public:
         toggleWek.setToggleState (tree.getProperty ("wekinator", 0), dontSendNotification);
         toggleWek.addListener (this);
         
+        toWekaLabel.setLookAndFeel (&laf);
+        toWekaLabel.setColour (Label::textColourId, Colours::black);
+        toWekaLabel.setText ("To Weki", dontSendNotification);
+        toWekaLabel.attachToComponent (&slider, true);
+        
         addAndMakeVisible (toggle);
         addAndMakeVisible (toggleWek);
         addAndMakeVisible (label);
-        
+        addAndMakeVisible (toWekaLabel);
+
         if (tree.hasProperty ("sampleSize"))
         {
             slider.setValue (10);
@@ -61,9 +67,11 @@ public:
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.4)));
-        slider.setBounds (area.removeFromLeft (getParentWidth() * 0.25));
-        sliderLabel.setBounds (area.removeFromLeft (getParentWidth() * 0.17));
-        toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.17));
+        slider.setBounds (area.removeFromRight (getParentWidth() * 0.15));
+        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.135));
+        toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
+        toWekaLabel.setBounds (area.removeFromRight (getParentWidth() * 0.1));
+
     }
     
     void buttonClicked (Button* button) override
@@ -86,6 +94,8 @@ private:
     Label label;
     Slider slider;
     Label sliderLabel;
+    Label toWekaLabel;
+
     
     class TreeLookAndFeel    : public MyoMapperLookAndFeel
     {
