@@ -619,12 +619,12 @@ void MyoMapperApplication::initialiseDataTree()
     ValueTree orData = ValueTree ("OrData");
     orData.setProperty (name, "Orientation Data", nullptr);
     orData.setProperty (onOff, on, 0);
-    orData.setProperty (wekinator, off, 0);
+    orData.setProperty (wekinator, false, 0);
 
     ValueTree orDataRaw = ValueTree ("OrRaw");
     orDataRaw.setProperty (name, "Raw Data", nullptr);
     orDataRaw.setProperty (onOff, off, nullptr);
-    orDataRaw.setProperty (wekinator, off, nullptr);
+    orDataRaw.setProperty (wekinator, false, nullptr);
 
     ValueTree orDataScaled = ValueTree ("OrScaled");
     orDataScaled.setProperty (name, "Scaled Data", nullptr);

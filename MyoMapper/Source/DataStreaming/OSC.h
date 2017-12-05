@@ -32,6 +32,7 @@ public:
     
 private:
     OSCSender sender;
+    OSCSender wekSender;
     OSCReceiver receiver;
     MyoManager myoManager;
     
@@ -42,7 +43,8 @@ private:
     double PI = 3.141592653589793;
     
     std::vector<OSCMessage> oscBuffer;
-    
+    std::vector<OSCMessage> wekaOscBuffer;
+
     String myoDataIn[4];
     String action[7];
     

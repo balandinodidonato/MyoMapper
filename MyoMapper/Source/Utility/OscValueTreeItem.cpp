@@ -56,6 +56,7 @@ public:
     {
         label.setLookAndFeel (nullptr);
         sliderLabel.setLookAndFeel (nullptr);
+        toWekaLabel.setLookAndFeel(nullptr);
     }
     
     void paint (Graphics& g) override
@@ -76,7 +77,14 @@ public:
     
     void buttonClicked (Button* button) override
     {
-        tree.setProperty ("onOff", ! (tree.getProperty ("onOff", 0)), 0);
+        if(button == &toggle)
+        {
+            tree.setProperty ("onOff", ! (tree.getProperty ("onOff", 0)), 0);
+        }
+        if(button == &toggleWek)
+        {
+            tree.setProperty ("wekinator", ! (tree.getProperty ("wekinator", 0)), 0);
+        }
     }
     
     void sliderValueChanged (Slider* slider) override
