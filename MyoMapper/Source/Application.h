@@ -72,6 +72,7 @@ public:
     MyoManager myoManager;
     static int selectedMyo;
     static int sendPort;
+    static int wekinatorPort;
     static int receivePort;
     static String hostAddress;
     

@@ -14,7 +14,7 @@ public:
     OSC();
     ~OSC();
     
-    bool connectSender (String hostAddress, int port);
+    bool connectSender (String hostAddress, int mainPort, int WekinatorPort);
     void disconnectSender();
     void bufferOsc (MyoData &myoData);
     void sendOsc();
@@ -31,7 +31,8 @@ public:
     bool reverseStatus;
     
 private:
-    OSCSender sender;
+    OSCSender oscOutSender;
+    OSCSender oscToWekiSender;
     OSCReceiver receiver;
     MyoManager myoManager;
     
@@ -41,8 +42,9 @@ private:
     
     double PI = 3.141592653589793;
     
-    std::vector<OSCMessage> oscBuffer;
-    
+    std::vector<OSCMessage> oscOutBuffer;
+    std::vector<OSCMessage> oscToWekiBuffer;
+
     String myoDataIn[4];
     String action[7];
     

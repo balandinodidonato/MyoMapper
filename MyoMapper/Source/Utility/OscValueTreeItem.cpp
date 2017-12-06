@@ -17,11 +17,24 @@ public:
         
         toggle.setColour (ToggleButton::tickColourId, Colours::black);
         toggle.setColour (ToggleButton::tickDisabledColourId, Colours::black);
-        toggle.setToggleState (tree.getProperty ("onOff", 0), dontSendNotification);
+        toggle.setToggleState (tree.getProperty ("oscOut", 0), dontSendNotification);
         toggle.addListener (this);
         
+        toggleWek.setColour (ToggleButton::tickColourId, Colours::black);
+        toggleWek.setColour (ToggleButton::tickDisabledColourId, Colours::black);
+        toggleWek.setToggleState (tree.getProperty ("oscToWekinator", 0), dontSendNotification);
+        toggleWek.addListener (this);
+        
+        toWekaLabel.setLookAndFeel (&laf);
+        toWekaLabel.setColour (Label::textColourId, Colours::black);
+        toWekaLabel.setText ("To Weki", dontSendNotification);
+        toWekaLabel.attachToComponent (&slider, true);
+        
         addAndMakeVisible (toggle);
+        addAndMakeVisible (toggleWek);
         addAndMakeVisible (label);
+        addAndMakeVisible (toWekaLabel);
+
         if (tree.hasProperty ("sampleSize"))
         {
             slider.setValue (10);
@@ -43,6 +56,7 @@ public:
     {
         label.setLookAndFeel (nullptr);
         sliderLabel.setLookAndFeel (nullptr);
+        toWekaLabel.setLookAndFeel(nullptr);
     }
     
     void paint (Graphics& g) override
@@ -54,13 +68,23 @@ public:
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.4)));
-        slider.setBounds (area.removeFromRight (getParentWidth() * 0.25));
-        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.17));
+        slider.setBounds (area.removeFromRight (getParentWidth() * 0.15));
+        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.135));
+        toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
+        toWekaLabel.setBounds (area.removeFromRight (getParentWidth() * 0.1));
+
     }
     
     void buttonClicked (Button* button) override
     {
-        tree.setProperty ("onOff", ! (tree.getProperty ("onOff", 0)), 0);
+        if(button == &toggle)
+        {
+            tree.setProperty ("oscOut", ! (tree.getProperty ("oscOut", 0)), 0);
+        }
+        if(button == &toggleWek)
+        {
+            tree.setProperty ("oscToWekinator", ! (tree.getProperty ("oscToWekinator", 0)), 0);
+        }
     }
     
     void sliderValueChanged (Slider* slider) override
@@ -73,9 +97,13 @@ private:
     
     ValueTree tree;
     ToggleButton toggle;
+    ToggleButton toggleWek;
+
     Label label;
     Slider slider;
     Label sliderLabel;
+    Label toWekaLabel;
+
     
     class TreeLookAndFeel    : public MyoMapperLookAndFeel
     {
