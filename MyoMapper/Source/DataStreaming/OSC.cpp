@@ -31,15 +31,8 @@ OSC::~OSC()
 
 bool OSC::connectSender (String hostAddress, int mainOsc, int wekinatorOscPort)
 {
-    
-    if (oscToWekiSender.connect(hostAddress, wekinatorOscPort) == false)
-    {
-        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
-                                          "OSC Sender",
-                                          "Myo Mapper could not connect to Wekinator through the UDP port " + (String)wekinatorOscPort + ".",
-                                          "OK");
-      //  return false;
-    }
+    oscToWekiSender.connect(hostAddress, wekinatorOscPort);
+
     if (oscOutSender.connect (hostAddress, mainOsc) == false)
     {
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
@@ -64,42 +57,7 @@ void OSC::bufferOsc (MyoData &myoData)
     orScaled.y = (myoData.orientationRaw.y + PI) / (2 * PI); // for passing variable to orientationScaled data to sender
     orScaled.z = (myoData.orientationRaw.z + PI) / (2 * PI); // for passing variable to orientationScaled data to sender
     
-    OSCMessage oscToWekinator = OSCMessage ("/myo" + id);
-    
     auto tree = MyoMapperApplication::getApp().getDataTree();
-    
-    if (tree.getChildWithName("OrData").getChildWithName("OrRaw").getPropertyAsValue ("oscOut", 0) == true)
-    {
-        OSCMessage oscOut = OSCMessage ("/myo" + id + "/orientation/raw");
-        oscOut.addFloat32 ((float) myoData.orientationRaw.x);
-        oscOut.addFloat32 ((float) myoData.orientationRaw.y);
-        oscOut.addFloat32 ((float) myoData.orientationRaw.z);
-        
-        oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("OrData").getChildWithName("OrRaw").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.orientationRaw.x);
-        oscToWekinator.addFloat32 ((float) myoData.orientationRaw.y);
-        oscToWekinator.addFloat32 ((float) myoData.orientationRaw.z);
-    }
-    
-    if (tree.getChildWithName("OrData").getChildWithName("OrScaled").getPropertyAsValue ("oscOut", 0) == true)
-    {
-        OSCMessage oscOut = OSCMessage ("/myo" + id + "/orientation/scaled");
-        oscOut.addFloat32 ((float) myoData.orientationScaled.x);
-        oscOut.addFloat32 ((float) myoData.orientationScaled.y);
-        oscOut.addFloat32 ((float) myoData.orientationScaled.z);
-        
-        oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("OrData").getChildWithName("OrScaled").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.orientationScaled.x);
-        oscToWekinator.addFloat32 ((float) myoData.orientationScaled.y);
-        oscToWekinator.addFloat32 ((float) myoData.orientationScaled.z);
-    }
-    
     if (tree.getChildWithName("OrData").getChildWithName("OrQuaternion").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/orientation/quaternion");
@@ -109,12 +67,23 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.quaternion[3]);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("OrData").getChildWithName("OrQuaternion").getPropertyAsValue ("oscToWekinator", 0) == true)
+    if (tree.getChildWithName("OrData").getChildWithName("OrRaw").getPropertyAsValue ("oscOut", 0) == true)
     {
-        oscToWekinator.addFloat32 ((float) myoData.quaternion[0]);
-        oscToWekinator.addFloat32 ((float) myoData.quaternion[1]);
-        oscToWekinator.addFloat32 ((float) myoData.quaternion[2]);
-        oscToWekinator.addFloat32 ((float) myoData.quaternion[3]);
+        OSCMessage oscOut = OSCMessage ("/myo" + id + "/orientation/raw");
+        oscOut.addFloat32 ((float) myoData.orientationRaw.x);
+        oscOut.addFloat32 ((float) myoData.orientationRaw.y);
+        oscOut.addFloat32 ((float) myoData.orientationRaw.z);
+        
+        oscOutBuffer.push_back (oscOut);
+    }
+    if (tree.getChildWithName("OrData").getChildWithName("OrScaled").getPropertyAsValue ("oscOut", 0) == true)
+    {
+        OSCMessage oscOut = OSCMessage ("/myo" + id + "/orientation/scaled");
+        oscOut.addFloat32 ((float) myoData.orientationScaled.x);
+        oscOut.addFloat32 ((float) myoData.orientationScaled.y);
+        oscOut.addFloat32 ((float) myoData.orientationScaled.z);
+        
+        oscOutBuffer.push_back (oscOut);
     }
     
     if (tree.getChildWithName("OrData").getChildWithName("OrVelocity").getPropertyAsValue ("oscOut", 0) == true)
@@ -125,13 +94,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.orientationScaledFod.z);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("OrData").getChildWithName("OrVelocity").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.orientationScaledFod.x);
-        oscToWekinator.addFloat32 ((float) myoData.orientationScaledFod.y);
-        oscToWekinator.addFloat32 ((float) myoData.orientationScaledFod.z);
-    }
-    
     if (tree.getChildWithName("OrData").getChildWithName("OrAccel").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/orientation/acceleration");
@@ -139,12 +101,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.orientationScaledSod.y);
         oscOut.addFloat32 ((float) myoData.orientationScaledSod.z);
         oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("OrData").getChildWithName("OrAccel").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.orientationScaledSod.x);
-        oscToWekinator.addFloat32 ((float) myoData.orientationScaledSod.y);
-        oscToWekinator.addFloat32 ((float) myoData.orientationScaledSod.z);
     }
     
     if (tree.getChildWithName("AccData").getChildWithName("AccRaw").getPropertyAsValue ("oscOut", 0) == true)
@@ -155,12 +111,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.acc.x);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("AccData").getChildWithName("AccRaw").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.acc.x);
-        oscToWekinator.addFloat32 ((float) myoData.acc.y);
-        oscToWekinator.addFloat32 ((float) myoData.acc.x);
-    }
     
     if (tree.getChildWithName("AccData").getChildWithName("AccRaw").getChildWithName("AccRawFod").getPropertyAsValue ("oscOut", 0) == true)
     {
@@ -170,13 +120,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.accFod.z);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("AccData").getChildWithName("AccRaw").getChildWithName("AccRawFod").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.accFod.x);
-        oscToWekinator.addFloat32 ((float) myoData.accFod.y);
-        oscToWekinator.addFloat32 ((float) myoData.accFod.z);
-    }
-    
     
     if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getPropertyAsValue ("oscOut", 0) == true)
     {
@@ -186,12 +129,7 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.accScaled.z);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.accScaled.x);
-        oscToWekinator.addFloat32 ((float) myoData.accScaled.y);
-        oscToWekinator.addFloat32 ((float) myoData.accScaled.z);
-    }
+    
     
     if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getChildWithName("AccScaledFod").getPropertyAsValue ("oscOut", 0) == true)
     {
@@ -201,13 +139,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.accScaledFod.z);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getChildWithName("AccScaledFod").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.accScaledFod.x);
-        oscToWekinator.addFloat32 ((float) myoData.accScaledFod.y);
-        oscToWekinator.addFloat32 ((float) myoData.accScaledFod.z);
-    }
-    
     if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getChildWithName("AccScaledFod").getChildWithName("AccScaledFodMavg").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/acceleration/scaled/fod/mavg");
@@ -216,14 +147,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.accScaledFodMavg.z);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getChildWithName("AccScaledFod").getChildWithName("AccScaledFodMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.accScaledFodMavg.x);
-        oscToWekinator.addFloat32 ((float) myoData.accScaledFodMavg.y);
-        oscToWekinator.addFloat32 ((float) myoData.accScaledFodMavg.z);
-    }
-    
-    
     if (tree.getChildWithName("GyroData").getChildWithName("GyroRaw").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/gyro/raw");
@@ -231,12 +154,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.gyro.y);
         oscOut.addFloat32 ((float) myoData.gyro.z);
         oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("GyroData").getChildWithName("GyroRaw").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.gyro.x);
-        oscToWekinator.addFloat32 ((float) myoData.gyro.y);
-        oscToWekinator.addFloat32 ((float) myoData.gyro.z);
     }
     
     if (tree.getChildWithName("GyroData").getChildWithName("GyroRaw").getChildWithName("GyroRawFod").getPropertyAsValue ("oscOut", 0) == true)
@@ -247,13 +164,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.gyroFod.z);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("GyroData").getChildWithName("GyroRaw").getChildWithName("GyroRawFod").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.gyroFod.x);
-        oscToWekinator.addFloat32 ((float) myoData.gyroFod.y);
-        oscToWekinator.addFloat32 ((float) myoData.gyroFod.z);
-    }
-    
     if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/gyro/scaled");
@@ -261,12 +171,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.gyroScaled.y);
         oscOut.addFloat32 ((float) myoData.gyroScaled.z);
         oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaled.x);
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaled.y);
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaled.z);
     }
     
     if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getChildWithName("GyroScaledAbs").getPropertyAsValue ("oscOut", 0) == true)
@@ -277,12 +181,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.gyroScaledAbs.z);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getChildWithName("GyroScaledAbs").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaledAbs.x);
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaledAbs.y);
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaledAbs.z);
-    }
     
     if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getChildWithName("GyroScaledFod").getPropertyAsValue ("oscOut", 0) == true)
     {
@@ -292,13 +190,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.gyroScaledFod.z);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getChildWithName("GyroScaledFod").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFod.x);
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFod.y);
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFod.z);
-    }
-    
     if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getChildWithName("GyroScaledFod").getChildWithName("GyroScaledFodMavg").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/gyro/scaled/fod/mavg");
@@ -306,12 +197,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.gyroScaledFodMavg.y);
         oscOut.addFloat32 ((float) myoData.gyroScaledFodMavg.z);
         oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getChildWithName("GyroScaledFod").getChildWithName("GyroScaledFodMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFodMavg.x);
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFodMavg.y);
-        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFodMavg.z);
     }
     
     if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getPropertyAsValue ("oscOut", 0) == true)
@@ -327,17 +212,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addInt32 ((int) myoData.emgRaw[7]);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addInt32 ((int) myoData.emgRaw[0]);
-        oscToWekinator.addInt32 ((int) myoData.emgRaw[1]);
-        oscToWekinator.addInt32 ((int) myoData.emgRaw[2]);
-        oscToWekinator.addInt32 ((int) myoData.emgRaw[3]);
-        oscToWekinator.addInt32 ((int) myoData.emgRaw[4]);
-        oscToWekinator.addInt32 ((int) myoData.emgRaw[5]);
-        oscToWekinator.addInt32 ((int) myoData.emgRaw[6]);
-        oscToWekinator.addInt32 ((int) myoData.emgRaw[7]);
-    }
     
     if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawMavg").getPropertyAsValue ("oscOut", 0) == true)
     {
@@ -351,17 +225,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addInt32 ((int) myoData.emgRawMavg[6]);
         oscOut.addInt32 ((int) myoData.emgRawMavg[7]);
         oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[0]);
-        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[1]);
-        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[2]);
-        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[3]);
-        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[4]);
-        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[5]);
-        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[6]);
-        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[7]);
     }
     
     if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getPropertyAsValue ("oscOut", 0) == true)
@@ -377,17 +240,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addInt32 ((int) myoData.emgZeroCross[7]);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[0]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[1]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[2]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[3]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[4]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[5]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[6]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[7]);
-    }
     
     if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getChildWithName("EmgRawZcrMavg").getPropertyAsValue ("oscOut", 0) == true)
     {
@@ -401,17 +253,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addInt32 ((int) myoData.emgZeroCrossMavg[6]);
         oscOut.addInt32 ((int) myoData.emgZeroCrossMavg[7]);
         oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getChildWithName("EmgRawZcrMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[0]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[1]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[2]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[3]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[4]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[5]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[6]);
-        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[7]);
     }
     
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getPropertyAsValue ("oscOut", 0) == true)
@@ -427,18 +268,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.emgScaled[7]);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.emgScaled[0]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaled[1]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaled[2]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaled[3]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaled[4]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaled[5]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaled[6]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaled[7]);
-    }
-    
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs");
@@ -451,17 +280,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.emgScaledAbs[6]);
         oscOut.addFloat32 ((float) myoData.emgScaledAbs[7]);
         oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[0]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[1]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[2]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[3]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[4]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[5]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[6]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[7]);
     }
     
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMin").getPropertyAsValue ("oscOut", 0) == true)
@@ -477,17 +295,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.emgScaledAbsMin[7]);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMin").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[0]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[1]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[2]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[3]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[4]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[5]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[6]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[7]);
-    }
     
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMax").getPropertyAsValue ("oscOut", 0) == true)
     {
@@ -501,17 +308,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.emgScaledAbsMax[6]);
         oscOut.addFloat32 ((float) myoData.emgScaledAbsMax[7]);
         oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMax").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[0]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[1]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[2]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[3]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[4]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[5]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[6]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[7]);
     }
     
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsFod").getPropertyAsValue ("oscOut", 0) == true)
@@ -527,18 +323,6 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.emgScaledAbsFod[7]);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsFod").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[0]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[1]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[2]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[3]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[4]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[5]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[6]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[7]);
-    }
-    
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsFod").getChildWithName("EmgScaledAbsFodMavg").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/fod/mavg");
@@ -552,19 +336,7 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.emgScaledAbsFodMavg[7]);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsFod").getChildWithName("EmgScaledAbsFodMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[0]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[1]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[2]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[3]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[4]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[5]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[6]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[7]);
-    }
-    
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMavg").getPropertyAsValue ("oscOut", 0) == true)
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mavg");
         oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[0]);
@@ -577,6 +349,263 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[7]);
         oscOutBuffer.push_back (oscOut);
     }
+    
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavMavg").getPropertyAsValue ("oscOut", 0) == true)
+    {
+        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/mavg");
+        oscOut.addFloat32 ((float) myoData.emgMav);
+        oscOutBuffer.push_back (oscOut);
+    }
+    
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavMin").getPropertyAsValue ("oscOut", 0) == true)
+    {
+        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/min");
+        oscOut.addFloat32 ((float) myoData.emgMavMin);
+        oscOutBuffer.push_back (oscOut);
+    }
+    
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavMax").getPropertyAsValue ("oscOut", 0) == true)
+    {
+        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/max");
+        oscOut.addFloat32 ((float) myoData.emgMavMax);
+        oscOutBuffer.push_back (oscOut);
+    }
+    
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavFod").getPropertyAsValue ("oscOut", 0) == true)
+    {
+        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/fod");
+        oscOut.addFloat32 ((float) myoData.mavFod);
+        oscOutBuffer.push_back (oscOut);
+    }
+    
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavFod").getChildWithName("EmgScaledAbsMavFodMavg").getPropertyAsValue ("oscOut", 0) == true)
+    {
+        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/fod/mavg");
+        oscOut.addFloat32 ((float) myoData.mavFodMavg);
+        oscOutBuffer.push_back (oscOut);
+    }
+    
+    
+    if (tree.getChildWithName("EmgData").getChildWithName("HandPose").getPropertyAsValue ("oscOut", 0) == true)
+    {
+        OSCMessage oscOut = OSCMessage ("/myo" + id + "/pose");
+        oscOut.addString (myoData.pose);
+        oscOutBuffer.push_back (oscOut);
+    }
+
+    //========================================================
+    //                 Data to Wekinator
+    //========================================================
+    OSCMessage oscToWekinator = OSCMessage ("/myo" + id);
+
+    if (tree.getChildWithName("OrData").getChildWithName("OrQuaternion").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.quaternion[0]);
+        oscToWekinator.addFloat32 ((float) myoData.quaternion[1]);
+        oscToWekinator.addFloat32 ((float) myoData.quaternion[2]);
+        oscToWekinator.addFloat32 ((float) myoData.quaternion[3]);
+    }
+    if (tree.getChildWithName("OrData").getChildWithName("OrRaw").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.orientationRaw.x);
+        oscToWekinator.addFloat32 ((float) myoData.orientationRaw.y);
+        oscToWekinator.addFloat32 ((float) myoData.orientationRaw.z);
+    }
+    if (tree.getChildWithName("OrData").getChildWithName("OrScaled").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.orientationScaled.x);
+        oscToWekinator.addFloat32 ((float) myoData.orientationScaled.y);
+        oscToWekinator.addFloat32 ((float) myoData.orientationScaled.z);
+    }
+    if (tree.getChildWithName("OrData").getChildWithName("OrVelocity").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.orientationScaledFod.x);
+        oscToWekinator.addFloat32 ((float) myoData.orientationScaledFod.y);
+        oscToWekinator.addFloat32 ((float) myoData.orientationScaledFod.z);
+    }
+    if (tree.getChildWithName("OrData").getChildWithName("OrAccel").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.orientationScaledSod.x);
+        oscToWekinator.addFloat32 ((float) myoData.orientationScaledSod.y);
+        oscToWekinator.addFloat32 ((float) myoData.orientationScaledSod.z);
+    }
+    if (tree.getChildWithName("AccData").getChildWithName("AccRaw").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.acc.x);
+        oscToWekinator.addFloat32 ((float) myoData.acc.y);
+        oscToWekinator.addFloat32 ((float) myoData.acc.x);
+    }
+    if (tree.getChildWithName("AccData").getChildWithName("AccRaw").getChildWithName("AccRawFod").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.accFod.x);
+        oscToWekinator.addFloat32 ((float) myoData.accFod.y);
+        oscToWekinator.addFloat32 ((float) myoData.accFod.z);
+    }
+    if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.accScaled.x);
+        oscToWekinator.addFloat32 ((float) myoData.accScaled.y);
+        oscToWekinator.addFloat32 ((float) myoData.accScaled.z);
+    }
+    if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getChildWithName("AccScaledFod").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.accScaledFod.x);
+        oscToWekinator.addFloat32 ((float) myoData.accScaledFod.y);
+        oscToWekinator.addFloat32 ((float) myoData.accScaledFod.z);
+    }
+    if (tree.getChildWithName("AccData").getChildWithName("AccScaled").getChildWithName("AccScaledFod").getChildWithName("AccScaledFodMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.accScaledFodMavg.x);
+        oscToWekinator.addFloat32 ((float) myoData.accScaledFodMavg.y);
+        oscToWekinator.addFloat32 ((float) myoData.accScaledFodMavg.z);
+    }
+    
+    if (tree.getChildWithName("GyroData").getChildWithName("GyroRaw").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.gyro.x);
+        oscToWekinator.addFloat32 ((float) myoData.gyro.y);
+        oscToWekinator.addFloat32 ((float) myoData.gyro.z);
+    }
+    if (tree.getChildWithName("GyroData").getChildWithName("GyroRaw").getChildWithName("GyroRawFod").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.gyroFod.x);
+        oscToWekinator.addFloat32 ((float) myoData.gyroFod.y);
+        oscToWekinator.addFloat32 ((float) myoData.gyroFod.z);
+    }
+    if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaled.x);
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaled.y);
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaled.z);
+    }
+    if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getChildWithName("GyroScaledAbs").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaledAbs.x);
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaledAbs.y);
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaledAbs.z);
+    }
+    if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getChildWithName("GyroScaledFod").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFod.x);
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFod.y);
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFod.z);
+    }
+    if (tree.getChildWithName("GyroData").getChildWithName("GyroScaled").getChildWithName("GyroScaledFod").getChildWithName("GyroScaledFodMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFodMavg.x);
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFodMavg.y);
+        oscToWekinator.addFloat32 ((float) myoData.gyroScaledFodMavg.z);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addInt32 ((int) myoData.emgRaw[0]);
+        oscToWekinator.addInt32 ((int) myoData.emgRaw[1]);
+        oscToWekinator.addInt32 ((int) myoData.emgRaw[2]);
+        oscToWekinator.addInt32 ((int) myoData.emgRaw[3]);
+        oscToWekinator.addInt32 ((int) myoData.emgRaw[4]);
+        oscToWekinator.addInt32 ((int) myoData.emgRaw[5]);
+        oscToWekinator.addInt32 ((int) myoData.emgRaw[6]);
+        oscToWekinator.addInt32 ((int) myoData.emgRaw[7]);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[0]);
+        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[1]);
+        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[2]);
+        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[3]);
+        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[4]);
+        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[5]);
+        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[6]);
+        oscToWekinator.addInt32 ((int) myoData.emgRawMavg[7]);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[0]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[1]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[2]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[3]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[4]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[5]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[6]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCross[7]);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getChildWithName("EmgRawZcrMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[0]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[1]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[2]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[3]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[4]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[5]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[6]);
+        oscToWekinator.addInt32 ((int) myoData.emgZeroCrossMavg[7]);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.emgScaled[0]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaled[1]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaled[2]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaled[3]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaled[4]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaled[5]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaled[6]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaled[7]);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[0]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[1]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[2]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[3]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[4]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[5]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[6]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbs[7]);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMin").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[0]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[1]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[2]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[3]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[4]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[5]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[6]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMin[7]);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMax").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[0]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[1]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[2]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[3]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[4]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[5]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[6]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMax[7]);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsFod").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[0]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[1]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[2]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[3]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[4]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[5]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[6]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFod[7]);
+    }
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsFod").getChildWithName("EmgScaledAbsFodMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
+    {
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[0]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[1]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[2]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[3]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[4]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[5]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[6]);
+        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsFodMavg[7]);
+    }
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
     {
         oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[0]);
@@ -588,93 +617,27 @@ void OSC::bufferOsc (MyoData &myoData)
         oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[6]);
         oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[7]);
     }
-    
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getPropertyAsValue ("oscOut", 0) == true)
-    {
-        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav");
-        oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[0]);
-        oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[1]);
-        oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[2]);
-        oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[3]);
-        oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[4]);
-        oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[5]);
-        oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[6]);
-        oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[7]);
-        oscOutBuffer.push_back (oscOut);
-    }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getPropertyAsValue ("oscToWekinator", 0) == true)
-    {
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[0]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[1]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[2]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[3]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[4]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[5]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[6]);
-        oscToWekinator.addFloat32 ((float) myoData.emgScaledAbsMavg[7]);
-    }
-    
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavMavg").getPropertyAsValue ("oscOut", 0) == true)
-    {
-        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/mavg");
-        oscOut.addFloat32 ((float) myoData.emgMav);
-        oscOutBuffer.push_back (oscOut);
-    }
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
     {
         oscToWekinator.addFloat32 ((float) myoData.emgMav);
-    }
-    
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavMin").getPropertyAsValue ("oscOut", 0) == true)
-    {
-        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/min");
-        oscOut.addFloat32 ((float) myoData.emgMavMin);
-        oscOutBuffer.push_back (oscOut);
     }
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavMin").getPropertyAsValue ("oscToWekinator", 0) == true)
     {
         oscToWekinator.addFloat32 ((float) myoData.emgMavMin);
     }
-    
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavMax").getPropertyAsValue ("oscOut", 0) == true)
-    {
-        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/max");
-        oscOut.addFloat32 ((float) myoData.emgMavMax);
-        oscOutBuffer.push_back (oscOut);
-    }
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavMax").getPropertyAsValue ("oscOut", 0) == true)
     {
         oscToWekinator.addFloat32 ((float) myoData.emgMavMax);
     }
-    
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavFod").getPropertyAsValue ("oscOut", 0) == true)
-    {
-        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/fod");
-        oscOut.addFloat32 ((float) myoData.mavFod);
-        oscOutBuffer.push_back (oscOut);
-    }
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavFod").getPropertyAsValue ("oscToWekinator", 0) == true)
     {
         oscToWekinator.addFloat32 ((float) myoData.mavFod);
-    }
-    
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavFod").getChildWithName("EmgScaledAbsMavFodMavg").getPropertyAsValue ("oscOut", 0) == true)
-    {
-        OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mav/fod/mavg");
-        oscOut.addFloat32 ((float) myoData.mavFodMavg);
-        oscOutBuffer.push_back (oscOut);
     }
     if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getChildWithName("EmgScaledAbsMavFod").getChildWithName("EmgScaledAbsMavFodMavg").getPropertyAsValue ("oscToWekinator", 0) == true)
     {
         oscToWekinator.addFloat32 ((float) myoData.mavFodMavg);
     }
     
-    if (tree.getChildWithName("EmgData").getChildWithName("HandPose").getPropertyAsValue ("oscOut", 0) == true)
-    {
-        OSCMessage oscOut = OSCMessage ("/myo" + id + "/pose");
-        oscOut.addString (myoData.pose);
-        oscOutBuffer.push_back (oscOut);
-    }
     if (tree.getChildWithName("EmgData").getChildWithName("HandPose").getPropertyAsValue ("oscToWekinator", 0) == true)
     {
         oscToWekinator.addString (myoData.pose);

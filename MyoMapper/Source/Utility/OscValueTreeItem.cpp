@@ -17,12 +17,12 @@ public:
         
         toggle.setColour (ToggleButton::tickColourId, Colours::black);
         toggle.setColour (ToggleButton::tickDisabledColourId, Colours::black);
-        toggle.setToggleState (tree.getProperty ("onOff", 0), dontSendNotification);
+        toggle.setToggleState (tree.getProperty ("oscOut", 0), dontSendNotification);
         toggle.addListener (this);
         
         toggleWek.setColour (ToggleButton::tickColourId, Colours::black);
         toggleWek.setColour (ToggleButton::tickDisabledColourId, Colours::black);
-        toggleWek.setToggleState (tree.getProperty ("wekinator", 0), dontSendNotification);
+        toggleWek.setToggleState (tree.getProperty ("oscToWekinator", 0), dontSendNotification);
         toggleWek.addListener (this);
         
         toWekaLabel.setLookAndFeel (&laf);

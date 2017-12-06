@@ -94,15 +94,6 @@ public:
     ValueTree getSettingsTree();
     ValueTree getDataTree();
     
-    const String oscOut              = "oscOut";
-    const String name               = "name";
-    const String sampleSize         = "sampleSize";
-    const String oscToWekinator     = "oscToWekinator";
-    const String portNumber         = "portNumber";
-    const bool on                   = true;
-    const bool off                  = false;
-    const int tempSampSize          = 10;
-    
     void writeRootTreeToXml();
     
     void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property) override;

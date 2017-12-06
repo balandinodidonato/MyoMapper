@@ -30,6 +30,7 @@ struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
 int MyoMapperApplication::selectedMyo;
 int MyoMapperApplication::sendPort;
 int MyoMapperApplication::receivePort;
+int MyoMapperApplication::wekinatorPort;
 String MyoMapperApplication::hostAddress;
 
 MyoMapperApplication::MyoMapperApplication()
@@ -69,7 +70,12 @@ void MyoMapperApplication::initialise (const String& commandLine)
     hostAddress = getSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress");
     sendPort = getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber");
     receivePort = getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
-    wekinatorPort = getDataTree().getChildWithName("WekinatorPort").getProperty("portNumber");
+    wekinatorPort = 6448;
+    
+    std::cout << "wekinatorPort: " << wekinatorPort <<std::endl;
+
+    std::cout << "sendPort: " << sendPort <<std::endl;
+    
     osc->addChangeListener (this);
     
     myoManager.connect();
@@ -145,8 +151,8 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
     }
     if (selectedMyo > 0 && selectedMyo <= 20 && SettingsWindow::startButtonClicked == true)
     {
-        auto sendConnect = osc->connectSender (MyoMapperApplication::hostAddress, MyoMapperApplication::sendPort, wekinatorPort);
-        auto receiveConnect = osc->connectReceiver (MyoMapperApplication::receivePort);
+        auto sendConnect = osc->connectSender (hostAddress, sendPort, wekinatorPort);
+        auto receiveConnect = osc->connectReceiver (receivePort);
         if (sendConnect && receiveConnect)
         {
             auto const settingsMessage = dynamic_cast<SettingsWindow*>(source);
@@ -512,6 +518,17 @@ void MyoMapperApplication::showPreferencesWindow()
     // Show the preferences window (moves on mac vs windows/ linux)
 }
 
+//=======================
+
+const String oscOut             = "oscOut";
+const String name               = "name";
+const String sampleSize         = "sampleSize";
+const String oscToWekinator     = "oscToWekinator";
+const String portNumber         = "portNumber";
+const bool on                   = true;
+const bool off                  = false;
+const int tempSampSize          = 10;
+
 //==============================================================================
 void MyoMapperApplication::initialiseRootTree()
 {
@@ -566,8 +583,6 @@ void MyoMapperApplication::initialiseSettingsTree()
     yawScalingTree.setProperty ("reverse", off, nullptr);
     yawScalingTree.setProperty ("offset", 0, nullptr);
     yawScalingTree.setProperty ("test", 0, nullptr);
-    yawScalingTree.setProperty (oscToWekinator, off, 0);
-
 
     ValueTree pitchScalingTree = ValueTree ("PitchScaling");
     pitchScalingTree.setProperty (name, "Pitch Scaling", nullptr);
@@ -578,8 +593,6 @@ void MyoMapperApplication::initialiseSettingsTree()
     pitchScalingTree.setProperty ("reverse", off, nullptr);
     pitchScalingTree.setProperty ("offset", 0, nullptr);
     pitchScalingTree.setProperty ("test", 0, nullptr);
-    pitchScalingTree.setProperty (oscToWekinator, off, 0);
-
 
     ValueTree rollScalingTree = ValueTree ("RollScaling");
     rollScalingTree.setProperty (name, "Roll Scaling", nullptr);
@@ -590,8 +603,6 @@ void MyoMapperApplication::initialiseSettingsTree()
     rollScalingTree.setProperty ("reverse", off, nullptr);
     rollScalingTree.setProperty ("offset", 0, nullptr);
     rollScalingTree.setProperty ("test", 0, nullptr);
-    rollScalingTree.setProperty (oscToWekinator, off, 0);
-
     
     dataScalingTree.addChild (yawScalingTree, -1, nullptr);
     dataScalingTree.addChild (pitchScalingTree, -1, nullptr);
@@ -601,6 +612,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     settingsTree.addChild (sendPortTree, -1, nullptr);
     settingsTree.addChild (hostAddressTree, -1, nullptr);
     settingsTree.addChild (receivePortTree, -1, nullptr);
+    settingsTree.addChild (wekinatorPortTree, -1, nullptr);
     settingsTree.addChild (dataScalingTree, -1, nullptr);
 }
 
@@ -614,7 +626,12 @@ void MyoMapperApplication::initialiseDataTree()
     orData.setProperty (name, "Orientation Data", nullptr);
     orData.setProperty (oscOut, on, 0);
     orData.setProperty (oscToWekinator, false, 0);
-
+    
+    ValueTree orDataQuaternion = ValueTree ("OrQuaternion");
+    orDataQuaternion.setProperty (name, "Quaternion Data", nullptr);
+    orDataQuaternion.setProperty (oscOut, off, nullptr);
+    orDataQuaternion.setProperty (oscToWekinator, false, nullptr);
+    
     ValueTree orDataRaw = ValueTree ("OrRaw");
     orDataRaw.setProperty (name, "Raw Data", nullptr);
     orDataRaw.setProperty (oscOut, off, nullptr);
@@ -624,11 +641,6 @@ void MyoMapperApplication::initialiseDataTree()
     orDataScaled.setProperty (name, "Scaled Data", nullptr);
     orDataScaled.setProperty (oscOut, on, nullptr);
     orDataScaled.setProperty (oscToWekinator, true, nullptr);
-
-    ValueTree orDataQuaternion = ValueTree ("OrQuaternion");
-    orDataQuaternion.setProperty (name, "Quaternion Data", nullptr);
-    orDataQuaternion.setProperty (oscOut, off, nullptr);
-    orDataQuaternion.setProperty (oscToWekinator, false, nullptr);
 
     ValueTree orDataVel = ValueTree ("OrVelocity");
     orDataVel.setProperty (name, "Velocity Data", nullptr);
@@ -642,10 +654,10 @@ void MyoMapperApplication::initialiseDataTree()
     orDataAccel.setProperty (sampleSize, tempSampSize, nullptr);
     orDataAccel.setProperty (oscToWekinator, false, nullptr);
     
-    orData.addChild (orDataRaw, 1, nullptr);
-    orData.addChild (orDataScaled, 1, nullptr);
-    orData.addChild (orDataQuaternion, 11, nullptr);
-    orData.addChild (orDataVel, 2, nullptr);
+    orData.addChild (orDataQuaternion, -1, nullptr);
+    orData.addChild (orDataRaw, -1, nullptr);
+    orData.addChild (orDataScaled, -1, nullptr);
+    orData.addChild (orDataVel, -1, nullptr);
     orData.addChild (orDataAccel, -1, nullptr);
     
     //=============================================
@@ -926,13 +938,13 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
         {
             osc->disconnectSender();
             sendPort = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (hostAddress, sendPort, wekinatorPort);
+            osc->connectSender (MyoMapperApplication::hostAddress, MyoMapperApplication::sendPort, MyoMapperApplication::wekinatorPort);
         }
         if (treeWhosePropertyHasChanged.hasType ("HostAddress"))
         {
             osc->disconnectSender();
             hostAddress = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (hostAddress, sendPort, wekinatorPort);
+            osc->connectSender (MyoMapperApplication::hostAddress, MyoMapperApplication::sendPort, MyoMapperApplication::wekinatorPort);
         }
         if (treeWhosePropertyHasChanged.hasType ("ReceivePort"))
         {
