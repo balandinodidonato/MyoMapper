@@ -72,10 +72,6 @@ void MyoMapperApplication::initialise (const String& commandLine)
     receivePort = getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
     wekinatorPort = 6448;
     
-    std::cout << "wekinatorPort: " << wekinatorPort <<std::endl;
-
-    std::cout << "sendPort: " << sendPort <<std::endl;
-    
     osc->addChangeListener (this);
     
     myoManager.connect();
