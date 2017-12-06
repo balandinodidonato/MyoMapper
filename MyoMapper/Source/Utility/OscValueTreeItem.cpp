@@ -79,11 +79,11 @@ public:
     {
         if(button == &toggle)
         {
-            tree.setProperty ("onOff", ! (tree.getProperty ("onOff", 0)), 0);
+            tree.setProperty ("oscOut", ! (tree.getProperty ("oscOut", 0)), 0);
         }
         if(button == &toggleWek)
         {
-            tree.setProperty ("wekinator", ! (tree.getProperty ("wekinator", 0)), 0);
+            tree.setProperty ("oscToWekinator", ! (tree.getProperty ("oscToWekinator", 0)), 0);
         }
     }
     

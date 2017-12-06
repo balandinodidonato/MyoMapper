@@ -72,6 +72,7 @@ public:
     MyoManager myoManager;
     static int selectedMyo;
     static int sendPort;
+    static int wekinatorPort;
     static int receivePort;
     static String hostAddress;
     
@@ -92,6 +93,15 @@ public:
     ValueTree getRootTree();
     ValueTree getSettingsTree();
     ValueTree getDataTree();
+    
+    const String oscOut              = "oscOut";
+    const String name               = "name";
+    const String sampleSize         = "sampleSize";
+    const String oscToWekinator     = "oscToWekinator";
+    const String portNumber         = "portNumber";
+    const bool on                   = true;
+    const bool off                  = false;
+    const int tempSampSize          = 10;
     
     void writeRootTreeToXml();
     
