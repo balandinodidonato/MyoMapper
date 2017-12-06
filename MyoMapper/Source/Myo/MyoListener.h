@@ -2,7 +2,7 @@
 #define MYOLISTENER_H_INCLUDED
 
 #include "myo/myo.hpp"
-#include "../Orientation.h"
+#include "../orientation.h"
 #include "MyoData.h"
 #include <array>
 #include "../Features/MovingAverage.h"
