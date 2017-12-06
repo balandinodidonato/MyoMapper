@@ -71,8 +71,7 @@ public:
         slider.setBounds (area.removeFromRight (getParentWidth() * 0.15));
         sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.135));
         toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
-        toWekaLabel.setBounds (area.removeFromRight (getParentWidth() * 0.1));
-
+        toWekaLabel.setBounds (area.removeFromRight (getParentWidth() * 0.12));
     }
     
     void buttonClicked (Button* button) override
