@@ -1,4 +1,4 @@
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 #include "SettingsWindow.h"
 
 #include "../../Application.h"

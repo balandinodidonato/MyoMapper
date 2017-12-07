@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 
 class WindowDrawer  : public DialogWindow,
                       public ChangeBroadcaster
