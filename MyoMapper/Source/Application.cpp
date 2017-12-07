@@ -61,7 +61,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList = new WindowList();
     windowList->addChangeListener (this);
     windowList->windows.ensureStorageAllocated (3);
-    windowList->showOrCreateSettingsWindow();
+    windowList->showOrCreateOscSettingsWindow();
     
     
     selectedMyo = getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
@@ -155,7 +155,7 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
             settingsMessage->resetStartButtonPressed();
             myoManager.startPoll();
             startTimer (oscBufferFillSpeed);
-            windowList->showOrCreateVisualsWindow();
+            windowList->showOrCreateMyoStatusWindow();
             windowList->windows.set (windowList->windows.indexOf (windowList->oscSettingsWindow), nullptr);
             
         }
@@ -164,7 +164,7 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
     if (SettingsWindow::featureButtonClicked)
     {
         auto const settingsMessage = dynamic_cast<SettingsWindow*>(source);
-        windowList->showOrCreateDataSelectorWindow();
+        windowList->showOrCreateOscDataSelectorWindow();
         settingsMessage->resetFeatureButtonPressed();
     }
 }
@@ -326,17 +326,17 @@ void MyoMapperApplication::quitMapper()
 
 void MyoMapperApplication::showSettingsWindow()
 {
-    windowList->showOrCreateSettingsWindow();
+    windowList->showOrCreateOscSettingsWindow();
 }
 
 void MyoMapperApplication::showVisualsWindow()
 {
-    windowList->showOrCreateVisualsWindow();
+    windowList->showOrCreateMyoStatusWindow();
 }
 
 void MyoMapperApplication::showDataWindow()
 {
-    windowList->showOrCreateDataSelectorWindow();
+    windowList->showOrCreateOscDataSelectorWindow();
 }
 
 void MyoMapperApplication::closeWindow()

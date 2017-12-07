@@ -17,9 +17,9 @@ public:
     static WindowList& getWindowList();
     
     void createInitialWindow();
-    void showOrCreateSettingsWindow();
-    void showOrCreateVisualsWindow();
-    void showOrCreateDataSelectorWindow();
+    void showOrCreateOscSettingsWindow();
+    void showOrCreateMyoStatusWindow();
+    void showOrCreateOscDataSelectorWindow();
     void showOrCreateAboutWindow();
     void showOrCreateHelpWindow();
     
