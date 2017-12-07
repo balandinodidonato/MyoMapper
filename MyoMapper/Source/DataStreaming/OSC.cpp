@@ -336,7 +336,7 @@ void OSC::bufferOsc (MyoData &myoData)
         oscOut.addFloat32 ((float) myoData.emgScaledAbsFodMavg[7]);
         oscOutBuffer.push_back (oscOut);
     }
-    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMav").getPropertyAsValue ("oscOut", 0) == true)
+    if (tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsMavg").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/emg/scaled/abs/mavg");
         oscOut.addFloat32 ((float) myoData.emgScaledAbsMavg[0]);
@@ -704,20 +704,20 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
                 {
                     if(myoDataIn[i] == "Yaw")
                     {
-                        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.x, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.x, 0);
                         
-                        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                     }
                     if(myoDataIn[i] == "Pitch")
                     {
-                        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.y, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.y, 0);
                         
-                        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                     }
                     if(myoDataIn[i] == "Roll")
                     {
-                        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.z, 0);
-                        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.z, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                     }
                 }
             }
@@ -730,23 +730,23 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
             {
                 if (oscIn[0].getInt32() == 1)
                 {
-                    MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 1, 0);
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", true, 0);
                 }
                 else if (oscIn[0].getInt32() == 0)
                 {
-                    MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 0, 0);
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", false, 0);
                 }
             }
             else if (oscIn.size() == 1 && oscIn[0].isFloat32())
             {
                 if (oscIn[0].getFloat32() == 1)
                 {
-                    MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 1, 0);
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", true, 0);
                 }
                 else if (oscIn[0].getFloat32() == 0)
                 {
-                    MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", 0, 0);
-                    MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").getProperty("inMax");
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", false, 0);
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").getProperty("inMax");
                 }
             }
             map[i][4] = true;
@@ -759,7 +759,7 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
             {
                 if (oscIn.size() == 1)
                 {
-                    auto tree = MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling");
+                    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling");
                     float inMax = tree.getProperty("inMax");
                     float inMin = tree.getProperty("inMin");
                     
@@ -778,7 +778,7 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
                                                               "Input maximum cannot be equal or less than input minimum");
                         }
                         else
-                            MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], oscIn[0].getInt32(), 0);
+                            MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], oscIn[0].getInt32(), 0);
                         
                     }
                     else if (oscIn[0].isFloat32())
@@ -796,7 +796,7 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
                                                               "Input maximum cannot be equal or less than input minimum");
                         }
                         else
-                            MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling").getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], oscIn[0].getFloat32(), 0);
+                            MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], oscIn[0].getFloat32(), 0);
                     }
                 }
             }

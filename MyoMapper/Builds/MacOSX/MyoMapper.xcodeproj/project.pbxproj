@@ -21,10 +21,10 @@
 		2DDF3D6B66671A4C35A871DA /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F9BBCFDC750D4E34238B9 /* Application.cpp */; };
 		2EA91483B878C0FF5DD75119 /* ScaleValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E2AF547C64DF07847A2A99 /* ScaleValues.cpp */; };
 		30AE49EF264B38DA117A77C7 /* WindowDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE54F4F83D39BB4F9FA59A11 /* WindowDrawer.cpp */; };
+		323A03581FD9BF2D00BAEFAD /* myo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 323A03571FD9BF2D00BAEFAD /* myo.framework */; };
+		323A03591FD9BF3200BAEFAD /* myo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 323A03571FD9BF2D00BAEFAD /* myo.framework */; };
+		323A035A1FD9BF3200BAEFAD /* myo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 323A03571FD9BF2D00BAEFAD /* myo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3241BB551AF7B80A02389059 /* include_juce_osc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCFB967B0413872AB7D756 /* include_juce_osc.cpp */; };
-		32D3BB871FD9A7EB00FABC90 /* myo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D3BB861FD9A7EB00FABC90 /* myo.framework */; };
-		32D3BB881FD9A7F000FABC90 /* myo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D3BB861FD9A7EB00FABC90 /* myo.framework */; };
-		32D3BB891FD9A7F000FABC90 /* myo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32D3BB861FD9A7EB00FABC90 /* myo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3941F47C568D722FCCAF407F /* HelpWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 630CC8393DBDC58513DA027A /* HelpWindow.cpp */; };
 		395070209AB1F4B1098D5BB5 /* include_juce_graphics.mm in Sources */ = {isa = PBXBuildFile; fileRef = C5F124CD026F1046BA83D694 /* include_juce_graphics.mm */; };
 		470E1D58127B8552268E162F /* Mav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD7B57E2B7CBA61532A05F /* Mav.cpp */; };
@@ -55,13 +55,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		32D3BB851FD9A79E00FABC90 /* Embed Frameworks */ = {
+		323A035B1FD9BF3300BAEFAD /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				32D3BB891FD9A7F000FABC90 /* myo.framework in Embed Frameworks */,
+				323A035A1FD9BF3200BAEFAD /* myo.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,8 +88,8 @@
 		20E9C88336BF4382FBE1C1E5 /* SecondOrderDifference.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SecondOrderDifference.cpp; path = ../../Source/Features/SecondOrderDifference.cpp; sourceTree = SOURCE_ROOT; };
 		2B2F9DF77312BF8D3359ABF6 /* juce_osc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_osc; path = ../../JuceLibraryCode/modules/juce_osc; sourceTree = SOURCE_ROOT; };
 		30C2807D73F026BDA4DBC97C /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../../Source/Application.h; sourceTree = SOURCE_ROOT; };
+		323A03571FD9BF2D00BAEFAD /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myo.framework; path = ../../../../../../Library/Frameworks/myo.framework; sourceTree = "<group>"; };
 		325B30514F5198958D9DA487 /* FirstOrderDifference.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FirstOrderDifference.cpp; path = ../../Source/Features/FirstOrderDifference.cpp; sourceTree = SOURCE_ROOT; };
-		32D3BB861FD9A7EB00FABC90 /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myo.framework; path = ../../../../../../Library/Frameworks/myo.framework; sourceTree = "<group>"; };
 		34549BDEAEF79A8B5E01A4D5 /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		362301F4D9F3494F257A83B1 /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		374F0149F402FB7BA8DE3AAB /* include_juce_opengl.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_opengl.mm; path = ../../JuceLibraryCode/include_juce_opengl.mm; sourceTree = SOURCE_ROOT; };
@@ -163,11 +163,11 @@
 			files = (
 				D6B1435E336D3D5A66FCF16B /* Carbon.framework in Frameworks */,
 				EA6B6B9A2254D93F7BE9742B /* Cocoa.framework in Frameworks */,
-				32D3BB871FD9A7EB00FABC90 /* myo.framework in Frameworks */,
 				C116BA0C6679EE33707BA158 /* IOKit.framework in Frameworks */,
 				00C21076546BD3C41BE3490C /* OpenGL.framework in Frameworks */,
 				808C19E032283899C075FEFF /* QuartzCore.framework in Frameworks */,
-				32D3BB881FD9A7F000FABC90 /* myo.framework in Frameworks */,
+				323A03581FD9BF2D00BAEFAD /* myo.framework in Frameworks */,
+				323A03591FD9BF3200BAEFAD /* myo.framework in Frameworks */,
 				6507943995181A90AF2AB700 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,7 +340,7 @@
 		A8B8923DE26E7730A43A9AFD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				32D3BB861FD9A7EB00FABC90 /* myo.framework */,
+				323A03571FD9BF2D00BAEFAD /* myo.framework */,
 				175332EA85B1F4026F148E47 /* Carbon.framework */,
 				64200BD72BE5B8158B73877B /* Cocoa.framework */,
 				C4CC130375FB18D502CFB639 /* IOKit.framework */,
@@ -390,7 +390,7 @@
 				04585E7B6D39EA4D1DA7CF92 /* Sources */,
 				EDA380A82341BC06E239D3AD /* Frameworks */,
 				128EAE48529CD020F3D877A3 /* Post-build script */,
-				32D3BB851FD9A79E00FABC90 /* Embed Frameworks */,
+				323A035B1FD9BF3300BAEFAD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -534,8 +534,8 @@
 					"_DEBUG=1",
 					"DEBUG=1",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=3.1.4",
-					"JUCE_APP_VERSION_HEX=0x30104",
+					"JUCE_APP_VERSION=3.1.5",
+					"JUCE_APP_VERSION_HEX=0x30105",
 					"JucePlugin_Build_VST=0",
 					"JucePlugin_Build_VST3=0",
 					"JucePlugin_Build_AU=0",
@@ -580,8 +580,8 @@
 					"_NDEBUG=1",
 					"NDEBUG=1",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=3.1.4",
-					"JUCE_APP_VERSION_HEX=0x30104",
+					"JUCE_APP_VERSION=3.1.5",
+					"JUCE_APP_VERSION_HEX=0x30105",
 					"JucePlugin_Build_VST=0",
 					"JucePlugin_Build_VST3=0",
 					"JucePlugin_Build_AU=0",
