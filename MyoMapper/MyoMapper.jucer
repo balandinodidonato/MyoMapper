@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.1.5"
+<JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.1.6"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
               jucerVersion="5.2.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
