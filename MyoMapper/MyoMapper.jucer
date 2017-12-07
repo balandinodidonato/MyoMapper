@@ -4,7 +4,7 @@
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
               jucerVersion="5.2.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
-              reportAppUsage="1" splashScreenColour="Dark" cppLanguageStandard="11"
+              reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
               companyCopyright="Balandino Di Donato - 2017">
   <MAINGROUP id="G7OLDm" name="MyoMapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
