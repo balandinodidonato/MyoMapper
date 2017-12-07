@@ -1,6 +1,6 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "OscValueTreeItem.h"
-#include "../Utility/MyoMapperLookAndFeel.h"
+#include "MyoMapperLookAndFeel.h"
 
 class OscValueTreeItem::TreeItemComponent    : public Component,
                                                public Button::Listener,
@@ -25,15 +25,15 @@ public:
         toggleWek.setToggleState (tree.getProperty ("oscToWekinator", 0), dontSendNotification);
         toggleWek.addListener (this);
         
-        toWekaLabel.setLookAndFeel (&laf);
-        toWekaLabel.setColour (Label::textColourId, Colours::black);
-        toWekaLabel.setText ("To Weki", dontSendNotification);
-        toWekaLabel.attachToComponent (&slider, true);
+        toWekinatorLabel.setLookAndFeel (&laf);
+        toWekinatorLabel.setColour (Label::textColourId, Colours::black);
+        toWekinatorLabel.setText ("To Wekinator", dontSendNotification);
+        toWekinatorLabel.attachToComponent (&slider, true);
         
         addAndMakeVisible (toggle);
         addAndMakeVisible (toggleWek);
         addAndMakeVisible (label);
-        addAndMakeVisible (toWekaLabel);
+        addAndMakeVisible (toWekinatorLabel);
 
         if (tree.hasProperty ("sampleSize"))
         {
@@ -56,7 +56,7 @@ public:
     {
         label.setLookAndFeel (nullptr);
         sliderLabel.setLookAndFeel (nullptr);
-        toWekaLabel.setLookAndFeel(nullptr);
+        toWekinatorLabel.setLookAndFeel(nullptr);
     }
     
     void paint (Graphics& g) override
@@ -67,11 +67,11 @@ public:
     {
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
-        label.setBounds (area.removeFromLeft (proportionOfWidth (0.4)));
-        slider.setBounds (area.removeFromRight (getParentWidth() * 0.15));
-        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.135));
+        label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
+        slider.setBounds (area.removeFromRight (getParentWidth() * 0.18));
+        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.14));
         toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
-        toWekaLabel.setBounds (area.removeFromRight (getParentWidth() * 0.12));
+        toWekinatorLabel.setBounds (area.removeFromRight (getParentWidth() * 0.165));
     }
     
     void buttonClicked (Button* button) override
@@ -101,8 +101,7 @@ private:
     Label label;
     Slider slider;
     Label sliderLabel;
-    Label toWekaLabel;
-
+    Label toWekinatorLabel;
     
     class TreeLookAndFeel    : public MyoMapperLookAndFeel
     {

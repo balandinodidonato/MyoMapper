@@ -1,4 +1,4 @@
-#include "orientation.h"
+#include "Orientation.h"
 
 Orientation::Orientation()
 {
@@ -48,7 +48,6 @@ Vector3D<float> Orientation::getValue()
 {
     return orientationScaled;
 }
-
 
 //////////////////////////////////////////////////////////////////////////////
 

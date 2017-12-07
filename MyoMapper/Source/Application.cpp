@@ -64,12 +64,12 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList->showOrCreateSettingsWindow();
     
     
-    selectedMyo = getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
+    selectedMyo = getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
 
     osc = new OSC();
-    hostAddress = getSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress");
-    sendPort = getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber");
-    receivePort = getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
+    hostAddress = getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress");
+    sendPort = getOscSettingsTree().getChildWithName("SendPort").getProperty ("portNumber");
+    receivePort = getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
     wekinatorPort = 6448;
     
     osc->addChangeListener (this);
@@ -210,36 +210,6 @@ void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
         jassertfalse;
 }
 
-/*
-void MyoMapperApplication::createFileMenu (PopupMenu& menu)
-{
-    #if ! JUCE_MAC
-        menu.addCommandItem (&getCommandManager(), CommandIDs::showPreferences);
-        menu.addSeparator();
-    #endif
-
-    menu.addCommandItem (&getCommandManager(), CommandIDs::newMapper);
-    menu.addSeparator();
-    menu.addCommandItem (&getCommandManager(), CommandIDs::openMapper);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapper);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapperAs);
-
-    #if ! JUCE_MAC
-        menu.addSeparator();
-        menu.addCommandItem (&getCommandManager(), CommandIDs::quitMapper);
-    #endif
-}
-
-
-void MyoMapperApplication::createViewMenu (PopupMenu& menu)
-{
-    menu.addCommandItem (&getCommandManager(), CommandIDs::zoomIncrease);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::zoomDecrease);
-    menu.addSeparator();
-    menu.addCommandItem (&getCommandManager(), CommandIDs::enableFullscreen);
-}
- */
-
 void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);
@@ -255,13 +225,6 @@ void MyoMapperApplication::createHelpMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::showDocumentationWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showAboutWindow);
 }
-
-/*
-void MyoMapperApplication::createAppleMenu (PopupMenu& menu)
-{
-    menu.addCommandItem (&getCommandManager(), CommandIDs::showPreferences);
-}
-*/
 
 void MyoMapperApplication::menuCommand (int menuItemID)
 {
@@ -356,73 +319,10 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
     return true;
 }
 
-//==============================================================================
-/*
- void MyoMapperApplication::createNewMapper()
-{
-    // Close current mapper and open new
-}
-
-void MyoMapperApplication::openFile()
-{
-    FileChooser fileChooser ("Open Mapper",
-                             File::nonexistent,
-                             "*.mapper");
-
-//    auto val = fileChooser.browseForFileToOpen();
-
-    if (fileChooser.browseForFileToOpen() == true)
-    {
-        File chosenFile = fileChooser.getResult();
-
-        XmlElement* xmlFile = XmlDocument(chosenFile).getDocumentElement();
-        ValueTree fileValueTree = ValueTree::fromXml (*xmlFile);
-        getRootTree() = fileValueTree;
-
-    }
-}
-
-void MyoMapperApplication::saveMapper()
-{
-    writeRootTreeToXml();
-}
-
-void MyoMapperApplication::saveMapperAs()
-{
-    auto file = File::getCurrentWorkingDirectory().getChildFile ("MyoMapper.mapper");
-    FileChooser fileChooser ("Save Mapper As...",
-                             file,
-                             "*.mapper");
-    if (fileChooser.browseForFileToSave (true) == true)
-    {
-        File chosenFile = fileChooser.getResult();
-//        FileOutputStream stream (chosenFile);
-        XmlElement* xml = getRootTree().createXml();
-        xml->writeToFile (chosenFile, String::empty);
-     }
-}
-*/
-
 void MyoMapperApplication::quitMapper()
 {
     MyoMapperApplication::shutdown();
 }
-/*
-void MyoMapperApplication::windowZoomIncrease()
-{
-    // Increase scaling of UI/ text in all windows (or just the currently selected)
-}
-
-void MyoMapperApplication::windowZoomDecrease()
-{
-    // Decrease scaling of UI/ text in all windows (or just the currently selected)
-}
-
-void MyoMapperApplication::enableFullscreen()
-{
-    // Toggle fullscreen mode
-}
-*/
 
 void MyoMapperApplication::showSettingsWindow()
 {
@@ -438,20 +338,6 @@ void MyoMapperApplication::showDataWindow()
 {
     windowList->showOrCreateDataSelectorWindow();
 }
-/*
-void MyoMapperApplication::moveWindowsToFront()
-{
-    for (int i = 0; i < windowList->windows.size(); ++i)
-    {
-        Component* currentWindow = windowList->windows.operator[](i);
-
-        if (currentWindow != nullptr)
-        {
-            windowList->getWindowList().windows.operator[](i)->toFront (true);
-        }
-    }
-}
- */
 
 void MyoMapperApplication::closeWindow()
 {
@@ -527,22 +413,27 @@ const int tempSampSize          = 10;
 void MyoMapperApplication::initialiseRootTree()
 {
     rootTree = ValueTree ("MyoMapper");
-    if (!settingsTree.hasType ("Settings"))
+    if (!oscSettingsTree.hasType ("OscSettingsTree"))
     {
-        initialiseSettingsTree();
+        initialiseOscSettingsTree();
     }
-    if (!dataTree.hasType ("Data"))
+    if (!myoDataScalingTree.hasType ("MyoDataScalingTree"))
     {
-        initialiseDataTree();
+        initialiseMyoDataScalingTree();
     }
-    rootTree.addChild (settingsTree, -1, nullptr);
-    rootTree.addChild (dataTree, -1, nullptr);
+    if (!oscStreamingTree.hasType ("OscStreamingTree"))
+    {
+        initialiseOscStreamingTree();
+    }
+    rootTree.addChild (oscSettingsTree, -1, nullptr);
+    rootTree.addChild (myoDataScalingTree, -1, nullptr);
+    rootTree.addChild (oscStreamingTree, -1, nullptr);
     rootTree.addListener (this);
 }
 
-void MyoMapperApplication::initialiseSettingsTree()
+void MyoMapperApplication::initialiseOscSettingsTree()
 {
-    settingsTree = ValueTree ("Settings");
+    oscSettingsTree = ValueTree ("OscSettingsTree");
     
     ValueTree selectedMyoTree = ValueTree ("SelectedMyo");
     selectedMyoTree.setProperty (name, "Selected Myo", nullptr);
@@ -564,20 +455,27 @@ void MyoMapperApplication::initialiseSettingsTree()
     wekinatorPortTree.setProperty (name, "Wekinator Port", nullptr);
     wekinatorPortTree.setProperty (portNumber, "6448", nullptr);
     
-    // Add trees for storing scaling data
-    ValueTree dataScalingTree = ValueTree ("DataScaling");
-    dataScalingTree.setProperty (name, "Data Scaling", nullptr);
+    oscSettingsTree.addChild (selectedMyoTree, -1, nullptr);
+    oscSettingsTree.addChild (sendPortTree, -1, nullptr);
+    oscSettingsTree.addChild (hostAddressTree, -1, nullptr);
+    oscSettingsTree.addChild (receivePortTree, -1, nullptr);
+    oscSettingsTree.addChild (wekinatorPortTree, -1, nullptr);
+}
 
+void MyoMapperApplication::initialiseMyoDataScalingTree()
+{
+    myoDataScalingTree = ValueTree ("MyoDataScalingTree");
+    
     ValueTree yawScalingTree = ValueTree ("YawScaling");
     yawScalingTree.setProperty (name, "Yaw Scaling", nullptr);
     yawScalingTree.setProperty ("inMin", 0.0f, nullptr);
-    yawScalingTree.setProperty ("inMax", 1.0f, nullptr);
-    yawScalingTree.setProperty ("outMin", 0.0f, nullptr);
+    yawScalingTree.setProperty ("inMax", 1.00f, nullptr);
+    yawScalingTree.setProperty ("outMin", 0.00f, nullptr);
     yawScalingTree.setProperty ("outMax", 1.0f, nullptr);
     yawScalingTree.setProperty ("reverse", false, nullptr);
     yawScalingTree.setProperty ("offset", 0, nullptr);
     yawScalingTree.setProperty ("test", 0, nullptr);
-
+    
     ValueTree pitchScalingTree = ValueTree ("PitchScaling");
     pitchScalingTree.setProperty (name, "Pitch Scaling", nullptr);
     pitchScalingTree.setProperty ("inMin", 0.0f, nullptr);
@@ -587,7 +485,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     pitchScalingTree.setProperty ("reverse", false, nullptr);
     pitchScalingTree.setProperty ("offset", 0, nullptr);
     pitchScalingTree.setProperty ("test", 0, nullptr);
-
+    
     ValueTree rollScalingTree = ValueTree ("RollScaling");
     rollScalingTree.setProperty (name, "Roll Scaling", nullptr);
     rollScalingTree.setProperty ("inMin", 0.0f, nullptr);
@@ -598,21 +496,14 @@ void MyoMapperApplication::initialiseSettingsTree()
     rollScalingTree.setProperty ("offset", 0, nullptr);
     rollScalingTree.setProperty ("test", 0, nullptr);
     
-    dataScalingTree.addChild (yawScalingTree, -1, nullptr);
-    dataScalingTree.addChild (pitchScalingTree, -1, nullptr);
-    dataScalingTree.addChild (rollScalingTree, -1, nullptr);
-    
-    settingsTree.addChild (selectedMyoTree, -1, nullptr);
-    settingsTree.addChild (sendPortTree, -1, nullptr);
-    settingsTree.addChild (hostAddressTree, -1, nullptr);
-    settingsTree.addChild (receivePortTree, -1, nullptr);
-    settingsTree.addChild (wekinatorPortTree, -1, nullptr);
-    settingsTree.addChild (dataScalingTree, -1, nullptr);
+    myoDataScalingTree.addChild (yawScalingTree, -1, nullptr);
+    myoDataScalingTree.addChild (pitchScalingTree, -1, nullptr);
+    myoDataScalingTree.addChild (rollScalingTree, -1, nullptr);
 }
 
-void MyoMapperApplication::initialiseDataTree()
+void MyoMapperApplication::initialiseOscStreamingTree()
 {
-    dataTree = ValueTree ("Data");
+    oscStreamingTree = ValueTree ("OscStreamingTree");
     
     //=============================================
     // Orientation Data
@@ -873,10 +764,10 @@ void MyoMapperApplication::initialiseDataTree()
     emgData.addChild (handPoseData, -1, nullptr);
 
     //=============================================
-    dataTree.addChild (orData, -1, nullptr);
-    dataTree.addChild (accData, -1, nullptr);
-    dataTree.addChild (gyroData, -1, nullptr);
-    dataTree.addChild (emgData, -1, nullptr);
+    oscStreamingTree.addChild (orData, -1, nullptr);
+    oscStreamingTree.addChild (accData, -1, nullptr);
+    oscStreamingTree.addChild (gyroData, -1, nullptr);
+    oscStreamingTree.addChild (emgData, -1, nullptr);
 }
 
 ValueTree MyoMapperApplication::getRootTree()
@@ -886,36 +777,27 @@ ValueTree MyoMapperApplication::getRootTree()
     return vt;
 }
 
-ValueTree MyoMapperApplication::getSettingsTree()
+ValueTree MyoMapperApplication::getOscSettingsTree()
 {
-    ValueTree const vt = settingsTree;
+    ValueTree const vt = oscSettingsTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MyoMapperApplication::getDataTree()
+ValueTree MyoMapperApplication::getMyoDataScalingTree()
 {
-    ValueTree const vt = dataTree;
+    ValueTree const vt = myoDataScalingTree;
     jassert (vt.isValid());
     return vt;
 }
-/*
-void MyoMapperApplication::writeRootTreeToXml()
+
+ValueTree MyoMapperApplication::getOscStreamingTree()
 {
-    XmlElement* xml = getRootTree().createXml();
-    
-    auto sep = File::getSeparatorChar();
-    auto path = File::getSpecialLocation (File::userApplicationDataDirectory).getFullPathName();
-    #if JUCE_MAC
-        path = path + sep + "Application Support" + sep + "Myo Mapper" + sep + "userSettings.mapper";
-    #elif JUCE_WINDOWS
-        path = path + sep + "Roaming" + sep + "Myo Mapper" + sep + "userSettings.mapper";
-    #endif
-    
-    xml->writeToFile (File (path), String::empty);
-    xml = nullptr;
+    ValueTree const vt = oscStreamingTree;
+    jassert (vt.isValid());
+    return vt;
 }
-*/
+
 //==============================================================================
 void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {

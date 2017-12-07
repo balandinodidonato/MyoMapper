@@ -1,13 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.0.2"
+<JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.1.4"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
               jucerVersion="5.2.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
-              companyCopyright="Balandino Di Donato">
+              companyCopyright="Balandino Di Donato - 2017">
   <MAINGROUP id="G7OLDm" name="MyoMapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
+      <GROUP id="{4206F9A6-3428-D059-A986-AD282226E07A}" name="UI">
+        <GROUP id="{62723434-D157-0D48-DA10-86841AF60548}" name="Windows">
+          <FILE id="Gin3Bv" name="AboutWindowContent.cpp" compile="1" resource="0"
+                file="Source/UI/Windows/AboutWindowContent.cpp"/>
+          <FILE id="fHs9qQ" name="AboutWindowContent.h" compile="0" resource="0"
+                file="Source/UI/Windows/AboutWindowContent.h"/>
+          <FILE id="FMJXPV" name="DataSelectorWindow.cpp" compile="1" resource="0"
+                file="Source/UI/Windows/DataSelectorWindow.cpp"/>
+          <FILE id="v0VucY" name="DataSelectorWindow.h" compile="0" resource="0"
+                file="Source/UI/Windows/DataSelectorWindow.h"/>
+          <FILE id="OTalTa" name="HelpWindow.cpp" compile="1" resource="0" file="Source/UI/Windows/HelpWindow.cpp"/>
+          <FILE id="uMf81s" name="HelpWindow.h" compile="0" resource="0" file="Source/UI/Windows/HelpWindow.h"/>
+          <FILE id="F9F7hY" name="Rescale.cpp" compile="1" resource="0" file="Source/UI/Windows/Rescale.cpp"/>
+          <FILE id="wuumKp" name="Rescale.h" compile="0" resource="0" file="Source/UI/Windows/Rescale.h"/>
+          <FILE id="GK6gqz" name="SettingsWindow.cpp" compile="1" resource="0"
+                file="Source/UI/Windows/SettingsWindow.cpp"/>
+          <FILE id="UuVSAc" name="SettingsWindow.h" compile="0" resource="0"
+                file="Source/UI/Windows/SettingsWindow.h"/>
+          <FILE id="saksgW" name="VisualsWindow.cpp" compile="1" resource="0"
+                file="Source/UI/Windows/VisualsWindow.cpp"/>
+          <FILE id="Clhz4L" name="VisualsWindow.h" compile="0" resource="0" file="Source/UI/Windows/VisualsWindow.h"/>
+          <FILE id="C4kpP1" name="WindowDrawer.cpp" compile="1" resource="0"
+                file="Source/UI/Windows/WindowDrawer.cpp"/>
+          <FILE id="GVrJ1U" name="WindowDrawer.h" compile="0" resource="0" file="Source/UI/Windows/WindowDrawer.h"/>
+          <FILE id="HdF040" name="WindowList.cpp" compile="1" resource="0" file="Source/UI/Windows/WindowList.cpp"/>
+          <FILE id="nzzqQS" name="WindowList.h" compile="0" resource="0" file="Source/UI/Windows/WindowList.h"/>
+        </GROUP>
+        <FILE id="GsjBRz" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/UI/MyoMapperLookAndFeel.cpp"/>
+        <FILE id="DaTTaQ" name="MyoMapperLookAndFeel.h" compile="0" resource="0"
+              file="Source/UI/MyoMapperLookAndFeel.h"/>
+        <FILE id="qa6g6M" name="Orientation.cpp" compile="1" resource="0" file="Source/UI/Orientation.cpp"/>
+        <FILE id="kZ2NtY" name="Orientation.h" compile="0" resource="0" file="Source/UI/Orientation.h"/>
+        <FILE id="n1cskf" name="OscValueTreeItem.cpp" compile="1" resource="0"
+              file="Source/UI/OscValueTreeItem.cpp"/>
+        <FILE id="oYg1eW" name="OscValueTreeItem.h" compile="0" resource="0"
+              file="Source/UI/OscValueTreeItem.h"/>
+        <FILE id="lKYR3y" name="Pose.cpp" compile="1" resource="0" file="Source/UI/Pose.cpp"/>
+        <FILE id="iAfI0r" name="Pose.h" compile="0" resource="0" file="Source/UI/Pose.h"/>
+      </GROUP>
+      <GROUP id="{AA264452-AA56-31E4-708F-44E441308004}" name="Utility"/>
+      <GROUP id="{C34B4154-4C93-7F95-F6BD-923527A4B67A}" name="BinaryResources">
+        <FILE id="Wbzixw" name="icon.png" compile="0" resource="1" file="Source/BinaryResources/icon.png"/>
+        <FILE id="Kg2jgn" name="Roboto-Medium.ttf" compile="0" resource="1"
+              file="Source/BinaryResources/Roboto-Medium.ttf"/>
+        <FILE id="D65gkE" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/BinaryResources/Roboto-Thin.ttf"/>
+      </GROUP>
       <GROUP id="{A6AA3F79-9818-2AB2-1894-3DB32937990E}" name="Features">
         <FILE id="eT99tu" name="FirstOrderDifference.cpp" compile="1" resource="0"
               file="Source/Features/FirstOrderDifference.cpp"/>
@@ -40,54 +87,6 @@
         <FILE id="JvWMSU" name="MyoManager.cpp" compile="1" resource="0" file="Source/Myo/MyoManager.cpp"/>
         <FILE id="CMrxZQ" name="MyoManager.h" compile="0" resource="0" file="Source/Myo/MyoManager.h"/>
       </GROUP>
-      <GROUP id="{7C3B9318-3E90-03BA-33D0-97184AC1E4D2}" name="Resources">
-        <FILE id="WFoxze" name="icon.png" compile="0" resource="1" file="Resources/icon.png"/>
-        <FILE id="XWiJgH" name="Roboto-Medium.ttf" compile="0" resource="1"
-              file="Source/Utility/Roboto-Medium.ttf"/>
-        <FILE id="Ewz5p0" name="Roboto-Thin.ttf" compile="0" resource="1" file="Source/Utility/Roboto-Thin.ttf"/>
-      </GROUP>
-      <GROUP id="{4AF52558-3327-10F9-BED0-547457225CB8}" name="UI">
-        <FILE id="p4ljyI" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"
-              file="Source/Utility/MyoMapperLookAndFeel.cpp"/>
-        <FILE id="J84YTa" name="MyoMapperLookAndFeel.h" compile="0" resource="0"
-              file="Source/Utility/MyoMapperLookAndFeel.h"/>
-        <FILE id="uLRebw" name="OscValueTreeItem.cpp" compile="1" resource="0"
-              file="Source/Utility/OscValueTreeItem.cpp"/>
-        <FILE id="rA4clq" name="OscValueTreeItem.h" compile="0" resource="0"
-              file="Source/Utility/OscValueTreeItem.h"/>
-      </GROUP>
-      <GROUP id="{DF12D34D-125F-A60D-F3AF-1A81D5AE5F01}" name="Windows">
-        <GROUP id="{E0179DF0-0E30-5370-B33E-35764F717E47}" name="Panels">
-          <FILE id="bkctpE" name="Orientation.cpp" compile="1" resource="0" file="Source/Orientation.cpp"/>
-          <FILE id="cEBa54" name="Orientation.h" compile="0" resource="0" file="Source/Orientation.h"/>
-          <FILE id="BDIoaP" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
-          <FILE id="ptKlKy" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
-        </GROUP>
-        <FILE id="NxmLWF" name="WindowList.cpp" compile="1" resource="0" file="Source/Windows/WindowList.cpp"/>
-        <FILE id="ekIkit" name="WindowList.h" compile="0" resource="0" file="Source/Windows/WindowList.h"/>
-        <FILE id="wWLOUy" name="WindowDrawer.cpp" compile="1" resource="0"
-              file="Source/Windows/WindowDrawer.cpp"/>
-        <FILE id="WxTN0a" name="WindowDrawer.h" compile="0" resource="0" file="Source/Windows/WindowDrawer.h"/>
-        <FILE id="Ysd86j" name="SettingsWindow.cpp" compile="1" resource="0"
-              file="Source/Windows/SettingsWindow.cpp"/>
-        <FILE id="JcIkoU" name="SettingsWindow.h" compile="0" resource="0"
-              file="Source/Windows/SettingsWindow.h"/>
-        <FILE id="wxMnHw" name="VisualsWindow.cpp" compile="1" resource="0"
-              file="Source/Windows/VisualsWindow.cpp"/>
-        <FILE id="PjttkR" name="VisualsWindow.h" compile="0" resource="0" file="Source/Windows/VisualsWindow.h"/>
-        <FILE id="nTA1tB" name="DataSelectorWindow.cpp" compile="1" resource="0"
-              file="Source/Windows/DataSelectorWindow.cpp"/>
-        <FILE id="q5YPm0" name="DataSelectorWindow.h" compile="0" resource="0"
-              file="Source/Windows/DataSelectorWindow.h"/>
-        <FILE id="f7bNA7" name="AboutWindowContent.cpp" compile="1" resource="0"
-              file="Source/Windows/AboutWindowContent.cpp"/>
-        <FILE id="rIDZto" name="AboutWindowContent.h" compile="0" resource="0"
-              file="Source/Windows/AboutWindowContent.h"/>
-        <FILE id="cI15VJ" name="HelpWindow.cpp" compile="1" resource="0" file="Source/Windows/HelpWindow.cpp"/>
-        <FILE id="u1cEmi" name="HelpWindow.h" compile="0" resource="0" file="Source/Windows/HelpWindow.h"/>
-        <FILE id="M3VTBZ" name="Rescale.cpp" compile="1" resource="0" file="Source/Windows/Rescale.cpp"/>
-        <FILE id="IpXqVv" name="Rescale.h" compile="0" resource="0" file="Source/Windows/Rescale.h"/>
-      </GROUP>
       <GROUP id="{829C9A74-60EE-96C9-F6C6-2A3C09385A26}" name="DataStreaming">
         <FILE id="Nk63Ef" name="OSC.cpp" compile="1" resource="0" file="Source/DataStreaming/OSC.cpp"/>
         <FILE id="B9JyHa" name="OSC.h" compile="0" resource="0" file="Source/DataStreaming/OSC.h"/>
@@ -100,8 +99,8 @@
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="" extraLinkerFlags=""
-               extraCompilerFlags="" extraFrameworks="myo" smallIcon="WFoxze"
-               bigIcon="WFoxze" postbuildCommand="dst=${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Frameworks&#10;mkdir -p &quot;${dst}&quot;"
+               extraCompilerFlags="" extraFrameworks="myo" smallIcon="Wbzixw"
+               bigIcon="Wbzixw" postbuildCommand="dst=${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Frameworks&#10;mkdir -p &quot;${dst}&quot;"
                vst3Folder="" rtasFolder="" aaxFolder="" documentExtensions=".mapper">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"

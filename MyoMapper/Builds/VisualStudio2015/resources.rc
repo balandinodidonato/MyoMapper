@@ -7,18 +7,18 @@
 #include <windows.h>
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION  3,0,2,0
+FILEVERSION  3,1,4,0
 BEGIN
   BLOCK "StringFileInfo"
   BEGIN
     BLOCK "040904E4"
     BEGIN
       VALUE "CompanyName",  "Balandino Di Donato\0"
-      VALUE "LegalCopyright",  "Balandino Di Donato\0"
+      VALUE "LegalCopyright",  "Balandino Di Donato - 2017\0"
       VALUE "FileDescription",  "MyoMapper\0"
-      VALUE "FileVersion",  "3.0.2\0"
+      VALUE "FileVersion",  "3.1.4\0"
       VALUE "ProductName",  "MyoMapper\0"
-      VALUE "ProductVersion",  "3.0.2\0"
+      VALUE "ProductVersion",  "3.1.4\0"
     END
   END
 
@@ -29,6 +29,3 @@ BEGIN
 END
 
 #endif
-
-IDI_ICON1 ICON DISCARDABLE "icon.ico"
-IDI_ICON2 ICON DISCARDABLE "icon.ico"

@@ -1,7 +1,7 @@
 #include "Rescale.h"
 #include <algorithm>
 
-#include "../Application.h"
+#include "../../Application.h"
 
 Rescale::Rescale()
 :   input (0)
@@ -11,7 +11,6 @@ Rescale::Rescale()
     titleLabel.setText (labelWidget, dontSendNotification);
     addAndMakeVisible (titleLabel);
     
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("DataScaling");
     addAndMakeVisible (calibrate);
     calibrate.setButtonText ("Calibrate");
     calibrate.addListener (this);
@@ -26,48 +25,43 @@ Rescale::Rescale()
     
     addAndMakeVisible (reverse);
     reverse.addListener (this);
-    reverse.setToggleState (false, dontSendNotification);
     reverse.setColour (ToggleButton::tickColourId, Colours::black);
     reverse.setColour (ToggleButton::tickDisabledColourId, Colours::black);
     reverse.setColour (ToggleButton::textColourId, Colours::black);
     reverse.setButtonText ("Reverse");
 
     outMinSliderLabel.setText ("Out Min", dontSendNotification);
+    outMinSlider.setRange (-1.0, 2.0, 0.001);
     addAndMakeVisible (outMinSliderLabel);
     outMinSlider.addListener (this);
     
     outMaxSliderLabel.setText ("Out Max", dontSendNotification);
+    outMaxSlider.setRange (-1.0, 2.0, 0.001);
     addAndMakeVisible (outMaxSliderLabel);
     outMaxSlider.addListener (this);
 
     inMinSliderLabel.setText ("In Min", dontSendNotification);
+    inMinSlider.setRange (0, 1, 0.001);
     addAndMakeVisible (inMinSliderLabel);
     inMinSlider.addListener (this);
     
     inMaxSliderLabel.setText ("In Max", dontSendNotification);
+    inMaxSlider.setRange (0, 1, 0.001);
     addAndMakeVisible (inMaxSliderLabel);
     inMaxSlider.addListener (this);
     
-    outMinSlider.setRange (-1.0, 2.0, 0.001);
-    outMinSlider.setValue (0);
     outMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     outMinSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (outMinSlider);
     
-    outMaxSlider.setRange (-1.0, 2.0, 0.001);
-    outMaxSlider.setValue (1);
     outMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     outMaxSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (outMaxSlider);
     
-    inMinSlider.setRange (0, 1, 0.001);
-    inMinSlider.setValue (0);
     inMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     inMinSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (inMinSlider);
   
-    inMaxSlider.setRange (0, 1, 0.001);
-    inMaxSlider.setValue (1);
     inMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     inMaxSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (inMaxSlider);
@@ -78,8 +72,17 @@ Rescale::~Rescale()
     mmSlider.setLookAndFeel (nullptr);
 }
 
+void Rescale::initialiseValues(){
+    setReverse();
+    setInMin();
+    setInMax();
+    setOutMin();
+    setOutMax();
+}
+
 void Rescale::paint(juce::Graphics &g)
 {
+    initialiseValues();
     auto area = getLocalBounds();
     auto cornerAndRoundness = area.getHeight() * 0.05;
     g.setColour (Colour::fromRGB (245, 245, 245));
@@ -134,25 +137,23 @@ void Rescale::resized()
 
 void Rescale::buttonClicked (juce::Button *button)
 {
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("DataScaling");
+    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree();
     tree.addListener (this);
     if (button == &calibrate)
     {
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling")
-        .getChildWithName(labelWidget+"Scaling").setProperty ("offset", scaled, 0);
+        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("offset", scaled, 0);
         
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling")
-        .getChildWithName(labelWidget+"Scaling").setProperty ("test", 1, 0);
+        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("test", 1, 0);
     }
     if (button == &reverse)
     {
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("DataScaling").getChildWithName(labelWidget+"Scaling").setProperty ("reverse", reverse.getToggleState(), 0);
+        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("reverse", reverse.getToggleState(), 0);
     }
 }
 
 void Rescale::sliderValueChanged (juce::Slider *slider)
 {
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("DataScaling");
+    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree();
     tree.addListener (this);
     
     if (slider == &mmSlider)
@@ -209,7 +210,7 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
 
 void Rescale::setReverse() // Value is the one from tree
 {
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     bool val = tree.getProperty("reverse");
     
     reverse.setToggleState (val, dontSendNotification);
@@ -241,7 +242,7 @@ void Rescale::setValue (float Value, float MyoOrData) // the vaalue in input are
 
 void Rescale::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("DataScaling");
+    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree();
     if (treeWhosePropertyHasChanged.hasType (labelWidget+"Scaling") == true)
     {
     //    mmSlider.setMinValue (treeWhosePropertyHasChanged.getProperty ("outMin"));
@@ -255,21 +256,21 @@ void Rescale::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, 
 
 void Rescale::setInMin()
 {
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     inMin = tree.getProperty("inMin");
     inMinSlider.setValue(inMin);
 }
 
 void Rescale::setInMax()
 {
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     inMax = tree.getProperty("inMax");
     inMaxSlider.setValue (inMax);
 }
 
 void Rescale::setOutMin()
 {
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     outMin = tree.getProperty("outMin");
     mmSlider.setMinValue (outMin);
     outMinSlider.setValue(outMin);
@@ -277,7 +278,7 @@ void Rescale::setOutMin()
 
 void Rescale::setOutMax()
 {
-    auto tree = MyoMapperApplication::getApp().getSettingsTree().getChildWithName("DataScaling").getChildWithName(labelWidget+"Scaling");
+    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     outMax = tree.getProperty("outMax");
     mmSlider.setMaxValue(outMax);
     outMaxSlider.setValue (outMax);

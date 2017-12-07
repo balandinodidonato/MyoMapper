@@ -76,10 +76,10 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     pitch = asin(max(-1.0f, min(1.0f, 2.0f * (quat.w() * quat.y() - quat.z() * quat.x()))));
     yaw = atan2 (2.0f * (quat.w() * quat.z() + quat.x() * quat.y()), 1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
     
-    auto tree = MyoMapperApplication::getApp().getSettingsTree();
-    auto yawTree = tree.getChildWithName("DataScaling").getChildWithName ("YawScaling");
-    auto pitchTree = tree.getChildWithName("DataScaling").getChildWithName ("PitchScaling");
-    auto rollTree = tree.getChildWithName("DataScaling").getChildWithName ("RollScaling");
+    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree();
+    auto yawTree = tree.getChildWithName ("YawScaling");
+    auto pitchTree = tree.getChildWithName ("PitchScaling");
+    auto rollTree = tree.getChildWithName ("RollScaling");
         
     yawScaler.setValue (yaw,
                         yawTree.getProperty ("inMin"),
@@ -217,7 +217,7 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
     
     for (size_t i = 0; i < 8; ++i)
     {
-        auto tree = MyoMapperApplication::getApp().getDataTree();
+        auto tree = MyoMapperApplication::getApp().getOscStreamingTree();
         
         myoData[myoID].emgRaw[i] = emg[i];
         emgRawMavg[i].setValue (myoData[myoID].emgRaw[i],

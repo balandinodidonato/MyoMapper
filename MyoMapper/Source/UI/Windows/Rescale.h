@@ -2,7 +2,7 @@
 #define RESCALE_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Utility/MyoMapperLookAndFeel.h"
+#include "../MyoMapperLookAndFeel.h"
 
 class Rescale    : public Component,
                    public Button::Listener,
@@ -63,6 +63,7 @@ private:
     void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex) override;
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) override;
     
+    void initialiseValues();
     
     float inMax;
     float inMin;

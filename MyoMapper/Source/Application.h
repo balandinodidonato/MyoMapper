@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Utility/MyoMapperLookAndFeel.h"
-#include "Windows/WindowList.h"
+#include "UI/MyoMapperLookAndFeel.h"
+#include "UI/Windows/WindowList.h"
 #include "Utility/CommandIDs.h"
 #include "Myo/MyoManager.h"
 #include "DataStreaming/OSC.h"
@@ -83,16 +83,19 @@ public:
     
     //==========================================================================
     ValueTree rootTree;
-    ValueTree settingsTree;
-    ValueTree dataTree;
+    ValueTree oscSettingsTree;
+    ValueTree myoDataScalingTree;
+    ValueTree oscStreamingTree;
     
     void initialiseRootTree();
-    void initialiseSettingsTree();
-    void initialiseDataTree();
+    void initialiseOscSettingsTree();
+    void initialiseMyoDataScalingTree();
+    void initialiseOscStreamingTree();
     
     ValueTree getRootTree();
-    ValueTree getSettingsTree();
-    ValueTree getDataTree();
+    ValueTree getOscSettingsTree();
+    ValueTree getMyoDataScalingTree();
+    ValueTree getOscStreamingTree();
     
     void writeRootTreeToXml();
     
