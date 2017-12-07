@@ -147,7 +147,6 @@ void Rescale::buttonClicked (juce::Button *button)
     }
     if (button == &reverse)
     {
-        DBG("buttonClicked");
         MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("reverse", reverse.getToggleState(), 0);
     }
 }
