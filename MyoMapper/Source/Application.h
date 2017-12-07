@@ -87,8 +87,8 @@ public:
     ValueTree dataTree;
     
     void initialiseRootTree();
-    void initialiseSettingsTree();
-    void initialiseDataTree();
+    void initialiseOscSettingsTree();
+    void initialiseOscStreamingTree();
     
     ValueTree getRootTree();
     ValueTree getSettingsTree();

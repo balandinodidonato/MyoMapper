@@ -529,18 +529,18 @@ void MyoMapperApplication::initialiseRootTree()
     rootTree = ValueTree ("MyoMapper");
     if (!settingsTree.hasType ("Settings"))
     {
-        initialiseSettingsTree();
+        initialiseOscSettingsTree();
     }
     if (!dataTree.hasType ("Data"))
     {
-        initialiseDataTree();
+        initialiseOscStreamingTree();
     }
     rootTree.addChild (settingsTree, -1, nullptr);
     rootTree.addChild (dataTree, -1, nullptr);
     rootTree.addListener (this);
 }
 
-void MyoMapperApplication::initialiseSettingsTree()
+void MyoMapperApplication::initialiseOscSettingsTree()
 {
     settingsTree = ValueTree ("Settings");
     
@@ -610,7 +610,7 @@ void MyoMapperApplication::initialiseSettingsTree()
     settingsTree.addChild (dataScalingTree, -1, nullptr);
 }
 
-void MyoMapperApplication::initialiseDataTree()
+void MyoMapperApplication::initialiseOscStreamingTree()
 {
     dataTree = ValueTree ("Data");
     
