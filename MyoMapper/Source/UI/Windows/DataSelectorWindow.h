@@ -2,8 +2,8 @@
 
 
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "../Utility/OscValueTreeItem.h"
-#include "../Utility/MyoMapperLookAndFeel.h"
+#include "../OscValueTreeItem.h"
+#include "../MyoMapperLookAndFeel.h"
 
 class DataSelectorWindow    : public Component,
                               public ChangeBroadcaster

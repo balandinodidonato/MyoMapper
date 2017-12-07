@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "../orientation.h"
+#include "../Orientation.h"
 #include "../Pose.h"
 
 class VisualsWindow    : public Component

@@ -2,7 +2,7 @@
 #define RESCALE_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Utility/MyoMapperLookAndFeel.h"
+#include "../MyoMapperLookAndFeel.h"
 
 class Rescale    : public Component,
                    public Button::Listener,

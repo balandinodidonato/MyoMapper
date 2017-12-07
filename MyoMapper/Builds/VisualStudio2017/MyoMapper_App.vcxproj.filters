@@ -2,23 +2,20 @@
 
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="MyoMapper\Source\UI\Windows">
+      <UniqueIdentifier>{48488C4F-3BEF-F77D-70A4-D76C3FCA573D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyoMapper\Source\UI">
+      <UniqueIdentifier>{C97D57FB-D277-5F6E-1FB7-85590B40E9CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyoMapper\Source\BinaryResources">
+      <UniqueIdentifier>{5CA02847-32D5-8195-71B6-FE0D6EE1B6AF}</UniqueIdentifier>
+    </Filter>
     <Filter Include="MyoMapper\Source\Features">
       <UniqueIdentifier>{CCF6BF1B-9568-7E4B-577B-4DA26CC4299C}</UniqueIdentifier>
     </Filter>
     <Filter Include="MyoMapper\Source\Myo">
       <UniqueIdentifier>{6C7507BF-65EC-4DB5-8AA4-A4DFEBE731CE}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MyoMapper\Source\Resources">
-      <UniqueIdentifier>{C069B11E-253C-0F7D-432C-FF07A879B9B8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MyoMapper\Source\UI">
-      <UniqueIdentifier>{C97D57FB-D277-5F6E-1FB7-85590B40E9CA}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MyoMapper\Source\Windows\Panels">
-      <UniqueIdentifier>{42E589D8-9AD5-B1E2-E486-8F90C55C7F91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MyoMapper\Source\Windows">
-      <UniqueIdentifier>{62B374EB-303D-473D-9212-3DCBBF957AA1}</UniqueIdentifier>
     </Filter>
     <Filter Include="MyoMapper\Source\DataStreaming">
       <UniqueIdentifier>{B6819706-B5B3-2985-CFB3-D43CABC84E28}</UniqueIdentifier>
@@ -253,6 +250,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\UI\Windows\AboutWindowContent.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\DataSelectorWindow.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\HelpWindow.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\Rescale.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\SettingsWindow.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\VisualsWindow.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\WindowDrawer.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\WindowList.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\MyoMapperLookAndFeel.cpp">
+      <Filter>MyoMapper\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Orientation.cpp">
+      <Filter>MyoMapper\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\OscValueTreeItem.cpp">
+      <Filter>MyoMapper\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Pose.cpp">
+      <Filter>MyoMapper\Source\UI</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp">
       <Filter>MyoMapper\Source\Features</Filter>
     </ClCompile>
@@ -282,42 +315,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Myo\MyoManager.cpp">
       <Filter>MyoMapper\Source\Myo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Orientation.cpp">
-      <Filter>MyoMapper\Source\Windows\Panels</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Pose.cpp">
-      <Filter>MyoMapper\Source\Windows\Panels</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\WindowList.cpp">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\SettingsWindow.cpp">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\VisualsWindow.cpp">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\DataSelectorWindow.cpp">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\AboutWindowContent.cpp">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\HelpWindow.cpp">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Windows\Rescale.cpp">
-      <Filter>MyoMapper\Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DataStreaming\OSC.cpp">
       <Filter>MyoMapper\Source\DataStreaming</Filter>
@@ -1620,6 +1617,42 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\UI\Windows\AboutWindowContent.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\DataSelectorWindow.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\HelpWindow.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\Rescale.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\SettingsWindow.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\VisualsWindow.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\WindowDrawer.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\WindowList.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\MyoMapperLookAndFeel.h">
+      <Filter>MyoMapper\Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Orientation.h">
+      <Filter>MyoMapper\Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\OscValueTreeItem.h">
+      <Filter>MyoMapper\Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Pose.h">
+      <Filter>MyoMapper\Source\UI</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Features\FirstOrderDifference.h">
       <Filter>MyoMapper\Source\Features</Filter>
     </ClInclude>
@@ -1652,42 +1685,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Myo\MyoManager.h">
       <Filter>MyoMapper\Source\Myo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Orientation.h">
-      <Filter>MyoMapper\Source\Windows\Panels</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Pose.h">
-      <Filter>MyoMapper\Source\Windows\Panels</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\WindowList.h">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\WindowDrawer.h">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\SettingsWindow.h">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\VisualsWindow.h">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\DataSelectorWindow.h">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\AboutWindowContent.h">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\HelpWindow.h">
-      <Filter>MyoMapper\Source\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Windows\Rescale.h">
-      <Filter>MyoMapper\Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\DataStreaming\OSC.h">
       <Filter>MyoMapper\Source\DataStreaming</Filter>
@@ -2972,14 +2969,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Resources\icon.png">
-      <Filter>MyoMapper\Source\Resources</Filter>
+    <None Include="..\..\Source\BinaryResources\icon.png">
+      <Filter>MyoMapper\Source\BinaryResources</Filter>
     </None>
-    <None Include="..\..\Source\Utility\Roboto-Medium.ttf">
-      <Filter>MyoMapper\Source\Resources</Filter>
+    <None Include="..\..\Source\BinaryResources\Roboto-Medium.ttf">
+      <Filter>MyoMapper\Source\BinaryResources</Filter>
     </None>
-    <None Include="..\..\Source\Utility\Roboto-Thin.ttf">
-      <Filter>MyoMapper\Source\Resources</Filter>
+    <None Include="..\..\Source\BinaryResources\Roboto-Thin.ttf">
+      <Filter>MyoMapper\Source\BinaryResources</Filter>
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt">
       <Filter>Juce Modules\juce_graphics\image_formats\jpglib</Filter>

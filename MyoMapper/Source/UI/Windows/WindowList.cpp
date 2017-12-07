@@ -1,6 +1,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "WindowList.h"
-#include "../Application.h"
+#include "../../Application.h"
 
 WindowList::WindowList()
 {

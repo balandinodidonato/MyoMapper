@@ -1,7 +1,7 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "DataSelectorWindow.h"
 
-#include "../Application.h"
+#include "../../Application.h"
 
 class DataSelectorWindow::OrientationPage  : public Component
 {

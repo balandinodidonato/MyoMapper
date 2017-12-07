@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Utility/MyoMapperLookAndFeel.h"
-#include "Windows/WindowList.h"
+#include "UI/MyoMapperLookAndFeel.h"
+#include "UI/Windows/WindowList.h"
 #include "Utility/CommandIDs.h"
 #include "Myo/MyoManager.h"
 #include "DataStreaming/OSC.h"

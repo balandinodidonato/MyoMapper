@@ -1,6 +1,6 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "OscValueTreeItem.h"
-#include "../Utility/MyoMapperLookAndFeel.h"
+#include "MyoMapperLookAndFeel.h"
 
 class OscValueTreeItem::TreeItemComponent    : public Component,
                                                public Button::Listener,

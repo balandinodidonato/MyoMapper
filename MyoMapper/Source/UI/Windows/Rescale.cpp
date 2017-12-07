@@ -1,7 +1,7 @@
 #include "Rescale.h"
 #include <algorithm>
 
-#include "../Application.h"
+#include "../../Application.h"
 
 Rescale::Rescale()
 :   input (0)

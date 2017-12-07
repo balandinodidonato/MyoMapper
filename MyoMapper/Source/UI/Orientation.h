@@ -3,9 +3,9 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Windows/Rescale.h"
-#include "Features/FirstOrderDifference.h"
-#include "Features/SecondOrderDifference.h"
-#include "Utility/MyoMapperLookAndFeel.h"
+#include "../Features/FirstOrderDifference.h"
+#include "../Features/SecondOrderDifference.h"
+#include "MyoMapperLookAndFeel.h"
 
 class Orientation   : public Component
 

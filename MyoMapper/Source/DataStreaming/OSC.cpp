@@ -1,7 +1,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../DataStreaming/OSC.h"
 #include "../Application.h"
-#include "../Windows/Rescale.h"
+#include "../UI/Windows/Rescale.h"
 
 OSC::OSC()
 :   myoDataIn {"Yaw", "Pitch", "Roll", "Mav"},

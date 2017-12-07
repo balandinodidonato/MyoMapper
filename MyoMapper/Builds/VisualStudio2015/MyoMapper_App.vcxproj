@@ -153,6 +153,18 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\UI\Windows\AboutWindowContent.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Windows\DataSelectorWindow.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Windows\HelpWindow.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Windows\Rescale.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Windows\SettingsWindow.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Windows\VisualsWindow.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Windows\WindowDrawer.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Windows\WindowList.cpp"/>
+    <ClCompile Include="..\..\Source\UI\MyoMapperLookAndFeel.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Orientation.cpp"/>
+    <ClCompile Include="..\..\Source\UI\OscValueTreeItem.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Pose.cpp"/>
     <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp"/>
     <ClCompile Include="..\..\Source\Features\Mav.cpp"/>
     <ClCompile Include="..\..\Source\Features\MinMax.cpp"/>
@@ -163,18 +175,6 @@
     <ClCompile Include="..\..\Source\Features\ZeroCrossingRate.cpp"/>
     <ClCompile Include="..\..\Source\Myo\MyoListener.cpp"/>
     <ClCompile Include="..\..\Source\Myo\MyoManager.cpp"/>
-    <ClCompile Include="..\..\Source\Utility\MyoMapperLookAndFeel.cpp"/>
-    <ClCompile Include="..\..\Source\Utility\OscValueTreeItem.cpp"/>
-    <ClCompile Include="..\..\Source\Orientation.cpp"/>
-    <ClCompile Include="..\..\Source\Pose.cpp"/>
-    <ClCompile Include="..\..\Source\Windows\WindowList.cpp"/>
-    <ClCompile Include="..\..\Source\Windows\WindowDrawer.cpp"/>
-    <ClCompile Include="..\..\Source\Windows\SettingsWindow.cpp"/>
-    <ClCompile Include="..\..\Source\Windows\VisualsWindow.cpp"/>
-    <ClCompile Include="..\..\Source\Windows\DataSelectorWindow.cpp"/>
-    <ClCompile Include="..\..\Source\Windows\AboutWindowContent.cpp"/>
-    <ClCompile Include="..\..\Source\Windows\HelpWindow.cpp"/>
-    <ClCompile Include="..\..\Source\Windows\Rescale.cpp"/>
     <ClCompile Include="..\..\Source\DataStreaming\OSC.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\Application.cpp"/>
@@ -1371,6 +1371,18 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\UI\Windows\AboutWindowContent.h"/>
+    <ClInclude Include="..\..\Source\UI\Windows\DataSelectorWindow.h"/>
+    <ClInclude Include="..\..\Source\UI\Windows\HelpWindow.h"/>
+    <ClInclude Include="..\..\Source\UI\Windows\Rescale.h"/>
+    <ClInclude Include="..\..\Source\UI\Windows\SettingsWindow.h"/>
+    <ClInclude Include="..\..\Source\UI\Windows\VisualsWindow.h"/>
+    <ClInclude Include="..\..\Source\UI\Windows\WindowDrawer.h"/>
+    <ClInclude Include="..\..\Source\UI\Windows\WindowList.h"/>
+    <ClInclude Include="..\..\Source\UI\MyoMapperLookAndFeel.h"/>
+    <ClInclude Include="..\..\Source\UI\Orientation.h"/>
+    <ClInclude Include="..\..\Source\UI\OscValueTreeItem.h"/>
+    <ClInclude Include="..\..\Source\UI\Pose.h"/>
     <ClInclude Include="..\..\Source\Features\FirstOrderDifference.h"/>
     <ClInclude Include="..\..\Source\Features\Mav.h"/>
     <ClInclude Include="..\..\Source\Features\MinMax.h"/>
@@ -1382,18 +1394,6 @@
     <ClInclude Include="..\..\Source\Myo\MyoData.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoListener.h"/>
     <ClInclude Include="..\..\Source\Myo\MyoManager.h"/>
-    <ClInclude Include="..\..\Source\Utility\MyoMapperLookAndFeel.h"/>
-    <ClInclude Include="..\..\Source\Utility\OscValueTreeItem.h"/>
-    <ClInclude Include="..\..\Source\Orientation.h"/>
-    <ClInclude Include="..\..\Source\Pose.h"/>
-    <ClInclude Include="..\..\Source\Windows\WindowList.h"/>
-    <ClInclude Include="..\..\Source\Windows\WindowDrawer.h"/>
-    <ClInclude Include="..\..\Source\Windows\SettingsWindow.h"/>
-    <ClInclude Include="..\..\Source\Windows\VisualsWindow.h"/>
-    <ClInclude Include="..\..\Source\Windows\DataSelectorWindow.h"/>
-    <ClInclude Include="..\..\Source\Windows\AboutWindowContent.h"/>
-    <ClInclude Include="..\..\Source\Windows\HelpWindow.h"/>
-    <ClInclude Include="..\..\Source\Windows\Rescale.h"/>
     <ClInclude Include="..\..\Source\DataStreaming\OSC.h"/>
     <ClInclude Include="..\..\Source\Utility\CommandIDs.h"/>
     <ClInclude Include="..\..\Source\Application.h"/>
@@ -1823,12 +1823,11 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Resources\icon.png"/>
-    <None Include="..\..\Source\Utility\Roboto-Medium.ttf"/>
-    <None Include="..\..\Source\Utility\Roboto-Thin.ttf"/>
+    <None Include="..\..\Source\BinaryResources\icon.png"/>
+    <None Include="..\..\Source\BinaryResources\Roboto-Medium.ttf"/>
+    <None Include="..\..\Source\BinaryResources\Roboto-Thin.ttf"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\image_formats\pnglib\libpng_readme.txt"/>
-    <None Include=".\icon.ico"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\resources.rc"/>
