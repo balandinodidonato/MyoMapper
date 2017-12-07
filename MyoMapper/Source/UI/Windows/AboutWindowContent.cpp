@@ -15,7 +15,7 @@ hyperLinkLicense ("License", URL ("https://github.com/balandinodidonato/MyoMappe
     addAndMakeVisible (image = new ImageComponent());
     image->setName ("image");
 
-    addAndMakeVisible (version = new Label ("version", TRANS ("Version 3.0")));
+    addAndMakeVisible (version = new Label ("version", TRANS ("Version 3.1.6")));
     version->setFont (Font (12.00f, Font::plain));
     version->setJustificationType (Justification::centred);
     version->setEditable (false, false, false);
