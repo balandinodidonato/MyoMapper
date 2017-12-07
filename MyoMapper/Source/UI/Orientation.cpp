@@ -49,7 +49,6 @@ Vector3D<float> Orientation::getValue()
     return orientationScaled;
 }
 
-
 //////////////////////////////////////////////////////////////////////////////
 
 void Orientation::setReverseYaw()

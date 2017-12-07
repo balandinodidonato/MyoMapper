@@ -210,36 +210,6 @@ void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
         jassertfalse;
 }
 
-/*
-void MyoMapperApplication::createFileMenu (PopupMenu& menu)
-{
-    #if ! JUCE_MAC
-        menu.addCommandItem (&getCommandManager(), CommandIDs::showPreferences);
-        menu.addSeparator();
-    #endif
-
-    menu.addCommandItem (&getCommandManager(), CommandIDs::newMapper);
-    menu.addSeparator();
-    menu.addCommandItem (&getCommandManager(), CommandIDs::openMapper);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapper);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapperAs);
-
-    #if ! JUCE_MAC
-        menu.addSeparator();
-        menu.addCommandItem (&getCommandManager(), CommandIDs::quitMapper);
-    #endif
-}
-
-
-void MyoMapperApplication::createViewMenu (PopupMenu& menu)
-{
-    menu.addCommandItem (&getCommandManager(), CommandIDs::zoomIncrease);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::zoomDecrease);
-    menu.addSeparator();
-    menu.addCommandItem (&getCommandManager(), CommandIDs::enableFullscreen);
-}
- */
-
 void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);

@@ -1,6 +1,5 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SettingsWindow.h"
-
 #include "../../Application.h"
 
 bool SettingsWindow::startButtonClicked;
@@ -67,19 +66,9 @@ hostAddress("127.0.0.1")
     myoSelectorSetter.addListener (this);
     addAndMakeVisible (myoSelectorSetter);
     
-    //saveButton.setButtonText ("SAVE");
-    //addAndMakeVisible (saveButton);
-    
-    //openButton.setButtonText ("OPEN");
-    //addAndMakeVisible (openButton);
-    
     featuresButton.setButtonText ("FEATURES");
     featuresButton.addListener (this);
     addAndMakeVisible (featuresButton);
-    
-    //hideOnStartupButton.setLookAndFeel (&toggleButtonLAF);
-    //hideOnStartupButton.setButtonText ("Hide On Startup");
-    //addAndMakeVisible (hideOnStartupButton);
     
     startButton.setButtonText ("START");
     startButton.addListener (this);
@@ -135,7 +124,6 @@ void SettingsWindow::resized()
     area.removeFromTop (windowSize.proportionOfHeight (0.07));
     auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.14))
     .reduced (windowSizeWidth.proportionOfWidth (0.0315), 0);
-    // Bottom border = 0.009
     
     // Set send region bounds
     oscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
