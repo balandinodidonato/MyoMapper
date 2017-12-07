@@ -1,9 +1,9 @@
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "DataSelectorWindow.h"
+#include "OscDataSelectorWindow.h"
 
 #include "../../Application.h"
 
-class DataSelectorWindow::OrientationPage  : public Component
+class OscDataSelectorWindow::OrientationPage  : public Component
 {
 public:
     OrientationPage()
@@ -32,7 +32,7 @@ private:
     ScopedPointer<TreeViewItem> rootItem;
 };
 
-class DataSelectorWindow::AccelerometerPage  : public Component
+class OscDataSelectorWindow::AccelerometerPage  : public Component
 {
 public:
     AccelerometerPage()
@@ -64,7 +64,7 @@ private:
 
 //==============================================================================
 
-class DataSelectorWindow::GyroscopePage  : public Component
+class OscDataSelectorWindow::GyroscopePage  : public Component
 {
 public:
     GyroscopePage()
@@ -96,7 +96,7 @@ private:
 
 //==============================================================================
 
-class DataSelectorWindow::EmgPage  : public Component
+class OscDataSelectorWindow::EmgPage  : public Component
 {
 public:
     EmgPage()
@@ -126,7 +126,7 @@ private:
     ScopedPointer<TreeViewItem> rootItem;
 };
 
-struct DataSelectorWindow::WindowTabBar     : public TabbedComponent
+struct OscDataSelectorWindow::WindowTabBar     : public TabbedComponent
 {
     WindowTabBar()
     :   TabbedComponent (TabbedButtonBar::TabsAtTop)
@@ -140,22 +140,22 @@ struct DataSelectorWindow::WindowTabBar     : public TabbedComponent
     }
 };
 
-DataSelectorWindow::DataSelectorWindow()
+OscDataSelectorWindow::OscDataSelectorWindow()
 {
     tabBar = new (WindowTabBar);
     addAndMakeVisible (tabBar);
 }
 
-DataSelectorWindow::~DataSelectorWindow()
+OscDataSelectorWindow::~OscDataSelectorWindow()
 {
 }
 
-void DataSelectorWindow::paint (Graphics& g)
+void OscDataSelectorWindow::paint (Graphics& g)
 {
     g.fillAll (Colour::fromRGB (245, 245, 245));
 }
 
-void DataSelectorWindow::resized()
+void OscDataSelectorWindow::resized()
 {
     auto area = getLocalBounds();
     tabBar->setBounds (area);

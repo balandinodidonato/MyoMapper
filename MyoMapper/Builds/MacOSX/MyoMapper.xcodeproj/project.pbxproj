@@ -34,7 +34,7 @@
 		6A9BE3ECAC10B96143BD3458 /* FirstOrderDifference.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 325B30514F5198958D9DA487 /* FirstOrderDifference.cpp */; };
 		6AB90C5CE10D08EBB5994026 /* OrScaling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFFD83C8D06526E5736CF69 /* OrScaling.cpp */; };
 		6C6D3380F13E917987586D9B /* Rescale.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8541AEC35FE73816586E3C7C /* Rescale.cpp */; };
-		768DA9505B851AB1AD8577E3 /* DataSelectorWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED0C5C51DBC3299D7ACFE /* DataSelectorWindow.cpp */; };
+		768DA9505B851AB1AD8577E3 /* OscDataSelectorWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED0C5C51DBC3299D7ACFE /* OscDataSelectorWindow.cpp */; };
 		808C19E032283899C075FEFF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF39C81C7C79A4A39C8C86A /* QuartzCore.framework */; };
 		8347916F2C9412026BEAB654 /* VisualsWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB4DF25FE05E5514C4140F /* VisualsWindow.cpp */; };
 		8C8F9A92519A4EA918581B03 /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = 362301F4D9F3494F257A83B1 /* RecentFilesMenuTemplate.nib */; };
@@ -93,7 +93,7 @@
 		34549BDEAEF79A8B5E01A4D5 /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		362301F4D9F3494F257A83B1 /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		374F0149F402FB7BA8DE3AAB /* include_juce_opengl.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_opengl.mm; path = ../../JuceLibraryCode/include_juce_opengl.mm; sourceTree = SOURCE_ROOT; };
-		3774C207AF1D810B658FFD32 /* DataSelectorWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DataSelectorWindow.h; path = ../../Source/UI/Windows/DataSelectorWindow.h; sourceTree = SOURCE_ROOT; };
+		3774C207AF1D810B658FFD32 /* OscDataSelectorWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscDataSelectorWindow.h; path = ../../Source/UI/Windows/OscDataSelectorWindow.h; sourceTree = SOURCE_ROOT; };
 		382FA0B1212BB77E747D28E1 /* ZeroCrossingRate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZeroCrossingRate.h; path = ../../Source/Features/ZeroCrossingRate.h; sourceTree = SOURCE_ROOT; };
 		3F7EFCC1DF1732FF95075D6F /* MyoListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MyoListener.cpp; path = ../../Source/Myo/MyoListener.cpp; sourceTree = SOURCE_ROOT; };
 		40A7AEE27559C18635A92AB9 /* Myo Mapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Myo Mapper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,7 +153,7 @@
 		EEF39C81C7C79A4A39C8C86A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F1079B78708D8A832525D725 /* Orientation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Orientation.cpp; path = ../../Source/UI/Orientation.cpp; sourceTree = SOURCE_ROOT; };
 		F89CEB00FDE42784CBA9F564 /* include_juce_gui_extra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_extra.mm; path = ../../JuceLibraryCode/include_juce_gui_extra.mm; sourceTree = SOURCE_ROOT; };
-		FA7ED0C5C51DBC3299D7ACFE /* DataSelectorWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DataSelectorWindow.cpp; path = ../../Source/UI/Windows/DataSelectorWindow.cpp; sourceTree = SOURCE_ROOT; };
+		FA7ED0C5C51DBC3299D7ACFE /* OscDataSelectorWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OscDataSelectorWindow.cpp; path = ../../Source/UI/Windows/OscDataSelectorWindow.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,8 +248,8 @@
 			children = (
 				BCE10FBCD216607F1CF77DB0 /* AboutWindowContent.cpp */,
 				7F990EABCBFA470B16EF39E6 /* AboutWindowContent.h */,
-				FA7ED0C5C51DBC3299D7ACFE /* DataSelectorWindow.cpp */,
-				3774C207AF1D810B658FFD32 /* DataSelectorWindow.h */,
+				FA7ED0C5C51DBC3299D7ACFE /* OscDataSelectorWindow.cpp */,
+				3774C207AF1D810B658FFD32 /* OscDataSelectorWindow.h */,
 				630CC8393DBDC58513DA027A /* HelpWindow.cpp */,
 				B467E7047B3B06A9199E6467 /* HelpWindow.h */,
 				8541AEC35FE73816586E3C7C /* Rescale.cpp */,
@@ -477,7 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61153513959CE7DF94DFBA62 /* AboutWindowContent.cpp in Sources */,
-				768DA9505B851AB1AD8577E3 /* DataSelectorWindow.cpp in Sources */,
+				768DA9505B851AB1AD8577E3 /* OscDataSelectorWindow.cpp in Sources */,
 				3941F47C568D722FCCAF407F /* HelpWindow.cpp in Sources */,
 				6C6D3380F13E917987586D9B /* Rescale.cpp in Sources */,
 				C5F7EDE7137F1EAA160DBE99 /* SettingsWindow.cpp in Sources */,

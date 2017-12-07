@@ -156,7 +156,7 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
             myoManager.startPoll();
             startTimer (oscBufferFillSpeed);
             windowList->showOrCreateVisualsWindow();
-            windowList->windows.set (windowList->windows.indexOf (windowList->settingsWindow), nullptr);
+            windowList->windows.set (windowList->windows.indexOf (windowList->oscSettingsWindow), nullptr);
             
         }
     }

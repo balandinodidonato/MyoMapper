@@ -4,9 +4,9 @@
 
 WindowList::WindowList()
 {
-    windows.set(0, settingsWindow);
-    windows.set(1, visualsWindow);
-    windows.set(2, dataSelectorWindow);
+    windows.set(0, oscSettingsWindow);
+    windows.set(1, myoStatusWindow);
+    windows.set(2, oscDataSelectorWindow);
 }
 
 WindowList& WindowList::getWindowList()
@@ -39,9 +39,9 @@ void WindowList::showOrCreateSettingsWindow()
                                                   windowWidth * 0.4, windowHeight * 0.4,
                                                   windowWidth, windowHeight,
                                                   false);
-        settingsWindow = w;
+        oscSettingsWindow = w;
         w->addChangeListener (this);
-        windows.set (0, settingsWindow);
+        windows.set (0, oscSettingsWindow);
     }
 }
 
@@ -64,9 +64,9 @@ void WindowList::showOrCreateVisualsWindow()
                                                   windowWidth, windowHeight,
                                                   false);
         visualsWindowContent = window;
-        visualsWindow = w;
+        myoStatusWindow = w;
         w->addChangeListener (this);
-        windows.set (1, visualsWindow);
+        windows.set (1, myoStatusWindow);
     }
 }
 
@@ -80,12 +80,12 @@ void WindowList::showOrCreateDataSelectorWindow()
         auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - OSC Data",
-                                                  new DataSelectorWindow(),
+                                                  new OscDataSelectorWindow(),
                                                   false, false,
                                                   windowWidth * 0.4, windowHeight * 0.5,
                                                   windowWidth, windowHeight,
                                                   false);
-        dataSelectorWindow = w;
+        oscDataSelectorWindow = w;
         w->addChangeListener (this);
         windows.set (2, w);
     }
