@@ -26,48 +26,43 @@ Rescale::Rescale()
     
     addAndMakeVisible (reverse);
     reverse.addListener (this);
-    reverse.setToggleState (false, dontSendNotification);
     reverse.setColour (ToggleButton::tickColourId, Colours::black);
     reverse.setColour (ToggleButton::tickDisabledColourId, Colours::black);
     reverse.setColour (ToggleButton::textColourId, Colours::black);
     reverse.setButtonText ("Reverse");
 
     outMinSliderLabel.setText ("Out Min", dontSendNotification);
+    outMinSlider.setRange (-1.0, 2.0, 0.001);
     addAndMakeVisible (outMinSliderLabel);
     outMinSlider.addListener (this);
     
     outMaxSliderLabel.setText ("Out Max", dontSendNotification);
+    outMaxSlider.setRange (-1.0, 2.0, 0.001);
     addAndMakeVisible (outMaxSliderLabel);
     outMaxSlider.addListener (this);
 
     inMinSliderLabel.setText ("In Min", dontSendNotification);
+    inMinSlider.setRange (0, 1, 0.001);
     addAndMakeVisible (inMinSliderLabel);
     inMinSlider.addListener (this);
     
     inMaxSliderLabel.setText ("In Max", dontSendNotification);
+    inMaxSlider.setRange (0, 1, 0.001);
     addAndMakeVisible (inMaxSliderLabel);
     inMaxSlider.addListener (this);
     
-    outMinSlider.setRange (-1.0, 2.0, 0.001);
-    outMinSlider.setValue (0);
     outMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     outMinSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (outMinSlider);
     
-    outMaxSlider.setRange (-1.0, 2.0, 0.001);
-    outMaxSlider.setValue (1);
     outMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     outMaxSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (outMaxSlider);
     
-    inMinSlider.setRange (0, 1, 0.001);
-    inMinSlider.setValue (0);
     inMinSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     inMinSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (inMinSlider);
   
-    inMaxSlider.setRange (0, 1, 0.001);
-    inMaxSlider.setValue (1);
     inMaxSlider.setIncDecButtonsMode (juce::Slider::incDecButtonsDraggable_Vertical);
     inMaxSlider.setSliderStyle (juce::Slider::IncDecButtons);
     addAndMakeVisible (inMaxSlider);
@@ -78,8 +73,17 @@ Rescale::~Rescale()
     mmSlider.setLookAndFeel (nullptr);
 }
 
+void Rescale::initialiseValues(){
+    setReverse();
+    setInMin();
+    setInMax();
+    setOutMin();
+    setOutMax();
+}
+
 void Rescale::paint(juce::Graphics &g)
 {
+    initialiseValues();
     auto area = getLocalBounds();
     auto cornerAndRoundness = area.getHeight() * 0.05;
     g.setColour (Colour::fromRGB (245, 245, 245));

@@ -63,6 +63,7 @@ private:
     void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex) override;
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) override;
     
+    void initialiseValues();
     
     float inMax;
     float inMin;

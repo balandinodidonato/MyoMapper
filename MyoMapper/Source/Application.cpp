@@ -571,8 +571,8 @@ void MyoMapperApplication::initialiseSettingsTree()
     ValueTree yawScalingTree = ValueTree ("YawScaling");
     yawScalingTree.setProperty (name, "Yaw Scaling", nullptr);
     yawScalingTree.setProperty ("inMin", 0.0f, nullptr);
-    yawScalingTree.setProperty ("inMax", 1.0f, nullptr);
-    yawScalingTree.setProperty ("outMin", 0.0f, nullptr);
+    yawScalingTree.setProperty ("inMax", 1.00f, nullptr);
+    yawScalingTree.setProperty ("outMin", 0.00f, nullptr);
     yawScalingTree.setProperty ("outMax", 1.0f, nullptr);
     yawScalingTree.setProperty ("reverse", false, nullptr);
     yawScalingTree.setProperty ("offset", 0, nullptr);
