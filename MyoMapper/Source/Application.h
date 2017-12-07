@@ -83,16 +83,19 @@ public:
     
     //==========================================================================
     ValueTree rootTree;
-    ValueTree settingsTree;
-    ValueTree dataTree;
+    ValueTree oscSettingsTree;
+    ValueTree myoDataScalingTree;
+    ValueTree oscStreamingTree;
     
     void initialiseRootTree();
     void initialiseOscSettingsTree();
+    void initialiseMyoDataScalingTree();
     void initialiseOscStreamingTree();
     
     ValueTree getRootTree();
-    ValueTree getSettingsTree();
-    ValueTree getDataTree();
+    ValueTree getOscSettingsTree();
+    ValueTree getMyoDataScalingTree();
+    ValueTree getOscStreamingTree();
     
     void writeRootTreeToXml();
     

@@ -16,7 +16,7 @@ hostAddress("127.0.0.1")
     
     oscSendSetter.addListener (this);
     oscSendSetter.setRange (1, 9999, 1);
-    oscSendSetter.setValue (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
+    oscSendSetter.setValue (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
     oscSendSetter.setSliderStyle (Slider::IncDecButtons);
     oscSendSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     addAndMakeVisible (oscSendSetter);
@@ -36,7 +36,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible (oscSendPortLabel);
     
     oscReceiveSetter.setRange (1, 9999, 1);
-    oscReceiveSetter.setValue (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
+    oscReceiveSetter.setValue (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
     oscReceiveSetter.setSliderStyle (Slider::IncDecButtons);
     oscReceiveSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     oscReceiveSetter.addListener (this);
@@ -47,7 +47,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(hostAddressTitleLabel);
     
     setHostAddressLabel.setJustificationType (Justification::centred);
-    setHostAddressLabel.setText(MyoMapperApplication::getApp().getSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
+    setHostAddressLabel.setText(MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
                                 , dontSendNotification);    setHostAddressLabel.setEditable(true);
     setHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
     setHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
@@ -61,7 +61,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible (myoSelectorLabel);
     
     myoSelectorSetter.setRange (1, 20, 1);
-    myoSelectorSetter.setValue (MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
+    myoSelectorSetter.setValue (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
     myoSelectorSetter.setSliderStyle (Slider::IncDecButtons);
     myoSelectorSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     myoSelectorSetter.addListener (this);
@@ -205,7 +205,7 @@ void SettingsWindow::labelTextChanged(juce::Label *labelThatHasChanged)
 {
     if (labelThatHasChanged == &setHostAddressLabel)
     {
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("HostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
+        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("HostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
     }
 }
 
@@ -220,14 +220,14 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     auto value = slider->getValue();
     if (slider == &oscSendSetter)
     {
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("SendPort").setProperty ("portNumber", value, 0);
+        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("SendPort").setProperty ("portNumber", value, 0);
     }
     if (slider == &oscReceiveSetter)
     {
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName("ReceivePort").setProperty ("portNumber", value, 0);
+        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("ReceivePort").setProperty ("portNumber", value, 0);
     }
     if (slider == &myoSelectorSetter)
     {
-        MyoMapperApplication::getApp().getSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
+        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
     }
 }
