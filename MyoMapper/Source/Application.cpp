@@ -61,7 +61,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList = new WindowList();
     windowList->addChangeListener (this);
     windowList->windows.ensureStorageAllocated (3);
-    windowList->showOrCreateSettingsWindow();
+    windowList->showOrCreateOscSettingsWindow();
     
     
     selectedMyo = getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
@@ -155,8 +155,8 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
             settingsMessage->resetStartButtonPressed();
             myoManager.startPoll();
             startTimer (oscBufferFillSpeed);
-            windowList->showOrCreateVisualsWindow();
-            windowList->windows.set (windowList->windows.indexOf (windowList->settingsWindow), nullptr);
+            windowList->showOrCreateMyoStatusWindow();
+            windowList->windows.set (windowList->windows.indexOf (windowList->oscSettingsWindow), nullptr);
             
         }
     }
@@ -164,7 +164,7 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
     if (SettingsWindow::featureButtonClicked)
     {
         auto const settingsMessage = dynamic_cast<SettingsWindow*>(source);
-        windowList->showOrCreateDataSelectorWindow();
+        windowList->showOrCreateOscDataSelectorWindow();
         settingsMessage->resetFeatureButtonPressed();
     }
 }
@@ -326,17 +326,17 @@ void MyoMapperApplication::quitMapper()
 
 void MyoMapperApplication::showSettingsWindow()
 {
-    windowList->showOrCreateSettingsWindow();
+    windowList->showOrCreateOscSettingsWindow();
 }
 
 void MyoMapperApplication::showVisualsWindow()
 {
-    windowList->showOrCreateVisualsWindow();
+    windowList->showOrCreateMyoStatusWindow();
 }
 
 void MyoMapperApplication::showDataWindow()
 {
-    windowList->showOrCreateDataSelectorWindow();
+    windowList->showOrCreateOscDataSelectorWindow();
 }
 
 void MyoMapperApplication::closeWindow()
@@ -826,62 +826,65 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
             selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
         }
     }
-    if (treeWhosePropertyHasChanged.hasType ("YawScaling"))
+    if (visuals != nullptr)
     {
-        if (property.toString() == "reverse") {
-            visuals->getOrientationPanel().setReverseYaw();
+        if (treeWhosePropertyHasChanged.hasType ("YawScaling"))
+        {
+            if (property.toString() == "reverse") {
+                visuals->getOrientationPanel().setReverseYaw();
+            }
+            if (property.toString() == "inMin") {
+                visuals->getOrientationPanel().setInMinYaw();
+            }
+            if (property.toString() == "inMax") {
+                visuals->getOrientationPanel().setInMaxYaw();
+            }
+            if (property.toString() == "outMin") {
+                visuals->getOrientationPanel().setOutMinYaw();
+            }
+            if (property.toString() == "outMax") {
+                visuals->getOrientationPanel().setOutMaxYaw();
+            }
         }
-        if (property.toString() == "inMin") {
-            visuals->getOrientationPanel().setInMinYaw();
+        if (treeWhosePropertyHasChanged.hasType ("PitchScaling"))
+        {
+            if (property.toString() == "reverse") {
+                visuals->getOrientationPanel().setReversePitch();
+            }
+            
+            if (property.toString() == "inMin") {
+                visuals->getOrientationPanel().setInMinPitch();
+            }
+            if (property.toString() == "inMax") {
+                visuals->getOrientationPanel().setInMaxPitch();
+            }
+            if (property.toString() == "outMin") {
+                visuals->getOrientationPanel().setOutMinPitch();
+            }
+            if (property.toString() == "outMax") {
+                visuals->getOrientationPanel().setOutMaxPitch();
+            }
+            
         }
-        if (property.toString() == "inMax") {
-            visuals->getOrientationPanel().setInMaxYaw();
-        }
-        if (property.toString() == "outMin") {
-            visuals->getOrientationPanel().setOutMinYaw();
-        }
-        if (property.toString() == "outMax") {
-            visuals->getOrientationPanel().setOutMaxYaw();
-        }
-    }
-    if (treeWhosePropertyHasChanged.hasType ("PitchScaling"))
-    {
-         if (property.toString() == "reverse") {
-             visuals->getOrientationPanel().setReversePitch();
-         }
-        
-        if (property.toString() == "inMin") {
-            visuals->getOrientationPanel().setInMinPitch();
-        }
-        if (property.toString() == "inMax") {
-            visuals->getOrientationPanel().setInMaxPitch();
-        }
-        if (property.toString() == "outMin") {
-            visuals->getOrientationPanel().setOutMinPitch();
-        }
-        if (property.toString() == "outMax") {
-            visuals->getOrientationPanel().setOutMaxPitch();
-        }
-        
-    }
-    if (treeWhosePropertyHasChanged.hasType ("RollScaling"))
-    {
-        if (property.toString() == "reverse") {
-            visuals->getOrientationPanel().setReverseRoll();
-        }
-        
-        if (property.toString() == "inMin") {
-            visuals->getOrientationPanel().setInMinRoll();
-        }
-        if (property.toString() == "inMax") {
-           
-            visuals->getOrientationPanel().setInMaxRoll();
-        }
-        if (property.toString() == "outMin") {
-            visuals->getOrientationPanel().setOutMinRoll();
-        }
-        if (property.toString() == "outMax") {
-            visuals->getOrientationPanel().setOutMaxRoll();
+        if (treeWhosePropertyHasChanged.hasType ("RollScaling"))
+        {
+            if (property.toString() == "reverse") {
+                visuals->getOrientationPanel().setReverseRoll();
+            }
+            
+            if (property.toString() == "inMin") {
+                visuals->getOrientationPanel().setInMinRoll();
+            }
+            if (property.toString() == "inMax") {
+                
+                visuals->getOrientationPanel().setInMaxRoll();
+            }
+            if (property.toString() == "outMin") {
+                visuals->getOrientationPanel().setOutMinRoll();
+            }
+            if (property.toString() == "outMax") {
+                visuals->getOrientationPanel().setOutMaxRoll();
+            }
         }
     }
     

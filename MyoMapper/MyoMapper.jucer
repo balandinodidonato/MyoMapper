@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.1.5"
+<JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.1.6"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
               jucerVersion="5.2.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
@@ -10,14 +10,14 @@
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <GROUP id="{4206F9A6-3428-D059-A986-AD282226E07A}" name="UI">
         <GROUP id="{62723434-D157-0D48-DA10-86841AF60548}" name="Windows">
+          <FILE id="j9Eanv" name="OscDataSelectorWindow.cpp" compile="1" resource="0"
+                file="Source/UI/Windows/OscDataSelectorWindow.cpp"/>
+          <FILE id="wvJAYq" name="OscDataSelectorWindow.h" compile="0" resource="0"
+                file="Source/UI/Windows/OscDataSelectorWindow.h"/>
           <FILE id="Gin3Bv" name="AboutWindowContent.cpp" compile="1" resource="0"
                 file="Source/UI/Windows/AboutWindowContent.cpp"/>
           <FILE id="fHs9qQ" name="AboutWindowContent.h" compile="0" resource="0"
                 file="Source/UI/Windows/AboutWindowContent.h"/>
-          <FILE id="FMJXPV" name="DataSelectorWindow.cpp" compile="1" resource="0"
-                file="Source/UI/Windows/DataSelectorWindow.cpp"/>
-          <FILE id="v0VucY" name="DataSelectorWindow.h" compile="0" resource="0"
-                file="Source/UI/Windows/DataSelectorWindow.h"/>
           <FILE id="OTalTa" name="HelpWindow.cpp" compile="1" resource="0" file="Source/UI/Windows/HelpWindow.cpp"/>
           <FILE id="uMf81s" name="HelpWindow.h" compile="0" resource="0" file="Source/UI/Windows/HelpWindow.h"/>
           <FILE id="F9F7hY" name="Rescale.cpp" compile="1" resource="0" file="Source/UI/Windows/Rescale.cpp"/>
@@ -101,7 +101,8 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="" extraLinkerFlags=""
                extraCompilerFlags="" extraFrameworks="myo" smallIcon="Wbzixw"
                bigIcon="Wbzixw" postbuildCommand="dst=${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Frameworks&#10;mkdir -p &quot;${dst}&quot;"
-               vst3Folder="" rtasFolder="" aaxFolder="" documentExtensions=".mapper">
+               vst3Folder="" rtasFolder="" aaxFolder="" documentExtensions=".mapper"
+               iosInAppPurchases="0">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"

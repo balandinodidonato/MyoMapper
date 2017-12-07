@@ -37,3 +37,5 @@ Pose& VisualsWindow::getPosePanel()
     jassert (panel != nullptr);
     return *panel;
 }
+
+
