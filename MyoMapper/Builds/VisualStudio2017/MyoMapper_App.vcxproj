@@ -160,8 +160,8 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\UI\Windows\OscDataSelectorWindow.cpp"/>
     <ClCompile Include="..\..\Source\UI\Windows\AboutWindowContent.cpp"/>
-    <ClCompile Include="..\..\Source\UI\Windows\DataSelectorWindow.cpp"/>
     <ClCompile Include="..\..\Source\UI\Windows\HelpWindow.cpp"/>
     <ClCompile Include="..\..\Source\UI\Windows\Rescale.cpp"/>
     <ClCompile Include="..\..\Source\UI\Windows\SettingsWindow.cpp"/>
@@ -1378,8 +1378,8 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\UI\Windows\OscDataSelectorWindow.h"/>
     <ClInclude Include="..\..\Source\UI\Windows\AboutWindowContent.h"/>
-    <ClInclude Include="..\..\Source\UI\Windows\DataSelectorWindow.h"/>
     <ClInclude Include="..\..\Source\UI\Windows\HelpWindow.h"/>
     <ClInclude Include="..\..\Source\UI\Windows\Rescale.h"/>
     <ClInclude Include="..\..\Source\UI\Windows\SettingsWindow.h"/>

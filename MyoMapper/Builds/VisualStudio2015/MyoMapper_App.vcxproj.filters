@@ -250,10 +250,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\UI\Windows\AboutWindowContent.cpp">
+    <ClCompile Include="..\..\Source\UI\Windows\OscDataSelectorWindow.cpp">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\UI\Windows\DataSelectorWindow.cpp">
+    <ClCompile Include="..\..\Source\UI\Windows\AboutWindowContent.cpp">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\UI\Windows\HelpWindow.cpp">
@@ -1617,10 +1617,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\UI\Windows\AboutWindowContent.h">
+    <ClInclude Include="..\..\Source\UI\Windows\OscDataSelectorWindow.h">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\UI\Windows\DataSelectorWindow.h">
+    <ClInclude Include="..\..\Source\UI\Windows\AboutWindowContent.h">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UI\Windows\HelpWindow.h">
