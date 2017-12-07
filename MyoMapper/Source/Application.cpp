@@ -226,13 +226,6 @@ void MyoMapperApplication::createHelpMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::showAboutWindow);
 }
 
-/*
-void MyoMapperApplication::createAppleMenu (PopupMenu& menu)
-{
-    menu.addCommandItem (&getCommandManager(), CommandIDs::showPreferences);
-}
-*/
-
 void MyoMapperApplication::menuCommand (int menuItemID)
 {
     // Used for sub menus and file loaders
@@ -326,73 +319,10 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
     return true;
 }
 
-//==============================================================================
-/*
- void MyoMapperApplication::createNewMapper()
-{
-    // Close current mapper and open new
-}
-
-void MyoMapperApplication::openFile()
-{
-    FileChooser fileChooser ("Open Mapper",
-                             File::nonexistent,
-                             "*.mapper");
-
-//    auto val = fileChooser.browseForFileToOpen();
-
-    if (fileChooser.browseForFileToOpen() == true)
-    {
-        File chosenFile = fileChooser.getResult();
-
-        XmlElement* xmlFile = XmlDocument(chosenFile).getDocumentElement();
-        ValueTree fileValueTree = ValueTree::fromXml (*xmlFile);
-        getRootTree() = fileValueTree;
-
-    }
-}
-
-void MyoMapperApplication::saveMapper()
-{
-    writeRootTreeToXml();
-}
-
-void MyoMapperApplication::saveMapperAs()
-{
-    auto file = File::getCurrentWorkingDirectory().getChildFile ("MyoMapper.mapper");
-    FileChooser fileChooser ("Save Mapper As...",
-                             file,
-                             "*.mapper");
-    if (fileChooser.browseForFileToSave (true) == true)
-    {
-        File chosenFile = fileChooser.getResult();
-//        FileOutputStream stream (chosenFile);
-        XmlElement* xml = getRootTree().createXml();
-        xml->writeToFile (chosenFile, String::empty);
-     }
-}
-*/
-
 void MyoMapperApplication::quitMapper()
 {
     MyoMapperApplication::shutdown();
 }
-/*
-void MyoMapperApplication::windowZoomIncrease()
-{
-    // Increase scaling of UI/ text in all windows (or just the currently selected)
-}
-
-void MyoMapperApplication::windowZoomDecrease()
-{
-    // Decrease scaling of UI/ text in all windows (or just the currently selected)
-}
-
-void MyoMapperApplication::enableFullscreen()
-{
-    // Toggle fullscreen mode
-}
-*/
 
 void MyoMapperApplication::showSettingsWindow()
 {
@@ -408,20 +338,6 @@ void MyoMapperApplication::showDataWindow()
 {
     windowList->showOrCreateDataSelectorWindow();
 }
-/*
-void MyoMapperApplication::moveWindowsToFront()
-{
-    for (int i = 0; i < windowList->windows.size(); ++i)
-    {
-        Component* currentWindow = windowList->windows.operator[](i);
-
-        if (currentWindow != nullptr)
-        {
-            windowList->getWindowList().windows.operator[](i)->toFront (true);
-        }
-    }
-}
- */
 
 void MyoMapperApplication::closeWindow()
 {
@@ -881,23 +797,7 @@ ValueTree MyoMapperApplication::getOscStreamingTree()
     jassert (vt.isValid());
     return vt;
 }
-/*
-void MyoMapperApplication::writeRootTreeToXml()
-{
-    XmlElement* xml = getRootTree().createXml();
-    
-    auto sep = File::getSeparatorChar();
-    auto path = File::getSpecialLocation (File::userApplicationDataDirectory).getFullPathName();
-    #if JUCE_MAC
-        path = path + sep + "Application Support" + sep + "Myo Mapper" + sep + "userSettings.mapper";
-    #elif JUCE_WINDOWS
-        path = path + sep + "Roaming" + sep + "Myo Mapper" + sep + "userSettings.mapper";
-    #endif
-    
-    xml->writeToFile (File (path), String::empty);
-    xml = nullptr;
-}
-*/
+
 //==============================================================================
 void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
