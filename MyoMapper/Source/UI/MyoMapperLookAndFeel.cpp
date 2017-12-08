@@ -172,8 +172,6 @@ void MyoMapperLookAndFeel::drawMenuBarBackground (Graphics& g, int width, int he
 	g.setColour(colour.contrasting(0.15f));
 	g.fillRect(r.removeFromTop(1));
 	g.fillRect(r.removeFromBottom(1));
-
-	//g.setGradientFill(ColourGradient(colour, 0, 0, colour.darker(0.2f), 0, (float)height, false));
 	g.setGradientFill(ColourGradient(colour, 0, 0, colour, 0, (float)height, false));
 	g.fillRect(r);
 }

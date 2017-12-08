@@ -41,14 +41,12 @@ void Orientation::setValues (Vector3D<float> Orientation, Vector3D<float> Orient
     rescaleYaw.setValue (Orientation.x, OrientationRaw.x);
     rescalePitch.setValue (Orientation.y, OrientationRaw.y);
     rescaleRoll.setValue (Orientation.z, OrientationRaw.z);
-    
 }
 
 Vector3D<float> Orientation::getValue()
 {
     return orientationScaled;
 }
-
 
 //////////////////////////////////////////////////////////////////////////////
 

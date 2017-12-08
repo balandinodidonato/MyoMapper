@@ -19,8 +19,6 @@ private:
     ScopedPointer<ImageComponent> image;
     ScopedPointer<Label> version;
     ScopedPointer<Label> date;
-    //ScopedPointer<HyperlinkButton> hyperLinkAcknowledgements;
-    //ScopedPointer<HyperlinkButton> hyperLinkLicense;
     
     HyperlinkButton hyperLinkAcknowledgements;
     HyperlinkButton hyperLinkLicense;

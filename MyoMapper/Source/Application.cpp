@@ -61,7 +61,7 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList = new WindowList();
     windowList->addChangeListener (this);
     windowList->windows.ensureStorageAllocated (3);
-    windowList->showOrCreateSettingsWindow();
+    windowList->showOrCreateOscSettingsWindow();
     
     
     selectedMyo = getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
@@ -155,8 +155,8 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
             settingsMessage->resetStartButtonPressed();
             myoManager.startPoll();
             startTimer (oscBufferFillSpeed);
-            windowList->showOrCreateVisualsWindow();
-            windowList->windows.set (windowList->windows.indexOf (windowList->settingsWindow), nullptr);
+            windowList->showOrCreateMyoStatusWindow();
+            windowList->windows.set (windowList->windows.indexOf (windowList->oscSettingsWindow), nullptr);
             
         }
     }
@@ -164,7 +164,7 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
     if (SettingsWindow::featureButtonClicked)
     {
         auto const settingsMessage = dynamic_cast<SettingsWindow*>(source);
-        windowList->showOrCreateDataSelectorWindow();
+        windowList->showOrCreateOscDataSelectorWindow();
         settingsMessage->resetFeatureButtonPressed();
     }
 }
@@ -210,36 +210,6 @@ void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
         jassertfalse;
 }
 
-/*
-void MyoMapperApplication::createFileMenu (PopupMenu& menu)
-{
-    #if ! JUCE_MAC
-        menu.addCommandItem (&getCommandManager(), CommandIDs::showPreferences);
-        menu.addSeparator();
-    #endif
-
-    menu.addCommandItem (&getCommandManager(), CommandIDs::newMapper);
-    menu.addSeparator();
-    menu.addCommandItem (&getCommandManager(), CommandIDs::openMapper);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapper);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::saveMapperAs);
-
-    #if ! JUCE_MAC
-        menu.addSeparator();
-        menu.addCommandItem (&getCommandManager(), CommandIDs::quitMapper);
-    #endif
-}
-
-
-void MyoMapperApplication::createViewMenu (PopupMenu& menu)
-{
-    menu.addCommandItem (&getCommandManager(), CommandIDs::zoomIncrease);
-    menu.addCommandItem (&getCommandManager(), CommandIDs::zoomDecrease);
-    menu.addSeparator();
-    menu.addCommandItem (&getCommandManager(), CommandIDs::enableFullscreen);
-}
- */
-
 void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);
@@ -255,13 +225,6 @@ void MyoMapperApplication::createHelpMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::showDocumentationWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showAboutWindow);
 }
-
-/*
-void MyoMapperApplication::createAppleMenu (PopupMenu& menu)
-{
-    menu.addCommandItem (&getCommandManager(), CommandIDs::showPreferences);
-}
-*/
 
 void MyoMapperApplication::menuCommand (int menuItemID)
 {
@@ -356,102 +319,25 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
     return true;
 }
 
-//==============================================================================
-/*
- void MyoMapperApplication::createNewMapper()
-{
-    // Close current mapper and open new
-}
-
-void MyoMapperApplication::openFile()
-{
-    FileChooser fileChooser ("Open Mapper",
-                             File::nonexistent,
-                             "*.mapper");
-
-//    auto val = fileChooser.browseForFileToOpen();
-
-    if (fileChooser.browseForFileToOpen() == true)
-    {
-        File chosenFile = fileChooser.getResult();
-
-        XmlElement* xmlFile = XmlDocument(chosenFile).getDocumentElement();
-        ValueTree fileValueTree = ValueTree::fromXml (*xmlFile);
-        getRootTree() = fileValueTree;
-
-    }
-}
-
-void MyoMapperApplication::saveMapper()
-{
-    writeRootTreeToXml();
-}
-
-void MyoMapperApplication::saveMapperAs()
-{
-    auto file = File::getCurrentWorkingDirectory().getChildFile ("MyoMapper.mapper");
-    FileChooser fileChooser ("Save Mapper As...",
-                             file,
-                             "*.mapper");
-    if (fileChooser.browseForFileToSave (true) == true)
-    {
-        File chosenFile = fileChooser.getResult();
-//        FileOutputStream stream (chosenFile);
-        XmlElement* xml = getRootTree().createXml();
-        xml->writeToFile (chosenFile, String::empty);
-     }
-}
-*/
-
 void MyoMapperApplication::quitMapper()
 {
     MyoMapperApplication::shutdown();
 }
-/*
-void MyoMapperApplication::windowZoomIncrease()
-{
-    // Increase scaling of UI/ text in all windows (or just the currently selected)
-}
-
-void MyoMapperApplication::windowZoomDecrease()
-{
-    // Decrease scaling of UI/ text in all windows (or just the currently selected)
-}
-
-void MyoMapperApplication::enableFullscreen()
-{
-    // Toggle fullscreen mode
-}
-*/
 
 void MyoMapperApplication::showSettingsWindow()
 {
-    windowList->showOrCreateSettingsWindow();
+    windowList->showOrCreateOscSettingsWindow();
 }
 
 void MyoMapperApplication::showVisualsWindow()
 {
-    windowList->showOrCreateVisualsWindow();
+    windowList->showOrCreateMyoStatusWindow();
 }
 
 void MyoMapperApplication::showDataWindow()
 {
-    windowList->showOrCreateDataSelectorWindow();
+    windowList->showOrCreateOscDataSelectorWindow();
 }
-/*
-void MyoMapperApplication::moveWindowsToFront()
-{
-    for (int i = 0; i < windowList->windows.size(); ++i)
-    {
-        Component* currentWindow = windowList->windows.operator[](i);
-
-        if (currentWindow != nullptr)
-        {
-            windowList->getWindowList().windows.operator[](i)->toFront (true);
-        }
-    }
-}
- */
 
 void MyoMapperApplication::closeWindow()
 {
@@ -911,23 +797,7 @@ ValueTree MyoMapperApplication::getOscStreamingTree()
     jassert (vt.isValid());
     return vt;
 }
-/*
-void MyoMapperApplication::writeRootTreeToXml()
-{
-    XmlElement* xml = getRootTree().createXml();
-    
-    auto sep = File::getSeparatorChar();
-    auto path = File::getSpecialLocation (File::userApplicationDataDirectory).getFullPathName();
-    #if JUCE_MAC
-        path = path + sep + "Application Support" + sep + "Myo Mapper" + sep + "userSettings.mapper";
-    #elif JUCE_WINDOWS
-        path = path + sep + "Roaming" + sep + "Myo Mapper" + sep + "userSettings.mapper";
-    #endif
-    
-    xml->writeToFile (File (path), String::empty);
-    xml = nullptr;
-}
-*/
+
 //==============================================================================
 void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
@@ -956,62 +826,65 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
             selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
         }
     }
-    if (treeWhosePropertyHasChanged.hasType ("YawScaling"))
+    if (visuals != nullptr)
     {
-        if (property.toString() == "reverse") {
-            visuals->getOrientationPanel().setReverseYaw();
+        if (treeWhosePropertyHasChanged.hasType ("YawScaling"))
+        {
+            if (property.toString() == "reverse") {
+                visuals->getOrientationPanel().setReverseYaw();
+            }
+            if (property.toString() == "inMin") {
+                visuals->getOrientationPanel().setInMinYaw();
+            }
+            if (property.toString() == "inMax") {
+                visuals->getOrientationPanel().setInMaxYaw();
+            }
+            if (property.toString() == "outMin") {
+                visuals->getOrientationPanel().setOutMinYaw();
+            }
+            if (property.toString() == "outMax") {
+                visuals->getOrientationPanel().setOutMaxYaw();
+            }
         }
-        if (property.toString() == "inMin") {
-            visuals->getOrientationPanel().setInMinYaw();
+        if (treeWhosePropertyHasChanged.hasType ("PitchScaling"))
+        {
+            if (property.toString() == "reverse") {
+                visuals->getOrientationPanel().setReversePitch();
+            }
+            
+            if (property.toString() == "inMin") {
+                visuals->getOrientationPanel().setInMinPitch();
+            }
+            if (property.toString() == "inMax") {
+                visuals->getOrientationPanel().setInMaxPitch();
+            }
+            if (property.toString() == "outMin") {
+                visuals->getOrientationPanel().setOutMinPitch();
+            }
+            if (property.toString() == "outMax") {
+                visuals->getOrientationPanel().setOutMaxPitch();
+            }
+            
         }
-        if (property.toString() == "inMax") {
-            visuals->getOrientationPanel().setInMaxYaw();
-        }
-        if (property.toString() == "outMin") {
-            visuals->getOrientationPanel().setOutMinYaw();
-        }
-        if (property.toString() == "outMax") {
-            visuals->getOrientationPanel().setOutMaxYaw();
-        }
-    }
-    if (treeWhosePropertyHasChanged.hasType ("PitchScaling"))
-    {
-         if (property.toString() == "reverse") {
-             visuals->getOrientationPanel().setReversePitch();
-         }
-        
-        if (property.toString() == "inMin") {
-            visuals->getOrientationPanel().setInMinPitch();
-        }
-        if (property.toString() == "inMax") {
-            visuals->getOrientationPanel().setInMaxPitch();
-        }
-        if (property.toString() == "outMin") {
-            visuals->getOrientationPanel().setOutMinPitch();
-        }
-        if (property.toString() == "outMax") {
-            visuals->getOrientationPanel().setOutMaxPitch();
-        }
-        
-    }
-    if (treeWhosePropertyHasChanged.hasType ("RollScaling"))
-    {
-        if (property.toString() == "reverse") {
-            visuals->getOrientationPanel().setReverseRoll();
-        }
-        
-        if (property.toString() == "inMin") {
-            visuals->getOrientationPanel().setInMinRoll();
-        }
-        if (property.toString() == "inMax") {
-           
-            visuals->getOrientationPanel().setInMaxRoll();
-        }
-        if (property.toString() == "outMin") {
-            visuals->getOrientationPanel().setOutMinRoll();
-        }
-        if (property.toString() == "outMax") {
-            visuals->getOrientationPanel().setOutMaxRoll();
+        if (treeWhosePropertyHasChanged.hasType ("RollScaling"))
+        {
+            if (property.toString() == "reverse") {
+                visuals->getOrientationPanel().setReverseRoll();
+            }
+            
+            if (property.toString() == "inMin") {
+                visuals->getOrientationPanel().setInMinRoll();
+            }
+            if (property.toString() == "inMax") {
+                
+                visuals->getOrientationPanel().setInMaxRoll();
+            }
+            if (property.toString() == "outMin") {
+                visuals->getOrientationPanel().setOutMinRoll();
+            }
+            if (property.toString() == "outMax") {
+                visuals->getOrientationPanel().setOutMaxRoll();
+            }
         }
     }
     

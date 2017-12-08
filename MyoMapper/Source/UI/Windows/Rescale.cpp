@@ -82,7 +82,6 @@ void Rescale::initialiseValues(){
 
 void Rescale::paint(juce::Graphics &g)
 {
-    initialiseValues();
     auto area = getLocalBounds();
     auto cornerAndRoundness = area.getHeight() * 0.05;
     g.setColour (Colour::fromRGB (245, 245, 245));
@@ -95,6 +94,7 @@ void Rescale::paint(juce::Graphics &g)
 
 void Rescale::resized()
 {
+    initialiseValues();
     auto area = getLocalBounds();
     auto top = area.removeFromTop (proportionOfHeight (0.68));
     auto bottom = area;

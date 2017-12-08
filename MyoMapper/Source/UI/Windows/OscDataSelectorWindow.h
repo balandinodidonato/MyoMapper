@@ -5,18 +5,18 @@
 #include "../OscValueTreeItem.h"
 #include "../MyoMapperLookAndFeel.h"
 
-class DataSelectorWindow    : public Component,
+class OscDataSelectorWindow    : public Component,
                               public ChangeBroadcaster
 {
 public:
-    DataSelectorWindow();
-    ~DataSelectorWindow();
+    OscDataSelectorWindow();
+    ~OscDataSelectorWindow();
 
     void paint (Graphics&) override;
     void resized() override;
     
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DataSelectorWindow)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscDataSelectorWindow)
     struct WindowTabBar;
     ScopedPointer<WindowTabBar> tabBar;
     

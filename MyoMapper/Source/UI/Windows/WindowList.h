@@ -3,7 +3,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "VisualsWindow.h"
 #include "SettingsWindow.h"
-#include "DataSelectorWindow.h"
+#include "OscDataSelectorWindow.h"
 #include "AboutWindowContent.h"
 #include "HelpWindow.h"
 #include "WindowDrawer.h"
@@ -17,9 +17,9 @@ public:
     static WindowList& getWindowList();
     
     void createInitialWindow();
-    void showOrCreateSettingsWindow();
-    void showOrCreateVisualsWindow();
-    void showOrCreateDataSelectorWindow();
+    void showOrCreateOscSettingsWindow();
+    void showOrCreateMyoStatusWindow();
+    void showOrCreateOscDataSelectorWindow();
     void showOrCreateAboutWindow();
     void showOrCreateHelpWindow();
     
@@ -30,12 +30,12 @@ public:
     void askAllWindowsToClose();
     
     OwnedArray<Component> windows;
-    DataSelectorWindow::SafePointer<WindowDrawer> settingsWindow;
-    DataSelectorWindow::SafePointer<WindowDrawer> visualsWindow;
-    DataSelectorWindow::SafePointer<VisualsWindow> visualsWindowContent;
-    DataSelectorWindow::SafePointer<WindowDrawer> dataSelectorWindow;
-    DataSelectorWindow::SafePointer<WindowDrawer> aboutWindow;
-    DataSelectorWindow::SafePointer<WindowDrawer> helpWindow;
+    OscDataSelectorWindow::SafePointer<WindowDrawer> oscSettingsWindow;
+    OscDataSelectorWindow::SafePointer<WindowDrawer> myoStatusWindow;
+    OscDataSelectorWindow::SafePointer<VisualsWindow> visualsWindowContent;
+    OscDataSelectorWindow::SafePointer<WindowDrawer> oscDataSelectorWindow;
+    OscDataSelectorWindow::SafePointer<WindowDrawer> aboutWindow;
+    OscDataSelectorWindow::SafePointer<WindowDrawer> helpWindow;
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowList)
 };
