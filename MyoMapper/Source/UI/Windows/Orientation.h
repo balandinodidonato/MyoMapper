@@ -2,10 +2,10 @@
 #define MAPPING_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Windows/Rescale.h"
-#include "../Features/FirstOrderDifference.h"
-#include "../Features/SecondOrderDifference.h"
-#include "MyoMapperLookAndFeel.h"
+#include "Rescale.h"
+#include "../../Features/FirstOrderDifference.h"
+#include "../../Features/SecondOrderDifference.h"
+#include "../MyoMapperLookAndFeel.h"
 
 class Orientation   : public Component
 

@@ -2,7 +2,7 @@
 
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../OscValueTreeItem.h"
+#include "../ValueTreeItems/OscValueTreeItem.h"
 #include "../MyoMapperLookAndFeel.h"
 
 class OscDataSelectorWindow    : public Component,
