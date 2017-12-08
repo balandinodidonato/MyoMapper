@@ -9,44 +9,50 @@
   <MAINGROUP id="G7OLDm" name="MyoMapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <GROUP id="{4206F9A6-3428-D059-A986-AD282226E07A}" name="UI">
-        <GROUP id="{62723434-D157-0D48-DA10-86841AF60548}" name="Windows">
-          <FILE id="j9Eanv" name="OscDataSelectorWindow.cpp" compile="1" resource="0"
-                file="Source/UI/Windows/OscDataSelectorWindow.cpp"/>
-          <FILE id="wvJAYq" name="OscDataSelectorWindow.h" compile="0" resource="0"
-                file="Source/UI/Windows/OscDataSelectorWindow.h"/>
-          <FILE id="Gin3Bv" name="AboutWindowContent.cpp" compile="1" resource="0"
+        <GROUP id="{0E03054B-FD46-FB0A-8D86-70F5098B2360}" name="ValueTreeItems">
+          <FILE id="NKtcU6" name="OscSettingsValueTreeItem.cpp" compile="1" resource="0"
+                file="Source/UI/ValueTreeItems/OscSettingsValueTreeItem.cpp"/>
+          <FILE id="rBG2Px" name="OscSettingsValueTreeItem.h" compile="0" resource="0"
+                file="Source/UI/ValueTreeItems/OscSettingsValueTreeItem.h"/>
+          <FILE id="b0x1dQ" name="OscValueTreeItem.cpp" compile="1" resource="0"
+                file="Source/UI/ValueTreeItems/OscValueTreeItem.cpp"/>
+          <FILE id="HtkMrh" name="OscValueTreeItem.h" compile="0" resource="0"
+                file="Source/UI/ValueTreeItems/OscValueTreeItem.h"/>
+        </GROUP>
+        <GROUP id="{6B75C7E0-F88E-BCEA-EC24-81B186DF0B57}" name="Windows">
+          <FILE id="A2KntI" name="AboutWindowContent.cpp" compile="1" resource="0"
                 file="Source/UI/Windows/AboutWindowContent.cpp"/>
-          <FILE id="fHs9qQ" name="AboutWindowContent.h" compile="0" resource="0"
+          <FILE id="RLOiPU" name="AboutWindowContent.h" compile="0" resource="0"
                 file="Source/UI/Windows/AboutWindowContent.h"/>
-          <FILE id="OTalTa" name="HelpWindow.cpp" compile="1" resource="0" file="Source/UI/Windows/HelpWindow.cpp"/>
-          <FILE id="uMf81s" name="HelpWindow.h" compile="0" resource="0" file="Source/UI/Windows/HelpWindow.h"/>
-          <FILE id="F9F7hY" name="Rescale.cpp" compile="1" resource="0" file="Source/UI/Windows/Rescale.cpp"/>
-          <FILE id="wuumKp" name="Rescale.h" compile="0" resource="0" file="Source/UI/Windows/Rescale.h"/>
-          <FILE id="GK6gqz" name="SettingsWindow.cpp" compile="1" resource="0"
+          <FILE id="SmUrxH" name="HelpWindow.cpp" compile="1" resource="0" file="Source/UI/Windows/HelpWindow.cpp"/>
+          <FILE id="w2yzLg" name="HelpWindow.h" compile="0" resource="0" file="Source/UI/Windows/HelpWindow.h"/>
+          <FILE id="mHt84f" name="Orientation.cpp" compile="1" resource="0" file="Source/UI/Windows/Orientation.cpp"/>
+          <FILE id="Oq5seX" name="Orientation.h" compile="0" resource="0" file="Source/UI/Windows/Orientation.h"/>
+          <FILE id="hVZxlR" name="OscDataSelectorWindow.cpp" compile="1" resource="0"
+                file="Source/UI/Windows/OscDataSelectorWindow.cpp"/>
+          <FILE id="AQRdxn" name="OscDataSelectorWindow.h" compile="0" resource="0"
+                file="Source/UI/Windows/OscDataSelectorWindow.h"/>
+          <FILE id="rAupWn" name="Pose.cpp" compile="1" resource="0" file="Source/UI/Windows/Pose.cpp"/>
+          <FILE id="SZe3gY" name="Pose.h" compile="0" resource="0" file="Source/UI/Windows/Pose.h"/>
+          <FILE id="DQxagM" name="Rescale.cpp" compile="1" resource="0" file="Source/UI/Windows/Rescale.cpp"/>
+          <FILE id="tNsqKQ" name="Rescale.h" compile="0" resource="0" file="Source/UI/Windows/Rescale.h"/>
+          <FILE id="qOlcJm" name="SettingsWindow.cpp" compile="1" resource="0"
                 file="Source/UI/Windows/SettingsWindow.cpp"/>
-          <FILE id="UuVSAc" name="SettingsWindow.h" compile="0" resource="0"
+          <FILE id="DyryBb" name="SettingsWindow.h" compile="0" resource="0"
                 file="Source/UI/Windows/SettingsWindow.h"/>
-          <FILE id="saksgW" name="VisualsWindow.cpp" compile="1" resource="0"
+          <FILE id="QnyB2R" name="VisualsWindow.cpp" compile="1" resource="0"
                 file="Source/UI/Windows/VisualsWindow.cpp"/>
-          <FILE id="Clhz4L" name="VisualsWindow.h" compile="0" resource="0" file="Source/UI/Windows/VisualsWindow.h"/>
-          <FILE id="C4kpP1" name="WindowDrawer.cpp" compile="1" resource="0"
+          <FILE id="S5K1MJ" name="VisualsWindow.h" compile="0" resource="0" file="Source/UI/Windows/VisualsWindow.h"/>
+          <FILE id="h9K9uf" name="WindowDrawer.cpp" compile="1" resource="0"
                 file="Source/UI/Windows/WindowDrawer.cpp"/>
-          <FILE id="GVrJ1U" name="WindowDrawer.h" compile="0" resource="0" file="Source/UI/Windows/WindowDrawer.h"/>
-          <FILE id="HdF040" name="WindowList.cpp" compile="1" resource="0" file="Source/UI/Windows/WindowList.cpp"/>
-          <FILE id="nzzqQS" name="WindowList.h" compile="0" resource="0" file="Source/UI/Windows/WindowList.h"/>
+          <FILE id="sl04DF" name="WindowDrawer.h" compile="0" resource="0" file="Source/UI/Windows/WindowDrawer.h"/>
+          <FILE id="gwLMKC" name="WindowList.cpp" compile="1" resource="0" file="Source/UI/Windows/WindowList.cpp"/>
+          <FILE id="eL2hIt" name="WindowList.h" compile="0" resource="0" file="Source/UI/Windows/WindowList.h"/>
         </GROUP>
         <FILE id="GsjBRz" name="MyoMapperLookAndFeel.cpp" compile="1" resource="0"
               file="Source/UI/MyoMapperLookAndFeel.cpp"/>
         <FILE id="DaTTaQ" name="MyoMapperLookAndFeel.h" compile="0" resource="0"
               file="Source/UI/MyoMapperLookAndFeel.h"/>
-        <FILE id="qa6g6M" name="Orientation.cpp" compile="1" resource="0" file="Source/UI/Orientation.cpp"/>
-        <FILE id="kZ2NtY" name="Orientation.h" compile="0" resource="0" file="Source/UI/Orientation.h"/>
-        <FILE id="n1cskf" name="OscValueTreeItem.cpp" compile="1" resource="0"
-              file="Source/UI/OscValueTreeItem.cpp"/>
-        <FILE id="oYg1eW" name="OscValueTreeItem.h" compile="0" resource="0"
-              file="Source/UI/OscValueTreeItem.h"/>
-        <FILE id="lKYR3y" name="Pose.cpp" compile="1" resource="0" file="Source/UI/Pose.cpp"/>
-        <FILE id="iAfI0r" name="Pose.h" compile="0" resource="0" file="Source/UI/Pose.h"/>
       </GROUP>
       <GROUP id="{AA264452-AA56-31E4-708F-44E441308004}" name="Utility"/>
       <GROUP id="{C34B4154-4C93-7F95-F6BD-923527A4B67A}" name="BinaryResources">

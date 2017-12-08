@@ -2,6 +2,9 @@
 
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="MyoMapper\Source\UI\ValueTreeItems">
+      <UniqueIdentifier>{049946D2-3D5B-F0E1-4ECD-F074AC9201DF}</UniqueIdentifier>
+    </Filter>
     <Filter Include="MyoMapper\Source\UI\Windows">
       <UniqueIdentifier>{48488C4F-3BEF-F77D-70A4-D76C3FCA573D}</UniqueIdentifier>
     </Filter>
@@ -250,13 +253,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\UI\Windows\OscDataSelectorWindow.cpp">
-      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    <ClCompile Include="..\..\Source\UI\ValueTreeItems\OscSettingsValueTreeItem.cpp">
+      <Filter>MyoMapper\Source\UI\ValueTreeItems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\ValueTreeItems\OscValueTreeItem.cpp">
+      <Filter>MyoMapper\Source\UI\ValueTreeItems</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\UI\Windows\AboutWindowContent.cpp">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\UI\Windows\HelpWindow.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\Orientation.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\OscDataSelectorWindow.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\Pose.cpp">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\UI\Windows\Rescale.cpp">
@@ -275,15 +290,6 @@
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\UI\MyoMapperLookAndFeel.cpp">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\UI\Orientation.cpp">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\UI\OscValueTreeItem.cpp">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\UI\Pose.cpp">
       <Filter>MyoMapper\Source\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Features\FirstOrderDifference.cpp">
@@ -1617,13 +1623,25 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\UI\Windows\OscDataSelectorWindow.h">
-      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    <ClInclude Include="..\..\Source\UI\ValueTreeItems\OscSettingsValueTreeItem.h">
+      <Filter>MyoMapper\Source\UI\ValueTreeItems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\ValueTreeItems\OscValueTreeItem.h">
+      <Filter>MyoMapper\Source\UI\ValueTreeItems</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UI\Windows\AboutWindowContent.h">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UI\Windows\HelpWindow.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\Orientation.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\OscDataSelectorWindow.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\Pose.h">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UI\Windows\Rescale.h">
@@ -1642,15 +1660,6 @@
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UI\MyoMapperLookAndFeel.h">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\UI\Orientation.h">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\UI\OscValueTreeItem.h">
-      <Filter>MyoMapper\Source\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\UI\Pose.h">
       <Filter>MyoMapper\Source\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Features\FirstOrderDifference.h">
