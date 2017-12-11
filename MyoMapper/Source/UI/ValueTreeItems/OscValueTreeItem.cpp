@@ -15,9 +15,7 @@ public:
         label.setColour (Label::textColourId, Colours::black);
         label.setJustificationType (Justification::left);
         label.setText (tree["name"], dontSendNotification);
-        String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
-        String toolTip = "OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
-        label.setTooltip(toolTip);
+        updateToolTip();
         addAndMakeVisible (label);
 
         toggle.setColour (ToggleButton::tickColourId, Colours::black);
@@ -68,10 +66,15 @@ public:
     
     void paint (Graphics& g) override
     {
+        String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
+        String toolTip = "OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
+        label.setTooltip(toolTip);
     }
-    
     void resized() override
     {
+        String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
+        String toolTip = "OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
+        label.setTooltip(toolTip);
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
@@ -80,6 +83,13 @@ public:
         toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
         toWekinatorLabel.setBounds (area.removeFromRight (getParentWidth() * 0.165));
     }
+    
+     void updateToolTip()
+     {
+         String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
+         String toolTip = "OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
+         label.setTooltip(toolTip);
+     } 
     
     void buttonClicked (Button* button) override
     {

@@ -34,6 +34,7 @@ public:
     OscDataSelectorWindow::SafePointer<WindowDrawer> myoStatusWindow;
     OscDataSelectorWindow::SafePointer<VisualsWindow> visualsWindowContent;
     OscDataSelectorWindow::SafePointer<WindowDrawer> oscDataSelectorWindow;
+    OscDataSelectorWindow::SafePointer<OscDataSelectorWindow> oscDataSelectorWindowContent;
     OscDataSelectorWindow::SafePointer<WindowDrawer> aboutWindow;
     OscDataSelectorWindow::SafePointer<WindowDrawer> helpWindow;
 private:

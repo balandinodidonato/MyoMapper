@@ -11,6 +11,7 @@ public:
     bool mightContainSubItems() override;
     void paintItem (Graphics& g, int width, int height) override;
     void itemOpennessChanged (bool isNowOpen) override;
+    void updateToolTip();
 
 private:
     ValueTree tree;

@@ -79,12 +79,14 @@ void WindowList::showOrCreateOscDataSelectorWindow()
         auto mousePosition = Desktop::getInstance().getMousePosition();
         auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
+        auto window = new OscDataSelectorWindow();
         WindowDrawer* const w = new WindowDrawer ("Myo Mapper - OSC Data",
-                                                  new OscDataSelectorWindow(),
+                                                  window,
                                                   false, false,
                                                   windowWidth * 0.4, windowHeight * 0.5,
                                                   windowWidth, windowHeight,
                                                   false);
+        oscDataSelectorWindowContent = window;
         oscDataSelectorWindow = w;
         w->addChangeListener (this);
         windows.set (2, w);

@@ -858,6 +858,14 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
         if (treeWhosePropertyHasChanged.hasType ("SelectedMyo"))
         {
             selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
+            oscDataSel = windowList->oscDataSelectorWindowContent;
+            if (oscDataSel != nullptr)
+            {
+                DBG("update tooltip call");
+               // oscValueTree->updateToolTip();
+                // here goes the recall to update the tooltip. inserting `selectedMyo` as new myo id
+            }
+            
         }
     }
     if (visuals != nullptr)
