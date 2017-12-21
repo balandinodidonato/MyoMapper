@@ -3,12 +3,15 @@
 
 VisualsWindow::VisualsWindow()
 {
+    myoSelector = new MyoSelector();
     orientation = new Orientation();
     pose = new Pose();
+    
+    addAndMakeVisible (myoSelector);
     addAndMakeVisible (orientation);
     addAndMakeVisible (pose);
 }
-
+    
 VisualsWindow::~VisualsWindow()
 {
 }
@@ -20,10 +23,18 @@ void VisualsWindow::paint (Graphics& g)
 
 void VisualsWindow::resized()
 {
-    orientation->setBounds (getLocalBounds().removeFromTop (proportionOfHeight (0.8)));
-    pose->setBounds (getLocalBounds().removeFromBottom (proportionOfHeight (0.2)));
+    auto area = getLocalBounds();
+    myoSelector->setBounds(area.removeFromTop (proportionOfHeight (0.1)));
+    orientation->setBounds (area.removeFromTop (proportionOfHeight (0.7)));
+    pose->setBounds (area.removeFromBottom (proportionOfHeight (0.2)));
 }
 
+
+MyoSelector& VisualsWindow::getMyoSelector()
+{
+    MyoSelector* const panel = myoSelector;
+    return *panel;
+}
 
 Orientation& VisualsWindow::getOrientationPanel()
 {

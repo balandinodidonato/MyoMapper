@@ -162,6 +162,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
   <ItemGroup>
     <ClCompile Include="..\..\Source\UI\ValueTreeItems\OscSettingsValueTreeItem.cpp"/>
     <ClCompile Include="..\..\Source\UI\ValueTreeItems\OscValueTreeItem.cpp"/>
+    <ClCompile Include="..\..\Source\UI\Windows\MyoSelector.cpp"/>
     <ClCompile Include="..\..\Source\UI\Windows\AboutWindowContent.cpp"/>
     <ClCompile Include="..\..\Source\UI\Windows\HelpWindow.cpp"/>
     <ClCompile Include="..\..\Source\UI\Windows\Orientation.cpp"/>
@@ -1381,6 +1382,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
   <ItemGroup>
     <ClInclude Include="..\..\Source\UI\ValueTreeItems\OscSettingsValueTreeItem.h"/>
     <ClInclude Include="..\..\Source\UI\ValueTreeItems\OscValueTreeItem.h"/>
+    <ClInclude Include="..\..\Source\UI\Windows\MyoSelector.h"/>
     <ClInclude Include="..\..\Source\UI\Windows\AboutWindowContent.h"/>
     <ClInclude Include="..\..\Source\UI\Windows\HelpWindow.h"/>
     <ClInclude Include="..\..\Source\UI\Windows\Orientation.h"/>

@@ -20,6 +20,8 @@
                 file="Source/UI/ValueTreeItems/OscValueTreeItem.h"/>
         </GROUP>
         <GROUP id="{6B75C7E0-F88E-BCEA-EC24-81B186DF0B57}" name="Windows">
+          <FILE id="uwQoaU" name="MyoSelector.cpp" compile="1" resource="0" file="Source/UI/Windows/MyoSelector.cpp"/>
+          <FILE id="OSpMaP" name="MyoSelector.h" compile="0" resource="0" file="Source/UI/Windows/MyoSelector.h"/>
           <FILE id="A2KntI" name="AboutWindowContent.cpp" compile="1" resource="0"
                 file="Source/UI/Windows/AboutWindowContent.cpp"/>
           <FILE id="RLOiPU" name="AboutWindowContent.h" compile="0" resource="0"

@@ -259,6 +259,9 @@
     <ClCompile Include="..\..\Source\UI\ValueTreeItems\OscValueTreeItem.cpp">
       <Filter>MyoMapper\Source\UI\ValueTreeItems</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\UI\Windows\MyoSelector.cpp">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\UI\Windows\AboutWindowContent.cpp">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClCompile>
@@ -1628,6 +1631,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\UI\ValueTreeItems\OscValueTreeItem.h">
       <Filter>MyoMapper\Source\UI\ValueTreeItems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\Windows\MyoSelector.h">
+      <Filter>MyoMapper\Source\UI\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UI\Windows\AboutWindowContent.h">
       <Filter>MyoMapper\Source\UI\Windows</Filter>
