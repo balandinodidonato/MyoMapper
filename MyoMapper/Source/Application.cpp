@@ -401,7 +401,7 @@ void MyoMapperApplication::showPreferencesWindow()
 
 const String oscOut             = "oscOut";
 const String name               = "name";
-const String sampleSize         = "sampleSize";
+const String bufferSize         = "bufferSize";
 const String oscToWekinator     = "oscToWekinator";
 const String portNumber         = "portNumber";
 const String toolTip            = "toolTip";
@@ -532,14 +532,14 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree orDataVel = ValueTree ("OrVelocity");
     orDataVel.setProperty (name, "Velocity", nullptr);
     orDataVel.setProperty (oscOut, false, nullptr);
-    orDataVel.setProperty (sampleSize, tempSampSize, nullptr);
+    orDataVel.setProperty (bufferSize, tempSampSize, nullptr);
     orDataVel.setProperty (oscToWekinator, false, nullptr);
     orDataVel.setProperty(toolTip, "/orientation/velocity [ f f f ]", nullptr);
 
     ValueTree orDataAccel= ValueTree ("OrAccel");
     orDataAccel.setProperty (name, "Acceleration", nullptr);
     orDataAccel.setProperty (oscOut, false, nullptr);
-    orDataAccel.setProperty (sampleSize, tempSampSize, nullptr);
+    orDataAccel.setProperty (bufferSize, tempSampSize, nullptr);
     orDataAccel.setProperty (oscToWekinator, false, nullptr);
     orDataAccel.setProperty(toolTip, "/orientation/acceleration [ f f f ]", nullptr);
     
@@ -571,7 +571,7 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree accDataRawFodMavg = ValueTree ("AccRawFodMavg");
     accDataRawFodMavg.setProperty (name, "Moving Average", nullptr);
     accDataRawFodMavg.setProperty (oscOut, false, nullptr);
-    accDataRawFodMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    accDataRawFodMavg.setProperty (bufferSize, tempSampSize, nullptr);
     accDataRawFodMavg.setProperty (oscToWekinator, false, nullptr);
     accDataRawFodMavg.setProperty(toolTip, "/acceleration/raw/fod/mavg [ f f f ]", nullptr);
 
@@ -590,7 +590,7 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree accDataScaledFodMavg = ValueTree ("AccScaledFodMavg");
     accDataScaledFodMavg.setProperty (name, "Moving Average", nullptr);
     accDataScaledFodMavg.setProperty (oscOut, false, nullptr);
-    accDataScaledFodMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    accDataScaledFodMavg.setProperty (bufferSize, tempSampSize, nullptr);
     accDataScaledFodMavg.setProperty (oscToWekinator, false, nullptr);
     accDataScaledFodMavg.setProperty(toolTip, "/acceleration/scaled/fod/mavg [ f f f ]", nullptr);
     
@@ -616,7 +616,7 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree gyroDataRawFod = ValueTree ("GyroRawFod");
     gyroDataRawFod.setProperty (name, "First Order Difference", nullptr);
     gyroDataRawFod.setProperty (oscOut, false, nullptr);
-    gyroDataRawFod.setProperty (sampleSize, tempSampSize, nullptr);
+    gyroDataRawFod.setProperty (bufferSize, tempSampSize, nullptr);
     gyroDataRawFod.setProperty (oscToWekinator, false, nullptr);
     gyroDataRawFod.setProperty(toolTip, "/gyro/raw/fod [ f f f ]", nullptr);
 
@@ -641,7 +641,7 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree gyroDataScaledFodMavg = ValueTree ("GyroScaledFodMavg");
     gyroDataScaledFodMavg.setProperty (name, "Moving Average", nullptr);
     gyroDataScaledFodMavg.setProperty (oscOut, false, nullptr);
-    gyroDataScaledFodMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    gyroDataScaledFodMavg.setProperty (bufferSize, tempSampSize, nullptr);
     gyroDataScaledFodMavg.setProperty (oscToWekinator, false, nullptr);
     gyroDataScaledFodMavg.setProperty(toolTip, "/gyro/scaled/fod/mavg [ f f f ]", nullptr);
 
@@ -668,21 +668,21 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree emgDataRawMavg = ValueTree ("EmgRawMavg");
     emgDataRawMavg.setProperty (name, "Moving Average", nullptr);
     emgDataRawMavg.setProperty (oscOut, false, nullptr);
-    emgDataRawMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataRawMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataRawMavg.setProperty (oscToWekinator, false, nullptr);
     emgDataRawMavg.setProperty(toolTip, "/emg/raw/mavg [ f f f f f f f f ]", nullptr);
 
     ValueTree emgDataRawZcr = ValueTree ("EmgRawZcr");
     emgDataRawZcr.setProperty (name, "Zero-Crossing", nullptr);
     emgDataRawZcr.setProperty (oscOut, false, nullptr);
-    emgDataRawZcr.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataRawZcr.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataRawZcr.setProperty (oscToWekinator, false, nullptr);
     emgDataRawZcr.setProperty(toolTip, "/emg/raw/zcr [ i i i i i i i i ]", nullptr);
 
     ValueTree emgDataRawZcrMavg = ValueTree ("EmgRawZcrMavg");
     emgDataRawZcrMavg.setProperty (name, "Moving Average", nullptr);
     emgDataRawZcrMavg.setProperty (oscOut, false, nullptr);
-    emgDataRawZcrMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataRawZcrMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataRawZcrMavg.setProperty (oscToWekinator, false, nullptr);
     emgDataRawZcrMavg.setProperty(toolTip, "/emg/raw/zcr/mavg [ i i i i i i i i ]", nullptr);
 
@@ -701,14 +701,14 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree emgDataScaledAbsMin = ValueTree ("EmgScaledAbsMin");
     emgDataScaledAbsMin.setProperty (name, "Minimum", nullptr);
     emgDataScaledAbsMin.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsMin.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMin.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMin.setProperty (oscToWekinator, false, nullptr);
     emgDataScaledAbsMin.setProperty(toolTip, "/emg/scaled/abs/min [ f f f f f f f f ]", nullptr);
 
     ValueTree emgDataScaledAbsMax = ValueTree ("EmgScaledAbsMax");
     emgDataScaledAbsMax.setProperty (name, "Maximum", nullptr);
     emgDataScaledAbsMax.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsMax.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMax.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMax.setProperty (oscToWekinator, false, nullptr);
     emgDataScaledAbsMax.setProperty(toolTip, "/emg/scaled/abs/max [ f f f f f f f f ]", nullptr);
 
@@ -721,14 +721,14 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree emgDataScaledAbsFodMavg = ValueTree ("EmgScaledAbsFodMavg");
     emgDataScaledAbsFodMavg.setProperty (name, "Moving Average", nullptr);
     emgDataScaledAbsFodMavg.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsFodMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsFodMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsFodMavg.setProperty (oscToWekinator, false, nullptr);
     emgDataScaledAbsFodMavg.setProperty(toolTip, "/emg/scaled/abs/fod/mavg [ f f f f f f f f ]", nullptr);
 
     ValueTree emgDataScaledAbsMavg = ValueTree ("EmgScaledAbsMavg");
     emgDataScaledAbsMavg.setProperty (name, "Moving Average", nullptr);
     emgDataScaledAbsMavg.setProperty (oscOut, true, nullptr);
-    emgDataScaledAbsMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMavg.setProperty (oscToWekinator, false, nullptr);
     emgDataScaledAbsMavg.setProperty(toolTip, "/emg/scaled/abs/mavg [ f f f f f f f f ]", nullptr);
 
@@ -741,21 +741,21 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree emgDataScaledAbsMavMavg = ValueTree ("EmgScaledAbsMavMavg");
     emgDataScaledAbsMavMavg.setProperty (name, "Moving Average", nullptr);
     emgDataScaledAbsMavMavg.setProperty (oscOut, true, nullptr);
-    emgDataScaledAbsMavMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMavMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMavMavg.setProperty (oscToWekinator, false, nullptr);
     emgDataScaledAbsMavMavg.setProperty(toolTip, "/emg/scaled/abs/mav/mavg [ f ]", nullptr);
 
     ValueTree emgDataScaledAbsMavMin = ValueTree ("EmgScaledAbsMavMin");
     emgDataScaledAbsMavMin.setProperty (name, "Minimum", nullptr);
     emgDataScaledAbsMavMin.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsMavMin.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMavMin.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMavMin.setProperty (oscToWekinator, false, nullptr);
     emgDataScaledAbsMavMin.setProperty(toolTip, "/emg/scaled/abs/mav/min [ f ]", nullptr);
     
     ValueTree emgDataScaledAbsMavMax = ValueTree ("EmgScaledAbsMavMax");
     emgDataScaledAbsMavMax.setProperty (name, "Maximum", nullptr);
     emgDataScaledAbsMavMax.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsMavMax.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMavMax.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMavMax.setProperty (oscToWekinator, false, nullptr);
     emgDataScaledAbsMavMax.setProperty(toolTip, "/emg/scaled/abs/mav/max [ f ]", nullptr);
     
@@ -768,7 +768,7 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     ValueTree emgDataScaledAbsFodMavMavg = ValueTree ("EmgScaledAbsMavFodMavg");
     emgDataScaledAbsFodMavMavg.setProperty (name, "Moving Average", nullptr);
     emgDataScaledAbsFodMavMavg.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsFodMavMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsFodMavMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsFodMavMavg.setProperty (oscToWekinator, false, nullptr);
     emgDataScaledAbsFodMavMavg.setProperty(toolTip, "/emg/scaled/abs/mav/fod/mavg [ f ]", nullptr);
 

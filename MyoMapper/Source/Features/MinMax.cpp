@@ -1,14 +1,14 @@
 #include "MinMax.h"
 
-void MinMax::setValues (float Values, int Window)
+void MinMax::setValues (float Values, int BufferSize)
 {
+    buffer.resize(BufferSize);
+    buffer[index] = Values;
+    
     min = 100000;
     max = -100000;
     
-    bufferSize = Window;
-    buffer[counter] = Values;
-    
-    for (unsigned int i = 0; i < bufferSize; ++i)
+    for (int i = 0; i < buffer.size(); ++i)
     {
         if (buffer[i] < min)
         {
@@ -20,18 +20,19 @@ void MinMax::setValues (float Values, int Window)
         }
     }
     
-    ++counter;
-    counter = counter % bufferSize;
+    ++index;
+    index = index % buffer.size();
 }
 
-void MinMax::setValues (Vector3D<float> Values, int Window)
+void MinMax::setValues (Vector3D<float> Values, int BufferSize)
 {
-    bufferSize3D = Window;
-    buffer3D[counter3D] = Values;
+    buffer3D.resize(BufferSize);
+    buffer3D[index3D] = Values;
+    
     min3D = {100000, 100000, 100000};
     max3D = {-100000, -100000, -100000};
 
-    for (unsigned int i = 0; i < bufferSize3D; ++i)
+    for (int i = 0; i < buffer3D.size(); ++i)
     {
         if (buffer3D[i].x < min3D.x)
         {
@@ -58,6 +59,9 @@ void MinMax::setValues (Vector3D<float> Values, int Window)
             max3D.z = buffer3D[i].z;
         }
     }
+    
+    index3D ++;
+    index3D = index3D % buffer3D.size();
 }
 
 

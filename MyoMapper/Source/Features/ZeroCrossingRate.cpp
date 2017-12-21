@@ -1,103 +1,92 @@
 #include "ZeroCrossingRate.h"
 
-void ZeroCrossing::setValue (float Value, int BufferSize)
+float ZeroCrossing::extract(float Value, int BufferSize)
 {
-    bufferSizeF = BufferSize;
-    bufferF[counterF] = Value;
-    zeroCrossingRateF = 0;
+    int zcr = 0;
+    bufferF.resize(BufferSize);
+    bufferF[indexF] = Value;
     
-    for (unsigned int i = 0; i < bufferSizeF; ++i)
+    for (unsigned int i = 0; i < bufferF.size(); ++i)
     {
-        if (bufferF[i] > 0 && bufferF[(i + 1) % bufferSizeF] < 0)
+        if (bufferF[i] > 0 && bufferF[(i + 1) % BufferSize] < 0)
         {
-            ++zeroCrossingRateF;
+            ++zcr;
         }
-        else if (bufferF[i] < 0 && bufferF[(i + 1) % bufferSizeF] > 0)
+        else if (bufferF[i] < 0 && bufferF[(i + 1) % BufferSize] > 0)
         {
-            ++zeroCrossingRateF;
+            ++zcr;
         }
         else continue;
     }
     
-    ++counterF;
-    counterF = counterF % bufferSizeF;
+    ++indexF;
+    indexF = indexF % bufferF.size();
+    
+    return zcr;
 }
 
-void ZeroCrossing::setValue (int Value, int BufferSize)
+int ZeroCrossing::extract(int Value, int BufferSize)
 {
-    bufferSizeI = BufferSize;
-    bufferI[counterI] = Value;
-    zeroCrossingRateI = 0;
+    int zcr = 0;
+    bufferI.resize(BufferSize);
+    bufferI[indexF] = Value;
     
-    for (unsigned int i = 0; i < bufferSizeI; ++i)
+    for (unsigned int i = 0; i < bufferI.size(); ++i)
     {
-        if (bufferI[i] > 0 && bufferI[(i + 1) % bufferSizeI] < 0)
+        if (bufferI[i] > 0 && bufferI[(i + 1) % BufferSize] < 0)
         {
-            ++zeroCrossingRateI;
+            ++zcr;
         }
-        else if (bufferI[i] < 0 && bufferI[(i + 1) % bufferSizeI] > 0)
+        else if (bufferI[i] < 0 && bufferI[(i + 1) % BufferSize] > 0)
         {
-            ++zeroCrossingRateI;
+            ++zcr;
         }
         else continue;
     }
     
-    ++counterI;
-    counterI = counterI % bufferSizeI;
+    ++indexI;
+    indexI = indexI % bufferI.size();
+    
+    return zcr;
 }
 
 void ZeroCrossing::setValue (Vector3D<float> Value, int BufferSize)
 {
-    Buffer3DSize = BufferSize;
-    buffer3D[counter3D] = Value;
-    zeroCrossingRate3D = {0,0,0};
+    buffer3D.resize(BufferSize);
+    buffer3D[index3D] = Value;
+    Vector3D<int> zcr = {0,0,0};
     
-    for (unsigned int i = 0; i < Buffer3DSize; ++i)
+    for (unsigned int i = 0; i < buffer3D.size(); ++i)
     {
-        if (buffer3D[i].x > 0 && buffer3D[(i + 1) % Buffer3DSize].x < 0)
+        if (buffer3D[i].x > 0 && buffer3D[(i + 1) % buffer3D.size()].x < 0)
         {
-            ++zeroCrossingRate3D.x;
+            ++zcr.x;
         }
-        else if (buffer3D[i].x < 0 && buffer3D[(i + 1) % Buffer3DSize].x > 0)
+        else if (buffer3D[i].x < 0 && buffer3D[(i + 1) % buffer3D.size()].x > 0)
         {
-            ++zeroCrossingRate3D.x;
-        }
-        
-        if (buffer3D[i].y > 0 && buffer3D[(i + 1) % Buffer3DSize].y < 0)
-        {
-            ++zeroCrossingRate3D.y;
-        }
-        else if (buffer3D[i].y < 0 && buffer3D[(i + 1) % Buffer3DSize].y > 0)
-        {
-            ++zeroCrossingRate3D.y;
+            ++zcr.x;
         }
         
-        if (buffer3D[i].z > 0 && buffer3D[(i + 1) % Buffer3DSize].z < 0)
+        if (buffer3D[i].y > 0 && buffer3D[(i + 1) % buffer3D.size()].y < 0)
         {
-            ++zeroCrossingRate3D.z;
+            ++zcr.y;
         }
-        else if (buffer3D[i].z < 0 && buffer3D[(i + 1) % Buffer3DSize].z > 0)
+        else if (buffer3D[i].y < 0 && buffer3D[(i + 1) % buffer3D.size()].y > 0)
         {
-            ++zeroCrossingRate3D.z;
+            ++zcr.y;
+        }
+        
+        if (buffer3D[i].z > 0 && buffer3D[(i + 1) % buffer3D.size()].z < 0)
+        {
+            ++zcr.z;
+        }
+        else if (buffer3D[i].z < 0 && buffer3D[(i + 1) % buffer3D.size()].z > 0)
+        {
+            ++zcr.z;
         }
         else continue;
     }
     
-    ++counter3D;
-    counter3D = counter3D % Buffer3DSize;
-}
-
-int ZeroCrossing::getInt()
-{
-    return zeroCrossingRateI;
-}
-
-int ZeroCrossing::getFloat()
-{
-    return zeroCrossingRateF;
-}
-
-Vector3D<int> ZeroCrossing::getVector()
-{
-    return zeroCrossingRate3D;
+    ++index3D;
+    index3D = index3D % buffer3D.size();
 }

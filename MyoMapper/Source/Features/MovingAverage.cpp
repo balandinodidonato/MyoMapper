@@ -1,68 +1,53 @@
 #include "MovingAverage.h"
 
-void MovingAverage::setValue (float Value, int NSamplesAvg)
+float MovingAverage::extract (float Value, int BufferSize)
 {
-    nSamplesAvgF = NSamplesAvg;
-    inputF[pointerF] = Value;
+    inputF.resize(BufferSize);
+    inputF[indexF] = Value;
     
-    for (int i = 0; i < nSamplesAvgF; ++i)
-    {
-        sumF = sumF + inputF[i];
-    }
+    for (int i = 0; i < inputF.size(); ++i)
+        sumF += inputF[i];
     
-    mavgF = sumF / nSamplesAvgF;
+    float mavg = sumF / inputF.size();
     
     sumF = 0;
-    ++pointerF;
-    pointerF = pointerF % nSamplesAvgF;
+    ++indexF;
+    indexF = indexF % inputF.size();
+    
+    return mavg;
 }
 
-void MovingAverage::setValue (int Value, int NSamplesAvg)
+
+int MovingAverage::extract (int Value, int BufferSize)
 {
-    nSamplesAvgI = NSamplesAvg;
-    inputI[pointerI] = Value;
+    inputI.resize(BufferSize);
+    inputI[indexI] = Value;
     
-    for (int i = 0; i < nSamplesAvgI; ++i)
-    {
-        sumI = sumI + inputI[i];
-    }
+    for (int i = 0; i < inputI.size(); ++i)
+        sumI += inputI[i];
     
-    mavgI = sumI / nSamplesAvgI;
+    float mavg = sumI / inputI.size();
     
     sumI = 0;
-    ++pointerI;
-    pointerI = pointerI % nSamplesAvgI;
+    ++indexI;
+    indexI = indexI % inputI.size();
     
+    return mavg;
 }
 
-void MovingAverage::setValue (Vector3D<float> Value3d, int NSamplesAvg3d)
+Vector3D<float> MovingAverage::extract (Vector3D<float> Value, int BufferSize)
 {
-    nSamplesAvg3D = NSamplesAvg3d;
-    input3d[pointer3d] = Value3d;
+    input3D.resize(BufferSize);
+    input3D[index3D] = Value;
     
-    for (int i = 0; i < nSamplesAvg3D; ++i)
-    {
-        sum3d = sum3d + input3d[i];
-    }
+    for (int i = 0; i < input3D.size(); ++i)
+        sum3D += input3D[i];
     
-    mavg3d = sum3d / nSamplesAvg3D;
+    Vector3D<float> mavg = sum3D / input3D.size();
     
-    sum3d = {0, 0, 0,};
-    ++pointer3d;
-    pointer3d = pointer3d % nSamplesAvg3D;
-}
-
-float MovingAverage::getFloat()
-{
-    return mavgF;
-}
-
-int MovingAverage::getInt()
-{
-    return mavgI;
-}
-
-Vector3D<float> MovingAverage::getVector3D()
-{
-    return mavg3d;
+    sum3D = {0, 0 ,0};
+    ++index3D;
+    index3D = index3D % input3D.size();
+    
+    return mavg;
 }

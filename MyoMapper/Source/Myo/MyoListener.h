@@ -66,9 +66,9 @@ private:
     
     int numberOfMyos;
     
-    OrScaling yawScaler;
-    OrScaling pitchScaler;
-    OrScaling rollScaler;
+    OrScaling yawScaled;
+    OrScaling pitchScaled;
+    OrScaling rollScaled;
     FirstOrderDifference orFod;
     FirstOrderDifference orSod;
 

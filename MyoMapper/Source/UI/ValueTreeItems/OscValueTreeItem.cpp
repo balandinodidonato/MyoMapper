@@ -36,24 +36,24 @@ public:
         toWekinatorLabel.setColour (Label::textColourId, Colours::black);
         toWekinatorLabel.setText ("To Wekinator", dontSendNotification);
         toggleWek.setTooltip("Send OSC data to Wekinator through port 6448.");
-        toWekinatorLabel.attachToComponent (&sampleSizeSlider, true);
+        toWekinatorLabel.attachToComponent (&bufferSizeSlider, true);
         addAndMakeVisible (toWekinatorLabel);
 
-        if (tree.hasProperty ("sampleSize"))
+        if (tree.hasProperty ("bufferSize"))
         {
-            sampleSizeSlider.setRange (1, 100, 1);
-            sampleSizeSlider.setSliderStyle (Slider::SliderStyle::IncDecButtons);
-            sampleSizeSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
-            sampleSizeSlider.setValue (tree.getProperty ("sampleSize", 0));
-            sampleSizeSlider.setTooltip("Set feature buffer size.");
-            sampleSizeSlider.addListener (this);
-            addAndMakeVisible (sampleSizeSlider);
+            bufferSizeSlider.setRange (1, 100, 1);
+            bufferSizeSlider.setSliderStyle (Slider::SliderStyle::IncDecButtons);
+            bufferSizeSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
+            bufferSizeSlider.setValue (tree.getProperty ("bufferSize", 0));
+            bufferSizeSlider.setTooltip("Set feature buffer size.");
+            bufferSizeSlider.addListener (this);
+            addAndMakeVisible (bufferSizeSlider);
             
             sliderLabel.setLookAndFeel (&laf);
             sliderLabel.setColour (Label::textColourId, Colours::black);
             sliderLabel.setText ("Buffer Size", dontSendNotification);
-            sampleSizeSlider.setTooltip("Set feature buffer size.");
-            sliderLabel.attachToComponent (&sampleSizeSlider, true);
+            bufferSizeSlider.setTooltip("Set feature buffer size.");
+            sliderLabel.attachToComponent (&bufferSizeSlider, true);
             addAndMakeVisible (sliderLabel);
         }
     }
@@ -78,7 +78,7 @@ public:
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
-        sampleSizeSlider.setBounds (area.removeFromRight (getParentWidth() * 0.18));
+        bufferSizeSlider.setBounds (area.removeFromRight (getParentWidth() * 0.18));
         sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.14));
         toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
         toWekinatorLabel.setBounds (area.removeFromRight (getParentWidth() * 0.165));
@@ -105,9 +105,9 @@ public:
     
     void sliderValueChanged (Slider* slider) override
     {
-        if(slider == &sampleSizeSlider)
+        if(slider == &bufferSizeSlider)
         {
-            tree.setProperty ("sampleSize", slider->getValue(), 0);
+            tree.setProperty ("bufferSize", slider->getValue(), 0);
         }
     }
     
@@ -119,7 +119,7 @@ private:
     ToggleButton toggleWek;
 
     Label label;
-    Slider sampleSizeSlider;
+    Slider bufferSizeSlider;
     Label sliderLabel;
     Label toWekinatorLabel;
     
