@@ -1,6 +1,5 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "VisualsWindow.h"
-#include "../../Application.h"
 
 VisualsWindow::VisualsWindow()
 {
