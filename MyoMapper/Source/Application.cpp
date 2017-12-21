@@ -1,7 +1,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Application.h"
 
-struct MainComponent::MainMenuBarModel   : public MenuBarModel
+struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
 {
     MainMenuBarModel()
     {
@@ -27,17 +27,18 @@ struct MainComponent::MainMenuBarModel   : public MenuBarModel
 };
 
 //==============================================================================
-int MainComponent::selectedMyo;
-int MainComponent::sendPort;
-int MainComponent::receivePort;
-int MainComponent::wekinatorPort;
-String MainComponent::hostAddress;
+int MyoMapperApplication::numberOfMyos;
+int MyoMapperApplication::selectedMyo;
+int MyoMapperApplication::sendPort;
+int MyoMapperApplication::receivePort;
+int MyoMapperApplication::wekinatorPort;
+String MyoMapperApplication::hostAddress;
 
-MainComponent::MainComponent()
+MyoMapperApplication::MyoMapperApplication()
 {
 }
 
-void MainComponent::initialise (const String& commandLine)
+void MyoMapperApplication::initialise (const String& commandLine)
 {
     DBG (getCommandLineParameters());
     auto oscBufferFillHz = 40;
@@ -75,14 +76,14 @@ void MainComponent::initialise (const String& commandLine)
 
 }
 
-void MainComponent::handleAsyncUpdate()
+void MyoMapperApplication::handleAsyncUpdate()
 {
     #if JUCE_MAC
     MenuBarModel::setMacMainMenu (menuModel);
     #endif
 }
 
-void MainComponent::shutdown()
+void MyoMapperApplication::shutdown()
 {
     stopTimer();
     myoManager.disconnect();
@@ -98,22 +99,18 @@ void MainComponent::shutdown()
     LookAndFeel::setDefaultLookAndFeel (nullptr);
 }
 
-void MainComponent::systemRequestedQuit()
+void MyoMapperApplication::systemRequestedQuit()
 {
         JUCEApplicationBase::quit();
 }
 
 //==============================================================================
-void MainComponent::timerCallback()
+void MyoMapperApplication::timerCallback()
 {
     bool getMyoDataSuccessful = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
     
     if (!getMyoDataSuccessful)
-    {
-        return;
-    }
-    if (selectedMyo < 1 || selectedMyo > 4)
     {
         return;
     }
@@ -124,8 +121,11 @@ void MainComponent::timerCallback()
     
     visuals = windowList->visualsWindowContent;
     
-    osc->bufferOsc (myoData[selectedMyo]);
-    osc->sendOsc();
+    for (int i = 1; i<=numberOfMyos; i++)
+    {
+        osc->bufferOsc (myoData[i]);
+        osc->sendOsc();
+    }
     
     if (visuals != nullptr)
     {
@@ -134,7 +134,7 @@ void MainComponent::timerCallback()
     }
 }
 
-void MainComponent::changeListenerCallback (ChangeBroadcaster *source)
+void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 {
     if ((selectedMyo == 0 || selectedMyo > 20) && SettingsWindow::startButtonClicked)
     {
@@ -169,27 +169,27 @@ void MainComponent::changeListenerCallback (ChangeBroadcaster *source)
 
 
 //==============================================================================
-MainComponent& MainComponent::getApp()
+MyoMapperApplication& MyoMapperApplication::getApp()
 {
-    MainComponent* const app = dynamic_cast<MainComponent*> (JUCEApplication::getInstance());
+    MyoMapperApplication* const app = dynamic_cast<MyoMapperApplication*> (JUCEApplication::getInstance());
     jassert (app != nullptr);
     return *app;
 }
 
-ApplicationCommandManager& MainComponent::getCommandManager()
+ApplicationCommandManager& MyoMapperApplication::getCommandManager()
 {
-    ApplicationCommandManager* const comMan = MainComponent::getApp().commandManager;
+    ApplicationCommandManager* const comMan = MyoMapperApplication::getApp().commandManager;
     jassert (comMan != nullptr);
     return *comMan;
 }
 
 //==============================================================================
-MenuBarModel* MainComponent::getMenuModel()
+MenuBarModel* MyoMapperApplication::getMenuModel()
 {
     return menuModel.get();
 }
 
-StringArray MainComponent::getMenuBarNames()
+StringArray MyoMapperApplication::getMenuBarNames()
 {
     StringArray names;
     names.add ("Window");
@@ -197,7 +197,7 @@ StringArray MainComponent::getMenuBarNames()
     return StringArray (names);
 }
 
-void MainComponent::createMenu (PopupMenu& menu, const String& menuName)
+void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
 {
     if (menuName == "Window")
         createWindowMenu(menu);
@@ -207,7 +207,7 @@ void MainComponent::createMenu (PopupMenu& menu, const String& menuName)
         jassertfalse;
 }
 
-void MainComponent::createWindowMenu (PopupMenu& menu)
+void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showVisualsWindow);
@@ -217,19 +217,19 @@ void MainComponent::createWindowMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::closeAllWindows);
 }
 
-void MainComponent::createHelpMenu (PopupMenu& menu)
+void MyoMapperApplication::createHelpMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showDocumentationWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showAboutWindow);
 }
 
-void MainComponent::menuCommand (int menuItemID)
+void MyoMapperApplication::menuCommand (int menuItemID)
 {
     // Used for sub menus and file loaders
 }
 
 //==============================================================================
-void MainComponent::getAllCommands (Array<CommandID> &commands)
+void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
 {
     // Return a list of commands the manager's target can perform
     const CommandID id[] = {
@@ -244,7 +244,7 @@ void MainComponent::getAllCommands (Array<CommandID> &commands)
     commands.addArray (id, numElementsInArray (id));
 }
 
-void MainComponent::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
+void MyoMapperApplication::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
 {
     switch (commandID)
     {
@@ -298,7 +298,7 @@ void MainComponent::getCommandInfo (const CommandID commandID, ApplicationComman
     }
 }
 
-bool MainComponent::perform (const InvocationInfo& info)
+bool MyoMapperApplication::perform (const InvocationInfo& info)
 {
     switch (info.commandID)
     {
@@ -316,27 +316,27 @@ bool MainComponent::perform (const InvocationInfo& info)
     return true;
 }
 
-void MainComponent::quitMapper()
+void MyoMapperApplication::quitMapper()
 {
-    MainComponent::shutdown();
+    MyoMapperApplication::shutdown();
 }
 
-void MainComponent::showSettingsWindow()
+void MyoMapperApplication::showSettingsWindow()
 {
     windowList->showOrCreateOscSettingsWindow();
 }
 
-void MainComponent::showVisualsWindow()
+void MyoMapperApplication::showVisualsWindow()
 {
     windowList->showOrCreateMyoStatusWindow();
 }
 
-void MainComponent::showDataWindow()
+void MyoMapperApplication::showDataWindow()
 {
     windowList->showOrCreateOscDataSelectorWindow();
 }
 
-void MainComponent::closeWindow()
+void MyoMapperApplication::closeWindow()
 {
     for (int i = 0; i < windowList->windows.size(); ++i)
     {
@@ -359,7 +359,7 @@ void MainComponent::closeWindow()
     }
 }
 
-void MainComponent::closeAllWindows()
+void MyoMapperApplication::closeAllWindows()
 {
     for (int i = 0; i < windowList->windows.size(); ++i)
     {
@@ -382,17 +382,17 @@ void MainComponent::closeAllWindows()
     return;
 }
 
-void MainComponent::showAboutWindow()
+void MyoMapperApplication::showAboutWindow()
 {
     windowList->showOrCreateAboutWindow();
 }
 
-void MainComponent::showDocumentationWindow()
+void MyoMapperApplication::showDocumentationWindow()
 {
     windowList->showOrCreateHelpWindow();
 }
 
-void MainComponent::showPreferencesWindow()
+void MyoMapperApplication::showPreferencesWindow()
 {
     // Show the preferences window (moves on mac vs windows/ linux)
 }
@@ -408,7 +408,7 @@ const String toolTip            = "toolTip";
 const int tempSampSize          = 10;
 
 //==============================================================================
-void MainComponent::initialiseRootTree()
+void MyoMapperApplication::initialiseRootTree()
 {
     rootTree = ValueTree ("MyoMapper");
     if (!oscSettingsTree.hasType ("OscSettingsTree"))
@@ -421,7 +421,8 @@ void MainComponent::initialiseRootTree()
     }
     if (!oscStreamingTree.hasType ("OscStreamingTree"))
     {
-        selectedMyo = getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
+        selectedMyo = getOscSettingsTree().getChildWithName("Myos").getProperty ("myoId");
+        numberOfMyos = getOscSettingsTree().getChildWithName("Myos").getProperty ("nMyos");
         initialiseOscStreamingTree();
     }
     rootTree.addChild (oscSettingsTree, -1, nullptr);
@@ -430,14 +431,15 @@ void MainComponent::initialiseRootTree()
     rootTree.addListener (this);
 }
 
-void MainComponent::initialiseOscSettingsTree()
+void MyoMapperApplication::initialiseOscSettingsTree()
 {
     oscSettingsTree = ValueTree ("OscSettingsTree");
     
-    ValueTree selectedMyoTree = ValueTree ("SelectedMyo");
-    selectedMyoTree.setProperty (name, "Selected Myo", nullptr);
+    ValueTree selectedMyoTree = ValueTree ("Myos");
+    selectedMyoTree.setProperty (name, "Myos", nullptr);
     selectedMyoTree.setProperty ("myoId", "1", nullptr);
-    
+    selectedMyoTree.setProperty ("nMyos", "1", nullptr);
+
     ValueTree hostAddressTree = ValueTree ("HostAddress");
     hostAddressTree.setProperty (name, "Host Address", nullptr);
     hostAddressTree.setProperty ("hostAddress", "127.0.0.1", nullptr);
@@ -461,7 +463,7 @@ void MainComponent::initialiseOscSettingsTree()
     oscSettingsTree.addChild (wekinatorPortTree, -1, nullptr);
 }
 
-void MainComponent::initialiseMyoDataScalingTree()
+void MyoMapperApplication::initialiseMyoDataScalingTree()
 {
     myoDataScalingTree = ValueTree ("MyoDataScalingTree");
     
@@ -500,7 +502,7 @@ void MainComponent::initialiseMyoDataScalingTree()
     myoDataScalingTree.addChild (rollScalingTree, -1, nullptr);
 }
 
-void MainComponent::initialiseOscStreamingTree()
+void MyoMapperApplication::initialiseOscStreamingTree()
 {
     oscStreamingTree = ValueTree ("OscStreamingTree");
     
@@ -630,7 +632,7 @@ void MainComponent::initialiseOscStreamingTree()
     gyroDataScaledAbs.setProperty (name, "Absolute", nullptr);
     gyroDataScaledAbs.setProperty (oscOut, false, nullptr);
     gyroDataScaledAbs.setProperty (oscToWekinator, false, nullptr);
-    gyroDataScaledAbs.setProperty(toolTip, "/gyro/scaled/abs [ f f f ]", nullptr);
+    gyroDataRawFod.setProperty(toolTip, "/gyro/scaled/abs [ f f f ]", nullptr);
 
     ValueTree gyroDataScaledFod = ValueTree ("GyroScaledFod");
     gyroDataScaledFod.setProperty (name, "First Order Difference", nullptr);
@@ -776,7 +778,7 @@ void MainComponent::initialiseOscStreamingTree()
     handPoseData.setProperty (name, "Hand Pose", nullptr);
     handPoseData.setProperty (oscOut, true, nullptr);
     handPoseData.setProperty (oscToWekinator, false, nullptr);
-    handPoseData.setProperty(toolTip, "/pose [ string ]", nullptr);
+    emgDataScaledAbsFodMavMavg.setProperty(toolTip, "/pose [ string ]", nullptr);
     
     emgData.addChild (emgDataRaw, -1, nullptr);
     emgDataRaw.addChild (emgDataRawMavg, -1, nullptr);
@@ -804,28 +806,28 @@ void MainComponent::initialiseOscStreamingTree()
     oscStreamingTree.addChild (emgData, -1, nullptr);
 }
 
-ValueTree MainComponent::getRootTree()
+ValueTree MyoMapperApplication::getRootTree()
 {
     ValueTree const vt = rootTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MainComponent::getOscSettingsTree()
+ValueTree MyoMapperApplication::getOscSettingsTree()
 {
     ValueTree const vt = oscSettingsTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MainComponent::getMyoDataScalingTree()
+ValueTree MyoMapperApplication::getMyoDataScalingTree()
 {
     ValueTree const vt = myoDataScalingTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MainComponent::getOscStreamingTree()
+ValueTree MyoMapperApplication::getOscStreamingTree()
 {
     ValueTree const vt = oscStreamingTree;
     jassert (vt.isValid());
@@ -833,7 +835,7 @@ ValueTree MainComponent::getOscStreamingTree()
 }
 
 //==============================================================================
-void MainComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
+void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
     if (!isInitialising())
     {
@@ -841,13 +843,13 @@ void MainComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasCha
         {
             osc->disconnectSender();
             sendPort = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (MainComponent::hostAddress, MainComponent::sendPort, MainComponent::wekinatorPort);
+            osc->connectSender (MyoMapperApplication::hostAddress, MyoMapperApplication::sendPort, MyoMapperApplication::wekinatorPort);
         }
         if (treeWhosePropertyHasChanged.hasType ("HostAddress"))
         {
             osc->disconnectSender();
             hostAddress = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (MainComponent::hostAddress, MainComponent::sendPort, MainComponent::wekinatorPort);
+            osc->connectSender (MyoMapperApplication::hostAddress, MyoMapperApplication::sendPort, MyoMapperApplication::wekinatorPort);
         }
         if (treeWhosePropertyHasChanged.hasType ("ReceivePort"))
         {
@@ -855,7 +857,7 @@ void MainComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasCha
             receivePort = treeWhosePropertyHasChanged.getProperty (property);
             osc->connectReceiver (receivePort);
         }
-        if (treeWhosePropertyHasChanged.hasType ("SelectedMyo"))
+        if (treeWhosePropertyHasChanged.hasType ("Myos"))
         {
             selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
             oscDataSel = windowList->oscDataSelectorWindowContent;
@@ -932,22 +934,22 @@ void MainComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasCha
     
 }
 
-void MainComponent::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
+void MyoMapperApplication::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
 {
     
 }
 
-void MainComponent::valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved)
+void MyoMapperApplication::valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved)
 {
     
 }
 
-void MainComponent::valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex)
+void MyoMapperApplication::valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex)
 {
     
 }
 
-void MainComponent::valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged)
+void MyoMapperApplication::valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged)
 {
     
 }

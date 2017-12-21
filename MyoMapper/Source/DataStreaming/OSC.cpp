@@ -7,7 +7,7 @@ OSC::OSC()
 :   myoDataIn {"Yaw", "Pitch", "Roll", "Mav"},
     action {"vibrate", "calibrate", "reverse", "inMin", "inMax", "outMin", "outMax"}
 {
-    receivePort = MainComponent::receivePort;
+    receivePort = MyoMapperApplication::receivePort;
     
     for (int i = 1; i < 5; ++i) // id
     {
@@ -51,13 +51,13 @@ void OSC::disconnectSender()
 
 void OSC::bufferOsc (MyoData &myoData)
 {
-    String id = String (MainComponent::selectedMyo);
+    String id = String (MyoMapperApplication::selectedMyo);
  
     orScaled.x = (myoData.orientationRaw.x + PI) / (2 * PI); // for passing variable to orientationScaled data to sender
     orScaled.y = (myoData.orientationRaw.y + PI) / (2 * PI); // for passing variable to orientationScaled data to sender
     orScaled.z = (myoData.orientationRaw.z + PI) / (2 * PI); // for passing variable to orientationScaled data to sender
     
-    auto tree = MainComponent::getApp().getOscStreamingTree();
+    auto tree = MyoMapperApplication::getApp().getOscStreamingTree();
     if (tree.getChildWithName("OrData").getChildWithName("OrQuaternion").getPropertyAsValue ("oscOut", 0) == true)
     {
         OSCMessage oscOut = OSCMessage ("/myo" + id + "/orientation/quaternion");
@@ -666,7 +666,7 @@ bool OSC::connectReceiver (int port)
     {
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "OSC Receiver",
-                                          "Myo Mapper could not connect to UDP port " + (String)MainComponent::receivePort + ".",
+                                          "Myo Mapper could not connect to UDP port " + (String)MyoMapperApplication::receivePort + ".",
                                           "OK");
         return false;
     }
@@ -680,8 +680,8 @@ void OSC::disconnectReceiver()
 
 void OSC::oscMessageReceived (const OSCMessage& oscIn)
 {
-    auto Id = MainComponent::getApp().getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId").toString();
-    auto tree = MainComponent::getApp().getOscSettingsTree().getChildWithName("DataScaling");
+    auto Id = MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("Myos").getProperty ("myoId").toString();
+    auto tree = MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling");
     
     // ---------------- Vibrate
     
@@ -704,20 +704,20 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
                 {
                     if(myoDataIn[i] == "Yaw")
                     {
-                        MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.x, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.x, 0);
                         
-                        MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                     }
                     if(myoDataIn[i] == "Pitch")
                     {
-                        MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.y, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.y, 0);
                         
-                        MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                     }
                     if(myoDataIn[i] == "Roll")
                     {
-                        MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.z, 0);
-                        MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("offset", orScaled.z, 0);
+                        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("test", 1, 0);
                     }
                 }
             }
@@ -730,23 +730,23 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
             {
                 if (oscIn[0].getInt32() == 1)
                 {
-                    MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", true, 0);
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", true, 0);
                 }
                 else if (oscIn[0].getInt32() == 0)
                 {
-                    MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", false, 0);
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", false, 0);
                 }
             }
             else if (oscIn.size() == 1 && oscIn[0].isFloat32())
             {
                 if (oscIn[0].getFloat32() == 1)
                 {
-                    MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", true, 0);
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", true, 0);
                 }
                 else if (oscIn[0].getFloat32() == 0)
                 {
-                    MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", false, 0);
-                    MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").getProperty("inMax");
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty("reverse", false, 0);
+                    MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").getProperty("inMax");
                 }
             }
             map[i][4] = true;
@@ -759,7 +759,7 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
             {
                 if (oscIn.size() == 1)
                 {
-                    auto tree = MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling");
+                    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling");
                     float inMax = tree.getProperty("inMax");
                     float inMin = tree.getProperty("inMin");
                     
@@ -778,7 +778,7 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
                                                               "Input maximum cannot be equal or less than input minimum");
                         }
                         else
-                            MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], oscIn[0].getInt32(), 0);
+                            MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], oscIn[0].getInt32(), 0);
                         
                     }
                     else if (oscIn[0].isFloat32())
@@ -796,7 +796,7 @@ void OSC::oscMessageReceived (const OSCMessage& oscIn)
                                                               "Input maximum cannot be equal or less than input minimum");
                         }
                         else
-                            MainComponent::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], oscIn[0].getFloat32(), 0);
+                            MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(myoDataIn[i]+"Scaling").setProperty(action[y], oscIn[0].getFloat32(), 0);
                     }
                 }
             }
