@@ -63,7 +63,6 @@ hostAddress("127.0.0.1")
     numberOfConnecteMyosLabel.setJustificationType (Justification::left);
     String connectedMyos = MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("Myos").getProperty("nMyos").toString();
     numberOfConnecteMyosLabel.setText ("Number of connected Myos: "+connectedMyos, dontSendNotification);
-    numberOfConnecteMyosLabel.setTooltip("Number of connected Myos");
     addAndMakeVisible (numberOfConnecteMyosLabel);
     
     featuresButton.setButtonText ("FEATURES");
@@ -93,6 +92,7 @@ void SettingsWindow::paint (Graphics& g)
     area.removeFromTop (windowSize.proportionOfHeight(0.078));
     auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429)).reduced (windowSize.proportionOfWidth (0.078), 0);
     auto oscHostRegion = area.removeFromTop(windowSize.proportionOfHeight (0.1)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.13)).reduced (windowSize.proportionOfWidth (0.078), 0);
 
     auto oscRectangleWidth = windowSize.proportionOfWidth (0.375);
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
@@ -108,6 +108,11 @@ void SettingsWindow::paint (Graphics& g)
     Path oscReceiveRectangle;
     oscReceiveRectangle.addRoundedRectangle (oscReceiveRegion, rectangleCorner);
     g.strokePath (oscReceiveRectangle, PathStrokeType (lineThickness));
+    
+    Path connectedMyosRectangle;
+    connectedMyosRectangle.addRoundedRectangle (myoSelectorRegion, rectangleCorner);
+    g.strokePath (connectedMyosRectangle, PathStrokeType (lineThickness));
+
 }
 
 void SettingsWindow::resized()
@@ -122,9 +127,9 @@ void SettingsWindow::resized()
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
     area.removeFromTop (windowSize.proportionOfHeight (0.07));
-    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
-    .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
-    area.removeFromTop (windowSize.proportionOfHeight (0.07));
+    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.2)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    
+    area.removeFromTop (windowSize.proportionOfHeight (0.03));
     auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.14))
     .reduced (windowSizeWidth.proportionOfWidth (0.0315), 0);
     
@@ -156,7 +161,7 @@ void SettingsWindow::resized()
     oscReceiverSlider.setBounds (ReceivePortRegion.reduced (oscReceiveRegion.proportionOfWidth (0.02), ReceivePortRegion.proportionOfHeight (0.05)));
     
     // Set myo selector region bounds
-    numberOfConnecteMyosLabel.setBounds (myoSelectorRegion);
+    numberOfConnecteMyosLabel.setBounds (myoSelectorRegion.reduced (windowSize.proportionOfWidth (0.02)));
     buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.2));
     featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.222)));
     buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.2));
