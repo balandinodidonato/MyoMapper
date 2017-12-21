@@ -15,7 +15,6 @@ public:
         label.setColour (Label::textColourId, Colours::black);
         label.setJustificationType (Justification::left);
         label.setText (tree["name"], dontSendNotification);
-        updateToolTip();
         addAndMakeVisible (label);
 
         toggle.setColour (ToggleButton::tickColourId, Colours::black);
@@ -28,14 +27,12 @@ public:
         toggleWek.setColour (ToggleButton::tickColourId, Colours::black);
         toggleWek.setColour (ToggleButton::tickDisabledColourId, Colours::black);
         toggleWek.setToggleState (tree.getProperty ("oscToWekinator", 0), dontSendNotification);
-        toggleWek.setTooltip("Send OSC data to Wekinator through port 6448.");
         toggleWek.addListener (this);
         addAndMakeVisible (toggleWek);
 
         toWekinatorLabel.setLookAndFeel (&laf);
         toWekinatorLabel.setColour (Label::textColourId, Colours::black);
         toWekinatorLabel.setText ("To Wekinator", dontSendNotification);
-        toggleWek.setTooltip("Send OSC data to Wekinator through port 6448.");
         toWekinatorLabel.attachToComponent (&bufferSizeSlider, true);
         addAndMakeVisible (toWekinatorLabel);
 
@@ -45,41 +42,37 @@ public:
             bufferSizeSlider.setSliderStyle (Slider::SliderStyle::IncDecButtons);
             bufferSizeSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
             bufferSizeSlider.setValue (tree.getProperty ("bufferSize", 0));
-            bufferSizeSlider.setTooltip("Set feature buffer size.");
+            bufferSizeSlider.setTooltip("Set feature's buffer size.");
             bufferSizeSlider.addListener (this);
             addAndMakeVisible (bufferSizeSlider);
             
-            sliderLabel.setLookAndFeel (&laf);
-            sliderLabel.setColour (Label::textColourId, Colours::black);
-            sliderLabel.setText ("Buffer Size", dontSendNotification);
-            bufferSizeSlider.setTooltip("Set feature buffer size.");
-            sliderLabel.attachToComponent (&bufferSizeSlider, true);
-            addAndMakeVisible (sliderLabel);
+            bufferSizeSliderLabel.setLookAndFeel (&laf);
+            bufferSizeSliderLabel.setColour (Label::textColourId, Colours::black);
+            bufferSizeSliderLabel.setText ("Buffer Size", dontSendNotification);
+            bufferSizeSliderLabel.setTooltip("Set feature's buffer size.");
+            bufferSizeSliderLabel.attachToComponent (&bufferSizeSlider, true);
+            addAndMakeVisible (bufferSizeSliderLabel);
         }
     }
     ~TreeItemComponent()
     {
         label.setLookAndFeel (nullptr);
-        sliderLabel.setLookAndFeel (nullptr);
+        bufferSizeSliderLabel.setLookAndFeel (nullptr);
         toWekinatorLabel.setLookAndFeel(nullptr);
     }
     
     void paint (Graphics& g) override
     {
-        String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
-        String toolTip = "OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
-        label.setTooltip(toolTip);
+        updateToolTip();
     }
     void resized() override
     {
-        String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
-        String toolTip = "OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
-        label.setTooltip(toolTip);
+        updateToolTip();
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
         bufferSizeSlider.setBounds (area.removeFromRight (getParentWidth() * 0.18));
-        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.14));
+        bufferSizeSliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.14));
         toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
         toWekinatorLabel.setBounds (area.removeFromRight (getParentWidth() * 0.165));
     }
@@ -87,8 +80,13 @@ public:
      void updateToolTip()
      {
          String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
-         String toolTip = "OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
-         label.setTooltip(toolTip);
+         String featureLabelToolTip = "OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
+         label.setTooltip(featureLabelToolTip);
+         
+         String wekinatorToolTip = "Adds values to OSC mesagge /myo"+String(MyoMapperApplication::selectedMyo)+" to Wekinator via local host, port 6448.";
+         toggleWek.setTooltip(wekinatorToolTip);
+         toWekinatorLabel.setTooltip(wekinatorToolTip);
+
      } 
     
     void buttonClicked (Button* button) override
@@ -120,8 +118,9 @@ private:
 
     Label label;
     Slider bufferSizeSlider;
-    Label sliderLabel;
+    Label bufferSizeSliderLabel;
     Label toWekinatorLabel;
+    String wekinatorToolTip;
     
     class TreeLookAndFeel    : public MyoMapperLookAndFeel
     {
