@@ -35,11 +35,11 @@ private:
     
     Label oscSendLabel;
     Label oscSendPortLabel;
-    Slider oscSendSetter;
+    Slider oscSenderSlider;
     
     Label oscReceiveLabel;
     Label oscReceivePortLabel;
-    Slider oscReceiveSetter;
+    Slider oscReceiverSlider;
     
     Label setHostAddressLabel;
     Label hostAddressTitleLabel;
