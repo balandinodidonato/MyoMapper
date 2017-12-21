@@ -1,5 +1,5 @@
 #pragma once
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 
 class OscValueTreeItem  : public TreeViewItem,
                           private ValueTree::Listener
