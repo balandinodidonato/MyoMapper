@@ -12,7 +12,8 @@ Rescale::Rescale()
     addAndMakeVisible (titleLabel);
     
     addAndMakeVisible (calibrate);
-    calibrate.setButtonText ("Calibrate");
+    calibrate.setButtonText ("Set Origin");
+    calibrate.setTooltip("Set "+labelWidget+"'s origin");
     calibrate.addListener (this);
     
     addAndMakeVisible (mmSlider);
@@ -36,11 +37,13 @@ Rescale::Rescale()
     outMinSlider.addListener (this);
     
     outMaxSliderLabel.setText ("Out Max", dontSendNotification);
+
     outMaxSlider.setRange (-1.0, 2.0, 0.001);
     addAndMakeVisible (outMaxSliderLabel);
     outMaxSlider.addListener (this);
 
     inMinSliderLabel.setText ("In Min", dontSendNotification);
+
     inMinSlider.setRange (0, 1, 0.001);
     addAndMakeVisible (inMinSliderLabel);
     inMinSlider.addListener (this);
@@ -221,6 +224,13 @@ void Rescale::setLabelTitle (juce::String LabelWidget)
 {
     labelWidget = LabelWidget;
     mmSliderLabel.setText (labelWidget, dontSendNotification);
+    
+    calibrate.setTooltip("Set "+labelWidget+"'s value to 0.5.");
+    reverse.setTooltip("Reverse "+labelWidget+"'s value");
+    outMinSliderLabel.setTooltip("Set lower limit of the "+labelWidget+" value in output.");
+    outMaxSliderLabel.setTooltip("Set higher limit of the "+labelWidget+" value in output.");
+    inMinSliderLabel.setTooltip("Set lower limit of the "+labelWidget+" value in input.");
+    inMaxSliderLabel.setTooltip("Set higher limit of the "+labelWidget+" value in input.");
 }
 
 void Rescale::setMin (float Value)
