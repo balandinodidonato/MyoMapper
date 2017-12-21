@@ -45,8 +45,7 @@ private:
     Label hostAddressTitleLabel;
     String hostAddress;
     
-    Label myoSelectorLabel;
-    Slider myoSelectorSetter;
+    Label numberOfConnecteMyosLabel;
     
     TextButton saveButton;
     TextButton openButton;

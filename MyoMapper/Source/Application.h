@@ -71,6 +71,7 @@ public:
     //==========================================================================
     MyoManager myoManager;
     static int selectedMyo;
+    static int numberOfMyos;
     static int sendPort;
     static int wekinatorPort;
     static int receivePort;

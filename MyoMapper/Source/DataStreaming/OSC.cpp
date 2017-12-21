@@ -680,7 +680,7 @@ void OSC::disconnectReceiver()
 
 void OSC::oscMessageReceived (const OSCMessage& oscIn)
 {
-    auto Id = MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId").toString();
+    auto Id = MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("Myos").getProperty ("myoId").toString();
     auto tree = MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("DataScaling");
     
     // ---------------- Vibrate

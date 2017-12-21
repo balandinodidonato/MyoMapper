@@ -35,6 +35,7 @@ void MyoSelector::resized()
     auto area = getLocalBounds();
     selectMyoLabel.setBounds(area.removeFromLeft(getWidth()*0.6).reduced(getWidth()*0.018));
     selectMyoSlider.setBounds(area.removeFromLeft(getWidth()*0.3).reduced(getWidth()*0.023));
+    selectMyoSlider.setRange(1, MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("Myos").getProperty ("nMyos"));
 }
 
 void MyoSelector::sliderValueChanged (Slider* slider)
@@ -42,6 +43,6 @@ void MyoSelector::sliderValueChanged (Slider* slider)
     if (slider == &selectMyoSlider)
     {
         int value = selectMyoSlider.getValue();
-        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
+        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName ("Myos").setProperty ("myoId", value, 0);
     }
 }

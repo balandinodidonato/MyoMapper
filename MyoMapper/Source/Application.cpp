@@ -27,6 +27,7 @@ struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
 };
 
 //==============================================================================
+int MyoMapperApplication::numberOfMyos;
 int MyoMapperApplication::selectedMyo;
 int MyoMapperApplication::sendPort;
 int MyoMapperApplication::receivePort;
@@ -113,10 +114,6 @@ void MyoMapperApplication::timerCallback()
     {
         return;
     }
-    if (selectedMyo < 1 || selectedMyo > 4)
-    {
-        return;
-    }
     if (selectedMyo >= myoData.size())
     {
         return;
@@ -124,8 +121,11 @@ void MyoMapperApplication::timerCallback()
     
     visuals = windowList->visualsWindowContent;
     
-    osc->bufferOsc (myoData[selectedMyo]);
-    osc->sendOsc();
+    for (int i = 1; i<=numberOfMyos; i++)
+    {
+        osc->bufferOsc (myoData[i]);
+        osc->sendOsc();
+    }
     
     if (visuals != nullptr)
     {
@@ -421,7 +421,8 @@ void MyoMapperApplication::initialiseRootTree()
     }
     if (!oscStreamingTree.hasType ("OscStreamingTree"))
     {
-        selectedMyo = getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
+        selectedMyo = getOscSettingsTree().getChildWithName("Myos").getProperty ("myoId");
+        numberOfMyos = getOscSettingsTree().getChildWithName("Myos").getProperty ("nMyos");
         initialiseOscStreamingTree();
     }
     rootTree.addChild (oscSettingsTree, -1, nullptr);
@@ -434,10 +435,11 @@ void MyoMapperApplication::initialiseOscSettingsTree()
 {
     oscSettingsTree = ValueTree ("OscSettingsTree");
     
-    ValueTree selectedMyoTree = ValueTree ("SelectedMyo");
-    selectedMyoTree.setProperty (name, "Selected Myo", nullptr);
+    ValueTree selectedMyoTree = ValueTree ("Myos");
+    selectedMyoTree.setProperty (name, "Myos", nullptr);
     selectedMyoTree.setProperty ("myoId", "1", nullptr);
-    
+    selectedMyoTree.setProperty ("nMyos", "1", nullptr);
+
     ValueTree hostAddressTree = ValueTree ("HostAddress");
     hostAddressTree.setProperty (name, "Host Address", nullptr);
     hostAddressTree.setProperty ("hostAddress", "127.0.0.1", nullptr);
@@ -855,7 +857,7 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
             receivePort = treeWhosePropertyHasChanged.getProperty (property);
             osc->connectReceiver (receivePort);
         }
-        if (treeWhosePropertyHasChanged.hasType ("SelectedMyo"))
+        if (treeWhosePropertyHasChanged.hasType ("Myos"))
         {
             selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
             oscDataSel = windowList->oscDataSelectorWindowContent;

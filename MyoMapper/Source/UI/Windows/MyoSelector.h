@@ -13,7 +13,6 @@ public:
     void resized() override;
     void sliderValueChanged (Slider* slider) override;
 
-
 private:
     
     Slider selectMyoSlider;

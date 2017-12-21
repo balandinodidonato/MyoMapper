@@ -54,7 +54,7 @@ void WindowList::showOrCreateMyoStatusWindow()
         auto mousePosition = Desktop::getInstance().getMousePosition();
         auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
-        auto myoSelected = static_cast<int> (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName ("SelectedMyo").getProperty ("myoId"));
+        auto myoSelected = static_cast<int> (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName ("Myos").getProperty ("myoId"));
         auto windowAppend = (myoSelected != 0) ? (String)MyoMapperApplication::selectedMyo : " - No Myo Selected";
         auto window = new VisualsWindow();
         WindowDrawer* const w = new WindowDrawer ("Myo " + windowAppend + " - Status",

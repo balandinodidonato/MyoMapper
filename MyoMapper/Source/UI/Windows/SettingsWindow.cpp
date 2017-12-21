@@ -59,18 +59,12 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(setHostAddressLabel);
     setHostAddressLabel.addListener(this);
     
-    myoSelectorLabel.setLookAndFeel (&laf);
-    myoSelectorLabel.setJustificationType (Justification::left);
-    myoSelectorLabel.setText ("Selected Myo:", dontSendNotification);
-    myoSelectorLabel.setTooltip("Select the Myo armband which data have to be mapped into OSC messages.");
-    addAndMakeVisible (myoSelectorLabel);
-    
-    myoSelectorSetter.setRange (1, 20, 1);
-    myoSelectorSetter.setValue (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
-    myoSelectorSetter.setSliderStyle (Slider::IncDecButtons);
-    myoSelectorSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
-    myoSelectorSetter.addListener (this);
-    addAndMakeVisible (myoSelectorSetter);
+    numberOfConnecteMyosLabel.setLookAndFeel (&laf);
+    numberOfConnecteMyosLabel.setJustificationType (Justification::left);
+    String connectedMyos = MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("Myos").getProperty("nMyos").toString();
+    numberOfConnecteMyosLabel.setText ("Number of connected Myos: "+connectedMyos, dontSendNotification);
+    numberOfConnecteMyosLabel.setTooltip("Number of connected Myos");
+    addAndMakeVisible (numberOfConnecteMyosLabel);
     
     featuresButton.setButtonText ("FEATURES");
     featuresButton.addListener (this);
@@ -87,7 +81,7 @@ SettingsWindow::~SettingsWindow()
 {
     oscReceivePortLabel.setLookAndFeel (nullptr);
     oscSendPortLabel.setLookAndFeel (nullptr);
-    myoSelectorLabel.setLookAndFeel (nullptr);
+    numberOfConnecteMyosLabel.setLookAndFeel (nullptr);
 }
 
 void SettingsWindow::paint (Graphics& g)
@@ -162,10 +156,7 @@ void SettingsWindow::resized()
     oscReceiverSlider.setBounds (ReceivePortRegion.reduced (oscReceiveRegion.proportionOfWidth (0.02), ReceivePortRegion.proportionOfHeight (0.05)));
     
     // Set myo selector region bounds
-    myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.287)));
-    myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.033));
-    myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.401))
-                                 .reduced (0, windowSize.proportionOfHeight (0.01)));
+    numberOfConnecteMyosLabel.setBounds (myoSelectorRegion);
     buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.2));
     featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.222)));
     buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.2));
@@ -222,9 +213,5 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     if (slider == &oscReceiverSlider)
     {
         MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("ReceivePort").setProperty ("portNumber", value, 0);
-    }
-    if (slider == &myoSelectorSetter)
-    {
-        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
     }
 }
