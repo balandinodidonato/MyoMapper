@@ -88,7 +88,7 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
                         yawTree.getProperty ("reverse"),
                         yawTree.getProperty ("offset"),
                         yawTree.getProperty ("test"));
-    pitchScaled.setValue (pitch*2,
+    pitchScaled.setValue (pitch,
                           pitchTree.getProperty ("inMin"),
                           pitchTree.getProperty ("inMax"),
                           pitchTree.getProperty ("outMin"),
