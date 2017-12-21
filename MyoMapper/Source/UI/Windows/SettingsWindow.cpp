@@ -37,7 +37,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible (oscReceivePortLabel);
     
     oscReceiverSlider.setRange (1, 9999, 1);
-    oscReceiverSlider.setValue (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
+    oscReceiverSlider.setValue (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName ("ReceivePort").getProperty ("portNumber"));
     oscReceiverSlider.setSliderStyle (Slider::IncDecButtons);
     oscReceiverSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     oscReceiverSlider.setTooltip("Set port of the Myo Mapper's OSC receiver.");
@@ -50,8 +50,8 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(hostAddressTitleLabel);
     
     setHostAddressLabel.setJustificationType (Justification::centred);
-    setHostAddressLabel.setText(MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
-                                , dontSendNotification);    setHostAddressLabel.setEditable(true);
+    setHostAddressLabel.setText(MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName ("HostAddress").getProperty("hostAddress"), dontSendNotification);
+    setHostAddressLabel.setEditable(true);
     setHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
     setHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
     setHostAddressLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
