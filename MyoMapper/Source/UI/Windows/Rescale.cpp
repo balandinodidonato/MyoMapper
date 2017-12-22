@@ -246,8 +246,7 @@ void Rescale::setMax (float Value)
 void Rescale::setValue (float Value, float MyoOrData) // the vaalue in input are the myo yaw, pitch roll scaled from myo.
 {
     scaled = (MyoOrData + PI) / (2 * PI);
-    input = Value;
-    mmSlider.setValue (input);
+    mmSlider.setValue (Value);
 }
 
 void Rescale::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)

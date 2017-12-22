@@ -122,7 +122,7 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     myoData[myoID].orientationScaled.x = yawScaled.getValue();
     myoData[myoID].orientationScaled.y = pitchScaled.getValue();
     myoData[myoID].orientationScaled.z = rollScaled.getValue();
-
+    
     myoData[myoID].orientationScaledFod = orFod.extract(myoData[myoID].orientationScaled);
     myoData[myoID].orientationScaledSod = orSod.extract(myoData[myoID].orientationScaled);
 
