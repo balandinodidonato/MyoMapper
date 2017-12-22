@@ -675,7 +675,7 @@ void Application::initialiseOscStreamingTree()
     ValueTree emgDataRawZcr = ValueTree ("EmgRawZcr");
     emgDataRawZcr.setProperty (name, "Zero-Crossing", nullptr);
     emgDataRawZcr.setProperty (oscOut, false, nullptr);
-    emgDataRawZcr.setProperty (bufferSize, tempSampSize, nullptr);
+    emgDataRawZcr.setProperty (bufferSize, 200, nullptr);
     emgDataRawZcr.setProperty (oscToWekinator, false, nullptr);
     emgDataRawZcr.setProperty(toolTip, "/emg/raw/zcr [ i i i i i i i i ]", nullptr);
 
