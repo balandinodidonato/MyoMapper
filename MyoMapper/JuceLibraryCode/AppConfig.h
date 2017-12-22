@@ -48,6 +48,8 @@
 #define JUCE_USE_DARK_SPLASH_SCREEN 1
 
 //==============================================================================
+#define JUCE_MODULE_AVAILABLE_juce_audio_basics         1
+#define JUCE_MODULE_AVAILABLE_juce_audio_devices        1
 #define JUCE_MODULE_AVAILABLE_juce_core                 1
 #define JUCE_MODULE_AVAILABLE_juce_data_structures      1
 #define JUCE_MODULE_AVAILABLE_juce_events               1
@@ -58,6 +60,41 @@
 #define JUCE_MODULE_AVAILABLE_juce_osc                  1
 
 #define JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED 1
+
+//==============================================================================
+// juce_audio_devices flags:
+
+#ifndef    JUCE_ASIO
+ //#define JUCE_ASIO 1
+#endif
+
+#ifndef    JUCE_WASAPI
+ //#define JUCE_WASAPI 1
+#endif
+
+#ifndef    JUCE_WASAPI_EXCLUSIVE
+ //#define JUCE_WASAPI_EXCLUSIVE 1
+#endif
+
+#ifndef    JUCE_DIRECTSOUND
+ //#define JUCE_DIRECTSOUND 1
+#endif
+
+#ifndef    JUCE_ALSA
+ //#define JUCE_ALSA 1
+#endif
+
+#ifndef    JUCE_JACK
+ //#define JUCE_JACK 1
+#endif
+
+#ifndef    JUCE_USE_ANDROID_OPENSLES
+ //#define JUCE_USE_ANDROID_OPENSLES 1
+#endif
+
+#ifndef    JUCE_USE_WINRT_MIDI
+ //#define JUCE_USE_WINRT_MIDI 1
+#endif
 
 //==============================================================================
 // juce_core flags:

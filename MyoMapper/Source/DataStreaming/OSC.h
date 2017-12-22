@@ -35,7 +35,7 @@ private:
     OSCSender oscToWekiSender;
     OSCReceiver receiver;
     MyoManager myoManager;
-    
+
     int receivePort;
     
     Vector3D<float> orScaled;
