@@ -38,7 +38,7 @@
 		8B0CAF24A25C437C051B45FD /* OscValueTreeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 159D6484C52FC39868A4E891 /* OscValueTreeItem.cpp */; };
 		8C8F9A92519A4EA918581B03 /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = 362301F4D9F3494F257A83B1 /* RecentFilesMenuTemplate.nib */; };
 		94D856A6F72CA3C27DB817E7 /* include_juce_gui_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF21A92FA40535D46646DA93 /* include_juce_gui_basics.mm */; };
-		99CAD7971DB8C87B79AB2B0C /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C18CFCFFAE8241D1D539735E /* Main.cpp */; };
+		99CAD7971DB8C87B79AB2B0C /* MainComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C18CFCFFAE8241D1D539735E /* MainComponent.cpp */; };
 		9B5F9C8DFA32FF140DB26724 /* OscSettingsValueTreeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF83437E0671EEC5FF0B393 /* OscSettingsValueTreeItem.cpp */; };
 		9CABDB780A220E97B1899E38 /* myo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD34A39CF97F291536646032 /* myo.framework */; };
 		C116BA0C6679EE33707BA158 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CC130375FB18D502CFB639 /* IOKit.framework */; };
@@ -125,7 +125,7 @@
 		BDF83437E0671EEC5FF0B393 /* OscSettingsValueTreeItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OscSettingsValueTreeItem.cpp; path = ../../Source/UI/ValueTreeItems/OscSettingsValueTreeItem.cpp; sourceTree = SOURCE_ROOT; };
 		BE6C825EC1C937AFCF293649 /* WindowDrawer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowDrawer.h; path = ../../Source/UI/Windows/WindowDrawer.h; sourceTree = SOURCE_ROOT; };
 		C031E0E674733895BFB4595C /* ZeroCrossingRate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ZeroCrossingRate.cpp; path = ../../Source/Features/ZeroCrossingRate.cpp; sourceTree = SOURCE_ROOT; };
-		C18CFCFFAE8241D1D539735E /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
+		C18CFCFFAE8241D1D539735E /* MainComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
 		C4CC130375FB18D502CFB639 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		C5F124CD026F1046BA83D694 /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
 		C725AA759E96B2386244B8DE /* Orientation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Orientation.cpp; path = ../../Source/UI/Windows/Orientation.cpp; sourceTree = SOURCE_ROOT; };
@@ -183,7 +183,7 @@
 				21E273B66130B3FA0E690F04 /* Features */,
 				7A525417D7CFDD15E2BA1099 /* Myo */,
 				DFD9C4F27C72D2DD0438A829 /* DataStreaming */,
-				C18CFCFFAE8241D1D539735E /* Main.cpp */,
+				C18CFCFFAE8241D1D539735E /* MainComponent.cpp */,
 				0D2CC5504AA1B63D2778969E /* CommandIDs.h */,
 				6A2F9BBCFDC750D4E34238B9 /* Application.cpp */,
 				30C2807D73F026BDA4DBC97C /* Application.h */,
@@ -495,7 +495,7 @@
 				F9A2468BA8A175E78F1A8D6D /* MyoListener.cpp in Sources */,
 				D6C0628A4ADA8248CD9EA1FF /* MyoManager.cpp in Sources */,
 				CF8B0D6C385EB3BCF8317249 /* OSC.cpp in Sources */,
-				99CAD7971DB8C87B79AB2B0C /* Main.cpp in Sources */,
+				99CAD7971DB8C87B79AB2B0C /* MainComponent.cpp in Sources */,
 				2DDF3D6B66671A4C35A871DA /* Application.cpp in Sources */,
 				E0E2975352C263B3304FB06D /* BinaryData.cpp in Sources */,
 				533A7BF0697FD9559F3531CB /* include_juce_core.mm in Sources */,

@@ -75,7 +75,7 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
     pitch = asin(max(-1.0f, min(1.0f, 2.0f * (quat.w() * quat.y() - quat.z() * quat.x()))));
     yaw = atan2 (2.0f * (quat.w() * quat.z() + quat.x() * quat.y()), 1.0f - 2.0f * (quat.y() * quat.y() + quat.z() * quat.z()));
     
-    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree();
+    auto tree = MainComponent::getApp().getMyoDataScalingTree();
     auto yawTree = tree.getChildWithName ("YawScaling");
     auto pitchTree = tree.getChildWithName ("PitchScaling");
     auto rollTree = tree.getChildWithName ("RollScaling");
@@ -130,7 +130,7 @@ void MyoListener::onOrientationData (myo::Myo* myo, uint64_t timestamp, const my
 
 void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &accel)
 {
-    auto tree = MyoMapperApplication::getApp().getOscStreamingTree();
+    auto tree = MainComponent::getApp().getOscStreamingTree();
 
     int myoID = getMyoID(myo);
     if (myoID == -1) return;
@@ -149,7 +149,7 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
 
 void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float> &gyro)
 {
-    auto tree = MyoMapperApplication::getApp().getOscStreamingTree();
+    auto tree = MainComponent::getApp().getOscStreamingTree();
 
     int myoID = getMyoID(myo);
     if (myoID == -1) return;
@@ -203,7 +203,7 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
     if (myoID == -1) return;
     
     emgSum = 0; // reset value for AVG
-    auto tree = MyoMapperApplication::getApp().getOscStreamingTree();
+    auto tree = MainComponent::getApp().getOscStreamingTree();
 
     for (size_t i = 0; i < 8; ++i)
     {

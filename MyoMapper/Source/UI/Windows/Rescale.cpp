@@ -140,23 +140,23 @@ void Rescale::resized()
 
 void Rescale::buttonClicked (juce::Button *button)
 {
-    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree();
+    auto tree = MainComponent::getApp().getMyoDataScalingTree();
     tree.addListener (this);
     if (button == &calibrate)
     {
-        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("offset", scaled, 0);
+        MainComponent::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("offset", scaled, 0);
         
-        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("test", 1, 0);
+        MainComponent::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("test", 1, 0);
     }
     if (button == &reverse)
     {
-        MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("reverse", reverse.getToggleState(), 0);
+        MainComponent::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling").setProperty ("reverse", reverse.getToggleState(), 0);
     }
 }
 
 void Rescale::sliderValueChanged (juce::Slider *slider)
 {
-    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree();
+    auto tree = MainComponent::getApp().getMyoDataScalingTree();
     tree.addListener (this);
     
     if (slider == &mmSlider)
@@ -213,7 +213,7 @@ void Rescale::sliderValueChanged (juce::Slider *slider)
 
 void Rescale::setReverse() // Value is the one from tree
 {
-    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
+    auto tree = MainComponent::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     bool val = tree.getProperty("reverse");
     
     reverse.setToggleState (val, dontSendNotification);
@@ -252,7 +252,7 @@ void Rescale::setValue (float Value, float MyoOrData) // the vaalue in input are
 
 void Rescale::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
-    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree();
+    auto tree = MainComponent::getApp().getMyoDataScalingTree();
     if (treeWhosePropertyHasChanged.hasType (labelWidget+"Scaling") == true)
     {
     //    mmSlider.setMinValue (treeWhosePropertyHasChanged.getProperty ("outMin"));
@@ -266,21 +266,21 @@ void Rescale::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, 
 
 void Rescale::setInMin()
 {
-    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
+    auto tree = MainComponent::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     inMin = tree.getProperty("inMin");
     inMinSlider.setValue(inMin);
 }
 
 void Rescale::setInMax()
 {
-    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
+    auto tree = MainComponent::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     inMax = tree.getProperty("inMax");
     inMaxSlider.setValue (inMax);
 }
 
 void Rescale::setOutMin()
 {
-    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
+    auto tree = MainComponent::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     outMin = tree.getProperty("outMin");
     mmSlider.setMinValue (outMin);
     outMinSlider.setValue(outMin);
@@ -288,7 +288,7 @@ void Rescale::setOutMin()
 
 void Rescale::setOutMax()
 {
-    auto tree = MyoMapperApplication::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
+    auto tree = MainComponent::getApp().getMyoDataScalingTree().getChildWithName(labelWidget+"Scaling");
     outMax = tree.getProperty("outMax");
     mmSlider.setMaxValue(outMax);
     outMaxSlider.setValue (outMax);

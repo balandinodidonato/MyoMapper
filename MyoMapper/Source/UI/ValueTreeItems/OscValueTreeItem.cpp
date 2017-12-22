@@ -80,10 +80,10 @@ public:
      void updateToolTip()
      {
          String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
-         String featureLabelToolTip = tree["name"].toString()+"'s OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
+         String featureLabelToolTip = tree["name"].toString()+"'s OSC message: /myo" + String(MainComponent::selectedMyo) + stringfromTree;
          label.setTooltip(featureLabelToolTip);
          
-         String wekinatorToolTip = "Adds values to OSC mesagge to Wekinator (IP: local host, port: 6448, tag: /myo"+String(MyoMapperApplication::selectedMyo)+").";
+         String wekinatorToolTip = "Adds values to OSC mesagge to Wekinator (IP: local host, port: 6448, tag: /myo"+String(MainComponent::selectedMyo)+").";
          toggleWek.setTooltip(wekinatorToolTip);
          toWekinatorLabel.setTooltip(wekinatorToolTip);
 
