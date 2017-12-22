@@ -630,7 +630,7 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     gyroDataScaledAbs.setProperty (name, "Absolute", nullptr);
     gyroDataScaledAbs.setProperty (oscOut, false, nullptr);
     gyroDataScaledAbs.setProperty (oscToWekinator, false, nullptr);
-    gyroDataRawFod.setProperty(toolTip, "/gyro/scaled/abs [ f f f ]", nullptr);
+    gyroDataScaledAbs.setProperty(toolTip, "/gyro/scaled/abs [ f f f ]", nullptr);
 
     ValueTree gyroDataScaledFod = ValueTree ("GyroScaledFod");
     gyroDataScaledFod.setProperty (name, "First Order Difference", nullptr);
@@ -776,7 +776,7 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     handPoseData.setProperty (name, "Hand Pose", nullptr);
     handPoseData.setProperty (oscOut, true, nullptr);
     handPoseData.setProperty (oscToWekinator, false, nullptr);
-    emgDataScaledAbsFodMavMavg.setProperty(toolTip, "/pose [ string ]", nullptr);
+    handPoseData.setProperty(toolTip, "/pose [ string ]", nullptr);
     
     emgData.addChild (emgDataRaw, -1, nullptr);
     emgDataRaw.addChild (emgDataRawMavg, -1, nullptr);
