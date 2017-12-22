@@ -38,18 +38,18 @@ public:
 
         if (tree.hasProperty ("bufferSize"))
         {
-            bufferSizeSlider.setRange (1, 100, 1);
+            bufferSizeSlider.setRange (1, 10000, 1);
             bufferSizeSlider.setSliderStyle (Slider::SliderStyle::IncDecButtons);
             bufferSizeSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
             bufferSizeSlider.setValue (tree.getProperty ("bufferSize", 0));
-            bufferSizeSlider.setTooltip("Set feature's buffer size.");
+            bufferSizeSlider.setTooltip("Sets feature's buffer size.");
             bufferSizeSlider.addListener (this);
             addAndMakeVisible (bufferSizeSlider);
             
             bufferSizeSliderLabel.setLookAndFeel (&laf);
             bufferSizeSliderLabel.setColour (Label::textColourId, Colours::black);
             bufferSizeSliderLabel.setText ("Buffer Size", dontSendNotification);
-            bufferSizeSliderLabel.setTooltip("Set feature's buffer size.");
+            bufferSizeSliderLabel.setTooltip("Sets feature's buffer size.");
             bufferSizeSliderLabel.attachToComponent (&bufferSizeSlider, true);
             addAndMakeVisible (bufferSizeSliderLabel);
         }
@@ -80,7 +80,7 @@ public:
      void updateToolTip()
      {
          String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
-         String featureLabelToolTip = tree["name"].toString()+"'s OSC message: /myo" + String(Application::selectedMyo) + stringfromTree;
+         String featureLabelToolTip = "Sends "+tree["name"].toString()+"'s OSC message: /myo" + String(Application::selectedMyo) + stringfromTree;
          label.setTooltip(featureLabelToolTip);
          
          String wekinatorToolTip = "Adds values to OSC mesagge to Wekinator (IP: local host, port: 6448, tag: /myo"+String(Application::selectedMyo)+").";
