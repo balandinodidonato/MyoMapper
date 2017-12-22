@@ -83,7 +83,7 @@ public:
          String featureLabelToolTip = "OSC message: /myo" + String(MyoMapperApplication::selectedMyo) + stringfromTree;
          label.setTooltip(featureLabelToolTip);
          
-         String wekinatorToolTip = "Adds values to OSC mesagge /myo"+String(MyoMapperApplication::selectedMyo)+" to Wekinator via local host, port 6448.";
+         String wekinatorToolTip = "Adds values to OSC mesagge to Wekinator (IP: local host, port: 6448, tag: /myo"+String(MyoMapperApplication::selectedMyo)+").";
          toggleWek.setTooltip(wekinatorToolTip);
          toWekinatorLabel.setTooltip(wekinatorToolTip);
 
