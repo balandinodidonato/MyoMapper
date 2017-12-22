@@ -32,7 +32,6 @@ public:
     
 private:
     
-    TooltipWindow toolTip;
     
     Label titleLabel;
     

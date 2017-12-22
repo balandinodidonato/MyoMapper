@@ -122,7 +122,8 @@ public:
     
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyoMapperApplication)
-
+    
+    TooltipWindow ToolTip;
     int oscBufferFillSpeed;
     VisualsWindow* visuals;
     OscDataSelectorWindow* oscDataSel;

@@ -15,7 +15,6 @@ public:
 
 private:
     ValueTree tree;
-    TooltipWindow toolTip;
     
     class TreeItemComponent;
 

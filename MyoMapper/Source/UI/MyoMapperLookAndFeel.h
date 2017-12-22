@@ -17,7 +17,7 @@ public:
 		int itemIndex, const String& itemText,
 		bool isMouseOverItem, bool isMenuOpen, bool isMouseOverBar,
 		MenuBarComponent&) override;
-  //  void drawTooltip (Graphics& g, const String& text, int width, int height) override;
+    void drawTooltip (Graphics& g, const String& text, int width, int height) override;
 
     void setupColours();
     Font getFont (String fontWidth);
