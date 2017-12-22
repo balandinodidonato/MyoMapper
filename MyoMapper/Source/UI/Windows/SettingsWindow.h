@@ -31,7 +31,6 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SettingsWindow)
    // LookAndFeel_V3 toggleButtonLAF;
     
-    TooltipWindow toolTip;
     
     Label oscSendLabel;
     Label oscSendPortLabel;

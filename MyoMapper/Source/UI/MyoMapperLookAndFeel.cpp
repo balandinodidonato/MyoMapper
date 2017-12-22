@@ -199,32 +199,30 @@ void MyoMapperLookAndFeel::drawMenuBarItem (Graphics& g, int width, int height,
 	g.drawFittedText (itemText, 0, 0, width, height, Justification::centred, 1);
 }
 
-/*
 void MyoMapperLookAndFeel::drawTooltip (Graphics& g, const String& text, int width, int height)
 {
     Rectangle<int> bounds (width, height);
-    const auto cornerSize = 1.0f;
+    const auto cornerSize = 0.5f;
     
     g.setColour (findColour (TooltipWindow::backgroundColourId));
     g.fillRoundedRectangle (bounds.toFloat(), cornerSize);
     
     g.setColour (findColour (TooltipWindow::outlineColourId));
-    g.drawRoundedRectangle (bounds.toFloat().reduced (0.5f, 0.5f), cornerSize, 1.0f);
-    
+    g.drawRoundedRectangle (bounds.toFloat().reduced (1.f, 1.f), cornerSize, 1.0f);
+
     g.setColour (findColour (TooltipWindow::textColourId));
-    g.drawFittedText(text, 0, 0, width, height, Justification::centred, 1);
+    g.drawFittedText(text, 0, 0, width, height, Justification::centred, 2);
 }
- */
  
 void MyoMapperLookAndFeel::setupColours()
 {
     setColour (Label::textColourId, Colours::black);
     setColour (Label::textWhenEditingColourId, Colour::fromRGB (84, 101, 126));
-  /*
-    setColour (TooltipWindow::backgroundColourId, Colour::fromRGB (201, 210, 223));
-    setColour (TooltipWindow::outlineColourId, Colour::fromRGB (35, 35, 35));
+  
+    setColour (TooltipWindow::backgroundColourId, Colour::fromRGB (255, 255, 255));
+    setColour (TooltipWindow::outlineColourId, Colour::fromRGB (255, 255, 255));
     setColour (TooltipWindow::textColourId, Colour::fromRGB (35, 35, 35));
-   */
+   
 	setColour (PopupMenu::headerTextColourId, Colours::black);
 	setColour (PopupMenu::textColourId, Colours::black);
     
