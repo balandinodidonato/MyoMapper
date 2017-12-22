@@ -5,8 +5,7 @@ class Mav
 {
 public:
     
-    void setValue (std::array<float, 8> Values);
-    float getValue();
+    float extract (std::array<float, 8> Values);
     
 private:
     

@@ -32,6 +32,7 @@ public:
     
 private:
     
+    
     Label titleLabel;
     
     TextButton calibrate;

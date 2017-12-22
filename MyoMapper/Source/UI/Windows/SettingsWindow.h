@@ -29,15 +29,16 @@ public:
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SettingsWindow)
-    LookAndFeel_V3 toggleButtonLAF;
+   // LookAndFeel_V3 toggleButtonLAF;
+    
     
     Label oscSendLabel;
     Label oscSendPortLabel;
-    Slider oscSendSetter;
+    Slider oscSenderSlider;
     
     Label oscReceiveLabel;
     Label oscReceivePortLabel;
-    Slider oscReceiveSetter;
+    Slider oscReceiverSlider;
     
     Label setHostAddressLabel;
     Label hostAddressTitleLabel;

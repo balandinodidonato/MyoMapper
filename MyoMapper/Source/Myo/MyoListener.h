@@ -2,7 +2,7 @@
 #define MYOLISTENER_H_INCLUDED
 
 #include "myo/myo.hpp"
-#include "../UI/Orientation.h"
+#include "../UI/Windows/Orientation.h"
 #include "MyoData.h"
 #include <array>
 #include "../Features/MovingAverage.h"
@@ -66,9 +66,9 @@ private:
     
     int numberOfMyos;
     
-    OrScaling yawScaler;
-    OrScaling pitchScaler;
-    OrScaling rollScaler;
+    OrScaling yawScaled;
+    OrScaling pitchScaled;
+    OrScaling rollScaled;
     FirstOrderDifference orFod;
     FirstOrderDifference orSod;
 

@@ -14,15 +14,13 @@ public:
     
 private :
     
-    int counter = 0;
-    float buffer[200];
+    int index = 0;
+    std::vector<float>  buffer;
     float min = 100000;
     float max = -100000;
-    int bufferSize = 200;
     
-    int counter3D = 0;
-    Vector3D<float> buffer3D[200];
+    int index3D = 0;
+    std::vector<Vector3D<float>> buffer3D;
     Vector3D<float> min3D = {100000, 100000, 100000};
     Vector3D<float> max3D = {-100000, -100000, -100000};
-    int bufferSize3D = 200;
 };

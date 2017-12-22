@@ -1,7 +1,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Application.h"
 
-struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
+struct Application::MainMenuBarModel   : public MenuBarModel
 {
     MainMenuBarModel()
     {
@@ -27,24 +27,24 @@ struct MyoMapperApplication::MainMenuBarModel   : public MenuBarModel
 };
 
 //==============================================================================
-int MyoMapperApplication::selectedMyo;
-int MyoMapperApplication::sendPort;
-int MyoMapperApplication::receivePort;
-int MyoMapperApplication::wekinatorPort;
-String MyoMapperApplication::hostAddress;
+int Application::selectedMyo;
+int Application::sendPort;
+int Application::receivePort;
+int Application::wekinatorPort;
+String Application::hostAddress;
 
-MyoMapperApplication::MyoMapperApplication()
+Application::Application()
 {
 }
 
-void MyoMapperApplication::initialise (const String& commandLine)
+void Application::initialise (const String& commandLine)
 {
     DBG (getCommandLineParameters());
     auto oscBufferFillHz = 40;
     oscBufferFillSpeed = 1000 / oscBufferFillHz;
     
     initialiseRootTree();
-    
+
     LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
     
     // File manager initialisation to go here
@@ -63,9 +63,6 @@ void MyoMapperApplication::initialise (const String& commandLine)
     windowList->windows.ensureStorageAllocated (3);
     windowList->showOrCreateOscSettingsWindow();
     
-    
-    selectedMyo = getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
-
     osc = new OSC();
     hostAddress = getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress");
     sendPort = getOscSettingsTree().getChildWithName("SendPort").getProperty ("portNumber");
@@ -78,14 +75,14 @@ void MyoMapperApplication::initialise (const String& commandLine)
 
 }
 
-void MyoMapperApplication::handleAsyncUpdate()
+void Application::handleAsyncUpdate()
 {
     #if JUCE_MAC
     MenuBarModel::setMacMainMenu (menuModel);
     #endif
 }
 
-void MyoMapperApplication::shutdown()
+void Application::shutdown()
 {
     stopTimer();
     myoManager.disconnect();
@@ -101,13 +98,13 @@ void MyoMapperApplication::shutdown()
     LookAndFeel::setDefaultLookAndFeel (nullptr);
 }
 
-void MyoMapperApplication::systemRequestedQuit()
+void Application::systemRequestedQuit()
 {
         JUCEApplicationBase::quit();
 }
 
 //==============================================================================
-void MyoMapperApplication::timerCallback()
+void Application::timerCallback()
 {
     bool getMyoDataSuccessful = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
@@ -137,7 +134,7 @@ void MyoMapperApplication::timerCallback()
     }
 }
 
-void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
+void Application::changeListenerCallback (ChangeBroadcaster *source)
 {
     if ((selectedMyo == 0 || selectedMyo > 20) && SettingsWindow::startButtonClicked)
     {
@@ -172,27 +169,27 @@ void MyoMapperApplication::changeListenerCallback (ChangeBroadcaster *source)
 
 
 //==============================================================================
-MyoMapperApplication& MyoMapperApplication::getApp()
+Application& Application::getApp()
 {
-    MyoMapperApplication* const app = dynamic_cast<MyoMapperApplication*> (JUCEApplication::getInstance());
+    Application* const app = dynamic_cast<Application*> (JUCEApplication::getInstance());
     jassert (app != nullptr);
     return *app;
 }
 
-ApplicationCommandManager& MyoMapperApplication::getCommandManager()
+ApplicationCommandManager& Application::getCommandManager()
 {
-    ApplicationCommandManager* const comMan = MyoMapperApplication::getApp().commandManager;
+    ApplicationCommandManager* const comMan = Application::getApp().commandManager;
     jassert (comMan != nullptr);
     return *comMan;
 }
 
 //==============================================================================
-MenuBarModel* MyoMapperApplication::getMenuModel()
+MenuBarModel* Application::getMenuModel()
 {
     return menuModel.get();
 }
 
-StringArray MyoMapperApplication::getMenuBarNames()
+StringArray Application::getMenuBarNames()
 {
     StringArray names;
     names.add ("Window");
@@ -200,7 +197,7 @@ StringArray MyoMapperApplication::getMenuBarNames()
     return StringArray (names);
 }
 
-void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
+void Application::createMenu (PopupMenu& menu, const String& menuName)
 {
     if (menuName == "Window")
         createWindowMenu(menu);
@@ -210,7 +207,7 @@ void MyoMapperApplication::createMenu (PopupMenu& menu, const String& menuName)
         jassertfalse;
 }
 
-void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
+void Application::createWindowMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showVisualsWindow);
@@ -220,19 +217,19 @@ void MyoMapperApplication::createWindowMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::closeAllWindows);
 }
 
-void MyoMapperApplication::createHelpMenu (PopupMenu& menu)
+void Application::createHelpMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showDocumentationWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showAboutWindow);
 }
 
-void MyoMapperApplication::menuCommand (int menuItemID)
+void Application::menuCommand (int menuItemID)
 {
     // Used for sub menus and file loaders
 }
 
 //==============================================================================
-void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
+void Application::getAllCommands (Array<CommandID> &commands)
 {
     // Return a list of commands the manager's target can perform
     const CommandID id[] = {
@@ -247,7 +244,7 @@ void MyoMapperApplication::getAllCommands (Array<CommandID> &commands)
     commands.addArray (id, numElementsInArray (id));
 }
 
-void MyoMapperApplication::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
+void Application::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
 {
     switch (commandID)
     {
@@ -301,7 +298,7 @@ void MyoMapperApplication::getCommandInfo (const CommandID commandID, Applicatio
     }
 }
 
-bool MyoMapperApplication::perform (const InvocationInfo& info)
+bool Application::perform (const InvocationInfo& info)
 {
     switch (info.commandID)
     {
@@ -319,27 +316,27 @@ bool MyoMapperApplication::perform (const InvocationInfo& info)
     return true;
 }
 
-void MyoMapperApplication::quitMapper()
+void Application::quitMapper()
 {
-    MyoMapperApplication::shutdown();
+    Application::shutdown();
 }
 
-void MyoMapperApplication::showSettingsWindow()
+void Application::showSettingsWindow()
 {
     windowList->showOrCreateOscSettingsWindow();
 }
 
-void MyoMapperApplication::showVisualsWindow()
+void Application::showVisualsWindow()
 {
     windowList->showOrCreateMyoStatusWindow();
 }
 
-void MyoMapperApplication::showDataWindow()
+void Application::showDataWindow()
 {
     windowList->showOrCreateOscDataSelectorWindow();
 }
 
-void MyoMapperApplication::closeWindow()
+void Application::closeWindow()
 {
     for (int i = 0; i < windowList->windows.size(); ++i)
     {
@@ -362,7 +359,7 @@ void MyoMapperApplication::closeWindow()
     }
 }
 
-void MyoMapperApplication::closeAllWindows()
+void Application::closeAllWindows()
 {
     for (int i = 0; i < windowList->windows.size(); ++i)
     {
@@ -385,17 +382,17 @@ void MyoMapperApplication::closeAllWindows()
     return;
 }
 
-void MyoMapperApplication::showAboutWindow()
+void Application::showAboutWindow()
 {
     windowList->showOrCreateAboutWindow();
 }
 
-void MyoMapperApplication::showDocumentationWindow()
+void Application::showDocumentationWindow()
 {
     windowList->showOrCreateHelpWindow();
 }
 
-void MyoMapperApplication::showPreferencesWindow()
+void Application::showPreferencesWindow()
 {
     // Show the preferences window (moves on mac vs windows/ linux)
 }
@@ -404,13 +401,14 @@ void MyoMapperApplication::showPreferencesWindow()
 
 const String oscOut             = "oscOut";
 const String name               = "name";
-const String sampleSize         = "sampleSize";
+const String bufferSize         = "bufferSize";
 const String oscToWekinator     = "oscToWekinator";
 const String portNumber         = "portNumber";
+const String toolTip            = "toolTip";
 const int tempSampSize          = 10;
 
 //==============================================================================
-void MyoMapperApplication::initialiseRootTree()
+void Application::initialiseRootTree()
 {
     rootTree = ValueTree ("MyoMapper");
     if (!oscSettingsTree.hasType ("OscSettingsTree"))
@@ -423,6 +421,7 @@ void MyoMapperApplication::initialiseRootTree()
     }
     if (!oscStreamingTree.hasType ("OscStreamingTree"))
     {
+        selectedMyo = getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId");
         initialiseOscStreamingTree();
     }
     rootTree.addChild (oscSettingsTree, -1, nullptr);
@@ -431,7 +430,7 @@ void MyoMapperApplication::initialiseRootTree()
     rootTree.addListener (this);
 }
 
-void MyoMapperApplication::initialiseOscSettingsTree()
+void Application::initialiseOscSettingsTree()
 {
     oscSettingsTree = ValueTree ("OscSettingsTree");
     
@@ -462,7 +461,7 @@ void MyoMapperApplication::initialiseOscSettingsTree()
     oscSettingsTree.addChild (wekinatorPortTree, -1, nullptr);
 }
 
-void MyoMapperApplication::initialiseMyoDataScalingTree()
+void Application::initialiseMyoDataScalingTree()
 {
     myoDataScalingTree = ValueTree ("MyoDataScalingTree");
     
@@ -501,7 +500,7 @@ void MyoMapperApplication::initialiseMyoDataScalingTree()
     myoDataScalingTree.addChild (rollScalingTree, -1, nullptr);
 }
 
-void MyoMapperApplication::initialiseOscStreamingTree()
+void Application::initialiseOscStreamingTree()
 {
     oscStreamingTree = ValueTree ("OscStreamingTree");
     
@@ -516,28 +515,33 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     orDataQuaternion.setProperty (name, "Quaternion", nullptr);
     orDataQuaternion.setProperty (oscOut, false, nullptr);
     orDataQuaternion.setProperty (oscToWekinator, false, nullptr);
+    orDataQuaternion.setProperty(toolTip, "/orientation/quaternion [ f f f f ]", nullptr);
     
     ValueTree orDataRaw = ValueTree ("OrRaw");
     orDataRaw.setProperty (name, "Raw", nullptr);
     orDataRaw.setProperty (oscOut, false, nullptr);
     orDataRaw.setProperty (oscToWekinator, false, nullptr);
+    orDataRaw.setProperty(toolTip, "/orientation/raw [ f f f ]", nullptr);
 
     ValueTree orDataScaled = ValueTree ("OrScaled");
     orDataScaled.setProperty (name, "Scaled", nullptr);
     orDataScaled.setProperty (oscOut, true, nullptr);
     orDataScaled.setProperty (oscToWekinator, false, nullptr);
+    orDataScaled.setProperty(toolTip, "/orientation/scaled [ f f f ]", nullptr);
 
     ValueTree orDataVel = ValueTree ("OrVelocity");
     orDataVel.setProperty (name, "Velocity", nullptr);
     orDataVel.setProperty (oscOut, false, nullptr);
-    orDataVel.setProperty (sampleSize, tempSampSize, nullptr);
+    orDataVel.setProperty (bufferSize, tempSampSize, nullptr);
     orDataVel.setProperty (oscToWekinator, false, nullptr);
+    orDataVel.setProperty(toolTip, "/orientation/velocity [ f f f ]", nullptr);
 
     ValueTree orDataAccel= ValueTree ("OrAccel");
     orDataAccel.setProperty (name, "Acceleration", nullptr);
     orDataAccel.setProperty (oscOut, false, nullptr);
-    orDataAccel.setProperty (sampleSize, tempSampSize, nullptr);
+    orDataAccel.setProperty (bufferSize, tempSampSize, nullptr);
     orDataAccel.setProperty (oscToWekinator, false, nullptr);
+    orDataAccel.setProperty(toolTip, "/orientation/acceleration [ f f f ]", nullptr);
     
     orData.addChild (orDataQuaternion, -1, nullptr);
     orData.addChild (orDataRaw, -1, nullptr);
@@ -551,37 +555,44 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     accData.setProperty (name, "Acceleration", nullptr);
     accData.setProperty (oscOut, true, nullptr);
     accData.setProperty (oscToWekinator, false, 0);
-    
+
     ValueTree accDataRaw = ValueTree ("AccRaw");
     accDataRaw.setProperty (name, "Raw", nullptr);
     accDataRaw.setProperty (oscOut, false, nullptr);
     accDataRaw.setProperty (oscToWekinator, false, 0);
+    accDataRaw.setProperty(toolTip, "/acceleration/raw [ f f f ]", nullptr);
 
     ValueTree accDataRawFod = ValueTree ("AccRawFod");
     accDataRawFod.setProperty (name, "First Order Difference", nullptr);
     accDataRawFod.setProperty (oscOut, false, nullptr);
     accDataRawFod.setProperty (oscToWekinator, false, 0);
+    accDataRawFod.setProperty(toolTip, "/acceleration/raw/fod [ f f f ]", nullptr);
 
     ValueTree accDataRawFodMavg = ValueTree ("AccRawFodMavg");
     accDataRawFodMavg.setProperty (name, "Moving Average", nullptr);
     accDataRawFodMavg.setProperty (oscOut, false, nullptr);
-    accDataRawFodMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    accDataRawFodMavg.setProperty (bufferSize, tempSampSize, nullptr);
     accDataRawFodMavg.setProperty (oscToWekinator, false, nullptr);
+    accDataRawFodMavg.setProperty(toolTip, "/acceleration/raw/fod/mavg [ f f f ]", nullptr);
 
     ValueTree accDataScaled = ValueTree ("AccScaled");
     accDataScaled.setProperty (name, "Scaled", nullptr);
     accDataScaled.setProperty (oscOut, true, nullptr);
     accDataScaled.setProperty (oscToWekinator, false, nullptr);
+    accDataScaled.setProperty(toolTip, "/acceleration/scaled [ f f f ]", nullptr);
 
     ValueTree accDataScaledFod = ValueTree ("AccScaledFod");
     accDataScaledFod.setProperty (name, "First Order Difference", nullptr);
     accDataScaledFod.setProperty (oscOut, false, nullptr);
     accDataScaledFod.setProperty (oscToWekinator, false, nullptr);
+    accDataScaledFod.setProperty(toolTip, "/acceleration/scaled/fod [ f f f ]", nullptr);
 
     ValueTree accDataScaledFodMavg = ValueTree ("AccScaledFodMavg");
     accDataScaledFodMavg.setProperty (name, "Moving Average", nullptr);
     accDataScaledFodMavg.setProperty (oscOut, false, nullptr);
+    accDataScaledFodMavg.setProperty (bufferSize, tempSampSize, nullptr);
     accDataScaledFodMavg.setProperty (oscToWekinator, false, nullptr);
+    accDataScaledFodMavg.setProperty(toolTip, "/acceleration/scaled/fod/mavg [ f f f ]", nullptr);
     
     accData.addChild (accDataRaw, -1, nullptr);
     accDataRaw.addChild (accDataRawFod, -1, nullptr);
@@ -600,33 +611,39 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     gyroDataRaw.setProperty (name, "Raw", nullptr);
     gyroDataRaw.setProperty (oscOut, false, nullptr);
     gyroDataRaw.setProperty (oscToWekinator, false, nullptr);
+    gyroDataRaw.setProperty(toolTip, "/gyro/raw [ f f f ]", nullptr);
 
     ValueTree gyroDataRawFod = ValueTree ("GyroRawFod");
     gyroDataRawFod.setProperty (name, "First Order Difference", nullptr);
     gyroDataRawFod.setProperty (oscOut, false, nullptr);
-    gyroDataRawFod.setProperty (sampleSize, tempSampSize, nullptr);
+    gyroDataRawFod.setProperty (bufferSize, tempSampSize, nullptr);
     gyroDataRawFod.setProperty (oscToWekinator, false, nullptr);
+    gyroDataRawFod.setProperty(toolTip, "/gyro/raw/fod [ f f f ]", nullptr);
 
     ValueTree gyroDataScaled = ValueTree ("GyroScaled");
     gyroDataScaled.setProperty (name, "Scaled", nullptr);
     gyroDataScaled.setProperty (oscOut, true, nullptr);
     gyroDataScaled.setProperty (oscToWekinator, false, nullptr);
+    gyroDataRawFod.setProperty(toolTip, "/gyro/scaled [ f f f ]", nullptr);
 
     ValueTree gyroDataScaledAbs = ValueTree ("GyroScaledAbs");
     gyroDataScaledAbs.setProperty (name, "Absolute", nullptr);
     gyroDataScaledAbs.setProperty (oscOut, false, nullptr);
     gyroDataScaledAbs.setProperty (oscToWekinator, false, nullptr);
+    gyroDataScaledAbs.setProperty(toolTip, "/gyro/scaled/abs [ f f f ]", nullptr);
 
     ValueTree gyroDataScaledFod = ValueTree ("GyroScaledFod");
     gyroDataScaledFod.setProperty (name, "First Order Difference", nullptr);
     gyroDataScaledFod.setProperty (oscOut, false, nullptr);
     gyroDataScaledFod.setProperty (oscToWekinator, false, nullptr);
+    gyroDataScaledFod.setProperty(toolTip, "/gyro/scaled/fod [ f f f ]", nullptr);
 
     ValueTree gyroDataScaledFodMavg = ValueTree ("GyroScaledFodMavg");
     gyroDataScaledFodMavg.setProperty (name, "Moving Average", nullptr);
     gyroDataScaledFodMavg.setProperty (oscOut, false, nullptr);
-    gyroDataScaledFodMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    gyroDataScaledFodMavg.setProperty (bufferSize, tempSampSize, nullptr);
     gyroDataScaledFodMavg.setProperty (oscToWekinator, false, nullptr);
+    gyroDataScaledFodMavg.setProperty(toolTip, "/gyro/scaled/fod/mavg [ f f f ]", nullptr);
 
     gyroData.addChild (gyroDataRaw, -1, nullptr);
     gyroDataRaw.addChild (gyroDataRawFod, -1, nullptr);
@@ -641,108 +658,125 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     emgData.setProperty (name, "EMG", nullptr);
     emgData.setProperty (oscOut, true, nullptr);
     emgData.setProperty (oscToWekinator, false, nullptr);
-
     
     ValueTree emgDataRaw = ValueTree ("EmgRaw");
     emgDataRaw.setProperty (name, "Raw", nullptr);
     emgDataRaw.setProperty (oscOut, false, nullptr);
     emgDataRaw.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataRaw.setProperty(toolTip, "/emg/raw [ f f f f f f f f ]", nullptr);
+
     ValueTree emgDataRawMavg = ValueTree ("EmgRawMavg");
     emgDataRawMavg.setProperty (name, "Moving Average", nullptr);
     emgDataRawMavg.setProperty (oscOut, false, nullptr);
-    emgDataRawMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataRawMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataRawMavg.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataRawMavg.setProperty(toolTip, "/emg/raw/mavg [ f f f f f f f f ]", nullptr);
+
     ValueTree emgDataRawZcr = ValueTree ("EmgRawZcr");
     emgDataRawZcr.setProperty (name, "Zero-Crossing", nullptr);
     emgDataRawZcr.setProperty (oscOut, false, nullptr);
-    emgDataRawZcr.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataRawZcr.setProperty (bufferSize, 200, nullptr);
     emgDataRawZcr.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataRawZcr.setProperty(toolTip, "/emg/raw/zcr [ i i i i i i i i ]", nullptr);
+
     ValueTree emgDataRawZcrMavg = ValueTree ("EmgRawZcrMavg");
     emgDataRawZcrMavg.setProperty (name, "Moving Average", nullptr);
     emgDataRawZcrMavg.setProperty (oscOut, false, nullptr);
-    emgDataRawZcrMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataRawZcrMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataRawZcrMavg.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataRawZcrMavg.setProperty(toolTip, "/emg/raw/zcr/mavg [ i i i i i i i i ]", nullptr);
+
     ValueTree emgDataScaled = ValueTree ("EmgScaled");
     emgDataScaled.setProperty (name, "Scaled", nullptr);
     emgDataScaled.setProperty (oscOut, true, nullptr);
     emgDataScaled.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataScaled.setProperty(toolTip, "/emg/scaled [ f f f f f f f f ]", nullptr);
+
     ValueTree emgDataScaledAbs = ValueTree ("EmgScaledAbs");
     emgDataScaledAbs.setProperty (name, "Absolute", nullptr);
     emgDataScaledAbs.setProperty (oscOut, true, nullptr);
     emgDataScaledAbs.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataScaledAbs.setProperty(toolTip, "/emg/scaled/abs [ f f f f f f f f ]", nullptr);
+
     ValueTree emgDataScaledAbsMin = ValueTree ("EmgScaledAbsMin");
     emgDataScaledAbsMin.setProperty (name, "Minimum", nullptr);
     emgDataScaledAbsMin.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsMin.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMin.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMin.setProperty (oscToWekinator, false, nullptr);
+    emgDataScaledAbsMin.setProperty(toolTip, "/emg/scaled/abs/min [ f f f f f f f f ]", nullptr);
 
     ValueTree emgDataScaledAbsMax = ValueTree ("EmgScaledAbsMax");
     emgDataScaledAbsMax.setProperty (name, "Maximum", nullptr);
     emgDataScaledAbsMax.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsMax.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMax.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMax.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataScaledAbsMax.setProperty(toolTip, "/emg/scaled/abs/max [ f f f f f f f f ]", nullptr);
+
     ValueTree emgDataScaledAbsFod = ValueTree ("EmgScaledAbsFod");
     emgDataScaledAbsFod.setProperty (name, "First Order Difference", nullptr);
     emgDataScaledAbsFod.setProperty (oscOut, false, nullptr);
     emgDataScaledAbsFod.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataScaledAbsFod.setProperty(toolTip, "/emg/scaled/abs/fod [ f f f f f f f f ]", nullptr);
+
     ValueTree emgDataScaledAbsFodMavg = ValueTree ("EmgScaledAbsFodMavg");
     emgDataScaledAbsFodMavg.setProperty (name, "Moving Average", nullptr);
     emgDataScaledAbsFodMavg.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsFodMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsFodMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsFodMavg.setProperty (oscToWekinator, false, nullptr);
+    emgDataScaledAbsFodMavg.setProperty(toolTip, "/emg/scaled/abs/fod/mavg [ f f f f f f f f ]", nullptr);
 
     ValueTree emgDataScaledAbsMavg = ValueTree ("EmgScaledAbsMavg");
     emgDataScaledAbsMavg.setProperty (name, "Moving Average", nullptr);
     emgDataScaledAbsMavg.setProperty (oscOut, true, nullptr);
-    emgDataScaledAbsMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMavg.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataScaledAbsMavg.setProperty(toolTip, "/emg/scaled/abs/mavg [ f f f f f f f f ]", nullptr);
+
     ValueTree emgDataScaledAbsMav = ValueTree ("EmgScaledAbsMav");
-    emgDataScaledAbsMav.setProperty (name, "Mean Average Value", nullptr);
+    emgDataScaledAbsMav.setProperty (name, "Mean Absolute Value", nullptr);
     emgDataScaledAbsMav.setProperty (oscOut, false, nullptr);
     emgDataScaledAbsMav.setProperty (oscToWekinator, false, nullptr);
+    emgDataScaledAbsMav.setProperty(toolTip, "/emg/scaled/abs/mav [ f ]", nullptr);
 
     ValueTree emgDataScaledAbsMavMavg = ValueTree ("EmgScaledAbsMavMavg");
     emgDataScaledAbsMavMavg.setProperty (name, "Moving Average", nullptr);
     emgDataScaledAbsMavMavg.setProperty (oscOut, true, nullptr);
-    emgDataScaledAbsMavMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMavMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMavMavg.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataScaledAbsMavMavg.setProperty(toolTip, "/emg/scaled/abs/mav/mavg [ f ]", nullptr);
+
     ValueTree emgDataScaledAbsMavMin = ValueTree ("EmgScaledAbsMavMin");
     emgDataScaledAbsMavMin.setProperty (name, "Minimum", nullptr);
     emgDataScaledAbsMavMin.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsMavMin.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMavMin.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMavMin.setProperty (oscToWekinator, false, nullptr);
+    emgDataScaledAbsMavMin.setProperty(toolTip, "/emg/scaled/abs/mav/min [ f ]", nullptr);
     
     ValueTree emgDataScaledAbsMavMax = ValueTree ("EmgScaledAbsMavMax");
     emgDataScaledAbsMavMax.setProperty (name, "Maximum", nullptr);
     emgDataScaledAbsMavMax.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsMavMax.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsMavMax.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsMavMax.setProperty (oscToWekinator, false, nullptr);
+    emgDataScaledAbsMavMax.setProperty(toolTip, "/emg/scaled/abs/mav/max [ f ]", nullptr);
     
     ValueTree emgDataScaledAbsMavFod = ValueTree ("EmgScaledAbsMavFod");
     emgDataScaledAbsMavFod.setProperty (name, "First Order Difference", nullptr);
     emgDataScaledAbsMavFod.setProperty (oscOut, false, nullptr);
     emgDataScaledAbsMavFod.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataScaledAbsMavFod.setProperty(toolTip, "/emg/scaled/abs/mav/fod [ f ]", nullptr);
+
     ValueTree emgDataScaledAbsFodMavMavg = ValueTree ("EmgScaledAbsMavFodMavg");
     emgDataScaledAbsFodMavMavg.setProperty (name, "Moving Average", nullptr);
     emgDataScaledAbsFodMavMavg.setProperty (oscOut, false, nullptr);
-    emgDataScaledAbsFodMavMavg.setProperty (sampleSize, tempSampSize, nullptr);
+    emgDataScaledAbsFodMavMavg.setProperty (bufferSize, tempSampSize, nullptr);
     emgDataScaledAbsFodMavMavg.setProperty (oscToWekinator, false, nullptr);
-    
+    emgDataScaledAbsFodMavMavg.setProperty(toolTip, "/emg/scaled/abs/mav/fod/mavg [ f ]", nullptr);
+
     ValueTree handPoseData = ValueTree ("HandPose");
     handPoseData.setProperty (name, "Hand Pose", nullptr);
     handPoseData.setProperty (oscOut, true, nullptr);
     handPoseData.setProperty (oscToWekinator, false, nullptr);
+    handPoseData.setProperty(toolTip, "/pose [ string ]", nullptr);
     
     emgData.addChild (emgDataRaw, -1, nullptr);
     emgDataRaw.addChild (emgDataRawMavg, -1, nullptr);
@@ -770,28 +804,28 @@ void MyoMapperApplication::initialiseOscStreamingTree()
     oscStreamingTree.addChild (emgData, -1, nullptr);
 }
 
-ValueTree MyoMapperApplication::getRootTree()
+ValueTree Application::getRootTree()
 {
     ValueTree const vt = rootTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MyoMapperApplication::getOscSettingsTree()
+ValueTree Application::getOscSettingsTree()
 {
     ValueTree const vt = oscSettingsTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MyoMapperApplication::getMyoDataScalingTree()
+ValueTree Application::getMyoDataScalingTree()
 {
     ValueTree const vt = myoDataScalingTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MyoMapperApplication::getOscStreamingTree()
+ValueTree Application::getOscStreamingTree()
 {
     ValueTree const vt = oscStreamingTree;
     jassert (vt.isValid());
@@ -799,7 +833,7 @@ ValueTree MyoMapperApplication::getOscStreamingTree()
 }
 
 //==============================================================================
-void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
+void Application::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
     if (!isInitialising())
     {
@@ -807,13 +841,13 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
         {
             osc->disconnectSender();
             sendPort = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (MyoMapperApplication::hostAddress, MyoMapperApplication::sendPort, MyoMapperApplication::wekinatorPort);
+            osc->connectSender (Application::hostAddress, Application::sendPort, Application::wekinatorPort);
         }
         if (treeWhosePropertyHasChanged.hasType ("HostAddress"))
         {
             osc->disconnectSender();
             hostAddress = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (MyoMapperApplication::hostAddress, MyoMapperApplication::sendPort, MyoMapperApplication::wekinatorPort);
+            osc->connectSender (Application::hostAddress, Application::sendPort, Application::wekinatorPort);
         }
         if (treeWhosePropertyHasChanged.hasType ("ReceivePort"))
         {
@@ -824,6 +858,14 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
         if (treeWhosePropertyHasChanged.hasType ("SelectedMyo"))
         {
             selectedMyo = treeWhosePropertyHasChanged.getProperty (property);
+            oscDataSel = windowList->oscDataSelectorWindowContent;
+            if (oscDataSel != nullptr)
+            {
+                DBG("update tooltip call");
+               // oscValueTree->updateToolTip();
+                // here goes the recall to update the tooltip. inserting `selectedMyo` as new myo id
+            }
+            
         }
     }
     if (visuals != nullptr)
@@ -890,22 +932,22 @@ void MyoMapperApplication::valueTreePropertyChanged (ValueTree& treeWhosePropert
     
 }
 
-void MyoMapperApplication::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
+void Application::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
 {
     
 }
 
-void MyoMapperApplication::valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved)
+void Application::valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved)
 {
     
 }
 
-void MyoMapperApplication::valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex)
+void Application::valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex)
 {
     
 }
 
-void MyoMapperApplication::valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged)
+void Application::valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged)
 {
     
 }

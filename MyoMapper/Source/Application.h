@@ -6,19 +6,19 @@
 #include "Utility/CommandIDs.h"
 #include "Myo/MyoManager.h"
 #include "DataStreaming/OSC.h"
+#include "UI/ValueTreeItems/OscValueTreeItem.h"
 
-class MyoMapperApplication  : public JUCEApplication,
+class Application  : public JUCEApplication,
                               private AsyncUpdater,
                               private Timer,
-//                              private HighResolutionTimer,
                               public ChangeListener,
                               public ChangeBroadcaster,
                               public ValueTree::Listener
 {
 public:
-    MyoMapperApplication();
+    Application();
     
-    static MyoMapperApplication&        getApp();
+    static Application&        getApp();
     static ApplicationCommandManager&   getCommandManager();
     
     //==========================================================================
@@ -117,11 +117,15 @@ public:
     // WindowDrawer used to create and manage these windows
     ScopedPointer<WindowList> windowList;
     
+    ScopedPointer<OscValueTreeItem> oscValueTree;
+    
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyoMapperApplication)
-
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Application)
+    
+    TooltipWindow ToolTip;
     int oscBufferFillSpeed;
     VisualsWindow* visuals;
+    OscDataSelectorWindow* oscDataSel;
 };
 
 

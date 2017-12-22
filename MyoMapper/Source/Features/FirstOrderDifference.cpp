@@ -1,31 +1,19 @@
 #include "FirstOrderDifference.h"
 
-void FirstOrderDifference::setValue (float Value)
+float FirstOrderDifference::extract (float Value)
 {
-    input = Value;
-    fod = (input - previousInput) * scaleFactor;
-    previousInput = input;
-}
-
-float FirstOrderDifference::getValue()
-{
+    fod = (Value - previousInput) * scaleFactor;
+    previousInput = Value;
     return fod;
 }
 
-void FirstOrderDifference::set3DValue(Vector3D<float> Value3D)
+Vector3D<float> FirstOrderDifference::extract (Vector3D<float> Value3D)
 {
+    fod3D.x = (Value3D.x - previousInput3D.x) * scaleFactor;
+    fod3D.y = (Value3D.y - previousInput3D.y) * scaleFactor;
+    fod3D.z = (Value3D.z - previousInput3D.z) * scaleFactor;
     
-    input3D = Value3D;
+    previousInput3D = Value3D;
     
-    fod3D.x = (input3D.x - previousInput3D.x) * scaleFactor;
-    fod3D.y = (input3D.y - previousInput3D.y) * scaleFactor;
-    fod3D.z = (input3D.z - previousInput3D.z) * scaleFactor;
-    
-    previousInput3D = input3D;
-}
-
-
-Vector3D<float> FirstOrderDifference::get3DValue()
-{
     return fod3D;
 }

@@ -1,6 +1,7 @@
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../MyoMapperLookAndFeel.h"
 #include "OscValueTreeItem.h"
-#include "MyoMapperLookAndFeel.h"
+#include "../../Application.h"
 
 class OscValueTreeItem::TreeItemComponent    : public Component,
                                                public Button::Listener,
@@ -14,65 +15,79 @@ public:
         label.setColour (Label::textColourId, Colours::black);
         label.setJustificationType (Justification::left);
         label.setText (tree["name"], dontSendNotification);
-        
+        addAndMakeVisible (label);
+
         toggle.setColour (ToggleButton::tickColourId, Colours::black);
         toggle.setColour (ToggleButton::tickDisabledColourId, Colours::black);
         toggle.setToggleState (tree.getProperty ("oscOut", 0), dontSendNotification);
+        toggle.setTooltip("OSC message to stream.");
         toggle.addListener (this);
-        
+        addAndMakeVisible (toggle);
+
         toggleWek.setColour (ToggleButton::tickColourId, Colours::black);
         toggleWek.setColour (ToggleButton::tickDisabledColourId, Colours::black);
         toggleWek.setToggleState (tree.getProperty ("oscToWekinator", 0), dontSendNotification);
         toggleWek.addListener (this);
-        
+        addAndMakeVisible (toggleWek);
+
         toWekinatorLabel.setLookAndFeel (&laf);
         toWekinatorLabel.setColour (Label::textColourId, Colours::black);
         toWekinatorLabel.setText ("To Wekinator", dontSendNotification);
-        toWekinatorLabel.attachToComponent (&slider, true);
-        
-        addAndMakeVisible (toggle);
-        addAndMakeVisible (toggleWek);
-        addAndMakeVisible (label);
+        toWekinatorLabel.attachToComponent (&bufferSizeSlider, true);
         addAndMakeVisible (toWekinatorLabel);
 
-        if (tree.hasProperty ("sampleSize"))
+        if (tree.hasProperty ("bufferSize"))
         {
-            slider.setValue (10);
-            slider.setRange (1, 100, 1);
-            slider.setSliderStyle (Slider::SliderStyle::IncDecButtons);
-            slider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
-            slider.setValue (tree.getProperty ("sampleSize", 0));
-            slider.addListener (this);
-            addAndMakeVisible (slider);
+            bufferSizeSlider.setRange (1, 10000, 1);
+            bufferSizeSlider.setSliderStyle (Slider::SliderStyle::IncDecButtons);
+            bufferSizeSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
+            bufferSizeSlider.setValue (tree.getProperty ("bufferSize", 0));
+            bufferSizeSlider.setTooltip("Sets feature's buffer size.");
+            bufferSizeSlider.addListener (this);
+            addAndMakeVisible (bufferSizeSlider);
             
-            sliderLabel.setLookAndFeel (&laf);
-            sliderLabel.setColour (Label::textColourId, Colours::black);
-            sliderLabel.setText ("Buffer Size", dontSendNotification);
-            sliderLabel.attachToComponent (&slider, true);
-            addAndMakeVisible (sliderLabel);
+            bufferSizeSliderLabel.setLookAndFeel (&laf);
+            bufferSizeSliderLabel.setColour (Label::textColourId, Colours::black);
+            bufferSizeSliderLabel.setText ("Buffer Size", dontSendNotification);
+            bufferSizeSliderLabel.setTooltip("Sets feature's buffer size.");
+            bufferSizeSliderLabel.attachToComponent (&bufferSizeSlider, true);
+            addAndMakeVisible (bufferSizeSliderLabel);
         }
     }
     ~TreeItemComponent()
     {
         label.setLookAndFeel (nullptr);
-        sliderLabel.setLookAndFeel (nullptr);
+        bufferSizeSliderLabel.setLookAndFeel (nullptr);
         toWekinatorLabel.setLookAndFeel(nullptr);
     }
     
     void paint (Graphics& g) override
     {
+        updateToolTip();
     }
-    
     void resized() override
     {
+        updateToolTip();
         auto area = getLocalBounds();
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
-        slider.setBounds (area.removeFromRight (getParentWidth() * 0.18));
-        sliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.14));
+        bufferSizeSlider.setBounds (area.removeFromRight (getParentWidth() * 0.18));
+        bufferSizeSliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.14));
         toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
         toWekinatorLabel.setBounds (area.removeFromRight (getParentWidth() * 0.165));
     }
+    
+     void updateToolTip()
+     {
+         String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
+         String featureLabelToolTip = "Sends "+tree["name"].toString()+"'s OSC message: /myo" + String(Application::selectedMyo) + stringfromTree;
+         label.setTooltip(featureLabelToolTip);
+         
+         String wekinatorToolTip = "Adds values to OSC mesagge to Wekinator (IP: local host, port: 6448, tag: /myo"+String(Application::selectedMyo)+").";
+         toggleWek.setTooltip(wekinatorToolTip);
+         toWekinatorLabel.setTooltip(wekinatorToolTip);
+
+     } 
     
     void buttonClicked (Button* button) override
     {
@@ -88,7 +103,10 @@ public:
     
     void sliderValueChanged (Slider* slider) override
     {
-        tree.setProperty ("sampleSize", slider->getValue(), 0);
+        if(slider == &bufferSizeSlider)
+        {
+            tree.setProperty ("bufferSize", slider->getValue(), 0);
+        }
     }
     
 private:
@@ -99,9 +117,10 @@ private:
     ToggleButton toggleWek;
 
     Label label;
-    Slider slider;
-    Label sliderLabel;
+    Slider bufferSizeSlider;
+    Label bufferSizeSliderLabel;
     Label toWekinatorLabel;
+    String wekinatorToolTip;
     
     class TreeLookAndFeel    : public MyoMapperLookAndFeel
     {
