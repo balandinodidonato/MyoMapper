@@ -36,6 +36,9 @@ private:
     Label oscSendPortLabel;
     Slider oscSenderSlider;
     
+    Label midiChannelLabel;
+    Slider midiChannelSlider;
+
     Label oscReceiveLabel;
     Label oscReceivePortLabel;
     Slider oscReceiverSlider;
@@ -45,7 +48,7 @@ private:
     String hostAddress;
     
     Label myoSelectorLabel;
-    Slider myoSelectorSetter;
+    Slider myoSelectorSlider;
     
     TextButton saveButton;
     TextButton openButton;

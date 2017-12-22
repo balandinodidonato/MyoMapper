@@ -9,6 +9,17 @@ SettingsWindow::SettingsWindow()
 :
 hostAddress("127.0.0.1")
 {
+    midiChannelLabel.setJustificationType (Justification::horizontallyCentred);
+    midiChannelLabel.setText ("MIDI Channel", dontSendNotification);
+    addAndMakeVisible (midiChannelLabel);
+    
+    midiChannelSlider.addListener (this);
+    midiChannelSlider.setRange (1, 16, 1);
+    midiChannelSlider.setValue (1);
+    midiChannelSlider.setSliderStyle (Slider::IncDecButtons);
+    midiChannelSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
+    addAndMakeVisible (midiChannelSlider);
+    
     oscSendLabel.setJustificationType (Justification::horizontallyCentred);
     oscSendLabel.setText ("OSC Sender", dontSendNotification);
     addAndMakeVisible (oscSendLabel);
@@ -65,12 +76,12 @@ hostAddress("127.0.0.1")
     myoSelectorLabel.setTooltip("Select the Myo armband which data have to be mapped into OSC messages.");
     addAndMakeVisible (myoSelectorLabel);
     
-    myoSelectorSetter.setRange (1, 20, 1);
-    myoSelectorSetter.setValue (Application::getApp().getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
-    myoSelectorSetter.setSliderStyle (Slider::IncDecButtons);
-    myoSelectorSetter.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
-    myoSelectorSetter.addListener (this);
-    addAndMakeVisible (myoSelectorSetter);
+    myoSelectorSlider.setRange (1, 20, 1);
+    myoSelectorSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("SelectedMyo").getProperty ("myoId"));
+    myoSelectorSlider.setSliderStyle (Slider::IncDecButtons);
+    myoSelectorSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
+    myoSelectorSlider.addListener (this);
+    addAndMakeVisible (myoSelectorSlider);
     
     featuresButton.setButtonText ("FEATURES");
     featuresButton.addListener (this);
@@ -96,11 +107,17 @@ void SettingsWindow::paint (Graphics& g)
     
     auto area = getBounds().toFloat();
     auto windowSize = area;
-    area.removeFromTop (windowSize.proportionOfHeight(0.078));
-    auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429)).reduced (windowSize.proportionOfWidth (0.078), 0);
-    auto oscHostRegion = area.removeFromTop(windowSize.proportionOfHeight (0.1)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    area.removeFromTop (windowSize.proportionOfHeight(0.06));
+    
+    auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429)).reduced (windowSize.proportionOfWidth (0.03), 0);
+    
+    auto oscHostRegion = area.removeFromTop(windowSize.proportionOfHeight (0.1)).reduced (windowSize.proportionOfWidth (0.03), 0);
+    
+    area.removeFromTop (windowSize.proportionOfHeight(-0.04));
 
-    auto oscRectangleWidth = windowSize.proportionOfWidth (0.375);
+    auto midiRegion = area.removeFromTop(windowSize.proportionOfHeight (0.1)).reduced (windowSize.proportionOfWidth (0.03), 0);
+
+    auto oscRectangleWidth = windowSize.proportionOfWidth (0.45);
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
     
@@ -112,26 +129,42 @@ void SettingsWindow::paint (Graphics& g)
     oscSendRectangle.addRoundedRectangle (oscSendRegion, rectangleCorner);
     g.strokePath (oscSendRectangle, PathStrokeType (lineThickness));
     Path oscReceiveRectangle;
+    
     oscReceiveRectangle.addRoundedRectangle (oscReceiveRegion, rectangleCorner);
     g.strokePath (oscReceiveRectangle, PathStrokeType (lineThickness));
+    
+    Path midiRegionRectangle;
+    midiRegionRectangle.addRoundedRectangle(midiRegion, rectangleCorner);
+    g.strokePath (midiRegionRectangle, PathStrokeType (lineThickness));
 }
 
 void SettingsWindow::resized()
 {
+    
     auto area = getBounds();
     auto windowSize = area;
     auto windowSizeWidth = area;
     area.removeFromTop (windowSize.proportionOfHeight (0.078));
-    auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429))
-    .reduced (windowSizeWidth.proportionOfWidth (0.078), 0);
-    auto oscRectangleWidth = windowSizeWidth.proportionOfWidth (0.375);
+    
+    auto oscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.429)).reduced (windowSize.proportionOfWidth (0.02), 0);
+    
+    area.removeFromTop (windowSize.proportionOfHeight (0.05));
+
+    auto oscRectangleWidth = windowSizeWidth.proportionOfWidth (0.45);
+
     auto oscSendRegion = oscRegion.removeFromLeft (oscRectangleWidth);
     auto oscReceiveRegion = oscRegion.removeFromRight (oscRectangleWidth);
-    area.removeFromTop (windowSize.proportionOfHeight (0.07));
-    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
-    .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
-    area.removeFromTop (windowSize.proportionOfHeight (0.07));
-    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.14))
+    
+     auto midiRegion = area.removeFromTop(windowSize.proportionOfHeight (0.1)).reduced (windowSize.proportionOfWidth (0.03), 0);
+    
+    area.removeFromTop (windowSize.proportionOfHeight (0.025));
+
+    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.1))
+    .reduced (windowSizeWidth.proportionOfWidth (0.2), 0);
+    
+    area.removeFromTop (windowSize.proportionOfHeight (0.06));
+
+    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.1))
     .reduced (windowSizeWidth.proportionOfWidth (0.0315), 0);
     
     // Set send region bounds
@@ -161,11 +194,16 @@ void SettingsWindow::resized()
     oscReceivePortLabel.setBounds (ReceivePortRegion.removeFromLeft (ReceivePortRegion.proportionOfWidth (0.3)));
     oscReceiverSlider.setBounds (ReceivePortRegion.reduced (oscReceiveRegion.proportionOfWidth (0.02), ReceivePortRegion.proportionOfHeight (0.05)));
     
+    // Set MIDI bounds
+    midiChannelLabel.setBounds (midiRegion.removeFromLeft (windowSize.proportionOfWidth (0.5)). reduced(proportionOfWidth(0.001)));
+    midiChannelSlider.setBounds (midiRegion.removeFromLeft (windowSize.proportionOfWidth (0.3)). reduced(proportionOfWidth(0.012)));
+    
     // Set myo selector region bounds
-    myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.287)));
+    myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.4)));
     myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.033));
-    myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.401))
-                                 .reduced (0, windowSize.proportionOfHeight (0.01)));
+    myoSelectorSlider.setBounds (myoSelectorRegion. removeFromLeft (windowSize.proportionOfWidth(0.5)). reduced (0, windowSize.proportionOfHeight (0.01)));
+   
+    // Set buttons region bounds
     buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.2));
     featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.222)));
     buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.2));
@@ -223,8 +261,12 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     {
         Application::getApp().getOscSettingsTree().getChildWithName("ReceivePort").setProperty ("portNumber", value, 0);
     }
-    if (slider == &myoSelectorSetter)
+    if (slider == &myoSelectorSlider)
     {
         Application::getApp().getOscSettingsTree().getChildWithName ("SelectedMyo").setProperty ("myoId", value, 0);
+    }
+    if (slider == &midiChannelSlider)
+    {
+        // midi channel slider back end to update tree
     }
 }

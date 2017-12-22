@@ -22,6 +22,9 @@
 		2DDF3D6B66671A4C35A871DA /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F9BBCFDC750D4E34238B9 /* Application.cpp */; };
 		2EA91483B878C0FF5DD75119 /* ScaleValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E2AF547C64DF07847A2A99 /* ScaleValues.cpp */; };
 		30AE49EF264B38DA117A77C7 /* WindowDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE54F4F83D39BB4F9FA59A11 /* WindowDrawer.cpp */; };
+		320C0F6D1FED34CF00C26ACD /* myo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320C0F6C1FED34CF00C26ACD /* myo.framework */; };
+		320C0F6E1FED34D500C26ACD /* myo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320C0F6C1FED34CF00C26ACD /* myo.framework */; };
+		320C0F6F1FED34D500C26ACD /* myo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 320C0F6C1FED34CF00C26ACD /* myo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3241BB551AF7B80A02389059 /* include_juce_osc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCFB967B0413872AB7D756 /* include_juce_osc.cpp */; };
 		3941F47C568D722FCCAF407F /* HelpWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 630CC8393DBDC58513DA027A /* HelpWindow.cpp */; };
 		395070209AB1F4B1098D5BB5 /* include_juce_graphics.mm in Sources */ = {isa = PBXBuildFile; fileRef = C5F124CD026F1046BA83D694 /* include_juce_graphics.mm */; };
@@ -40,7 +43,6 @@
 		94D856A6F72CA3C27DB817E7 /* include_juce_gui_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF21A92FA40535D46646DA93 /* include_juce_gui_basics.mm */; };
 		99CAD7971DB8C87B79AB2B0C /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C18CFCFFAE8241D1D539735E /* Main.cpp */; };
 		9B5F9C8DFA32FF140DB26724 /* OscSettingsValueTreeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF83437E0671EEC5FF0B393 /* OscSettingsValueTreeItem.cpp */; };
-		9CABDB780A220E97B1899E38 /* myo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD34A39CF97F291536646032 /* myo.framework */; };
 		C116BA0C6679EE33707BA158 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CC130375FB18D502CFB639 /* IOKit.framework */; };
 		C5F7EDE7137F1EAA160DBE99 /* SettingsWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C133D99499492420FF5302 /* SettingsWindow.cpp */; };
 		CF8B0D6C385EB3BCF8317249 /* OSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A18C977BC4C604CECA4E654 /* OSC.cpp */; };
@@ -52,6 +54,20 @@
 		EA6B6B9A2254D93F7BE9742B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64200BD72BE5B8158B73877B /* Cocoa.framework */; };
 		F9A2468BA8A175E78F1A8D6D /* MyoListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F7EFCC1DF1732FF95075D6F /* MyoListener.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		320C0F701FED34D500C26ACD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				320C0F6F1FED34D500C26ACD /* myo.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		079B3A191BE4DC5CE6755D14 /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
@@ -74,6 +90,7 @@
 		20E9C88336BF4382FBE1C1E5 /* SecondOrderDifference.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SecondOrderDifference.cpp; path = ../../Source/Features/SecondOrderDifference.cpp; sourceTree = SOURCE_ROOT; };
 		2B2F9DF77312BF8D3359ABF6 /* juce_osc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_osc; path = ../../JuceLibraryCode/modules/juce_osc; sourceTree = SOURCE_ROOT; };
 		30C2807D73F026BDA4DBC97C /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../../Source/Application.h; sourceTree = SOURCE_ROOT; };
+		320C0F6C1FED34CF00C26ACD /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myo.framework; path = ../../../../../../Library/Frameworks/myo.framework; sourceTree = "<group>"; };
 		325B30514F5198958D9DA487 /* FirstOrderDifference.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FirstOrderDifference.cpp; path = ../../Source/Features/FirstOrderDifference.cpp; sourceTree = SOURCE_ROOT; };
 		34549BDEAEF79A8B5E01A4D5 /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		362301F4D9F3494F257A83B1 /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
@@ -114,7 +131,6 @@
 		A6B4AF3B2C67F4A54D912DAA /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_graphics; path = ../../JuceLibraryCode/modules/juce_graphics; sourceTree = SOURCE_ROOT; };
 		A8A1FC4A9849A0CD872CDCF5 /* MyoMapperLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyoMapperLookAndFeel.h; path = ../../Source/UI/MyoMapperLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		AAC622D91CDBA8EEEB4EF571 /* MinMax.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MinMax.cpp; path = ../../Source/Features/MinMax.cpp; sourceTree = SOURCE_ROOT; };
-		AD34A39CF97F291536646032 /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myo.framework; path = System/Library/Frameworks/myo.framework; sourceTree = SDKROOT; };
 		B201FE8719D2E5268325D34F /* OscDataSelectorWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscDataSelectorWindow.h; path = ../../Source/UI/Windows/OscDataSelectorWindow.h; sourceTree = SOURCE_ROOT; };
 		B45BCCAF5D0552B62F8ADC0C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B467E7047B3B06A9199E6467 /* HelpWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelpWindow.h; path = ../../Source/UI/Windows/HelpWindow.h; sourceTree = SOURCE_ROOT; };
@@ -151,9 +167,10 @@
 				D6B1435E336D3D5A66FCF16B /* Carbon.framework in Frameworks */,
 				EA6B6B9A2254D93F7BE9742B /* Cocoa.framework in Frameworks */,
 				C116BA0C6679EE33707BA158 /* IOKit.framework in Frameworks */,
-				9CABDB780A220E97B1899E38 /* myo.framework in Frameworks */,
 				00C21076546BD3C41BE3490C /* OpenGL.framework in Frameworks */,
 				808C19E032283899C075FEFF /* QuartzCore.framework in Frameworks */,
+				320C0F6D1FED34CF00C26ACD /* myo.framework in Frameworks */,
+				320C0F6E1FED34D500C26ACD /* myo.framework in Frameworks */,
 				6507943995181A90AF2AB700 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,10 +342,10 @@
 		A8B8923DE26E7730A43A9AFD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				320C0F6C1FED34CF00C26ACD /* myo.framework */,
 				175332EA85B1F4026F148E47 /* Carbon.framework */,
 				64200BD72BE5B8158B73877B /* Cocoa.framework */,
 				C4CC130375FB18D502CFB639 /* IOKit.framework */,
-				AD34A39CF97F291536646032 /* myo.framework */,
 				A6961D66C3C9A60E52FE8322 /* OpenGL.framework */,
 				EEF39C81C7C79A4A39C8C86A /* QuartzCore.framework */,
 				B45BCCAF5D0552B62F8ADC0C /* WebKit.framework */,
@@ -386,6 +403,7 @@
 				04585E7B6D39EA4D1DA7CF92 /* Sources */,
 				EDA380A82341BC06E239D3AD /* Frameworks */,
 				128EAE48529CD020F3D877A3 /* Post-build script */,
+				320C0F701FED34D500C26ACD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -520,7 +538,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks/;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -546,7 +567,7 @@
 				INFOPLIST_FILE = "Info-App.plist";
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.balandinodidonato.MyoMapper;
@@ -563,7 +584,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				DEAD_CODE_STRIPPING = YES;
-				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks/;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -590,6 +614,7 @@
 				INFOPLIST_FILE = "Info-App.plist";
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.balandinodidonato.MyoMapper;

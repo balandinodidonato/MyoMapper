@@ -36,7 +36,7 @@ void WindowList::showOrCreateOscSettingsWindow()
         WindowDrawer* const w = new WindowDrawer ("MyoMapper - Settings",
                                                   window,
                                                   true, true,
-                                                  windowWidth * 0.4, windowHeight * 0.4,
+                                                  windowWidth * 0.4, windowHeight * 0.55,
                                                   windowWidth, windowHeight,
                                                   false);
         oscSettingsWindow = w;
