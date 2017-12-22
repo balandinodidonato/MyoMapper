@@ -23,7 +23,7 @@ hostAddress("127.0.0.1")
     oscSendPortLabel.setLookAndFeel (&laf);
     oscSendPortLabel.setJustificationType (Justification::left);
     oscSendPortLabel.setText ("Port:", dontSendNotification);
-    oscSendPortLabel.setTooltip("Set port of the Myo Mapper's OSC sender.");
+    oscSendPortLabel.setTooltip("Myo Mapper's OSC sender port number.");
     addAndMakeVisible (oscSendPortLabel);
     
     oscReceiveLabel.setJustificationType (Justification::horizontallyCentred);
@@ -33,20 +33,20 @@ hostAddress("127.0.0.1")
     oscReceivePortLabel.setLookAndFeel (&laf);
     oscReceivePortLabel.setJustificationType (Justification::left);
     oscReceivePortLabel.setText ("Port:", dontSendNotification);
-    oscReceivePortLabel.setTooltip("Set port of the Myo Mapper's OSC receiver.");
+    oscReceivePortLabel.setTooltip("Myo Mapper's OSC receiver port number.");
     addAndMakeVisible (oscReceivePortLabel);
     
     oscReceiverSlider.setRange (1, 9999, 1);
     oscReceiverSlider.setValue (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
     oscReceiverSlider.setSliderStyle (Slider::IncDecButtons);
     oscReceiverSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
-    oscReceiverSlider.setTooltip("Set port of the Myo Mapper's OSC receiver.");
+    oscReceiverSlider.setTooltip("Myo Mapper's OSC receiver port number.");
     oscReceiverSlider.addListener (this);
     addAndMakeVisible (oscReceiverSlider);
     
     hostAddressTitleLabel.setJustificationType (Justification::left);
     hostAddressTitleLabel.setText ("IP Address:", dontSendNotification);
-    hostAddressTitleLabel.setTooltip("Insert IP address of the device receiving Myo Mapper's OSC messages (local host: 127.0.0.1).");
+    hostAddressTitleLabel.setTooltip("IP address of the device receiving Myo Mapper's OSC messages.");
     addAndMakeVisible(hostAddressTitleLabel);
     
     setHostAddressLabel.setJustificationType (Justification::centred);
@@ -55,7 +55,7 @@ hostAddress("127.0.0.1")
     setHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
     setHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
     setHostAddressLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
-    setHostAddressLabel.setTooltip("Insert the receiver's IP address (local host: 127.0.0.1).");
+    setHostAddressLabel.setTooltip("IP address of the device receiving Myo Mapper's OSC messages.");
     addAndMakeVisible(setHostAddressLabel);
     setHostAddressLabel.addListener(this);
     
