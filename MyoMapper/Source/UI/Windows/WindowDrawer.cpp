@@ -40,7 +40,7 @@ WindowDrawer::WindowDrawer (const String& title,
     }
     setContentOwned (content, false);
     setVisible (true);
-    addKeyListener (MainComponent::getCommandManager().getKeyMappings());
+    addKeyListener (Application::getCommandManager().getKeyMappings());
 }
 
 void WindowDrawer::closeButtonPressed()

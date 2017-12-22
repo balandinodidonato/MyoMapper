@@ -1,7 +1,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Application.h"
 
-struct MainComponent::MainMenuBarModel   : public MenuBarModel
+struct Application::MainMenuBarModel   : public MenuBarModel
 {
     MainMenuBarModel()
     {
@@ -27,17 +27,17 @@ struct MainComponent::MainMenuBarModel   : public MenuBarModel
 };
 
 //==============================================================================
-int MainComponent::selectedMyo;
-int MainComponent::sendPort;
-int MainComponent::receivePort;
-int MainComponent::wekinatorPort;
-String MainComponent::hostAddress;
+int Application::selectedMyo;
+int Application::sendPort;
+int Application::receivePort;
+int Application::wekinatorPort;
+String Application::hostAddress;
 
-MainComponent::MainComponent()
+Application::Application()
 {
 }
 
-void MainComponent::initialise (const String& commandLine)
+void Application::initialise (const String& commandLine)
 {
     DBG (getCommandLineParameters());
     auto oscBufferFillHz = 40;
@@ -75,14 +75,14 @@ void MainComponent::initialise (const String& commandLine)
 
 }
 
-void MainComponent::handleAsyncUpdate()
+void Application::handleAsyncUpdate()
 {
     #if JUCE_MAC
     MenuBarModel::setMacMainMenu (menuModel);
     #endif
 }
 
-void MainComponent::shutdown()
+void Application::shutdown()
 {
     stopTimer();
     myoManager.disconnect();
@@ -98,13 +98,13 @@ void MainComponent::shutdown()
     LookAndFeel::setDefaultLookAndFeel (nullptr);
 }
 
-void MainComponent::systemRequestedQuit()
+void Application::systemRequestedQuit()
 {
         JUCEApplicationBase::quit();
 }
 
 //==============================================================================
-void MainComponent::timerCallback()
+void Application::timerCallback()
 {
     bool getMyoDataSuccessful = false;
     std::vector<MyoData> myoData = myoManager.getMyoData (getMyoDataSuccessful);
@@ -134,7 +134,7 @@ void MainComponent::timerCallback()
     }
 }
 
-void MainComponent::changeListenerCallback (ChangeBroadcaster *source)
+void Application::changeListenerCallback (ChangeBroadcaster *source)
 {
     if ((selectedMyo == 0 || selectedMyo > 20) && SettingsWindow::startButtonClicked)
     {
@@ -169,27 +169,27 @@ void MainComponent::changeListenerCallback (ChangeBroadcaster *source)
 
 
 //==============================================================================
-MainComponent& MainComponent::getApp()
+Application& Application::getApp()
 {
-    MainComponent* const app = dynamic_cast<MainComponent*> (JUCEApplication::getInstance());
+    Application* const app = dynamic_cast<Application*> (JUCEApplication::getInstance());
     jassert (app != nullptr);
     return *app;
 }
 
-ApplicationCommandManager& MainComponent::getCommandManager()
+ApplicationCommandManager& Application::getCommandManager()
 {
-    ApplicationCommandManager* const comMan = MainComponent::getApp().commandManager;
+    ApplicationCommandManager* const comMan = Application::getApp().commandManager;
     jassert (comMan != nullptr);
     return *comMan;
 }
 
 //==============================================================================
-MenuBarModel* MainComponent::getMenuModel()
+MenuBarModel* Application::getMenuModel()
 {
     return menuModel.get();
 }
 
-StringArray MainComponent::getMenuBarNames()
+StringArray Application::getMenuBarNames()
 {
     StringArray names;
     names.add ("Window");
@@ -197,7 +197,7 @@ StringArray MainComponent::getMenuBarNames()
     return StringArray (names);
 }
 
-void MainComponent::createMenu (PopupMenu& menu, const String& menuName)
+void Application::createMenu (PopupMenu& menu, const String& menuName)
 {
     if (menuName == "Window")
         createWindowMenu(menu);
@@ -207,7 +207,7 @@ void MainComponent::createMenu (PopupMenu& menu, const String& menuName)
         jassertfalse;
 }
 
-void MainComponent::createWindowMenu (PopupMenu& menu)
+void Application::createWindowMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showSettingsWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showVisualsWindow);
@@ -217,19 +217,19 @@ void MainComponent::createWindowMenu (PopupMenu& menu)
     menu.addCommandItem (&getCommandManager(), CommandIDs::closeAllWindows);
 }
 
-void MainComponent::createHelpMenu (PopupMenu& menu)
+void Application::createHelpMenu (PopupMenu& menu)
 {
     menu.addCommandItem (&getCommandManager(), CommandIDs::showDocumentationWindow);
     menu.addCommandItem (&getCommandManager(), CommandIDs::showAboutWindow);
 }
 
-void MainComponent::menuCommand (int menuItemID)
+void Application::menuCommand (int menuItemID)
 {
     // Used for sub menus and file loaders
 }
 
 //==============================================================================
-void MainComponent::getAllCommands (Array<CommandID> &commands)
+void Application::getAllCommands (Array<CommandID> &commands)
 {
     // Return a list of commands the manager's target can perform
     const CommandID id[] = {
@@ -244,7 +244,7 @@ void MainComponent::getAllCommands (Array<CommandID> &commands)
     commands.addArray (id, numElementsInArray (id));
 }
 
-void MainComponent::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
+void Application::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
 {
     switch (commandID)
     {
@@ -298,7 +298,7 @@ void MainComponent::getCommandInfo (const CommandID commandID, ApplicationComman
     }
 }
 
-bool MainComponent::perform (const InvocationInfo& info)
+bool Application::perform (const InvocationInfo& info)
 {
     switch (info.commandID)
     {
@@ -316,27 +316,27 @@ bool MainComponent::perform (const InvocationInfo& info)
     return true;
 }
 
-void MainComponent::quitMapper()
+void Application::quitMapper()
 {
-    MainComponent::shutdown();
+    Application::shutdown();
 }
 
-void MainComponent::showSettingsWindow()
+void Application::showSettingsWindow()
 {
     windowList->showOrCreateOscSettingsWindow();
 }
 
-void MainComponent::showVisualsWindow()
+void Application::showVisualsWindow()
 {
     windowList->showOrCreateMyoStatusWindow();
 }
 
-void MainComponent::showDataWindow()
+void Application::showDataWindow()
 {
     windowList->showOrCreateOscDataSelectorWindow();
 }
 
-void MainComponent::closeWindow()
+void Application::closeWindow()
 {
     for (int i = 0; i < windowList->windows.size(); ++i)
     {
@@ -359,7 +359,7 @@ void MainComponent::closeWindow()
     }
 }
 
-void MainComponent::closeAllWindows()
+void Application::closeAllWindows()
 {
     for (int i = 0; i < windowList->windows.size(); ++i)
     {
@@ -382,17 +382,17 @@ void MainComponent::closeAllWindows()
     return;
 }
 
-void MainComponent::showAboutWindow()
+void Application::showAboutWindow()
 {
     windowList->showOrCreateAboutWindow();
 }
 
-void MainComponent::showDocumentationWindow()
+void Application::showDocumentationWindow()
 {
     windowList->showOrCreateHelpWindow();
 }
 
-void MainComponent::showPreferencesWindow()
+void Application::showPreferencesWindow()
 {
     // Show the preferences window (moves on mac vs windows/ linux)
 }
@@ -408,7 +408,7 @@ const String toolTip            = "toolTip";
 const int tempSampSize          = 10;
 
 //==============================================================================
-void MainComponent::initialiseRootTree()
+void Application::initialiseRootTree()
 {
     rootTree = ValueTree ("MyoMapper");
     if (!oscSettingsTree.hasType ("OscSettingsTree"))
@@ -430,7 +430,7 @@ void MainComponent::initialiseRootTree()
     rootTree.addListener (this);
 }
 
-void MainComponent::initialiseOscSettingsTree()
+void Application::initialiseOscSettingsTree()
 {
     oscSettingsTree = ValueTree ("OscSettingsTree");
     
@@ -461,7 +461,7 @@ void MainComponent::initialiseOscSettingsTree()
     oscSettingsTree.addChild (wekinatorPortTree, -1, nullptr);
 }
 
-void MainComponent::initialiseMyoDataScalingTree()
+void Application::initialiseMyoDataScalingTree()
 {
     myoDataScalingTree = ValueTree ("MyoDataScalingTree");
     
@@ -500,7 +500,7 @@ void MainComponent::initialiseMyoDataScalingTree()
     myoDataScalingTree.addChild (rollScalingTree, -1, nullptr);
 }
 
-void MainComponent::initialiseOscStreamingTree()
+void Application::initialiseOscStreamingTree()
 {
     oscStreamingTree = ValueTree ("OscStreamingTree");
     
@@ -804,28 +804,28 @@ void MainComponent::initialiseOscStreamingTree()
     oscStreamingTree.addChild (emgData, -1, nullptr);
 }
 
-ValueTree MainComponent::getRootTree()
+ValueTree Application::getRootTree()
 {
     ValueTree const vt = rootTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MainComponent::getOscSettingsTree()
+ValueTree Application::getOscSettingsTree()
 {
     ValueTree const vt = oscSettingsTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MainComponent::getMyoDataScalingTree()
+ValueTree Application::getMyoDataScalingTree()
 {
     ValueTree const vt = myoDataScalingTree;
     jassert (vt.isValid());
     return vt;
 }
 
-ValueTree MainComponent::getOscStreamingTree()
+ValueTree Application::getOscStreamingTree()
 {
     ValueTree const vt = oscStreamingTree;
     jassert (vt.isValid());
@@ -833,7 +833,7 @@ ValueTree MainComponent::getOscStreamingTree()
 }
 
 //==============================================================================
-void MainComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
+void Application::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
     if (!isInitialising())
     {
@@ -841,13 +841,13 @@ void MainComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasCha
         {
             osc->disconnectSender();
             sendPort = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (MainComponent::hostAddress, MainComponent::sendPort, MainComponent::wekinatorPort);
+            osc->connectSender (Application::hostAddress, Application::sendPort, Application::wekinatorPort);
         }
         if (treeWhosePropertyHasChanged.hasType ("HostAddress"))
         {
             osc->disconnectSender();
             hostAddress = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (MainComponent::hostAddress, MainComponent::sendPort, MainComponent::wekinatorPort);
+            osc->connectSender (Application::hostAddress, Application::sendPort, Application::wekinatorPort);
         }
         if (treeWhosePropertyHasChanged.hasType ("ReceivePort"))
         {
@@ -932,22 +932,22 @@ void MainComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasCha
     
 }
 
-void MainComponent::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
+void Application::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
 {
     
 }
 
-void MainComponent::valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved)
+void Application::valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved)
 {
     
 }
 
-void MainComponent::valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex)
+void Application::valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex)
 {
     
 }
 
-void MainComponent::valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged)
+void Application::valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged)
 {
     
 }

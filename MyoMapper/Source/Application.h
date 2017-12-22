@@ -8,7 +8,7 @@
 #include "DataStreaming/OSC.h"
 #include "UI/ValueTreeItems/OscValueTreeItem.h"
 
-class MainComponent  : public JUCEApplication,
+class Application  : public JUCEApplication,
                               private AsyncUpdater,
                               private Timer,
                               public ChangeListener,
@@ -16,9 +16,9 @@ class MainComponent  : public JUCEApplication,
                               public ValueTree::Listener
 {
 public:
-    MainComponent();
+    Application();
     
-    static MainComponent&        getApp();
+    static Application&        getApp();
     static ApplicationCommandManager&   getCommandManager();
     
     //==========================================================================
@@ -120,7 +120,7 @@ public:
     ScopedPointer<OscValueTreeItem> oscValueTree;
     
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Application)
     
     TooltipWindow ToolTip;
     int oscBufferFillSpeed;
