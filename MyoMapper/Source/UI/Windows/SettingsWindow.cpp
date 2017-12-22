@@ -15,7 +15,7 @@ hostAddress("127.0.0.1")
     
     oscSenderSlider.addListener (this);
     oscSenderSlider.setRange (1, 9999, 1);
-    oscSenderSlider.setValue (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
+    oscSenderSlider.setValue (MainComponent::getApp().getOscSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
     oscSenderSlider.setSliderStyle (Slider::IncDecButtons);
     oscSenderSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     addAndMakeVisible (oscSenderSlider);
@@ -37,7 +37,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible (oscReceivePortLabel);
     
     oscReceiverSlider.setRange (1, 9999, 1);
-    oscReceiverSlider.setValue (MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
+    oscReceiverSlider.setValue (MainComponent::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
     oscReceiverSlider.setSliderStyle (Slider::IncDecButtons);
     oscReceiverSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     oscReceiverSlider.setTooltip("Set port of the Myo Mapper's OSC receiver.");
@@ -50,7 +50,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(hostAddressTitleLabel);
     
     setHostAddressLabel.setJustificationType (Justification::centred);
-    setHostAddressLabel.setText(MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
+    setHostAddressLabel.setText(MainComponent::getApp().getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
                                 , dontSendNotification);    setHostAddressLabel.setEditable(true);
     setHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
     setHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
@@ -61,7 +61,7 @@ hostAddress("127.0.0.1")
     
     numberOfConnecteMyosLabel.setLookAndFeel (&laf);
     numberOfConnecteMyosLabel.setJustificationType (Justification::left);
-    String connectedMyos = MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("Myos").getProperty("nMyos").toString();
+    String connectedMyos = MainComponent::getApp().getOscSettingsTree().getChildWithName("Myos").getProperty("nMyos").toString();
     numberOfConnecteMyosLabel.setText ("Number of connected Myos: "+connectedMyos, dontSendNotification);
     numberOfConnecteMyosLabel.setTooltip("Number of connected Myos");
     addAndMakeVisible (numberOfConnecteMyosLabel);
@@ -193,7 +193,7 @@ void SettingsWindow::labelTextChanged(juce::Label *labelThatHasChanged)
 {
     if (labelThatHasChanged == &setHostAddressLabel)
     {
-        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("HostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
+        MainComponent::getApp().getOscSettingsTree().getChildWithName("HostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
     }
 }
 
@@ -208,10 +208,10 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     auto value = slider->getValue();
     if (slider == &oscSenderSlider)
     {
-        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("SendPort").setProperty ("portNumber", value, 0);
+        MainComponent::getApp().getOscSettingsTree().getChildWithName("SendPort").setProperty ("portNumber", value, 0);
     }
     if (slider == &oscReceiverSlider)
     {
-        MyoMapperApplication::getApp().getOscSettingsTree().getChildWithName("ReceivePort").setProperty ("portNumber", value, 0);
+        MainComponent::getApp().getOscSettingsTree().getChildWithName("ReceivePort").setProperty ("portNumber", value, 0);
     }
 }

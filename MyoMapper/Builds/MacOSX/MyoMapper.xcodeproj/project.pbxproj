@@ -23,6 +23,7 @@
 		2EA91483B878C0FF5DD75119 /* ScaleValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E2AF547C64DF07847A2A99 /* ScaleValues.cpp */; };
 		30AE49EF264B38DA117A77C7 /* WindowDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE54F4F83D39BB4F9FA59A11 /* WindowDrawer.cpp */; };
 		3241BB551AF7B80A02389059 /* include_juce_osc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCFB967B0413872AB7D756 /* include_juce_osc.cpp */; };
+		32FDE8F71FEC9447003E58A2 /* MyoSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32FDE8F61FEC9447003E58A2 /* MyoSelector.cpp */; };
 		3941F47C568D722FCCAF407F /* HelpWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 630CC8393DBDC58513DA027A /* HelpWindow.cpp */; };
 		395070209AB1F4B1098D5BB5 /* include_juce_graphics.mm in Sources */ = {isa = PBXBuildFile; fileRef = C5F124CD026F1046BA83D694 /* include_juce_graphics.mm */; };
 		431E2F46C9C066AB59EC9679 /* Orientation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C725AA759E96B2386244B8DE /* Orientation.cpp */; };
@@ -75,6 +76,8 @@
 		2B2F9DF77312BF8D3359ABF6 /* juce_osc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_osc; path = ../../JuceLibraryCode/modules/juce_osc; sourceTree = SOURCE_ROOT; };
 		30C2807D73F026BDA4DBC97C /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../../Source/Application.h; sourceTree = SOURCE_ROOT; };
 		325B30514F5198958D9DA487 /* FirstOrderDifference.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FirstOrderDifference.cpp; path = ../../Source/Features/FirstOrderDifference.cpp; sourceTree = SOURCE_ROOT; };
+		32FDE8F51FEC9446003E58A2 /* MyoSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyoSelector.h; path = ../../../../Desktop/MyoMapper/MyoMapper/Source/UI/Windows/MyoSelector.h; sourceTree = "<group>"; };
+		32FDE8F61FEC9447003E58A2 /* MyoSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyoSelector.cpp; path = ../../../../Desktop/MyoMapper/MyoMapper/Source/UI/Windows/MyoSelector.cpp; sourceTree = "<group>"; };
 		34549BDEAEF79A8B5E01A4D5 /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		362301F4D9F3494F257A83B1 /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		374F0149F402FB7BA8DE3AAB /* include_juce_opengl.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_opengl.mm; path = ../../JuceLibraryCode/include_juce_opengl.mm; sourceTree = SOURCE_ROOT; };
@@ -224,6 +227,8 @@
 		36F03327BA1F6643D5953EF9 /* Windows */ = {
 			isa = PBXGroup;
 			children = (
+				32FDE8F61FEC9447003E58A2 /* MyoSelector.cpp */,
+				32FDE8F51FEC9446003E58A2 /* MyoSelector.h */,
 				BCE10FBCD216607F1CF77DB0 /* AboutWindowContent.cpp */,
 				7F990EABCBFA470B16EF39E6 /* AboutWindowContent.h */,
 				630CC8393DBDC58513DA027A /* HelpWindow.cpp */,
@@ -501,6 +506,7 @@
 				533A7BF0697FD9559F3531CB /* include_juce_core.mm in Sources */,
 				213B84422D5E296F87A9953D /* include_juce_data_structures.mm in Sources */,
 				191126CDFE05B4DD77814475 /* include_juce_events.mm in Sources */,
+				32FDE8F71FEC9447003E58A2 /* MyoSelector.cpp in Sources */,
 				395070209AB1F4B1098D5BB5 /* include_juce_graphics.mm in Sources */,
 				94D856A6F72CA3C27DB817E7 /* include_juce_gui_basics.mm in Sources */,
 				06939BB9EBCAC3CF41C7F641 /* include_juce_gui_extra.mm in Sources */,
