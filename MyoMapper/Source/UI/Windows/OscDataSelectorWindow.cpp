@@ -10,7 +10,7 @@ public:
     {
         addAndMakeVisible (tree);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getApp().getOscStreamingTree().getChildWithName ("OrData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MainComponent::getApp().getOscStreamingTree().getChildWithName ("OrData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -40,7 +40,7 @@ public:
         addAndMakeVisible (tree);
         tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getApp().getOscStreamingTree().getChildWithName ("AccData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MainComponent::getApp().getOscStreamingTree().getChildWithName ("AccData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -72,7 +72,7 @@ public:
         addAndMakeVisible (tree);
         tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getApp().getOscStreamingTree().getChildWithName ("GyroData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MainComponent::getApp().getOscStreamingTree().getChildWithName ("GyroData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
@@ -104,7 +104,7 @@ public:
         addAndMakeVisible (tree);
         tree.setIndentSize (getParentWidth() * 0.01);
         tree.setDefaultOpenness (true);
-        tree.setRootItem (rootItem = new OscValueTreeItem (MyoMapperApplication::getApp().getOscStreamingTree().getChildWithName ("EmgData")));
+        tree.setRootItem (rootItem = new OscValueTreeItem (MainComponent::getApp().getOscStreamingTree().getChildWithName ("EmgData")));
         tree.setRootItemVisible (false);
         tree.setOpenCloseButtonsVisible (false);
     }
