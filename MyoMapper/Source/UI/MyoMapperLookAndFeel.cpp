@@ -211,7 +211,7 @@ void MyoMapperLookAndFeel::drawTooltip (Graphics& g, const String& text, int wid
     g.drawRoundedRectangle (bounds.toFloat().reduced (1.f, 1.f), cornerSize, 1.0f);
 
     g.setColour (findColour (TooltipWindow::textColourId));
-    g.drawFittedText(text, 0, 0, width, height, Justification::centred, 2);
+    g.drawFittedText(text, 0, 0, width, height, Justification::centred, 3);
 }
  
 void MyoMapperLookAndFeel::setupColours()

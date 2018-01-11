@@ -15,7 +15,7 @@ hostAddress("127.0.0.1")
     
     oscSenderSlider.addListener (this);
     oscSenderSlider.setRange (1, 9999, 1);
-    oscSenderSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("SendPort").getProperty ("portNumber"));
+    oscSenderSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("SendPort").getProperty ("senderPort"));
     oscSenderSlider.setSliderStyle (Slider::IncDecButtons);
     oscSenderSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     addAndMakeVisible (oscSenderSlider);
@@ -37,7 +37,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible (oscReceivePortLabel);
     
     oscReceiverSlider.setRange (1, 9999, 1);
-    oscReceiverSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
+    oscReceiverSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("receiverPort"));
     oscReceiverSlider.setSliderStyle (Slider::IncDecButtons);
     oscReceiverSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     oscReceiverSlider.setTooltip("Myo Mapper's OSC receiver port number.");

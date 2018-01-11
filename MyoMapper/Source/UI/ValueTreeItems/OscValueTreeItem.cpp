@@ -20,7 +20,6 @@ public:
         toggle.setColour (ToggleButton::tickColourId, Colours::black);
         toggle.setColour (ToggleButton::tickDisabledColourId, Colours::black);
         toggle.setToggleState (tree.getProperty ("oscOut", 0), dontSendNotification);
-        toggle.setTooltip("OSC message to stream.");
         toggle.addListener (this);
         addAndMakeVisible (toggle);
 
@@ -32,7 +31,7 @@ public:
 
         toWekinatorLabel.setLookAndFeel (&laf);
         toWekinatorLabel.setColour (Label::textColourId, Colours::black);
-        toWekinatorLabel.setText ("To Wekinator", dontSendNotification);
+        toWekinatorLabel.setText ("To ML", dontSendNotification);
         toWekinatorLabel.attachToComponent (&bufferSizeSlider, true);
         addAndMakeVisible (toWekinatorLabel);
 
@@ -72,18 +71,23 @@ public:
         toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
         bufferSizeSlider.setBounds (area.removeFromRight (getParentWidth() * 0.18));
-        bufferSizeSliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.14));
-        toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
-        toWekinatorLabel.setBounds (area.removeFromRight (getParentWidth() * 0.165));
+        bufferSizeSliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.15));
+        toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.09));
+        toWekinatorLabel.setBounds (area.removeFromRight (getParentWidth() * 0.1));
     }
     
      void updateToolTip()
      {
-         String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
-         String featureLabelToolTip = "Sends "+tree["name"].toString()+"'s OSC message: /myo" + String(Application::selectedMyo) + stringfromTree;
-         label.setTooltip(featureLabelToolTip);
+         String tooltip = tree.getProperty("toolTip", dontSendNotification);
+         String port = String(Application::receivePort);
+         String IP = String(Application::hostAddress);
          
-         String wekinatorToolTip = "Adds values to OSC mesagge to Wekinator (IP: local host, port: 6448, tag: /myo"+String(Application::selectedMyo)+").";
+         String featureLabelToolTip = "Sends "+tree["name"].toString()+"'s OSC message: /myo" + String(Application::selectedMyo) + tooltip + " - to OSC port: " + port + "IP: " + IP;
+         
+         String wekinatorToolTip = "Adds values to OSC mesagge to machine learning software (IP: local host, port: 6448, tag: /myo"+String(Application::selectedMyo)+").";
+         
+         toggle.setTooltip(featureLabelToolTip);
+         label.setTooltip(featureLabelToolTip);
          toggleWek.setTooltip(wekinatorToolTip);
          toWekinatorLabel.setTooltip(wekinatorToolTip);
 

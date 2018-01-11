@@ -33,7 +33,9 @@ void WindowList::showOrCreateOscSettingsWindow()
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
         auto window = new SettingsWindow();
         window->addChangeListener (this);
-        WindowDrawer* const w = new WindowDrawer ("MyoMapper - Settings",
+        auto myoSelected = static_cast<int> (Application::getApp().getOscSettingsTree().getChildWithName ("SelectedMyo").getProperty ("myoId"));
+        auto windowAppend = (myoSelected != 0) ? (String)Application::selectedMyo : " - No Myo Selected";
+        WindowDrawer* const w = new WindowDrawer ("Settings - Myo " + windowAppend,
                                                   window,
                                                   true, true,
                                                   windowWidth * 0.4, windowHeight * 0.4,
@@ -57,7 +59,7 @@ void WindowList::showOrCreateMyoStatusWindow()
         auto myoSelected = static_cast<int> (Application::getApp().getOscSettingsTree().getChildWithName ("SelectedMyo").getProperty ("myoId"));
         auto windowAppend = (myoSelected != 0) ? (String)Application::selectedMyo : " - No Myo Selected";
         auto window = new VisualsWindow();
-        WindowDrawer* const w = new WindowDrawer ("Myo " + windowAppend + " - Status",
+        WindowDrawer* const w = new WindowDrawer ("Calibration and scaling - Myo " + windowAppend,
                                                   window,
                                                   true, true,
                                                   windowWidth * 0.5, windowHeight * 0.7,
@@ -80,10 +82,12 @@ void WindowList::showOrCreateOscDataSelectorWindow()
         auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
         auto window = new OscDataSelectorWindow();
-        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - OSC Data",
+        auto myoSelected = static_cast<int> (Application::getApp().getOscSettingsTree().getChildWithName ("SelectedMyo").getProperty ("myoId"));
+        auto windowAppend = (myoSelected != 0) ? (String)Application::selectedMyo : " - No Myo Selected";
+        WindowDrawer* const w = new WindowDrawer ("Features - Myo " + windowAppend,
                                                   window,
                                                   false, false,
-                                                  windowWidth * 0.4, windowHeight * 0.5,
+                                                  windowWidth * 0.35, windowHeight * 0.5,
                                                   windowWidth, windowHeight,
                                                   false);
         oscDataSelectorWindowContent = window;
@@ -105,7 +109,7 @@ void WindowList::showOrCreateAboutWindow()
         auto mousePosition = Desktop::getInstance().getMousePosition();
         auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
-        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - About",
+        WindowDrawer* const w = new WindowDrawer ("About Myo Mapper",
                                                   new AboutWindowContent(),
                                                   false, false,
                                                   windowWidth * 0.3, windowHeight * 0.3,
@@ -129,7 +133,7 @@ void WindowList::showOrCreateHelpWindow()
         auto mousePosition = Desktop::getInstance().getMousePosition();
         auto windowHeight = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getHeight();
         auto windowWidth = Desktop::getInstance().getDisplays().getDisplayContaining (mousePosition).userArea.getWidth();
-        WindowDrawer* const w = new WindowDrawer ("Myo Mapper - Help",
+        WindowDrawer* const w = new WindowDrawer ("Help",
                                                   new HelpWindow(),
                                                   false, false,
                                                   windowWidth * 0.2, windowHeight * 0.2,

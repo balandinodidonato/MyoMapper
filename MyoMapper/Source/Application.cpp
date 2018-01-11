@@ -65,8 +65,8 @@ void Application::initialise (const String& commandLine)
     
     osc = new OSC();
     hostAddress = getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress");
-    sendPort = getOscSettingsTree().getChildWithName("SendPort").getProperty ("portNumber");
-    receivePort = getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
+    sendPort = getOscSettingsTree().getChildWithName("SendPort").getProperty ("senderPort");
+    receivePort = getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("receiverPort");
     wekinatorPort = 6448;
     
     osc->addChangeListener (this);
@@ -404,6 +404,8 @@ const String name               = "name";
 const String bufferSize         = "bufferSize";
 const String oscToWekinator     = "oscToWekinator";
 const String portNumber         = "portNumber";
+const String senderPort         = "senderPort";
+const String receiverPort         = "receiverPort";
 const String toolTip            = "toolTip";
 const int tempSampSize          = 10;
 
@@ -444,21 +446,21 @@ void Application::initialiseOscSettingsTree()
 
     ValueTree sendPortTree = ValueTree ("SendPort");
     sendPortTree.setProperty (name, "Send Port", nullptr);
-    sendPortTree.setProperty (portNumber, "5432", nullptr);
+    sendPortTree.setProperty (senderPort, "5432", nullptr);
     
     ValueTree receivePortTree = ValueTree ("ReceivePort");
     receivePortTree.setProperty (name, "Receive Port", nullptr);
-    receivePortTree.setProperty (portNumber, "5433", nullptr);
+    receivePortTree.setProperty (receiverPort, "5433", nullptr);
     
-    ValueTree wekinatorPortTree = ValueTree ("WekinatorPort");
-    wekinatorPortTree.setProperty (name, "Wekinator Port", nullptr);
-    wekinatorPortTree.setProperty (portNumber, "6448", nullptr);
+    ValueTree mlPortTree = ValueTree ("mlPort");
+    mlPortTree.setProperty (name, "Ml Port", nullptr);
+    mlPortTree.setProperty ("mlPort", "6448", nullptr);
     
     oscSettingsTree.addChild (selectedMyoTree, -1, nullptr);
     oscSettingsTree.addChild (sendPortTree, -1, nullptr);
     oscSettingsTree.addChild (hostAddressTree, -1, nullptr);
     oscSettingsTree.addChild (receivePortTree, -1, nullptr);
-    oscSettingsTree.addChild (wekinatorPortTree, -1, nullptr);
+    oscSettingsTree.addChild (mlPortTree, -1, nullptr);
 }
 
 void Application::initialiseMyoDataScalingTree()
