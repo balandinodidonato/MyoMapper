@@ -87,7 +87,7 @@ void WindowList::showOrCreateOscDataSelectorWindow()
         WindowDrawer* const w = new WindowDrawer ("Features - Myo " + windowAppend,
                                                   window,
                                                   false, false,
-                                                  windowWidth * 0.35, windowHeight * 0.5,
+                                                  windowWidth * 0.4, windowHeight * 0.5,
                                                   windowWidth, windowHeight,
                                                   false);
         oscDataSelectorWindowContent = window;
