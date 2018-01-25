@@ -38,7 +38,7 @@ void WindowList::showOrCreateOscSettingsWindow()
         WindowDrawer* const w = new WindowDrawer ("Settings - Myo " + windowAppend,
                                                   window,
                                                   true, true,
-                                                  windowWidth * 0.4, windowHeight * 0.4,
+                                                  windowWidth * 0.4, windowHeight * 0.6,
                                                   windowWidth, windowHeight,
                                                   false);
         oscSettingsWindow = w;

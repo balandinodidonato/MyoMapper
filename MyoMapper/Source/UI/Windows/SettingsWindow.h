@@ -32,9 +32,13 @@ private:
    // LookAndFeel_V3 toggleButtonLAF;
     
     
-    Label oscSendLabel;
-    Label oscSendPortLabel;
-    Slider oscSenderSlider;
+    Label mainOscSendLabel;
+    Label mainOscSendPortLabel;
+    Slider mainOscSenderSlider;
+    
+    Label mlOscSendLabel;
+    Label mlOscSendPortLabel;
+    Slider mlOscSenderSlider;
     
     Label oscReceiveLabel;
     Label oscReceivePortLabel;
@@ -43,6 +47,10 @@ private:
     Label setHostAddressLabel;
     Label hostAddressTitleLabel;
     String hostAddress;
+    
+    Label mlSetHostAddressLabel;
+    Label mlHostAddressTitleLabel;
+    String mlHostAddress;
     
     Label myoSelectorLabel;
     Slider myoSelectorSetter;
