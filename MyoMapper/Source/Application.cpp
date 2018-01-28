@@ -251,18 +251,18 @@ void Application::getCommandInfo (const CommandID commandID, ApplicationCommandI
     switch (commandID)
     {
         case CommandIDs::showSettingsWindow:
-            result.setInfo ("Show Mapper Settings", "Show the settings panel", CommandCategories::windows, 0);
+            result.setInfo ("Settings", "Show the settings panel", CommandCategories::windows, 0);
             result.addDefaultKeypress ('s', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::showVisualsWindow:
-            result.setInfo ("Show Myo Status", "Create a new display window", CommandCategories::windows, 0);
+            result.setInfo ("Calibration and Scaling", "Create a new display window", CommandCategories::windows, 0);
             result.addDefaultKeypress ('c', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::showDataWindow:
-            result.setInfo ("Show OSC Data Settings", "Shows the OSC data output window", CommandCategories::windows, 0);
-            result.addDefaultKeypress ('d', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
+            result.setInfo ("Feature Selection", "Shows the OSC data output window", CommandCategories::windows, 0);
+            result.addDefaultKeypress ('f', ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
             break;
             
         case CommandIDs::moveWindowsToFront:
@@ -284,7 +284,7 @@ void Application::getCommandInfo (const CommandID commandID, ApplicationCommandI
             break;
             
         case CommandIDs::showAboutWindow:
-            result.setInfo ("About...", "About the Myo Mapper", CommandCategories::windows, 0);
+            result.setInfo ("About Myo Mapper", "About the Myo Mapper", CommandCategories::windows, 0);
             break;
             
         case CommandIDs::showDocumentationWindow:
