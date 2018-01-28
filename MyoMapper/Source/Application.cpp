@@ -28,10 +28,11 @@ struct Application::MainMenuBarModel   : public MenuBarModel
 
 //==============================================================================
 int Application::selectedMyo;
-int Application::sendPort;
+int Application::mainPort;
 int Application::receivePort;
-int Application::wekinatorPort;
-String Application::hostAddress;
+int Application::mlPort;
+String Application::mainHostAddress;
+String Application::mlHostAddress;
 
 Application::Application()
 {
@@ -64,10 +65,11 @@ void Application::initialise (const String& commandLine)
     windowList->showOrCreateOscSettingsWindow();
     
     osc = new OSC();
-    hostAddress = getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress");
-    sendPort = getOscSettingsTree().getChildWithName("SendPort").getProperty ("senderPort");
-    receivePort = getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("receiverPort");
-    wekinatorPort = 6448;
+    mainHostAddress = getOscSettingsTree().getChildWithName("mainHostAddress").getProperty ("hostAddress");
+    mainPort = getOscSettingsTree().getChildWithName("mainPort").getProperty ("portNumber");
+    receivePort = getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber");
+    mlHostAddress = getOscSettingsTree().getChildWithName("mlHostAddress").getProperty ("hostAddress");
+    mlPort = getOscSettingsTree().getChildWithName("mlPort").getProperty ("portNumber");
     
     osc->addChangeListener (this);
     
@@ -144,7 +146,7 @@ void Application::changeListenerCallback (ChangeBroadcaster *source)
     }
     if (selectedMyo > 0 && selectedMyo <= 20 && SettingsWindow::startButtonClicked == true)
     {
-        auto sendConnect = osc->connectSender (hostAddress, sendPort, wekinatorPort);
+        auto sendConnect = osc->connectSender (mainHostAddress, mainPort, mlHostAddress, mlPort);
         auto receiveConnect = osc->connectReceiver (receivePort);
         if (sendConnect && receiveConnect)
         {
@@ -404,8 +406,6 @@ const String name               = "name";
 const String bufferSize         = "bufferSize";
 const String oscToWekinator     = "oscToWekinator";
 const String portNumber         = "portNumber";
-const String senderPort         = "senderPort";
-const String receiverPort       = "receiverPort";
 const String toolTipToggle      = "toolTipToggle";
 const String toolTipLabel       = "toolTipLabel";
 const int tempSampSize          = 10;
@@ -441,27 +441,33 @@ void Application::initialiseOscSettingsTree()
     selectedMyoTree.setProperty (name, "Selected Myo", nullptr);
     selectedMyoTree.setProperty ("myoId", "1", nullptr);
     
-    ValueTree hostAddressTree = ValueTree ("HostAddress");
-    hostAddressTree.setProperty (name, "Host Address", nullptr);
-    hostAddressTree.setProperty ("hostAddress", "127.0.0.1", nullptr);
+    ValueTree mainHostAddressTree = ValueTree ("mainHostAddress");
+    mainHostAddressTree.setProperty (name, "Host Address", nullptr);
+    mainHostAddressTree.setProperty ("hostAddress", "127.0.0.1", nullptr);
 
-    ValueTree sendPortTree = ValueTree ("SendPort");
-    sendPortTree.setProperty (name, "Send Port", nullptr);
-    sendPortTree.setProperty (senderPort, "5432", nullptr);
+    ValueTree mainPortTree = ValueTree ("mainPort");
+    mainPortTree.setProperty (name, "Send Port", nullptr);
+    mainPortTree.setProperty (portNumber, "5432", nullptr);
     
     ValueTree receivePortTree = ValueTree ("ReceivePort");
     receivePortTree.setProperty (name, "Receive Port", nullptr);
-    receivePortTree.setProperty (receiverPort, "5433", nullptr);
+    receivePortTree.setProperty (portNumber, "5433", nullptr);
+    
+    ValueTree mlHostAddressTree = ValueTree ("mlHostAddress");
+    mlHostAddressTree.setProperty (name, "Host Address", nullptr);
+    mlHostAddressTree.setProperty ("hostAddress", "127.0.0.1", nullptr);
     
     ValueTree mlPortTree = ValueTree ("mlPort");
     mlPortTree.setProperty (name, "Ml Port", nullptr);
-    mlPortTree.setProperty ("mlPort", "6448", nullptr);
+    mlPortTree.setProperty (portNumber, "6448", nullptr);
     
     oscSettingsTree.addChild (selectedMyoTree, -1, nullptr);
-    oscSettingsTree.addChild (sendPortTree, -1, nullptr);
-    oscSettingsTree.addChild (hostAddressTree, -1, nullptr);
+    oscSettingsTree.addChild (mainPortTree, -1, nullptr);
+    oscSettingsTree.addChild (mainHostAddressTree, -1, nullptr);
     oscSettingsTree.addChild (receivePortTree, -1, nullptr);
     oscSettingsTree.addChild (mlPortTree, -1, nullptr);
+    oscSettingsTree.addChild (mlHostAddressTree, -1, nullptr);
+
 }
 
 void Application::initialiseMyoDataScalingTree()
@@ -875,17 +881,29 @@ void Application::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChang
 {
     if (!isInitialising())
     {
-        if (treeWhosePropertyHasChanged.hasType ("SendPort"))
+        if (treeWhosePropertyHasChanged.hasType ("mainPort"))
         {
             osc->disconnectSender();
-            sendPort = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (Application::hostAddress, Application::sendPort, Application::wekinatorPort);
+            mainPort = treeWhosePropertyHasChanged.getProperty (property);
+            osc->connectSender (Application::mainHostAddress, Application::mainPort, Application::mlHostAddress, Application::mlPort);
         }
-        if (treeWhosePropertyHasChanged.hasType ("HostAddress"))
+        if (treeWhosePropertyHasChanged.hasType ("mainHostAddress"))
         {
             osc->disconnectSender();
-            hostAddress = treeWhosePropertyHasChanged.getProperty (property);
-            osc->connectSender (Application::hostAddress, Application::sendPort, Application::wekinatorPort);
+            mainHostAddress = treeWhosePropertyHasChanged.getProperty (property);
+            osc->connectSender (Application::mainHostAddress, Application::mainPort, Application::mlHostAddress, Application::mlPort);
+        }
+        if (treeWhosePropertyHasChanged.hasType ("mlPort"))
+        {
+            osc->disconnectSender();
+            mlPort = treeWhosePropertyHasChanged.getProperty (property);
+            osc->connectSender (Application::mainHostAddress, Application::mainPort, Application::mlHostAddress, Application::mlPort);
+        }
+        if (treeWhosePropertyHasChanged.hasType ("mlHostAddress"))
+        {
+            osc->disconnectSender();
+            mlHostAddress = treeWhosePropertyHasChanged.getProperty (property);
+            osc->connectSender (Application::mainHostAddress, Application::mainPort, Application::mlHostAddress, Application::mlPort);
         }
         if (treeWhosePropertyHasChanged.hasType ("ReceivePort"))
         {

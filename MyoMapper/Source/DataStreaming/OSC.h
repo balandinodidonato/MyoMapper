@@ -14,7 +14,7 @@ public:
     OSC();
     ~OSC();
     
-    bool connectSender (String hostAddress, int mainPort, int WekinatorPort);
+    bool connectSender (String hostAddress, int mainPort, String mlHostAddress, int mlPort);
     void disconnectSender();
     void bufferOsc (MyoData &myoData);
     void sendOsc();
@@ -31,8 +31,8 @@ public:
     bool reverseStatus;
     
 private:
-    OSCSender oscOutSender;
-    OSCSender oscToWekiSender;
+    OSCSender mainOscSender;
+    OSCSender mlOscSender;
     OSCReceiver receiver;
     MyoManager myoManager;
     

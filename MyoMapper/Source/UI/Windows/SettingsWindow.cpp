@@ -15,7 +15,7 @@ hostAddress("127.0.0.1")
     
     mainOscSenderSlider.addListener (this);
     mainOscSenderSlider.setRange (1, 9999, 1);
-    mainOscSenderSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("SendPort").getProperty ("senderPort"));
+    mainOscSenderSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("mainPort").getProperty ("portNumber"));
     mainOscSenderSlider.setSliderStyle (Slider::IncDecButtons);
     mainOscSenderSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     addAndMakeVisible (mainOscSenderSlider);
@@ -33,7 +33,7 @@ hostAddress("127.0.0.1")
     
     mlOscSenderSlider.addListener (this);
     mlOscSenderSlider.setRange (1, 9999, 1);
-    mlOscSenderSlider.setValue (6448);
+    mlOscSenderSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("mlPort").getProperty ("portNumber"));
     mlOscSenderSlider.setSliderStyle (Slider::IncDecButtons);
     mlOscSenderSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     addAndMakeVisible (mlOscSenderSlider);
@@ -55,7 +55,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible (oscReceivePortLabel);
     
     oscReceiverSlider.setRange (1, 9999, 1);
-    oscReceiverSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("receiverPort"));
+    oscReceiverSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
     oscReceiverSlider.setSliderStyle (Slider::IncDecButtons);
     oscReceiverSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
     oscReceiverSlider.setTooltip("Myo Mapper's OSC receiver port number.");
@@ -68,7 +68,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(hostAddressTitleLabel);
     
     setHostAddressLabel.setJustificationType (Justification::centred);
-    setHostAddressLabel.setText(Application::getApp().getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
+    setHostAddressLabel.setText(Application::getApp().getOscSettingsTree().getChildWithName("mainHostAddress").getProperty ("hostAddress")
                                 , dontSendNotification);    setHostAddressLabel.setEditable(true);
     setHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
     setHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
@@ -85,7 +85,7 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(mlHostAddressTitleLabel);
     
     mlSetHostAddressLabel.setJustificationType (Justification::centred);
-    mlSetHostAddressLabel.setText(Application::getApp().getOscSettingsTree().getChildWithName("HostAddress").getProperty ("hostAddress")
+    mlSetHostAddressLabel.setText(Application::getApp().getOscSettingsTree().getChildWithName("mlHostAddress").getProperty ("hostAddress")
                                 , dontSendNotification);    setHostAddressLabel.setEditable(true);
     mlSetHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
     mlSetHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
@@ -135,15 +135,16 @@ void SettingsWindow::paint (Graphics& g)
     auto windowSize = area;
     area.removeFromTop (windowSize.proportionOfHeight(0.078));
     
-    auto mainOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.3)).reduced (windowSize.proportionOfWidth (0.078), 0);
-    auto mainOscHostRegion = area.removeFromTop(windowSize.proportionOfHeight (0.1)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    auto mainOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.285)).reduced (windowSize.proportionOfWidth (0.078), 0);
     
-    auto mlOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.3)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    area.removeFromTop(windowSize.proportionOfHeight (0.05)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    
+    auto mlOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.285)).reduced (windowSize.proportionOfWidth (0.078), 0);
     
     auto oscRectangleWidth = windowSize.proportionOfWidth (0.375);
     auto mainOscSendRegion = mainOscRegion.removeFromLeft (oscRectangleWidth);
-    auto oscReceiveRegion = mainOscRegion.removeFromRight (oscRectangleWidth);
-    auto mlOscSendRegion = mlOscRegion.removeFromLeft (oscRectangleWidth);
+    auto oscReceiveRegion = mlOscRegion.removeFromLeft (oscRectangleWidth);
+    auto mlOscSendRegion = mainOscRegion.removeFromRight (oscRectangleWidth);
 
     g.setColour (Colour::fromRGB (0, 129, 213));
     auto rectangleCorner = windowSize.getHeight() * 0.02;
@@ -168,29 +169,27 @@ void SettingsWindow::resized()
     auto windowSize = area;
     auto windowSizeWidth = area;
     area.removeFromTop (windowSize.proportionOfHeight (0.05));
-    
-    auto mainOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.35))
-    .reduced (windowSizeWidth.proportionOfWidth (0.078), 0);
-    
-    area.removeFromTop (windowSize.proportionOfHeight (0.1));
-    
-    auto mlOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.35))
-    .reduced (windowSizeWidth.proportionOfWidth (0.078), 0);
-    
     auto oscRectangleWidth = windowSizeWidth.proportionOfWidth (0.375);
+
+    auto mainOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.3)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    
+    area.removeFromTop(windowSize.proportionOfHeight (0.06)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    
+    auto oscReceiveRegionGlobal = area.removeFromTop (windowSize.proportionOfHeight (0.29)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    auto oscReceiveRegion = oscReceiveRegionGlobal.removeFromLeft (oscRectangleWidth);
     
     auto mainOscSendRegion = mainOscRegion.removeFromLeft (oscRectangleWidth);
-    auto oscReceiveRegion = mainOscRegion.removeFromRight (oscRectangleWidth);
-    area.removeFromTop (windowSize.proportionOfHeight (0.07));
+    
+    auto mlOscRegion = mainOscRegion.removeFromRight (oscRectangleWidth);
+    area.removeFromTop (windowSize.proportionOfHeight (0.05));
     
     auto mlOscSendRegion = mlOscRegion.removeFromLeft (oscRectangleWidth);
-
     
-    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.118))
+    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.08))
     .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
-    area.removeFromTop (windowSize.proportionOfHeight (0.07));
+    area.removeFromTop (windowSize.proportionOfHeight (0.05));
     
-    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.14))
+    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.08))
     .reduced (windowSizeWidth.proportionOfWidth (0.0315), 0);
     
     // Set send region bounds
@@ -213,14 +212,33 @@ void SettingsWindow::resized()
     setHostAddressLabel.setBounds (hostRegion
                                    .reduced (mainOscSendRegion.proportionOfWidth (0.03), hostRegion.proportionOfHeight (0.05)));
     
+    // Set ml region bounds
+    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.025));
+    mlOscSendLabel.setBounds (mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.09))
+                              .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
+    
+    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.01));
+    
+    auto mlSendPortRegion = mlOscSendRegion.removeFromTop (proportionOfHeight (0.07))
+    .reduced (mlOscSendRegion.proportionOfWidth (0.04), 0);
+    mlOscSendPortLabel.setBounds (mlSendPortRegion.removeFromLeft (mlSendPortRegion.proportionOfWidth (0.3)));
+    mlOscSenderSlider.setBounds (mlSendPortRegion.reduced (mlOscSendRegion.proportionOfWidth (0.01), mlSendPortRegion.proportionOfHeight (0.05)));
+    
+    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
+    
+    auto mlHostRegion = mlOscSendRegion.removeFromTop (proportionOfHeight (0.08))
+    .reduced (mlOscSendRegion.proportionOfWidth (0.04), 0);
+    mlHostAddressTitleLabel.setBounds (mlHostRegion.removeFromLeft (mlHostRegion.proportionOfWidth (0.5)));
+    mlSetHostAddressLabel.setBounds (mlHostRegion
+                                     .reduced (mlOscSendRegion.proportionOfWidth (0.03), mlHostRegion.proportionOfHeight (0.05)));
     
     // Set receive region bounds
     oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
-    oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.118))
+    oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.08))
                                .reduced (windowSizeWidth.proportionOfWidth (0.019), 0));
-    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.018));
+    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.01));
     
-    auto ReceivePortRegion = oscReceiveRegion.removeFromTop (proportionOfHeight (0.1))
+    auto ReceivePortRegion = oscReceiveRegion.removeFromTop (proportionOfHeight (0.066))
     .reduced (oscReceiveRegion.proportionOfWidth (0.04), 0);
     oscReceivePortLabel.setBounds (ReceivePortRegion.removeFromLeft (ReceivePortRegion.proportionOfWidth (0.3)));
     oscReceiverSlider.setBounds (ReceivePortRegion.reduced (oscReceiveRegion.proportionOfWidth (0.02), ReceivePortRegion.proportionOfHeight (0.05)));
@@ -236,25 +254,7 @@ void SettingsWindow::resized()
     startButton.setBounds (buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.174)));
     
     
-    // Set ml region bounds
-    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
-    mlOscSendLabel.setBounds (mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.09))
-                                .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
     
-    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.01));
-    
-    auto mlSendPortRegion = mlOscSendRegion.removeFromTop (proportionOfHeight (0.07))
-    .reduced (mlOscSendRegion.proportionOfWidth (0.04), 0);
-    mlOscSendPortLabel.setBounds (mlSendPortRegion.removeFromLeft (mlSendPortRegion.proportionOfWidth (0.3)));
-    mlOscSenderSlider.setBounds (mlSendPortRegion.reduced (mlOscSendRegion.proportionOfWidth (0.01), mlSendPortRegion.proportionOfHeight (0.05)));
-    
-    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
-    
-    auto mlHostRegion = mlOscSendRegion.removeFromTop (proportionOfHeight (0.08))
-    .reduced (mlOscSendRegion.proportionOfWidth (0.04), 0);
-    mlHostAddressTitleLabel.setBounds (mlHostRegion.removeFromLeft (mlHostRegion.proportionOfWidth (0.5)));
-    mlSetHostAddressLabel.setBounds (mlHostRegion
-                                   .reduced (mlOscSendRegion.proportionOfWidth (0.03), mlHostRegion.proportionOfHeight (0.05)));
 }
 
 void SettingsWindow::resetStartButtonPressed()
@@ -287,7 +287,11 @@ void SettingsWindow::labelTextChanged(juce::Label *labelThatHasChanged)
 {
     if (labelThatHasChanged == &setHostAddressLabel)
     {
-        Application::getApp().getOscSettingsTree().getChildWithName("HostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
+        Application::getApp().getOscSettingsTree().getChildWithName("mainHostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
+    }
+    if (labelThatHasChanged == &mlSetHostAddressLabel)
+    {
+        Application::getApp().getOscSettingsTree().getChildWithName("mlHostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
     }
 }
 
@@ -302,11 +306,15 @@ void SettingsWindow::sliderValueChanged (Slider* slider)
     auto value = slider->getValue();
     if (slider == &mainOscSenderSlider)
     {
-        Application::getApp().getOscSettingsTree().getChildWithName("SendPort").setProperty ("portNumber", value, 0);
+        Application::getApp().getOscSettingsTree().getChildWithName("mainPort").setProperty ("portNumber", value, 0);
     }
     if (slider == &oscReceiverSlider)
     {
         Application::getApp().getOscSettingsTree().getChildWithName("ReceivePort").setProperty ("portNumber", value, 0);
+    }
+    if (slider == &mlOscSenderSlider)
+    {
+        Application::getApp().getOscSettingsTree().getChildWithName("mlPort").setProperty ("portNumber", value, 0);
     }
     if (slider == &myoSelectorSetter)
     {

@@ -90,7 +90,7 @@ public:
          String tooltipLabel = tree.getProperty("toolTipLabel", dontSendNotification);
          String tooltipToggle = tree.getProperty("toolTipToggle", dontSendNotification);
          String port = String(Application::receivePort);
-         String IP = String(Application::hostAddress);
+         String IP = String(Application::mainHostAddress);
          
          String featureToggleToolTip = "Sends "+tree["name"].toString()+" data via OSC message: /myo" + String(Application::selectedMyo) + tooltipToggle + " - to OSC port: " + port + " IP: " + IP;
          

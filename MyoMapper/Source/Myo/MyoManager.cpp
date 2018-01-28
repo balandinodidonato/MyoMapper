@@ -19,7 +19,7 @@ MyoManager::~MyoManager()
 bool MyoManager::connect()
 {
     disconnect();
-    /*
+    
     bool isConnected = false;
     
     try
@@ -57,8 +57,8 @@ bool MyoManager::connect()
         disconnect();
         JUCEApplication::quit();
     }
-    */
-    return true;
+    
+    return isConnected;
 }
 
 void MyoManager::run()

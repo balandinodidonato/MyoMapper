@@ -29,15 +29,25 @@ OSC::~OSC()
 {
 }
 
-bool OSC::connectSender (String hostAddress, int mainOsc, int wekinatorOscPort)
+bool OSC::connectSender (String mainHostAddress, int mainPort, String mlHostAddress, int mlOscPort)
 {
-    oscToWekiSender.connect(hostAddress, wekinatorOscPort);
+    mlOscSender.connect(mlHostAddress, mlOscPort);
+    DBG(mlOscPort);
+    
+    if (mainOscSender.connect (mainHostAddress, mainPort) == false)
+    {
+        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                          "ML OSC Sender",
+                                          "Myo Mapper could not connect to UDP port " + (String)mlOscPort + ".",
+                                          "OK");
+        return false;
+    }
 
-    if (oscOutSender.connect (hostAddress, mainOsc) == false)
+    if (mainOscSender.connect (mainHostAddress, mainPort) == false)
     {
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
                                           "OSC Sender",
-                                          "Myo Mapper could not connect to UDP port " + (String)mainOsc + ".",
+                                          "Myo Mapper could not connect to UDP port " + (String)mainPort + ".",
                                           "OK");
         return false;
     }
@@ -45,8 +55,8 @@ bool OSC::connectSender (String hostAddress, int mainOsc, int wekinatorOscPort)
 }
 void OSC::disconnectSender()
 {
-    oscOutSender.disconnect();
-    oscToWekiSender.disconnect();
+    mainOscSender.disconnect();
+    mlOscSender.disconnect();
 }
 
 void OSC::bufferOsc (MyoData &myoData)
@@ -651,11 +661,11 @@ void OSC::sendOsc ()
 {
     for (int i = 0; i < oscOutBuffer.size(); ++i)
     {
-        oscOutSender.send (oscOutBuffer.at(i));
+        mainOscSender.send (oscOutBuffer.at(i));
     }
     for (int i = 0; i < oscToWekiBuffer.size(); ++i)
     {
-        oscToWekiSender.send (oscToWekiBuffer.at(i));
+        mlOscSender.send (oscToWekiBuffer.at(i));
     }
     oscOutBuffer.clear();
     oscToWekiBuffer.clear();
