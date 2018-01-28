@@ -10,7 +10,7 @@ SettingsWindow::SettingsWindow()
 hostAddress("127.0.0.1")
 {
     mainOscSendLabel.setJustificationType (Justification::horizontallyCentred);
-    mainOscSendLabel.setText ("OSC TO Main", dontSendNotification);
+    mainOscSendLabel.setText ("OSC To Main", dontSendNotification);
     addAndMakeVisible (mainOscSendLabel);
     
     mainOscSenderSlider.addListener (this);
@@ -27,9 +27,8 @@ hostAddress("127.0.0.1")
     mainOscSendPortLabel.setTooltip("Main's OSC port number.");
     addAndMakeVisible (mainOscSendPortLabel);
     
-    
     mlOscSendLabel.setJustificationType (Justification::horizontallyCentred);
-    mlOscSendLabel.setText ("OSC TO ML", dontSendNotification);
+    mlOscSendLabel.setText ("OSC To ML", dontSendNotification);
     addAndMakeVisible (mlOscSendLabel);
     
     mlOscSenderSlider.addListener (this);
@@ -71,8 +70,8 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(mainIPTitleLabel);
     
     setMainIPLabel.setJustificationType (Justification::centred);
-    setMainIPLabel.setText(Application::getApp().getOscSettingsTree().getChildWithName("mainHostAddress").getProperty ("hostAddress")
-                                , dontSendNotification);    setMainIPLabel.setEditable(true);
+    setMainIPLabel.setText(Application::getApp().getOscSettingsTree(). getChildWithName("mainHostAddress").getProperty ("hostAddress"), dontSendNotification);
+    setMainIPLabel.setEditable(true);
     setMainIPLabel.setColour (Label::backgroundColourId, Colours::white);
     setMainIPLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
     setMainIPLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
@@ -80,8 +79,6 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(setMainIPLabel);
     setMainIPLabel.addListener(this);
     
-    
-    ////////
     mlIPTitleLabel.setJustificationType (Justification::left);
     mlIPTitleLabel.setText ("IP Address:", dontSendNotification);
     mlIPTitleLabel.setTooltip("Machine learning's IP address.");
@@ -96,7 +93,6 @@ hostAddress("127.0.0.1")
     mlSetIPLabel.setTooltip("Machine learning's IP address.");
     addAndMakeVisible(mlSetIPLabel);
     mlSetIPLabel.addListener(this);
-    ///////
     
     myoSelectorLabel.setLookAndFeel (&laf);
     myoSelectorLabel.setJustificationType (Justification::left);
