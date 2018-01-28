@@ -19,6 +19,7 @@ MyoManager::~MyoManager()
 bool MyoManager::connect()
 {
     disconnect();
+    
     bool isConnected = false;
     
     try

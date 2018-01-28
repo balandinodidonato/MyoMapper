@@ -17,12 +17,11 @@ public:
         label.setText (tree["name"], dontSendNotification);
         addAndMakeVisible (label);
 
-        toggle.setColour (ToggleButton::tickColourId, Colours::black);
-        toggle.setColour (ToggleButton::tickDisabledColourId, Colours::black);
-        toggle.setToggleState (tree.getProperty ("oscOut", 0), dontSendNotification);
-        toggle.setTooltip("OSC message to stream.");
-        toggle.addListener (this);
-        addAndMakeVisible (toggle);
+        toggleMain.setColour (ToggleButton::tickColourId, Colours::black);
+        toggleMain.setColour (ToggleButton::tickDisabledColourId, Colours::black);
+        toggleMain.setToggleState (tree.getProperty ("oscOut", 0), dontSendNotification);
+        toggleMain.addListener (this);
+        addAndMakeVisible (toggleMain);
 
         toggleWek.setColour (ToggleButton::tickColourId, Colours::black);
         toggleWek.setColour (ToggleButton::tickDisabledColourId, Colours::black);
@@ -32,9 +31,16 @@ public:
 
         toWekinatorLabel.setLookAndFeel (&laf);
         toWekinatorLabel.setColour (Label::textColourId, Colours::black);
-        toWekinatorLabel.setText ("To Wekinator", dontSendNotification);
+        toWekinatorLabel.setText ("To ML", dontSendNotification);
         toWekinatorLabel.attachToComponent (&bufferSizeSlider, true);
         addAndMakeVisible (toWekinatorLabel);
+        
+        
+        toMainLabel.setLookAndFeel (&laf);
+        toMainLabel.setColour (Label::textColourId, Colours::black);
+        toMainLabel.setText ("To Main", dontSendNotification);
+        toMainLabel.attachToComponent (&bufferSizeSlider, true);
+        addAndMakeVisible (toMainLabel);
 
         if (tree.hasProperty ("bufferSize"))
         {
@@ -59,6 +65,7 @@ public:
         label.setLookAndFeel (nullptr);
         bufferSizeSliderLabel.setLookAndFeel (nullptr);
         toWekinatorLabel.setLookAndFeel(nullptr);
+        toMainLabel.setLookAndFeel(nullptr);
     }
     
     void paint (Graphics& g) override
@@ -69,29 +76,36 @@ public:
     {
         updateToolTip();
         auto area = getLocalBounds();
-        toggle.setBounds (area.removeFromLeft (proportionOfWidth (0.05)));
         label.setBounds (area.removeFromLeft (proportionOfWidth (0.3)));
         bufferSizeSlider.setBounds (area.removeFromRight (getParentWidth() * 0.18));
         bufferSizeSliderLabel.setBounds (area.removeFromRight (getParentWidth() * 0.14));
-        toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.1));
-        toWekinatorLabel.setBounds (area.removeFromRight (getParentWidth() * 0.165));
+        toggleWek.setBounds (area.removeFromRight (getParentWidth() * 0.05));
+        toWekinatorLabel.setBounds (area.removeFromRight (getParentWidth() * 0.08));
+        toggleMain.setBounds (area.removeFromRight (getParentWidth() * 0.05));
+        toMainLabel.setBounds (area.removeFromRight (getParentWidth() * 0.11));
     }
     
      void updateToolTip()
      {
-         String stringfromTree = tree.getProperty("toolTip", dontSendNotification);
-         String featureLabelToolTip = "Sends "+tree["name"].toString()+"'s OSC message: /myo" + String(Application::selectedMyo) + stringfromTree;
-         label.setTooltip(featureLabelToolTip);
+         String tooltipLabel = tree.getProperty("toolTipLabel", dontSendNotification);
+         String tooltipToggle = tree.getProperty("toolTipToggle", dontSendNotification);
+         String port = String(Application::receivePort);
+         String IP = String(Application::mainHostAddress);
          
-         String wekinatorToolTip = "Adds values to OSC mesagge to Wekinator (IP: local host, port: 6448, tag: /myo"+String(Application::selectedMyo)+").";
+         String featureToggleToolTip = "Sends "+tree["name"].toString()+" data via OSC message: /myo" + String(Application::selectedMyo) + tooltipToggle + " - to OSC port: " + port + " IP: " + IP;
+         
+         String wekinatorToolTip = "Adds values to OSC mesagge to machine learning software (IP: local host, port: 6448, tag: /myo"+String(Application::selectedMyo)+").";
+         
+         toggleMain.setTooltip(featureToggleToolTip);
+         toMainLabel.setTooltip(featureToggleToolTip);
          toggleWek.setTooltip(wekinatorToolTip);
          toWekinatorLabel.setTooltip(wekinatorToolTip);
-
+         label.setTooltip(tooltipLabel);
      } 
     
     void buttonClicked (Button* button) override
     {
-        if(button == &toggle)
+        if(button == &toggleMain)
         {
             tree.setProperty ("oscOut", ! (tree.getProperty ("oscOut", 0)), 0);
         }
@@ -113,13 +127,14 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TreeItemComponent)
     
     ValueTree tree;
-    ToggleButton toggle;
+    ToggleButton toggleMain;
     ToggleButton toggleWek;
 
     Label label;
     Slider bufferSizeSlider;
     Label bufferSizeSliderLabel;
     Label toWekinatorLabel;
+    Label toMainLabel;
     String wekinatorToolTip;
     
     class TreeLookAndFeel    : public MyoMapperLookAndFeel

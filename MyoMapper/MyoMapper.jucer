@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.1.7"
+<JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.1.9"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
               jucerVersion="5.2.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
-              companyCopyright="Balandino Di Donato - 2017">
+              companyCopyright="Balandino Di Donato - 2018">
   <MAINGROUP id="G7OLDm" name="MyoMapper">
     <GROUP id="{A855A8B0-1BF1-10A8-F066-98F2E790D7DC}" name="Source">
       <GROUP id="{4206F9A6-3428-D059-A986-AD282226E07A}" name="UI">

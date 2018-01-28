@@ -13,7 +13,6 @@ Rescale::Rescale()
     
     addAndMakeVisible (calibrate);
     calibrate.setButtonText ("Set Origin");
-    calibrate.setTooltip("Set "+labelWidget+"'s origin");
     calibrate.addListener (this);
     
     addAndMakeVisible (mmSlider);
@@ -29,7 +28,7 @@ Rescale::Rescale()
     reverse.setColour (ToggleButton::tickColourId, Colours::black);
     reverse.setColour (ToggleButton::tickDisabledColourId, Colours::black);
     reverse.setColour (ToggleButton::textColourId, Colours::black);
-    reverse.setButtonText ("Reverse");
+    reverse.setButtonText ("Flip");
 
     outMinSliderLabel.setText ("Out Min", dontSendNotification);
     outMinSlider.setRange (-1.0, 2.0, 0.001);
@@ -225,8 +224,8 @@ void Rescale::setLabelTitle (juce::String LabelWidget)
     labelWidget = LabelWidget;
     mmSliderLabel.setText (labelWidget, dontSendNotification);
     
-    calibrate.setTooltip("Set "+labelWidget+"'s value to 0.5.");
-    reverse.setTooltip("Reverse "+labelWidget+"'s value");
+    calibrate.setTooltip("Set "+labelWidget+" value to 0.5.");
+    reverse.setTooltip("Flips "+labelWidget+" value.");
     outMinSliderLabel.setTooltip("Set lower limit of the "+labelWidget+" value in output.");
     outMaxSliderLabel.setTooltip("Set higher limit of the "+labelWidget+" value in output.");
     inMinSliderLabel.setTooltip("Set lower limit of the "+labelWidget+" value in input.");

@@ -214,7 +214,7 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
         
         myoData[myoID].emgScaled[i] = scaleEMG[i].extractScale(emg[i], 127, 0.003921568627);
         
-        myoData[myoID].emgZeroCross[i] = emgZeroCross[i].extract(emg[i], tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getProperty ("bufferSize"));
+        myoData[myoID].emgZeroCross[i] = emgZeroCross[i].extract(myoData[myoID].emgScaled[i], 200);
        
         myoData[myoID].emgZeroCrossMavg[i] =  emgZeroCrossMavg[i].extract(myoData[myoID].emgZeroCross[i], tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getChildWithName("EmgRawZcrMavg").getProperty("bufferSize"));
         

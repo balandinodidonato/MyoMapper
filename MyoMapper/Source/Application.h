@@ -71,11 +71,12 @@ public:
     //==========================================================================
     MyoManager myoManager;
     static int selectedMyo;
-    static int sendPort;
-    static int wekinatorPort;
+    static int mainPort;
+    static int mlPort;
     static int receivePort;
-    static String hostAddress;
-    
+    static String mainHostAddress;
+    static String mlHostAddress;
+
     ScopedPointer<OSC> osc;
     void changeListenerCallback (ChangeBroadcaster* source) override;
     void timerCallback() override;
