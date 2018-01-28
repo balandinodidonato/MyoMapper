@@ -84,15 +84,15 @@ hostAddress("127.0.0.1")
     mlIPTitleLabel.setTooltip("Machine learning's IP address.");
     addAndMakeVisible(mlIPTitleLabel);
     
-    mlSetIPLabel.setJustificationType (Justification::centred);
-    mlSetIPLabel.setText(Application::getApp(). getOscSettingsTree(). getChildWithName("mlHostAddress"). getProperty ("hostAddress"), dontSendNotification);
-    mlSetIPLabel.setEditable(true);
-    mlSetIPLabel.setColour (Label::backgroundColourId, Colours::white);
-    mlSetIPLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
-    mlSetIPLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
-    mlSetIPLabel.setTooltip("Machine learning's IP address.");
-    addAndMakeVisible(mlSetIPLabel);
-    mlSetIPLabel.addListener(this);
+    setMlIPLabel.setJustificationType (Justification::centred);
+    setMlIPLabel.setText(Application::getApp(). getOscSettingsTree(). getChildWithName("mlHostAddress"). getProperty ("hostAddress"), dontSendNotification);
+    setMlIPLabel.setEditable(true);
+    setMlIPLabel.setColour (Label::backgroundColourId, Colours::white);
+    setMlIPLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
+    setMlIPLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
+    setMlIPLabel.setTooltip("Machine learning's IP address.");
+    addAndMakeVisible(setMlIPLabel);
+    setMlIPLabel.addListener(this);
     
     myoSelectorLabel.setLookAndFeel (&laf);
     myoSelectorLabel.setJustificationType (Justification::left);
@@ -132,18 +132,18 @@ void SettingsWindow::paint (Graphics& g)
     
     auto area = getBounds().toFloat();
     auto windowSize = area;
-    area.removeFromTop (windowSize.proportionOfHeight(0.078));
+    area.removeFromTop (windowSize.proportionOfHeight(0.05));
     
-    auto mainOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.285)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    auto senderOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.35)).reduced (windowSize.proportionOfWidth (0.078), 0);
     
     area.removeFromTop(windowSize.proportionOfHeight (0.05)).reduced (windowSize.proportionOfWidth (0.078), 0);
     
-    auto mlOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.285)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    auto receiverOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.225)).reduced (windowSize.proportionOfWidth (0.078), 0);
     
     auto oscRectangleWidth = windowSize.proportionOfWidth (0.375);
-    auto mainOscSendRegion = mainOscRegion.removeFromLeft (oscRectangleWidth);
-    auto oscReceiveRegion = mlOscRegion.removeFromLeft (oscRectangleWidth);
-    auto mlOscSendRegion = mainOscRegion.removeFromRight (oscRectangleWidth);
+    auto mainOscSendRegion = senderOscRegion.removeFromLeft (oscRectangleWidth);
+    auto mlOscSendRegion = senderOscRegion.removeFromRight (oscRectangleWidth);
+    auto oscReceiveRegion = receiverOscRegion.removeFromLeft (oscRectangleWidth);
 
     g.setColour (Colour::fromRGB (0, 129, 213));
     auto rectangleCorner = windowSize.getHeight() * 0.02;
@@ -167,93 +167,84 @@ void SettingsWindow::resized()
     auto area = getBounds();
     auto windowSize = area;
     auto windowSizeWidth = area;
-    area.removeFromTop (windowSize.proportionOfHeight (0.05));
+    area.removeFromTop (windowSize.proportionOfHeight (0.02));
     auto oscRectangleWidth = windowSizeWidth.proportionOfWidth (0.375);
 
-    auto mainOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.3)).reduced (windowSize.proportionOfWidth (0.078), 0);
-    
-    area.removeFromTop(windowSize.proportionOfHeight (0.06)).reduced (windowSize.proportionOfWidth (0.078), 0);
-    
-    auto oscReceiveRegionGlobal = area.removeFromTop (windowSize.proportionOfHeight (0.29)).reduced (windowSize.proportionOfWidth (0.078), 0);
-    auto oscReceiveRegion = oscReceiveRegionGlobal.removeFromLeft (oscRectangleWidth);
-    
-    auto mainOscSendRegion = mainOscRegion.removeFromLeft (oscRectangleWidth);
-    
-    auto mlOscRegion = mainOscRegion.removeFromRight (oscRectangleWidth);
+    auto senderOscRegion = area.removeFromTop (windowSize.proportionOfHeight (0.35)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    auto mainOscSendRegion = senderOscRegion.removeFromLeft (oscRectangleWidth);
+    auto mlOscSendRegion = senderOscRegion.removeFromRight (oscRectangleWidth);
     area.removeFromTop (windowSize.proportionOfHeight (0.05));
+
+    auto oscReceiverReceiver = area.removeFromTop (windowSize.proportionOfHeight (0.29)).reduced (windowSize.proportionOfWidth (0.078), 0);
+    auto oscReceiveRegion = oscReceiverReceiver.removeFromLeft (oscRectangleWidth);
     
-    auto mlOscSendRegion = mlOscRegion.removeFromLeft (oscRectangleWidth);
-    
-    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.08))
+    auto myoSelectorRegion = area.removeFromTop (windowSize.proportionOfHeight (0.095))
     .reduced (windowSizeWidth.proportionOfWidth (0.13), 0);
     area.removeFromTop (windowSize.proportionOfHeight (0.05));
     
-    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.08))
+    auto buttonRegion = area.removeFromTop (windowSize.proportionOfHeight (0.1))
     .reduced (windowSizeWidth.proportionOfWidth (0.0315), 0);
     
     // Set send region bounds
     mainOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
-    mainOscSendLabel.setBounds (mainOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.09))
-                            .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
+    mainOscSendLabel.setBounds (mainOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.1))
+                              .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
     
     mainOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.01));
     
-    auto sendPortRegion = mainOscSendRegion.removeFromTop (proportionOfHeight (0.07))
-                          .reduced (mainOscSendRegion.proportionOfWidth (0.04), 0);
-    mainOscSendPortLabel.setBounds (sendPortRegion.removeFromLeft (sendPortRegion.proportionOfWidth (0.3)));
-    mainOscSenderSlider.setBounds (sendPortRegion.reduced (mainOscSendRegion.proportionOfWidth (0.01), sendPortRegion.proportionOfHeight (0.05)));
+    auto mainSendPortRegion = mainOscSendRegion.removeFromTop (proportionOfHeight (0.08))
+    .reduced (mainOscSendRegion.proportionOfWidth (0.04), 0);
+    mainOscSendPortLabel.setBounds (mainSendPortRegion.removeFromLeft (mainSendPortRegion.proportionOfWidth (0.29)));
+    mainOscSenderSlider.setBounds (mainSendPortRegion.reduced (mainSendPortRegion.proportionOfWidth (0.01), mainSendPortRegion.proportionOfHeight (0.05)));
     
-    mainOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
+    mainOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.02));
     
-    auto hostRegion = mainOscSendRegion.removeFromTop (proportionOfHeight (0.08))
-                      .reduced (mainOscSendRegion.proportionOfWidth (0.04), 0);
-    mainIPTitleLabel.setBounds (hostRegion.removeFromLeft (hostRegion.proportionOfWidth (0.5)));
-    setMainIPLabel.setBounds (hostRegion
-                                   .reduced (mainOscSendRegion.proportionOfWidth (0.03), hostRegion.proportionOfHeight (0.05)));
+    auto mainIpRegion = mainOscSendRegion.removeFromTop (proportionOfHeight (0.16))
+    .reduced (mainOscSendRegion.proportionOfWidth (0.04), 0);
+    mainIPTitleLabel.setBounds (mainIpRegion.removeFromLeft (mainIpRegion.proportionOfWidth (0.55)));
+    setMainIPLabel.setBounds (mainIpRegion.reduced (mainOscSendRegion.proportionOfWidth (0.03), mainIpRegion.proportionOfHeight (0.14)));
     
     // Set ml region bounds
-    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.025));
-    mlOscSendLabel.setBounds (mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.09))
-                              .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
+    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
+    mlOscSendLabel.setBounds (mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.1))
+                                .reduced (windowSizeWidth.proportionOfWidth (0.029), 0));
     
     mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.01));
     
-    auto mlSendPortRegion = mlOscSendRegion.removeFromTop (proportionOfHeight (0.07))
+    auto mlSendPortRegion = mlOscSendRegion.removeFromTop (proportionOfHeight (0.08))
     .reduced (mlOscSendRegion.proportionOfWidth (0.04), 0);
-    mlOscSendPortLabel.setBounds (mlSendPortRegion.removeFromLeft (mlSendPortRegion.proportionOfWidth (0.3)));
-    mlOscSenderSlider.setBounds (mlSendPortRegion.reduced (mlOscSendRegion.proportionOfWidth (0.01), mlSendPortRegion.proportionOfHeight (0.05)));
+    mlOscSendPortLabel.setBounds (mlSendPortRegion.removeFromLeft (mlSendPortRegion.proportionOfWidth (0.29)));
+    mlOscSenderSlider.setBounds (mlSendPortRegion.reduced (mlSendPortRegion.proportionOfWidth (0.01), mlSendPortRegion.proportionOfHeight (0.05)));
     
-    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
+    mlOscSendRegion.removeFromTop (windowSize.proportionOfHeight (0.02));
     
-    auto mlHostRegion = mlOscSendRegion.removeFromTop (proportionOfHeight (0.08))
+    auto mlIpRegion = mlOscSendRegion.removeFromTop (proportionOfHeight (0.16))
     .reduced (mlOscSendRegion.proportionOfWidth (0.04), 0);
-    mlIPTitleLabel.setBounds (mlHostRegion.removeFromLeft (mlHostRegion.proportionOfWidth (0.5)));
-    mlSetIPLabel.setBounds (mlHostRegion
-                                     .reduced (mlOscSendRegion.proportionOfWidth (0.03), mlHostRegion.proportionOfHeight (0.05)));
+    mlIPTitleLabel.setBounds (mlIpRegion.removeFromLeft (mlIpRegion.proportionOfWidth (0.55)));
+    setMlIPLabel.setBounds (mlIpRegion.reduced (mlOscSendRegion.proportionOfWidth (0.03), mlIpRegion.proportionOfHeight (0.14)));
     
     // Set receive region bounds
-    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.03));
-    oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.08))
+    oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.04));
+    oscReceiveLabel.setBounds (oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.105))
                                .reduced (windowSizeWidth.proportionOfWidth (0.019), 0));
     oscReceiveRegion.removeFromTop (windowSize.proportionOfHeight (0.01));
     
-    auto ReceivePortRegion = oscReceiveRegion.removeFromTop (proportionOfHeight (0.066))
+    auto ReceivePortRegion = oscReceiveRegion.removeFromTop (proportionOfHeight (0.08))
     .reduced (oscReceiveRegion.proportionOfWidth (0.04), 0);
     oscReceivePortLabel.setBounds (ReceivePortRegion.removeFromLeft (ReceivePortRegion.proportionOfWidth (0.3)));
     oscReceiverSlider.setBounds (ReceivePortRegion.reduced (oscReceiveRegion.proportionOfWidth (0.02), ReceivePortRegion.proportionOfHeight (0.05)));
     
     // Set myo selector region bounds
-    myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.287)));
-    myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.033));
-    myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.401))
+    myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.07));
+    myoSelectorLabel.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.3)));
+    myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.02));
+    myoSelectorSetter.setBounds (myoSelectorRegion.removeFromLeft (windowSize.proportionOfWidth (0.3))
                                  .reduced (0, windowSize.proportionOfHeight (0.01)));
+    
     buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.2));
     featuresButton.setBounds (buttonRegion.removeFromLeft (windowSize.proportionOfWidth (0.222)));
     buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.2));
     startButton.setBounds (buttonRegion.removeFromRight (windowSize.proportionOfWidth (0.174)));
-    
-    
-    
 }
 
 void SettingsWindow::resetStartButtonPressed()
@@ -288,9 +279,9 @@ void SettingsWindow::labelTextChanged(juce::Label *labelThatHasChanged)
     {
         Application::getApp().getOscSettingsTree().getChildWithName("mainHostAddress").setProperty ("hostAddress", setMainIPLabel.getText(), 0);
     }
-    if (labelThatHasChanged == &mlSetIPLabel)
+    if (labelThatHasChanged == &setMlIPLabel)
     {
-        Application::getApp().getOscSettingsTree().getChildWithName("mlHostAddress").setProperty ("hostAddress", mlSetIPLabel.getText(), 0);
+        Application::getApp().getOscSettingsTree().getChildWithName("mlHostAddress").setProperty ("hostAddress", setMlIPLabel.getText(), 0);
     }
 }
 

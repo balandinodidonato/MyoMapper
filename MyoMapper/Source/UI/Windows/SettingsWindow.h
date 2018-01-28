@@ -48,7 +48,7 @@ private:
     Label mainIPTitleLabel;
     String hostAddress;
     
-    Label mlSetIPLabel;
+    Label setMlIPLabel;
     Label mlIPTitleLabel;
     String mlHostAddress;
     
