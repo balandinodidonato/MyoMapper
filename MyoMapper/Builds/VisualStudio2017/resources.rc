@@ -14,7 +14,7 @@ BEGIN
     BLOCK "040904E4"
     BEGIN
       VALUE "CompanyName",  "Balandino Di Donato\0"
-      VALUE "LegalCopyright",  "Balandino Di Donato - 2017\0"
+      VALUE "LegalCopyright",  "Balandino Di Donato - 2018\0"
       VALUE "FileDescription",  "MyoMapper\0"
       VALUE "FileVersion",  "3.1.9\0"
       VALUE "ProductName",  "MyoMapper\0"
