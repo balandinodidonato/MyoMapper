@@ -85,8 +85,8 @@ hostAddress("127.0.0.1")
     addAndMakeVisible(mlHostAddressTitleLabel);
     
     mlSetHostAddressLabel.setJustificationType (Justification::centred);
-    mlSetHostAddressLabel.setText(Application::getApp().getOscSettingsTree().getChildWithName("mlHostAddress").getProperty ("hostAddress")
-                                , dontSendNotification);    setHostAddressLabel.setEditable(true);
+    mlSetHostAddressLabel.setText(Application::getApp(). getOscSettingsTree(). getChildWithName("mlHostAddress"). getProperty ("hostAddress"), dontSendNotification);
+    mlSetHostAddressLabel.setEditable(true);
     mlSetHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
     mlSetHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
     mlSetHostAddressLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
@@ -291,7 +291,7 @@ void SettingsWindow::labelTextChanged(juce::Label *labelThatHasChanged)
     }
     if (labelThatHasChanged == &mlSetHostAddressLabel)
     {
-        Application::getApp().getOscSettingsTree().getChildWithName("mlHostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
+        Application::getApp().getOscSettingsTree().getChildWithName("mlHostAddress").setProperty ("hostAddress", mlSetHostAddressLabel.getText(), 0);
     }
 }
 

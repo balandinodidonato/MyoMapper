@@ -32,7 +32,6 @@ OSC::~OSC()
 bool OSC::connectSender (String mainHostAddress, int mainPort, String mlHostAddress, int mlOscPort)
 {
     mlOscSender.connect(mlHostAddress, mlOscPort);
-    DBG(mlOscPort);
     
     if (mainOscSender.connect (mainHostAddress, mainPort) == false)
     {
