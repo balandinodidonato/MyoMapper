@@ -10,7 +10,7 @@ SettingsWindow::SettingsWindow()
 hostAddress("127.0.0.1")
 {
     mainOscSendLabel.setJustificationType (Justification::horizontallyCentred);
-    mainOscSendLabel.setText ("Main OSC Sender", dontSendNotification);
+    mainOscSendLabel.setText ("OSC TO Main", dontSendNotification);
     addAndMakeVisible (mainOscSendLabel);
     
     mainOscSenderSlider.addListener (this);
@@ -18,17 +18,18 @@ hostAddress("127.0.0.1")
     mainOscSenderSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("mainPort").getProperty ("portNumber"));
     mainOscSenderSlider.setSliderStyle (Slider::IncDecButtons);
     mainOscSenderSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
+    mainOscSenderSlider.setTooltip("Main's OSC port number.");
     addAndMakeVisible (mainOscSenderSlider);
     
     mainOscSendPortLabel.setLookAndFeel (&laf);
     mainOscSendPortLabel.setJustificationType (Justification::left);
     mainOscSendPortLabel.setText ("Port:", dontSendNotification);
-    mainOscSendPortLabel.setTooltip("Main OSC sender port number.");
+    mainOscSendPortLabel.setTooltip("Main's OSC port number.");
     addAndMakeVisible (mainOscSendPortLabel);
     
     
     mlOscSendLabel.setJustificationType (Justification::horizontallyCentred);
-    mlOscSendLabel.setText ("ML OSC Sender", dontSendNotification);
+    mlOscSendLabel.setText ("OSC TO ML", dontSendNotification);
     addAndMakeVisible (mlOscSendLabel);
     
     mlOscSenderSlider.addListener (this);
@@ -36,12 +37,13 @@ hostAddress("127.0.0.1")
     mlOscSenderSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("mlPort").getProperty ("portNumber"));
     mlOscSenderSlider.setSliderStyle (Slider::IncDecButtons);
     mlOscSenderSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
+    mlOscSenderSlider.setTooltip("ML's OSC port number.");
     addAndMakeVisible (mlOscSenderSlider);
     
     mlOscSendPortLabel.setLookAndFeel (&laf);
     mlOscSendPortLabel.setJustificationType (Justification::left);
     mlOscSendPortLabel.setText ("Port:", dontSendNotification);
-    mlOscSendPortLabel.setTooltip("ML OSC sender port number.");
+    mlOscSendPortLabel.setTooltip("ML's OSC port number.");
     addAndMakeVisible (mlOscSendPortLabel);
     
     oscReceiveLabel.setJustificationType (Justification::horizontallyCentred);
@@ -51,48 +53,49 @@ hostAddress("127.0.0.1")
     oscReceivePortLabel.setLookAndFeel (&laf);
     oscReceivePortLabel.setJustificationType (Justification::left);
     oscReceivePortLabel.setText ("Port:", dontSendNotification);
-    oscReceivePortLabel.setTooltip("Main OSC receiver port number.");
+    oscReceivePortLabel.setTooltip("OSC Receiver port number.");
     addAndMakeVisible (oscReceivePortLabel);
     
     oscReceiverSlider.setRange (1, 9999, 1);
     oscReceiverSlider.setValue (Application::getApp().getOscSettingsTree().getChildWithName("ReceivePort").getProperty ("portNumber"));
     oscReceiverSlider.setSliderStyle (Slider::IncDecButtons);
     oscReceiverSlider.setIncDecButtonsMode (Slider::incDecButtonsNotDraggable);
-    oscReceiverSlider.setTooltip("Myo Mapper's OSC receiver port number.");
+    oscReceiverSlider.setTooltip("OSC receiver's port number.");
+    oscReceiverSlider.setTooltip("OSC receiver's port number.");
     oscReceiverSlider.addListener (this);
     addAndMakeVisible (oscReceiverSlider);
     
-    hostAddressTitleLabel.setJustificationType (Justification::left);
-    hostAddressTitleLabel.setText ("IP Address:", dontSendNotification);
-    hostAddressTitleLabel.setTooltip("IP address of the device receiving Myo Mapper's OSC messages.");
-    addAndMakeVisible(hostAddressTitleLabel);
+    mainIPTitleLabel.setJustificationType (Justification::left);
+    mainIPTitleLabel.setText ("IP Address:", dontSendNotification);
+    mainIPTitleLabel.setTooltip("Receiver's IP address.");
+    addAndMakeVisible(mainIPTitleLabel);
     
-    setHostAddressLabel.setJustificationType (Justification::centred);
-    setHostAddressLabel.setText(Application::getApp().getOscSettingsTree().getChildWithName("mainHostAddress").getProperty ("hostAddress")
-                                , dontSendNotification);    setHostAddressLabel.setEditable(true);
-    setHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
-    setHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
-    setHostAddressLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
-    setHostAddressLabel.setTooltip("IP address of the device receiving Myo Mapper's OSC messages.");
-    addAndMakeVisible(setHostAddressLabel);
-    setHostAddressLabel.addListener(this);
+    setMainIPLabel.setJustificationType (Justification::centred);
+    setMainIPLabel.setText(Application::getApp().getOscSettingsTree().getChildWithName("mainHostAddress").getProperty ("hostAddress")
+                                , dontSendNotification);    setMainIPLabel.setEditable(true);
+    setMainIPLabel.setColour (Label::backgroundColourId, Colours::white);
+    setMainIPLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
+    setMainIPLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
+    setMainIPLabel.setTooltip("Receiver's IP address.");
+    addAndMakeVisible(setMainIPLabel);
+    setMainIPLabel.addListener(this);
     
     
     ////////
-    mlHostAddressTitleLabel.setJustificationType (Justification::left);
-    mlHostAddressTitleLabel.setText ("IP Address:", dontSendNotification);
-    mlHostAddressTitleLabel.setTooltip("IP address of the device receiving Myo Mapper's OSC messages.");
-    addAndMakeVisible(mlHostAddressTitleLabel);
+    mlIPTitleLabel.setJustificationType (Justification::left);
+    mlIPTitleLabel.setText ("IP Address:", dontSendNotification);
+    mlIPTitleLabel.setTooltip("Machine learning's IP address.");
+    addAndMakeVisible(mlIPTitleLabel);
     
-    mlSetHostAddressLabel.setJustificationType (Justification::centred);
-    mlSetHostAddressLabel.setText(Application::getApp(). getOscSettingsTree(). getChildWithName("mlHostAddress"). getProperty ("hostAddress"), dontSendNotification);
-    mlSetHostAddressLabel.setEditable(true);
-    mlSetHostAddressLabel.setColour (Label::backgroundColourId, Colours::white);
-    mlSetHostAddressLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
-    mlSetHostAddressLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
-    mlSetHostAddressLabel.setTooltip("IP address of the interactive machine learning.");
-    addAndMakeVisible(mlSetHostAddressLabel);
-    mlSetHostAddressLabel.addListener(this);
+    mlSetIPLabel.setJustificationType (Justification::centred);
+    mlSetIPLabel.setText(Application::getApp(). getOscSettingsTree(). getChildWithName("mlHostAddress"). getProperty ("hostAddress"), dontSendNotification);
+    mlSetIPLabel.setEditable(true);
+    mlSetIPLabel.setColour (Label::backgroundColourId, Colours::white);
+    mlSetIPLabel.setColour (Label::textColourId, Colour::fromRGB (84, 101, 126));
+    mlSetIPLabel.setColour (Label::outlineColourId, Colour::fromRGB (0, 129, 213));
+    mlSetIPLabel.setTooltip("Machine learning's IP address.");
+    addAndMakeVisible(mlSetIPLabel);
+    mlSetIPLabel.addListener(this);
     ///////
     
     myoSelectorLabel.setLookAndFeel (&laf);
@@ -148,7 +151,7 @@ void SettingsWindow::paint (Graphics& g)
 
     g.setColour (Colour::fromRGB (0, 129, 213));
     auto rectangleCorner = windowSize.getHeight() * 0.02;
-    auto lineThickness = windowSize.getHeight() * 0.006;
+    auto lineThickness = windowSize.getHeight() * 0.0038;
     
     Path oscSendRectangle;
     oscSendRectangle.addRoundedRectangle (mainOscSendRegion, rectangleCorner);
@@ -208,8 +211,8 @@ void SettingsWindow::resized()
     
     auto hostRegion = mainOscSendRegion.removeFromTop (proportionOfHeight (0.08))
                       .reduced (mainOscSendRegion.proportionOfWidth (0.04), 0);
-    hostAddressTitleLabel.setBounds (hostRegion.removeFromLeft (hostRegion.proportionOfWidth (0.5)));
-    setHostAddressLabel.setBounds (hostRegion
+    mainIPTitleLabel.setBounds (hostRegion.removeFromLeft (hostRegion.proportionOfWidth (0.5)));
+    setMainIPLabel.setBounds (hostRegion
                                    .reduced (mainOscSendRegion.proportionOfWidth (0.03), hostRegion.proportionOfHeight (0.05)));
     
     // Set ml region bounds
@@ -228,8 +231,8 @@ void SettingsWindow::resized()
     
     auto mlHostRegion = mlOscSendRegion.removeFromTop (proportionOfHeight (0.08))
     .reduced (mlOscSendRegion.proportionOfWidth (0.04), 0);
-    mlHostAddressTitleLabel.setBounds (mlHostRegion.removeFromLeft (mlHostRegion.proportionOfWidth (0.5)));
-    mlSetHostAddressLabel.setBounds (mlHostRegion
+    mlIPTitleLabel.setBounds (mlHostRegion.removeFromLeft (mlHostRegion.proportionOfWidth (0.5)));
+    mlSetIPLabel.setBounds (mlHostRegion
                                      .reduced (mlOscSendRegion.proportionOfWidth (0.03), mlHostRegion.proportionOfHeight (0.05)));
     
     // Set receive region bounds
@@ -285,13 +288,13 @@ void SettingsWindow::buttonClicked (Button* button)
 
 void SettingsWindow::labelTextChanged(juce::Label *labelThatHasChanged)
 {
-    if (labelThatHasChanged == &setHostAddressLabel)
+    if (labelThatHasChanged == &setMainIPLabel)
     {
-        Application::getApp().getOscSettingsTree().getChildWithName("mainHostAddress").setProperty ("hostAddress", setHostAddressLabel.getText(), 0);
+        Application::getApp().getOscSettingsTree().getChildWithName("mainHostAddress").setProperty ("hostAddress", setMainIPLabel.getText(), 0);
     }
-    if (labelThatHasChanged == &mlSetHostAddressLabel)
+    if (labelThatHasChanged == &mlSetIPLabel)
     {
-        Application::getApp().getOscSettingsTree().getChildWithName("mlHostAddress").setProperty ("hostAddress", mlSetHostAddressLabel.getText(), 0);
+        Application::getApp().getOscSettingsTree().getChildWithName("mlHostAddress").setProperty ("hostAddress", mlSetIPLabel.getText(), 0);
     }
 }
 

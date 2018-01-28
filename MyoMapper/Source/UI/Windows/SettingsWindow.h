@@ -44,12 +44,12 @@ private:
     Label oscReceivePortLabel;
     Slider oscReceiverSlider;
     
-    Label setHostAddressLabel;
-    Label hostAddressTitleLabel;
+    Label setMainIPLabel;
+    Label mainIPTitleLabel;
     String hostAddress;
     
-    Label mlSetHostAddressLabel;
-    Label mlHostAddressTitleLabel;
+    Label mlSetIPLabel;
+    Label mlIPTitleLabel;
     String mlHostAddress;
     
     Label myoSelectorLabel;
