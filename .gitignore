@@ -2,17 +2,13 @@
 MyoMapper/application.macosx
 MyoMapper/application.windows32
 MyoMapper/application.windows64
-Myo Mapper/Builds/VisualStudio2017/.vs
-Myo Mapper/Builds/*/x64
 MyoMapper/MyoMapper.windows64.zip
-=======
 MyoMapper/MyoMapper-Mac
 MyoMapper/MyoMapper-Mac.zip
 MyoMapper/MyoMapper-Win32
 MyoMapper/MyoMapper-Win32.zip
 MyoMapper/MyoMapper-Win64
 MyoMapper/MyoMapper-Win64.zip
-=======
 MyoMapper-Mac
 MyoMapper-Mac.zip
 MyoMapper-Win32
@@ -31,16 +27,11 @@ Myo Mapper/Builds/MacOSX/build/Debug/Myo Mapper.app/Contents/Resources/RecentFil
 Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/project.xcworkspace/xcuserdata/balandinodidonato.xcuserdatad/UserInterfaceState.xcuserstate
 Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/xcuserdata/balandinodidonato.xcuserdatad/xcschemes/Myo Mapper (App).xcscheme
 Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/xcuserdata/balandinodidonato.xcuserdatad/xcschemes/xcschememanagement.plist
-=======
-=======
 Myo Mapper/Builds/MacOSX/build/Debug/Myo Mapper.app/Contents/MacOS/Myo Mapper
+
 # Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-## Build generated
 build/
 DerivedData/
-## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -50,11 +41,14 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/project.pbxproj
+
 ## Other
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
-/ToDo.md
-Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/project.pbxproj
+
+# Windows Ignores
 *.vs
+*.user
 x64
