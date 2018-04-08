@@ -353,7 +353,7 @@ void Application::closeWindow()
 				windowList->getWindowList().windows.operator[](2) == nullptr &&
 				windowList->getWindowList().windows.operator[](3) == nullptr)
 			{
-				MyoMapperApplication::quit();
+				Application::quit();
 			}
 #endif
             return;
@@ -378,7 +378,7 @@ void Application::closeAllWindows()
 		windowList->getWindowList().windows.operator[](2) == nullptr &&
 		windowList->getWindowList().windows.operator[](3) == nullptr)
 	{
-		MyoMapperApplication::quit();
+		Application::quit();
 	}
 #endif
     return;
