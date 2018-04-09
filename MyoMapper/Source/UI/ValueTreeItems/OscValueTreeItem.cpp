@@ -92,7 +92,7 @@ public:
          String port = String(Application::receivePort);
          String IP = String(Application::mainHostAddress);
          
-         String featureToggleToolTip = "Sends "+tree["name"].toString()+" data via OSC message: /myo" + String(Application::selectedMyo) + tooltipToggle + " - to OSC port: " + port + " IP: " + IP;
+         String featureToggleToolTip = "OSC tag: /myo" + String(Application::selectedMyo) + tooltipToggle + " - To OSC port: " + port + " IP: " + IP;
          
          String wekinatorToolTip = "Adds values to OSC mesagge to machine learning software (IP: local host, port: 6448, tag: /myo"+String(Application::selectedMyo)+").";
          

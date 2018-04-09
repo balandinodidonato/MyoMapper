@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.1.9"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="5.2.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
+              jucerVersion="5.3.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
               companyCopyright="Balandino Di Donato - 2018">
@@ -111,11 +111,9 @@
                iosInAppPurchases="0">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
-                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;, LD_RUNPATH_SEARCH_PATHS=&quot;@loader_path/../Frameworks&quot;"
                        enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Myo Mapper"
-                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;"
                        enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>

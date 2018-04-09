@@ -84,7 +84,7 @@ void WindowList::showOrCreateOscDataSelectorWindow()
         auto window = new OscDataSelectorWindow();
         auto myoSelected = static_cast<int> (Application::getApp().getOscSettingsTree().getChildWithName ("SelectedMyo").getProperty ("myoId"));
         auto windowAppend = (myoSelected != 0) ? (String)Application::selectedMyo : " - No Myo Selected";
-        WindowDrawer* const w = new WindowDrawer ("Features - Myo " + windowAppend,
+        WindowDrawer* const w = new WindowDrawer ("Features Selection - Myo " + windowAppend,
                                                   window,
                                                   false, false,
                                                   windowWidth * 0.4, windowHeight * 0.5,
