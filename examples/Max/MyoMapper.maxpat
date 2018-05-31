@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 466.0, 78.0, 867.0, 703.0 ],
+		"rect" : [ 24.0, 78.0, 867.0, 703.0 ],
 		"bgcolor" : [ 0.935976, 0.936156, 0.935946, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -114,7 +114,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 92.5, 613.5, 149.0, 31.0 ],
 					"style" : "",
-					"text" : "rest",
+					"text" : "0 rest",
 					"textcolor" : [ 0.211519, 0.494228, 0.97516, 1.0 ]
 				}
 
@@ -908,8 +908,8 @@
 , 											{
 												"name" : "newobjYellow-1",
 												"default" : 												{
-													"fontsize" : [ 12.059008 ],
-													"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+													"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+													"fontsize" : [ 12.059008 ]
 												}
 ,
 												"parentstyle" : "",
@@ -1476,8 +1476,8 @@
 , 											{
 												"name" : "newobjYellow-1",
 												"default" : 												{
-													"fontsize" : [ 12.059008 ],
-													"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+													"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+													"fontsize" : [ 12.059008 ]
 												}
 ,
 												"parentstyle" : "",
@@ -1743,8 +1743,8 @@
 									"patching_rect" : [ 463.5, 609.0, 65.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"enabled" : [ 1 ],
-										"pitchshift" : [ 0.973779 ],
-										"pitchshiftcent" : [ -46 ],
+										"pitchshift" : [ 1.006374 ],
+										"pitchshiftcent" : [ 11 ],
 										"quality" : "good",
 										"reportlatency" : 0,
 										"usecents" : 0
@@ -2770,8 +2770,8 @@
 , 							{
 								"name" : "newobjYellow-1",
 								"default" : 								{
-									"fontsize" : [ 12.059008 ],
-									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+									"fontsize" : [ 12.059008 ]
 								}
 ,
 								"parentstyle" : "",
@@ -4575,7 +4575,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -7628,7 +7627,7 @@
 , 			{
 				"name" : "pan2.maxpat",
 				"bootpath" : "/Users/Shared/Max 7/Examples/spatialization/panning/lib",
-				"patcherrelativepath" : "../../Shared/Max 7/Examples/spatialization/panning/lib",
+				"patcherrelativepath" : "../../../../Shared/Max 7/Examples/spatialization/panning/lib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
