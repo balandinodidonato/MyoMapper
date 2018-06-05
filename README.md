@@ -8,6 +8,12 @@ Myo Mapper is a free and open source cross-platform application, written using [
 - Scales myo data to facilitate the Myo use in musical applications
 - Feature extraction of moving average, min, max, absolute value, first and second order difference, zero crossing rate, EMG mean absolute value (MAV).
 
+## Publications
+### Conference proceedings
+- [Di Donato et al. (2018) Myo Mapper: a Myo armband to OSC mapper. *Proceedings of New Interfaces for Musical Expressions* (NIME). pages 138-143. Blacksburg, Virginia, USA. 2017](https://www.researchgate.net/publication/325546533_Myo_Mapper_a_Myo_armband_to_OSC_mapper)
+### Posters
+- [Di Donato et al. (2018) Myo Mapper: a Myo armband to OSC mapper. *Audio Developer Conference* (ADC17). London, United Kindom. 2017](https://www.researchgate.net/publication/321051827_Myo_Mapper)
+
 ## Acknowledgements
 
 Myo Mapper is a software supported by [Integra Lab](http://integra.io).
