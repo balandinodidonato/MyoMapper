@@ -16,7 +16,7 @@ Myo Mapper is a free and open source cross-platform application, written using [
 
 ## Acknowledgements
 
-Myo Mapper is a software supported by [Integra Lab](http://integra.io).
+Myo Mapper is a software supported by [Embodied AudioVisual Interaction Unit](http://eavi.goldsmithsdigital.com/) at [Goldsmiths, University of London](https://www.gold.ac.uk/), [European Research Council](https://erc.europa.eu/) and [Integra Lab](http://integra.io).
 
 ### Team:
 - [Balandino Di Donato](http://www.balandinodidonato.com), creator
