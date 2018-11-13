@@ -1105,9 +1105,6 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_ComponentListener.cpp">
       <Filter>JUCE Modules\juce_gui_basics\components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_Desktop.cpp">
-      <Filter>JUCE Modules\juce_gui_basics\components</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_ModalComponentManager.cpp">
       <Filter>JUCE Modules\juce_gui_basics\components</Filter>
     </ClCompile>
@@ -2512,9 +2509,6 @@
       <Filter>JUCE Modules\juce_gui_basics\components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_ComponentListener.h">
-      <Filter>JUCE Modules\juce_gui_basics\components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_Desktop.h">
       <Filter>JUCE Modules\juce_gui_basics\components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_ModalComponentManager.h">

@@ -8,11 +8,11 @@ float ZeroCrossing::extract(float Value, int BufferSize)
     
     for (unsigned int i = 0; i < buffer.size(); ++i)
     {
-        if (buffer[i] > 0.6 && buffer[(i + 1) % BufferSize] < 0.4)
+        if (buffer[i] > 0.1 && buffer[(i + 1) % BufferSize] < 0.1)
         {
             ++zcr;
         }
-        else if (buffer[i] < 0.4 && buffer[(i + 1) % BufferSize] > 0.6)
+        else if (buffer[i] < -0.1 && buffer[(i + 1) % BufferSize] > 0.1)
         {
             ++zcr;
         }

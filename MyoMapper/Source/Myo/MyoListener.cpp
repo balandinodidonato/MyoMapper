@@ -139,7 +139,7 @@ void MyoListener::onAccelerometerData (myo::Myo* myo, uint64_t timestamp, const 
     myoData[myoID].acc.y = accel.y();
     myoData[myoID].acc.z = accel.z();
 
-    myoData[myoID].accScaled = scaleAcc.extractScale(myoData[myoID].acc, 16, 0.03125);
+    myoData[myoID].accScaled = scaleAcc.extractScale(myoData[myoID].acc, 0.03125);
     
     myoData[myoID].accFod = accFod.extract(myoData[myoID].acc);
     myoData[myoID].accScaledFod = accScaledFod.extract(myoData[myoID].accScaled);
@@ -158,9 +158,9 @@ void MyoListener::onGyroscopeData (myo::Myo* myo, uint64_t timestamp, const myo:
     myoData[myoID].gyro.y = gyro.y();
     myoData[myoID].gyro.z = gyro.z();
 
-    myoData[myoID].gyroScaled = scaleGyro.extractScale(myoData[myoID].gyro, 2000, 0.00025);
+    myoData[myoID].gyroScaled = scaleGyro.extractScale(myoData[myoID].gyro, 0.0004166666667);
    
-    myoData[myoID].gyroScaledAbs = scaleGyro.extractAbs(myoData[myoID].gyroScaled, 1);
+    myoData[myoID].gyroScaledAbs = scaleGyro.extractAbs(myoData[myoID].gyroScaled);
     
     myoData[myoID].gyroFod = gyroFod.extract(myoData[myoID].gyroScaled);
     myoData[myoID].gyroScaledFod = gyroScaledFod.extract(myoData[myoID].gyroScaled);
@@ -212,15 +212,15 @@ void MyoListener::onEmgData (myo::Myo* myo, uint64_t timestamp, const int8_t* em
 
         myoData[myoID].emgRawMavg[i] = emgRawMavg[i].extract(myoData[myoID].emgRaw[i], tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawMavg").getProperty ("bufferSize"));
         
-        myoData[myoID].emgScaled[i] = scaleEMG[i].extractScale(emg[i], 127, 0.003921568627);
+        myoData[myoID].emgScaled[i] = scaleEMG[i].extractScale(emg[i], 0.007874015748);
         
         myoData[myoID].emgZeroCross[i] = emgZeroCross[i].extract(myoData[myoID].emgScaled[i], 200);
        
         myoData[myoID].emgZeroCrossMavg[i] =  emgZeroCrossMavg[i].extract(myoData[myoID].emgZeroCross[i], tree.getChildWithName("EmgData").getChildWithName("EmgRaw").getChildWithName("EmgRawZcr").getChildWithName("EmgRawZcrMavg").getProperty("bufferSize"));
         
-        myoData[myoID].emgScaledAbs[i] = scaleEMG[i].extractAbs(myoData[myoID].emgScaled[i], 1);
+        myoData[myoID].emgScaledAbs[i] = scaleEMG[i].extractAbs(myoData[myoID].emgScaled[i]);
         
-        myoData[myoID].emgScaledAbsFod[i] = emgScaledAbsFod[i].extract(myoData[myoID].emgScaled[i]);
+        myoData[myoID].emgScaledAbsFod[i] = emgScaledAbsFod[i].extract(myoData[myoID].emgScaledAbs[i]);
         
         myoData[myoID].emgScaledAbsFodMavg[i] = emgScaledAbsFodMavg[i].extract(myoData[myoID].emgScaledAbsFod[i], tree.getChildWithName("EmgData").getChildWithName("EmgScaled").getChildWithName("EmgScaledAbs").getChildWithName("EmgScaledAbsFod").getChildWithName("EmgScaledAbsFodMavg").getProperty ("bufferSize"));
         

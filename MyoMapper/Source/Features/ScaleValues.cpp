@@ -1,35 +1,35 @@
 #include "ScaleValues.h"
 
-Vector3D<float> ScaleValues::extractScale (Vector3D<float> Values, float sum, float product)
+Vector3D<float> ScaleValues::extractScale (Vector3D<float> Values, float product)
 {
     Vector3D<float> scaled;
     
-    scaled.x = (Values.x + sum) * product;
-    scaled.y = (Values.y + sum) * product;
-    scaled.z = (Values.z + sum) * product;
+    scaled.x = Values.x * product;
+    scaled.y = Values.y * product;
+    scaled.z = Values.z * product;
     
     return scaled;
 }
 
-float ScaleValues::extractScale (float Values, float sum, float product)
+float ScaleValues::extractScale (float Values, float product)
 {
-    float scaledFloat = (Values + sum) * product;
+    float scaledFloat = Values * product;
     return scaledFloat;
 }
 
-Vector3D<float>  ScaleValues::extractAbs (Vector3D<float> Values, float range)
+Vector3D<float>  ScaleValues::extractAbs (Vector3D<float> Values)
 {
     Vector3D<float> abs;
     
-    abs.x = std::abs (Values.x - (range * 0.5)) * 2;
-    abs.y = std::abs (Values.y - (range * 0.5)) * 2;
-    abs.z = std::abs (Values.z - (range * 0.5)) * 2;
+    abs.x = std::abs (Values.x);
+    abs.y = std::abs (Values.y);
+    abs.z = std::abs (Values.z);
     
     return abs;
 }
 
-float ScaleValues::extractAbs (float Values, float Range)
+float ScaleValues::extractAbs (float Values)
 {
-    float abs = std::abs (Values - (Range * 0.5)) * 2;
+    float abs = std::abs (Values);
     return abs;
 }
