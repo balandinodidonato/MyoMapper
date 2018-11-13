@@ -64,10 +64,6 @@ static NSRect flippedScreenRect (NSRect r) noexcept
     return r;
 }
 
-#if JUCE_MODULE_AVAILABLE_juce_opengl
-void componentPeerAboutToChange (Component&, bool);
-#endif
-
 //==============================================================================
 class NSViewComponentPeer  : public ComponentPeer,
                              private Timer
@@ -75,6 +71,7 @@ class NSViewComponentPeer  : public ComponentPeer,
 public:
     NSViewComponentPeer (Component& comp, const int windowStyleFlags, NSView* viewToAttachTo)
         : ComponentPeer (comp, windowStyleFlags),
+          safeComponent (&comp),
           isSharedWindow (viewToAttachTo != nil),
           lastRepaintTime (Time::getMillisecondCounter())
     {
@@ -94,24 +91,6 @@ public:
                                 selector: @selector (frameChanged:)
                                     name: NSViewFrameDidChangeNotification
                                   object: view];
-
-        if (! isSharedWindow)
-        {
-            [notificationCenter  addObserver: view
-                                    selector: @selector (frameChanged:)
-                                        name: NSWindowDidMoveNotification
-                                      object: window];
-
-            [notificationCenter  addObserver: view
-                                    selector: @selector (frameChanged:)
-                                        name: NSWindowDidMiniaturizeNotification
-                                      object: window];
-
-            [notificationCenter  addObserver: view
-                                    selector: @selector (frameChanged:)
-                                        name: NSWindowDidDeminiaturizeNotification
-                                      object: window];
-        }
 
         [view setPostsFrameChangedNotifications: YES];
 
@@ -137,7 +116,14 @@ public:
            #else
             [window setDelegate: window];
            #endif
+
             [window setOpaque: component.isOpaque()];
+
+           #if defined (MAC_OS_X_VERSION_10_14)
+            if (! [window isOpaque])
+                [window setBackgroundColor: [NSColor clearColor]];
+           #endif
+
             [window setHasShadow: ((windowStyleFlags & windowHasDropShadow) != 0)];
 
             if (component.isAlwaysOnTop())
@@ -167,6 +153,26 @@ public:
             if ([window respondsToSelector: @selector (setTabbingMode:)])
                 [window setTabbingMode:NSWindowTabbingModeDisallowed];
            #endif
+
+            [notificationCenter  addObserver: view
+                                    selector: @selector (frameChanged:)
+                                        name: NSWindowDidMoveNotification
+                                      object: window];
+
+            [notificationCenter  addObserver: view
+                                    selector: @selector (frameChanged:)
+                                        name: NSWindowDidMiniaturizeNotification
+                                      object: window];
+
+            [notificationCenter  addObserver: view
+                                    selector: @selector (windowWillMiniaturize:)
+                                        name: NSWindowWillMiniaturizeNotification
+                                      object: window];
+
+            [notificationCenter  addObserver: view
+                                    selector: @selector (windowDidDeminiaturize:)
+                                        name: NSWindowDidDeminiaturizeNotification
+                                      object: window];
         }
 
         auto alpha = component.getAlpha();
@@ -175,6 +181,16 @@ public:
             setAlpha (alpha);
 
         setTitle (component.getName());
+
+        getNativeRealtimeModifiers = []
+        {
+           #if defined (MAC_OS_X_VERSION_10_6) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6
+            if ([NSEvent respondsToSelector: @selector (modifierFlags)])
+                NSViewComponentPeer::updateModifiers ([NSEvent modifierFlags]);
+           #endif
+
+            return ModifierKeys::currentModifiers;
+        };
     }
 
     ~NSViewComponentPeer()
@@ -206,7 +222,10 @@ public:
     {
         if (isSharedWindow)
         {
-            [view setHidden: ! shouldBeVisible];
+            if (shouldBeVisible)
+                [view setHidden: false];
+            else if ([window firstResponder] != view || ([window firstResponder] == view && [window makeFirstResponder: nil]))
+                [view setHidden: true];
         }
         else
         {
@@ -468,9 +487,13 @@ public:
     bool setAlwaysOnTop (bool alwaysOnTop) override
     {
         if (! isSharedWindow)
+        {
             [window setLevel: alwaysOnTop ? ((getStyleFlags() & windowIsTemporary) != 0 ? NSPopUpMenuWindowLevel
                                                                                         : NSFloatingWindowLevel)
                                           : NSNormalWindowLevel];
+
+            isAlwaysOnTop = alwaysOnTop;
+        }
 
         return true;
     }
@@ -569,26 +592,26 @@ public:
         if (! Process::isForegroundProcess())
             Process::makeForegroundProcess();
 
-        currentModifiers = currentModifiers.withFlags (getModifierForButtonNumber ([ev buttonNumber]));
+        ModifierKeys::currentModifiers = ModifierKeys::currentModifiers.withFlags (getModifierForButtonNumber ([ev buttonNumber]));
         sendMouseEvent (ev);
     }
 
     void redirectMouseUp (NSEvent* ev)
     {
-        currentModifiers = currentModifiers.withoutFlags (getModifierForButtonNumber ([ev buttonNumber]));
+        ModifierKeys::currentModifiers = ModifierKeys::currentModifiers.withoutFlags (getModifierForButtonNumber ([ev buttonNumber]));
         sendMouseEvent (ev);
         showArrowCursorIfNeeded();
     }
 
     void redirectMouseDrag (NSEvent* ev)
     {
-        currentModifiers = currentModifiers.withFlags (getModifierForButtonNumber ([ev buttonNumber]));
+        ModifierKeys::currentModifiers = ModifierKeys::currentModifiers.withFlags (getModifierForButtonNumber ([ev buttonNumber]));
         sendMouseEvent (ev);
     }
 
     void redirectMouseMove (NSEvent* ev)
     {
-        currentModifiers = currentModifiers.withoutMouseButtons();
+        ModifierKeys::currentModifiers = ModifierKeys::currentModifiers.withoutMouseButtons();
 
         NSPoint windowPos = [ev locationInWindow];
 
@@ -602,7 +625,7 @@ public:
             sendMouseEvent (ev);
         else
             // moved into another window which overlaps this one, so trigger an exit
-            handleMouseEvent (MouseInputSource::InputSourceType::mouse, { -1.0f, -1.0f }, currentModifiers,
+            handleMouseEvent (MouseInputSource::InputSourceType::mouse, { -1.0f, -1.0f }, ModifierKeys::currentModifiers,
                               getMousePressure (ev), MouseInputSource::invalidOrientation, getMouseTime (ev));
 
         showArrowCursorIfNeeded();
@@ -611,13 +634,13 @@ public:
     void redirectMouseEnter (NSEvent* ev)
     {
         Desktop::getInstance().getMainMouseSource().forceMouseCursorUpdate();
-        currentModifiers = currentModifiers.withoutMouseButtons();
+        ModifierKeys::currentModifiers = ModifierKeys::currentModifiers.withoutMouseButtons();
         sendMouseEvent (ev);
     }
 
     void redirectMouseExit (NSEvent* ev)
     {
-        currentModifiers = currentModifiers.withoutMouseButtons();
+        ModifierKeys::currentModifiers = ModifierKeys::currentModifiers.withoutMouseButtons();
         sendMouseEvent (ev);
     }
 
@@ -695,18 +718,17 @@ public:
 
     void redirectWillMoveToWindow (NSWindow* newWindow)
     {
-       #if JUCE_MODULE_AVAILABLE_juce_opengl
-        if ([view window] == window)
-            componentPeerAboutToChange (getComponent(), newWindow == nullptr);
-       #else
-        ignoreUnused (newWindow);
-       #endif
+        if (isSharedWindow && [view window] == window && newWindow == nullptr)
+        {
+            if (auto* comp = safeComponent.get())
+                comp->setVisible (false);
+        }
     }
 
     void sendMouseEvent (NSEvent* ev)
     {
         updateModifiers (ev);
-        handleMouseEvent (MouseInputSource::InputSourceType::mouse, getMousePos (ev, view), currentModifiers,
+        handleMouseEvent (MouseInputSource::InputSourceType::mouse, getMousePos (ev, view), ModifierKeys::currentModifiers,
                           getMousePressure (ev), MouseInputSource::invalidOrientation, getMouseTime (ev));
     }
 
@@ -770,7 +792,7 @@ public:
     {
         // (need to retain this in case a modal loop runs in handleKeyEvent and
         // our event object gets lost)
-        const NSObjectRetainer<NSEvent> r (ev);
+        const std::unique_ptr<NSEvent, NSObjectDeleter> r ([ev retain]);
 
         updateKeysDown (ev, true);
         bool used = handleKeyEvent (ev, true);
@@ -800,7 +822,7 @@ public:
     void redirectModKeyChange (NSEvent* ev)
     {
         // (need to retain this in case a modal loop runs and our event object gets lost)
-        const NSObjectRetainer<NSEvent> r (ev);
+        const std::unique_ptr<NSEvent, NSObjectDeleter> r ([ev retain]);
 
         keysCurrentlyDown.clear();
         handleKeyUpOrDown (true);
@@ -889,8 +911,8 @@ public:
                     if (intScale != 1)
                         clip.scaleAll (intScale);
 
-                    ScopedPointer<LowLevelGraphicsContext> context (component.getLookAndFeel()
-                                                                      .createGraphicsContext (temp, offset * intScale, clip));
+                    std::unique_ptr<LowLevelGraphicsContext> context (component.getLookAndFeel()
+                                                                        .createGraphicsContext (temp, offset * intScale, clip));
 
                     if (intScale != 1)
                         context->addTransform (AffineTransform::scale (displayScale));
@@ -1036,7 +1058,15 @@ public:
     void viewMovedToWindow()
     {
         if (isSharedWindow)
-            window = [view window];
+        {
+            auto newWindow = [view window];
+            bool shouldSetVisible = (window == nullptr && newWindow != nullptr);
+
+            window = newWindow;
+
+            if (shouldSetVisible)
+                getComponent().setVisible (true);
+        }
     }
 
     void liveResizingStart()
@@ -1118,7 +1148,7 @@ public:
         if ((flags & NSEventModifierFlagOption) != 0)       m |= ModifierKeys::altModifier;
         if ((flags & NSEventModifierFlagCommand) != 0)      m |= ModifierKeys::commandModifier;
 
-        currentModifiers = currentModifiers.withOnlyMouseButtons().withFlags (m);
+        ModifierKeys::currentModifiers = ModifierKeys::currentModifiers.withOnlyMouseButtons().withFlags (m);
     }
 
     static void updateKeysDown (NSEvent* ev, bool isKeyDown)
@@ -1372,6 +1402,7 @@ public:
     //==============================================================================
     NSWindow* window = nil;
     NSView* view = nil;
+    WeakReference<Component> safeComponent;
     bool isSharedWindow = false, fullScreen = false;
     bool isWindowInKioskMode = false;
    #if USE_COREGRAPHICS_RENDERING
@@ -1382,13 +1413,13 @@ public:
     bool isZooming = false, isFirstLiveResize = false, textWasInserted = false;
     bool isStretchingTop = false, isStretchingLeft = false, isStretchingBottom = false, isStretchingRight = false;
     bool windowRepresentsFile = false;
+    bool isAlwaysOnTop = false, wasAlwaysOnTop = false;
     String stringBeingComposed;
     NSNotificationCenter* notificationCenter = nil;
 
     RectangleList<float> deferredRepaints;
     uint32 lastRepaintTime;
 
-    static ModifierKeys currentModifiers;
     static ComponentPeer* currentlyFocusedPeer;
     static Array<int> keysCurrentlyDown;
     static int insideToFrontCall;
@@ -1552,6 +1583,8 @@ struct JuceNSViewClass   : public ObjCClass<NSView>
         addMethod (@selector (magnifyWithEvent:),             magnify,                    "v@:@");
         addMethod (@selector (acceptsFirstMouse:),            acceptsFirstMouse,          "c@:@");
         addMethod (@selector (frameChanged:),                 frameChanged,               "v@:@");
+        addMethod (@selector (windowWillMiniaturize:),        windowWillMiniaturize,      "v@:@");
+        addMethod (@selector (windowDidDeminiaturize:),       windowDidDeminiaturize,     "v@:@");
         addMethod (@selector (wantsDefaultClipping:),         wantsDefaultClipping,       "c@:");
         addMethod (@selector (worksWhenModal),                worksWhenModal,             "c@:");
         addMethod (@selector (viewDidMoveToWindow),           viewDidMoveToWindow,        "v@:");
@@ -1646,6 +1679,32 @@ private:
     static void drawRect (id self, SEL, NSRect r)              { if (auto* p = getOwner (self)) p->drawRect (r); }
     static void frameChanged (id self, SEL, NSNotification*)   { if (auto* p = getOwner (self)) p->redirectMovedOrResized(); }
     static void viewDidMoveToWindow (id self, SEL)             { if (auto* p = getOwner (self)) p->viewMovedToWindow(); }
+
+    static void windowWillMiniaturize (id self, SEL, NSNotification*)
+    {
+        if (auto* p = getOwner (self))
+        {
+            if (p->isAlwaysOnTop)
+            {
+                // there is a bug when restoring minimised always on top windows so we need
+                // to remove this behaviour before minimising and restore it afterwards
+                p->setAlwaysOnTop (false);
+                p->wasAlwaysOnTop = true;
+            }
+        }
+    }
+
+    static void windowDidDeminiaturize (id self, SEL, NSNotification*)
+    {
+        if (auto* p = getOwner (self))
+        {
+            if (p->wasAlwaysOnTop)
+            {
+                p->setAlwaysOnTop (true);
+                p->redirectMovedOrResized();
+            }
+        }
+    }
 
     static BOOL isOpaque (id self, SEL)
     {
@@ -2042,7 +2101,6 @@ NSWindow* NSViewComponentPeer::createWindowInstance()
 
 
 //==============================================================================
-ModifierKeys NSViewComponentPeer::currentModifiers;
 ComponentPeer* NSViewComponentPeer::currentlyFocusedPeer = nullptr;
 Array<int> NSViewComponentPeer::keysCurrentlyDown;
 
@@ -2062,23 +2120,6 @@ bool KeyPress::isKeyCurrentlyDown (int keyCode)
 
     return false;
 }
-
-
-ModifierKeys ModifierKeys::getCurrentModifiersRealtime() noexcept
-{
-   #if defined (MAC_OS_X_VERSION_10_6) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6
-    if ([NSEvent respondsToSelector: @selector (modifierFlags)])
-        NSViewComponentPeer::updateModifiers ((NSUInteger) [NSEvent modifierFlags]);
-   #endif
-
-    return NSViewComponentPeer::currentModifiers;
-}
-
-void ModifierKeys::updateCurrentModifiers() noexcept
-{
-    currentModifiers = NSViewComponentPeer::currentModifiers;
-}
-
 
 //==============================================================================
 bool MouseInputSource::SourceList::addSource()

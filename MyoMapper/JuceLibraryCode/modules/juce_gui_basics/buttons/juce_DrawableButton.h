@@ -169,7 +169,7 @@ public:
 
     //==============================================================================
     /** @internal */
-    void paintButton (Graphics&, bool isMouseOverButton, bool isButtonDown) override;
+    void paintButton (Graphics&, bool, bool) override;
     /** @internal */
     void buttonStateChanged() override;
     /** @internal */
@@ -182,7 +182,7 @@ public:
 private:
     //==============================================================================
     ButtonStyle style;
-    ScopedPointer<Drawable> normalImage, overImage, downImage, disabledImage,
+    std::unique_ptr<Drawable> normalImage, overImage, downImage, disabledImage,
                             normalImageOn, overImageOn, downImageOn, disabledImageOn;
     Drawable* currentImage = nullptr;
     int edgeIndent = 3;

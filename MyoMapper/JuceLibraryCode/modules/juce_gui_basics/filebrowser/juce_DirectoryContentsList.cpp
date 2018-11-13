@@ -29,8 +29,7 @@ namespace juce
 
 DirectoryContentsList::DirectoryContentsList (const FileFilter* f, TimeSliceThread& t)
    : fileFilter (f), thread (t),
-     fileTypeFlags (File::ignoreHiddenFiles | File::findFiles),
-     shouldStop (true)
+     fileTypeFlags (File::ignoreHiddenFiles | File::findFiles)
 {
 }
 
@@ -103,7 +102,8 @@ void DirectoryContentsList::clear()
 
 void DirectoryContentsList::refresh()
 {
-    clear();
+    stopSearching();
+    files.clear();
 
     if (root.isDirectory())
     {
@@ -234,7 +234,7 @@ bool DirectoryContentsList::addFile (const File& file, const bool isDir,
          || ((! isDir) && fileFilter->isFileSuitable (file))
          || (isDir && fileFilter->isDirectorySuitable (file)))
     {
-        ScopedPointer<FileInfo> info (new FileInfo());
+        std::unique_ptr<FileInfo> info (new FileInfo());
 
         info->filename = file.getFileName();
         info->fileSize = fileSize;

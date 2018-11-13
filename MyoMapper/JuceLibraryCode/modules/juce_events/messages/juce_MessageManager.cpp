@@ -155,7 +155,7 @@ public:
     }
 
     WaitableEvent finished;
-    void* volatile result = nullptr;
+    std::atomic<void*> result { nullptr };
 
 private:
     MessageCallbackFunction* const func;
@@ -177,7 +177,7 @@ void* MessageManager::callFunctionOnMessageThread (MessageCallbackFunction* cons
     if (message->post())
     {
         message->finished.wait();
-        return message->result;
+        return message->result.load();
     }
 
     jassertfalse; // the OS message queue failed to send the message!
@@ -229,6 +229,22 @@ bool MessageManager::currentThreadHasLockedMessageManager() const noexcept
 {
     auto thisThread = Thread::getCurrentThreadId();
     return thisThread == messageThreadId || thisThread == threadWithLock.get();
+}
+
+bool MessageManager::existsAndIsLockedByCurrentThread() noexcept
+{
+    if (auto i = getInstanceWithoutCreating())
+        return i->currentThreadHasLockedMessageManager();
+
+    return false;
+}
+
+bool MessageManager::existsAndIsCurrentThread() noexcept
+{
+    if (auto i = getInstanceWithoutCreating())
+        return i->isThisTheMessageThread();
+
+    return false;
 }
 
 //==============================================================================
@@ -294,7 +310,7 @@ bool MessageManager::Lock::tryAcquire (bool lockIsMandatory) const noexcept
 
     try
     {
-        blockingMessage = new BlockingMessage (this);
+        blockingMessage = *new BlockingMessage (this);
     }
     catch (...)
     {
@@ -349,7 +365,7 @@ void MessageManager::Lock::exit() const noexcept
         lockGained.set (0);
 
         if (mm != nullptr)
-            mm->threadWithLock = 0;
+            mm->threadWithLock = {};
 
         if (blockingMessage != nullptr)
         {

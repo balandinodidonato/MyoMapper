@@ -24,8 +24,6 @@ namespace juce
 {
 
 class ThreadPool;
-class ThreadPoolThread;
-
 
 //==============================================================================
 /**
@@ -134,10 +132,9 @@ public:
     //==============================================================================
 private:
     friend class ThreadPool;
-    friend class ThreadPoolThread;
     String jobName;
     ThreadPool* pool = nullptr;
-    bool shouldStop = false, isActive = false, shouldBeDeleted = false;
+    std::atomic<bool> shouldStop { false }, isActive { false }, shouldBeDeleted { false };
     ListenerList<Thread::Listener, Array<Thread::Listener*, CriticalSection>> listeners;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ThreadPoolJob)
@@ -323,10 +320,8 @@ private:
     //==============================================================================
     Array<ThreadPoolJob*> jobs;
 
-    class ThreadPoolThread;
+    struct ThreadPoolThread;
     friend class ThreadPoolJob;
-    friend class ThreadPoolThread;
-    friend struct ContainerDeletePolicy<ThreadPoolThread>;
     OwnedArray<ThreadPoolThread> threads;
 
     CriticalSection lock;

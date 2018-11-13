@@ -74,7 +74,7 @@ JUCE_JNI_CALLBACK (JUCE_ANDROID_ACTIVITY_CLASSNAME, launchApp, void, (JNIEnv* en
         jassertfalse; // you must supply an application object for an android app!
     }
 
-    jassert (MessageManager::getInstance()->isThisTheMessageThread());
+    JUCE_ASSERT_MESSAGE_THREAD
 }
 
 JUCE_JNI_CALLBACK (JUCE_ANDROID_ACTIVITY_CLASSNAME, suspendApp, void, (JNIEnv* env, jobject))
@@ -502,7 +502,7 @@ public:
         lastMousePos = localToGlobal (pos);
 
         // this forces a mouse-enter/up event, in case for some reason we didn't get a mouse-up before.
-        handleMouseEvent (MouseInputSource::InputSourceType::touch, pos, currentModifiers.withoutMouseButtons(),
+        handleMouseEvent (MouseInputSource::InputSourceType::touch, pos, ModifierKeys::currentModifiers.withoutMouseButtons(),
                           MouseInputSource::invalidPressure, MouseInputSource::invalidOrientation, time, {}, index);
 
         if (isValidPeer (this))
@@ -516,8 +516,8 @@ public:
 
         jassert (index < 64);
         touchesDown = (touchesDown | (1 << (index & 63)));
-        currentModifiers = currentModifiers.withoutMouseButtons().withFlags (ModifierKeys::leftButtonModifier);
-        handleMouseEvent (MouseInputSource::InputSourceType::touch, pos, currentModifiers.withoutMouseButtons().withFlags (ModifierKeys::leftButtonModifier),
+        ModifierKeys::currentModifiers = ModifierKeys::currentModifiers.withoutMouseButtons().withFlags (ModifierKeys::leftButtonModifier);
+        handleMouseEvent (MouseInputSource::InputSourceType::touch, pos, ModifierKeys::currentModifiers.withoutMouseButtons().withFlags (ModifierKeys::leftButtonModifier),
                           MouseInputSource::invalidPressure, MouseInputSource::invalidOrientation, time, {}, index);
     }
 
@@ -530,9 +530,9 @@ public:
         touchesDown = (touchesDown & ~(1 << (index & 63)));
 
         if (touchesDown == 0)
-            currentModifiers = currentModifiers.withoutMouseButtons();
+            ModifierKeys::currentModifiers = ModifierKeys::currentModifiers.withoutMouseButtons();
 
-        handleMouseEvent (MouseInputSource::InputSourceType::touch, pos, currentModifiers.withoutMouseButtons(), MouseInputSource::invalidPressure,
+        handleMouseEvent (MouseInputSource::InputSourceType::touch, pos, ModifierKeys::currentModifiers.withoutMouseButtons(), MouseInputSource::invalidPressure,
                           MouseInputSource::invalidOrientation, time, {}, index);
     }
 
@@ -559,6 +559,8 @@ public:
     {
         Component::unfocusAllComponents();
     }
+
+    void handleAppPausedCallback() {}
 
     void handleAppResumedCallback()
     {
@@ -630,10 +632,10 @@ public:
     void handlePaintCallback (JNIEnv* env, jobject canvas, jobject paint)
     {
         jobject rect = env->CallObjectMethod (canvas, CanvasMinimal.getClipBounds);
-        const int left   = env->GetIntField (rect, AndroidRectClass.left);
-        const int top    = env->GetIntField (rect, AndroidRectClass.top);
-        const int right  = env->GetIntField (rect, AndroidRectClass.right);
-        const int bottom = env->GetIntField (rect, AndroidRectClass.bottom);
+        const int left   = env->GetIntField (rect, AndroidRect.left);
+        const int top    = env->GetIntField (rect, AndroidRect.top);
+        const int right  = env->GetIntField (rect, AndroidRect.right);
+        const int bottom = env->GetIntField (rect, AndroidRect.bottom);
         env->DeleteLocalRef (rect);
 
         const Rectangle<int> clip (left, top, right - left, bottom - top);
@@ -718,7 +720,6 @@ public:
     }
 
     //==============================================================================
-    static ModifierKeys currentModifiers;
     static Point<float> lastMousePos;
     static int64 touchesDown;
 
@@ -786,7 +787,6 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AndroidComponentPeer)
 };
 
-ModifierKeys AndroidComponentPeer::currentModifiers = 0;
 Point<float> AndroidComponentPeer::lastMousePos;
 int64 AndroidComponentPeer::touchesDown = 0;
 AndroidComponentPeer* AndroidComponentPeer::frontWindow = nullptr;
@@ -810,6 +810,7 @@ JUCE_VIEW_CALLBACK (void, handleKeyDown,        (JNIEnv* env, jobject /*view*/, 
 JUCE_VIEW_CALLBACK (void, handleKeyUp,          (JNIEnv* env, jobject /*view*/, jlong host, jint k, jint kc),                         handleKeyUpCallback ((int) k, (int) kc))
 JUCE_VIEW_CALLBACK (void, handleBackButton,     (JNIEnv* env, jobject /*view*/, jlong host),                                          handleBackButtonCallback())
 JUCE_VIEW_CALLBACK (void, handleKeyboardHidden, (JNIEnv* env, jobject /*view*/, jlong host),                                          handleKeyboardHiddenCallback())
+JUCE_VIEW_CALLBACK (void, handleAppPaused,      (JNIEnv* env, jobject /*view*/, jlong host),                                          handleAppPausedCallback())
 JUCE_VIEW_CALLBACK (void, handleAppResumed,     (JNIEnv* env, jobject /*view*/, jlong host),                                          handleAppResumedCallback())
 
 //==============================================================================
@@ -819,18 +820,6 @@ ComponentPeer* Component::createNewPeer (int styleFlags, void*)
 }
 
 //==============================================================================
-#define JNI_CLASS_MEMBERS(METHOD, STATICMETHOD, FIELD, STATICFIELD) \
- METHOD (getRotation, "getRotation", "()I")
-
-DECLARE_JNI_CLASS (Display, "android/view/Display");
-#undef JNI_CLASS_MEMBERS
-
-#define JNI_CLASS_MEMBERS(METHOD, STATICMETHOD, FIELD, STATICFIELD) \
- METHOD (getDefaultDisplay, "getDefaultDisplay", "()Landroid/view/Display;")
-
-DECLARE_JNI_CLASS (WindowManager, "android/view/WindowManager");
-#undef JNI_CLASS_MEMBERS
-
 bool Desktop::canUseSemiTransparentWindows() noexcept
 {
     return true;
@@ -857,11 +846,11 @@ Desktop::DisplayOrientation Desktop::getCurrentOrientation() const
 
     if (windowManager.get() != 0)
     {
-        LocalRef<jobject> display = LocalRef<jobject> (env->CallObjectMethod (windowManager, WindowManager.getDefaultDisplay));
+        LocalRef<jobject> display = LocalRef<jobject> (env->CallObjectMethod (windowManager, AndroidWindowManager.getDefaultDisplay));
 
         if (display.get() != 0)
         {
-            int rotation = env->CallIntMethod (display, Display.getRotation);
+            int rotation = env->CallIntMethod (display, AndroidDisplay.getRotation);
 
             switch (rotation)
             {
@@ -903,16 +892,6 @@ bool KeyPress::isKeyCurrentlyDown (const int /*keyCode*/)
 {
     // TODO
     return false;
-}
-
-void ModifierKeys::updateCurrentModifiers() noexcept
-{
-    currentModifiers = AndroidComponentPeer::currentModifiers;
-}
-
-ModifierKeys ModifierKeys::getCurrentModifiersRealtime() noexcept
-{
-    return AndroidComponentPeer::currentModifiers;
 }
 
 JUCE_API void JUCE_CALLTYPE Process::hide()
@@ -1055,7 +1034,7 @@ bool juce_areThereAnyAlwaysOnTopWindows()
 }
 
 //==============================================================================
-void Desktop::Displays::findDisplays (float masterScale)
+void Displays::findDisplays (float masterScale)
 {
     Display d;
 
@@ -1078,7 +1057,7 @@ JUCE_JNI_CALLBACK (JUCE_ANDROID_ACTIVITY_CLASSNAME, setScreenSize, void, (JNIEnv
     android.screenHeight = screenHeight;
     android.dpi = dpi;
 
-    const_cast<Desktop::Displays&> (Desktop::getInstance().getDisplays()).refresh();
+    const_cast<Displays&> (Desktop::getInstance().getDisplays()).refresh();
 }
 
 //==============================================================================
@@ -1094,17 +1073,19 @@ void MouseCursor::deleteMouseCursor (void* const /*cursorHandle*/, const bool /*
 
 //==============================================================================
 void MouseCursor::showInWindow (ComponentPeer*) const   {}
-void MouseCursor::showInAllWindows() const  {}
 
 //==============================================================================
 bool DragAndDropContainer::performExternalDragDropOfFiles (const StringArray& /*files*/, const bool /*canMove*/,
-                                                           Component* /*srcComp*/)
+                                                           Component* /*srcComp*/, std::function<void()> /*callback*/)
 {
+    jassertfalse;    // no such thing on Android!
     return false;
 }
 
-bool DragAndDropContainer::performExternalDragDropOfText (const String& /*text*/, Component* /*srcComp*/)
+bool DragAndDropContainer::performExternalDragDropOfText (const String& /*text*/, Component* /*srcComp*/,
+                                                          std::function<void()> /*callback*/)
 {
+    jassertfalse;    // no such thing on Android!
     return false;
 }
 

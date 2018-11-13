@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="m7UYPj" name="MyoMapper" projectType="guiapp" version="3.1.9"
               bundleIdentifier="com.balandinodidonato.MyoMapper" includeBinaryInAppConfig="1"
-              jucerVersion="5.3.0" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
+              jucerVersion="5.4.1" companyName="Balandino Di Donato" companyWebsite="http://www.balandinodidonato.com/myomapper"
               companyEmail="info@balandinodidonato.com" displaySplashScreen="0"
               reportAppUsage="0" splashScreenColour="Dark" cppLanguageStandard="11"
               companyCopyright="Balandino Di Donato - 2018">
@@ -107,8 +107,7 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="" extraLinkerFlags=""
                extraCompilerFlags="" extraFrameworks="myo" smallIcon="Wbzixw"
                bigIcon="Wbzixw" postbuildCommand="dst=${CONFIGURATION_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Frameworks&#10;mkdir -p &quot;${dst}&quot;"
-               vst3Folder="" rtasFolder="" aaxFolder="" documentExtensions=".mapper"
-               iosInAppPurchases="0">
+               documentExtensions=".mapper" iosInAppPurchases="0">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Myo Mapper"
                        customXcodeFlags="FRAMEWORK_SEARCH_PATHS=&quot;/Library/Frameworks/&quot;, LD_RUNPATH_SEARCH_PATHS=&quot;@loader_path/../Frameworks&quot;"

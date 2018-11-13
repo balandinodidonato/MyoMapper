@@ -29,8 +29,8 @@ namespace juce
 
 namespace PropertyFileConstants
 {
-    JUCE_CONSTEXPR static const int magicNumber            = (int) ByteOrder::littleEndianInt ('P', 'R', 'O', 'P');
-    JUCE_CONSTEXPR static const int magicNumberCompressed  = (int) ByteOrder::littleEndianInt ('C', 'P', 'R', 'P');
+    JUCE_CONSTEXPR static const int magicNumber            = (int) ByteOrder::makeInt ('P', 'R', 'O', 'P');
+    JUCE_CONSTEXPR static const int magicNumberCompressed  = (int) ByteOrder::makeInt ('C', 'P', 'R', 'P');
 
     JUCE_CONSTEXPR static const char* const fileTag        = "PROPERTIES";
     JUCE_CONSTEXPR static const char* const valueTag       = "VALUE";
@@ -58,10 +58,13 @@ File PropertiesFile::Options::getDefaultFile() const
     File dir (commonToAllUsers ?  "/Library/"
                                : "~/Library/");
 
-    if (osxLibrarySubFolder != "Preferences" && ! osxLibrarySubFolder.startsWith ("Application Support"))
+    if (osxLibrarySubFolder != "Preferences"
+        && ! osxLibrarySubFolder.startsWith ("Application Support")
+        && ! osxLibrarySubFolder.startsWith ("Containers"))
     {
         /* The PropertiesFile class always used to put its settings files in "Library/Preferences", but Apple
-           have changed their advice, and now stipulate that settings should go in "Library/Application Support".
+           have changed their advice, and now stipulate that settings should go in "Library/Application Support",
+           or Library/Containers/[app_bundle_id] for a sandboxed app.
 
            Because older apps would be broken by a silent change in this class's behaviour, you must now
            explicitly set the osxLibrarySubFolder value to indicate which path you want to use.
@@ -184,7 +187,7 @@ bool PropertiesFile::save()
 bool PropertiesFile::loadAsXml()
 {
     XmlDocument parser (file);
-    ScopedPointer<XmlElement> doc (parser.getDocumentElement (true));
+    std::unique_ptr<XmlElement> doc (parser.getDocumentElement (true));
 
     if (doc != nullptr && doc->hasTagName (PropertyFileConstants::fileTag))
     {

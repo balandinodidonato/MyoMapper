@@ -190,8 +190,7 @@ private:
     String languageName;
     StringArray countryCodes;
     StringPairArray translations;
-    ScopedPointer<LocalisedStrings> fallback;
-    friend struct ContainerDeletePolicy<LocalisedStrings>;
+    std::unique_ptr<LocalisedStrings> fallback;
 
     void loadFromText (const String&, bool ignoreCase);
 

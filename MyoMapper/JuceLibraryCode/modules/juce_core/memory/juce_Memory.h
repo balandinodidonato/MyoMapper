@@ -29,11 +29,11 @@ inline void zeromem (void* memory, size_t numBytes) noexcept        { memset (me
 
 /** Overwrites a structure or object with zeros. */
 template <typename Type>
-inline void zerostruct (Type& structure) noexcept                   { memset (&structure, 0, sizeof (structure)); }
+inline void zerostruct (Type& structure) noexcept                   { memset ((void*) &structure, 0, sizeof (structure)); }
 
 /** Delete an object pointer, and sets the pointer to null.
 
-    Remember that it's not good c++ practice to use delete directly - always try to use a ScopedPointer
+    Remember that it's not good c++ practice to use delete directly - always try to use a std::unique_ptr
     or other automatic lifetime-management system rather than resorting to deleting raw pointers!
 */
 template <typename Type>

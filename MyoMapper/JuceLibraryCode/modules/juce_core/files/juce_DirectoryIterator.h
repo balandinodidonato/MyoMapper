@@ -118,9 +118,8 @@ public:
 
 private:
     //==============================================================================
-    class NativeIterator
+    struct NativeIterator
     {
-    public:
         NativeIterator (const File& directory, const String& wildCard);
         ~NativeIterator();
 
@@ -129,16 +128,11 @@ private:
                    Time* modTime, Time* creationTime, bool* isReadOnly);
 
         class Pimpl;
-
-    private:
-        friend class DirectoryIterator;
-        friend struct ContainerDeletePolicy<Pimpl>;
-        ScopedPointer<Pimpl> pimpl;
+        std::unique_ptr<Pimpl> pimpl;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NativeIterator)
     };
 
-    friend struct ContainerDeletePolicy<NativeIterator::Pimpl>;
     StringArray wildCards;
     NativeIterator fileFinder;
     String wildCard, path;
@@ -147,7 +141,7 @@ private:
     const int whatToLookFor;
     const bool isRecursive;
     bool hasBeenAdvanced = false;
-    ScopedPointer<DirectoryIterator> subIterator;
+    std::unique_ptr<DirectoryIterator> subIterator;
     File currentFile;
 
     static StringArray parseWildcards (const String& pattern);

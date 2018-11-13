@@ -370,23 +370,27 @@ public:
         virtual ~LookAndFeelMethods() {}
 
         virtual void drawButtonBackground (Graphics&, Button&, const Colour& backgroundColour,
-                                           bool isMouseOverButton, bool isButtonDown) = 0;
+                                           bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) = 0;
 
         virtual Font getTextButtonFont (TextButton&, int buttonHeight) = 0;
         virtual int getTextButtonWidthToFitText (TextButton&, int buttonHeight) = 0;
 
         /** Draws the text for a TextButton. */
-        virtual void drawButtonText (Graphics&, TextButton&, bool isMouseOverButton, bool isButtonDown) = 0;
+        virtual void drawButtonText (Graphics&, TextButton&,
+                                     bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) = 0;
 
         /** Draws the contents of a standard ToggleButton. */
-        virtual void drawToggleButton (Graphics&, ToggleButton&, bool isMouseOverButton, bool isButtonDown) = 0;
+        virtual void drawToggleButton (Graphics&, ToggleButton&,
+                                       bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) = 0;
 
         virtual void changeToggleButtonWidthToFitText (ToggleButton&) = 0;
 
         virtual void drawTickBox (Graphics&, Component&, float x, float y, float w, float h,
-                                  bool ticked, bool isEnabled, bool isMouseOverButton, bool isButtonDown) = 0;
+                                  bool ticked, bool isEnabled,
+                                  bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) = 0;
 
-        virtual void drawDrawableButton (Graphics&, DrawableButton&, bool isMouseOverButton, bool isButtonDown) = 0;
+        virtual void drawDrawableButton (Graphics&, DrawableButton&,
+                                         bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) = 0;
 
     private:
        #if JUCE_CATCH_DEPRECATED_CODE_MISUSE
@@ -424,14 +428,13 @@ protected:
         It's better to use this than the paint method, because it gives you information
         about the over/down state of the button.
 
-        @param g                    the graphics context to use
-        @param isMouseOverButton    true if the button is either in the 'over' or
-                                    'down' state
-        @param isButtonDown         true if the button should be drawn in the 'down' position
+        @param g                                the graphics context to use
+        @param shouldDrawButtonAsHighlighted    true if the button is either in the 'over' or 'down' state
+        @param shouldDrawButtonAsDown           true if the button should be drawn in the 'down' position
     */
     virtual void paintButton (Graphics& g,
-                              bool isMouseOverButton,
-                              bool isButtonDown) = 0;
+                              bool shouldDrawButtonAsHighlighted,
+                              bool shouldDrawButtonAsDown) = 0;
 
     /** Called when the button's up/down/over state changes.
 
@@ -482,9 +485,7 @@ private:
     ListenerList<Listener> buttonListeners;
 
     struct CallbackHelper;
-    friend struct CallbackHelper;
-    friend struct ContainerDeletePolicy<CallbackHelper>;
-    ScopedPointer<CallbackHelper> callbackHelper;
+    std::unique_ptr<CallbackHelper> callbackHelper;
     uint32 buttonPressTime = 0, lastRepeatTime = 0;
     ApplicationCommandManager* commandManagerToUse = nullptr;
     int autoRepeatDelay = -1, autoRepeatSpeed = 0, autoRepeatMinimumDelay = -1;
@@ -509,11 +510,12 @@ private:
     ButtonState updateState();
     ButtonState updateState (bool isOver, bool isDown);
     bool isShortcutPressed() const;
-    void turnOffOtherButtonsInGroup (NotificationType);
+    void turnOffOtherButtonsInGroup (NotificationType click, NotificationType state);
 
     void flashButtonState();
     void sendClickMessage (const ModifierKeys&);
     void sendStateMessage();
+    void setToggleState (bool shouldBeOn, NotificationType click, NotificationType state);
 
     bool isMouseOrTouchOver (const MouseEvent& e);
 

@@ -40,7 +40,7 @@ struct PopupMenu::HelperClasses
 {
 
 class MouseSourceState;
-class MenuWindow;
+struct MenuWindow;
 
 static bool canBeTriggered (const PopupMenu::Item& item) noexcept        { return item.isEnabled && item.itemID != 0 && ! item.isSectionHeader; }
 static bool hasActiveSubMenu (const PopupMenu::Item& item) noexcept      { return item.isEnabled && item.subMenu != nullptr && item.subMenu->items.size() > 0; }
@@ -77,9 +77,10 @@ struct ItemComponent  : public Component
       : item (i), customComp (i.customComponent)
     {
         if (item.isSectionHeader)
-            customComp = new HeaderItemComponent (item.text);
+            customComp = *new HeaderItemComponent (item.text);
 
-        addAndMakeVisible (customComp);
+        if (customComp != nullptr)
+            addAndMakeVisible (*customComp);
 
         parent.addAndMakeVisible (this);
 
@@ -95,7 +96,7 @@ struct ItemComponent  : public Component
 
     ~ItemComponent()
     {
-        removeChildComponent (customComp);
+        removeChildComponent (customComp.get());
     }
 
     void getIdealSize (int& idealWidth, int& idealHeight, const int standardItemHeight)
@@ -188,9 +189,8 @@ private:
 };
 
 //==============================================================================
-class MenuWindow  : public Component
+struct MenuWindow  : public Component
 {
-public:
     MenuWindow (const PopupMenu& menu, MenuWindow* parentWindow,
                 const Options& opts, bool alignToRectangle, bool shouldDismissOnMouseUp,
                 ApplicationCommandManager** manager, float parentScaleFactor = 1.0f)
@@ -211,10 +211,10 @@ public:
 
         setLookAndFeel (parent != nullptr ? &(parent->getLookAndFeel())
                                           : menu.lookAndFeel.get());
-
         auto& lf = getLookAndFeel();
 
         parentComponent = lf.getParentComponentForMenuOptions (options);
+        const_cast<Options&>(options) = options.withParentComponent (parentComponent);
 
         if (parentComponent == nullptr && parentWindow == nullptr && lf.shouldPopupMenuScaleWithTargetComponent (options))
             if (auto* targetComponent = options.getTargetComponent())
@@ -592,9 +592,12 @@ public:
     }
 
     //==============================================================================
-    Rectangle<int> getParentArea (Point<int> targetPoint)
+    Rectangle<int> getParentArea (Point<int> targetPoint, Component* relativeTo = nullptr)
     {
-        auto parentArea = Desktop::getInstance().getDisplays().getDisplayContaining (targetPoint)
+        if (relativeTo != nullptr)
+            targetPoint = relativeTo->localPointToGlobal (targetPoint);
+
+        auto parentArea = Desktop::getInstance().getDisplays().findDisplayForPoint (targetPoint)
                               #if JUCE_MAC
                                .userArea;
                               #else
@@ -789,7 +792,7 @@ public:
                                                     windowPos.getHeight() - (PopupMenuSettings::scrollZone + m->getHeight())),
                                               currentY);
 
-                        auto parentArea = getParentArea (windowPos.getPosition());
+                        auto parentArea = getParentArea (windowPos.getPosition(), parentComponent) / scaleFactor;
                         auto deltaY = wantedY - currentY;
 
                         windowPos.setSize (jmin (windowPos.getWidth(), parentArea.getWidth()),
@@ -909,7 +912,8 @@ public:
             activeSubMenu.reset (new HelperClasses::MenuWindow (*(childComp->item.subMenu), this,
                                                                 options.withTargetScreenArea (childComp->getScreenBounds())
                                                                        .withMinimumWidth (0)
-                                                                       .withTargetComponent (nullptr),
+                                                                       .withTargetComponent (nullptr)
+                                                                       .withParentComponent (parentComponent),
                                                                 false, dismissOnMouseUp, managerOfChosenCommand, scaleFactor));
 
             activeSubMenu->setVisible (true); // (must be called before enterModalState on Windows to avoid DropShadower confusion)
@@ -993,7 +997,7 @@ public:
     bool dismissOnMouseUp, hideOnExit = false, disableMouseMoves = false, hasAnyJuceCompHadFocus = false;
     int numColumns = 0, contentHeight = 0, childYOffset = 0;
     Component::SafePointer<ItemComponent> currentChild;
-    ScopedPointer<MenuWindow> activeSubMenu;
+    std::unique_ptr<MenuWindow> activeSubMenu;
     Array<int> columnWidths;
     uint32 windowCreationTime, lastFocusedTime, timeEnteredCurrentChildComp;
     OwnedArray<MouseSourceState> mouseSourceStates;
@@ -1076,8 +1080,8 @@ private:
                            const bool wasDown, const bool overScrollArea, const bool isOverAny)
     {
         isDown = window.hasBeenOver
-                    && (ModifierKeys::getCurrentModifiers().isAnyMouseButtonDown()
-                         || ModifierKeys::getCurrentModifiersRealtime().isAnyMouseButtonDown());
+                    && (ModifierKeys::currentModifiers.isAnyMouseButtonDown()
+                         || ComponentPeer::getCurrentModifiersRealtime().isAnyMouseButtonDown());
 
         if (! window.doesAnyJuceCompHaveFocus())
         {
@@ -1085,7 +1089,7 @@ private:
             {
                 PopupMenuSettings::menuWasHiddenBecauseOfAppChange = true;
                 window.dismissMenu (nullptr);
-                // Note: this object may have been deleted by the previous call..
+                // Note: This object may have been deleted by the previous call.
             }
         }
         else if (wasDown && timeNow > window.windowCreationTime + 250
@@ -1096,7 +1100,7 @@ private:
             else if ((window.hasBeenOver || ! window.dismissOnMouseUp) && ! isOverAny)
                 window.dismissMenu (nullptr);
 
-            // Note: this object may have been deleted by the previous call..
+            // Note: This object may have been deleted by the previous call.
         }
         else
         {
@@ -1593,7 +1597,7 @@ Component* PopupMenu::createWindow (const Options& options,
     return items.isEmpty() ? nullptr
                            : new HelperClasses::MenuWindow (*this, nullptr, options,
                                                             ! options.getTargetScreenArea().isEmpty(),
-                                                            ModifierKeys::getCurrentModifiers().isAnyMouseButtonDown(),
+                                                            ModifierKeys::currentModifiers.isAnyMouseButtonDown(),
                                                             managerOfChosenCommand);
 }
 
@@ -1632,7 +1636,7 @@ struct PopupMenuCompletionCallback  : public ModalComponentManager::Callback
     }
 
     ApplicationCommandManager* managerOfChosenCommand = nullptr;
-    ScopedPointer<Component> component;
+    std::unique_ptr<Component> component;
     WeakReference<Component> prevFocused, prevTopLevel;
 
     JUCE_DECLARE_NON_COPYABLE (PopupMenuCompletionCallback)
@@ -1641,8 +1645,8 @@ struct PopupMenuCompletionCallback  : public ModalComponentManager::Callback
 int PopupMenu::showWithOptionalCallback (const Options& options, ModalComponentManager::Callback* const userCallback,
                                          const bool canBeModal)
 {
-    ScopedPointer<ModalComponentManager::Callback> userCallbackDeleter (userCallback);
-    ScopedPointer<PopupMenuCompletionCallback> callback (new PopupMenuCompletionCallback());
+    std::unique_ptr<ModalComponentManager::Callback> userCallbackDeleter (userCallback);
+    std::unique_ptr<PopupMenuCompletionCallback> callback (new PopupMenuCompletionCallback());
 
     if (auto* window = createWindow (options, &(callback->managerOfChosenCommand)))
     {
@@ -1738,8 +1742,13 @@ bool JUCE_CALLTYPE PopupMenu::dismissAllActiveMenus()
     auto numWindows = windows.size();
 
     for (int i = numWindows; --i >= 0;)
+    {
         if (auto* pmw = windows[i])
+        {
+            pmw->setLookAndFeel (nullptr);
             pmw->dismissMenu (nullptr);
+        }
+    }
 
     return numWindows > 0;
 }
@@ -1853,7 +1862,9 @@ bool PopupMenu::MenuItemIterator::next()
         menus.add (currentItem->subMenu.get());
     }
     else
+    {
         index.setUnchecked (index.size() - 1, index.getLast() + 1);
+    }
 
     while (index.size() > 0 && index.getLast() >= menus.getLast()->items.size())
     {

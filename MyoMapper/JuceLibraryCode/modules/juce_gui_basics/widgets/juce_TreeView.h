@@ -574,7 +574,7 @@ public:
 
     private:
         TreeViewItem& treeViewItem;
-        ScopedPointer<XmlElement> oldOpenness;
+        std::unique_ptr<XmlElement> oldOpenness;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OpennessRestorer)
     };
@@ -900,21 +900,18 @@ public:
     void itemDropped (const SourceDetails&) override;
 
 private:
+    friend class TreeViewItem;
+
     class ContentComponent;
     class TreeViewport;
     class InsertPointHighlight;
     class TargetGroupHighlight;
-    friend class TreeViewItem;
-    friend class ContentComponent;
-    friend struct ContainerDeletePolicy<TreeViewport>;
-    friend struct ContainerDeletePolicy<InsertPointHighlight>;
-    friend struct ContainerDeletePolicy<TargetGroupHighlight>;
 
-    ScopedPointer<TreeViewport> viewport;
+    std::unique_ptr<TreeViewport> viewport;
     CriticalSection nodeAlterationLock;
     TreeViewItem* rootItem = nullptr;
-    ScopedPointer<InsertPointHighlight> dragInsertPointHighlight;
-    ScopedPointer<TargetGroupHighlight> dragTargetGroupHighlight;
+    std::unique_ptr<InsertPointHighlight> dragInsertPointHighlight;
+    std::unique_ptr<TargetGroupHighlight> dragTargetGroupHighlight;
     int indentSize = -1;
     bool defaultOpenness = false, needsRecalculating = true, rootItemVisible = true;
     bool multiSelectEnabled = false, openCloseButtonsVisible = true;

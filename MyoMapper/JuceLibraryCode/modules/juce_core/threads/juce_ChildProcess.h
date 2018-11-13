@@ -104,8 +104,7 @@ public:
 private:
     //==============================================================================
     class ActiveProcess;
-    friend struct ContainerDeletePolicy<ActiveProcess>;
-    ScopedPointer<ActiveProcess> activeProcess;
+    std::unique_ptr<ActiveProcess> activeProcess;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ChildProcess)
 };

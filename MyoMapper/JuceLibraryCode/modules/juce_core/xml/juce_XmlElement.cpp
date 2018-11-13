@@ -241,7 +241,7 @@ namespace XmlOutputFunctions
                             outputStream << (char) character;
                             break;
                         }
-                        // Note: deliberate fall-through here!
+                        // Note: Deliberate fall-through here!
                     default:
                         outputStream << "&#" << ((int) character) << ';';
                         break;
@@ -437,6 +437,12 @@ XmlElement* XmlElement::getNextElementWithTagName (StringRef requiredTagName) co
         e = e->nextListItem;
 
     return e;
+}
+
+void XmlElement::setTagName (StringRef newTagName)
+{
+    jassert (isValidXmlName (newTagName));
+    tagName = StringPool::getGlobalPool().getPooledString (newTagName);
 }
 
 //==============================================================================

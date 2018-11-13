@@ -110,8 +110,7 @@ public:
 private:
     //==============================================================================
     class Pimpl;
-    friend struct ContainerDeletePolicy<Pimpl>;
-    ScopedPointer<Pimpl> pimpl;
+    std::unique_ptr<Pimpl> pimpl;
 
     CriticalSection lock;
     String name;

@@ -153,11 +153,11 @@ public:
         toUTF32() methods let you access the string's content in any of the other formats.
     */
    #if (JUCE_STRING_UTF_TYPE == 32)
-    typedef CharPointer_UTF32 CharPointerType;
+    using CharPointerType = CharPointer_UTF32;
    #elif (JUCE_STRING_UTF_TYPE == 16)
-    typedef CharPointer_UTF16 CharPointerType;
+    using CharPointerType = CharPointer_UTF16;
    #elif (DOXYGEN || JUCE_STRING_UTF_TYPE == 8)
-    typedef CharPointer_UTF8  CharPointerType;
+    using CharPointerType = CharPointer_UTF8;
    #else
     #error "You must set the value of JUCE_STRING_UTF_TYPE to be either 8, 16, or 32!"
    #endif
@@ -962,21 +962,23 @@ public:
 
     /** Creates a string representing this floating-point number.
         @param floatValue               the value to convert to a string
-        @param numberOfDecimalPlaces    if this is > 0, it will format the number using that many
-                                        decimal places, and will not use exponent notation. If 0 or
-                                        less, it will use exponent notation if necessary.
+        @param maxNumberOfDecimalPlaces if this is > 0, it will format the number using no more
+                                        decimal places than this amount, and will not use exponent
+                                        notation. If 0 or less, it will use a default format, and
+                                        exponent notation if necessary.
         @see getDoubleValue, getIntValue
     */
-    String (float floatValue, int numberOfDecimalPlaces);
+    String (float floatValue, int maxNumberOfDecimalPlaces);
 
     /** Creates a string representing this floating-point number.
         @param doubleValue              the value to convert to a string
-        @param numberOfDecimalPlaces    if this is > 0, it will format the number using that many
-                                        decimal places, and will not use exponent notation. If 0 or
-                                        less, it will use exponent notation if necessary.
+        @param maxNumberOfDecimalPlaces if this is > 0, it will format the number using no more
+                                        decimal places than this amount, and will not use exponent
+                                        notation. If 0 or less, it will use a default format, and
+                                        exponent notation if necessary.
         @see getFloatValue, getIntValue
     */
-    String (double doubleValue, int numberOfDecimalPlaces);
+    String (double doubleValue, int maxNumberOfDecimalPlaces);
 
     // Automatically creating a String from a bool opens up lots of nasty type conversion edge cases.
     // If you want a String representation of a bool you can cast the bool to an int first.
@@ -1055,6 +1057,131 @@ public:
                             like "bea1 c2ff".
     */
     static String toHexString (const void* data, int size, int groupSize = 1);
+
+    /** Returns a string containing a decimal with a set number of significant figures.
+
+        @param number                         the intput number
+        @param numberOfSignificantFigures     the number of significant figures to use
+    */
+    template <typename DecimalType>
+    static String toDecimalStringWithSignificantFigures (DecimalType number, int numberOfSignificantFigures)
+    {
+        jassert (numberOfSignificantFigures > 0);
+
+        if (number == 0)
+        {
+            if (numberOfSignificantFigures > 1)
+            {
+                String result ("0.0");
+
+                for (int i = 2; i < numberOfSignificantFigures; ++i)
+                    result += "0";
+
+                return result;
+            }
+
+            return "0";
+        }
+
+        auto numDigitsBeforePoint = (int) std::ceil (std::log10 (number < 0 ? -number : number));
+
+       #if JUCE_PROJUCER_LIVE_BUILD
+        auto doubleNumber = (double) number;
+        constexpr int bufferSize = 311;
+        char buffer[bufferSize];
+        auto* ptr = &(buffer[0]);
+        auto* const safeEnd = ptr + (bufferSize - 1);
+        auto numSigFigsParsed = 0;
+
+        auto writeToBuffer = [safeEnd] (char* destination, char data)
+        {
+            *destination++ = data;
+
+            if (destination == safeEnd)
+            {
+                *destination = '\0';
+                return true;
+            }
+
+            return false;
+        };
+
+        auto truncateOrRound = [numberOfSignificantFigures] (double fractional, int sigFigsParsed)
+        {
+            return (sigFigsParsed == numberOfSignificantFigures - 1) ? (int) std::round (fractional)
+                                                                     : (int) fractional;
+        };
+
+        if (doubleNumber < 0)
+        {
+            doubleNumber *= -1;
+            *ptr++ = '-';
+        }
+
+        if (numDigitsBeforePoint > 0)
+        {
+            doubleNumber /= std::pow (10.0, numDigitsBeforePoint);
+
+            while (numDigitsBeforePoint-- > 0)
+            {
+                if (numSigFigsParsed == numberOfSignificantFigures)
+                {
+                    if (writeToBuffer (ptr++, '0'))
+                        return buffer;
+
+                    continue;
+                }
+
+                doubleNumber *= 10;
+                auto digit = truncateOrRound (doubleNumber, numSigFigsParsed);
+
+                if (writeToBuffer (ptr++, (char) ('0' + digit)))
+                    return buffer;
+
+                ++numSigFigsParsed;
+                doubleNumber -= digit;
+            }
+
+            if (numSigFigsParsed == numberOfSignificantFigures)
+            {
+                *ptr++ = '\0';
+                return buffer;
+            }
+        }
+        else
+        {
+            *ptr++ = '0';
+        }
+
+        if (writeToBuffer (ptr++, '.'))
+            return buffer;
+
+        while (numSigFigsParsed < numberOfSignificantFigures)
+        {
+            doubleNumber *= 10;
+            auto digit = truncateOrRound (doubleNumber, numSigFigsParsed);
+
+            if (writeToBuffer (ptr++, (char) ('0' + digit)))
+                return buffer;
+
+            if (numSigFigsParsed != 0 || digit != 0)
+                ++numSigFigsParsed;
+
+            doubleNumber -= digit;
+        }
+
+        *ptr++ = '\0';
+        return buffer;
+       #else
+        auto shift = numberOfSignificantFigures - numDigitsBeforePoint;
+        auto factor = std::pow (10.0, shift);
+        auto rounded = std::round (number * factor) / factor;
+
+        std::stringstream ss;
+        ss << std::fixed << std::setprecision (std::max (shift, 0)) << rounded;
+        return ss.str();
+       #endif
+    }
 
     //==============================================================================
     /** Returns the character pointer currently being used to store this string.
@@ -1239,8 +1366,7 @@ public:
     int getReferenceCount() const noexcept;
 
     //==============================================================================
-   #if JUCE_ALLOW_STATIC_NULL_VARIABLES
-    /** This was a static empty string object, but is now deprecated as it's too easy to accidentally
+    /*  This was a static empty string object, but is now deprecated as it's too easy to accidentally
         use it indirectly during a static constructor, leading to hard-to-find order-of-initialisation
         problems.
         @deprecated If you need an empty String object, just use String() or {}.
@@ -1248,8 +1374,7 @@ public:
         empty string from a function by reference, but if you need to do that, it's easy enough to use
         a function-local static String object and return that, avoiding any order-of-initialisation issues.
     */
-    static const String empty;
-   #endif
+    JUCE_DEPRECATED_STATIC (static const String empty;)
 
 private:
     //==============================================================================
@@ -1280,7 +1405,7 @@ private:
     static String createHex (uint64);
 
     template <typename Type>
-    static String createHex (Type n)  { return createHex (static_cast<typename TypeHelpers::UnsignedTypeWithSize<sizeof (n)>::type> (n)); }
+    static String createHex (Type n)  { return createHex (static_cast<typename TypeHelpers::UnsignedTypeWithSize<(int) sizeof (n)>::type> (n)); }
 };
 
 //==============================================================================
@@ -1303,6 +1428,8 @@ JUCE_API String JUCE_CALLTYPE operator+ (String string1, const String& string2);
 JUCE_API String JUCE_CALLTYPE operator+ (String string1, const char* string2);
 /** Concatenates two strings. */
 JUCE_API String JUCE_CALLTYPE operator+ (String string1, const wchar_t* string2);
+/** Concatenates two strings. */
+JUCE_API String JUCE_CALLTYPE operator+ (String string1, const std::string& string2);
 /** Concatenates two strings. */
 JUCE_API String JUCE_CALLTYPE operator+ (String string1, char characterToAppend);
 /** Concatenates two strings. */
@@ -1330,6 +1457,8 @@ JUCE_API String& JUCE_CALLTYPE operator<< (String& string1, const wchar_t* strin
 JUCE_API String& JUCE_CALLTYPE operator<< (String& string1, const String& string2);
 /** Appends a string to the end of the first one. */
 JUCE_API String& JUCE_CALLTYPE operator<< (String& string1, StringRef string2);
+/** Appends a string to the end of the first one. */
+JUCE_API String& JUCE_CALLTYPE operator<< (String& string1, const std::string& string2);
 
 /** Appends a decimal number to the end of a string. */
 JUCE_API String& JUCE_CALLTYPE operator<< (String& string1, uint8 number);
@@ -1417,7 +1546,7 @@ JUCE_API OutputStream& JUCE_CALLTYPE operator<< (OutputStream& stream, StringRef
 
 } // namespace juce
 
-#if JUCE_COMPILER_SUPPORTS_INITIALIZER_LISTS && ! DOXYGEN // just used to avoid compiling this under compilers that lack libc++
+#if ! DOXYGEN
 namespace std
 {
     template <> struct hash<juce::String>

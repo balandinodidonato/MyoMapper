@@ -28,7 +28,7 @@
     See also SystemStats::getJUCEVersion() for a string version.
 */
 #define JUCE_MAJOR_VERSION      5
-#define JUCE_MINOR_VERSION      3
+#define JUCE_MINOR_VERSION      4
 #define JUCE_BUILDNUMBER        0
 
 /** Current JUCE version number.
@@ -50,6 +50,9 @@
 #include <functional>
 #include <algorithm>
 #include <limits>
+#include <atomic>
+#include <sstream>
+#include <iomanip>
 
 //==============================================================================
 #include "juce_CompilerSupport.h"
@@ -108,15 +111,9 @@
 #undef minor
 #undef KeyPress
 
-// Include a replacement for std::function on older platforms and the live
-// build
-#if JUCE_PROJUCER_LIVE_BUILD || ! defined (JUCE_STDLIB_HAS_STD_FUNCTION_SUPPORT)
+// Include a replacement for std::function
+#if JUCE_PROJUCER_LIVE_BUILD
  #include "../misc/juce_StdFunctionCompat.h"
-#endif
-
-// Include std::atomic if it's supported by the compiler
-#if JUCE_ATOMIC_AVAILABLE
- #include <atomic>
 #endif
 
 //==============================================================================

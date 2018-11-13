@@ -802,7 +802,7 @@ private:
     {
         if (xmlPath->hasTagNameIgnoringNamespace ("clipPath"))
         {
-            ScopedPointer<DrawableComposite> drawableClipPath (new DrawableComposite());
+            std::unique_ptr<DrawableComposite> drawableClipPath (new DrawableComposite());
 
             parseSubElements (xmlPath, *drawableClipPath, false);
 
@@ -937,8 +937,7 @@ private:
 
         FillType type (gradient);
 
-        auto gradientTransform = parseTransform (fillXml->getStringAttribute ("gradientTransform"))
-                                   .followedBy (transform);
+        auto gradientTransform = parseTransform (fillXml->getStringAttribute ("gradientTransform"));
 
         if (gradient.isRadial)
         {
@@ -1163,7 +1162,7 @@ private:
 
         auto link = xml->getStringAttribute ("xlink:href");
 
-        ScopedPointer<InputStream> inputStream;
+        std::unique_ptr<InputStream> inputStream;
         MemoryOutputStream imageStream;
 
         if (link.startsWith ("data:"))
@@ -1202,12 +1201,18 @@ private:
                 auto* di = new DrawableImage();
 
                 setCommonAttributes (*di, xml);
-                di->setImage (image);
+
+                Rectangle<float> imageBounds ((float) xml->getDoubleAttribute ("x", 0.0),                  (float) xml->getDoubleAttribute ("y", 0.0),
+                                              (float) xml->getDoubleAttribute ("width", image.getWidth()), (float) xml->getDoubleAttribute ("height", image.getHeight()));
+
+                di->setImage (image.rescaled ((int) imageBounds.getWidth(), (int) imageBounds.getHeight()));
+
+                di->setTransformToFit (imageBounds, RectanglePlacement (parsePlacementFlags (xml->getStringAttribute ("preserveAspectRatio").trim())));
 
                 if (additionalTransform != nullptr)
-                    di->setTransform (transform.followedBy (*additionalTransform));
+                    di->setTransform (di->getTransform().followedBy (transform).followedBy (*additionalTransform));
                 else
-                    di->setTransform (transform);
+                    di->setTransform (di->getTransform().followedBy (transform));
 
                 return di;
             }
@@ -1703,11 +1708,11 @@ Drawable* Drawable::createFromSVG (const XmlElement& svgDocument)
 Drawable* Drawable::createFromSVGFile (const File& svgFile)
 {
     XmlDocument doc (svgFile);
-    ScopedPointer<XmlElement> outer (doc.getDocumentElement (true));
+    std::unique_ptr<XmlElement> outer (doc.getDocumentElement (true));
 
     if (outer != nullptr && outer->hasTagName ("svg"))
     {
-        ScopedPointer<XmlElement> svgDocument (doc.getDocumentElement());
+        std::unique_ptr<XmlElement> svgDocument (doc.getDocumentElement());
 
         if (svgDocument != nullptr)
         {

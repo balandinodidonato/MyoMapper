@@ -23,14 +23,6 @@
 namespace juce
 {
 
-#define JNI_CLASS_MEMBERS(METHOD, STATICMETHOD, FIELD, STATICFIELD) \
-  METHOD (constructor,           "<init>",           "()V") \
-  METHOD (post,                  "post",             "(Ljava/lang/Runnable;)Z") \
-
-DECLARE_JNI_CLASS (JNIHandler, "android/os/Handler");
-#undef JNI_CLASS_MEMBERS
-
-
 //==============================================================================
 namespace Android
 {
@@ -58,14 +50,14 @@ namespace Android
 
     struct Handler
     {
-        Handler() : nativeHandler (getEnv()->NewObject (JNIHandler, JNIHandler.constructor)) {}
+        Handler() : nativeHandler (getEnv()->NewObject (AndroidHandler, AndroidHandler.constructor)) {}
         ~Handler() { clearSingletonInstance(); }
 
         JUCE_DECLARE_SINGLETON (Handler, false)
 
         bool post (jobject runnable)
         {
-            return (getEnv()->CallBooleanMethod (nativeHandler.get(), JNIHandler.post, runnable) != 0);
+            return (getEnv()->CallBooleanMethod (nativeHandler.get(), AndroidHandler.post, runnable) != 0);
         }
 
         GlobalRef nativeHandler;
@@ -86,7 +78,7 @@ struct AndroidMessageQueue     : private Android::Runnable
 
     ~AndroidMessageQueue()
     {
-        jassert (MessageManager::getInstance()->isThisTheMessageThread());
+        JUCE_ASSERT_MESSAGE_THREAD
         clearSingletonInstance();
     }
 
@@ -102,7 +94,7 @@ private:
 
     void run() override
     {
-        while (true)
+        for (;;)
         {
             MessageManager::MessageBase::Ptr message (queue.removeAndReturn (0));
 

@@ -32,10 +32,10 @@ void MACAddress::findAllAddresses (Array<MACAddress>& result)
         for (const ifaddrs* cursor = addrs; cursor != nullptr; cursor = cursor->ifa_next)
         {
             // Required to avoid misaligned pointer access
-            sockaddr_storage sto;
-            std::memcpy (&sto, cursor->ifa_addr, sizeof (sockaddr_storage));
+            sockaddr sto;
+            std::memcpy (&sto, cursor->ifa_addr, sizeof (sockaddr));
 
-            if (sto.ss_family == AF_LINK)
+            if (sto.sa_family == AF_LINK)
             {
                 auto sadd = (const sockaddr_dl*) cursor->ifa_addr;
 
@@ -331,7 +331,8 @@ public:
     NSMutableData* data = nil;
     NSDictionary* headers = nil;
     int statusCode = 0;
-    bool initialised = false, hasFailed = false, hasFinished = false, isBeingDeleted = false;
+    std::atomic<bool> initialised { false };
+    bool hasFailed = false, hasFinished = false, isBeingDeleted = false;
     const int numRedirectsToFollow;
     int numRedirects = 0;
     int64 latestTotalBytes = 0;
@@ -448,6 +449,9 @@ struct BackgroundDownloadTask  : public URL::DownloadTask
 
         if (session != nullptr)
             downloadTask = [session downloadTaskWithRequest:request];
+
+        // Workaround for an Apple bug. See https://github.com/AFNetworking/AFNetworking/issues/2334
+        [request HTTPBody];
 
         [request release];
     }
@@ -644,7 +648,7 @@ HashMap<String, BackgroundDownloadTask*, DefaultHashFunctions, CriticalSection> 
 
 URL::DownloadTask* URL::downloadToFile (const File& targetLocation, String extraHeaders, DownloadTask::Listener* listener, bool usePostRequest)
 {
-    ScopedPointer<BackgroundDownloadTask> downloadTask = new BackgroundDownloadTask (*this, targetLocation, extraHeaders, listener, usePostRequest);
+    std::unique_ptr<BackgroundDownloadTask> downloadTask (new BackgroundDownloadTask (*this, targetLocation, extraHeaders, listener, usePostRequest));
 
     if (downloadTask->initOK() && downloadTask->connect())
         return downloadTask.release();
@@ -805,7 +809,8 @@ public:
     {
         DBG (nsStringToJuce ([error description])); ignoreUnused (error);
         nsUrlErrorCode = [error code];
-        hasFailed = initialised = true;
+        hasFailed = true;
+        initialised = true;
         signalThreadShouldExit();
     }
 
@@ -823,7 +828,8 @@ public:
 
     void finishedLoading()
     {
-        hasFinished = initialised = true;
+        hasFinished = true;
+        initialised = true;
         signalThreadShouldExit();
     }
 
@@ -857,7 +863,7 @@ public:
     NSDictionary* headers = nil;
     NSInteger nsUrlErrorCode = 0;
     int statusCode = 0;
-    bool initialised = false, hasFailed = false, hasFinished = false;
+    std::atomic<bool> initialised { false }, hasFailed { false }, hasFinished { false };
     const int numRedirectsToFollow;
     int numRedirects = 0;
     int latestTotalBytes = 0;
@@ -1073,7 +1079,7 @@ public:
 private:
     WebInputStream& owner;
     URL url;
-    ScopedPointer<URLConnectionState> connection;
+    std::unique_ptr<URLConnectionState> connection;
     String headers;
     MemoryBlock postData;
     int64 position = 0;
@@ -1117,6 +1123,9 @@ private:
                 if (key.isNotEmpty() && value.isNotEmpty())
                     [req addValue: juceStringToNS (value) forHTTPHeaderField: juceStringToNS (key)];
             }
+
+            // Workaround for an Apple bug. See https://github.com/AFNetworking/AFNetworking/issues/2334
+            [req HTTPBody];
 
             connection.reset (new URLConnectionState (req, numRedirectsToFollow));
         }

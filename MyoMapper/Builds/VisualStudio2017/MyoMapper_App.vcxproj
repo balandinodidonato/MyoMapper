@@ -15,8 +15,6 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2ECF32B2-7253-CAED-8531-5BB03F368FED}</ProjectGuid>
-    <PlatformToolset>v141</PlatformToolset>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"
@@ -25,7 +23,6 @@
     <UseOfMfc>false</UseOfMfc>
     <WholeProgramOptimization>false</WholeProgramOptimization>
     <PlatformToolset>v141</PlatformToolset>
-    <PlatformToolset>v141</PlatformToolset>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'"
@@ -33,7 +30,6 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v141</PlatformToolset>
     <PlatformToolset>v141</PlatformToolset>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -44,10 +40,6 @@
             Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')"
             Label="LocalAppDataPlatform"/>
   </ImportGroup>
-  <PropertyGroup Label="UserMacros">
-    <PlatformToolset>v141</PlatformToolset>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
-  </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <TargetExt>.exe</TargetExt>
@@ -60,8 +52,6 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\App\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Myo Mapper</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <PlatformToolset>v141</PlatformToolset>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -75,7 +65,7 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\JuceLibraryCode\modules;C:\SDK\MyoSDK\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=3.1.9;JUCE_APP_VERSION_HEX=0x30109;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=3.1.9;JUCE_APP_VERSION_HEX=0x30109;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -125,7 +115,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClCompile>
       <Optimization>Full</Optimization>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\JuceLibraryCode\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=3.1.9;JUCE_APP_VERSION_HEX=0x30109;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=3.1.9;JUCE_APP_VERSION_HEX=0x30109;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -190,19 +180,28 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_ArrayBase.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_DynamicObject.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_HashMap_test.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_ListenerList.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_NamedValueSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_OwnedArray.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_PropertySet.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_ReferenceCountedArray.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_SparseSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_Variant.cpp">
@@ -254,6 +253,9 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_MemoryBlock.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\misc\juce_ConsoleApplication.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\misc\juce_Result.cpp">
@@ -515,6 +517,9 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_events\interprocess\juce_InterprocessConnectionServer.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_events\interprocess\juce_NetworkServiceDiscovery.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_events\messages\juce_ApplicationBase.cpp">
@@ -910,6 +915,12 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_ModalComponentManager.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\desktop\juce_Desktop.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\desktop\juce_Displays.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\drawables\juce_Drawable.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1169,6 +1180,9 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_ChoicePropertyComponent.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_MultiChoicePropertyComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_PropertyComponent.cpp">
@@ -1437,6 +1451,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_Array.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_ArrayAllocationBase.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_ArrayBase.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_DynamicObject.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_ElementComparator.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_HashMap.h"/>
@@ -1474,6 +1489,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_ByteOrder.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_ContainerDeletePolicy.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_HeapBlock.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_HeavyweightLeakedObjectDetector.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_LeakedObjectDetector.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_Memory.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_MemoryBlock.h"/>
@@ -1483,6 +1499,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_SharedResourcePointer.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_Singleton.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_WeakReference.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\misc\juce_ConsoleApplication.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\misc\juce_Result.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\misc\juce_RuntimePermissions.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\misc\juce_StdFunctionCompat.h"/>
@@ -1492,6 +1509,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\native\juce_BasicNativeHeaders.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\native\juce_mac_ClangBugWorkaround.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\native\juce_osx_ObjCHelpers.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\native\juce_posix_IPAddress.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\native\juce_posix_SharedCode.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\native\juce_win32_ComSmartPtr.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\network\juce_IPAddress.h"/>
@@ -1586,6 +1604,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\interprocess\juce_ConnectedChildProcess.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\interprocess\juce_InterprocessConnection.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\interprocess\juce_InterprocessConnectionServer.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\interprocess\juce_NetworkServiceDiscovery.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\messages\juce_ApplicationBase.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\messages\juce_CallbackMessage.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\messages\juce_DeletedAtShutdown.h"/>
@@ -1682,6 +1701,8 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_ComponentListener.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_Desktop.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\components\juce_ModalComponentManager.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\desktop\juce_Desktop.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\desktop\juce_Displays.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\drawables\juce_Drawable.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\drawables\juce_DrawableComposite.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\drawables\juce_DrawableImage.h"/>
@@ -1771,6 +1792,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_BooleanPropertyComponent.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_ButtonPropertyComponent.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_ChoicePropertyComponent.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_MultiChoicePropertyComponent.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_PropertyComponent.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_PropertyPanel.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\properties\juce_SliderPropertyComponent.h"/>
@@ -1812,6 +1834,7 @@ COPY &quot;C:\SDK\MyoSDK\bin\myo64.dll&quot; &quot;$(OutDir)&quot;</Command>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\embedding\juce_ActiveXControlComponent.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\embedding\juce_AndroidViewComponent.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\embedding\juce_NSViewComponent.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\embedding\juce_ScopedDPIAwarenessDisabler.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\embedding\juce_UIViewComponent.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\embedding\juce_XEmbedComponent.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\misc\juce_AnimatedAppComponent.h"/>

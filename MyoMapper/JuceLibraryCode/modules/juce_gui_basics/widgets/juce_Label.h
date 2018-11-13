@@ -280,6 +280,7 @@ public:
 
         virtual void drawLabel (Graphics&, Label&) = 0;
         virtual Font getLabelFont (Label&) = 0;
+        virtual BorderSize<int> getLabelBorderSize (Label&) = 0;
     };
 
 protected:
@@ -345,7 +346,7 @@ private:
     String lastTextValue;
     Font font { 15.0f };
     Justification justification = Justification::centredLeft;
-    ScopedPointer<TextEditor> editor;
+    std::unique_ptr<TextEditor> editor;
     ListenerList<Listener> listeners;
     WeakReference<Component> ownerComponent;
     BorderSize<int> border { 1, 5, 1, 5 };

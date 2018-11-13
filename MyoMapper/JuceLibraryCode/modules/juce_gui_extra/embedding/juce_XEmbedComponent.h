@@ -107,8 +107,7 @@ private:
     friend unsigned long juce_getCurrentFocusWindow (ComponentPeer*);
 
     class Pimpl;
-    friend struct ContainerDeletePolicy<Pimpl>;
-    ScopedPointer<Pimpl> pimpl;
+    std::unique_ptr<Pimpl> pimpl;
 };
 
 #endif
